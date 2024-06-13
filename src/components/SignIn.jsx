@@ -3,7 +3,7 @@ import Input from './Input';
 import Image from './Image';
 import SmallLogo from '../assets/images/favicon.png'
 import Cookies from 'js-cookie';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const SignIn = ({
@@ -16,23 +16,26 @@ const SignIn = ({
   const [password, setPassword] = useState("");
   const url2 = 'https://site--backendvintedapp--s4qnmrl7fg46.code.run/user/login';
 
-  // useEffect(() => {
-
-  // }, [])
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = axios.get(url2)
         setData(response.data);
         setIsLoading(false);
         console.log('data', data);
+        if (response) {
+          Cookies.set('login', { expires: 15, token: data.user.token })
+        }
       } catch (error) {
         console.log('error:', error)
       }
     }
     fetchData();
+  }, [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
   }
 
   return (
