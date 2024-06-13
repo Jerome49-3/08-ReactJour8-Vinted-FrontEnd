@@ -1,0 +1,237 @@
+/* HEADER */
+header {
+  width: 100%;
+  height: 45px;
+  display: block;
+  padding: 2.5px 10px 0px 10px;
+}
+
+header .wrapper {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a .logo {
+  width: 78px;
+  height: 34.8px;
+  object-fit: cover;
+}
+
+header .wrapper nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 5px 0;
+}
+
+header .wrapper nav ul li {
+  width: 180px;
+  border-radius: 5px;
+}
+
+header .wrapper nav ul li:not(li:nth-child(2)) {
+  padding: 4px 6px 4px 6px;
+}
+
+header .wrapper nav ul li:first-child {
+  width: 100px;
+}
+
+header .wrapper nav ul,
+header .wrapper nav ul li,
+header .wrapper nav ul li:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .wrapper nav ul {
+  gap: 5px;
+}
+
+header .wrapper nav ul li:nth-child(2) {
+  border: 2px solid var(--vertVintDark);
+  gap: 5px;
+}
+
+header .wrapper nav ul li:last-child,
+header .wrapper nav ul li:last-child a {
+  background-color: var(--vertVintLight);
+  color: white;
+}
+
+header .wrapper nav ul li:last-child {
+  border: 2px solid var(--vertVintLight);
+}
+
+.imgBanner {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  margin-top: -6px;
+}
+
+.imgBannerBottom {
+  width: 100%;
+  margin-top: -47px;
+}
+
+/* MODAL */
+.boxModal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 119, 130, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.boxModalContent {
+  background-color: white;
+  padding: 1rem 2rem 2rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: inset 0px 0px 10px #000000, 0px 0px 10px #000000;
+}
+
+.boxModalContent div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 115%;
+}
+
+.boxModalContent div img {
+  object-fit: cover;
+}
+
+.boxModalContent button {
+  text-shadow: 1px 1px 2px white, 1.25px 1.25px 2.25px #000000;
+  background-color: #f1f1f1f1;
+}
+
+.boxModalContent div img,
+.boxModalContent button {
+  width: 25px;
+  height: 25px;
+  border-radius: 7.5px;
+  box-shadow: 0px 0px 4px #000000;
+}
+
+.boxModalContent button:hover {
+  box-shadow: inset 0px 0px 4px #000000;
+}
+
+.boxModalContent form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.boxModalContent form label,
+.boxModalContent form input {
+  width: 100%;
+}
+
+.boxModalContent form input {
+  background-color: rgba(0, 156, 104, 0.2);
+  box-shadow: inset 0px 0px 10px #00757F, inset 0px 0px 5px #000000, 2px 2px 4px #000000;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.boxModalContent form input:hover {
+  box-shadow: inset 0px 0px 10px #00757F, inset 0px 0px 5px #000000, inset 2px 2px 4px #000000;
+}
+
+.boxModalContent form input::placeholder {
+  text-align: center;
+  color: #000000;
+  text-shadow: 1px 1px 2px white, 1.25px 1.25px 2.25px #000000;
+}
+
+/* ARTICLE */
+.wrapper {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid crimson;
+}
+
+article {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 10px;
+  width: 150px;
+  gap: 5px;
+  background-color: rgb(189, 189, 189);
+}
+
+article .boxUser {
+  display: flex;
+  align-items: center;
+  gap: calc(100% / 4);
+  width: 100%;
+}
+
+.imgAvatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.boxSearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.search-icons {
+  color: var(--vertVintDark);
+  width: 14px;
+}
+
+.imgsArticle {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* FORM */
+
+.boxForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.boxForm div label,
+.boxForm input {
+  width: 100%;
+
+}
+
+.boxForm div label {
+  padding: 5px 0 5px 0;
+}
+
+.boxForm input {
+  margin: 5px 0 5px 0;
+}
