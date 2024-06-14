@@ -35,7 +35,25 @@ const SignIn = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    const postData = async () => {
+      try {
+        axios
+          .post(url2), {
+            method: "POST",
+            body: JSON.stringify({
+              email: { email },
+              password: { password }
+            })
+          }
+            .then(response)
+        if (response) {
+          Cookies.set('login', { expires: 15, token: data.user.token })
+        }
+      } catch (error) {
+        console.log('error:', error)
+      }
+    }
+    postData();
   }
 
   return (
