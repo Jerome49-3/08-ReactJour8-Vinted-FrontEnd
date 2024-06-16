@@ -5,8 +5,7 @@ import Input from "./Input";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookies from "js-cookie";
 
-const Header = ({ show, setShow }) => {
-  const token = Cookies.get("vintedToken")
+const Header = ({ show, setShow, token, setToken }) => {
   return (
     <header>
       <div className="wrapper">
@@ -24,7 +23,8 @@ const Header = ({ show, setShow }) => {
             </li>
             {token ? (
               <li><button onClick={() => {
-                Cookies.remove("vinted-token");
+                Cookies.remove("vintedApp");
+                setToken(null);
               }}>Se deconnecter</button></li>
             ) : (
               <li>
