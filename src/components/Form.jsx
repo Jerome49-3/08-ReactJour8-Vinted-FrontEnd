@@ -16,8 +16,6 @@ const Form = ({ }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {/* je crée un input email pour conserver la valeur de l'input*/}
-        {/* <label htmlFor="email">email</label> */}
         <Input label="Name" value={username} id="username" type="text" placeholder="jerome" setState={setUsername} />
         <Input label="Email" value={email} id="email" type="email" placeholder="jerome@test.com" setState={setEmail} />
         <Input label="Password" value={password} id="password" type="password" placeholder="password" setState={setPassword} />

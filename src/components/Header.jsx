@@ -3,8 +3,10 @@ import Image from './Image';
 import Logo from '../assets/images/logo.svg';
 import Input from "./Input";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Cookies from "js-cookie";
 
 const Header = ({ show, setShow }) => {
+  const token = Cookies.get("vintedToken")
   return (
     <header>
       <div className="wrapper">
@@ -20,15 +22,21 @@ const Header = ({ show, setShow }) => {
             <li>
               <Link to='/offer'>offres</Link>
             </li>
-            <li>
-              <div><Link to='/signup'>s'inscrire</Link></div>
-              <div>|</div>
-              <div className="buttonSignIn">
-                <button onClick={() => {
-                  { show === false ? (setShow(true)) : (setShow(false)) }
-                }}>se connecter</button>
-              </div>
-            </li>
+            {token ? (
+              <li><button onClick={() => {
+                Cookies.remove("vinted-token");
+              }}>Se deconnecter</button></li>
+            ) : (
+              <li>
+                <div><Link to='/signup'>s'inscrire</Link></div>
+                <div>|</div>
+                <div className="buttonSignIn">
+                  <button onClick={() => {
+                    { show === false ? (setShow(true)) : (setShow(false)) }
+                  }}>se connecter</button>
+                </div>
+              </li>
+            )}
             <li>
               <Link to='/sealit'>vendre tes articles</Link>
             </li>

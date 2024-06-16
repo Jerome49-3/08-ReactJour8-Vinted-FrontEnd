@@ -143,27 +143,3 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
-input {
-  border: none;
-  outline-color: var(--vertVintDark);
-}
-
-input:focus-visible::placeholder {
-  opacity: 0;
-}
-
-button {
-  background-color: transparent;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-}
-
-li:hover .buttonSignIn {
-  background-color: var(--vertVintLight);
-}
-
-li:hover .buttonSignIn button {
-  color: white;
-}

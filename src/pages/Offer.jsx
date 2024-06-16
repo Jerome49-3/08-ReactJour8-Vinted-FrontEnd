@@ -5,6 +5,9 @@ import Image from '../components/Image'
 import avatar from '../assets/images/Avatarme.png'
 import { Link } from 'react-router-dom';
 
+//components
+import Hero from '../components/Hero';
+
 const Offer = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +35,7 @@ const Offer = () => {
     </>
   ) : (
     <>
+      <Hero />
       <div className="wrapper">
         <div className="boxArticles">
           {data.getOffer.map((article, key = index) => {

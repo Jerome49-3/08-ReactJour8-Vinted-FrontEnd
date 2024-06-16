@@ -1,8 +1,39 @@
-import React from 'react'
+import Input from '../components/Input'
+import { useState } from 'react';
 
 const SealIt = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [brand, setBrand] = useState("");
+  const [size, setSize] = useState("");
+  const [condition, setCondition] = useState("");
+  const [color, setColor] = useState("");
+  const [city, setCity] = useState("");
+  const [pictures, setPictures] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Vos mots de passe ne sont pas identiques")
+    }
+  }
+
   return (
-    <div>SealIt</div>
+    <div className='boxForm'>
+      <form onSubmit={handleSubmit}>
+        <Input value={title} id="title" type="text" placeholder="nom du produit" setState={setTitle} />
+        <Input value={description} id="description" type="text" placeholder="Description" setState={setDescription} />
+        <Input value={price} id="price" type="text" placeholder="Prix" setState={setPrice} />
+        <Input value={brand} id="brand" type="text" placeholder="Marque" setState={setBrand} />
+        <Input value={size} id="size" type="text" placeholder="Taille" setState={setSize} />
+        <Input value={condition} id="condition" type="text" placeholder="Taille" setState={setCondition} />
+        <Input value={color} id="color" type="text" placeholder="Couleur" setState={setColor} />
+        <Input value={city} id="city" type="text" placeholder="Emplacement" setState={setCity} />
+        <Input value={pictures} id="pictures" type="file" placeholder="Images" setState={setPictures} />
+        <Input type="submit" value="poster votre annonce" />
+      </form>
+    </div>
   )
 }
 
