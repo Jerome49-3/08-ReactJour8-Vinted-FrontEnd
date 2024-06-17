@@ -10,10 +10,9 @@ import Cookies from 'js-cookie'
 
 //pages
 import Home from './pages/Home';
-// import Offer from './pages/Offer';
+import Offer from './pages/Offer';
 import SignUp from './pages/SignUp';
 import Publish from './pages/Publish';
-import Offer from './pages/Offer';
 
 
 //components
@@ -33,7 +32,6 @@ function App() {
         <Header show={show} setShow={setShow} token={token} setToken={setToken} search={search} setSearch={setSearch} />
         <Routes>
           <Route path="/" element={<Home search={search} setSearch={setSearch} />} />
-          {/* <Route path="/offer" element={<Offer />} /> */}
           <Route path="/offer/:id" element={<Offer />} />
           <Route path="/signup" element={<SignUp icon1="eye" icon2="eye-slash" setToken={setToken} />} />
           <Route path="/login" element={<SignIn setToken={setToken} />} />

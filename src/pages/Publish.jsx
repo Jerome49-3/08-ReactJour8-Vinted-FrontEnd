@@ -20,14 +20,14 @@ const SealIt = () => {
   }
 
   return (
-    <div className='boxForm'>
+    <div className='boxForm boxFormCenter'>
       <form onSubmit={handleSubmit}>
         <Input value={title} id="title" type="text" placeholder="nom du produit" setState={setTitle} />
         <Input value={description} id="description" type="text" placeholder="Description" setState={setDescription} />
         <Input value={price} id="price" type="text" placeholder="Prix" setState={setPrice} />
         <Input value={brand} id="brand" type="text" placeholder="Marque" setState={setBrand} />
         <Input value={size} id="size" type="text" placeholder="Taille" setState={setSize} />
-        <Input value={condition} id="condition" type="text" placeholder="Taille" setState={setCondition} />
+        <Input value={condition} id="condition" type="text" placeholder="Condition" setState={setCondition} />
         <Input value={color} id="color" type="text" placeholder="Couleur" setState={setColor} />
         <Input value={city} id="city" type="text" placeholder="Emplacement" setState={setCity} />
         <Input value={pictures} id="pictures" type="file" placeholder="Images" setState={setPictures} />

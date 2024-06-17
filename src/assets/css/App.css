@@ -138,7 +138,7 @@ header .wrapper nav ul li:last-child {
   width: 100%;
 }
 
-.boxFormSignUp {
+.boxFormCenter {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -297,6 +297,7 @@ article {
   width: 150px;
   gap: 5px;
   background-color: rgb(189, 189, 189);
+  border: 2px solid crimson;
 }
 
 article .boxUser {
@@ -369,6 +370,15 @@ button {
   gap: 20px;
 }
 
+.boxDot h1 {
+  font-size: 2rem;
+  --text-shadow1w: #f8f6f6;
+  --text-shadow2: rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px var(--text-shadow1w), 1px 1px 1px #2DB0BA,
+    2px 2px 4px #2DB0BA,
+    2px 2px 2px var(--text-shadow2), 2px 2px 2px var(--text-shadow2), 2px 2px 4px var(--text-shadow2);
+}
+
 .dot {
   width: 20px;
   height: 20px;
@@ -377,15 +387,15 @@ button {
 }
 
 .dot1 {
-  animation: bounce-in-top 1.5s linear 0.5s infinite normal both;
+  animation: bounce-in-top 2s ease-in-out 0.5s infinite normal both;
 }
 
 .dot2 {
-  animation: bounce-in-top 2s linear 1s infinite normal both;
+  animation: bounce-in-top 2s ease-in-out 0.75s infinite normal both;
 }
 
 .dot3 {
-  animation: bounce-in-top 2.5s linear 1.5s infinite normal both;
+  animation: bounce-in-top 2s ease-in-out 1s infinite normal both;
 }
 
 /* HOME */

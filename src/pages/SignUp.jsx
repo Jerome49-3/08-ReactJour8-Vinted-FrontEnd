@@ -41,7 +41,7 @@ const SignUp = ({ icon1, icon2 }) => {
   }
 
   return (
-    <div className='boxForm boxFormSignUp'>
+    <div className='boxForm boxFormCenter boxFormSignUp'>
       <form onSubmit={handleSubmit}>
         <Input value={username} id="username" type="text" placeholder="Nom d'utilisateur(ice)" setState={setUsername} autocomplete="on" />
         <Input value={email} id="email" type="email" placeholder="Email" setState={setEmail} autocomplete="on" />
