@@ -6,32 +6,32 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const SignIn = ({
-  show,
-  setShow
-}) => {
+const SignIn = ({ show, setShow, setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const url2 = 'https://site--backendvintedapp--s4qnmrl7fg46.code.run/user/login';
+  const [errorMessage, setErrorMessage] = useState("");
+  const url2 = 'https://lereacteur-vinted-api.herokuapp.com/user/login';
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
     try {
       axios
         .post((url2),
           {
             email: email,
-            password: password
+            password: password,
           }
         );
       console.log('response.data:', response.data);
       if (response.data.token) {
         Cookies.set('login', response.data.token, { expires: 15 });
-        navigate("/")
+        setToken(response.data.token);
+        navigate("/publish")
       }
     } catch (error) {
-      console.log('error:', error)
+      console.log('error:', error.response)
     }
   }
 
@@ -45,12 +45,11 @@ const SignIn = ({
           }}>X</button>
         </div>
         <form onSubmit={handleSubmit}>
-          {/* je crée un input email pour conserver la valeur de l'input*/}
-          {/* <label htmlFor="email">email</label> */}
-          <Input value={email} id="email" type="email" placeholder="jerome@test.com" setState={setEmail} />
-          <Input value={password} id="password" type="password" placeholder="password" setState={setPassword} />
-          <Input type="submit" value="Sign in" />
+          <Input id="email" type="email" placeholder="jerome@test.com" value={email} setState={setEmail} autocomplete="on" />
+          <Input id="password" type="password" placeholder="password" value={password} setState={setPassword} autocomplete="on" />
+          <Input type="submit" value="Se connecter" />
         </form>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>
 
     </div>

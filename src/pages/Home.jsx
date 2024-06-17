@@ -39,8 +39,8 @@ const Home = (search, setSearch) => {
             console.log('article:', article, key)
             return (
               <>
-                <Link to={`/offer/${article._id}`}>
-                  <article key={key}>
+                <Link to={`/offer/${article._id}`} key={key}>
+                  <article >
                     <div className='boxUser'>
                       <div>
                         <Image src={avatar} alt="avatar" classImg='imgAvatar' />

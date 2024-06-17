@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Image from './Image';
 import Logo from '../assets/images/logo.svg';
 import Input from "./Input";
@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookies from "js-cookie";
 
 const Header = ({ show, setShow, token, setToken, search, setSearch }) => {
+  const navigate = useNavigate();
   return (
     <header>
       <div className="wrapper">
@@ -23,6 +24,7 @@ const Header = ({ show, setShow, token, setToken, search, setSearch }) => {
               <li><button onClick={() => {
                 Cookies.remove("vintedApp");
                 setToken(null);
+                navigate('/')
               }}>Se deconnecter</button></li>
             ) : (
               <li>

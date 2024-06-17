@@ -29,7 +29,7 @@ function App() {
   return (
     <>
       <Router>
-        <Header show={show} setShow={setShow} token={token} setToken={setToken} search={search} setSearch={setSearch} />
+        <Header token={token} setToken={setToken} show={show} setShow={setShow} search={search} setSearch={setSearch} />
         <Routes>
           <Route path="/" element={<Home search={search} setSearch={setSearch} />} />
           <Route path="/offer/:id" element={<Offer />} />

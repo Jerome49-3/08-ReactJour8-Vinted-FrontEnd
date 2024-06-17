@@ -3,14 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Input from '../components/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Cookies from 'js-cookie';
 
 const SignUp = ({ icon1, icon2 }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const [type, setType] = useState('password');
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleType = () => {
@@ -20,7 +21,7 @@ const SignUp = ({ icon1, icon2 }) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = await axios.post(' https://lereacteur-vinted-api.herokuapp.com/user/signup',
+      const response = await axios.post('https://lereacteur-vinted-api.herokuapp.com/user/signup',
         {
           username,
           email,
@@ -30,8 +31,8 @@ const SignUp = ({ icon1, icon2 }) => {
       );
       if (response.data.token) {
         Cookies.set('vintedApp', response.data.token, { expires: 15 });
-        console.log('cookies:', Cookies.set('vintedApp', response.data.token, { expires: 15 }))
-        navigate("/")
+        console.log('cookies:', Cookies)
+        navigate("/publish")
       }
     } catch (error) {
       console.log('error', error.response)
@@ -59,6 +60,7 @@ const SignUp = ({ icon1, icon2 }) => {
         <p>En m'inscrivant, je confirme avoir lu et accepté les termes, conditions et politique de confidentialité de Vinted. Je confirme avoir au moins 18ans</p>
         <Input type="submit" value="S'inscrire" />
       </form>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   )
 }
