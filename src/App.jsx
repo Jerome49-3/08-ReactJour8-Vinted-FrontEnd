@@ -10,10 +10,10 @@ import Cookies from 'js-cookie'
 
 //pages
 import Home from './pages/Home';
-import Offer from './pages/Offer';
+// import Offer from './pages/Offer';
 import SignUp from './pages/SignUp';
-import SealIt from './pages/SealIt';
-import OfferDetails from './pages/OfferDetails';
+import Publish from './pages/Publish';
+import Offer from './pages/Offer';
 
 
 //components
@@ -24,19 +24,20 @@ import SignIn from './components/SignIn';
 
 function App() {
   const [show, setShow] = useState(false);
-  const [token, setToken] = useState(Cookies.get('vintedApp') || null)
+  const [token, setToken] = useState(Cookies.get('vintedApp') || null);
+  const [search, setSearch] = useState("");
 
   return (
     <>
       <Router>
-        <Header show={show} setShow={setShow} token={token} setToken={setToken} />
+        <Header show={show} setShow={setShow} token={token} setToken={setToken} search={search} setSearch={setSearch} />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/offer" element={<Offer />} />
-          <Route path="/offer/:id" element={<OfferDetails />} />
+          <Route path="/" element={<Home search={search} setSearch={setSearch} />} />
+          {/* <Route path="/offer" element={<Offer />} /> */}
+          <Route path="/offer/:id" element={<Offer />} />
           <Route path="/signup" element={<SignUp icon1="eye" icon2="eye-slash" setToken={setToken} />} />
           <Route path="/login" element={<SignIn setToken={setToken} />} />
-          <Route path="/sealit" element={<SealIt />} />
+          <Route path="/publish" element={<Publish />} />
         </Routes>
         {show && <SignIn show={show} setShow={setShow} />}
       </Router>

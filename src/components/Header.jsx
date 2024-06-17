@@ -5,7 +5,7 @@ import Input from "./Input";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookies from "js-cookie";
 
-const Header = ({ show, setShow, token, setToken }) => {
+const Header = ({ show, setShow, token, setToken, search, setSearch }) => {
   return (
     <header>
       <div className="wrapper">
@@ -14,13 +14,11 @@ const Header = ({ show, setShow, token, setToken }) => {
         </Link>
         <div className="boxSearch">
           <FontAwesomeIcon icon="magnifying-glass" className="search-icons" />
-          <Input id='search' type='search' placeholder='Rechercher des articles' />
+          <Input id='search' type='search' placeholder='Rechercher des articles' value={search} setState={setSearch} />
         </div>
         <nav>
           <ul>
-            <li>
-              <Link to='/offer'>offres</Link>
-            </li>
+            <li></li>
             {token ? (
               <li><button onClick={() => {
                 Cookies.remove("vintedApp");
@@ -38,7 +36,7 @@ const Header = ({ show, setShow, token, setToken }) => {
               </li>
             )}
             <li>
-              <Link to='/sealit'>vendre tes articles</Link>
+              <Link to='/publish'>vendre tes articles</Link>
             </li>
           </ul>
         </nav>

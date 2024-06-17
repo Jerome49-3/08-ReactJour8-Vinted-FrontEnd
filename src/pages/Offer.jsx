@@ -3,15 +3,16 @@ import Loading from '../components/Loading';
 import { useState, useEffect } from 'react';
 import Image from '../components/Image'
 import avatar from '../assets/images/Avatarme.png'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 //components
 import Hero from '../components/Hero';
 
 const Offer = () => {
+  const id = useParams();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const url1 = 'https://site--backendvintedapp--s4qnmrl7fg46.code.run/offer';
+  const url1 = `https://site--backendvintedapp--s4qnmrl7fg46.code.run/offer/${id}`;
 
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const Offer = () => {
       }
     }
     fetchData();
-  }, [])
+  }, [id])
   console.log('data:', data)
 
   return isLoading ? (
@@ -38,32 +39,30 @@ const Offer = () => {
       <Hero />
       <div className="wrapper">
         <div className="boxArticles">
-          {data.getOffer.map((article, key = index) => {
+          {data.getOffer.map((article, key = getOffer._id) => {
             console.log('article:', article)
             return (
               <>
-                <Link to={`/offer/${article._id}`}>
-                  <article key={key._id}>
-                    <div className='boxUser'>
-                      <div>
-                        <Image src={avatar} alt="avatar" classImg='imgAvatar' />
-                      </div>
-                      <div>jerome</div>
+                <article key={key}>
+                  <div className='boxUser'>
+                    <div>
+                      <Image src={avatar} alt="avatar" classImg='imgAvatar' />
                     </div>
-                    {console.log('article.product_picture:', '\n', article.product_picture, 'article.product_picture:', article.product_picture)}
-                    {article.product_image ? (<Image src={article.product_image} />) : (null)}
-                    {article.product_pictures ? (<>{article.product_pictures.map((images, key = index) => {
-                      console.log('images:', images);
-                      return (
-                        <>
-                          <Image src={images.secure_url} classImg='imgsArticle' />
-                        </>
-                      )
-                    })}</>) : (null)}
-                    <div>{article.product_name}</div>
-                    <div>{article.product_description}</div>
-                  </article >
-                </Link >
+                    <div>jerome</div>
+                  </div>
+                  {console.log('article.product_picture:', '\n', article.product_picture, 'article.product_picture:', article.product_picture)}
+                  {article.product_image ? (<Image src={article.product_image} />) : (null)}
+                  {article.product_pictures ? (<>{article.product_pictures.map((images, key = index) => {
+                    console.log('images:', images);
+                    return (
+                      <>
+                        <Image src={images.secure_url} classImg='imgsArticle' />
+                      </>
+                    )
+                  })}</>) : (null)}
+                  <div>{article.product_name}</div>
+                  <div>{article.product_description}</div>
+                </article >
               </>
             )
           })}
