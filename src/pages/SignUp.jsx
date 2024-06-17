@@ -20,7 +20,7 @@ const SignUp = ({ icon1, icon2 }) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = await axios.post('https://site--backendvintedapp--s4qnmrl7fg46.code.run/user/signup',
+      const response = await axios.post(' https://lereacteur-vinted-api.herokuapp.com/user/signup',
         {
           username,
           email,
@@ -34,7 +34,7 @@ const SignUp = ({ icon1, icon2 }) => {
         navigate("/")
       }
     } catch (error) {
-      console.log('error', error)
+      console.log('error', error.response)
     }
   }
 
