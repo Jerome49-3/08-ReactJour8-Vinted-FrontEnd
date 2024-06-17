@@ -10,8 +10,11 @@ const SealIt = () => {
   const [condition, setCondition] = useState("");
   const [color, setColor] = useState("");
   const [city, setCity] = useState("");
-  const [pictures, setPictures] = useState("");
+  const [pictures, setPictures] = useState(null);
 
+  const handleChangeFile = (e) => {
+    setPictures(e.target.file)
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -30,7 +33,9 @@ const SealIt = () => {
         <Input value={condition} id="condition" type="text" placeholder="Condition" setState={setCondition} />
         <Input value={color} id="color" type="text" placeholder="Couleur" setState={setColor} />
         <Input value={city} id="city" type="text" placeholder="Emplacement" setState={setCity} />
-        <Input value={pictures} id="pictures" type="file" placeholder="Images" setState={setPictures} />
+        <input type="file" id='pictures' name='pictures' onChange={() => {
+          handleChangeFile
+        }} multiple />
         <Input type="submit" value="poster votre annonce" />
       </form>
     </div>

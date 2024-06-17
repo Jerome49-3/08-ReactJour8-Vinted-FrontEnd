@@ -11,13 +11,15 @@ const SignUp = ({ icon1, icon2 }) => {
   const [newsletter, setNewsletter] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [type, setType] = useState('password');
-  const [pictures, setPictures] = useState();
+  const [pictures, setPictures] = useState(null);
   const navigate = useNavigate();
 
   const handleType = () => {
     setType(type === 'password' ? 'text' : 'password')
   }
-
+  const handleChangeFile = (e) => {
+    setPictures(e.target.file[0])
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
@@ -52,7 +54,9 @@ const SignUp = ({ icon1, icon2 }) => {
             <FontAwesomeIcon icon={icon2} onClick={handleType} className={type !== 'text' ? 'hide' : null} />
           </div>
         </div>
-        <Input type="file" id="pictures" setState={setPictures} value={pictures} />
+        <input type="file" id='pictures' name='pictures' onChange={() => {
+          handleChangeFile
+        }} />
         <div className='boxCheckBox'>
           <input type="checkbox" name="checkbox" id="checkbox" onChange={() => {
             setNewsletter(!newsletter);
