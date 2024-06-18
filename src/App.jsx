@@ -34,7 +34,7 @@ function App() {
           <Route path="/" element={<Home search={search} />} />
           <Route path="/offer/:id" element={<Offer />} />
           <Route path="/signup" element={<SignUp icon1="eye" icon2="eye-slash" setToken={setToken} />} />
-          <Route path="/login" element={<SignIn setTok={setToken} />} />
+          <Route path="/login" element={<SignIn setToken={setToken} />} />
           <Route path="/publish" element={<Publish />} />
         </Routes>
         {show && <SignIn show={show} setShow={setShow} />}
