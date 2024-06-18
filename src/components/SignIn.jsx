@@ -16,21 +16,24 @@ const SignIn = ({ show, setShow, setToken }) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = axios
-        .post('https://lereacteur-vinted-api.herokuapp.com/user/login',
-          {
-            email: email,
-            password: password,
-          }
-        );
+      const response = await axios.post('https://lereacteur-vinted-api.herokuapp.com/user/login',
+        {
+          email: email,
+          password: password,
+        }
+      );
+      console.log('response.data.token:', response?.data?.token)
       if (response.data.token) {
         Cookies.set('login', response.data.token, { expires: 15 });
+        console.log(Cookies)
+        console.log(setToken);
         setToken(response.data.token);
+        // setShow(false);
         navigate("/publish")
       }
       { console.log('email:', email, 'password:', password) }
     } catch (error) {
-      console.log('error:', error.response)
+      console.log('error:', error)
     }
   }
 

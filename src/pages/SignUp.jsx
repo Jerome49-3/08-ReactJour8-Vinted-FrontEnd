@@ -12,12 +12,14 @@ const SignUp = ({ icon1, icon2 }) => {
   const [newsletter, setNewsletter] = useState(false);
   const [type, setType] = useState('password');
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
 
   const handleType = () => {
+
+
     setType(type === 'password' ? 'text' : 'password')
   }
   const handleSubmit = async (e) => {
+    const navigate = useNavigate();
     e.preventDefault();
     setErrorMessage("");
     try {
@@ -29,11 +31,11 @@ const SignUp = ({ icon1, icon2 }) => {
           newsletter
         }
       );
-      if (response.data.token) {
+      if (response.data) {
         Cookies.set('vintedApp', response.data.token, { expires: 15 });
         // console.log('cookies:', Cookies);
         setToken(response.data.token);
-        navigate("/publish")
+        navigate("/publish");
       }
     } catch (error) {
       console.log('error', error.response)
