@@ -59,7 +59,7 @@ const Publish = ({ token }) => {
   return token ? (
     <div className='boxForm boxFormCenter'>
       <form onSubmit={handleSubmit}>
-        <input label="+ ajoute une photo !" htmlFor='pictures' type="file" id='pictures' name='pictures' onChange={() => {
+        <Input label="+ ajoute une photo !" htmlFor='pictures' type="file" id='pictures' name='pictures' onChange={() => {
           handleChangeFile
         }} multiple />
         {pictures && <img src={pictures} alt="Image" />}
