@@ -31,7 +31,8 @@ const SignUp = ({ icon1, icon2 }) => {
       );
       if (response.data.token) {
         Cookies.set('vintedApp', response.data.token, { expires: 15 });
-        console.log('cookies:', Cookies)
+        // console.log('cookies:', Cookies);
+        setToken(response.data.token);
         navigate("/publish")
       }
     } catch (error) {

@@ -31,7 +31,7 @@ function App() {
       <Router>
         <Header token={token} setToken={setToken} show={show} setShow={setShow} search={search} setSearch={setSearch} />
         <Routes>
-          <Route path="/" element={<Home search={search} setSearch={setSearch} />} />
+          <Route path="/" element={<Home search={search} />} />
           <Route path="/offer/:id" element={<Offer />} />
           <Route path="/signup" element={<SignUp icon1="eye" icon2="eye-slash" setToken={setToken} />} />
           <Route path="/login" element={<SignIn setToken={setToken} />} />

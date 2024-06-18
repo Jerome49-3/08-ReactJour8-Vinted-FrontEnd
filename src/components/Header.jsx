@@ -38,7 +38,7 @@ const Header = ({ show, setShow, token, setToken, search, setSearch }) => {
               </li>
             )}
             <li>
-              <Link to='/publish'>vendre tes articles</Link>
+              <Link to={token ? '/publish' : '/login'} >vendre tes articles</Link>
             </li>
           </ul>
         </nav>

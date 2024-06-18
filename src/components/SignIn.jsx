@@ -10,26 +10,25 @@ const SignIn = ({ show, setShow, setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const url2 = 'https://lereacteur-vinted-api.herokuapp.com/user/login';
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      axios
-        .post((url2),
+      const response = axios
+        .post('https://lereacteur-vinted-api.herokuapp.com/user/login',
           {
             email: email,
             password: password,
           }
         );
-      console.log('response.data:', response.data);
       if (response.data.token) {
         Cookies.set('login', response.data.token, { expires: 15 });
         setToken(response.data.token);
         navigate("/publish")
       }
+      { console.log('email:', email, 'password:', password) }
     } catch (error) {
       console.log('error:', error.response)
     }

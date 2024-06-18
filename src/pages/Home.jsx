@@ -6,7 +6,7 @@ import avatar from '../assets/images/Avatarme.png'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 
-const Home = (search, setSearch) => {
+const Home = (search) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const url1 = `https://site--backendvintedapp--s4qnmrl7fg46.code.run/offer?title=${search}`;
@@ -35,34 +35,36 @@ const Home = (search, setSearch) => {
       <Hero />
       <div className="wrapper">
         <div className="boxArticles">
-          {data.getOffer.map((article, key = getOffer._id) => {
-            console.log('article:', article, key)
-            return (
-              <>
-                <Link to={`/offer/${article._id}`} key={key}>
-                  <article >
-                    <div className='boxUser'>
-                      <div>
-                        <Image src={avatar} alt="avatar" classImg='imgAvatar' />
-                      </div>
-                      <div>jerome</div>
-                    </div>
-                    {console.log('article.product_picture:', '\n', article.product_picture, 'article.product_picture:', article.product_picture)}
-                    {article.product_image ? (<Image src={article.product_image} />) : (null)}
-                    {article.product_pictures ? (<>{article.product_pictures.map((images, key = index) => {
-                      console.log('images:', images);
-                      return (
-                        <>
-                          <Image src={images.secure_url} classImg='imgsArticle' />
-                        </>
-                      )
-                    })}</>) : (null)}
-                    <div>{article.product_name}</div>
-                    <div>{article.product_description}</div>
-                  </article >
-                </Link >
-              </>
-            )
+          {data.getOffer.map((article, key = article._id) => {
+            console.log('article:', article)
+            // return (
+            //   <>
+            //     <Link to={`/offer/${article._id}`} key={key}>
+            //       <article>
+            //         <div className='boxUser'>
+            //           {article.owner.account.avatar && (
+            //             <div>
+            //               <Image src={avatar} alt="avatar" classImg='imgAvatar' />
+            //             </div>
+            //           )}
+            //           <div>jerome</div>
+            //         </div>
+            //         {console.log('article.product_picture:', '\n', article.product_picture, 'article.product_picture:', article.product_picture)}
+            //         {article.product_image ? (<Image src={article.product_image} />) : (null)}
+            //         {article.product_pictures ? (<>{article.product_pictures.map((images, key = index) => {
+            //           console.log('images:', images);
+            //           return (
+            //             <>
+            //               <Image src={images.secure_url} classImg='imgsArticle' key={key} />
+            //             </>
+            //           )
+            //         })}</>) : (null)}
+            //         <div>{article.product_name}</div>
+            //         <div>{article.product_description}</div>
+            //       </article >
+            //     </Link >
+            //   </>
+            // )
           })}
         </div>
       </div >
