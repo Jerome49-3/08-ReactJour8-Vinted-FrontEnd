@@ -5,7 +5,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import TextArea from '../components/TextArea';
 import Input from '../components/Input'
 
-const Publish = () => {
+const Publish = ({ token }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("0");
