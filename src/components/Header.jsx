@@ -28,13 +28,13 @@ const Header = ({ show, setShow, token, setToken, search, setSearch }) => {
               }}>Se deconnecter</button></li>
             ) : (
               <li>
-                <div><Link to='/signup'>s'inscrire</Link></div>
-                <div>|</div>
                 <div className="buttonSignIn">
                   <button onClick={() => {
                     { show === false ? (setShow(true)) : (setShow(false)) }
-                  }}>se connecter</button>
+                  }}> s'inscrire</button>
                 </div>
+                <div>|</div>
+                <div><Link to='/login'>se connecter</Link></div>
               </li>
             )}
             <li>

@@ -1,10 +1,6 @@
 const Input = ({ value, id, type, placeholder, setState, label }) => {
   const handleChange = (e) => {
-    if (type === 'text' || type === 'files' || type === "number" || type === "email" || type === "password") {
-      setState(e.target.value);
-    } else if (type === 'file') {
-      setState(e.target.files);
-    }
+    setState(e.target.value);
   };
   return (
     <>

@@ -9,17 +9,19 @@ import { Link, useParams } from 'react-router-dom';
 import Hero from '../components/Hero';
 
 const Offer = () => {
-  const id = useParams();
+  let id = useParams();
+  id = id.id
+  console.log('id1', id)
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const url1 = `https://site--backendvintedapp--s4qnmrl7fg46.code.run/offer/${id}`;
-
 
   useEffect(() => {
+    console.log('id2', id)
     const fetchData = async () => {
       try {
-        const response = await axios.get(url1)
+        const response = await axios.get(`  https://lereacteur-vinted-api.herokuapp.com/v2/offers/${id}`)
         // const response = await axios.get(import.meta.env.URL_API_OFFER);
+        console.log('response:', response);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -39,33 +41,27 @@ const Offer = () => {
       <Hero />
       <div className="wrapper">
         <div className="boxArticles">
-          {data.getOffer.map((article, key = getOffer._id) => {
-            console.log('article:', article)
-            return (
-              <>
-                <article key={key}>
-                  <div className='boxUser'>
-                    <div>
-                      <Image src={avatar} alt="avatar" classImg='imgAvatar' />
-                    </div>
-                    <div>jerome</div>
-                  </div>
-                  {console.log('article.product_picture:', '\n', article.product_picture, 'article.product_picture:', article.product_picture)}
-                  {article.product_image ? (<Image src={article.product_image} />) : (null)}
-                  {article.product_pictures ? (<>{article.product_pictures.map((images, key = index) => {
-                    console.log('images:', images);
-                    return (
-                      <>
-                        <Image src={images.secure_url} classImg='imgsArticle' />
-                      </>
-                    )
-                  })}</>) : (null)}
-                  <div>{article.product_name}</div>
-                  <div>{article.product_description}</div>
-                </article >
-              </>
-            )
-          })}
+          <article>
+            <div className='boxUser'>
+              {data.owner.account.avatar && (
+                <>
+                  <Image src={data.owner.account.avatar.secure_url} alt="avatar" classImg='imgAvatar' />
+                </>
+              )}
+              <div>{data.owner.account.username}</div>
+            </div>
+            <div className='boxImgArticle'>
+              {data.product_image ? (<Image src={data.product_image} />) : (undefined)}
+              {data.product_pictures ? (<>{data.product_pictures.map((images, key = index) => {
+                console.log('images:', images);
+                return (
+                  <Image src={images.secure_url} classImg='imgsArticle' key={key} />
+                )
+              })}</>) : (null)}
+            </div>
+            <div>{data.product_name}</div>
+            <div>{data.product_description}</div>
+          </article >
         </div>
       </div >
     </>

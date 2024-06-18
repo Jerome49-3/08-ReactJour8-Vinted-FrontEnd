@@ -11,19 +11,20 @@ import Cookies from 'js-cookie'
 //pages
 import Home from './pages/Home';
 import Offer from './pages/Offer';
-import SignUp from './pages/SignUp';
+import Login from './pages/Login';
 import Publish from './pages/Publish';
 
 
 //components
 
 import Header from './components/Header';
-import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
 
 function App() {
   const [show, setShow] = useState(false);
   const [token, setToken] = useState(Cookies.get('vintedApp') || null);
+  console.log('token', token)
   const [search, setSearch] = useState("");
 
   return (
@@ -33,11 +34,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home search={search} />} />
           <Route path="/offer/:id" element={<Offer />} />
-          <Route path="/signup" element={<SignUp icon1="eye" icon2="eye-slash" setToken={setToken} />} />
-          <Route path="/login" element={<SignIn setToken={setToken} />} />
+          <Route path="/login" element={<Login setToken={setToken} />} />
           <Route path="/publish" element={<Publish token={token} />} />
         </Routes>
-        {show && <SignIn show={show} setShow={setShow} setToken={setToken} />}
+        {show && <SignUp show={show} setShow={setShow} icon1="eye" icon2="eye-slash" setToken={setToken} />}
       </Router>
     </>
   )

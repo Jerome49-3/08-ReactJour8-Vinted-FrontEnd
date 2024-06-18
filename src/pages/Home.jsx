@@ -9,13 +9,14 @@ import axios from 'axios'
 const Home = (search) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const url1 = `https://site--backendvintedapp--s4qnmrl7fg46.code.run/offer?title=${search}`;
+  const url1 = `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url1)
         // const response = await axios.get(import.meta.env.URL_API_OFFER);
+        console.log(response);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -35,36 +36,36 @@ const Home = (search) => {
       <Hero />
       <div className="wrapper">
         <div className="boxArticles">
-          {data.getOffer.map((article, key = article._id) => {
+          {data.offers.map((article, key = article._id) => {
             console.log('article:', article)
-            // return (
-            //   <>
-            //     <Link to={`/offer/${article._id}`} key={key}>
-            //       <article>
-            //         <div className='boxUser'>
-            //           {article.owner.account.avatar && (
-            //             <div>
-            //               <Image src={avatar} alt="avatar" classImg='imgAvatar' />
-            //             </div>
-            //           )}
-            //           <div>jerome</div>
-            //         </div>
-            //         {console.log('article.product_picture:', '\n', article.product_picture, 'article.product_picture:', article.product_picture)}
-            //         {article.product_image ? (<Image src={article.product_image} />) : (null)}
-            //         {article.product_pictures ? (<>{article.product_pictures.map((images, key = index) => {
-            //           console.log('images:', images);
-            //           return (
-            //             <>
-            //               <Image src={images.secure_url} classImg='imgsArticle' key={key} />
-            //             </>
-            //           )
-            //         })}</>) : (null)}
-            //         <div>{article.product_name}</div>
-            //         <div>{article.product_description}</div>
-            //       </article >
-            //     </Link >
-            //   </>
-            // )
+            return (
+              <>
+                <Link to={`/offer/${article._id}`} key={key} article={article}>
+                  <article>
+                    <div className='boxUser'>
+                      {article.owner.account.avatar && (
+                        <>
+                          <Image src={article.owner.account.avatar.secure_url} alt="avatar" classImg='imgAvatar' />
+                        </>
+                      )}
+                      <div>{article.owner.account.username}</div>
+                    </div>
+                    {/* {console.log('article.product_picture:', '\n', article.product_picture, 'article.product_picture:', article.product_picture)} */}
+                    <div className='boxImgArticle'>
+                      {article.product_image ? (<Image src={article.product_image} />) : (undefined)}
+                      {article.product_pictures ? (<>{article.product_pictures.map((images, key = index) => {
+                        console.log('images:', images);
+                        return (
+                          <Image src={images.secure_url} classImg='imgsArticle' key={key} />
+                        )
+                      })}</>) : (null)}
+                    </div>
+                    <div>{article.product_name}</div>
+                    <div>{article.product_description}</div>
+                  </article >
+                </Link >
+              </>
+            )
           })}
         </div>
       </div >
