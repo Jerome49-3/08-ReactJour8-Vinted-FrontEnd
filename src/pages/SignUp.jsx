@@ -5,7 +5,7 @@ import Input from '../components/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookies from 'js-cookie';
 
-const SignUp = ({ icon1, icon2 }) => {
+const SignUp = ({ icon1, icon2, setToken }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

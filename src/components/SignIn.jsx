@@ -26,7 +26,6 @@ const SignIn = ({ show, setShow, setToken }) => {
       if (response.data.token) {
         Cookies.set('login', response.data.token, { expires: 15 });
         console.log(Cookies)
-        console.log(setToken);
         setToken(response.data.token);
         // setShow(false);
         navigate("/publish")
