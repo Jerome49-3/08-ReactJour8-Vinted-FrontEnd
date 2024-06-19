@@ -9,8 +9,8 @@ import { Link, useParams } from 'react-router-dom';
 import Hero from '../components/Hero';
 
 const Offer = () => {
-  let id = useParams();
-  id = id.id
+  const { id } = useParams();
+  // id = id.id
   console.log('id1', id)
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
