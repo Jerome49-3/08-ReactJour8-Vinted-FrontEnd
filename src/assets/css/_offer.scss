@@ -1,0 +1,117 @@
+.boxOffer {
+  @include flexCenter;
+  // border: 2px solid red;
+  width: 100%;
+  background-color: $backgdPage;
+  height: 94vh;
+
+  .wrapper {
+    @include flexStart;
+
+    & article {
+      @include flexStart;
+      gap: 100px;
+      width: 100vw;
+      // border: 2px solid green;
+
+      .left {
+        width: calc(100% /2);
+        height: 550px;
+        // border: 2px solid blue;
+
+        .boxImgOffer {
+          @include flexCenter;
+          width: 100%;
+          height: 100%;
+          // border: 2px solid yellow;
+
+          & img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      .right {
+        // border: 2px solid purple;
+        width: calc(100% /2);
+        @include flexColStart;
+        padding: 10px 40px 10px 40px;
+        background-color: $white;
+        height: 550px;
+
+        .top {
+          @include flexColStart;
+          width: 100%;
+          min-height: 70%;
+
+          .boxPrice {
+            @include flexCenter;
+            padding: 10px 0 10px 0;
+          }
+
+          .boxDetails {
+            @include flexColCenter;
+
+            .details {
+              @include flexColStart;
+
+              & div {
+                padding: 5px 0 5px 0;
+                @include flexStart;
+                gap: 5px;
+              }
+            }
+          }
+        }
+
+        .boxLineOffer {
+          @include flexColCenter;
+          width: 100%;
+
+          .lineOffer {
+            border: 2px solid rgba(110, 107, 96, 0.3);
+            width: 80%;
+            border-radius: 15px;
+          }
+        }
+
+        .bottom {
+          min-height: 30%;
+          @include flexColStart;
+          width: 100%;
+          gap: 15px;
+
+          .up {
+            @include flexColStart;
+            gap: 10px;
+          }
+
+          .down {
+            .boxUser {
+              @include flexCenter;
+              gap: 20px
+            }
+          }
+
+          .subDown {
+            @include flexColCenter;
+            width: 100%;
+
+            & button {
+              @include flexCenter;
+              background-color: $vertVinted;
+              color: $white;
+              border-radius: 5px;
+              height: 30px;
+
+              & p {
+                @include flexCenter;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

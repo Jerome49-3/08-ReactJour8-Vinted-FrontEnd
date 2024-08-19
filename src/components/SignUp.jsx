@@ -24,7 +24,8 @@ const SignUp = ({ show, setShow, icon1, icon2, setToken }) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = await axios.post('https://lereacteur-vinted-api.herokuapp.com/user/signup',
+      // const response = await axios.post('https://lereacteur-vinted-api.herokuapp.com/user/signup',
+      const response = await axios.post(import.meta.env.VITE_REACT_APP_LOCALHOST_SIGNUP,
         {
           username,
           email,
@@ -34,7 +35,7 @@ const SignUp = ({ show, setShow, icon1, icon2, setToken }) => {
       );
       console.log('response:', response)
       if (response.data) {
-        Cookies.set('vintedApp', response.data.token, { expires: 15 });
+        Cookies.set('vintedAppConnect', response.data.token, { expires: 15 });
         console.log('cookies:', Cookies);
         setToken(response.data.token);
         setShow(false);

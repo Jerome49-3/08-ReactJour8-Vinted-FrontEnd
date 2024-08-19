@@ -1,0 +1,117 @@
+/* HEADER */
+header {
+  width: 100%;
+  display: block;
+  padding: 2.5px 10px 0px 10px;
+  margin-bottom: 10px;
+
+  .wrapper {
+    @include wrapper;
+    @include flexColCenter;
+
+    & a .logo {
+      width: 78px;
+      height: 34.8px;
+      object-fit: cover;
+    }
+
+    & nav {
+      @include flexCenter;
+      padding: 0 0 5px 0;
+
+      & ul {
+        gap: 5px;
+        flex-direction: column;
+
+        & li {
+          width: 180px;
+          border-radius: 5px;
+
+          &:first-child {
+            width: 100px;
+            // outline: 2px solid red;
+          }
+
+          &:nth-child(2) {
+            border: 2px solid $vertVinted;
+            gap: 5px;
+            // outline: 2px solid red;
+          }
+
+          &:last-child,
+          &:last-child a {
+            // outline: 2px solid red;
+            background-color: $vertVinted;
+            color: white;
+          }
+
+          &:last-child {
+            border: 2px solid $vertVinted;
+            // outline: 2px solid red;
+          }
+
+          & div:not(header .wrapper nav ul li div:nth-child(2)),
+          & div button {
+            width: 100%;
+            @include flexCenter;
+            font-size: 12px;
+            // padding: 2.5px 0 2.5px 0;
+            // outline: 2px solid red;
+          }
+
+          & div button {
+            background-color: transparent;
+            border: none;
+          }
+
+          & a,
+          & button {
+            color: $vertVinted;
+          }
+
+          & div:hover a,
+          & div:hover button {
+            color: $white;
+          }
+
+          & div:nth-child(1):hover,
+          & div:nth-child(3):hover {
+            background-color: $vertVinted;
+          }
+
+          & div:nth-child(3) {
+            margin-right: -2px;
+          }
+
+          & div:nth-child(1) {
+            margin-left: -2px;
+          }
+
+          &:hover div:nth-child(3) {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+          }
+
+          &:hover div:nth-child(1) {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+          }
+
+        }
+
+        & li:nth-child(2):hover div:first-child a {
+          padding: 2.9px 0 3.24px 0;
+        }
+
+
+      }
+
+      & ul,
+      & ul li,
+      & ul li:nth-child(2) {
+        @include flexCenter;
+      }
+    }
+  }
+}

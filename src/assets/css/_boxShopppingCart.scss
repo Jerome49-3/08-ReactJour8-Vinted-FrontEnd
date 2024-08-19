@@ -1,0 +1,116 @@
+.boxShoppingCart {
+  @include flexCenter;
+  // border: 2px solid red;
+  width: 100%;
+  background-color: $backgdPage;
+  padding: 20px;
+
+  .wrapper {
+    // border: 2px solid blue;
+
+    .shoppingCart {
+      @include flexColCenter;
+      // border: 2px solid green;
+      background-color: $white;
+      padding: 20px;
+
+      & h1 {
+        padding: 0 0 10px 0;
+      }
+
+      .top {
+        // border: 2px solid peru;
+        @include flexColStart;
+        gap: 10px;
+        width: 100%;
+
+        .command {
+          @include flexBetween;
+          width: 100%;
+        }
+
+        .coast {
+          width: 100%;
+
+          & div {
+            @include flexBetween;
+
+            & div {
+              @include flexStart;
+            }
+          }
+        }
+
+        .total {
+          @include flexColStart;
+
+          & div {
+            @include flexBetween;
+            width: 100%;
+          }
+        }
+      }
+
+      .line {
+        margin: 10px 0 10px 0;
+        border: 2px solid $backgdPage;
+        height: 2px;
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 1px 1px 2.5px 1.5px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow: 1px 1px 2.5px 1.5px rgba(0, 0, 0, 0.7);
+        -webkit-box-shadow: 1px 1px 2.5px 1.5px rgba(0, 0, 0, 0.7);
+
+      }
+
+      .bottom {
+        @include flexColStart;
+        width: 100%;
+
+        // border: 2px solid purple;
+        .resumCommand {
+          padding-top: 20px;
+          @include flexBetween;
+          width: 100%;
+
+          .left {
+            @include flexCenter;
+            width: 50%;
+          }
+
+          .right {
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              box-shadow: 0px 0px 5px 3.5px rgba(0, 0, 0, 0.7);
+              -moz-box-shadow: 0px 0px 5px 3.5px rgba(0, 0, 0, 0.7);
+              -webkit-box-shadow: 0px 0px 5px 3.5px rgba(0, 0, 0, 0.7);
+            }
+          }
+        }
+
+        & form {
+          width: 100%;
+          // border: 2px solid green;
+          @include flexColStart;
+          gap: 20px;
+
+          & div {
+            width: 100%;
+          }
+
+          & button {
+            background-color: $vertVinted;
+            color: $white;
+            font-weight: 700;
+            font-size: 1.15rem;
+            border-radius: 5px;
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+}

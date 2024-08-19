@@ -5,12 +5,8 @@ import Image from './Image';
 const Hero = () => {
   return (
     <div className="boxImgs">
-      <div>
-        <Image src={HeroBanner} alt='banner' classImg='imgBanner' />
-      </div>
-      <div>
-        <Image src={Strech} alt='banner' classImg='imgBannerBottom' />
-      </div>
+      <Image src={HeroBanner} alt='banner' classImg='imgBanner' />
+      <Image src={Strech} alt='banner' classImg='imgBannerBottom' />
     </div>
   )
 }

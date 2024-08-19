@@ -15,18 +15,24 @@ const Login = ({ setToken }) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = await axios.post('https://lereacteur-vinted-api.herokuapp.com/user/login',
+      // const response = await axios.post('https://lereacteur-vinted-api.herokuapp.com/user/login',
+      const response = await axios.post(import.meta.env.VITE_REACT_APP_LOCALHOST_LOGIN,
         {
           email: email,
           password: password,
         }
       );
-      // console.log('response.data.token:', response?.data?.token)
+      console.log('response in login:', response);
+      // console.log('response.data.token in login:', response?.data?.token);
       if (response.data.token) {
-        Cookies.set('vintedApp', response.data.token, { expires: 15 });
-        console.log(Cookies)
+        Cookies.set('vintedAppConnect', response.data.token, { expires: 15 });
         setToken(response.data.token);
+        console.log('response.data.token in login:', response.data.token);
         navigate("/publish")
+      }
+      if (response.data.isAdmin) {
+        Cookies.set('vintedAppAdmin', response.data.isAdmin, { expires: 15 });
+        setIsAdmin(response.data.isAdmin);
       }
       // console.log('email:', email, 'password:', password)
     } catch (error) {

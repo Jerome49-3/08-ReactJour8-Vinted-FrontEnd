@@ -1,4 +1,4 @@
-const Input = ({ value, id, type, placeholder, setState, label }) => {
+const Input = ({ value, id, type, placeholder, setState, label, min, max }) => {
   const handleChange = (e) => {
     setState(e.target.value);
   };
@@ -13,6 +13,8 @@ const Input = ({ value, id, type, placeholder, setState, label }) => {
         id={id}
         type={type}
         name={id}
+        min={min}
+        max={max}
         placeholder={placeholder}
         onChange={handleChange}
         value={value}

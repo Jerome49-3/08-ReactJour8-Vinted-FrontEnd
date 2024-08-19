@@ -19,6 +19,7 @@ const Header = ({ show, setShow, token, setToken, search, setSearch }) => {
         </div>
         <nav>
           <ul>
+            {/* li a supprimer et modifier le css (:ntch-child(2) pour le button logout)*/}
             <li></li>
             {token ? (
               <li><button onClick={() => {

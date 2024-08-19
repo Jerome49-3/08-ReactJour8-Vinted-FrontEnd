@@ -6,18 +6,18 @@ import avatar from '../assets/images/Avatarme.png'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 
-const Home = (search) => {
+const Home = ({ search }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const url1 = `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(url1)
-        // const response = await axios.get(import.meta.env.URL_API_OFFER);
-        console.log(response);
+        // const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`)
+        const response = await axios.get(import.meta.env.VITE_REACT_APP_URL_LOCALHOST);
+        // console.log('response:', response);
         setData(response.data);
+        // console.log('data inside useEffect in Home:', data);
         setIsLoading(false);
       } catch (error) {
         console.log(error)
@@ -26,7 +26,6 @@ const Home = (search) => {
     fetchData();
   }, [search]);
 
-  console.log('data:', data)
   return isLoading ? (
     <>
       <Loading />
@@ -36,25 +35,24 @@ const Home = (search) => {
       <Hero />
       <div className="wrapper">
         <div className="boxArticles">
-          {data.offers.map((article, key = article._id) => {
-            console.log('article:', article)
+          {data.map((article, key = article._id) => {
+            // console.log('article:', article);
             return (
               <>
-                <Link to={`/offer/${article._id}`} key={key} article={article}>
+                <Link to={`/offers/${article._id}`} key={key} article={article}>
                   <article>
                     <div className='boxUser'>
-                      {article.owner.account.avatar && (
+                      {article.owner.account.avatar.secure_url ? (
                         <>
                           <Image src={article.owner.account.avatar.secure_url} alt="avatar" classImg='imgAvatar' />
                         </>
-                      )}
+                      ) : (<Image src={article.owner.account.avatar} alt="avatar" classImg='imgAvatar' />)}
                       <div>{article.owner.account.username}</div>
                     </div>
-                    {/* {console.log('article.product_picture:', '\n', article.product_picture, 'article.product_picture:', article.product_picture)} */}
                     <div className='boxImgArticle'>
-                      {article.product_image ? (<Image src={article.product_image} />) : (undefined)}
+                      {article.product_image ? (<Image src={article.product_image.secure_url} />) : (null)}
                       {article.product_pictures ? (<>{article.product_pictures.map((images, key = index) => {
-                        console.log('images:', images);
+                        // console.log('images:', images);
                         return (
                           <Image src={images.secure_url} classImg='imgsArticle' key={key} />
                         )

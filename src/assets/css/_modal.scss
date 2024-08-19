@@ -1,0 +1,70 @@
+/* MODAL */
+.boxModal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 119, 130, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.boxModalContent {
+  background-color: white;
+  padding: 1rem 2rem 2rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: inset 0px 0px 10px #000000, 0px 0px 10px #000000;
+  max-width: 90%;
+}
+
+.boxModalContent div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.boxModalContent div img {
+  object-fit: cover;
+}
+
+.boxModalContent button {
+  text-shadow: 1px 1px 2px white, 1.25px 1.25px 2.25px #000000;
+  background-color: #f1f1f1f1;
+}
+
+.boxModalContent div img,
+.boxModalContent button {
+  width: 25px;
+  height: 25px;
+  border-radius: 7.5px;
+  box-shadow: 0px 0px 4px #000000;
+}
+
+.boxModalContent button:hover {
+  box-shadow: inset 0px 0px 4px #000000;
+}
+
+.boxModalContent form {
+  gap: 5px;
+  padding: 1.5 rem 2rem 2rem 2rem;
+}
+
+.boxCheckBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.boxCheckBox input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}
