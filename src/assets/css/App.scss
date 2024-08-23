@@ -2,6 +2,7 @@
 @import './effects';
 @import './mixins';
 @import './root';
+@import './theme';
 @import './loading';
 @import './errorMessage';
 @import './form';
@@ -13,72 +14,7 @@
 @import './publish';
 @import './offer';
 @import './boxShopppingCart';
-
-.wrapper {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-//media Queries
-@media (min-width: 300px) {
-
-  /* MODAL */
-  /* .boxModalContent {
-    max-width: 90%;
-  } */
-}
-
-@media (min-width: 576px) {
-
-  /* MODAL */
-  /* .boxModalContent {
-    max-width: 60%;
-  }
-
-  .boxModalContent>div {
-    width: 105%;
-  } */
-}
-
-@media (min-width: 768px) {
-
-  /* HEADER */
-  header {
-    height: 45px;
-  }
-
-  header .wrapper {
-    justify-content: space-between;
-    flex-direction: row;
-  }
-
-  header .wrapper nav ul {
-    flex-direction: row;
-  }
-
-  header .wrapper nav ul li div a,
-  header .wrapper nav ul li div button {
-    padding: 3.5px 0 3.5px 0;
-  }
-
-  header .wrapper nav ul li div:hover a {
-    border: 1px solid #2DB0BA;
-  }
-
-  header .wrapper nav ul li:not(li:nth-child(2)) {
-    padding: 4px 6px 4px 6px;
-  }
-
-  /* FORM */
-  .boxForm {
-    width: 40%;
-  }
-
-  /* MODAL */
-  /* .boxModalContent {
-    max-width: 30%;
-    height: 40%;
-  } */
-
-}
+@import './cookieConsent';
+@import './dashboard';
+@import './lastUsers';
+@import './user';

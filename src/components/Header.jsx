@@ -4,8 +4,10 @@ import Logo from '../assets/images/logo.svg';
 import Input from "./Input";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookies from "js-cookie";
+import ThemeButton from "./ThemeButton";
 
-const Header = ({ show, setShow, token, setToken, search, setSearch }) => {
+const Header = ({ show, setShow, token, setToken, search, setSearch, isAdmin, setIsAdmin }) => {
+
   const navigate = useNavigate();
   return (
     <header>
@@ -13,18 +15,25 @@ const Header = ({ show, setShow, token, setToken, search, setSearch }) => {
         <Link to='/'>
           <Image src={Logo} alt='Vinted' classImg='logo' />
         </Link>
+        <div className="boxTheme">
+          <ThemeButton />
+        </div>
         <div className="boxSearch">
           <FontAwesomeIcon icon="magnifying-glass" className="search-icons" />
           <Input id='search' type='search' placeholder='Rechercher des articles' value={search} setState={setSearch} />
         </div>
         <nav>
           <ul>
-            {/* li a supprimer et modifier le css (:ntch-child(2) pour le button logout)*/}
-            <li></li>
+            <li>{isAdmin === true && <Link to='/dashboard'>Dashboard</Link>}</li>
             {token ? (
               <li><button onClick={() => {
-                Cookies.remove("vintedApp");
+                Cookies.remove("vintedAppConnect");
+                Cookies.remove("vintedAppAcc");
+                Cookies.remove("vintedAppAdm");
                 setToken(null);
+                if (isAdmin === true) {
+                  setIsAdmin(false);
+                }
                 navigate('/')
               }}>Se deconnecter</button></li>
             ) : (

@@ -1,0 +1,68 @@
+.boxDashboard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+  gap: 5px;
+
+  .title {
+    display: flex;
+    justify-content: center;
+    padding: 5px 20px 5px 20px;
+
+    & h1 {
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+  }
+
+  .top {
+    min-height: calc(80vh /2);
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+
+    .left {
+      border: 2px solid $black;
+      padding-bottom: 10px;
+    }
+
+    .right {
+      border: 2px solid green;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: calc(80vh /2);
+    border: 2px solid yellow;
+    gap: 5px;
+
+    .left {
+      border: 2px solid peru;
+    }
+
+    .right {
+      border: 2px solid purple;
+    }
+  }
+}
+
+@media all and (min-width: 768px) {
+  .boxDashboard {
+
+    .top,
+    .bottom {
+      flex-direction: row !important;
+
+      .left,
+      .right {
+        width: calc(100% /2);
+      }
+    }
+  }
+}

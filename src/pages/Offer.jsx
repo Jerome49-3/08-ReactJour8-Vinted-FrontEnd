@@ -6,9 +6,9 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 
 //components
 import Hero from '../components/Hero';
-import Button from '../components/Button';
+// import Button from '../components/Button';
 // import Input from '../components/Input';
-import Links from '../components/Links';
+// import Links from '../components/Links';
 
 const Offer = ({ showHero }) => {
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);

@@ -2,13 +2,15 @@ import Hero from '../components/Hero'
 import Loading from '../components/Loading';
 import { useState, useEffect } from 'react';
 import Image from '../components/Image'
-import avatar from '../assets/images/Avatarme.png'
 import { Link } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
+import CookieConsent from "react-cookie-consent";
+
 
 const Home = ({ search }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,6 +68,14 @@ const Home = ({ search }) => {
             )
           })}
         </div>
+        <CookieConsent
+          location="bottom"
+          buttonText="Sure Bro !"
+          cookieName="VintedAppCookiesAccept"
+          expires={150}
+        >
+          This website uses cookies only to enhance the user experience and not for advertising purposes.{" "}
+        </CookieConsent>
       </div >
     </>
   );

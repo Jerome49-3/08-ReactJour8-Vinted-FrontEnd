@@ -4,21 +4,18 @@ import axios from 'axios';
 import Input from './Input';
 import Image from './Image';
 import SmallLogo from '../assets/images/favicon.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookies from 'js-cookie';
+import EyePassword from './EyePassword';
 
-const SignUp = ({ show, setShow, icon1, icon2, setToken }) => {
+const SignUp = ({ show, setShow, icon1, icon2, setToken, type, setType
+}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
-  const [type, setType] = useState('password');
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleType = () => {
-    setType(type === 'password' ? 'text' : 'password')
-  }
   const handleSubmit = async (e) => {
     // console.log('e.target.file', e.target.file)
     e.preventDefault();
@@ -35,9 +32,10 @@ const SignUp = ({ show, setShow, icon1, icon2, setToken }) => {
       );
       console.log('response:', response)
       if (response.data) {
-        Cookies.set('vintedAppConnect', response.data.token, { expires: 15 });
-        console.log('cookies:', Cookies);
-        setToken(response.data.token);
+        if (response.data.token) {
+          Cookies.set('vintedAppConnect', response.data.token, { expires: 15 });
+          setToken(response.data.token);
+        }
         setShow(false);
         navigate("/publish");
       }
@@ -55,14 +53,13 @@ const SignUp = ({ show, setShow, icon1, icon2, setToken }) => {
             { show === true ? (setShow(false)) : (null) }
           }}>X</button>
         </div>
-        <form onSubmit={handleSubmit} className='boxForm'>
+        <form onSubmit={handleSubmit} className='boxForm boxFormSignUp'>
           <Input value={username} id="username" type="text" placeholder="Nom d'utilisateur(ice)" setState={setUsername} autocomplete="on" />
           <Input value={email} id="email" type="email" placeholder="Email" setState={setEmail} autocomplete="on" />
           <div className="boxPsswd">
             <Input value={password} id="password" type={type} placeholder="Mot de passe" setState={setPassword} autocomplete="on" />
             <div className="boxIcons">
-              <FontAwesomeIcon icon={icon1} onClick={handleType} className={type !== 'password' ? 'hide' : null} />
-              <FontAwesomeIcon icon={icon2} onClick={handleType} className={type !== 'text' ? 'hide' : null} />
+              <EyePassword icon1={icon1} icon2={icon2} state={type} setState={setType} />
             </div>
           </div>
           <div className='boxCheckBox'>

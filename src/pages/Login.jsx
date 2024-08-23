@@ -3,14 +3,17 @@ import Cookies from 'js-cookie';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, setIsAdmin, type, setType, icon1, icon2 }) => {
   // console.log(setToken)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
+  const handleType = () => {
+    setType(type === 'password' ? 'text' : 'password')
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
@@ -31,7 +34,7 @@ const Login = ({ setToken }) => {
         navigate("/publish")
       }
       if (response.data.isAdmin) {
-        Cookies.set('vintedAppAdmin', response.data.isAdmin, { expires: 15 });
+        Cookies.set('vintedAppAdm', response.data.isAdmin, { expires: 15 });
         setIsAdmin(response.data.isAdmin);
       }
       // console.log('email:', email, 'password:', password)
@@ -44,7 +47,13 @@ const Login = ({ setToken }) => {
     <div className='boxForm boxFormCenter boxFormSignUp'>
       <form onSubmit={handleSubmit}>
         <Input id="email" type="email" placeholder="jerome@test.com" value={email} setState={setEmail} autocomplete="on" />
-        <Input id="password" type="password" placeholder="password" value={password} setState={setPassword} autocomplete="on" />
+        <div className="boxPsswd">
+          <Input value={password} id="password" type={type} placeholder="Mot de passe" setState={setPassword} autocomplete="on" />
+          <div className="boxIcons">
+            <FontAwesomeIcon icon={icon1} onClick={handleType} className={type !== 'password' ? 'hide' : null} />
+            <FontAwesomeIcon icon={icon2} onClick={handleType} className={type !== 'text' ? 'hide' : null} />
+          </div>
+        </div>
         <Input type="submit" value="Se connecter" />
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

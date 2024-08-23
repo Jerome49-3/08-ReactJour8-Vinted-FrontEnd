@@ -6,9 +6,38 @@
   --vertVintDark: #007782;
   --vertVintLight: #00757F;
   --vertVintedInput: rgb(0, 156, 104);
+  --darkMode: #121212;
+  --lightMode: #ffffff;
+  --black: #000000;
+  --backDarkLink: #343434;
 
   a {
     text-decoration: none;
+  }
+
+  .dark {
+    background-color: var(--darkMode);
+    color: var(--lightMode);
+  }
+
+  .dark .boxUsers a,
+  .dark input,
+  .dark .boxSearch {
+    background-color: var(--backDarkLink);
+    color: var(--lightMode);
+  }
+
+  .dark input::placeholder {
+    color: var(--lightMode);
+  }
+
+  .light {
+    background-color: var(--lightMode);
+    color: var(--black);
+  }
+
+  .dark .buttonTheme {
+    color: var(--lightMode);
   }
 }
 

@@ -38,6 +38,9 @@
 
 }
 
+.boxFormSignUp {
+  @include flexColCenter;
+}
 
 form input:not(form input:last-child),
 .boxFormSignUp form div input {

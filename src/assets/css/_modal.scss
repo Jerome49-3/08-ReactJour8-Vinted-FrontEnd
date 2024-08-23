@@ -68,3 +68,24 @@
   width: 15px;
   height: 15px;
 }
+
+//media Queries
+@media (min-width: 300px) {
+
+  /* MODAL */
+  /* .boxModalContent {
+    max-width: 90%;
+  } */
+}
+
+@media (min-width: 576px) {
+
+  /* MODAL */
+  /* .boxModalContent {
+    max-width: 60%;
+  }
+
+  .boxModalContent>div {
+    width: 105%;
+  } */
+}
