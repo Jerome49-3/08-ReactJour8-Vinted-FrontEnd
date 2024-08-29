@@ -1,7 +1,12 @@
 import { Navigate, } from 'react-router-dom';
+import { useContext } from 'react';
 import LastUsers from '../components/LastUsers';
+import { UserContext } from "../context/UserProvider";
 
-const Dashboard = ({ token, isAdmin, faNewspaper, faXmark, faUserTie, faUser }) => {
+
+const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
+  const { token, isAdmin } = useContext(UserContext);
+
   return (token && isAdmin) ? (
     <div className='boxDashboard'>
       <div className="wrapper">

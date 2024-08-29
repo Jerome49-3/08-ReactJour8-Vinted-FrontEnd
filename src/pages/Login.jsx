@@ -1,11 +1,13 @@
 import Input from '../components/Input';
-import Cookies from 'js-cookie';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
-const Login = ({ setToken, setIsAdmin, type, setType, icon1, icon2 }) => {
+const Login = ({ type, setType, icon1, icon2 }) => {
+  const { saveUser } = useContext(UserContext);
   // console.log(setToken)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +20,6 @@ const Login = ({ setToken, setIsAdmin, type, setType, icon1, icon2 }) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      // const response = await axios.post('https://lereacteur-vinted-api.herokuapp.com/user/login',
       const response = await axios.post(import.meta.env.VITE_REACT_APP_LOCALHOST_LOGIN,
         {
           email: email,
@@ -27,16 +28,15 @@ const Login = ({ setToken, setIsAdmin, type, setType, icon1, icon2 }) => {
       );
       console.log('response in login:', response);
       // console.log('response.data.token in login:', response?.data?.token);
-      if (response.data.token) {
-        Cookies.set('vintedAppConnect', response.data.token, { expires: 15 });
-        setToken(response.data.token);
-        console.log('response.data.token in login:', response.data.token);
+      if (response.data) {
+        const user = response.data;
+        saveUser(user);
         navigate("/publish")
       }
-      if (response.data.isAdmin) {
-        Cookies.set('vintedAppAdm', response.data.isAdmin, { expires: 15 });
-        setIsAdmin(response.data.isAdmin);
-      }
+      // if (response.data.isAdmin) {
+      //   Cookies.set('vintedAppAdm', response.data.isAdmin, { expires: 15 });
+      //   setIsAdmin(response.data.isAdmin);
+      // }
       // console.log('email:', email, 'password:', password)
     } catch (error) {
       console.log('error:', error.response)

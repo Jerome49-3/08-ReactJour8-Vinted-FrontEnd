@@ -5,9 +5,13 @@ import Input from "./Input";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookies from "js-cookie";
 import ThemeButton from "./ThemeButton";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
-const Header = ({ show, setShow, token, setToken, search, setSearch, isAdmin, setIsAdmin }) => {
-
+const Header = ({ show, setShow, search, setSearch }) => {
+  const { token, setToken, isAdmin, setIsAdmin } = useContext(UserContext);
+  console.log('token in header:', token, '\n', 'isAdmin in header:', isAdmin);
+  console.log('typeof token in header:', typeof token, '\n', 'typeof isAdmin in header:', typeof isAdmin);
   const navigate = useNavigate();
   return (
     <header>
@@ -28,7 +32,7 @@ const Header = ({ show, setShow, token, setToken, search, setSearch, isAdmin, se
             {token ? (
               <li><button onClick={() => {
                 Cookies.remove("vintedAppConnect");
-                Cookies.remove("vintedAppAcc");
+                Cookies.remove("vintedUser");
                 Cookies.remove("vintedAppAdm");
                 setToken(null);
                 if (isAdmin === true) {

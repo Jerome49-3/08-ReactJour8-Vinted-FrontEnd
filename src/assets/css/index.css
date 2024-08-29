@@ -6,7 +6,8 @@
   --vertVintDark: #007782;
   --vertVintLight: #00757F;
   --vertVintedInput: rgb(0, 156, 104);
-  --darkMode: #121212;
+  --darkModeHeader: #121212;
+  --darkMode: #181a1b;
   --lightMode: #ffffff;
   --black: #000000;
   --backDarkLink: #343434;
@@ -20,6 +21,10 @@
     color: var(--lightMode);
   }
 
+  .dark header {
+    background-color: var(--darkModeHeader);
+  }
+
   .dark .boxUsers a,
   .dark input,
   .dark .boxSearch {
@@ -27,7 +32,8 @@
     color: var(--lightMode);
   }
 
-  .dark input::placeholder {
+  .dark input::placeholder,
+  .dark button p {
     color: var(--lightMode);
   }
 

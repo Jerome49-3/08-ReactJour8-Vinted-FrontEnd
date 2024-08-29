@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
+import { UserContext } from "../context/UserProvider";
 
 //components
 import TextArea from '../components/TextArea';
 import Input from '../components/Input'
 
-const Publish = ({ token }) => {
+const Publish = () => {
+  const { token, user } = useContext(UserContext);
   console.log('token in publish:', token);
   const [pictures, setPictures] = useState(null);
   const [title, setTitle] = useState("");

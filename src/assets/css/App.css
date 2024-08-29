@@ -941,15 +941,30 @@ button {
   transform: translate(-50%, -50%);
   width: 100%;
 }
+.boxUserId .top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxUserId .top .title {
+  padding: 20px;
+}
 .boxUserId .bottom {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
+.boxUserId .bottom .left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
 .boxUserId .bottom .left img {
-  width: 100%;
-  height: 100%;
+  width: 400px;
+  height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
@@ -963,18 +978,60 @@ button {
 }
 .boxUserId .bottom .right {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
   flex-direction: column;
+  justify-content: space-around;
+  padding: 0 10px 0 10px;
+  gap: 1.25em;
 }
 .boxUserId .bottom .right .boxUsername,
 .boxUserId .bottom .right .boxEmail,
 .boxUserId .bottom .right .boxIsAdmin,
 .boxUserId .bottom .right .boxNewsletter,
 .boxUserId .bottom .right .boxDate,
-.boxUserId .bottom .right .boxId {
+.boxUserId .bottom .right .boxId,
+.boxUserId .bottom .right .updateButton,
+.boxUserId .bottom .right .deleteButton {
   width: 100%;
-  padding: 0 10px 0 10px;
+}
+.boxUserId .bottom .right .boxUsername input,
+.boxUserId .bottom .right .boxEmail input,
+.boxUserId .bottom .right .boxIsAdmin input,
+.boxUserId .bottom .right .boxNewsletter input,
+.boxUserId .bottom .right .boxDate input,
+.boxUserId .bottom .right .boxId input,
+.boxUserId .bottom .right .updateButton input,
+.boxUserId .bottom .right .deleteButton input {
+  width: 100% !important;
+}
+.boxUserId .bottom .right .boxButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.boxUserId .bottom .right .boxButton .updateButton,
+.boxUserId .bottom .right .boxButton .deleteButton {
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  gap: 10px;
+  width: 50%;
+}
+.boxUserId .bottom .right .boxButton .updateButton img,
+.boxUserId .bottom .right .boxButton .deleteButton img {
+  width: 20px;
+  height: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+.boxUserId .bottom .right .boxButton .updateButton {
+  background-color: green;
+}
+.boxUserId .bottom .right .boxButton .deleteButton {
+  background-color: crimson;
 }
 .boxUserId .bottom .left,
 .boxUserId .bottom .right {

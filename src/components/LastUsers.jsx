@@ -56,7 +56,7 @@ const LastUsers = ({ token, isAdmin, faNewspaper, faXmark, faUserTie, faUser }) 
             <Link to={`/users/${user.id}`} state={{ token: user.token }}>
               <div className="username">{user.username}</div>
               <div className="avatar">
-                <Image src={user.avatar} alt='avatar' />
+                {user.avatar.secure_url ? (<Image src={user.avatar.secure_url} alt='avatar' />) : (<Image src={user.avatar} alt='avatar' />)}
               </div>
               <div className="email">{user.email}</div>
               {user.newsletter === true ? (<FontAwesomeIcon icon={faNewspaper} className="news" />) : (<FontAwesomeIcon icon={faXmark} className="news" />)}
