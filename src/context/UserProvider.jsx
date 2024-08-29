@@ -31,16 +31,14 @@ export const UserProvider = ({ children }) => {
           // console.log('typeof adm: in userProvider:', typeof adm);
           setIsAdmin(adm);
         }
-        else {
-          navigate('/login');
-        }
       } catch (error) {
         setErrorMessage(error.message)
         console.log('error', error);
+        navigate('/login');
       }
     }
     loadUser();
-  }, [])
+  }, [isAdmin, token, user])
 
   const saveUser = (user) => {
     try {
@@ -71,14 +69,12 @@ export const UserProvider = ({ children }) => {
 
   const clearUser = () => {
     try {
-      Cookies.remove('VintedUser');
-      Cookies.remove('vintedAppConnect');
+      Cookies.expire('VintedUser');
+      Cookies.expire('vintedAppConnect');
+      Cookies.expire('vintedAppAdm');
       setUser(null);
       setToken(null);
-      if (isAdmin) {
-        Cookies.remove('vintedAppAdm');
-        setIsAdmin(null);
-      }
+      setIsAdmin(null);
     } catch (error) {
       setErrorMessage(error.message)
       console.log('error', error);
