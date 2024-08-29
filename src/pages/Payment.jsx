@@ -9,7 +9,6 @@ import { useState } from 'react';
 
 //connection Stripe
 const stripeConnect = loadStripe(import.meta.env.VITE_REACT_APP_STRIPE_KEY_PUBLIC);
-// console.log('import.meta.env.VITE_REACT_APP_STRIPE_KEY_PUBLIC:', import.meta.env.VITE_REACT_APP_STRIPE_KEY_PUBLIC);
 
 
 const Payment = ({ token, dataShoppingCart, setDataShoppingCart }) => {
