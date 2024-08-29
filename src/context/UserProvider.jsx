@@ -26,13 +26,10 @@ export const UserProvider = ({ children }) => {
         }
         if (admData) {
           console.log('admData: in userProvider:', admData);
-          console.log('typeof admData: in userProvider:', typeof admData);
-          if (admData !== 'false')
-            admData = true;
-          else {
-            admData = false;
-          }
-          setIsAdmin(admData);
+          const adm = JSON.parse(admData);
+          console.log('adm: in userProvider:', adm);
+          console.log('typeof adm: in userProvider:', typeof adm);
+          setIsAdmin(adm);
         }
         else {
           navigate('/login');
@@ -62,7 +59,8 @@ export const UserProvider = ({ children }) => {
         setToken(userData.token);
       }
       if (userData.isAdmin !== false) {
-        Cookies.set('vintedAppAdm', userData.isAdmin, { expires: 15 });
+        console.log('userData.isAdmin:', userData.isAdmin);
+        Cookies.set('vintedAppAdm', JSON.stringify(userData.isAdmin), { expires: 15 });
         setIsAdmin(userData.isAdmin);
       }
     } catch (error) {
