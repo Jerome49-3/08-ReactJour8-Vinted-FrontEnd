@@ -25,10 +25,10 @@ export const UserProvider = ({ children }) => {
           setToken(tokenData);
         }
         if (admData) {
-          console.log('admData: in userProvider:', admData);
+          // console.log('admData: in userProvider:', admData);
           const adm = JSON.parse(admData);
-          console.log('adm: in userProvider:', adm);
-          console.log('typeof adm: in userProvider:', typeof adm);
+          // console.log('adm: in userProvider:', adm);
+          // console.log('typeof adm: in userProvider:', typeof adm);
           setIsAdmin(adm);
         }
         else {
@@ -59,7 +59,7 @@ export const UserProvider = ({ children }) => {
         setToken(userData.token);
       }
       if (userData.isAdmin !== false) {
-        console.log('userData.isAdmin:', userData.isAdmin);
+        // console.log('userData.isAdmin:', userData.isAdmin);
         Cookies.set('vintedAppAdm', JSON.stringify(userData.isAdmin), { expires: 15 });
         setIsAdmin(userData.isAdmin);
       }
@@ -73,9 +73,12 @@ export const UserProvider = ({ children }) => {
     try {
       Cookies.remove('VintedUser');
       Cookies.remove('vintedAppConnect');
-
       setUser(null);
       setToken(null);
+      if (isAdmin) {
+        Cookies.remove('vintedAppAdm');
+        setIsAdmin(null);
+      }
     } catch (error) {
       setErrorMessage(error.message)
       console.log('error', error);

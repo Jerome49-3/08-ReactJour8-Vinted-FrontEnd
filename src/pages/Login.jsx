@@ -8,7 +8,6 @@ import { useContext } from "react";
 
 const Login = ({ type, setType, icon1, icon2 }) => {
   const { saveUser } = useContext(UserContext);
-  // console.log(setToken)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -33,10 +32,6 @@ const Login = ({ type, setType, icon1, icon2 }) => {
         saveUser(user);
         navigate("/publish")
       }
-      // if (response.data.isAdmin) {
-      //   Cookies.set('vintedAppAdm', response.data.isAdmin, { expires: 15 });
-      //   setIsAdmin(response.data.isAdmin);
-      // }
       // console.log('email:', email, 'password:', password)
     } catch (error) {
       console.log('error:', error.response)
