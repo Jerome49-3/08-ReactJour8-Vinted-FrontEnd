@@ -6,12 +6,15 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
 import { useState } from 'react';
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
 //connection Stripe
 const stripeConnect = loadStripe(import.meta.env.VITE_REACT_APP_STRIPE_KEY_PUBLIC);
 
 
-const Payment = ({ token, dataShoppingCart, setDataShoppingCart }) => {
+const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
+  const { token } = useContext(UserContext);
   const [succes, setSucces] = useState(false);
   const { state } = useLocation();
   console.log('state: in /payment:', state);

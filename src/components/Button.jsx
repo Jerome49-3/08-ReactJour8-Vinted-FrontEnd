@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from './Image';
+import Links from './Links';
 
-const Button = ({ buttonText, classButton, handleClick, icon, classIcon, classInfo, classInfoText, infoText, showEl, txtShow1, txtShow2, src, alt }) => {
+const Button = ({ buttonText, classButton, handleClick, icon, classIcon, classInfo, classInfoText, infoText, showEl, txtShow1, txtShow2, src, alt, path, classLink }) => {
   return (
     <>
       <button className={classButton} onClick={handleClick}>
@@ -15,6 +16,7 @@ const Button = ({ buttonText, classButton, handleClick, icon, classIcon, classIn
             </div>
           ) : (null)}
         {showEl ? (txtShow1 = { txtShow1 }) : (txtShow2)}
+        {path ? <Links path={path} classLink={classLink} /> : null}
       </button>
     </>
   )

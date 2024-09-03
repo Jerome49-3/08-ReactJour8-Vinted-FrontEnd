@@ -33,11 +33,31 @@
     opacity: 0;
   }
 }
+@keyframes appearPanel {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes disappearPanel {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .wrapper {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+}
+
+.hide {
+  display: none;
 }
 
 .buttonTheme {
@@ -101,7 +121,6 @@
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  padding: 2rem;
 }
 .boxForm form input::-moz-placeholder {
   color: #b0b0b0;
@@ -181,10 +200,6 @@ input:focus-visible::placeholder {
 
 .boxForm Form {
   width: 100%;
-}
-
-.hide {
-  display: none;
 }
 
 /* FORM TEXTAREA */
@@ -284,8 +299,7 @@ form textarea {
 header {
   width: 100%;
   display: block;
-  padding: 2.5px 10px 0px 10px;
-  margin-bottom: 10px;
+  padding: 5px 10px 15px 0px;
 }
 header .wrapper {
   max-width: 1200px;
@@ -296,7 +310,12 @@ header .wrapper {
   align-items: center;
   flex-direction: column;
 }
-header .wrapper a .logo {
+header .wrapper .boxLogoTheme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .wrapper .boxLogoTheme a .logo {
   width: 78px;
   height: 34.8px;
   -o-object-fit: cover;
@@ -364,6 +383,18 @@ header .wrapper nav ul li:hover div:nth-child(1) {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
+header .wrapper nav ul .boxUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 20px;
+  border: 2px solid #2DB0BA;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 header .wrapper nav ul li:nth-child(2):hover div:first-child a {
   padding: 2.9px 0 3.24px 0;
 }
@@ -375,9 +406,6 @@ header .wrapper nav ul, header .wrapper nav ul li, header .wrapper nav ul li:nth
 
 @media (min-width: 768px) {
   /* HEADER */
-  header {
-    height: 45px;
-  }
   header .wrapper {
     justify-content: space-between;
     flex-direction: row;
@@ -510,8 +538,91 @@ button {
 }
 
 /* PUBLISH */
-#pictures {
+.boxFormPublish {
+  width: 100%;
+}
+.boxFormPublish #pictures {
   display: none;
+}
+.boxFormPublish .boxPicTop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 2px solid #ededed;
+  padding: 80px;
+}
+.boxFormPublish .boxPicTop .boxPicBottom {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  border: 2px dashed rgba(237, 237, 237, 0.7);
+  gap: 5px;
+  padding: 5px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.boxFormPublish .boxPicTop .boxPicBottom #labelPic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #2DB0BA;
+  font-size: 1.5rem;
+  font-weight: 900;
+  border: 2px solid #2DB0BA;
+  background-color: #ffffff;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 500;
+  box-shadow: 0px 0px 2px #000000, 1px 1px 2px #000000;
+}
+.boxFormPublish .boxPicTop .boxPicBottom #labelPic:active {
+  box-shadow: inset 0px 0px 2px #000000, inset 0px 0px 5px #000000;
+}
+.boxFormPublish .boxPicTop .boxPicBottom .viewPics {
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+}
+.boxFormPublish .boxPicTop .boxPicBottom .viewPics img {
+  width: 200px;
+  height: 200px;
+  max-height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.boxFormPublish .boxPicTop .boxPicBottom .viewPics .suppFiles,
+.boxFormPublish .boxPicTop .boxPicBottom .viewPics .rotateFiles {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 2px solid #2DB0BA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
+}
+.boxFormPublish .boxPicTop .boxPicBottom .viewPics .suppFiles {
+  position: absolute;
+  top: 15%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+}
+.boxFormPublish .boxPicTop .boxPicBottom .viewPics .rotateFiles {
+  position: absolute;
+  top: 85%;
+  left: 85%;
+  transform: translate(-50%, -50%);
 }
 
 .boxOffer {
@@ -1036,4 +1147,43 @@ button {
 .boxUserId .bottom .left,
 .boxUserId .bottom .right {
   min-width: 50%;
+}
+
+.toggleNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  position: absolute;
+  top: 5.5%;
+  right: 19%;
+  z-index: 200;
+  background-color: #ffffff;
+  animation: appearPanel 0.5s linear 0.25s 1 normal both;
+  box-shadow: 0px 0px 1px #2DB0BA;
+  gap: 10px;
+  padding: 10px;
+}
+.toggleNav a {
+  color: #9e9e9e;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+.toggleNav a:active {
+  box-shadow: inset 0px 0px 5px #000000, inset 0px 0px 5px #2DB0BA;
+}
+.toggleNav a p {
+  font-size: 1.15rem;
+  text-shadow: 0.25px 0.25px 1px #000000;
+}
+.toggleNav button {
+  color: red;
+}
+
+.hideToggle {
+  display: none;
+  animation: disappearPanel 1s linear 0.25s 1 normal both;
 }/*# sourceMappingURL=App.css.map */

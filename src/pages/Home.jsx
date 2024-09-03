@@ -8,6 +8,7 @@ import CookieConsent from "react-cookie-consent";
 
 
 const Home = ({ search }) => {
+  console.log('search in Home:', search)
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,7 +17,7 @@ const Home = ({ search }) => {
     const fetchData = async () => {
       try {
         // const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`)
-        const response = await axios.get(import.meta.env.VITE_REACT_APP_URL_LOCALHOST);
+        const response = await axios.get(import.meta.env.VITE_REACT_APP_URL_LOCALHOST_HOME);
         // console.log('response:', response);
         setData(response.data);
         // console.log('data inside useEffect in Home:', data);

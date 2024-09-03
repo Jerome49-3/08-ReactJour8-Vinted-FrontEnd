@@ -6,7 +6,7 @@ import CryptoJS from "crypto-js";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(Cookies.get('VintedUser') || null);
+  let [user, setUser] = useState(Cookies.get('VintedUser') || null);
   const [token, setToken] = useState(Cookies.get('vintedAppConnect') || null);
   const [isAdmin, setIsAdmin] = useState(Cookies.get('vintedAppAdm') || null);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -19,7 +19,10 @@ export const UserProvider = ({ children }) => {
         const tokenData = Cookies.get('vintedAppConnect');
         let admData = Cookies.get('vintedAppAdm');
         if (userData) {
-          setUser(userData);
+          console.log('userData in useEffect on userProvider:', userData);
+          user = JSON.parse(userData);
+          console.log('user in useEffect on userProvider:', user);
+          setUser(user);
         }
         if (tokenData) {
           setToken(tokenData);
@@ -38,7 +41,7 @@ export const UserProvider = ({ children }) => {
       }
     }
     loadUser();
-  }, [isAdmin, token, user])
+  }, [])
 
   const saveUser = (user) => {
     try {
@@ -46,20 +49,20 @@ export const UserProvider = ({ children }) => {
       // console.log('dataDecrypt in saveUser on userProvider', dataDecrypt);
       const originData = dataDecrypt.toString(CryptoJS.enc.Utf8);
       // console.log('originData in saveUser on userProvider', originData);
-      const userData = JSON.parse(originData);
-      // console.log('userData in saveUser on userProvider', userData);
+      user = JSON.parse(originData);
+      console.log('user in saveUser on userProvider', user);
       if (user) {
-        setUser(userData);
+        setUser(user);
         Cookies.set('VintedUser', JSON.stringify(user), { expires: 15 });
       }
-      if (userData.token !== undefined) {
-        Cookies.set('vintedAppConnect', userData.token, { expires: 15 });
-        setToken(userData.token);
+      if (user.token !== undefined) {
+        Cookies.set('vintedAppConnect', user.token, { expires: 15 });
+        setToken(user.token);
       }
-      if (userData.isAdmin !== false) {
+      if (user.isAdmin !== false) {
         // console.log('userData.isAdmin:', userData.isAdmin);
-        Cookies.set('vintedAppAdm', JSON.stringify(userData.isAdmin), { expires: 15 });
-        setIsAdmin(userData.isAdmin);
+        Cookies.set('vintedAppAdm', JSON.stringify(user.isAdmin), { expires: 15 });
+        setIsAdmin(user.isAdmin);
       }
     } catch (error) {
       setErrorMessage(error.message)

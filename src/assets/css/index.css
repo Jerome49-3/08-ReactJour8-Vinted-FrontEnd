@@ -21,13 +21,19 @@
     color: var(--lightMode);
   }
 
-  .dark header {
+  .dark header,
+  .dark .boxOffer .wrapper article .right {
     background-color: var(--darkModeHeader);
+  }
+
+  .dark .boxOffer .wrapper article .right .boxLineOffer {
+    background-color: var(--vertVintDark);
   }
 
   .dark .boxUsers a,
   .dark input,
-  .dark .boxSearch {
+  .dark .boxSearch,
+  .dark .toggleNav {
     background-color: var(--backDarkLink);
     color: var(--lightMode);
   }

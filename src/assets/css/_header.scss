@@ -2,17 +2,20 @@
 header {
   width: 100%;
   display: block;
-  padding: 2.5px 10px 0px 10px;
-  margin-bottom: 10px;
+  padding: 5px 10px 15px 0px;
 
   .wrapper {
     @include wrapper;
     @include flexColCenter;
 
-    & a .logo {
-      width: 78px;
-      height: 34.8px;
-      object-fit: cover;
+    .boxLogoTheme {
+      @include flexCenter;
+
+      & a .logo {
+        width: 78px;
+        height: 34.8px;
+        object-fit: cover;
+      }
     }
 
     & nav {
@@ -26,6 +29,7 @@ header {
         & li {
           width: 180px;
           border-radius: 5px;
+
 
           &:first-child {
             width: 100px;
@@ -97,14 +101,21 @@ header {
             border-top-left-radius: 5px;
             border-bottom-left-radius: 5px;
           }
+        }
 
+        .boxUser {
+          @include flexCenter;
+          width: fit-content;
+          gap: 20px;
+          border: 2px solid $vertVinted;
+          padding: 5px 10px 5px 10px;
+          border-radius: 5px;
+          cursor: pointer;
         }
 
         & li:nth-child(2):hover div:first-child a {
           padding: 2.9px 0 3.24px 0;
         }
-
-
       }
 
       & ul,
@@ -120,16 +131,18 @@ header {
 
   /* HEADER */
   header {
-    height: 45px;
-  }
+    .wrapper {
+      justify-content: space-between;
+      flex-direction: row;
 
-  header .wrapper {
-    justify-content: space-between;
-    flex-direction: row;
-  }
+      & nav {
+        & ul {
+          flex-direction: row;
 
-  header .wrapper nav ul {
-    flex-direction: row;
+          & li {}
+        }
+      }
+    }
   }
 
   header .wrapper nav ul li div a,

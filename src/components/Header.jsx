@@ -1,25 +1,33 @@
 import { Link, useNavigate } from "react-router-dom";
-import Image from './Image';
 import Logo from '../assets/images/logo.svg';
-import Input from "./Input";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ThemeButton from "./ThemeButton";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 
+
+//components
+import Image from './Image';
+import Aside from "./Aside";
+import Input from "./Input";
+import Links from "./Links";
+
 const Header = ({ show, setShow, search, setSearch }) => {
-  const { token, isAdmin, clearUser } = useContext(UserContext);
-  console.log('token in header:', token, '\n', 'isAdmin in header:', isAdmin);
-  console.log('typeof token in header:', typeof token, '\n', 'typeof isAdmin in header:', typeof isAdmin);
-  const navigate = useNavigate();
+
+
+  const { token, user, showToggleNav, setShowToggleNav } = useContext(UserContext);
+  // console.log('token in header:', token, '\n', 'isAdmin in header:', isAdmin, '\n', 'user: in header:', user);
+  // console.log('typeof token in header:', typeof token, '\n', 'typeof isAdmin in header:', typeof isAdmin);
   return (
     <header>
       <div className="wrapper">
-        <Link to='/'>
-          <Image src={Logo} alt='Vinted' classImg='logo' />
-        </Link>
-        <div className="boxTheme">
-          <ThemeButton />
+        <div className="boxLogoTheme">
+          <Link to='/'>
+            <Image src={Logo} alt='Vinted' classImg='logo' />
+          </Link>
+          <div className="boxTheme">
+            <ThemeButton />
+          </div>
         </div>
         <div className="boxSearch">
           <FontAwesomeIcon icon="magnifying-glass" className="search-icons" />
@@ -27,30 +35,38 @@ const Header = ({ show, setShow, search, setSearch }) => {
         </div>
         <nav>
           <ul>
-            <li>{isAdmin === true && <Link to='/dashboard'>Dashboard</Link>}</li>
-            {token ? (
-              <li><button onClick={() => {
-                clearUser();
-                navigate('/')
-              }}>Se deconnecter</button></li>
-            ) : (
-              <li>
-                <div className="buttonSignIn">
-                  <button onClick={() => {
-                    { show === false ? (setShow(true)) : (setShow(false)) }
-                  }}> s'inscrire</button>
-                </div>
-                <div>|</div>
-                <div><Link to='/login'>se connecter</Link></div>
-              </li>
+            {token === null && (
+              <>
+                <li>
+                  <div className="buttonSignIn">
+                    <button onClick={() => {
+                      { show === false ? (setShow(true)) : (setShow(false)) }
+                    }}> s'inscrire</button>
+                  </div>
+                  <div>|</div>
+                  <div><Link to='/login'>se connecter</Link></div>
+                </li>
+                <li>
+                  <Links path={token !== null && token !== undefined ? '/publish' : '/login'} linkText='vendre tes articles' />
+                </li>
+              </>
+
             )}
-            <li>
-              <Link to={token ? '/publish' : '/login'} >vendre tes articles</Link>
-            </li>
+            {token ? (
+              <div className='boxUser' onClick={() => { setShowToggleNav(!showToggleNav) }}>
+                <div className="hello">bonjour {user.account.username}</div>
+                {user.account.avatar.secure_url ? (
+                  <>
+                    <Image src={user.account.avatar.secure_url} alt="avatar" classImg='imgAvatar' />
+                  </>
+                ) : (<Image src={user.account.avatar} alt="avatar" classImg='imgAvatar' />)}
+              </div>
+            ) : (null)}
+            <Aside />
           </ul>
         </nav>
       </div>
-    </header>
+    </header >
   )
 }
 

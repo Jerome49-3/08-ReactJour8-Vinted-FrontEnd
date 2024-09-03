@@ -4,11 +4,12 @@ import axios from 'axios';
 import Input from './Input';
 import Image from './Image';
 import SmallLogo from '../assets/images/favicon.png'
-import Cookies from 'js-cookie';
 import EyePassword from './EyePassword';
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
-const SignUp = ({ show, setShow, icon1, icon2, setToken, type, setType
-}) => {
+const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
+  const { saveUser } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,10 +33,8 @@ const SignUp = ({ show, setShow, icon1, icon2, setToken, type, setType
       );
       console.log('response:', response)
       if (response.data) {
-        if (response.data.token) {
-          Cookies.set('vintedAppConnect', response.data.token, { expires: 15 });
-          setToken(response.data.token);
-        }
+        const user = response.data;
+        saveUser(user);
         setShow(false);
         navigate("/publish");
       }
