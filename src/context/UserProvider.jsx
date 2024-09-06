@@ -20,9 +20,9 @@ export const UserProvider = ({ children }) => {
         let admData = Cookies.get('vintedAppAdm');
         if (userData) {
           console.log('userData in useEffect on userProvider:', userData);
-          user = JSON.parse(userData);
-          console.log('user in useEffect on userProvider:', user);
-          setUser(user);
+          const userParse = JSON.parse(userData);
+          console.log('userParse in useEffect on userProvider:', userParse);
+          setUser(userParse);
         }
         if (tokenData) {
           setToken(tokenData);

@@ -33,6 +33,11 @@ function App() {
   // eslint-disable-next-line no-unused-vars
   const [showHero, setShowHero] = useState(false);
   const [showToggleNav, setShowToggleNav] = useState(false);
+  // console.log('showToggleNav in app:', showToggleNav);
+  const [priceMin, setPriceMin] = useState(0);
+  console.log('priceMin in app:', priceMin);
+  const [priceMax, setPriceMax] = useState(0);
+  console.log('priceMax in app:', priceMax);
   const [search, setSearch] = useState("");
   const [type, setType] = useState('password');
   const [dataShoppingCart, setDataShoppingCart] = useState(() => {
@@ -48,7 +53,7 @@ function App() {
     <>
       <Router>
         <UserProvider>
-          <Header show={show} setShow={setShow} search={search} setSearch={setSearch} />
+          <Header show={show} setShow={setShow} search={search} setSearch={setSearch} showToggleNav={showToggleNav} setShowToggleNav={setShowToggleNav} priceMin={priceMin} setPriceMin={setPriceMin} priceMax={priceMax} setPriceMax={setPriceMax} />
           <Routes>
             <Route path="/login" element={<Login type={type} setType={setType} icon1="eye" icon2="eye-slash" />} />
             <Route element={<PrivateRoute />}>
@@ -56,12 +61,12 @@ function App() {
               <Route path="/payment" element={<Payment dataShoppingCart={dataShoppingCart} setDataShoppingCart={setDataShoppingCart} />} />
               <Route path='/users/:id' element={<User faUserTie={faUserTie} faNewspaper={faNewspaper} faXmark={faXmark} faUser={faUser} />} />
             </Route>
-            <Route path="/publish" element={<Publish faRotateRight={faRotateRight} />} />
             <Route path="/" element={<Home search={search} />} />
+            <Route path="/publish" element={<Publish faRotateRight={faRotateRight} />} />
             <Route path="/offers/:id" element={<Offer show={showHero} setDataShoppingCart={setDataShoppingCart} />} />
           </Routes>
           {show && <SignUp show={show} setShow={setShow} icon1="eye" icon2="eye-slash" type={type} setType={setType} />}
-          {showToggleNav && <Aside showToggleNav={showToggleNav} />}
+          {showToggleNav && <Aside showToggleNav={showToggleNav} setShowToggleNav={setShowToggleNav} />}
         </UserProvider>
       </Router>
     </>

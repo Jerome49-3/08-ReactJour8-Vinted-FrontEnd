@@ -12,9 +12,9 @@ const Publish = ({ faRotateRight }) => {
   const [rotate, setRotate] = useState(0);
   const viewFile = useRef(null);
   const { token } = useContext(UserContext);
-  console.log("token in publish:", token);
+  // console.log("token in publish:", token);
   const [pictures, setPictures] = useState([] || null);
-  console.log("pictures in publish:", pictures);
+  // console.log("pictures in publish:", pictures);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   let [price, setPrice] = useState(0);
@@ -26,7 +26,7 @@ const Publish = ({ faRotateRight }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    console.log("token inside handleSubmit in publish:", token);
+    // console.log("token inside handleSubmit in publish:", token);
     // console.log('e:', e);
     e.preventDefault();
     const formData = new FormData();
@@ -41,39 +41,37 @@ const Publish = ({ faRotateRight }) => {
     formData.append("color", color);
     formData.append("city", city);
     // price = Number(price).toFixed(2);
-    console.log("typeof price in publish:", typeof price);
-    console.log(
-      "file in publish:",
-      pictures,
-      "\n",
-      "title in publish:",
-      title,
-      "\n",
-      "description in publish:",
-      description,
-      "\n",
-      "price in publish:",
-      price,
-      "\n",
-      "brand in publish:",
-      brand,
-      "\n",
-      "size in publish:",
-      size,
-      "\n",
-      "condition in publish:",
-      condition,
-      "\n",
-      "color in publish:",
-      color,
-      "\n",
-      "city in publish:",
-      city
-    );
+    // console.log("typeof price in publish:", typeof price);
+    // console.log(
+    //   "file in publish:",
+    //   pictures,
+    //   "\n",
+    //   "title in publish:",
+    //   title,
+    //   "\n",
+    //   "description in publish:",
+    //   description,
+    //   "\n",
+    //   "price in publish:",
+    //   price,
+    //   "\n",
+    //   "brand in publish:",
+    //   brand,
+    //   "\n",
+    //   "size in publish:",
+    //   size,
+    //   "\n",
+    //   "condition in publish:",
+    //   condition,
+    //   "\n",
+    //   "color in publish:",
+    //   color,
+    //   "\n",
+    //   "city in publish:",
+    //   city
+    // );
     try {
-      console.log("token inside try to handleSubmit in publish:", token);
-      // const response = await axios.post(
-      //   "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+      // console.log("token inside try to handleSubmit in publish:", token);
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_LOCALHOST_PUBLISH,
         formData,
@@ -84,14 +82,14 @@ const Publish = ({ faRotateRight }) => {
           },
         }
       );
-      console.log(response);
+      // console.log(response);
       if (response) {
-        console.log("response in publish:", response);
-        console.log("response.data in publish:", response.data);
-        console.log(
-          "response.data.newOffer._id in publish:",
-          response.data.newOffer._id
-        );
+        // console.log("response in publish:", response);
+        // console.log("response.data in publish:", response.data);
+        // console.log(
+        //   "response.data.newOffer._id in publish:",
+        //   response.data.newOffer._id
+        // );
         navigate(`/offers/${response.data.newOffer._id}`);
       }
     } catch (error) {
@@ -104,7 +102,7 @@ const Publish = ({ faRotateRight }) => {
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
           <div className="boxPicTop">
-            <div className="boxPicBottom">
+            <div className={pictures.length > 0 ? "boxPicBottom" : 'boxPicBottomEmpty'}>
               {pictures.length === 0 ? (
                 <label htmlFor="pictures" id="labelPic">
                   + ajouter une photo !
@@ -121,24 +119,24 @@ const Publish = ({ faRotateRight }) => {
                 multiple="true"
                 onChange={(e) => {
                   let newPic = [...pictures];
-                  console.log(
-                    "e.target.files in onChange/inputFile on publish:",
-                    e.target.files
-                  );
-                  console.log(
-                    "newPic in onChange/inputFile on publish:",
-                    newPic
-                  );
+                  // console.log(
+                  //   "e.target.files in onChange/inputFile on publish:",
+                  //   e.target.files
+                  // );
+                  // console.log(
+                  //   "newPic in onChange/inputFile on publish:",
+                  //   newPic
+                  // );
                   for (let i = 0; i < e.target.files.length; i++) {
                     const el = e.target.files[i];
-                    console.log("el in for on publish:", el);
-                    newPic.push(e.target.files[i]);
+                    // console.log("el in for on publish:", el);
+                    newPic.push(el);
                   }
                   setPictures(newPic);
                 }}
               />
               {pictures.map((files, key = index) => {
-                console.log("files:", files);
+                // console.log("files:", files);
                 return (
                   <div className="viewPics" key={key}>
                     <img
@@ -150,10 +148,10 @@ const Publish = ({ faRotateRight }) => {
                       className="suppFiles"
                       onClick={() => {
                         let newPic = [...pictures];
-                        console.log(
-                          "newPic in onChange/inputFile on publish:",
-                          newPic
-                        );
+                        // console.log(
+                        //   "newPic in onChange/inputFile on publish:",
+                        //   newPic
+                        // );
                         newPic.pop();
                         setPictures(newPic);
                       }}
@@ -165,8 +163,8 @@ const Publish = ({ faRotateRight }) => {
                       className="rotateFiles"
                       onClick={() => {
                         let newRotation = (rotate + 90) % 360;
-                        console.log('newRotation:', newRotation);
-                        console.log('typeof newRotation:', typeof newRotation);
+                        // console.log('newRotation:', newRotation);
+                        // console.log('typeof newRotation:', typeof newRotation);
                         setRotate(newRotation);
                         viewFile.current.style.transform = `rotate(${newRotation}deg)`;
                       }}

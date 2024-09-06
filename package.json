@@ -24,12 +24,14 @@
     "react-cookie-consent": "^9.0.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
+    "react-range": "^1.10.0",
     "react-router-dom": "^6.23.1",
+    "typescript": "^5.5.4",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",

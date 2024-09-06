@@ -305,85 +305,68 @@ header .wrapper {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+header .wrapper .topHeader {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 20px;
 }
-header .wrapper .boxLogoTheme {
+header .wrapper .topHeader .boxLogoTheme {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-header .wrapper .boxLogoTheme a .logo {
+header .wrapper .topHeader .boxLogoTheme a .logo {
   width: 78px;
   height: 34.8px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-header .wrapper nav {
+header .wrapper .topHeader nav {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 0 5px 0;
 }
-header .wrapper nav ul {
-  gap: 5px;
-  flex-direction: column;
-}
-header .wrapper nav ul li {
-  width: 180px;
-  border-radius: 5px;
-}
-header .wrapper nav ul li:first-child {
-  width: 100px;
-}
-header .wrapper nav ul li:nth-child(2) {
-  border: 2px solid #2DB0BA;
-  gap: 5px;
-}
-header .wrapper nav ul li:last-child, header .wrapper nav ul li:last-child a {
-  background-color: #2DB0BA;
-  color: white;
-}
-header .wrapper nav ul li:last-child {
-  border: 2px solid #2DB0BA;
-}
-header .wrapper nav ul li div:not(header .wrapper nav ul li div:nth-child(2)), header .wrapper nav ul li div button {
-  width: 100%;
+header .wrapper .topHeader nav ul {
+  gap: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  flex-direction: column;
 }
-header .wrapper nav ul li div button {
-  background-color: transparent;
-  border: none;
+header .wrapper .topHeader nav ul li {
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid #2DB0BA;
 }
-header .wrapper nav ul li a, header .wrapper nav ul li button {
-  color: #2DB0BA;
+header .wrapper .topHeader nav ul li div button, header .wrapper .topHeader nav ul li div a {
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-header .wrapper nav ul li div:hover a, header .wrapper nav ul li div:hover button {
+header .wrapper .topHeader nav ul li div button {
+  border-right: 2px solid #2DB0BA;
+  border-width: 2px;
+}
+header .wrapper .topHeader nav ul li a:not(li div a) {
+  width: 100%;
+  text-align: center;
+}
+header .wrapper .topHeader nav ul li:nth-child(2) {
+  background-color: #2DB0BA;
+  box-shadow: 0px 0px 2px #000000;
+}
+header .wrapper .topHeader nav ul li:nth-child(2) a {
   color: #ffffff;
 }
-header .wrapper nav ul li div:nth-child(1):hover, header .wrapper nav ul li div:nth-child(3):hover {
-  background-color: #2DB0BA;
+header .wrapper .topHeader nav ul li:nth-child(2):active {
+  box-shadow: inset 0px 0px 2px #000000;
 }
-header .wrapper nav ul li div:nth-child(3) {
-  margin-right: -2px;
-}
-header .wrapper nav ul li div:nth-child(1) {
-  margin-left: -2px;
-}
-header .wrapper nav ul li:hover div:nth-child(3) {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-header .wrapper nav ul li:hover div:nth-child(1) {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-header .wrapper nav ul .boxUser {
+header .wrapper .topHeader nav ul .boxUser {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -395,43 +378,58 @@ header .wrapper nav ul .boxUser {
   border-radius: 5px;
   cursor: pointer;
 }
-header .wrapper nav ul li:nth-child(2):hover div:first-child a {
-  padding: 2.9px 0 3.24px 0;
-}
-header .wrapper nav ul, header .wrapper nav ul li, header .wrapper nav ul li:nth-child(2) {
+header .wrapper .topHeader nav ul, header .wrapper .topHeader nav ul li, header .wrapper .topHeader nav ul li:nth-child(2), header .wrapper .topHeader nav ul li div button, header .wrapper .topHeader nav ul li div a {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+header .wrapper .topHeader nav ul li:nth-child(2), header .wrapper .topHeader nav ul li div button, header .wrapper .topHeader nav ul li div a {
+  padding: 4px 8px 4px 8px;
+}
+header .wrapper .bottomHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+header .wrapper .bottomHeader div {
+  width: 50%;
+}
+header .wrapper .bottomHeader .dotBarLabel {
+  display: none;
+}
+header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
+  display: flex;
+}
 
 @media (min-width: 768px) {
   /* HEADER */
-  header .wrapper {
+  header .wrapper .topHeader {
+    flex-direction: row !important;
     justify-content: space-between;
-    flex-direction: row;
   }
-  header .wrapper nav ul {
-    flex-direction: row;
+  header .wrapper .topHeader nav ul {
+    flex-direction: row !important;
   }
-  header .wrapper nav ul li div a,
-  header .wrapper nav ul li div button {
-    padding: 3.5px 0 3.5px 0;
+  header .wrapper .topHeader nav ul li {
+    width: 200px;
+    height: 30px;
   }
-  header .wrapper nav ul li div:hover a {
-    border: 1px solid #2DB0BA;
+  header .wrapper .topHeader nav ul li:nth-child(2) {
+    background-color: #2DB0BA;
+    padding: 4px 8px 4px 8px;
   }
-  header .wrapper nav ul li:not(li:nth-child(2)) {
-    padding: 4px 6px 4px 6px;
+  header .wrapper .bottomHeader {
+    align-items: flex-start;
+  }
+  header .wrapper .bottomHeader div:first-child {
+    margin-left: 5%;
   }
   /* FORM */
   .boxForm {
     width: 40%;
   }
-  /* MODAL */
-  /* .boxModalContent {
-    max-width: 30%;
-    height: 40%;
-  } */
 }
 .boxImgs .imgBanner {
   width: 100%;
@@ -553,8 +551,11 @@ button {
   flex-direction: column;
   border: 2px solid #ededed;
   padding: 80px;
+  margin-top: 10%;
+  margin-bottom: 2.5%;
 }
-.boxFormPublish .boxPicTop .boxPicBottom {
+.boxFormPublish .boxPicTop .boxPicBottom,
+.boxFormPublish .boxPicTop .boxPicBottomEmpty {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -565,7 +566,8 @@ button {
   flex-wrap: wrap;
   position: relative;
 }
-.boxFormPublish .boxPicTop .boxPicBottom #labelPic {
+.boxFormPublish .boxPicTop .boxPicBottom #labelPic,
+.boxFormPublish .boxPicTop .boxPicBottomEmpty #labelPic {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -585,7 +587,8 @@ button {
   z-index: 500;
   box-shadow: 0px 0px 2px #000000, 1px 1px 2px #000000;
 }
-.boxFormPublish .boxPicTop .boxPicBottom #labelPic:active {
+.boxFormPublish .boxPicTop .boxPicBottom #labelPic:active,
+.boxFormPublish .boxPicTop .boxPicBottomEmpty #labelPic:active {
   box-shadow: inset 0px 0px 2px #000000, inset 0px 0px 5px #000000;
 }
 .boxFormPublish .boxPicTop .boxPicBottom .viewPics {
@@ -621,8 +624,11 @@ button {
 .boxFormPublish .boxPicTop .boxPicBottom .viewPics .rotateFiles {
   position: absolute;
   top: 85%;
-  left: 85%;
+  left: 90%;
   transform: translate(-50%, -50%);
+}
+.boxFormPublish .boxPicTop .boxPicBottomEmpty {
+  border: none;
 }
 
 .boxOffer {

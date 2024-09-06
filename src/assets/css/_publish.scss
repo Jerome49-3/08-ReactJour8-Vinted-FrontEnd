@@ -12,8 +12,11 @@
     @include flexColStart;
     border: 2px solid #ededed;
     padding: 80px;
+    margin-top: 10%;
+    margin-bottom: 2.5%;
 
-    .boxPicBottom {
+    .boxPicBottom,
+    .boxPicBottomEmpty {
       @include flexStart;
       width: 100%;
       // height: 200px;
@@ -44,7 +47,9 @@
           box-shadow: inset 0px 0px 2px $black, inset 0px 0px 5px $black;
         }
       }
+    }
 
+    .boxPicBottom {
       .viewPics {
         width: fit-content;
         position: relative;
@@ -77,10 +82,14 @@
         .rotateFiles {
           position: absolute;
           top: 85%;
-          left: 85%;
+          left: 90%;
           transform: translate(-50%, -50%);
         }
       }
+    }
+
+    .boxPicBottomEmpty {
+      border: none;
     }
   }
 

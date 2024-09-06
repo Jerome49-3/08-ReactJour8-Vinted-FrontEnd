@@ -16,11 +16,10 @@ const Home = ({ search }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`)
-        const response = await axios.get(import.meta.env.VITE_REACT_APP_URL_LOCALHOST_HOME);
+        const response = await axios.get(`http://localhost:3000/offers?title=${search}`);
         // console.log('response:', response);
         setData(response.data);
-        // console.log('data inside useEffect in Home:', data);
+        console.log('data inside useEffect in Home:', data);
         setIsLoading(false);
       } catch (error) {
         console.log(error)
