@@ -661,10 +661,19 @@ button {
   align-items: center;
   width: 100%;
   height: 100%;
+  gap: 20px;
 }
-.boxOffer .wrapper article .left .boxImgOffer img {
+.boxOffer .wrapper article .left .boxImgOffer .prodImg {
   width: 100%;
   height: 100%;
+}
+.boxOffer .wrapper article .left .boxImgOffer .prodPict {
+  width: 250px;
+  height: 250px;
+}
+.boxOffer .wrapper article .left .boxImgOffer .prodImg,
+.boxOffer .wrapper article .left .boxImgOffer .prodPict {
+  border-radius: 5px;
 }
 .boxOffer .wrapper article .right {
   width: 50%;
@@ -1082,13 +1091,6 @@ button {
 .boxUserId .bottom .left img {
   width: 400px;
   height: 400px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 5px;
-}
-.boxUserId .bottom .left .viewPictures {
-  width: 100%;
-  height: 50px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;

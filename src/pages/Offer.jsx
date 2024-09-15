@@ -1,14 +1,17 @@
 import axios from 'axios'
 import Loading from '../components/Loading';
 import { useState, useEffect } from 'react';
-import Image from '../components/Image'
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
 //components
 import Hero from '../components/Hero';
+import Image from '../components/Image'
 // import Button from '../components/Button';
 // import Input from '../components/Input';
 // import Links from '../components/Links';
+
+//images
+import noImg from '../assets/images/no-image.jpg'
 
 const Offer = ({ showHero }) => {
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
@@ -19,7 +22,7 @@ const Offer = ({ showHero }) => {
   let [price, setPrice] = useState(0);
   const prices = Number(price).toFixed(2);
   console.log('prices in /offers/${id}:', prices);
-  const [objId, setObjId] = useState(id);
+  // const [objId, setObjId] = useState(id);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -61,13 +64,13 @@ const Offer = ({ showHero }) => {
           <article>
             <div className="left">
               <div className='boxImgOffer'>
-                {data.product_image ? (<Image src={data.product_image.secure_url} />) : (undefined)}
-                {data.product_pictures ? (<>{data.product_pictures.map((images, key = index) => {
-                  // console.log('images:', images);
+                {data.product_image && <Image src={data.product_image.secure_url} className={data.product_image && 'prodImg'} />}
+                {data.product_pictures && <>{data.product_pictures.map((images, key = index) => {
+                  console.log('images:', images);
                   return (
-                    <Image src={images.secure_url} classImg='imgsArticle' key={key} />
+                    <Image src={images.secure_url} classImg={data.product_pictures && 'prodPict'} key={key} />
                   )
-                })}</>) : (null)}
+                })}</>}
               </div>
             </div>
             <div className="right">
@@ -106,12 +109,18 @@ const Offer = ({ showHero }) => {
                     <div>{data.owner.account.username}</div>
                   </div>
                 </div>
-                <Link to='/payment' state={{
+                {data.product_image !== undefined ? (<Link to='/payment' state={{
                   product_id: data.product_id,
                   product_name: data.product_name,
                   product_price: Number(data.product_price).toFixed(2),
-                  product_image: data.product_image.secure_url,
-                }} >Acheter</Link>
+                  product_image: data.product_image.secure_url
+                }} >Acheter</Link>) : (<Link to='/payment' state={{
+                  product_id: data.product_id,
+                  product_name: data.product_name,
+                  product_price: Number(data.product_price).toFixed(2),
+                  product_pictures: data.product_pictures.secure_url
+                }} >Acheter</Link>)}
+
               </div>
             </div>
           </article>

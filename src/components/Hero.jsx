@@ -7,6 +7,8 @@ import { useContext } from "react";
 
 const Hero = () => {
   const { darkMode } = useContext(ThemeContext);
+  console.log('darkMode in Hero:', darkMode);
+
   return (
     <div className="boxImgs">
       <Image src={HeroBanner} alt='banner' classImg='imgBanner' />

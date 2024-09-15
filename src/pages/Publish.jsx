@@ -13,8 +13,8 @@ const Publish = ({ faRotateRight }) => {
   const viewFile = useRef(null);
   const { token } = useContext(UserContext);
   // console.log("token in publish:", token);
-  const [pictures, setPictures] = useState([] || null);
-  // console.log("pictures in publish:", pictures);
+  const [pictures, setPictures] = useState([]);
+  console.log("pictures in publish:", pictures);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   let [price, setPrice] = useState(0);
@@ -31,7 +31,11 @@ const Publish = ({ faRotateRight }) => {
     e.preventDefault();
     const formData = new FormData();
     price = Number(price).toFixed(2);
-    formData.append("pictures", pictures);
+    for (let i = 0; i < pictures.length; i++) {
+      const el = pictures[i];
+      console.log('el:', el);
+      formData.append("pictures", el);
+    }
     formData.append("title", title);
     formData.append("description", description);
     formData.append("price", price);
@@ -42,34 +46,34 @@ const Publish = ({ faRotateRight }) => {
     formData.append("city", city);
     // price = Number(price).toFixed(2);
     // console.log("typeof price in publish:", typeof price);
-    // console.log(
-    //   "file in publish:",
-    //   pictures,
-    //   "\n",
-    //   "title in publish:",
-    //   title,
-    //   "\n",
-    //   "description in publish:",
-    //   description,
-    //   "\n",
-    //   "price in publish:",
-    //   price,
-    //   "\n",
-    //   "brand in publish:",
-    //   brand,
-    //   "\n",
-    //   "size in publish:",
-    //   size,
-    //   "\n",
-    //   "condition in publish:",
-    //   condition,
-    //   "\n",
-    //   "color in publish:",
-    //   color,
-    //   "\n",
-    //   "city in publish:",
-    //   city
-    // );
+    console.log(
+      "file in publish:",
+      pictures,
+      "\n",
+      "title in publish:",
+      title,
+      "\n",
+      "description in publish:",
+      description,
+      "\n",
+      "price in publish:",
+      price,
+      "\n",
+      "brand in publish:",
+      brand,
+      "\n",
+      "size in publish:",
+      size,
+      "\n",
+      "condition in publish:",
+      condition,
+      "\n",
+      "color in publish:",
+      color,
+      "\n",
+      "city in publish:",
+      city
+    );
     try {
       // console.log("token inside try to handleSubmit in publish:", token);
       const response = await axios.post(
@@ -84,8 +88,8 @@ const Publish = ({ faRotateRight }) => {
       );
       // console.log(response);
       if (response) {
-        // console.log("response in publish:", response);
-        // console.log("response.data in publish:", response.data);
+        console.log("response in publish:", response);
+        console.log("response.data in publish:", response.data);
         // console.log(
         //   "response.data.newOffer._id in publish:",
         //   response.data.newOffer._id
@@ -119,10 +123,14 @@ const Publish = ({ faRotateRight }) => {
                 multiple="true"
                 onChange={(e) => {
                   let newPic = [...pictures];
-                  // console.log(
-                  //   "e.target.files in onChange/inputFile on publish:",
-                  //   e.target.files
-                  // );
+                  console.log(
+                    "e.target.files in onChange/inputFile on publish:",
+                    e.target.files
+                  );
+                  console.log(
+                    "Array.isArray() e.target.files in onChange/inputFile on publish:",
+                    Array.isArray(e.target.files)
+                  );
                   // console.log(
                   //   "newPic in onChange/inputFile on publish:",
                   //   newPic
@@ -145,6 +153,7 @@ const Publish = ({ faRotateRight }) => {
                       ref={viewFile}
                     />
                     <button
+                      type="button"
                       className="suppFiles"
                       onClick={() => {
                         let newPic = [...pictures];

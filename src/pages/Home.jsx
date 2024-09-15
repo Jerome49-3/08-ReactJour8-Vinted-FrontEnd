@@ -1,10 +1,16 @@
-import Hero from '../components/Hero'
-import Loading from '../components/Loading';
 import { useState, useEffect } from 'react';
-import Image from '../components/Image'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CookieConsent from "react-cookie-consent";
+
+
+//components
+import Image from '../components/Image'
+import Hero from '../components/Hero'
+import Loading from '../components/Loading';
+
+//images
+import noImg from '../assets/images/no-image.jpg'
 
 
 const Home = ({ search }) => {
@@ -52,13 +58,13 @@ const Home = ({ search }) => {
                       <div>{article.owner.account.username}</div>
                     </div>
                     <div className='boxImgArticle'>
-                      {article.product_image ? (<Image src={article.product_image.secure_url} />) : (null)}
+                      {article.product_image ? (<Image src={article.product_image.secure_url} />) : (<Image src={noImg} alt='no image' />)}
                       {article.product_pictures ? (<>{article.product_pictures.map((images, key = index) => {
                         // console.log('images:', images);
                         return (
                           <Image src={images.secure_url} classImg='imgsArticle' key={key} />
                         )
-                      })}</>) : (null)}
+                      })}</>) : (<Image src={noImg} alt='no image' />)}
                     </div>
                     <div>{article.product_name}</div>
                     <div>{article.product_description}</div>

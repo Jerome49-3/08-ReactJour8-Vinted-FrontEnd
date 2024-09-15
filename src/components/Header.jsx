@@ -49,12 +49,11 @@ const Header = ({ show, setShow, search, setSearch, showToggleNav, setShowToggle
                     </div>
                     <div><Link to='/login'>se connecter</Link></div>
                   </li>
-                  <li>
-                    <Links path={token !== null && token !== undefined ? '/publish' : '/login'} linkText='vendre tes articles' />
-                  </li>
                 </>
-
               )}
+              <li>
+                <Links path={token !== null && token !== undefined ? '/publish' : '/login'} linkText='vendre tes articles' />
+              </li>
               {token ? (
                 <div className="boxUser" onClick={() => { setShowToggleNav(!showToggleNav) }}>
                   <div className="hello">bonjour {user.account.username}</div>

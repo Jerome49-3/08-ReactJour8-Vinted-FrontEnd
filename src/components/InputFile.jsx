@@ -1,6 +1,5 @@
 
 const InputFile = ({ labelTxt, pictures, setPictures, setAvatar }) => {
-
   return (
     <div className="boxPictures">
       <label htmlFor="pictures">{labelTxt}</label>
@@ -9,7 +8,7 @@ const InputFile = ({ labelTxt, pictures, setPictures, setAvatar }) => {
         id='pictures'
         name='pictures'
         onChange={(e) => {
-          console.log('e.target.files:', e.target.files[0]);
+          console.log('e.target.files[0] on inputFile:', e.target.files[0]);
           setPictures(e.target.files[0]);
           setAvatar(URL.createObjectURL(e.target.files[0]))
         }}

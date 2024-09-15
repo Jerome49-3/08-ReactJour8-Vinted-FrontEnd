@@ -14,11 +14,11 @@ import updateIcon from '../assets/images/updateIcon.png'
 
 const User = () => {
   const { id } = useParams();
-  console.log('id /users/${userId}:', id);
+  // console.log('id /users/${userId}:', id);
   const { state } = useLocation();
-  console.log('state: in /users/${userId}:', state);
+  // console.log('state: in /users/${userId}:', state);
   const { token } = state;
-  console.log('token /users/${userId}:', token);
+  // console.log('token /users/${userId}:', token);
   const [pictures, setPictures] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [username, setUsername] = useState(null);
@@ -75,8 +75,8 @@ const User = () => {
         },
       )
       if (response) {
-        console.log('response in /users/${id}:', response);
-        console.log('response.data in /users/${id}:', response.data);
+        // console.log('response in /users/${id}:', response);
+        console.log('response.data in handleUpdateData on /users/${id}:', response.data);
         alert(response.data.message);
         navigate(`/dashboard`);
       }
@@ -90,8 +90,8 @@ const User = () => {
         const response = await axios.delete(`http://localhost:3000/users/${id}`,
         )
         if (response) {
-          console.log('response in /users/${id}:', response);
-          console.log('response.data in /users/${id}:', response.data);
+          // console.log('response in /users/${id}:', response);
+          console.log('response.data in handleDeleteData on /users/${id}:', response.data);
           alert(response.data.message);
           navigate(`/dashboard`);
         }
@@ -104,6 +104,14 @@ const User = () => {
       navigate(`/dashboard`);
     }
   }
+
+  // const handleUpdatePict = (file) => {
+  //   setPictures(file);
+  //   console.log('pictures in handleUpdatePict on /users/${id}:', pictures);
+  //   setAvatar(URL.createObjectURL(file));
+  //   console.log('avatar in handleUpdatePict on /users/${id}:', avatar);
+  // };
+
   return isLoading ? <Loading /> : (
     <div className="boxUserId">
       <div className="wrapper">
@@ -114,7 +122,8 @@ const User = () => {
         </div>
         <form className="bottom">
           <div className="left">
-            {data.avatar.secure_url ? (<Image src={data.avatar.secure_url} alt='avatar' />) : (<Image src={data.avatar} alt='avatar' />)}
+            {/* {data.avatar.secure_url ? (<Image src={data.avatar.secure_url} alt='avatar' />) : (<Image src={data.avatar} alt='avatar' />)} */}
+            <Image src={avatar} alt='avatar' />
             <label htmlFor="pictures"></label>
             <InputFile labelTxt='Choose your avatar' id='file' setPictures={setPictures} setAvatar={setAvatar} />
             {/* {pictures && <img src={URL.createObjectURL(pictures)} alt="Image" className="viewPictures" />} */}
