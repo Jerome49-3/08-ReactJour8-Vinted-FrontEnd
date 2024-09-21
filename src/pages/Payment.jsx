@@ -49,37 +49,6 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
     mode: "payment",
     amount: Number((product_price * 100).toFixed(0)),
     currency: "eur",
-    appearance: {
-      theme: 'Night',
-      style: {
-        base: {
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: '#32325d',
-        },
-        shapes: {
-          borderRadius: '12',
-          borderWidth: '0.5',
-        },
-        primaryButton: {
-          shapes: {
-            borderRadius: '20',
-          },
-        },
-        colors: {
-          primary: '#fcfdff',
-          background: '#ffffff',
-          componentBackground: '#f3f8fa',
-          componentBorder: '#f3f8fa',
-          componentDivider: '#000000',
-          primaryText: '#000000',
-          secondaryText: '#000000',
-          componentText: '#000000',
-          placeholderText: '#73757b',
-        },
-      }
-    },
   }
   let price = Number(product_price).toFixed(2);
   console.log('price in /payment:', price);

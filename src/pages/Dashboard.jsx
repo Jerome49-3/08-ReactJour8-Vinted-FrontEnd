@@ -1,7 +1,12 @@
 import { Navigate, } from 'react-router-dom';
+
+//context
 import { useContext } from 'react';
-import LastUsers from '../components/LastUsers';
 import { UserContext } from "../context/UserProvider";
+
+//components
+import LastUsers from '../components/LastUsers';
+import LastSales from '../components/LastSales';
 
 
 const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
@@ -34,10 +39,10 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
         <div className="bottom">
           <div className="left">
             <div className="title">
-              <h2>Dernieres ventes</h2>
+              <h2>Ventes</h2>
             </div>
             <div className="boxDetails">
-
+              <LastSales />
             </div>
           </div>
           <div className="right">

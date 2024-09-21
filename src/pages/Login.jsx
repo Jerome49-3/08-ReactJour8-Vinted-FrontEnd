@@ -35,7 +35,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
       // console.log('email:', email, 'password:', password)
     } catch (error) {
       console.log('error in handleSubmit on Login:', error.response);
-      setErrorMessage(error.response.data.message)
+      setErrorMessage(error.response.data.message);
     }
   }
 

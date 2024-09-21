@@ -58,13 +58,14 @@ const Home = ({ search }) => {
                       <div>{article.owner.account.username}</div>
                     </div>
                     <div className='boxImgArticle'>
-                      {article.product_image ? (<Image src={article.product_image.secure_url} />) : (<Image src={noImg} alt='no image' />)}
-                      {article.product_pictures ? (<>{article.product_pictures.map((images, key = index) => {
-                        // console.log('images:', images);
-                        return (
-                          <Image src={images.secure_url} classImg='imgsArticle' key={key} />
-                        )
-                      })}</>) : (<Image src={noImg} alt='no image' />)}
+                      {article.product_image ? (<Image src={article.product_image.secure_url} />) : article.product_pictures ? (<>
+                        {article.product_pictures.map((images, key = index) => {
+                          // console.log('images:', images);
+                          return (
+                            <Image src={images.secure_url} classImg='imgsArticle' key={key} />
+                          )
+                        })}
+                      </>) : (<Image src={noImg} alt='no image' />)}
                     </div>
                     <div>{article.product_name}</div>
                     <div>{article.product_description}</div>

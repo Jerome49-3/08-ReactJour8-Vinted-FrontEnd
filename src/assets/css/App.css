@@ -1194,4 +1194,55 @@ button {
 .hideToggle {
   display: none;
   animation: disappearPanel 1s linear 0.25s 1 normal both;
+}
+
+.boxLastSales {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 15px 0 15px;
+}
+.boxLastSales .boxTansactions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  border: 2px solid #2DB0BA;
+  border-radius: 5px;
+  background-color: #343434;
+}
+.boxLastSales .boxTansactions a {
+  width: 100%;
+  color: #ffffff;
+}
+.boxLastSales .boxTansactions a table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+.boxLastSales .boxTansactions a table thead {
+  border-bottom: 2px solid #2DB0BA;
+}
+.boxLastSales .boxTansactions a table thead,
+.boxLastSales .boxTansactions a table body {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  gap: 2.5px;
+  padding-left: 5px;
+}
+.boxLastSales .boxTansactions a table thead > tr:first-child, .boxLastSales .boxTansactions a table thead > tr:nth-child(3), .boxLastSales .boxTansactions a table thead > tr:nth-child(4), .boxLastSales .boxTansactions a table thead > tr:last-child, .boxLastSales .boxTansactions a table body > td:first-child, .boxLastSales .boxTansactions a table body > td:nth-child(3), .boxLastSales .boxTansactions a table body > td:nth-child(4), .boxLastSales .boxTansactions a table body > td:last-child {
+  width: 150px;
+}
+.boxLastSales .boxTansactions a table thead > tr:nth-child(2), .boxLastSales .boxTansactions a table body > td:nth-child(2) {
+  width: 50px;
+}
+.boxLastSales .boxTansactions a table thead > tr, .boxLastSales .boxTansactions a table body > td {
+  padding: 5px;
+  text-align: center;
+}
+.boxLastSales .boxTansactions a table thead > tr:not(tr:last-child), .boxLastSales .boxTansactions a table body > td:not(td:last-child) {
+  border-right: 2px solid #2DB0BA;
 }/*# sourceMappingURL=App.css.map */

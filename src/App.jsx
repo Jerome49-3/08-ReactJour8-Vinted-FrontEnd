@@ -19,12 +19,14 @@ import Publish from './pages/Publish';
 import Payment from './pages/Payment';
 import Dashboard from './pages/Dashboard';
 import User from './pages/User';
+import Transactions from './pages/Transactions';
 
 //components
 import Header from './components/Header';
 import SignUp from './components/SignUp';
 import PrivateRoute from './pages/PrivateRoute';
 import Aside from './components/Aside';
+
 
 
 
@@ -60,6 +62,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard faNewspaper={faNewspaper} faXmark={faXmark} faUserTie={faUserTie} faUser={faUser} />} />
               <Route path="/payment" element={<Payment dataShoppingCart={dataShoppingCart} setDataShoppingCart={setDataShoppingCart} />} />
               <Route path='/users/:id' element={<User faUserTie={faUserTie} faNewspaper={faNewspaper} faXmark={faXmark} faUser={faUser} />} />
+              <Route path='/transactions/:id' element={<Transactions />} />
             </Route>
             <Route path="/" element={<Home search={search} />} />
             <Route path="/publish" element={<Publish faRotateRight={faRotateRight} />} />

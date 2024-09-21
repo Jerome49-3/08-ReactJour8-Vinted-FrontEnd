@@ -105,13 +105,6 @@ const User = () => {
     }
   }
 
-  // const handleUpdatePict = (file) => {
-  //   setPictures(file);
-  //   console.log('pictures in handleUpdatePict on /users/${id}:', pictures);
-  //   setAvatar(URL.createObjectURL(file));
-  //   console.log('avatar in handleUpdatePict on /users/${id}:', avatar);
-  // };
-
   return isLoading ? <Loading /> : (
     <div className="boxUserId">
       <div className="wrapper">
@@ -122,7 +115,6 @@ const User = () => {
         </div>
         <form className="bottom">
           <div className="left">
-            {/* {data.avatar.secure_url ? (<Image src={data.avatar.secure_url} alt='avatar' />) : (<Image src={data.avatar} alt='avatar' />)} */}
             <Image src={avatar} alt='avatar' />
             <label htmlFor="pictures"></label>
             <InputFile labelTxt='Choose your avatar' id='file' setPictures={setPictures} setAvatar={setAvatar} />

@@ -38,6 +38,14 @@
     color: var(--lightMode);
   }
 
+  .dark .boxShoppingCart .shoppingCart,
+  .dark .boxShoppingCart .shoppingCart .top,
+  .dark .boxShoppingCart .shoppingCart .bottom,
+  .dark .boxShoppingCart .shoppingCart .bottom>*>span {
+    background-color: #28282B;
+    color: var(--lightMode);
+  }
+
   .dark input::placeholder,
   .dark button p {
     color: var(--lightMode);
