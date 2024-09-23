@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import Loading from '../components/Loading';
 import { useState, useEffect } from 'react';
@@ -21,7 +22,7 @@ const Offer = ({ showHero }) => {
   console.log('data in /offers/${id}:', data);
   let [price, setPrice] = useState(0);
   const prices = Number(price).toFixed(2);
-  console.log('prices in /offers/${id}:', prices);
+  // console.log('prices in /offers/${id}:', prices);
   // const [objId, setObjId] = useState(id);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -32,7 +33,9 @@ const Offer = ({ showHero }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/offers/${id}`);
-        console.log('response in /offers/${id}:', response);
+        // console.log('response in /offers/${id}:', response);
+        console.log('response.data in /offers/${id}:', response.data);
+        console.log('response.data.product_image in /offers/${id}:', response.data.product_image);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -64,13 +67,20 @@ const Offer = ({ showHero }) => {
           <article>
             <div className="left">
               <div className='boxImgOffer'>
-                {data.product_image && <Image src={data.product_image.secure_url} className={data.product_image && 'prodImg'} />}
-                {data.product_pictures && <>{data.product_pictures.map((images, key = index) => {
+                {data.product_image ? (<Image src={data.product_image.secure_url} classImg={data.product_image && 'prodImg'} />) : data.product_pictures ? (<>{data.product_pictures.map((images, key = index) => {
                   console.log('images:', images);
                   return (
                     <Image src={images.secure_url} classImg={data.product_pictures && 'prodPict'} key={key} />
                   )
-                })}</>}
+                })}</>) : (<Image src={noImg} classImg='prodImg' />)}
+
+                {/* {data.product_image && <Image src={data.product_image.secure_url} className={data.product_image && 'prodImg'} />}
+                {data.product_pictures && <>{data.product_pictures.map((images, key = index) => {
+                  // console.log('images:', images);
+                  return (
+                    <Image src={images.secure_url} classImg={data.product_pictures && 'prodPict'} key={key} />
+                  )
+                })}</>} */}
               </div>
             </div>
             <div className="right">

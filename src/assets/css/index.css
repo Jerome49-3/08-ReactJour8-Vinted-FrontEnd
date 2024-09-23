@@ -22,7 +22,8 @@
   }
 
   .dark header,
-  .dark .boxOffer .wrapper article .right {
+  .dark .boxOffer .wrapper article .right,
+  .dark .boxOffer .wrapper article .left {
     background-color: var(--darkModeHeader);
   }
 

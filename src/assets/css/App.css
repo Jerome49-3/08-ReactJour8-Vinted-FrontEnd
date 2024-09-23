@@ -654,26 +654,31 @@ button {
 .boxOffer .wrapper article .left {
   width: 50%;
   height: 550px;
+  background-color: #ffffff;
 }
 .boxOffer .wrapper article .left .boxImgOffer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
-  gap: 20px;
+  padding: 10px 10px 18px 10px;
 }
 .boxOffer .wrapper article .left .boxImgOffer .prodImg {
   width: 100%;
   height: 100%;
+  margin-top: 5px;
 }
 .boxOffer .wrapper article .left .boxImgOffer .prodPict {
-  width: 250px;
-  height: 250px;
+  display: block;
+  width: 100%;
+  height: 50%;
+  margin-bottom: 8px;
 }
 .boxOffer .wrapper article .left .boxImgOffer .prodImg,
 .boxOffer .wrapper article .left .boxImgOffer .prodPict {
   border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 1px solid #000000;
+  outline: 1px solid #ffffff;
 }
 .boxOffer .wrapper article .right {
   width: 50%;

@@ -37,9 +37,9 @@ function App() {
   const [showToggleNav, setShowToggleNav] = useState(false);
   // console.log('showToggleNav in app:', showToggleNav);
   const [priceMin, setPriceMin] = useState(0);
-  console.log('priceMin in app:', priceMin);
+  // console.log('priceMin in app:', priceMin);
   const [priceMax, setPriceMax] = useState(0);
-  console.log('priceMax in app:', priceMax);
+  // console.log('priceMax in app:', priceMax);
   const [search, setSearch] = useState("");
   const [type, setType] = useState('password');
   const [dataShoppingCart, setDataShoppingCart] = useState(() => {

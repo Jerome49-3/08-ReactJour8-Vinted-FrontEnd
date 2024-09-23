@@ -14,7 +14,7 @@ import noImg from '../assets/images/no-image.jpg'
 
 
 const Home = ({ search }) => {
-  console.log('search in Home:', search)
+  // console.log('search in Home:', search);
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,7 +25,7 @@ const Home = ({ search }) => {
         const response = await axios.get(`http://localhost:3000/offers?title=${search}`);
         // console.log('response:', response);
         setData(response.data);
-        console.log('data inside useEffect in Home:', data);
+        // console.log('data inside useEffect in Home:', data);
         setIsLoading(false);
       } catch (error) {
         console.log(error)
