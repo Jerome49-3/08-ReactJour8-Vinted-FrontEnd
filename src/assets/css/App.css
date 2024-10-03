@@ -179,7 +179,7 @@ form input:last-child:not(.boxFormSignUp form div input) {
   box-shadow: 0px 0px 2px #000000;
   color: #ffffff;
   height: 30px;
-  width: 102%;
+  width: 100.25%;
 }
 
 input {
@@ -342,15 +342,19 @@ header .wrapper .topHeader nav ul li {
   border-radius: 5px;
   border: 2px solid #2DB0BA;
 }
+header .wrapper .topHeader nav ul li div {
+  height: 100%;
+  width: 100%;
+}
 header .wrapper .topHeader nav ul li div button, header .wrapper .topHeader nav ul li div a {
-  padding: 4px 8px 4px 8px;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 header .wrapper .topHeader nav ul li div button {
-  border-right: 2px solid #2DB0BA;
-  border-width: 2px;
+  border-right: 2.5px solid #2DB0BA;
 }
 header .wrapper .topHeader nav ul li a:not(li div a) {
   width: 100%;
@@ -383,9 +387,6 @@ header .wrapper .topHeader nav ul, header .wrapper .topHeader nav ul li, header 
   justify-content: center;
   align-items: center;
 }
-header .wrapper .topHeader nav ul li:nth-child(2), header .wrapper .topHeader nav ul li div button, header .wrapper .topHeader nav ul li div a {
-  padding: 4px 8px 4px 8px;
-}
 header .wrapper .bottomHeader {
   display: flex;
   justify-content: center;
@@ -401,6 +402,31 @@ header .wrapper .bottomHeader .dotBarLabel {
 }
 header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: flex;
+}
+
+.imgAvatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.boxSearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: #F5F6F7;
+  border-radius: 5px;
+  padding: 2px 2px 2px 10px;
+}
+
+.boxSearch input {
+  background-color: transparent;
+}
+
+.search-icons {
+  color: var(--vertVintDark);
+  width: 14px;
 }
 
 @media (min-width: 768px) {
@@ -452,27 +478,39 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
 }
 
+.description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90%;
+  height: 50px;
+}
+
 /* ARTICLE */
 .boxArticles {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 5px;
 }
-.boxArticles article {
+.boxArticles a {
+  margin: auto;
+  margin-bottom: 20px;
+}
+.boxArticles a article {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   padding: 10px;
-  width: 400px;
+  width: 350px;
   height: 250px;
   gap: 5px;
   background-color: rgb(189, 189, 189);
   border: 2px solid crimson;
+  margin: auto;
 }
-.boxArticles article .boxImgArticle {
+.boxArticles a article .boxImgArticle {
   width: 90%;
   height: 200px;
   display: flex;
@@ -482,42 +520,21 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   flex-direction: column;
   border: 2px solid blue;
 }
-.boxArticles article .boxImgArticle img {
-  width: 150px;
+.boxArticles a article .boxImgArticle .imgArticle {
+  width: 100%;
   height: 150px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.boxArticles article .boxUser {
+.boxArticles a article .boxImgArticle .imgsArticle {
+  width: calc(100% / var(--imgsLength));
+  height: 100%;
+}
+.boxArticles a article .boxUser {
   display: flex;
   align-items: center;
   gap: 12.5%;
   width: 100%;
-}
-
-.imgAvatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.boxSearch {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  background-color: #F5F6F7;
-  border-radius: 5px;
-  padding: 2px 2px 2px 10px;
-}
-
-.boxSearch input {
-  background-color: transparent;
-}
-
-.search-icons {
-  color: var(--vertVintDark);
-  width: 14px;
 }
 
 button {
@@ -527,17 +544,24 @@ button {
   cursor: pointer;
 }
 
-.boxForm div label {
-  padding: 5px 0 5px 0;
-}
-
-.boxForm input {
-  margin: 5px 0 5px 0;
-}
-
 /* PUBLISH */
 .boxFormPublish {
   width: 100%;
+}
+.boxFormPublish #description {
+  padding: 2px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.197);
+  margin: 4px 0 4px 0;
+}
+.boxFormPublish #description:focus-visible {
+  outline: transparent;
+}
+.boxFormPublish #description:focus-visible::-moz-placeholder {
+  color: transparent;
+}
+.boxFormPublish #description:focus-visible::placeholder {
+  color: transparent;
 }
 .boxFormPublish #pictures {
   display: none;
@@ -631,6 +655,14 @@ button {
   border: none;
 }
 
+.boxForm div label {
+  padding: 5px 0 5px 0;
+}
+
+.boxForm input {
+  margin: 5px 0 5px 0;
+}
+
 .boxOffer {
   display: flex;
   justify-content: center;
@@ -652,36 +684,56 @@ button {
   width: 100vw;
 }
 .boxOffer .wrapper article .left {
-  width: 50%;
+  width: 80%;
   height: 550px;
   background-color: #ffffff;
+  display: flex;
 }
-.boxOffer .wrapper article .left .boxImgOffer {
+.boxOffer .wrapper article .left .imgsRight {
+  width: 50%;
+  height: 100%;
+}
+.boxOffer .wrapper article .left .imgsRight .boxImgOffer {
+  height: calc(100% / var(--imgsLength));
+  display: contents;
+}
+.boxOffer .wrapper article .left .imgsRightNone {
+  display: none;
+}
+.boxOffer .wrapper article .left .imgLeftAlone {
   width: 100%;
   height: 100%;
-  padding: 10px 10px 18px 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
+}
+.boxOffer .wrapper article .left .boxImgOffer {
+  height: 100%;
 }
 .boxOffer .wrapper article .left .boxImgOffer .prodImg {
   width: 100%;
   height: 100%;
-  margin-top: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .boxOffer .wrapper article .left .boxImgOffer .prodPict {
   display: block;
   width: 100%;
-  height: 50%;
-  margin-bottom: 8px;
+  height: calc(100% / var(--imgsLength));
+}
+.boxOffer .wrapper article .left .boxImgOffer .prodPict0 {
+  height: 550px;
 }
 .boxOffer .wrapper article .left .boxImgOffer .prodImg,
 .boxOffer .wrapper article .left .boxImgOffer .prodPict {
-  border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
   border: 1px solid #000000;
   outline: 1px solid #ffffff;
 }
 .boxOffer .wrapper article .right {
-  width: 50%;
+  width: 30%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -692,11 +744,9 @@ button {
 }
 .boxOffer .wrapper article .right .top {
   display: flex;
-  justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  width: 100%;
-  min-height: 70%;
+  height: 45%;
 }
 .boxOffer .wrapper article .right .top .boxPrice {
   display: flex;

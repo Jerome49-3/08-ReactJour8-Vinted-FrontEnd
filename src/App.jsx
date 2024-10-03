@@ -20,21 +20,22 @@ import Payment from './pages/Payment';
 import Dashboard from './pages/Dashboard';
 import User from './pages/User';
 import Transactions from './pages/Transactions';
+import MySales from './pages/MySales';
+import MyPurchases from './pages/MyPurchases';
 
 //components
 import Header from './components/Header';
 import SignUp from './components/SignUp';
 import PrivateRoute from './pages/PrivateRoute';
 import Aside from './components/Aside';
-
-
-
+import ImgsModal from './components/ImgsModal';
 
 function App() {
   const [show, setShow] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [showHero, setShowHero] = useState(false);
   const [showToggleNav, setShowToggleNav] = useState(false);
+  const [showImgsModal, setShowImgsModal] = useState(false);
   // console.log('showToggleNav in app:', showToggleNav);
   const [priceMin, setPriceMin] = useState(0);
   // console.log('priceMin in app:', priceMin);
@@ -63,13 +64,16 @@ function App() {
               <Route path="/payment" element={<Payment dataShoppingCart={dataShoppingCart} setDataShoppingCart={setDataShoppingCart} />} />
               <Route path='/users/:id' element={<User faUserTie={faUserTie} faNewspaper={faNewspaper} faXmark={faXmark} faUser={faUser} />} />
               <Route path='/transactions/:id' element={<Transactions />} />
+              <Route path='/my-sales' element={<MySales />} />
+              <Route path='/my-purchases' element={<MyPurchases />} />
             </Route>
             <Route path="/" element={<Home search={search} />} />
             <Route path="/publish" element={<Publish faRotateRight={faRotateRight} />} />
-            <Route path="/offers/:id" element={<Offer show={showHero} setDataShoppingCart={setDataShoppingCart} />} />
+            <Route path="/offers/:id" element={<Offer show={showHero} setDataShoppingCart={setDataShoppingCart} showImgsModal={showImgsModal} setShowImgsModal={setShowImgsModal} />} />
           </Routes>
           {show && <SignUp show={show} setShow={setShow} icon1="eye" icon2="eye-slash" type={type} setType={setType} />}
           {showToggleNav && <Aside showToggleNav={showToggleNav} setShowToggleNav={setShowToggleNav} />}
+          {showImgsModal && <ImgsModal showImgsModal={showImgsModal} setShowImgsModal={setShowImgsModal} />}
         </UserProvider>
       </Router>
     </>

@@ -2,6 +2,21 @@
 .boxFormPublish {
   width: 100%;
 
+  #description {
+    padding: 2px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.197);
+    margin: 4px 0 4px 0;
+
+    &:focus-visible {
+      outline: transparent;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
+
   #pictures {
     display: none;
   }
@@ -93,4 +108,12 @@
     }
   }
 
+}
+
+.boxForm div label {
+  padding: 5px 0 5px 0;
+}
+
+.boxForm input {
+  margin: 5px 0 5px 0;
 }

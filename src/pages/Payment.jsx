@@ -17,9 +17,9 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
   const { token } = useContext(UserContext);
   const [succes, setSucces] = useState(false);
   const { state } = useLocation();
-  console.log('state: in /payment:', state);
-  const { product_name, product_price, product_image, product_id } = state;
-  console.log('product_name:', product_name, '\n', 'product_price:', product_price, '\n', 'product_image:', product_image, '\n', 'product_id:', product_id);
+  console.log('state in /payment:', state);
+  const { product_name, product_price, product_image, product_id, product_pictures } = state;
+  console.log('product_name in /payment:', product_name, '\n', 'product_price in /payment:', product_price, '\n', 'product_image in /payment:', product_image, '\n', 'product_id in /payment:', product_id, '\n', 'product_pictures in /payment:', product_pictures);
 
 
   useEffect(() => {
@@ -114,7 +114,7 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
           <div className={succes ? 'hide' : "line"}></div>
           <div className="bottom">
             <Elements stripe={stripeConnect} options={options}>
-              <CheckoutForm data={{ product_name: state.product_name, product_price: product_price, total: subTotal, product_image: state.product_image, product_id: state.product_id, buyer_token: token }} succes={succes} setSucces={setSucces} />
+              <CheckoutForm data={{ product_name: state.product_name, product_price: product_price, total: subTotal, product_image: state.product_image, product_pictures: state.product_pictures, product_id: state.product_id, buyer_token: token }} succes={succes} setSucces={setSucces} />
             </Elements>
           </div>
         </div>

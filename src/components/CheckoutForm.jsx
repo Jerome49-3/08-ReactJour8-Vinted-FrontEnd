@@ -69,7 +69,20 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         <p>Merci pour votre achat de {data.product_name}</p>
       </div>
       <div className="right">
-        <Image src={data.product_image} alt={data.product_name} />
+        {data.product_image ? (<Image src={data.product_image} alt={data.product_name} />) : (
+
+          <>{data.product_pictures.map((images, index) => {
+            // console.log('images:', images);
+            return (
+              <>
+                {index > 0 && index < 2 && (
+                  <Image src={images.secure_url} alt={data.product_name} />)}
+              </>
+            )
+          })}
+          </>
+        )}
+
       </div>
     </div>
 
@@ -78,6 +91,7 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
       <AddressForm />
       <PaymentElement />
       <button disabled={ispayed || !stripe || !elements}>Payer</button>
+      {errorMessage && <div className="red">{errorMessage}</div>}
     </form>
   )
 }

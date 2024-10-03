@@ -15,34 +15,55 @@
       // border: 2px solid green;
 
       .left {
-        width: calc(100% /2);
+        width: 80%;
         height: 550px;
         // border: 2px solid blue;
         background-color: $white;
+        display: flex;
 
+        .imgsRight {
+          width: calc(100% / 2);
+          height: 100%;
 
-        .boxImgOffer {
+          .boxImgOffer {
+            height: calc(100% / var(--imgsLength));
+            display: contents;
+          }
+        }
+
+        .imgsRightNone {
+          display: none;
+        }
+
+        .imgLeftAlone {
           width: 100%;
           height: 100%;
-          padding: 10px 10px 18px 10px;
+          object-fit: cover;
+          object-position: center top;
+        }
+
+        .boxImgOffer {
+          height: 100%;
           // border: 2px solid yellow;
 
           .prodImg {
             width: 100%;
             height: 100%;
-            margin-top: 5px;
+            object-fit: cover;
           }
 
           .prodPict {
             display: block;
             width: 100%;
-            height: 50%;
-            margin-bottom: 8px;
+            height: calc(100% / var(--imgsLength));
+          }
+
+          .prodPict0 {
+            height: 550px;
           }
 
           .prodImg,
           .prodPict {
-            border-radius: 5px;
             object-fit: cover;
             border: 1px solid $black;
             outline: 1px solid $white;
@@ -53,16 +74,17 @@
 
       .right {
         // border: 2px solid purple;
-        width: calc(100% /2);
+        width: 30%;
         @include flexColStart;
         padding: 10px 40px 10px 40px;
         background-color: $white;
         height: 550px;
 
         .top {
-          @include flexColStart;
-          width: 100%;
-          min-height: 70%;
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+          height: 45%;
 
           .boxPrice {
             @include flexCenter;

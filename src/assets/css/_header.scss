@@ -8,7 +8,7 @@ header {
   .wrapper {
     @include wrapper;
 
-
+    //header always visible
     .topHeader {
       @include flexColCenter;
       gap: 20px;
@@ -36,15 +36,21 @@ header {
             border-radius: 5px;
             border: 2px solid $vertVinted;
 
+            & div {
+              height: 100%;
+              width: 100%;
+            }
+
             & div button,
             & div a {
-              padding: 4px 8px 4px 8px;
+              height: 100%;
+              width: 100%;
+              // padding: 4px 8px 4px 8px;
               @include flexCenter;
             }
 
             & div button {
-              border-right: 2px solid $vertVinted;
-              border-width: 2px;
+              border-right: 2.5px solid $vertVinted;
             }
 
             & a:not(li div a) {
@@ -84,16 +90,11 @@ header {
         & ul li div a {
           @include flexCenter;
         }
-
-        & ul li:nth-child(2),
-        & ul li div button,
-        & ul li div a {
-          padding: 4px 8px 4px 8px;
-        }
       }
 
     }
 
+    //filters visible if input#search not undefined
     .bottomHeader {
       @include flexColCenter;
       width: 100%;
@@ -111,12 +112,32 @@ header {
       }
     }
   }
-
-
-
-
 }
 
+.imgAvatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.boxSearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: #F5F6F7;
+  border-radius: 5px;
+  padding: 2px 2px 2px 10px;
+}
+
+.boxSearch input {
+  background-color: transparent;
+}
+
+.search-icons {
+  color: var(--vertVintDark);
+  width: 14px;
+}
 
 @media (min-width: 768px) {
 

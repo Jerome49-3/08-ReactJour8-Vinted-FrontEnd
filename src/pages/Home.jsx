@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -16,19 +17,22 @@ import noImg from '../assets/images/no-image.jpg'
 const Home = ({ search }) => {
   // console.log('search in Home:', search);
   const [data, setData] = useState();
+  console.log('data in /Home:', data);
   const [isLoading, setIsLoading] = useState(true);
+  const [imgsNbr, setImgsNbr] = useState(0);
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/offers?title=${search}`);
-        // console.log('response:', response);
-        setData(response.data);
-        // console.log('data inside useEffect in Home:', data);
-        setIsLoading(false);
+        console.log('response:', response);
+        if (response.data) {
+          setData(response.data);
+          setIsLoading(false);
+        }
       } catch (error) {
-        console.log(error)
+        console.log(error.response.data.message);
       }
     }
     fetchData();
@@ -58,17 +62,19 @@ const Home = ({ search }) => {
                       <div>{article.owner.account.username}</div>
                     </div>
                     <div className='boxImgArticle'>
-                      {article.product_image ? (<Image src={article.product_image.secure_url} />) : article.product_pictures ? (<>
-                        {article.product_pictures.map((images, key = index) => {
+                      {article.product_image ? (<Image src={article.product_image.secure_url} classImg='imgArticle' />) : article.product_pictures ? (<>
+                        {article.product_pictures.map((images, index) => {
                           // console.log('images:', images);
                           return (
-                            <Image src={images.secure_url} classImg='imgsArticle' key={key} />
+                            <>
+                              {index === 0 ? (<Image src={images.secure_url} classImg='imgArticle' key={index} />) : (null)}
+                            </>
                           )
                         })}
                       </>) : (<Image src={noImg} alt='no image' />)}
                     </div>
                     <div>{article.product_name}</div>
-                    <div>{article.product_description}</div>
+                    <div className='description'>{article.product_description}</div>
                   </article >
                 </Link >
               </>

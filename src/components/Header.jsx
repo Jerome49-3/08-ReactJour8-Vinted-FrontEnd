@@ -55,14 +55,14 @@ const Header = ({ show, setShow, search, setSearch, showToggleNav, setShowToggle
                 <Links path={token !== null && token !== undefined ? '/publish' : '/login'} linkText='vendre tes articles' />
               </li>
               {token ? (
-                <div className="boxUser" onClick={() => { setShowToggleNav(!showToggleNav) }}>
-                  <div className="hello">bonjour {user.account.username}</div>
+                <li className="boxUser" onClick={() => { setShowToggleNav(!showToggleNav) }}>
+                  <div className="hello">Bonjour {user.account.username}</div>
                   {user.account.avatar.secure_url ? (
                     <>
                       <Image src={user.account.avatar.secure_url} alt="avatar" classImg='imgAvatar' />
                     </>
                   ) : (<Image src={user.account.avatar} alt="avatar" classImg='imgAvatar' />)}
-                </div>
+                </li>
               ) : (null)}
               <Aside showToggleNav={showToggleNav} setShowToggleNav={setShowToggleNav} />
             </ul>
