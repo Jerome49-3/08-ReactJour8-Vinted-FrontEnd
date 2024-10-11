@@ -37,9 +37,18 @@
   .dark input,
   .dark .boxSearch,
   .dark .toggleNav,
-  .dark textarea {
+  .dark textarea,
+  .dark .boxModalContent .boxFormSignUp input:not(input[type="submit"]),
+  .dark .boxPsswd {
     background-color: var(--backDarkLink);
     color: var(--lightMode);
+  }
+
+  .dark input[type="submit"] {
+    color: #000000;
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-shadow: 0.25px 0.25px 1px var(--lightMode);
   }
 
   .dark header nav ul li button,
@@ -54,6 +63,7 @@
   .dark .boxShoppingCart .shoppingCart,
   .dark .boxShoppingCart .shoppingCart .top,
   .dark .boxShoppingCart .shoppingCart .bottom,
+  .dark .boxModalContent,
   .dark .boxShoppingCart .shoppingCart .bottom>*>span {
     background-color: #28282B;
     color: var(--lightMode);

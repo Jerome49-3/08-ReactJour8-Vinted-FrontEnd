@@ -3,16 +3,51 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
+  gap: 5px;
+  padding: 1.5 rem 2rem 2rem 2rem;
+
+  & div,
+  & input {
+    width: 100%;
+
+  }
+
+  & div {
+    & label {
+      padding: 5px 0 5px 0;
+    }
+  }
 
   & form {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    width: 100%;
 
-    & input::placeholder {
-      color: $backPlaceholder;
+    & input {
+      background-color: $backgroundInput;
+      border: none;
+
+      &:focus-visible {
+        outline: transparent;
+      }
+
+      &:focus-visible::placeholder {
+        opacity: 0;
+      }
+
+      &::placeholder {
+        color: $backPlaceholder;
+      }
+    }
+
+    & textarea {
+      width: 100%;
     }
 
     & img {
@@ -20,6 +55,34 @@
       height: 100px;
       object-fit: cover;
       border-radius: 10px;
+    }
+
+    .boxCheckBox {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+
+      & input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+      }
+
+      & span {
+        width: 85%;
+      }
+    }
+
+    .boxPsswd {
+      border-bottom: 1px solid $borderInput;
+      @include flexCenter;
+      background-color: $backgroundInput;
+
+      #password {
+        min-width: 95%;
+        border-bottom: none;
+        background-color: transparent;
+      }
     }
   }
 }
@@ -31,34 +94,12 @@
   transform: translate(-50%, -50%);
 }
 
-.boxForm div,
-.boxForm input {
-  width: 100%;
-
-}
-
-.boxFormSignUp {
-  @include flexColCenter;
-}
-
 form input:not(form input:last-child),
 .boxFormSignUp form div input {
   padding: 2px;
   border-bottom: 1px solid $borderInput;
 }
 
-.boxFormSignUp form .boxPsswd {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid $borderInput;
-}
-
-.boxFormSignUp form .boxPsswd input {
-  min-width: 95%;
-  padding: 1px;
-  border-bottom: none;
-}
 
 
 form input:last-child:not(.boxFormSignUp form div input) {
@@ -67,25 +108,4 @@ form input:last-child:not(.boxFormSignUp form div input) {
   color: $white;
   height: 30px;
   width: 100.25%;
-}
-
-input {
-  border: none;
-}
-
-input:focus-visible {
-  outline: transparent;
-}
-
-input:focus-visible::placeholder {
-  opacity: 0;
-}
-
-.boxForm Form {
-  width: 100%;
-}
-
-/* FORM TEXTAREA */
-form textarea {
-  width: 100%;
 }

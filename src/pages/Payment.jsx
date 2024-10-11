@@ -43,6 +43,7 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
     // Vérification de la création du cookie
     console.log('Cookie set:', Cookies.get('vintedShoppingCart'));
   }, [dataShoppingCart]);
+
   console.log('Number((product_price * 100).toFixed(0)):', Number((product_price * 100).toFixed(0)));
   console.log('typeof Number((product_price * 100).toFixed(0)):', typeof Number((product_price * 100).toFixed(0)));
   const options = {

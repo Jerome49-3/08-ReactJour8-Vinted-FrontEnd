@@ -1,39 +1,182 @@
 /* LOADING */
-.boxDot {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.boxLines {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  gap: 20px;
+  @include flexCenter;
+  gap: 2px;
 }
 
-.boxDot h1 {
-  font-size: 2rem;
-  --text-shadow1w: #f8f6f6;
-  --text-shadow2: rgba(0, 0, 0, 0.7);
-  text-shadow: 2px 2px 4px var(--text-shadow1w), 1px 1px 1px #2DB0BA,
-    2px 2px 4px #2DB0BA,
-    2px 2px 2px var(--text-shadow2), 2px 2px 2px var(--text-shadow2), 2px 2px 4px var(--text-shadow2);
+.line {
+  width: 2.5px;
+  height: 12.5px;
+  background-color: $vertVinted;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transform-origin: center;
 }
 
-.dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #000000;
+.line1 {
+  // top: 2%;
+  // left: 50%;
+  transform: rotate(0deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 0s infinite both;
 }
 
-.dot1 {
-  animation: bounce-in-top 2s ease-in-out 0.5s infinite normal both;
+.line2 {
+  // top: 3.5%;
+  // left: 62%;
+  transform: rotate(22.5deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 0.10s infinite both;
 }
 
-.dot2 {
-  animation: bounce-in-top 2s ease-in-out 0.75s infinite normal both;
+.line3 {
+  // top: 10%;
+  // left: 72.5%;
+  transform: rotate(45deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 0.20s infinite both;
 }
 
-.dot3 {
-  animation: bounce-in-top 2s ease-in-out 1s infinite normal both;
+
+.line4 {
+  // top: 20%;
+  // left: 80%;
+  transform: rotate(67.5deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 0.30s infinite both;
 }
+
+.line5 {
+  // top: 35%;
+  // left: 82.5%;
+  transform: rotate(90deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 0.40s infinite both;
+}
+
+.line6 {
+  // top: 48%;
+  // left: 82.5%;
+  transform: rotate(112.5deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 0.50s infinite both;
+}
+
+.line7 {
+  // top: 60%;
+  // left: 75%;
+  transform: rotate(135deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 0.60s infinite both;
+}
+
+.line8 {
+  // top: 70%;
+  // left: 65%;
+  transform: rotate(157.5deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 0.70s infinite both;
+}
+
+.line9 {
+  // top: 72.5%;
+  // left: 50%;
+  transform: rotate(180deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 0.80s infinite both;
+}
+
+.line10 {
+  // top: 70%;
+  // left: 35%;
+  transform: rotate(202.5deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 0.90s infinite both;
+}
+
+.line11 {
+  // top: 62.5%;
+  // left: 20%;
+  transform: rotate(225deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 1s infinite both;
+}
+
+.line12 {
+  // top: 48%;
+  // left: 15%;
+  transform: rotate(247.5deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 1.10s infinite both;
+}
+
+.line13 {
+  // top: 35%;
+  // left: 10%;
+  transform: rotate(270deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 1.20s infinite both;
+}
+
+.line14 {
+  // top: 20%;
+  // left: 15%;
+  transform: rotate(292.5deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 1.30s infinite both;
+}
+
+.line15 {
+  // top: 10%;
+  // left: 25%;
+  transform: rotate(315deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 1.40s infinite both;
+}
+
+.line16 {
+  // top: 2%;
+  // left: 35%;
+  transform: rotate(337.5deg) translate(0, -25px);
+  animation: appearLine 1.50s ease-in-out 1.50s infinite both;
+}
+
+// .line17 {
+//   top: 2%;
+//   left: 50%;
+//   transform: rotate(360deg) translate(0, -25px);
+//   animation: appearLine 1s linear 1.40s infinite both;
+// }
+
+// OLD LOADING //
+// .boxDot {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   gap: 20px;
+// }
+
+// .boxDot h1 {
+//   font-size: 2rem;
+//   --text-shadow1w: #f8f6f6;
+//   --text-shadow2: rgba(0, 0, 0, 0.7);
+//   text-shadow: 2px 2px 4px var(--text-shadow1w), 1px 1px 1px #2DB0BA,
+//     2px 2px 4px #2DB0BA,
+//     2px 2px 2px var(--text-shadow2), 2px 2px 2px var(--text-shadow2), 2px 2px 4px var(--text-shadow2);
+// }
+
+// .dot {
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+//   background-color: #000000;
+// }
+
+// .dot1 {
+//   animation: bounce-in-top 2s ease-in-out 0.5s infinite normal both;
+// }
+
+// .dot2 {
+//   animation: bounce-in-top 2s ease-in-out 0.75s infinite normal both;
+// }
+
+// .dot3 {
+//   animation: bounce-in-top 2s ease-in-out 1s infinite normal both;
+// }

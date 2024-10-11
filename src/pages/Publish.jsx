@@ -1,7 +1,7 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useRef } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
-import { UserContext } from "../context/UserProvider";
+import { useUser } from '../context/lib/userFunc';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //components
@@ -11,7 +11,7 @@ import Input from "../components/Input";
 const Publish = ({ faRotateRight }) => {
   const [rotate, setRotate] = useState(0);
   const viewFile = useRef(null);
-  const { token } = useContext(UserContext);
+  const { token } = useUser();
   // console.log("token in publish:", token);
   const [pictures, setPictures] = useState([]);
   console.log("pictures in publish:", pictures);
@@ -26,7 +26,7 @@ const Publish = ({ faRotateRight }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    // console.log("token inside handleSubmit in publish:", token);
+    console.log("token inside handleSubmit in publish:", token);
     // console.log('e:', e);
     e.preventDefault();
     const formData = new FormData();
@@ -120,7 +120,7 @@ const Publish = ({ faRotateRight }) => {
                 type="file"
                 id="pictures"
                 name="pictures"
-                multiple="true"
+                multiple={true}
                 onChange={(e) => {
                   let newPic = [...pictures];
                   console.log(

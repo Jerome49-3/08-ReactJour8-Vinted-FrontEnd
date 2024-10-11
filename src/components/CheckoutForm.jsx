@@ -5,8 +5,8 @@ import AddressForm from '../components/AdressForm';
 import Image from '../components/Image';
 
 const CheckoutForm = ({ data, succes, setSucces }) => {
-  console.log('data on checkOutForm:', data);
-  console.log('data.product_name:', data.product_name, '\n', 'data.total:', data.total, '\n', 'data.product_price:', data.product_price, '\n', 'data.product_id:', data.product_id, '\n', 'product_image:', data.product_image, '\n', 'buyer_token:', data.buyer_token);
+  // console.log('data on checkOutForm:', data);
+  // console.log('data.product_name:', data.product_name, '\n', 'data.total:', data.total, '\n', 'data.product_price:', data.product_price, '\n', 'data.product_id:', data.product_id, '\n', 'product_image:', data.product_image, '\n', 'buyer_token:', data.buyer_token);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -17,14 +17,14 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
     e.preventDefault();
     setIspayed(true);
     try {
-      if (elements == null) {
+      if (elements === null) {
         setIspayed(false);
         return;
       }
       //destructuration de la clé error de la réponse de elements.submit() et la renommer submitError.
       const { error: submitError } = await elements.submit();
       if (submitError) {
-        // console.log('submitError', submitError);
+        console.log('submitError', submitError);
         setErrorMessage(submitError.message);
         setIspayed(false);
         return;
@@ -54,7 +54,18 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         setIspayed(false);
         return;
       } else if (paymentIntent.status === "succeeded") {
-        setSucces(true);
+        const sendSuccess = await axios.post('http://localhost:3000/confirmPayment',
+          { product_title: data.product_name, amount: data.total, product_price: data.product_price, product_id: data.product_id, offer_solded: true },
+          {
+            headers: {
+              Authorization: `Bearer ${data.buyer_token}`
+            },
+          }
+        );
+        if (sendSuccess) {
+          console.log('sendSuccess in /payment:', sendSuccess);
+          setSucces(true);
+        }
       }
       console.log('paymentIntent:', paymentIntent)
     } catch (error) {

@@ -19,7 +19,7 @@ const Home = ({ search }) => {
   const [data, setData] = useState();
   console.log('data in /Home:', data);
   const [isLoading, setIsLoading] = useState(true);
-  const [imgsNbr, setImgsNbr] = useState(0);
+  // const [imgsNbr, setImgsNbr] = useState(0);
 
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const Home = ({ search }) => {
             // console.log('article:', article);
             return (
               <>
-                <Link to={`/offers/${article._id}`} key={key} article={article}>
+                <Link to={`/offers/${article._id}`} key={key} article={article} className={article.offer_solded === true && 'hide'}>
                   <article>
                     <div className='boxUser'>
                       {article.owner.account.avatar.secure_url ? (

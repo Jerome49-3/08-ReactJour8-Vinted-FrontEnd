@@ -1,92 +1,89 @@
-import { createContext, useState, useEffect } from "react";
-import Cookies from "cookies-js";
-import { useNavigate } from 'react-router-dom';
-import CryptoJS from "crypto-js";
+import { createContext, useState, useEffect } from 'react';
+import { decryptUser } from './lib/userFunc';
+import axios from 'axios';
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  let [user, setUser] = useState(Cookies.get('VintedUser') || null);
-  const [token, setToken] = useState(Cookies.get('vintedAppConnect') || null);
-  const [isAdmin, setIsAdmin] = useState(Cookies.get('vintedAppAdm') || null);
+  const [token, setToken] = useState(null)
+  const [user, setUser] = useState(null);
+  console.log('user in userProvider:', user);
+  const [isAdmin, setIsAdmin] = useState(null);
+  console.log('isAdmin in userProvider:', isAdmin);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
+  console.log('errorMessage in userProvider:', errorMessage);
 
   useEffect(() => {
-    const loadUser = async () => {
-      try {
-        const userData = Cookies.get('VintedUser');
-        const tokenData = Cookies.get('vintedAppConnect');
-        let admData = Cookies.get('vintedAppAdm');
-        if (userData) {
-          console.log('userData in useEffect on userProvider:', userData);
-          const userParse = JSON.parse(userData);
-          console.log('userParse in useEffect on userProvider:', userParse);
-          setUser(userParse);
-        }
-        if (tokenData) {
-          setToken(tokenData);
-        }
-        if (admData) {
-          // console.log('admData: in userProvider:', admData);
-          const adm = JSON.parse(admData);
-          // console.log('adm: in userProvider:', adm);
-          // console.log('typeof adm: in userProvider:', typeof adm);
-          setIsAdmin(adm);
-        }
-      } catch (error) {
-        setErrorMessage(error.message)
-        console.log('error', error);
-        navigate('/login');
-      }
-    }
-    loadUser();
-  }, [])
-
-  const saveUser = (user) => {
     try {
-      const dataDecrypt = CryptoJS.AES.decrypt(user, import.meta.env.VITE_REACT_APP_SRV_KEY_SECRET);
-      // console.log('dataDecrypt in saveUser on userProvider', dataDecrypt);
-      const originData = dataDecrypt.toString(CryptoJS.enc.Utf8);
-      // console.log('originData in saveUser on userProvider', originData);
-      user = JSON.parse(originData);
-      console.log('user in saveUser on userProvider', user);
-      if (user) {
-        setUser(user);
-        Cookies.set('VintedUser', JSON.stringify(user), { expires: 15 });
-      }
-      if (user.token !== undefined) {
-        Cookies.set('vintedAppConnect', user.token, { expires: 15 });
-        setToken(user.token);
-      }
-      if (user.isAdmin !== false) {
-        // console.log('userData.isAdmin:', userData.isAdmin);
-        Cookies.set('vintedAppAdm', JSON.stringify(user.isAdmin), { expires: 15 });
-        setIsAdmin(user.isAdmin);
+      setToken(localStorage.getItem('userToken'));
+      if (token) {
+        const decryptedUser = decryptUser(token);
+        console.log('decryptedUser in useEffect on userProvider:', decryptedUser);
+        if (decryptedUser) {
+          setUser(decryptedUser);
+          setIsAdmin(decryptedUser.isAdmin)
+        } else {
+          localStorage.removeItem('userToken');
+        }
       }
     } catch (error) {
-      setErrorMessage(error.message)
-      console.log('error', error);
+      console.log('error in useEffect in userProvider:', error);
     }
-  }
+  }, [token]);
 
-  const clearUser = () => {
+  const signup = async (username, email, password, newsletter) => {
     try {
-      Cookies.expire('VintedUser');
-      Cookies.expire('vintedAppConnect');
-      Cookies.expire('vintedAppAdm');
+      const response = await axios.post(
+        import.meta.env.VITE_REACT_APP_LOCALHOST_SIGNUP,
+        {
+          username,
+          email,
+          password,
+          newsletter,
+        }
+      );
+      if (response.data) {
+        return response.data;
+      } else {
+        throw new Error('no data in /signup')
+      }
+    } catch (error) {
+      console.log("error in SignupService:", error.response.data.message);
+      return setErrorMessage(error.response.data.message);
+    }
+  };
+
+  const saveUser = async (token) => {
+    try {
+      localStorage.setItem('userToken', token);
+      setToken(token);
+      const decryptedUser = decryptUser(token);
+      console.log('decryptedUser in userProvider:', decryptedUser);
+      setUser(decryptedUser);
+      localStorage.setItem('isAdmin', decryptedUser.isAdmin)
+      setIsAdmin(decryptedUser.isAdmin);
+    } catch (error) {
+      setErrorMessage(error);
+      setUser(null);
+      localStorage.removeItem('userToken');
+    }
+  };
+
+  const logout = () => {
+    try {
       setUser(null);
       setToken(null);
       setIsAdmin(null);
+      localStorage.removeItem('userToken');
+      localStorage.removeItem('isAdmin');
     } catch (error) {
-      setErrorMessage(error.message)
-      console.log('error', error);
+      setErrorMessage(error)
     }
-  }
+  };
 
   return (
-    <UserContext.Provider value={{ user, token, isAdmin, errorMessage, saveUser, clearUser }}>
+    <UserContext.Provider value={{ token, saveUser, user, setUser, logout, isAdmin, setIsAdmin, errorMessage, setErrorMessage, signup }}>
       {children}
     </UserContext.Provider>
-  )
-}
+  );
+};

@@ -1,17 +1,19 @@
 import Input from '../components/Input';
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { UserContext } from "../context/UserProvider";
-import { useContext } from "react";
+import { useUser } from '../context/lib/userFunc';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = ({ type, setType, icon1, icon2 }) => {
-  const { saveUser } = useContext(UserContext);
+  const { saveUser } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+
+
   const handleType = () => {
     setType(type === 'password' ? 'text' : 'password')
   }
@@ -19,28 +21,23 @@ const Login = ({ type, setType, icon1, icon2 }) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = await axios.post(import.meta.env.VITE_REACT_APP_LOCALHOST_LOGIN,
-        {
-          email: email,
-          password: password,
-        }
-      );
-      console.log('response in login:', response);
-      // console.log('response.data.token in login:', response?.data?.token);
-      if (response.data) {
-        const user = response.data;
-        saveUser(user);
-        navigate("/publish")
+      const response = await axios.post(import.meta.env.VITE_REACT_APP_LOCALHOST_LOGIN, { email, password });
+      if (response) {
+        console.log('response in handleSubmit on /Login:', response);
+        console.log('response.data in handleSubmit on /Login:', response.data);
+        const token = response.data;
+        await saveUser(token);
+        navigate("/publish");
       }
-      // console.log('email:', email, 'password:', password)
     } catch (error) {
-      console.log('error in handleSubmit on Login:', error.response);
-      setErrorMessage(error.response.data.message);
+      console.log('error.response in handleSubmit on Login:', error.response);
+      console.log('error:', error);
+      setErrorMessage(error?.response?.data?.message || 'login failed');
     }
   }
 
   return (
-    <div className='boxForm boxFormCenter boxFormSignUp'>
+    <div className='boxForm boxFormCenter'>
       <form onSubmit={handleSubmit}>
         <Input id="email" type="email" placeholder="jerome@test.com" value={email} setState={setEmail} autocomplete="on" />
         <div className="boxPsswd">

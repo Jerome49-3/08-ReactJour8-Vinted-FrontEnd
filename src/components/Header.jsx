@@ -12,11 +12,12 @@ import Aside from "./Aside";
 import Input from "./Input";
 import Links from "./Links";
 import LabeledTwoThumbs from "./LabeledTwoThumbs";
+import { useUser } from '../context/lib/userFunc';
 
 const Header = ({ show, setShow, search, setSearch, showToggleNav, setShowToggleNav, priceMax, setPriceMax, priceMin, setPriceMin }) => {
   // console.log('search in header:', search);
   // console.log('showToggleNav in header:', showToggleNav);
-  const { token, user } = useContext(UserContext);
+  const { token, user } = useUser();
   // console.log('token in header:', token, '\n', 'isAdmin in header:', isAdmin, '\n', 'user: in header:', user);
   // console.log('typeof token in header:', typeof token, '\n', 'typeof isAdmin in header:', typeof isAdmin);
 
@@ -40,21 +41,19 @@ const Header = ({ show, setShow, search, setSearch, showToggleNav, setShowToggle
           <nav>
             <ul>
               {token === null && (
-                <>
-                  <li>
-                    <div className="buttonSignIn">
-                      <button onClick={() => {
-                        { show === false ? (setShow(true)) : (setShow(false)) }
-                      }}>s'inscrire</button>
-                    </div>
-                    <div><Link to='/login'>se connecter</Link></div>
-                  </li>
-                </>
+                <li>
+                  <div className="buttonSignIn">
+                    <button onClick={() => {
+                      { show === false ? (setShow(true)) : (setShow(false)) }
+                    }}>s'inscrire</button>
+                  </div>
+                  <div><Link to='/login' className="linkConnect">se connecter</Link></div>
+                </li>
               )}
               <li>
                 <Links path={token !== null && token !== undefined ? '/publish' : '/login'} linkText='vendre tes articles' />
               </li>
-              {token ? (
+              {(token && user) ? (
                 <li className="boxUser" onClick={() => { setShowToggleNav(!showToggleNav) }}>
                   <div className="hello">Bonjour {user.account.username}</div>
                   {user.account.avatar.secure_url ? (

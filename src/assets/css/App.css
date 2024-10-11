@@ -33,6 +33,14 @@
     opacity: 0;
   }
 }
+@keyframes appearLine {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes appearPanel {
   0% {
     opacity: 0;
@@ -67,41 +75,108 @@
 }
 
 /* LOADING */
-.boxDot {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.boxLines {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
 }
 
-.boxDot h1 {
-  font-size: 2rem;
-  --text-shadow1w: #f8f6f6;
-  --text-shadow2: rgba(0, 0, 0, 0.7);
-  text-shadow: 2px 2px 4px var(--text-shadow1w), 1px 1px 1px #2DB0BA, 2px 2px 4px #2DB0BA, 2px 2px 2px var(--text-shadow2), 2px 2px 2px var(--text-shadow2), 2px 2px 4px var(--text-shadow2);
+.line {
+  width: 2.5px;
+  height: 12.5px;
+  background-color: #2DB0BA;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transform-origin: center;
 }
 
-.dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #000000;
+.line1 {
+  transform: rotate(0deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 0s infinite both;
 }
 
-.dot1 {
-  animation: bounce-in-top 2s ease-in-out 0.5s infinite normal both;
+.line2 {
+  transform: rotate(22.5deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 0.1s infinite both;
 }
 
-.dot2 {
-  animation: bounce-in-top 2s ease-in-out 0.75s infinite normal both;
+.line3 {
+  transform: rotate(45deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 0.2s infinite both;
 }
 
-.dot3 {
-  animation: bounce-in-top 2s ease-in-out 1s infinite normal both;
+.line4 {
+  transform: rotate(67.5deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 0.3s infinite both;
+}
+
+.line5 {
+  transform: rotate(90deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 0.4s infinite both;
+}
+
+.line6 {
+  transform: rotate(112.5deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 0.5s infinite both;
+}
+
+.line7 {
+  transform: rotate(135deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 0.6s infinite both;
+}
+
+.line8 {
+  transform: rotate(157.5deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 0.7s infinite both;
+}
+
+.line9 {
+  transform: rotate(180deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 0.8s infinite both;
+}
+
+.line10 {
+  transform: rotate(202.5deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 0.9s infinite both;
+}
+
+.line11 {
+  transform: rotate(225deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 1s infinite both;
+}
+
+.line12 {
+  transform: rotate(247.5deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 1.1s infinite both;
+}
+
+.line13 {
+  transform: rotate(270deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 1.2s infinite both;
+}
+
+.line14 {
+  transform: rotate(292.5deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 1.3s infinite both;
+}
+
+.line15 {
+  transform: rotate(315deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 1.4s infinite both;
+}
+
+.line16 {
+  transform: rotate(337.5deg) translate(0, -25px);
+  animation: appearLine 1.5s ease-in-out 1.5s infinite both;
 }
 
 /* ERROR MESSAGE */
@@ -114,13 +189,38 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
+  gap: 5px;
+  padding: 1.5 rem 2rem 2rem 2rem;
+}
+.boxForm div, .boxForm input {
+  width: 100%;
+}
+.boxForm div label {
+  padding: 5px 0 5px 0;
 }
 .boxForm form {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+  width: 100%;
+}
+.boxForm form input {
+  background-color: #F5F6F7;
+  border: none;
+}
+.boxForm form input:focus-visible {
+  outline: transparent;
+}
+.boxForm form input:focus-visible::-moz-placeholder {
+  opacity: 0;
+}
+.boxForm form input:focus-visible::placeholder {
+  opacity: 0;
 }
 .boxForm form input::-moz-placeholder {
   color: #b0b0b0;
@@ -128,12 +228,40 @@
 .boxForm form input::placeholder {
   color: #b0b0b0;
 }
+.boxForm form textarea {
+  width: 100%;
+}
 .boxForm form img {
   width: 100px;
   height: 100px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;
+}
+.boxForm form .boxCheckBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.boxForm form .boxCheckBox input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+}
+.boxForm form .boxCheckBox span {
+  width: 85%;
+}
+.boxForm form .boxPsswd {
+  border-bottom: 1px solid rgba(255, 0, 0, 0.197);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F5F6F7;
+}
+.boxForm form .boxPsswd #password {
+  min-width: 95%;
+  border-bottom: none;
+  background-color: transparent;
 }
 
 .boxFormCenter {
@@ -143,35 +271,10 @@
   transform: translate(-50%, -50%);
 }
 
-.boxForm div,
-.boxForm input {
-  width: 100%;
-}
-
-.boxFormSignUp {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 form input:not(form input:last-child),
 .boxFormSignUp form div input {
   padding: 2px;
   border-bottom: 1px solid rgba(255, 0, 0, 0.197);
-}
-
-.boxFormSignUp form .boxPsswd {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 0, 0, 0.197);
-}
-
-.boxFormSignUp form .boxPsswd input {
-  min-width: 95%;
-  padding: 1px;
-  border-bottom: none;
 }
 
 form input:last-child:not(.boxFormSignUp form div input) {
@@ -180,31 +283,6 @@ form input:last-child:not(.boxFormSignUp form div input) {
   color: #ffffff;
   height: 30px;
   width: 100.25%;
-}
-
-input {
-  border: none;
-}
-
-input:focus-visible {
-  outline: transparent;
-}
-
-input:focus-visible::-moz-placeholder {
-  opacity: 0;
-}
-
-input:focus-visible::placeholder {
-  opacity: 0;
-}
-
-.boxForm Form {
-  width: 100%;
-}
-
-/* FORM TEXTAREA */
-form textarea {
-  width: 100%;
 }
 
 /* MODAL */
@@ -220,8 +298,7 @@ form textarea {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-.boxModalContent {
+.boxModal .boxModalContent {
   background-color: white;
   padding: 1rem 2rem 2rem 2rem;
   display: flex;
@@ -232,51 +309,29 @@ form textarea {
   box-shadow: inset 0px 0px 10px #000000, 0px 0px 10px #000000;
   max-width: 90%;
 }
-
-.boxModalContent div {
+.boxModal .boxModalContent div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-
-.boxModalContent div img {
+.boxModal .boxModalContent div img {
   -o-object-fit: cover;
      object-fit: cover;
 }
-
-.boxModalContent button {
+.boxModal .boxModalContent button {
   text-shadow: 1px 1px 2px white, 1.25px 1.25px 2.25px #000000;
   background-color: rgba(241, 241, 241, 0.9450980392);
 }
-
-.boxModalContent div img,
-.boxModalContent button {
+.boxModal .boxModalContent button:active {
+  box-shadow: inset 0px 0px 2px #000000, inset 1px 1px 2px #000000;
+}
+.boxModal .boxModalContent div img,
+.boxModal .boxModalContent button {
   width: 25px;
   height: 25px;
   border-radius: 7.5px;
   box-shadow: 0px 0px 4px #000000;
-}
-
-.boxModalContent button:hover {
-  box-shadow: inset 0px 0px 4px #000000;
-}
-
-.boxModalContent form {
-  gap: 5px;
-  padding: 1.5 rem 2rem 2rem 2rem;
-}
-
-.boxCheckBox {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-}
-
-.boxCheckBox input[type=checkbox] {
-  width: 15px;
-  height: 15px;
 }
 
 @media (min-width: 300px) {
@@ -345,6 +400,9 @@ header .wrapper .topHeader nav ul li {
 header .wrapper .topHeader nav ul li div {
   height: 100%;
   width: 100%;
+}
+header .wrapper .topHeader nav ul li div .linkConnect {
+  padding-bottom: 4px;
 }
 header .wrapper .topHeader nav ul li div button, header .wrapper .topHeader nav ul li div a {
   height: 100%;
@@ -653,14 +711,6 @@ button {
 }
 .boxFormPublish .boxPicTop .boxPicBottomEmpty {
   border: none;
-}
-
-.boxForm div label {
-  padding: 5px 0 5px 0;
-}
-
-.boxForm input {
-  margin: 5px 0 5px 0;
 }
 
 .boxOffer {
