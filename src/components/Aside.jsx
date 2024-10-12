@@ -9,7 +9,7 @@ const Aside = ({ showToggleNav, setShowToggleNav }) => {
   const navigate = useNavigate();
   return (
     <div className={showToggleNav === true ? 'toggleNav' : 'hideToggle'}>
-      {isAdmin === true && token && <Links path='/dashboard' linkText='Dashboard' />}
+      {(isAdmin === true && token) ? <Links path='/dashboard' linkText='Dashboard' /> : (null)}
       {token && <Links path='/my-sales' linkText='Mes Ventes' />}
       {token && <Links path='/my-purchases' linkText='Mes Achats' />}
       {token && <button onClick={() => {

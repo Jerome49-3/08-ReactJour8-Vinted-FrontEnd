@@ -34,7 +34,7 @@ const User = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/users/${id}`,
+        const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/users/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
