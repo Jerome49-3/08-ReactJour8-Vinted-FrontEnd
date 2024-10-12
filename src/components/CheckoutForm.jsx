@@ -29,7 +29,7 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         setIspayed(false);
         return;
       }
-      const response = await axios.post('http://localhost:3000/payment',
+      const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/payment`,
         { product_title: data.product_name, amount: data.total, product_price: data.product_price, product_id: data.product_id, buyer_token: data.buyer_token },
         {
           headers: {
@@ -54,7 +54,7 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         setIspayed(false);
         return;
       } else if (paymentIntent.status === "succeeded") {
-        const sendSuccess = await axios.post('http://localhost:3000/confirmPayment',
+        const sendSuccess = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/confirmPayment`,
           { product_title: data.product_name, amount: data.total, product_price: data.product_price, product_id: data.product_id, offer_solded: true },
           {
             headers: {

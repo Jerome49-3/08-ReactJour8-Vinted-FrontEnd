@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
   const signup = async (username, email, password, newsletter) => {
     try {
       const response = await axios.post(
-        import.meta.env.VITE_REACT_APP_LOCALHOST_SIGNUP,
+        `https://site--vintedbackend--s4qnmrl7fg46.code.run/user/signup`,
         {
           username,
           email,

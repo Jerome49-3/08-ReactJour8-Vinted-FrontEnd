@@ -21,7 +21,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = await axios.post(import.meta.env.VITE_REACT_APP_LOCALHOST_LOGIN, { email, password });
+      const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/login`, { email, password });
       if (response) {
         console.log('response in handleSubmit on /Login:', response);
         console.log('response.data in handleSubmit on /Login:', response.data);

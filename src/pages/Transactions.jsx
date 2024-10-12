@@ -16,7 +16,7 @@ const Transactions = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/transactions/${id}`,
+        const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/transactions/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
