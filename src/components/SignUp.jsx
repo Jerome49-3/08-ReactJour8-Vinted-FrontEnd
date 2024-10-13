@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Input from './Input';
 import Image from './Image';
 import SmallLogo from '../assets/images/favicon.png'
@@ -11,8 +10,7 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
-  const navigate = useNavigate();
-  const { saveUser, signup, errorMessage, setErrorMessage } = useUser();
+  const { signup, errorMessage, setErrorMessage } = useUser();
 
   const handleSubmit = async (e) => {
     // console.log('e.target.file', e.target.file)

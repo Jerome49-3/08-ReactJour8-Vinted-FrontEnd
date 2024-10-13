@@ -29,6 +29,7 @@ import SignUp from './components/SignUp';
 import PrivateRoute from './pages/PrivateRoute';
 import Aside from './components/Aside';
 import ImgsModal from './components/ImgsModal';
+import ConfirmEmail from './pages/ConfirmEmail';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -59,6 +60,7 @@ function App() {
           <Header show={show} setShow={setShow} search={search} setSearch={setSearch} showToggleNav={showToggleNav} setShowToggleNav={setShowToggleNav} priceMin={priceMin} setPriceMin={setPriceMin} priceMax={priceMax} setPriceMax={setPriceMax} />
           <Routes>
             <Route path="/login" element={<Login type={type} setType={setType} icon1="eye" icon2="eye-slash" />} />
+            <Route path="/confirmemail" element={<ConfirmEmail />} />
             <Route element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Dashboard faNewspaper={faNewspaper} faXmark={faXmark} faUserTie={faUserTie} faUser={faUser} />} />
               <Route path="/payment" element={<Payment dataShoppingCart={dataShoppingCart} setDataShoppingCart={setDataShoppingCart} />} />
