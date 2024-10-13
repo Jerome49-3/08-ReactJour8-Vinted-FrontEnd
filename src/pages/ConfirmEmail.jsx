@@ -9,6 +9,7 @@ import Loading from "../components/Loading";
 
 const ConfirmEmail = () => {
   const { code } = useParams();
+  console.log('code  on /confirmEmail:', code);
   const { saveUser, setErrorMessage } = useUser();
   const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ const ConfirmEmail = () => {
     };
 
     loadData();
-  }, [code]);
+  }, []);
 
   return <div><Loading /></div>;
 };
