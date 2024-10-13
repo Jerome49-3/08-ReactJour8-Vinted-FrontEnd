@@ -21,7 +21,9 @@ export const UserProvider = ({ children }) => {
         console.log('decryptedUser in useEffect on userProvider:', decryptedUser);
         if (decryptedUser) {
           setUser(decryptedUser);
-          setIsAdmin(decryptedUser.isAdmin)
+          if (decryptedUser.isAdmin === true) {
+            setIsAdmin(decryptedUser.isAdmin)
+          }
         } else {
           localStorage.removeItem('userToken');
         }
