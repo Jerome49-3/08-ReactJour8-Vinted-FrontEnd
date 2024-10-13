@@ -25,8 +25,8 @@ const Home = ({ search }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/offers?title=${search}`);
-        const response = await axios.get(`http/localhost:3000/offers?title=${search}`);
+        const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/offers?title=${search}`);
+        // const response = await axios.get(`http/localhost:3000/offers?title=${search}`);
         console.log('response:', response);
         if (response.data) {
           setData(response.data);

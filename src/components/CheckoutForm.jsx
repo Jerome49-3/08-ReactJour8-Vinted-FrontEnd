@@ -45,7 +45,8 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         clientSecret: clientSecret,
         payment_method: 'pm_card_visa',
         confirmParams: {
-          return_url: 'http://localhost:5173/'
+          // return_url: 'http://localhost:5173/'
+          return_url: 'https://vintaid.netlify.app/'
         },
         redirect: "if_required",
       });

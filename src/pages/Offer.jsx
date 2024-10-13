@@ -37,8 +37,8 @@ const Offer = ({ showHero, showImgsModal, setShowImgsModal }) => {
     // console.log('id inside useEffect in /offers/${id}:', id);
     const fetchData = async () => {
       try {
-        // const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/offers/${id}`);
-        const response = await axios.get(`http/localhost:3000/offers/${id}`);
+        const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/offers/${id}`);
+        // const response = await axios.get(`http/localhost:3000/offers/${id}`);
         // console.log('response in /offers/${id}:', response);
         // console.log('response.data in /offers/${id}:', response.data);
         // console.log('response.data.product_image in /offers/${id}:', response.data.product_image);

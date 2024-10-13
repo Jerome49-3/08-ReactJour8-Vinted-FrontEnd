@@ -76,10 +76,10 @@ const Publish = ({ faRotateRight }) => {
     );
     try {
       // console.log("token inside try to handleSubmit in publish:", token);
-      // const response = await axios.post(
-      //   `https://site--vintedbackend--s4qnmrl7fg46.code.run/offer/publish`,
       const response = await axios.post(
-        `http/localhost:3000/offer/publish`,
+        `https://site--vintedbackend--s4qnmrl7fg46.code.run/offer/publish`,
+        // const response = await axios.post(
+        //   `http/localhost:3000/offer/publish`,
         formData,
         {
           headers: {
