@@ -12,7 +12,7 @@ const Publish = ({ faRotateRight }) => {
   const [rotate, setRotate] = useState(0);
   const viewFile = useRef(null);
   const { token } = useUser();
-  // console.log("token in publish:", token);
+  console.log("token in publish:", token);
   const [pictures, setPictures] = useState([]);
   console.log("pictures in publish:", pictures);
   const [title, setTitle] = useState("");

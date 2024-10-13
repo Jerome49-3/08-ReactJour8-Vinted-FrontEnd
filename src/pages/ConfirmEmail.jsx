@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 //components
 import Loading from "../components/Loading";
 
-export const ConfirmEmail = () => {
+const ConfirmEmail = () => {
   const { code } = useParams();
   const { saveUser, setErrorMessage } = useUser();
   const navigate = useNavigate();
@@ -30,3 +30,5 @@ export const ConfirmEmail = () => {
 
   return <div><Loading /></div>;
 };
+
+export default ConfirmEmail;
