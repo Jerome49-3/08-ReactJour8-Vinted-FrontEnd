@@ -22,6 +22,7 @@ import User from './pages/User';
 import Transactions from './pages/Transactions';
 import MySales from './pages/MySales';
 import MyPurchases from './pages/MyPurchases';
+import ConfirmEmail from './pages/ConfirmEmail';
 
 //components
 import Header from './components/Header';
@@ -29,7 +30,6 @@ import SignUp from './components/SignUp';
 import PrivateRoute from './pages/PrivateRoute';
 import Aside from './components/Aside';
 import ImgsModal from './components/ImgsModal';
-import ConfirmEmail from './pages/ConfirmEmail';
 
 function App() {
   const [show, setShow] = useState(false);
