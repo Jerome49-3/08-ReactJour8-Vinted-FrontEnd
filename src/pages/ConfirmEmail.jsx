@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useUser } from '../context/lib/userFunc';
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //components
 import Input from '../components/Input';
@@ -20,7 +21,7 @@ const ConfirmEmail = () => {
     const formData = new FormData();
     formData.append("code", code);
     try {
-      const response = axios.post(`http://localhost:3000/confirmEmail/${code}`,
+      const response = axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/confirmEmail/${code}`,
         formData,
       );
       if (response) {
