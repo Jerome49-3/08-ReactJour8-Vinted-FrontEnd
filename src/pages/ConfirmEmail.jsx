@@ -8,15 +8,15 @@ import { useNavigate } from 'react-router-dom';
 import Loading from "../components/Loading";
 
 const ConfirmEmail = () => {
-  const { code } = useParams();
-  console.log('code  on /confirmEmail:', code);
+  const { id } = useParams();
+  console.log('id  on /confirmEmail:', id);
   const { saveUser, setErrorMessage } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail/${code}`);
+        const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail/${id}`);
         if (response) {
           const token = response.data;
           saveUser(token);
