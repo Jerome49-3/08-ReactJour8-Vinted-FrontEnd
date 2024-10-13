@@ -16,7 +16,8 @@ const MyPurchases = () => {
       const id = user._id;
       console.log('id on /mypurchases:', id);
 
-      const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/mypurchases/${id}`,
+      // const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/mypurchases/${id}`,
+      const response = await axios.get(`http/localhost:3000/mypurchases/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

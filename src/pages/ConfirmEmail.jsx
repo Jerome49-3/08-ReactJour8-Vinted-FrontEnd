@@ -16,7 +16,8 @@ const ConfirmEmail = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail/${id}`);
+        // const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail/${id}`);
+        const response = await axios.get(`http/localhost:3000/user/confirmEmail/${id}`);
         if (response) {
           const token = response.data;
           saveUser(token);
@@ -30,8 +31,9 @@ const ConfirmEmail = () => {
 
     loadData();
   }, []);
-
-  return <div><Loading /></div>;
-};
+  return (
+    <Loading />
+  )
+}
 
 export default ConfirmEmail
