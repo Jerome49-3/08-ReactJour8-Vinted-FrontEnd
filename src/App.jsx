@@ -68,7 +68,7 @@ function App() {
               <Route path='/my-sales' element={<MySales />} />
               <Route path='/my-purchases' element={<MyPurchases />} />
             </Route>
-            <Route path="/confirmemail" element={<ConfirmEmail />} />
+            <Route path="/confirmemail/:code" element={<ConfirmEmail />} />
             <Route path="/publish" element={<Publish faRotateRight={faRotateRight} />} />
             <Route path="/offers/:id" element={<Offer show={showHero} setDataShoppingCart={setDataShoppingCart} showImgsModal={showImgsModal} setShowImgsModal={setShowImgsModal} />} />
             <Route path="/" element={<Home search={search} />} />
