@@ -31,7 +31,7 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
       if (response.data) {
         alert(response.data)
         setShow(false);
-        navigate("/confirmemail");
+        // navigate("/confirmemail");
       }
     } catch (error) {
       console.log('error in handleSubmit on /signup:', error.response.data.message);
