@@ -14,7 +14,11 @@ const ConfirmEmail = () => {
 
   const handleConfirmEmail = async () => {
     try {
-      const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail/${code}`);
+      const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail`,
+        {
+          code,
+        }
+      );
       // const response = await axios.get(`http/localhost:3000/user/confirmEmail/${id}`);
       if (response) {
         const token = response.data;
