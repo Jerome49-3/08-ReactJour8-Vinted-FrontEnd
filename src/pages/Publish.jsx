@@ -11,7 +11,7 @@ import Input from "../components/Input";
 const Publish = ({ faRotateRight }) => {
   const [rotate, setRotate] = useState(0);
   const viewFile = useRef(null);
-  const { token } = useUser();
+  const { token, errorMessage, setErrorMessage } = useUser();
   console.log("token in publish:", token);
   const [pictures, setPictures] = useState([]);
   console.log("pictures in publish:", pictures);
@@ -99,7 +99,8 @@ const Publish = ({ faRotateRight }) => {
         navigate(`/offers/${response.data.newOffer._id}`);
       }
     } catch (error) {
-      console.log("error", error, "error.response", error.response);
+      console.log("error", error, "error.response", error.response.data.message);
+      setErrorMessage(error.response.data.message);
     }
   };
 
@@ -251,6 +252,7 @@ const Publish = ({ faRotateRight }) => {
           />
           <Input type="submit" value="poster votre annonce" />
         </form>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>
     </div>
   ) : (

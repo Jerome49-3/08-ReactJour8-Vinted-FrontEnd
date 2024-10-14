@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useUser } from '../context/lib/userFunc';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 //components
 import Input from '../components/Input';
@@ -9,7 +9,7 @@ import Input from '../components/Input';
 const ConfirmEmail = () => {
   const [code, setCode] = useState(null);
   console.log('code  on /confirmEmail:', code);
-  const { saveUser, setErrorMessage } = useUser();
+  const { saveUser, errorMessage, setErrorMessage } = useUser();
   const navigate = useNavigate();
 
   const handleConfirmEmail = async (e) => {
@@ -28,9 +28,14 @@ const ConfirmEmail = () => {
         console.log('response.data in /confirmEmail:', response.data);
         console.log('response.data.token in /confirmEmail:', response.data.token);
         console.log('response.data.message in /confirmEmail:', response.data.message);
-        const token = response.data;
-        saveUser(token);
-        alert(response.data.messsage);
+        if (response.data.message) {
+          const message = response.data.message;
+          alert(message);
+        }
+        if (response.data.token) {
+          const token = response.data.token;
+          saveUser(token);
+        }
         navigate("/publish");
       }
     } catch (error) {
@@ -39,10 +44,13 @@ const ConfirmEmail = () => {
   };
 
   return (
-    <form onSubmit={handleConfirmEmail} className="boxForm boxFormCenter">
-      <Input value={code} type='text' setState={setCode} />
-      <Input type='submit' value='envoyer le code' />
-    </form>
+    <>
+      <form onSubmit={handleConfirmEmail} className="boxForm boxFormCenter">
+        <Input value={code} type='text' setState={setCode} />
+        <Input type='submit' value='envoyer le code' />
+      </form>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+    </>
   )
 }
 
