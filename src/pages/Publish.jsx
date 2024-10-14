@@ -26,6 +26,7 @@ const Publish = ({ faRotateRight }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    setErrorMessage('');
     console.log("token inside handleSubmit in publish:", token);
     // console.log('e:', e);
     e.preventDefault();

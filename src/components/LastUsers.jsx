@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { useUser } from '../context/lib/userFunc';
 
 //components
 import Image from "./Image";
 import Loading from "./Loading"
 
-const LastUsers = ({ token, isAdmin, faNewspaper, faXmark, faUserTie, faUser }) => {
-  // console.log('isAdmin in LastUsers:', isAdmin);
-
+const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
   const [data, setData] = useState();
   console.log('data in LastUsers:', data);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const { token, isAdmin } = useUser();
+  console.log('isAdmin in LastUsers:', isAdmin);
+  console.log('token in LastUsers:', token);
 
   useEffect(() => {
     const fetchData = async () => {
