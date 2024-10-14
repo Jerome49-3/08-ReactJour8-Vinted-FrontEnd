@@ -12,7 +12,10 @@ const ConfirmEmail = () => {
   const { saveUser, setErrorMessage } = useUser();
   const navigate = useNavigate();
 
-  const handleConfirmEmail = async () => {
+  const handleConfirmEmail = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("code", code);
     try {
       const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail`,
         {
@@ -21,7 +24,10 @@ const ConfirmEmail = () => {
       );
       // const response = await axios.get(`http/localhost:3000/user/confirmEmail/${id}`);
       if (response) {
-        console.log('response in /confirmEmail:', response)
+        console.log('response in /confirmEmail:', response);
+        console.log('response.data in /confirmEmail:', response.data);
+        console.log('response.data.token in /confirmEmail:', response.data.token);
+        console.log('response.data.message in /confirmEmail:', response.data.message);
         const token = response.data;
         saveUser(token);
         alert(response.data.messsage);
