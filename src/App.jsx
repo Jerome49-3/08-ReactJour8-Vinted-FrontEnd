@@ -59,7 +59,6 @@ function App() {
         <UserProvider>
           <Header show={show} setShow={setShow} search={search} setSearch={setSearch} showToggleNav={showToggleNav} setShowToggleNav={setShowToggleNav} priceMin={priceMin} setPriceMin={setPriceMin} priceMax={priceMax} setPriceMax={setPriceMax} />
           <Routes>
-            <Route path="/confirmemail/:id" element={<ConfirmEmail />} />
             <Route path="/login" element={<Login type={type} setType={setType} icon1="eye" icon2="eye-slash" />} />
             <Route element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Dashboard faNewspaper={faNewspaper} faXmark={faXmark} faUserTie={faUserTie} faUser={faUser} />} />
@@ -69,6 +68,7 @@ function App() {
               <Route path='/my-sales' element={<MySales />} />
               <Route path='/my-purchases' element={<MyPurchases />} />
             </Route>
+            <Route path="/confirmemail/:id" element={<ConfirmEmail />} />
             <Route path="/publish" element={<Publish faRotateRight={faRotateRight} />} />
             <Route path="/offers/:id" element={<Offer show={showHero} setDataShoppingCart={setDataShoppingCart} showImgsModal={showImgsModal} setShowImgsModal={setShowImgsModal} />} />
             <Route path="/" element={<Home search={search} />} />
