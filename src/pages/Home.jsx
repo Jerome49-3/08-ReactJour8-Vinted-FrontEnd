@@ -15,7 +15,7 @@ import Loading from '../components/Loading';
 import noImg from '../assets/images/no-image.jpg'
 
 
-const Home = ({ search, faHeart }) => {
+const Home = ({ search, faHeart, farHeart }) => {
   // console.log('search in Home:', search);
   const [data, setData] = useState();
   // console.log('data in /Home:', data);
@@ -50,7 +50,7 @@ const Home = ({ search, faHeart }) => {
       <div className="wrapper">
         <div className="boxArticles">
           {data.map((article, key = article._id) => {
-            // console.log('article:', article);
+            console.log('article:', article);
             return (
               <>
                 <Link to={`/offers/${article._id}`} key={key} article={article} className={article.offer_solded === true && 'hide'}>
@@ -75,13 +75,13 @@ const Home = ({ search, faHeart }) => {
                         })}
                       </>) : (<Image src={noImg} alt='no image' />)}
                     </div>
-                    <div className="boxHearth">
-                      <FontAwesomeIcon icon={faHeart} />
-                      <FontAwesomeIcon icon="fa-regular fa-heart" />
-                    </div>
+                    <button className="boxHearth">
+                      <FontAwesomeIcon icon={faHeart} className='hide' />
+                      <FontAwesomeIcon icon={farHeart} />
+                    </button>
                     <div className="footerArticle">
-                      <div>{article.product_name}</div>
-                      <div className='description'>{article.product_description}</div>
+                      <div>{article.product_details[0].MARQUE}</div>
+                      <div className='description'>{(article.product_price).toFixed(2)} €</div>
                     </div>
                   </article >
                 </Link >

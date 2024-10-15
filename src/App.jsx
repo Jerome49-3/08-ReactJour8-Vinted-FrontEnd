@@ -4,7 +4,8 @@ import './assets/css/App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faMagnifyingGlass, faEye, faEyeSlash, faMoon, faSun, faNewspaper, faXmark, faUserTie, faUser, faRotateRight, faHeart } from '@fortawesome/free-solid-svg-icons';
-library.add(faMagnifyingGlass, faEye, faHeart, faEyeSlash, faMoon, faSun, faNewspaper, faXmark, faUserTie, faUser, faRotateRight);
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+library.add(faMagnifyingGlass, faEye, faHeart, faEyeSlash, faMoon, faSun, faNewspaper, faXmark, faUserTie, faUser, faRotateRight, farHeart);
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 
@@ -71,7 +72,7 @@ function App() {
             <Route path="/confirmemail" element={<ConfirmEmail />} />
             <Route path="/publish" element={<Publish faRotateRight={faRotateRight} />} />
             <Route path="/offers/:id" element={<Offer show={showHero} setDataShoppingCart={setDataShoppingCart} showImgsModal={showImgsModal} setShowImgsModal={setShowImgsModal} />} />
-            <Route path="/" element={<Home search={search} faHeart={faHeart} />} />
+            <Route path="/" element={<Home search={search} faHeart={faHeart} farHeart={farHeart} />} />
           </Routes>
           {show && <SignUp show={show} setShow={setShow} icon1="eye" icon2="eye-slash" type={type} setType={setType} />}
           {showToggleNav && <Aside showToggleNav={showToggleNav} setShowToggleNav={setShowToggleNav} />}
