@@ -536,14 +536,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
 }
 
-.description {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 90%;
-  height: 50px;
-}
-
 /* ARTICLE */
 .boxArticles {
   display: flex;
