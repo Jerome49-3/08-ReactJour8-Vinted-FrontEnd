@@ -560,27 +560,25 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  padding: 10px;
-  width: 350px;
-  height: 250px;
+  width: 250px;
+  height: 350px;
   gap: 5px;
   background-color: rgb(189, 189, 189);
-  border: 2px solid crimson;
   margin: auto;
+  position: relative;
 }
 .boxArticles a article .boxImgArticle {
-  width: 90%;
-  height: 200px;
+  width: 100%;
+  height: 250px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
-  border: 2px solid blue;
 }
 .boxArticles a article .boxImgArticle .imgArticle {
   width: 100%;
-  height: 150px;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -591,8 +589,40 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 .boxArticles a article .boxUser {
   display: flex;
   align-items: center;
-  gap: 12.5%;
+  gap: 10px;
   width: 100%;
+  padding: 5px 0 0 5px;
+}
+.boxArticles a article .boxHearth {
+  position: absolute;
+  top: 78%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid crimson;
+  background-color: #ffffff;
+  color: transparent;
+}
+.boxArticles a article .footerArticle {
+  padding: 5px 0 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 50px;
+}
+.boxArticles a article .footerArticle .description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 50px;
 }
 
 button {

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CookieConsent from "react-cookie-consent";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 //components
@@ -14,10 +15,10 @@ import Loading from '../components/Loading';
 import noImg from '../assets/images/no-image.jpg'
 
 
-const Home = ({ search }) => {
+const Home = ({ search, faHeart }) => {
   // console.log('search in Home:', search);
   const [data, setData] = useState();
-  console.log('data in /Home:', data);
+  // console.log('data in /Home:', data);
   const [isLoading, setIsLoading] = useState(true);
   // const [imgsNbr, setImgsNbr] = useState(0);
 
@@ -27,7 +28,7 @@ const Home = ({ search }) => {
       try {
         const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/offers?title=${search}`);
         // const response = await axios.get(`http/localhost:3000/offers?title=${search}`);
-        console.log('response:', response);
+        // console.log('response:', response);
         if (response.data) {
           setData(response.data);
           setIsLoading(false);
@@ -60,7 +61,7 @@ const Home = ({ search }) => {
                           <Image src={article.owner.account.avatar.secure_url} alt="avatar" classImg='imgAvatar' />
                         </>
                       ) : (<Image src={article.owner.account.avatar} alt="avatar" classImg='imgAvatar' />)}
-                      <div>{article.owner.account.username}</div>
+                      <h5>{article.owner.account.username}</h5>
                     </div>
                     <div className='boxImgArticle'>
                       {article.product_image ? (<Image src={article.product_image.secure_url} classImg='imgArticle' />) : article.product_pictures ? (<>
@@ -74,8 +75,14 @@ const Home = ({ search }) => {
                         })}
                       </>) : (<Image src={noImg} alt='no image' />)}
                     </div>
-                    <div>{article.product_name}</div>
-                    <div className='description'>{article.product_description}</div>
+                    <div className="boxHearth">
+                      <FontAwesomeIcon icon={faHeart} />
+                      <FontAwesomeIcon icon="fa-regular fa-heart" />
+                    </div>
+                    <div className="footerArticle">
+                      <div>{article.product_name}</div>
+                      <div className='description'>{article.product_description}</div>
+                    </div>
                   </article >
                 </Link >
               </>

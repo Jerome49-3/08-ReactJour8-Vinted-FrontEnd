@@ -16,7 +16,7 @@ const User = () => {
   const { id } = useParams();
   // console.log('id /users/${userId}:', id);
   const { state } = useLocation();
-  // console.log('state: in /users/${userId}:', state);
+  console.log('state: in /users/${userId}:', state);
   const { token } = state;
   // console.log('token /users/${userId}:', token);
   const [pictures, setPictures] = useState(null);
@@ -26,7 +26,8 @@ const User = () => {
   const [isAdmin, setIsAdmin] = useState(null);
   const [newsletter, setNewsletter] = useState(null);
   const [avatar, setAvatar] = useState(null);
-  // console.log('pictures in /users/${id}:', pictures);
+  console.log('pictures in /users/${id}:', pictures);
+  console.log('avatar in /users/${id}:', avatar);
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -111,7 +112,7 @@ const User = () => {
       <div className="wrapper">
         <div className="top">
           <div className="title">
-            Voici la page user de {data.username}
+            Voici la page de <strong>{data.username}</strong>
           </div>
         </div>
         <form className="bottom">
