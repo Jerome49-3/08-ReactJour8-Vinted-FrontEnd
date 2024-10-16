@@ -22,6 +22,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
     setErrorMessage("");
     try {
       const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/login`, { email, password });
+      // const response = await axios.post(`http://localhost:3000/user/login`, { email, password });
       if (response) {
         console.log('response in handleSubmit on /Login:', response);
         console.log('response.data in handleSubmit on /Login:', response.data);
@@ -30,8 +31,8 @@ const Login = ({ type, setType, icon1, icon2 }) => {
         navigate("/publish");
       }
     } catch (error) {
-      console.log('error.response in handleSubmit on Login:', error.response);
-      console.log('error:', error);
+      // console.log('error.response in handleSubmit on Login:', error.response);
+      // console.log('error:', error);
       setErrorMessage(error?.response?.data?.message || 'login failed');
     }
   }

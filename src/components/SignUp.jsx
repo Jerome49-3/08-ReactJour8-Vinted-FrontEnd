@@ -1,18 +1,22 @@
 import { useState } from 'react';
+import { useUser } from '../context/lib/userFunc';
 import { useNavigate } from 'react-router-dom';
+
+//components
+import EyePassword from './EyePassword';
 import Input from './Input';
 import Image from './Image';
+
+//images
 import SmallLogo from '../assets/images/favicon.png'
-import EyePassword from './EyePassword';
-import { useUser } from '../context/lib/userFunc';
 
 const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
+  const { signup, errorMessage, setErrorMessage } = useUser();
   const navigate = useNavigate();
-  const { saveUser, signup, errorMessage, setErrorMessage } = useUser();
 
   const handleSubmit = async (e) => {
     // console.log('e.target.file', e.target.file)
@@ -25,8 +29,12 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
         newsletter);
       console.log('response in /signup:', response)
       if (response.data) {
+<<<<<<< HEAD
+=======
+        alert(response.data)
+>>>>>>> 4d29bf46d9245485c0c47118dd4c55ad79120217
         setShow(false);
-        navigate("/publish");
+        navigate("/confirmemail");
       }
     } catch (error) {
       console.log('error in handleSubmit on /signup:', error.response.data.message);

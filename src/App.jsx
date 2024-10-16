@@ -3,8 +3,9 @@ import * as dotenv from 'dotenv';
 import './assets/css/App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faMagnifyingGlass, faEye, faEyeSlash, faMoon, faSun, faNewspaper, faXmark, faUserTie, faUser, faRotateRight } from '@fortawesome/free-solid-svg-icons';
-library.add(faMagnifyingGlass, faEye, faEyeSlash, faMoon, faSun, faNewspaper, faXmark, faUserTie, faUser, faRotateRight);
+import { faMagnifyingGlass, faEye, faEyeSlash, faMoon, faSun, faNewspaper, faXmark, faUserTie, faUser, faRotateRight, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+library.add(faMagnifyingGlass, faEye, faHeart, faEyeSlash, faMoon, faSun, faNewspaper, faXmark, faUserTie, faUser, faRotateRight, farHeart);
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 
@@ -22,11 +23,12 @@ import User from './pages/User';
 import Transactions from './pages/Transactions';
 import MySales from './pages/MySales';
 import MyPurchases from './pages/MyPurchases';
+import ConfirmEmail from './pages/ConfirmEmail';
+import PrivateRoute from './pages/PrivateRoute';
 
 //components
 import Header from './components/Header';
 import SignUp from './components/SignUp';
-import PrivateRoute from './pages/PrivateRoute';
 import Aside from './components/Aside';
 import ImgsModal from './components/ImgsModal';
 
@@ -67,9 +69,10 @@ function App() {
               <Route path='/my-sales' element={<MySales />} />
               <Route path='/my-purchases' element={<MyPurchases />} />
             </Route>
-            <Route path="/" element={<Home search={search} />} />
+            <Route path="/confirmemail" element={<ConfirmEmail />} />
             <Route path="/publish" element={<Publish faRotateRight={faRotateRight} />} />
             <Route path="/offers/:id" element={<Offer show={showHero} setDataShoppingCart={setDataShoppingCart} showImgsModal={showImgsModal} setShowImgsModal={setShowImgsModal} />} />
+            <Route path="/" element={<Home search={search} faHeart={faHeart} farHeart={farHeart} />} />
           </Routes>
           {show && <SignUp show={show} setShow={setShow} icon1="eye" icon2="eye-slash" type={type} setType={setType} />}
           {showToggleNav && <Aside showToggleNav={showToggleNav} setShowToggleNav={setShowToggleNav} />}

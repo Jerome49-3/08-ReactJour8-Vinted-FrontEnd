@@ -1,8 +1,7 @@
 import { Navigate, } from 'react-router-dom';
 
 //context
-import { useContext } from 'react';
-import { UserContext } from "../context/UserProvider";
+import { useUser } from '../context/lib/userFunc';
 
 //components
 import LastUsers from '../components/LastUsers';
@@ -10,7 +9,9 @@ import LastSales from '../components/LastSales';
 
 
 const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
-  const { token, isAdmin } = useContext(UserContext);
+  const { token, isAdmin } = useUser();
+  console.log('isAdmin in Dashboard:', isAdmin);
+  console.log('token in Dashboard:', token);
 
   return (token && isAdmin) ? (
     <div className='boxDashboard'>
@@ -24,7 +25,7 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
               <h2>Users</h2>
             </div>
             <div className="boxDetails">
-              <LastUsers token={token} isAdmin={isAdmin} faNewspaper={faNewspaper} faXmark={faXmark} faUserTie={faUserTie} faUser={faUser} />
+              <LastUsers faNewspaper={faNewspaper} faXmark={faXmark} faUserTie={faUserTie} faUser={faUser} />
             </div>
           </div>
           <div className="right">
