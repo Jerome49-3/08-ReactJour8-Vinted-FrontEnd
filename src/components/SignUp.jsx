@@ -25,8 +25,6 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
         newsletter);
       console.log('response in /signup:', response)
       if (response.data) {
-        const token = response.data;
-        await saveUser(token);
         setShow(false);
         navigate("/publish");
       }
