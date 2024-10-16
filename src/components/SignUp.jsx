@@ -29,10 +29,7 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
         newsletter);
       console.log('response in /signup:', response)
       if (response.data) {
-<<<<<<< HEAD
-=======
         alert(response.data)
->>>>>>> 4d29bf46d9245485c0c47118dd4c55ad79120217
         setShow(false);
         navigate("/confirmemail");
       }
