@@ -15,7 +15,7 @@ import Button from '../components/Button';
 //images
 import noImg from '../assets/images/no-image.jpg'
 
-const Offer = ({ showHero, showImgsModal, setShowImgsModal }) => {
+const Offer = ({ showHero, showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
   const { id } = useParams();
   // console.log('id1 in /offers/${id}:', id);
@@ -92,7 +92,14 @@ const Offer = ({ showHero, showImgsModal, setShowImgsModal }) => {
               <div className={data.product_image ? 'imgLeftAlone' : "imgLeft"}>
                 {data.product_image ?
                   (
-                    <Button classButton='boxImgOffer' src={data.product_image.secure_url} classImg={data.product_image && 'prodImg'} handleClick={handleShowImgs} />
+                    <Button classButton='boxImgOffer' src={data.product_image.secure_url} classImg={data.product_image && 'prodImg'} handleClick={() => {
+                      if (showImgsModal === false) {
+                        setShowImgsModal(true);
+                        setSrcImgsModal(data.product_image.secure_url);
+                      } else {
+                        setShowImgsModal(true)
+                      }
+                    }} />
                   ) : data.product_pictures ?
                     (
                       <>{data.product_pictures.map((images, index) => {

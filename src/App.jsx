@@ -38,6 +38,9 @@ function App() {
   const [showHero, setShowHero] = useState(false);
   const [showToggleNav, setShowToggleNav] = useState(false);
   const [showImgsModal, setShowImgsModal] = useState(false);
+  const [srcImgsModal, setSrcImgsModal] = useState(null);
+  console.log('srcImgsModal in app:', srcImgsModal);
+
   // console.log('showToggleNav in app:', showToggleNav);
   const [priceMin, setPriceMin] = useState(0);
   // console.log('priceMin in app:', priceMin);
@@ -71,12 +74,12 @@ function App() {
             </Route>
             <Route path="/confirmemail" element={<ConfirmEmail />} />
             <Route path="/publish" element={<Publish faRotateRight={faRotateRight} />} />
-            <Route path="/offers/:id" element={<Offer show={showHero} setDataShoppingCart={setDataShoppingCart} showImgsModal={showImgsModal} setShowImgsModal={setShowImgsModal} />} />
+            <Route path="/offers/:id" element={<Offer show={showHero} setDataShoppingCart={setDataShoppingCart} showImgsModal={showImgsModal} setShowImgsModal={setShowImgsModal} setSrcImgsModal={setSrcImgsModal} />} />
             <Route path="/" element={<Home search={search} faHeart={faHeart} farHeart={farHeart} />} />
           </Routes>
           {show && <SignUp show={show} setShow={setShow} icon1="eye" icon2="eye-slash" type={type} setType={setType} />}
           {showToggleNav && <Aside showToggleNav={showToggleNav} setShowToggleNav={setShowToggleNav} />}
-          {showImgsModal && <ImgsModal showImgsModal={showImgsModal} setShowImgsModal={setShowImgsModal} />}
+          {showImgsModal && <ImgsModal showImgsModal={showImgsModal} setShowImgsModal={setShowImgsModal} srcImgsModal={srcImgsModal} />}
         </UserProvider>
       </Router>
     </>
