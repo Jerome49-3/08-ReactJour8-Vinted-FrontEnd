@@ -29,9 +29,9 @@ const Offer = ({ showHero, showImgsModal, setShowImgsModal, setSrcImgsModal }) =
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  const handleShowImgs = () => {
-    showImgsModal === false ? (setShowImgsModal(true)) : (setShowImgsModal(false))
-  }
+  // const handleShowImgs = () => {
+  //   showImgsModal === false ? (setShowImgsModal(true)) : (setShowImgsModal(false))
+  // }
 
   useEffect(() => {
     // console.log('id inside useEffect in /offers/${id}:', id);
@@ -106,7 +106,14 @@ const Offer = ({ showHero, showImgsModal, setShowImgsModal, setSrcImgsModal }) =
                         // console.log('images:', images);
                         return (
                           <>
-                            {index === 0 ? (<Button classButton="boxImgOffer" key={index} src={images.secure_url} classImg={index === 0 ? 'prodPict0' : 'prodPict'} handleClick={handleShowImgs} />
+                            {index === 0 ? (<Button classButton="boxImgOffer" key={index} src={images.secure_url} classImg={index === 0 ? 'prodPict0' : 'prodPict'} handleClick={() => {
+                              if (showImgsModal === false) {
+                                setShowImgsModal(true);
+                                setSrcImgsModal(images.secure_url);
+                              } else {
+                                setShowImgsModal(true)
+                              }
+                            }} />
                             ) : (null)}
                           </>
                         )
@@ -121,7 +128,14 @@ const Offer = ({ showHero, showImgsModal, setShowImgsModal, setSrcImgsModal }) =
                       // console.log('images:', images);
                       return (
                         <>
-                          {index > 0 && (<Button classButton="boxImgOffer" key={index} src={images.secure_url} classImg={index > 0 && 'prodPict'} handleClick={handleShowImgs} />)}
+                          {index > 0 && (<Button classButton="boxImgOffer" key={index} src={images.secure_url} classImg={index > 0 && 'prodPict'} handleClick={() => {
+                            if (showImgsModal === false) {
+                              setShowImgsModal(true);
+                              setSrcImgsModal(images.secure_url);
+                            } else {
+                              setShowImgsModal(true)
+                            }
+                          }} />)}
                         </>
                       )
                     })}
