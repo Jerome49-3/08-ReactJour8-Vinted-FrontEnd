@@ -354,7 +354,7 @@ form input:last-child:not(.boxFormSignUp form div input) {
 header {
   width: 100%;
   display: block;
-  padding: 5px 10px 15px 0px;
+  height: 10vh;
 }
 header .wrapper {
   max-width: 1200px;
@@ -367,11 +367,13 @@ header .wrapper .topHeader {
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  padding: 5px 0px 5px 0px;
 }
 header .wrapper .topHeader .boxLogoTheme {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  width: 33.3333333333%;
 }
 header .wrapper .topHeader .boxLogoTheme a .logo {
   width: 78px;
@@ -384,6 +386,7 @@ header .wrapper .topHeader nav {
   justify-content: center;
   align-items: center;
   padding: 0 0 5px 0;
+  width: 33.3333333333%;
 }
 header .wrapper .topHeader nav ul {
   gap: 20px;
@@ -391,11 +394,13 @@ header .wrapper .topHeader nav ul {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 header .wrapper .topHeader nav ul li {
   width: 100%;
   border-radius: 5px;
   border: 2px solid #2DB0BA;
+  width: 50%;
 }
 header .wrapper .topHeader nav ul li div {
   height: 100%;
@@ -432,8 +437,6 @@ header .wrapper .topHeader nav ul .boxUser {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: -moz-fit-content;
-  width: fit-content;
   gap: 20px;
   border: 2px solid #2DB0BA;
   padding: 5px 10px 5px 10px;
@@ -470,16 +473,27 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 
 .boxSearch {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: 8px;
+  gap: 5%;
   background-color: #F5F6F7;
   border-radius: 5px;
   padding: 2px 2px 2px 10px;
+  width: 33.3333333333%;
+  height: 30px;
 }
 
 .boxSearch input {
   background-color: transparent;
+  width: 100%;
+}
+
+.boxSearch input::-moz-placeholder {
+  text-align: center;
+}
+
+.boxSearch input::placeholder {
+  text-align: center;
 }
 
 .search-icons {
@@ -583,7 +597,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   gap: 10px;
   width: 100%;
-  padding: 5px 0 0 5px;
+  padding: 5px 10px 5px 10px;
 }
 .boxArticles a article .boxHearth {
   position: absolute;
@@ -603,7 +617,12 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   background-color: #ffffff;
 }
 .boxArticles a article .footerArticle {
-  padding: 5px 0 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 5px 10px 5px 10px;
+  gap: 5px;
   width: 100%;
 }
 .boxArticles a article .footerArticle .description {

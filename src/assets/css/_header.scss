@@ -2,7 +2,7 @@
 header {
   width: 100%;
   display: block;
-  padding: 5px 10px 15px 0px;
+  height: 10vh;
 
 
   .wrapper {
@@ -10,11 +10,16 @@ header {
 
     //header always visible
     .topHeader {
-      @include flexColCenter;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       gap: 20px;
+      padding: 5px 0px 5px 0px;
 
       .boxLogoTheme {
-        @include flexCenter;
+        @include flexStart;
+        width: calc(100% / 3);
 
         & a .logo {
           width: 78px;
@@ -26,15 +31,18 @@ header {
       & nav {
         @include flexCenter;
         padding: 0 0 5px 0;
+        width: calc(100% / 3);
 
         & ul {
           gap: 20px;
           @include flexColCenter;
+          width: 100%;
 
           & li {
             width: 100%;
             border-radius: 5px;
             border: 2px solid $vertVinted;
+            width: calc(100% / 2);
 
             & div {
               height: 100%;
@@ -78,7 +86,6 @@ header {
 
           .boxUser {
             @include flexCenter;
-            width: fit-content;
             gap: 20px;
             border: 2px solid $vertVinted;
             padding: 5px 10px 5px 10px;
@@ -126,16 +133,23 @@ header {
 
 .boxSearch {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: 8px;
+  gap: 5%;
   background-color: #F5F6F7;
   border-radius: 5px;
   padding: 2px 2px 2px 10px;
+  width: calc(100% / 3);
+  height: 30px;
 }
 
 .boxSearch input {
   background-color: transparent;
+  width: 100%;
+}
+
+.boxSearch input::placeholder {
+  text-align: center;
 }
 
 .search-icons {

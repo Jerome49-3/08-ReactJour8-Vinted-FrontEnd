@@ -51,7 +51,7 @@
         align-items: center;
         gap: 10px;
         width: 100%;
-        padding: 5px 0 0 5px;
+        padding: 5px 10px 5px 10px;
       }
 
       .boxHearth {
@@ -71,7 +71,9 @@
       }
 
       .footerArticle {
-        padding: 5px 0 0 5px;
+        @include flexColStart;
+        padding: 5px 10px 5px 10px;
+        gap: 5px;
         // white-space: nowrap;
         // overflow: hidden;
         // text-overflow: ellipsis;

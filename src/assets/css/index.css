@@ -94,6 +94,15 @@
     background-color: var(--backLightInput);
   }
 
+  .light .topHeader .boxSearch input,
+  .dark .topHeader .boxSearch input {
+    outline: transparent;
+    border: transparent;
+  }
+
+  .light .topHeader .boxSearch input::placeholder {
+    color: var(--black);
+  }
 }
 
 html,
