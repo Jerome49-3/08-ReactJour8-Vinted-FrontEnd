@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Input from '../components/Input';
 
 const ConfirmEmail = () => {
-  const [code, setCode] = useState(null);
+  const [code, setCode] = useState([]);
   console.log('code  on /confirmEmail:', code);
   const { saveUser, errorMessage, setErrorMessage } = useUser();
   const navigate = useNavigate();
@@ -46,7 +46,14 @@ const ConfirmEmail = () => {
   return (
     <>
       <form onSubmit={handleConfirmEmail} className="boxForm boxFormCenter">
-        <Input value={code} type='text' setState={setCode} />
+        {code.map((inputCode, index) => {
+          console.log('inputCode in ConfirmEmail:', inputCode);
+          return (
+            <>
+              <Input value={code} type='text' setState={setCode} key={index} classInput='classInputCode' classLabel='labelInputCode' />
+            </>
+          )
+        })}
         <Input type='submit' value='envoyer le code' />
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

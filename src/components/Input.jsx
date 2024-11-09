@@ -1,13 +1,11 @@
-const Input = ({ value, id, type, placeholder, setState, label, min, max, classInput }) => {
+const Input = ({ value, id, type, placeholder, setState, label, min, max, classInput, classLabel }) => {
   const handleChange = (e) => {
     setState(e.target.value);
   };
   return (
     <>
       {label !== undefined ? (
-        <div>
-          <label htmlFor={id}>{label}</label>
-        </div>
+        <label htmlFor={id} className={classLabel}>{label}</label>
       ) : null}
       <input
         id={id}
