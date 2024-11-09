@@ -1,12 +1,14 @@
 /* ARTICLE */
 .boxArticles {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
+  width: 100%;
+  gap: 5%;
 
   & a {
-    margin: auto;
+    // margin: auto;
     margin-bottom: 20px;
 
     & article {

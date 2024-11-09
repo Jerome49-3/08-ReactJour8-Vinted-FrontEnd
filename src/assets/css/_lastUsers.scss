@@ -2,6 +2,7 @@
   @include flexColCenter;
   gap: 5px;
   padding: 0 15px 0 15px;
+  overflow-y: auto;
 
   .boxUsers {
     @include flexStart;
@@ -25,20 +26,18 @@
     }
 
     .email {
-      flex: 2;
+      flex: 6;
       @include flexStart;
     }
 
-    .news {
-      flex: 1 20px;
-    }
-
     .date {
-      flex: 1;
+      flex: 1 40px;
     }
 
-    .isAdmin {
-      flex: 1 25px;
+    .isAdmin,
+    .news {
+      width: 20px;
+      ;
     }
 
     & div {

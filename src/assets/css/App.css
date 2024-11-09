@@ -539,12 +539,12 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 /* ARTICLE */
 .boxArticles {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
+  width: 100%;
+  gap: 5%;
 }
 .boxArticles a {
-  margin: auto;
   margin-bottom: 20px;
 }
 .boxArticles a article {
@@ -1109,6 +1109,7 @@ button {
   flex-direction: column;
   gap: 5px;
   padding: 0 15px 0 15px;
+  overflow-y: auto;
 }
 .boxLastUsers .boxUsers {
   display: flex;
@@ -1130,19 +1131,17 @@ button {
   width: 40px;
 }
 .boxLastUsers .boxUsers .email {
-  flex: 2;
+  flex: 6;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.boxLastUsers .boxUsers .news {
-  flex: 1 20px;
-}
 .boxLastUsers .boxUsers .date {
-  flex: 1;
+  flex: 1 40px;
 }
-.boxLastUsers .boxUsers .isAdmin {
-  flex: 1 25px;
+.boxLastUsers .boxUsers .isAdmin,
+.boxLastUsers .boxUsers .news {
+  width: 20px;
 }
 .boxLastUsers .boxUsers div {
   display: flex;
@@ -1365,4 +1364,34 @@ button {
 }
 .boxLastSales .boxTansactions a table thead > tr:not(tr:last-child), .boxLastSales .boxTansactions a table body > td:not(td:last-child) {
   border-right: 2px solid #2DB0BA;
+}
+
+.boxTransactionId {
+  border: 2px solid red;
+}
+.boxTransactionId .wrapper {
+  border: 2px solid green;
+  height: 89vh;
+}
+.boxTransactionId .wrapper .transactionId {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxTransactionId .wrapper .transactionId .left .bottom img {
+  width: 200px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.boxTransactionId .wrapper .transactionId .right .bottom img {
+  width: 200px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=App.css.map */
