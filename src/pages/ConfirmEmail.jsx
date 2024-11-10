@@ -7,22 +7,34 @@ import { useNavigate } from "react-router-dom";
 import Input from '../components/Input';
 
 const ConfirmEmail = () => {
-  const [code, setCode] = useState([]);
+  const [code, setCode] = useState([null, null, null, null, null, null]);
   console.log('code  on /confirmEmail:', code);
   const { saveUser, errorMessage, setErrorMessage } = useUser();
   const navigate = useNavigate();
+  const handleChangeInputCode = (e, index) => {
+    console.log('e.target.value on handleChangeInputCode:', e.target.value);
+    console.log('index on handleChangeInputCode:', index);
+    const nbrInput = e.target.value;
+    const newArrayInputCode = [...code];
+    newArrayInputCode[index] = nbrInput;
+    setCode(newArrayInputCode);
+    console.log('newArrayInputCode on handleChangeInputCode:', newArrayInputCode);
+  };
 
   const handleConfirmEmail = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("code", code);
+    formData.append("code", JSON.stringify(code));
     try {
-      const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail`,
+      const response = await axios.post(`http://localhost:3000/user/confirmEmail/`,
+        // const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail`,
+        formData,
         {
-          code,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
-      // const response = await axios.get(`http/localhost:3000/user/confirmEmail/${id}`);
       if (response) {
         console.log('response in /confirmEmail:', response);
         console.log('response.data in /confirmEmail:', response.data);
@@ -45,15 +57,23 @@ const ConfirmEmail = () => {
 
   return (
     <>
-      <form onSubmit={handleConfirmEmail} className="boxForm boxFormCenter">
-        {code.map((inputCode, index) => {
-          console.log('inputCode in ConfirmEmail:', inputCode);
-          return (
-            <>
-              <Input value={code} type='text' setState={setCode} key={index} classInput='classInputCode' classLabel='labelInputCode' />
-            </>
-          )
-        })}
+      <form onSubmit={handleConfirmEmail} className="boxFormCenter boxFormInputCode">
+        <div className="boxContainerInputCode">
+          {code.map((inputCode, index) => {
+            console.log('inputCode in ConfirmEmail:', inputCode);
+            return (
+              <label htmlFor="code" className="boxInputCode" key={index}>
+                <input
+                  id={`code-${index}`}
+                  type="text"
+                  value={code[index]}
+                  onChange={(e) => handleChangeInputCode(e, index)}
+                  className="classInputCode"
+                />
+              </label>
+            )
+          })}
+        </div>
         <Input type='submit' value='envoyer le code' />
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

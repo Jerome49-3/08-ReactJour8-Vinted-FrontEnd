@@ -1413,4 +1413,26 @@ button {
   height: 200px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.boxFormInputCode {
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+}
+.boxFormInputCode .boxContainerInputCode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid green;
+}
+.boxFormInputCode .boxContainerInputCode .classInputCode {
+  width: 40px;
+  height: 40px;
+}
+.boxFormInputCode input[type=submit] {
+  width: 250px;
 }/*# sourceMappingURL=App.css.map */
