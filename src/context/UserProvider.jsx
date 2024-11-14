@@ -62,8 +62,9 @@ export const UserProvider = ({ children }) => {
       const decryptedUser = decryptUser(token);
       console.log('decryptedUser in userProvider:', decryptedUser);
       setUser(decryptedUser);
-      localStorage.setItem('isAdmin', decryptedUser.isAdmin)
+      localStorage.setItem('isAdmin', decryptedUser.isAdmin);
       setIsAdmin(decryptedUser.isAdmin);
+      console.log('isAdmin in userProvider:', isAdmin);
     } catch (error) {
       setErrorMessage(error);
       setUser(null);

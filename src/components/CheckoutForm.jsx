@@ -29,8 +29,8 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         setIspayed(false);
         return;
       }
-      const response = await axios.post(`http://localhost:3000/payment`,
-        // const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/payment`,
+      // const response = await axios.post(`http://localhost:3000/payment`,
+      const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/payment`,
         { product_title: data.product_name, amount: data.total, product_price: data.product_price, product_id: data.product_id, buyer_token: data.buyer_token },
         {
           headers: {
@@ -46,8 +46,8 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         clientSecret: clientSecret,
         payment_method: 'pm_card_visa',
         confirmParams: {
-          return_url: 'http://localhost:5173/'
-          // return_url: 'https://vintaid.netlify.app/'
+          // return_url: 'http://localhost:5173/'
+          return_url: 'https://vintaid.netlify.app/'
         },
         redirect: "if_required",
       });
@@ -59,8 +59,8 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         const address = JSON.stringify(paymentIntent.shipping.address);
         console.log('paymentIntent.shipping.address in /payment:', paymentIntent.shipping.address);
         console.log('address in /payment:', address);
-        const sendSuccess = await axios.post(`http://localhost:3000/confirmPayment`,
-          // const sendSuccess = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/confirmPayment`,
+        // const sendSuccess = await axios.post(`http://localhost:3000/confirmPayment`,
+        const sendSuccess = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/confirmPayment`,
           { product_title: data.product_name, amount: data.total, product_price: data.product_price, product_id: data.product_id, offer_solded: true, buyer_address: address },
           {
             headers: {

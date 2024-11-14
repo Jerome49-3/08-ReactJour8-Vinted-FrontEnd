@@ -34,8 +34,8 @@ const ConfirmEmail = () => {
     const formData = new FormData();
     formData.append("code", JSON.stringify(code));
     try {
-      const response = await axios.post(`http://localhost:3000/user/confirmEmail/`,
-        // const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail`,
+      // const response = await axios.post(`http://localhost:3000/user/confirmEmail/`,
+      const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/user/confirmEmail`,
         formData,
         {
           headers: {
