@@ -217,10 +217,10 @@
   outline: transparent;
 }
 .boxForm form input:focus-visible::-moz-placeholder {
-  opacity: 0;
+  color: transparent;
 }
 .boxForm form input:focus-visible::placeholder {
-  opacity: 0;
+  color: transparent;
 }
 .boxForm form input::-moz-placeholder {
   color: #b0b0b0;
@@ -891,27 +891,6 @@ button {
   align-items: center;
   gap: 20px;
 }
-.boxOffer .wrapper article .right .bottom .subDown {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-}
-.boxOffer .wrapper article .right .bottom .subDown button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #2DB0BA;
-  color: #ffffff;
-  border-radius: 5px;
-  height: 30px;
-}
-.boxOffer .wrapper article .right .bottom .subDown button p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .boxShoppingCart {
   display: flex;
@@ -987,6 +966,8 @@ button {
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
+  margin-top: 20px;
+  font-size: 1.25rem;
 }
 .boxShoppingCart .wrapper .shoppingCart .bottom .resumCommand {
   padding-top: 20px;
@@ -1016,7 +997,12 @@ button {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+}
+.boxShoppingCart .wrapper .shoppingCart .bottom form form,
+.boxShoppingCart .wrapper .shoppingCart .bottom form .StripeElement {
+  padding: 10px;
+  border-radius: 5px;
 }
 .boxShoppingCart .wrapper .shoppingCart .bottom form div {
   width: 100%;
@@ -1416,23 +1402,39 @@ button {
 }
 
 .boxFormInputCode {
-  border: 2px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 50%;
+  gap: 25%;
+  height: 50%;
 }
 .boxFormInputCode .boxContainerInputCode {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid green;
+  gap: 2%;
 }
 .boxFormInputCode .boxContainerInputCode .classInputCode {
   width: 40px;
   height: 40px;
+  background-color: transparent;
+  font-size: 2rem;
+  border: 1px solid green;
+  box-shadow: 0px 0px 1px #2DB0BA, 0.25px 0.25px 1px #2DB0BA, inset 0px 0px 10px #2DB0BA;
+  text-align: center;
+  border-radius: 5px;
 }
-.boxFormInputCode input[type=submit] {
-  width: 250px;
+.boxFormInputCode .boxContainerInputCode .classInputCode:focus-visible {
+  outline: transparent;
+}
+.boxFormInputCode .boxContainerInputCode .classInputCode:focus-visible::-moz-placeholder {
+  color: transparent;
+}
+.boxFormInputCode .boxContainerInputCode .classInputCode:focus-visible::placeholder {
+  color: transparent;
+}
+.boxFormInputCode .submitInputCode {
+  width: 290px !important;
 }/*# sourceMappingURL=App.css.map */

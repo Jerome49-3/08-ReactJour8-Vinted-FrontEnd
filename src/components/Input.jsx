@@ -1,4 +1,4 @@
-const Input = ({ value, id, type, placeholder, setState, label, min, max, classInput, classLabel }) => {
+const Input = ({ value, id, type, placeholder, setState, label, min, max, classInput, classLabel, isRequired }) => {
   const handleChange = (e) => {
     setState(e.target.value);
   };
@@ -17,6 +17,7 @@ const Input = ({ value, id, type, placeholder, setState, label, min, max, classI
         onChange={handleChange}
         value={value}
         className={classInput}
+        required={isRequired || false}
       />
     </>
   );

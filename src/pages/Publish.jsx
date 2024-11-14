@@ -17,7 +17,7 @@ const Publish = ({ faRotateRight }) => {
   // console.log("pictures in publish:", pictures);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  let [price, setPrice] = useState(0);
+  let [price, setPrice] = useState(null);
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [condition, setCondition] = useState("");

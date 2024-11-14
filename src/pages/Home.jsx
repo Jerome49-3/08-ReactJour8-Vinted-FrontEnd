@@ -1,19 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CookieConsent from "react-cookie-consent";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 //components
-import Image from '../components/Image'
-import Hero from '../components/Hero'
+// import Image from '../components/Image';
+import Hero from '../components/Hero';
 import Loading from '../components/Loading';
+import OfferCard from '../components/OfferCard';
 
 //images
-import noImg from '../assets/images/no-image.jpg'
-
+// import noImg from '../assets/images/no-image.jpg';
 
 const Home = ({ search, faHeart, farHeart }) => {
   // console.log('search in Home:', search);
@@ -28,8 +28,9 @@ const Home = ({ search, faHeart, farHeart }) => {
       try {
         const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/offers?title=${search}`);
         // const response = await axios.get(`http/localhost:3000/offers?title=${search}`);
-        // console.log('response:', response);
-        if (response.data) {
+        if (response) {
+          console.log('response on /Home (Offer):', response);
+          console.log('response.data on /Home (Offer):', response.data);
           setData(response.data);
           setIsLoading(false);
         }
@@ -48,9 +49,10 @@ const Home = ({ search, faHeart, farHeart }) => {
     <>
       <Hero />
       <div className="wrapper">
-        <div className="boxArticles">
+        <OfferCard data={data} faHeart={faHeart} farHeart={farHeart} />
+        {/* <div className="boxArticles">
           {data.map((article, key = article._id) => {
-            console.log('article:', article);
+            // console.log('article:', article);
             return (
               <>
                 <Link to={`/offers/${article._id}`} key={key} article={article} className={article.offer_solded === true && 'hide'}>
@@ -88,7 +90,7 @@ const Home = ({ search, faHeart, farHeart }) => {
               </>
             )
           })}
-        </div>
+        </div> */}
         <CookieConsent
           location="bottom"
           buttonText="Sure Bro !"

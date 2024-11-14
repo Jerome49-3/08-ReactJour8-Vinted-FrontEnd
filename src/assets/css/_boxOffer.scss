@@ -135,22 +135,22 @@
             }
           }
 
-          .subDown {
-            @include flexColCenter;
-            width: 100%;
+          // .subDown {
+          //   @include flexColCenter;
+          //   width: 100%;
 
-            & button {
-              @include flexCenter;
-              background-color: $vertVinted;
-              color: $white;
-              border-radius: 5px;
-              height: 30px;
+          //   & button {
+          //     @include flexCenter;
+          //     background-color: $vertVinted;
+          //     color: $white;
+          //     border-radius: 5px;
+          //     height: 30px;
 
-              & p {
-                @include flexCenter;
-              }
-            }
-          }
+          //     & p {
+          //       @include flexCenter;
+          //     }
+          //   }
+          // }
         }
       }
     }

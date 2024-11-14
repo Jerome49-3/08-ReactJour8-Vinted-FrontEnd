@@ -21,7 +21,7 @@ import Payment from './pages/Payment';
 import Dashboard from './pages/Dashboard';
 import User from './pages/User';
 import Transactions from './pages/Transactions';
-import MySales from './pages/MySales';
+import MyOffers from './pages/MyOffers';
 import MyPurchases from './pages/MyPurchases';
 import ConfirmEmail from './pages/ConfirmEmail';
 import PrivateRoute from './pages/PrivateRoute';
@@ -69,7 +69,7 @@ function App() {
               <Route path="/payment" element={<Payment dataShoppingCart={dataShoppingCart} setDataShoppingCart={setDataShoppingCart} />} />
               <Route path='/users/:id' element={<User faUserTie={faUserTie} faNewspaper={faNewspaper} faXmark={faXmark} faUser={faUser} />} />
               <Route path='/transactions/:id' element={<Transactions />} />
-              <Route path='/my-sales' element={<MySales />} />
+              <Route path='/myOffers' element={<MyOffers faHeart={faHeart} farHeart={farHeart} />} />
               <Route path='/my-purchases' element={<MyPurchases />} />
             </Route>
             <Route path="/confirmemail" element={<ConfirmEmail />} />

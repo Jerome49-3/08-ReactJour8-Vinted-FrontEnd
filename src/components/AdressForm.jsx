@@ -1,4 +1,3 @@
-import React from 'react';
 import { AddressElement } from '@stripe/react-stripe-js';
 
 const AddressForm = () => {

@@ -1,16 +1,21 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useUser } from '../context/lib/userFunc';
 import { useNavigate } from "react-router-dom";
 
 //components
 import Input from '../components/Input';
+import LoaderButton from "../components/LoaderButton";
 
 const ConfirmEmail = () => {
   const [code, setCode] = useState([null, null, null, null, null, null]);
   console.log('code  on /confirmEmail:', code);
   const { saveUser, errorMessage, setErrorMessage } = useUser();
   const navigate = useNavigate();
+  const inputRefs = useRef([]);
+  const [isLoaded, setIsLoaded] = useState(true);
+
+  //OnChange Input Code
   const handleChangeInputCode = (e, index) => {
     console.log('e.target.value on handleChangeInputCode:', e.target.value);
     console.log('index on handleChangeInputCode:', index);
@@ -19,8 +24,11 @@ const ConfirmEmail = () => {
     newArrayInputCode[index] = nbrInput;
     setCode(newArrayInputCode);
     console.log('newArrayInputCode on handleChangeInputCode:', newArrayInputCode);
+    if (nbrInput && index < code.length - 1) {
+      inputRefs.current[index + 1].focus();
+    }
   };
-
+  // Submit le code
   const handleConfirmEmail = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -45,6 +53,7 @@ const ConfirmEmail = () => {
           alert(message);
         }
         if (response.data.token) {
+          setIsLoaded(false);
           const token = response.data.token;
           saveUser(token);
         }
@@ -69,12 +78,16 @@ const ConfirmEmail = () => {
                   value={code[index]}
                   onChange={(e) => handleChangeInputCode(e, index)}
                   className="classInputCode"
+                  placeholder="0"
+                  required
+                  maxLength={1}
+                  ref={(el) => (inputRefs.current[index] = el)}
                 />
               </label>
             )
           })}
         </div>
-        <Input type='submit' value='envoyer le code' />
+        <Input type='submit' value={isLoaded ? 'envoyer le code' : <LoaderButton />} classInput='submitInputCode' />
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </>

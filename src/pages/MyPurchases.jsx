@@ -7,14 +7,14 @@ import Loading from '../components/Loading';
 
 const MyPurchases = () => {
   const [data, setData] = useState(null);
-  console.log('data in /mypurchases:', data);
+  // console.log('data in /mypurchases:', data);
   const [isloading, setIsLoading] = useState(true);
   const { token, user } = useUser();
 
   useEffect(() => {
     const loadData = async () => {
       const id = user._id;
-      console.log('id on /mypurchases:', id);
+      // console.log('id on /mypurchases:', id);
 
       const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/mypurchases/${id}`,
         // const response = await axios.get(`http/localhost:3000/mypurchases/${id}`,
@@ -26,7 +26,7 @@ const MyPurchases = () => {
         }
       )
       if (response) {
-        console.log('response in /mypurchases:', response);
+        // console.log('response in /mypurchases:', response);
         setData(response.data)
         setIsLoading(false)
       }

@@ -3,17 +3,14 @@
 import axios from 'axios'
 import Loading from '../components/Loading';
 import { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-
-//components
-import Hero from '../components/Hero';
-import Image from '../components/Image'
-import Button from '../components/Button';
-// import Input from '../components/Input';
-// import Links from '../components/Links';
+import { Link, useParams } from 'react-router-dom';
 
 //images
-import noImg from '../assets/images/no-image.jpg'
+import noImg from '../assets/images/no-image.jpg';
+//components
+import Hero from '../components/Hero';
+import Image from '../components/Image';
+import Button from '../components/Button';
 
 const Offer = ({ showHero, showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
@@ -27,7 +24,6 @@ const Offer = ({ showHero, showImgsModal, setShowImgsModal, setSrcImgsModal }) =
   // console.log('prices in /offers/${id}:', prices);
   // const [objId, setObjId] = useState(id);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
 
   // const handleShowImgs = () => {
   //   showImgsModal === false ? (setShowImgsModal(true)) : (setShowImgsModal(false))
@@ -39,12 +35,12 @@ const Offer = ({ showHero, showImgsModal, setShowImgsModal, setSrcImgsModal }) =
       try {
         const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/offers/${id}`);
         // const response = await axios.get(`http/localhost:3000/offers/${id}`);
-        // console.log('response in /offers/${id}:', response);
-        // console.log('response.data in /offers/${id}:', response.data);
-        // console.log('response.data.product_image in /offers/${id}:', response.data.product_image);
-        // console.log('response.data.product_pictures in /offers/${id}:', response.data.product_pictures);
-        if (response.data) {
+        if (response) {
           setData(response.data);
+          // console.log('response in /offers/${id}:', response);
+          // console.log('response.data in /offers/${id}:', response.data);
+          // console.log('response.data.product_image in /offers/${id}:', response.data.product_image);
+          // console.log('response.data.product_pictures in /offers/${id}:', response.data.product_pictures);
           setIsLoading(false);
         }
       } catch (error) {

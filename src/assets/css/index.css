@@ -21,7 +21,8 @@
   }
 
   /* DARK MODE */
-  .dark {
+  .dark,
+  .dark form * {
     background-color: var(--darkMode);
     color: var(--lightMode);
   }

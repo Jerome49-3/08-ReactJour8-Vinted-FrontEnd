@@ -6,7 +6,7 @@ import Image from '../components/Image';
 
 const CheckoutForm = ({ data, succes, setSucces }) => {
   // console.log('data on checkOutForm:', data);
-  // console.log('data.product_name:', data.product_name, '\n', 'data.total:', data.total, '\n', 'data.product_price:', data.product_price, '\n', 'data.product_id:', data.product_id, '\n', 'product_image:', data.product_image, '\n', 'buyer_token:', data.buyer_token);
+  console.log('data.product_name in CheckoutForm:', data.product_name, '\n', 'data.total in CheckoutForm:', data.total, '\n', 'data.product_price in CheckoutForm:', data.product_price, '\n', 'data.product_id in CheckoutForm:', data.product_id, '\n', 'product_image in CheckoutForm:', data.product_image, '\n', 'buyer_token in CheckoutForm:', data.buyer_token);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -29,7 +29,8 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         setIspayed(false);
         return;
       }
-      const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/payment`,
+      const response = await axios.post(`http://localhost:3000/payment`,
+        // const response = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/payment`,
         { product_title: data.product_name, amount: data.total, product_price: data.product_price, product_id: data.product_id, buyer_token: data.buyer_token },
         {
           headers: {
@@ -45,8 +46,8 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         clientSecret: clientSecret,
         payment_method: 'pm_card_visa',
         confirmParams: {
-          // return_url: 'http://localhost:5173/'
-          return_url: 'https://vintaid.netlify.app/'
+          return_url: 'http://localhost:5173/'
+          // return_url: 'https://vintaid.netlify.app/'
         },
         redirect: "if_required",
       });
@@ -55,8 +56,12 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         setIspayed(false);
         return;
       } else if (paymentIntent.status === "succeeded") {
-        const sendSuccess = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/confirmPayment`,
-          { product_title: data.product_name, amount: data.total, product_price: data.product_price, product_id: data.product_id, offer_solded: true },
+        const address = JSON.stringify(paymentIntent.shipping.address);
+        console.log('paymentIntent.shipping.address in /payment:', paymentIntent.shipping.address);
+        console.log('address in /payment:', address);
+        const sendSuccess = await axios.post(`http://localhost:3000/confirmPayment`,
+          // const sendSuccess = await axios.post(`https://site--vintedbackend--s4qnmrl7fg46.code.run/confirmPayment`,
+          { product_title: data.product_name, amount: data.total, product_price: data.product_price, product_id: data.product_id, offer_solded: true, buyer_address: address },
           {
             headers: {
               Authorization: `Bearer ${data.buyer_token}`

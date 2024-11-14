@@ -35,10 +35,10 @@
 
       &:focus-visible {
         outline: transparent;
-      }
 
-      &:focus-visible::placeholder {
-        opacity: 0;
+        &::placeholder {
+          color: transparent;
+        }
       }
 
       &::placeholder {
