@@ -21,12 +21,15 @@ const Login = ({ type, setType, icon1, icon2 }) => {
     try {
       const response = await axios.post(
         `https://site--vintedbackend--s4qnmrl7fg46.code.run/user/login`,
-        { email, password }
+        // const response = await axios.post(`http://localhost:3000/user/login`,
+        {
+          email,
+          password,
+        }
       );
-      // const response = await axios.post(`http://localhost:3000/user/login`, { email, password });
       if (response) {
-        // console.log('response in handleSubmit on /Login:', response);
-        // console.log('response.data in handleSubmit on /Login:', response.data);
+        console.log("response in handleSubmit on /Login:", response);
+        console.log("response.data in handleSubmit on /Login:", response.data);
         const token = response.data;
         await saveUser(token);
         navigate("/publish");
