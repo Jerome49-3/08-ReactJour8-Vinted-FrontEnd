@@ -15,7 +15,7 @@ import OfferCard from '../components/OfferCard';
 //images
 // import noImg from '../assets/images/no-image.jpg';
 
-const Home = ({ search, faHeart, farHeart }) => {
+const Home = ({ search, faHeart, farHeart, fav, setFav }) => {
   // console.log('search in Home:', search);
   const [data, setData] = useState();
   // console.log('data in /Home:', data);
@@ -49,7 +49,7 @@ const Home = ({ search, faHeart, farHeart }) => {
     <>
       <Hero />
       <div className="wrapper">
-        <OfferCard data={data} faHeart={faHeart} farHeart={farHeart} />
+        <OfferCard data={data} faHeart={faHeart} farHeart={farHeart} fav={fav} setFav={setFav}/>
         {/* <div className="boxArticles">
           {data.map((article, key = article._id) => {
             // console.log('article:', article);

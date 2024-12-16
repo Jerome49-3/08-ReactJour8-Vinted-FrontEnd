@@ -16,7 +16,7 @@ export const decryptUser = (token) => {
     //   ).toString(CryptoJS.enc.Utf8)
     // );
     const decoded = jwtDecode(token);
-    console.log("decoded in userFunc:", decoded);
+    // console.log("decoded in userFunc:", decoded);
     return decoded;
   } catch (error) {
     console.error("Error decrypting user:", error);

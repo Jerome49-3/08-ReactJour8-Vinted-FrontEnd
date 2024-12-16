@@ -68,3 +68,13 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+@mixin btn {
+  color: $white;
+  background-color: $vertVinted;
+  width: 100%;
+  @include flexCenter;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0px 0px 1px $black, 0.25px 0.25px 1px $white, 0.5px 0.5px 1px $black;
+}

@@ -16,7 +16,8 @@ const Transactions = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/transactions/${id}`,
+        const response = await axios.get(
+          `https://site--vintedbackend--s4qnmrl7fg46.code.run/transactions/${id}`,
           // const response = await axios.get(`http/localhost:3000/transactions/${id}`,
           {
             headers: {
@@ -24,22 +25,26 @@ const Transactions = () => {
               "content-type": "multipart/form-data",
             },
           }
-        )
+        );
         if (response) {
           setData(response.data);
-          console.log('response.data in /transactions/:id:', response.data);
-          console.log('data in /transactions/:id:', data);
+          console.log("response.data in /transactions/:id:", response.data);
+          console.log("data in /transactions/:id:", data);
           setIsLoading(false);
         }
       } catch (error) {
-        console.log('error in /transactions/${id}:', error.response.data.message);
+        console.log(
+          "error in /transactions/${id}:",
+          error.response.data.message
+        );
       }
-    }
+    };
     fetchData();
-  }, [id])
+  }, [id]);
 
-
-  return isLoading ? <Loading /> : (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="boxTransactionId">
       <div className="wrapper">
         <div className="transactionId">
@@ -60,20 +65,21 @@ const Transactions = () => {
           </div>
           <div className="right">
             <h3>Vendeur:</h3>
-            <div className="top">
-              {data.seller.account.username}
-            </div>
-            <div className="middle">
-              {data.seller.email}
-            </div>
+            <div className="top">{data.seller.account.username}</div>
+            <div className="middle">{data.seller.email}</div>
             <div className="bottom">
-              {data.seller.account.avatar ? (<Image src={data.seller.account.avatar.secure_url} alt='avatar' />) : (null)}
+              {data.seller.account.avatar ? (
+                <Image
+                  src={data.seller.account.avatar.secure_url}
+                  alt="avatar"
+                />
+              ) : null}
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Transactions
+export default Transactions;

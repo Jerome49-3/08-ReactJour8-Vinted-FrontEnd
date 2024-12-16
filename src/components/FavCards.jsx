@@ -1,22 +1,29 @@
 /* eslint-disable no-unsafe-optional-chaining */
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //components
-import Image from "../components/Image";
+import Image from "./Image";
 
 //images
 import noImg from "../assets/images/no-image.jpg";
 
-const OfferCard = ({ data, faHeart, farHeart, fav, setFav }) => {
-  useEffect(() => {
-    localStorage.setItem("favCard", JSON.stringify(fav));
-  }, [fav]);
-  console.log("fav in OfferCard:", fav);
-  console.log("typeof fav in OfferCard:", typeof fav);
+const FavCards = ({ fav, setFav, faHeart, farHeart }) => {
+  // console.log("fav in favCards:", fav);
+  useEffect(
+    (article) => {
+      const isFavorite = fav.some(
+        (favArticle) => favArticle._id === article._id
+      );
+      // console.log("isFavorite:", isFavorite);
+    },
+    [fav]
+  );
+  // console.log("fav in favCards:", fav);
+  // console.log("typeof fav in favCards:", typeof fav);
   const favIsArray = Array.isArray(fav);
-  console.log("favIsArray:", favIsArray);
+  // console.log("favIsArray in favCards:", favIsArray);
   // create ref object who contain ref of each article
   const heartsRefs = useRef({});
 
@@ -39,20 +46,20 @@ const OfferCard = ({ data, faHeart, farHeart, fav, setFav }) => {
     if (isFavorite) {
       // Remove article
       newFav = fav.filter((favArticle) => favArticle._id !== article._id);
-      // console.log("newFav in if:", newFav);
+      // console.log("newFav in if to favCards:", newFav);
     } else {
       // Add article
       newFav = [...fav, article];
-      // console.log("newFav in else:", newFav);
+      // console.log("newFav in else to favCards:", newFav);
     }
     setFav(newFav);
-    // console.log("fav in else:", fav);
+    // console.log("fav in else to favCards:", fav);
     localStorage.setItem("favCard", JSON.stringify(newFav));
   };
 
   return (
     <div className="boxArticles">
-      {data.map((article) => {
+      {fav.map((article) => {
         // console.log("article ds .boxOffer:", article);
         return (
           <React.Fragment key={article._id}>
@@ -134,4 +141,4 @@ const OfferCard = ({ data, faHeart, farHeart, fav, setFav }) => {
   );
 };
 
-export default OfferCard;
+export default FavCards;

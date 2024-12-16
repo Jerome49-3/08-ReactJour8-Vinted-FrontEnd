@@ -3,156 +3,169 @@
   // border: 2px solid red;
   width: 100%;
   background-color: $backgdPage;
-  height: 94vh;
+  // height: 94vh;
 
   .wrapper {
-    @include flexStart;
+    @include flexColCenter;
 
-    & article {
-      @include flexStart;
-      gap: 100px;
-      width: 100vw;
-      // border: 2px solid green;
+    .top {
 
-      .left {
-        width: 80%;
-        height: 550px;
-        // border: 2px solid blue;
-        background-color: $white;
-        display: flex;
+      & article {
+        @include flexCenter;
+        gap: 100px;
+        // border: 2px solid green;
 
-        .imgsRight {
-          width: calc(100% / 2);
-          height: 100%;
+        .left {
+          width: 80%;
+          height: 550px;
+          // border: 2px solid blue;
+          background-color: $white;
+          display: flex;
 
-          .boxImgOffer {
-            height: calc(100% / var(--imgsLength));
-            display: contents;
+          .imgsRight {
+            width: calc(100% / 2);
+            height: 100%;
+
+            .boxImgOffer {
+              height: calc(100% / var(--imgsLength));
+              display: contents;
+            }
           }
-        }
 
-        .imgsRightNone {
-          display: none;
-        }
+          .imgsRightNone {
+            display: none;
+          }
 
-        .imgLeftAlone {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center top;
-        }
-
-        .boxImgOffer {
-          height: 100%;
-          // border: 2px solid yellow;
-
-          .prodImg {
+          .imgLeftAlone {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
           }
 
-          .prodPict {
-            display: block;
-            width: 100%;
-            height: calc(100% / var(--imgsLength));
-          }
+          .boxImgOffer {
+            height: 100%;
+            // border: 2px solid yellow;
+            padding: 0;
 
-          .prodPict0 {
-            height: 550px;
-          }
+            .prodImg {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
 
-          .prodImg,
-          .prodPict {
-            object-fit: cover;
-            border: 1px solid $black;
-            outline: 1px solid $white;
-          }
+            .prodPict {
+              display: block;
+              width: 100%;
+              height: calc(100% / var(--imgsLength));
+            }
 
+            .prodPict0 {
+              height: 550px;
+            }
+
+            .prodImg,
+            .prodPict {
+              object-fit: cover;
+              border: 1px solid $black;
+              outline: 1px solid $white;
+            }
+
+          }
         }
-      }
 
-      .right {
-        // border: 2px solid purple;
-        width: 30%;
-        @include flexColStart;
-        padding: 10px 40px 10px 40px;
-        background-color: $white;
-        height: 550px;
+        .right {
+          // border: 2px solid purple;
+          width: 30%;
+          @include flexColStart;
+          padding: 10px 40px 10px 40px;
+          background-color: $white;
+          height: 550px;
 
-        .top {
-          display: flex;
-          align-items: flex-start;
-          flex-direction: column;
-          height: 45%;
+          .rightTop {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            height: 45%;
 
-          .boxPrice {
-            @include flexCenter;
-            padding: 10px 0 10px 0;
-          }
+            .boxPrice {
+              @include flexCenter;
+              padding: 10px 0 10px 0;
+            }
 
-          .boxDetails {
-            @include flexColCenter;
+            .boxDetails {
+              @include flexColCenter;
 
-            .details {
-              @include flexColStart;
+              .details {
+                @include flexColStart;
 
-              & div {
-                padding: 5px 0 5px 0;
-                @include flexStart;
-                gap: 5px;
+                & div {
+                  padding: 5px 0 5px 0;
+                  @include flexStart;
+                  gap: 5px;
+                }
               }
             }
           }
-        }
 
-        .boxLineOffer {
-          @include flexColCenter;
-          width: 100%;
+          .boxLineOffer {
+            @include flexColCenter;
+            width: 100%;
 
-          .lineOffer {
-            border: 2px solid rgba(110, 107, 96, 0.3);
-            width: 80%;
-            border-radius: 15px;
-          }
-        }
-
-        .bottom {
-          min-height: 30%;
-          @include flexColStart;
-          width: 100%;
-          gap: 15px;
-
-          .up {
-            @include flexColStart;
-            gap: 10px;
-          }
-
-          .down {
-            .boxUser {
-              @include flexCenter;
-              gap: 20px
+            .lineOffer {
+              border: 2px solid rgba(110, 107, 96, 0.3);
+              width: 80%;
+              border-radius: 15px;
             }
           }
 
-          // .subDown {
-          //   @include flexColCenter;
-          //   width: 100%;
+          .rightBottom {
+            min-height: 30%;
+            @include flexColStart;
+            width: 100%;
+            gap: 15px;
 
-          //   & button {
-          //     @include flexCenter;
-          //     background-color: $vertVinted;
-          //     color: $white;
-          //     border-radius: 5px;
-          //     height: 30px;
+            .up {
+              @include flexColStart;
+              gap: 10px;
+            }
 
-          //     & p {
-          //       @include flexCenter;
-          //     }
-          //   }
-          // }
+            .down {
+              .boxUser {
+                @include flexCenter;
+                gap: 20px
+              }
+            }
+
+            .btnPay {
+              @include btn;
+            }
+
+            // .subDown {
+            //   @include flexColCenter;
+            //   width: 100%;
+
+            //   & button {
+            //     @include flexCenter;
+            //     background-color: $vertVinted;
+            //     color: $white;
+            //     border-radius: 5px;
+            //     height: 30px;
+
+            //     & p {
+            //       @include flexCenter;
+            //     }
+            //   }
+            // }
+          }
         }
       }
+    }
+
+    .bottom {
+      @include flexCenter;
+      width: 100%;
+      border: 2px solid red;
     }
   }
 }

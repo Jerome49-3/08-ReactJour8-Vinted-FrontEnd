@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
 
-const TextArea = ({ setState, value, name, placeholder }) => {
+const TextArea = ({ setState, value, name, placeholder, onKeyPress }) => {
   return (
-    <textarea value={value} name={name} id={name} placeholder={placeholder} onChange={(e) => {
-      setState(e.target.value)
-    }}></textarea>
-  )
-}
+    <textarea
+      value={value}
+      name={name}
+      id={name}
+      placeholder={placeholder}
+      onKeyPress={onKeyPress}
+      onChange={(e) => {
+        setState(e.target.value);
+      }}
+    ></textarea>
+  );
+};
 
-export default TextArea
+export default TextArea;

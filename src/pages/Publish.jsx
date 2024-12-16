@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
-import { useUser } from '../context/lib/userFunc';
+import { useUser } from "../context/lib/userFunc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //components
@@ -17,7 +17,7 @@ const Publish = ({ faRotateRight }) => {
   // console.log("pictures in publish:", pictures);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  let [price, setPrice] = useState(null);
+  let [price, setPrice] = useState(undefined);
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [condition, setCondition] = useState("");
@@ -26,7 +26,7 @@ const Publish = ({ faRotateRight }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    setErrorMessage('');
+    setErrorMessage("");
     // console.log("token inside handleSubmit in publish:", token);
     // console.log('e:', e);
     e.preventDefault();
@@ -110,7 +110,11 @@ const Publish = ({ faRotateRight }) => {
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
           <div className="boxPicTop">
-            <div className={pictures.length > 0 ? "boxPicBottom" : 'boxPicBottomEmpty'}>
+            <div
+              className={
+                pictures.length > 0 ? "boxPicBottom" : "boxPicBottomEmpty"
+              }
+            >
               {pictures.length === 0 ? (
                 <label htmlFor="pictures" id="labelPic">
                   + ajouter une photo !
