@@ -42,7 +42,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
       }
     } catch (error) {
       // console.log('error.response in handleSubmit on Login:', error.response);
-      // console.log('error:', error);
+      console.log("error:", error);
       setErrorMessage(error?.response?.data?.message || "login failed");
     }
   };
