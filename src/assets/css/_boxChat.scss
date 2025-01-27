@@ -1,0 +1,19 @@
+.boxChat {
+  padding: 2.5%;
+  width: 50%;
+
+  & p {
+    @include flexCenter;
+    letter-spacing: 10px;
+    color: $vertVinted;
+  }
+
+  & textarea {
+    width: 98.8%;
+  }
+
+  & button {
+    @include btn;
+  }
+
+}

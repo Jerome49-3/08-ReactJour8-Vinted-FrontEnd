@@ -1,64 +1,46 @@
 /* eslint-disable no-unsafe-optional-chaining */
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router";
+import { useUser } from "../assets/lib/userFunc";
 
 //components
-import Image from "../components/Image";
+import Image from "./Image";
+import Hearths from "./Hearths";
 
 //images
 import noImg from "../assets/images/no-image.jpg";
 
-const OfferCard = ({ data, faHeart, farHeart, fav, setFav }) => {
+const OfferCard = ({ data, faHeart, farHeart }) => {
+  const { fav } = useUser();
+  // console.log("data ds OfferCard:", data);
+  // console.log("fav ds OfferCard:", fav);
+  let location = useLocation();
+  // console.log("location ds OfferCard:", location);
   useEffect(() => {
+    // console.log("Location has changed:", location);
     localStorage.setItem("favCard", JSON.stringify(fav));
-  }, [fav]);
-  console.log("fav in OfferCard:", fav);
-  console.log("typeof fav in OfferCard:", typeof fav);
-  const favIsArray = Array.isArray(fav);
-  console.log("favIsArray:", favIsArray);
-  // create ref object who contain ref of each article
-  const heartsRefs = useRef({});
+  }, [fav, location]);
 
-  const handleToggle = (e, article) => {
-    e.preventDefault();
-
-    const heartEmpty = heartsRefs.current[`${article._id}-heartEmpty`];
-    const heartFull = heartsRefs.current[`${article._id}-heartFull`];
-
-    if (heartEmpty && heartFull) {
-      heartEmpty.classList.toggle("show");
-      heartFull.classList.toggle("hide");
-      heartFull.classList.toggle("show");
-      heartEmpty.classList.toggle("hide");
-    }
-
-    const isFavorite = fav.some((favArticle) => favArticle._id === article._id);
-    // console.log("isFavorite in handleToggle:", isFavorite);
-    let newFav;
-    if (isFavorite) {
-      // Remove article
-      newFav = fav.filter((favArticle) => favArticle._id !== article._id);
-      // console.log("newFav in if:", newFav);
-    } else {
-      // Add article
-      newFav = [...fav, article];
-      // console.log("newFav in else:", newFav);
-    }
-    setFav(newFav);
-    // console.log("fav in else:", fav);
-    localStorage.setItem("favCard", JSON.stringify(newFav));
-  };
+  // console.log("fav after useEffect in OfferCard:", fav);
 
   return (
     <div className="boxArticles">
-      {data.map((article) => {
-        // console.log("article ds .boxOffer:", article);
+      {(location.pathname === "/favorites" ? fav : data).map((article) => {
+        // const isFavorite = fav.some((favArticle) => favArticle?._id);
+        console.log("article ds .boxOffer:", article);
         return (
           <React.Fragment key={article._id}>
             <Link
               to={`/offers/${article._id}`}
-              className={article?.offer_solded === true ? "hide" : ""}
+              className={
+                location.pathname === "/my-purchases" ||
+                location.pathname === "/myOffers"
+                  ? ""
+                  : article?.offer_solded === true
+                  ? "hide"
+                  : ""
+              }
             >
               <article>
                 <div className="boxUser">
@@ -100,25 +82,11 @@ const OfferCard = ({ data, faHeart, farHeart, fav, setFav }) => {
                     <Image src={noImg} alt="no image" />
                   )}
                 </div>
-                <button
-                  className="boxHearth"
-                  onClick={(e) => handleToggle(e, article)}
-                >
-                  <FontAwesomeIcon
-                    icon={faHeart}
-                    className="hide"
-                    ref={(el) =>
-                      (heartsRefs.current[`${article._id}-heartFull`] = el)
-                    }
-                  />
-                  <FontAwesomeIcon
-                    icon={farHeart}
-                    className="show"
-                    ref={(el) =>
-                      (heartsRefs.current[`${article._id}-heartEmpty`] = el)
-                    }
-                  />
-                </button>
+                <Hearths
+                  article={article}
+                  faHeart={faHeart}
+                  farHeart={farHeart}
+                />
                 <div className="footerArticle">
                   <div>{article?.product_details[0]?.MARQUE}</div>
                   <div className="description">

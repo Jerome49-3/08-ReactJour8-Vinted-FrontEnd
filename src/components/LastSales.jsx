@@ -1,50 +1,37 @@
 import { useEffect, useState } from "react";
-
-//axios
-import axios from "axios";
-
-//icones
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-//context
-import { UserContext } from "../context/UserProvider";
-import { useContext } from "react";
+import { useUser } from "../assets/lib/userFunc";
 
 //components
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
-import Image from "./Image";
 
 const LastSales = () => {
   const [data, setData] = useState();
-  console.log('data in LastUsers:', data);
+  console.log("data in LastUsers:", data);
   const [isLoading, setIsLoading] = useState(true);
-  const { token } = useContext(UserContext);
+  const { token, axios } = useUser();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/transactions`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data"
-            }
-          }
-        )
+        // const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/transactions`,
+        const response = await axios.get(`http://localhost:3000/transactions`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "content-type": "multipart/form-data",
+          },
+        });
         if (response) {
           setData(response.data);
-          console.log('response.data in /transactions:', response.data);
+          console.log("response.data in /transactions:", response.data);
           setIsLoading(false);
         }
       } catch (error) {
         console.log(error.response.data.message);
       }
-
-    }
+    };
     fetchData();
-  }, [])
-
+  }, []);
 
   return isLoading ? (
     <Loading />
@@ -52,7 +39,7 @@ const LastSales = () => {
     <div className="wrapper">
       <div className="boxLastSales">
         {data.map((transactions, key = transactions._id) => {
-          console.log('transactions in map on /transactions:', transactions);
+          console.log("transactions in map on /transactions:", transactions);
           return (
             <div className="boxTansactions" key={key}>
               <Link to={`/transactions/${transactions._id}`}>
@@ -71,7 +58,8 @@ const LastSales = () => {
                       <div className="boxSeller">
                         <div>{transactions.seller.account.username}</div>
                         <div>{transactions.seller.email}</div>
-                      </div></td>
+                      </div>
+                    </td>
                     <td>
                       <div className="boxDate">
                         <div></div>
@@ -89,11 +77,11 @@ const LastSales = () => {
                 </table>
               </Link>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LastSales
+export default LastSales;

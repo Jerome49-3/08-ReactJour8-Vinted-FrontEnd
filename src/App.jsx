@@ -57,6 +57,7 @@ import Header from "./components/Header";
 import SignUp from "./components/SignUp";
 import Aside from "./components/Aside";
 import ImgsModal from "./components/ImgsModal";
+import Profile from "./components/Profile";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -66,16 +67,8 @@ function App() {
   const [showImgsModal, setShowImgsModal] = useState(false);
   const [srcImgsModal, setSrcImgsModal] = useState(null);
   // console.log("srcImgsModal in app:", srcImgsModal);
+  const [showNoOffer, setShowNoOffer] = useState(false);
 
-  const [fav, setFav] = useState(() => {
-    const savedFav = localStorage.getItem("favCard");
-    // console.log("typeof savedFav in app:", typeof savedFav);
-    // console.log("savedFav in app:", savedFav);
-    const favStored = JSON.parse(savedFav);
-    // console.log("typeof favStored in app:", typeof favStored);
-    // console.log("favStored in app:", favStored);
-    return favStored ? favStored : [];
-  });
   // console.log('showToggleNav in app:', showToggleNav);
   const [priceMin, setPriceMin] = useState(0);
   // console.log('priceMin in app:', priceMin);
@@ -132,6 +125,7 @@ function App() {
                   />
                 }
               />
+              <Route path="/profile/:id" element={<Profile />} />
               <Route
                 path="/payment"
                 element={
@@ -143,14 +137,7 @@ function App() {
               />
               <Route
                 path="/favorites"
-                element={
-                  <Favorites
-                    fav={fav}
-                    setFav={setFav}
-                    faHeart={faHeart}
-                    farHeart={farHeart}
-                  />
-                }
+                element={<Favorites faHeart={faHeart} farHeart={farHeart} />}
               />
               <Route
                 path="/users/:id"
@@ -166,9 +153,26 @@ function App() {
               <Route path="/transactions/:id" element={<Transactions />} />
               <Route
                 path="/myOffers"
-                element={<MyOffers faHeart={faHeart} farHeart={farHeart} />}
+                element={
+                  <MyOffers
+                    faHeart={faHeart}
+                    farHeart={farHeart}
+                    showNoOffer={showNoOffer}
+                    setShowNoOffer={setShowNoOffer}
+                  />
+                }
               />
-              <Route path="/my-purchases" element={<MyPurchases />} />
+              <Route
+                path="/my-purchases"
+                element={
+                  <MyPurchases
+                    faHeart={faHeart}
+                    farHeart={farHeart}
+                    showNoOffer={showNoOffer}
+                    setShowNoOffer={setShowNoOffer}
+                  />
+                }
+              />
             </Route>
             <Route path="/confirmemail" element={<ConfirmEmail />} />
             <Route
@@ -190,13 +194,7 @@ function App() {
             <Route
               path="/"
               element={
-                <Home
-                  search={search}
-                  faHeart={faHeart}
-                  farHeart={farHeart}
-                  fav={fav}
-                  setFav={setFav}
-                />
+                <Home search={search} faHeart={faHeart} farHeart={farHeart} />
               }
             />
           </Routes>

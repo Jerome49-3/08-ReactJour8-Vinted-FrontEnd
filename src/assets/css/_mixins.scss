@@ -4,6 +4,24 @@
   align-items: center;
 }
 
+@mixin flexAround {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@mixin flexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flexEvenly {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 @mixin flexStart {
   display: flex;
   justify-content: flex-start;
@@ -49,18 +67,6 @@
   justify-content: flex-start;
   align-items: flex-end;
   flex-direction: column;
-}
-
-@mixin flexAround {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-@mixin flexBetween {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 @mixin wrapper {

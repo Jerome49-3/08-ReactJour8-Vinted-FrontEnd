@@ -33,6 +33,17 @@
     opacity: 0;
   }
 }
+@keyframes appearLoaderTyping {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 @keyframes appearLine {
   0% {
     opacity: 0;
@@ -57,6 +68,10 @@
     opacity: 0;
   }
 }
+.rotate {
+  transform: rotate(var(--rotation, 0deg));
+}
+
 .wrapper {
   max-width: 1200px;
   margin-left: auto;
@@ -299,8 +314,8 @@ form input:last-child:not(.boxFormSignUp form div input) {
 
 /* MODAL */
 .boxModal {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 119, 130, 0.8);
   display: flex;
   justify-content: center;
@@ -570,6 +585,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 100%;
   gap: 5%;
   font-size: 1.15rem;
+  padding: 10px;
 }
 .boxArticles a {
   margin-bottom: 20px;
@@ -758,11 +774,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 
 .boxOffer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: rgba(110, 107, 96, 0.3);
+  padding: 10px;
 }
 .boxOffer .wrapper {
   display: flex;
@@ -770,138 +782,112 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-direction: column;
 }
-.boxOffer .wrapper .top article {
+.boxOffer .wrapper .top {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  min-width: 100%;
+  gap: 2.5%;
 }
-.boxOffer .wrapper .top article .left {
-  width: 80%;
-  height: 550px;
-  background-color: #ffffff;
-  display: flex;
-}
-.boxOffer .wrapper .top article .left .imgsRight {
-  width: 50%;
-  height: 100%;
-}
-.boxOffer .wrapper .top article .left .imgsRight .boxImgOffer {
-  height: calc(100% / var(--imgsLength));
-  display: contents;
-}
-.boxOffer .wrapper .top article .left .imgsRightNone {
-  display: none;
-}
-.boxOffer .wrapper .top article .left .imgLeftAlone {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center top;
-     object-position: center top;
-}
-.boxOffer .wrapper .top article .left .boxImgOffer {
-  height: 100%;
+.boxOffer .wrapper .top * {
+  margin: 0;
   padding: 0;
 }
-.boxOffer .wrapper .top article .left .boxImgOffer .prodImg {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.boxOffer .wrapper .top .left,
+.boxOffer .wrapper .top .right {
+  box-shadow: 0px 0px 0.5px #2DB0BA, 0px 0px 1px #2DB0BA, 0px 0px 1.25px #2DB0BA, 0px 0px 1.5px #2DB0BA, 0px 0px 2px #2DB0BA, 0px 0px 5px #2DB0BA;
 }
-.boxOffer .wrapper .top article .left .boxImgOffer .prodPict {
+.boxOffer .wrapper .top .left {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxOffer .wrapper .top .left .imgLeftAlone {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxOffer .wrapper .top .left .imgLeftAlone .boxImgOffer {
+  overflow: hidden;
+  min-width: 100%;
+}
+.boxOffer .wrapper .top .left .imgLeftAlone .boxImgOffer .prodImg {
+  width: 100%;
+  height: 500px;
   display: block;
-  width: 100%;
-  height: calc(100% / var(--imgsLength));
-}
-.boxOffer .wrapper .top article .left .boxImgOffer .prodPict0 {
-  height: 550px;
-}
-.boxOffer .wrapper .top article .left .boxImgOffer .prodImg,
-.boxOffer .wrapper .top article .left .boxImgOffer .prodPict {
   -o-object-fit: cover;
      object-fit: cover;
-  border: 1px solid #000000;
-  outline: 1px solid #ffffff;
 }
-.boxOffer .wrapper .top article .right {
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  padding: 10px 40px 10px 40px;
-  background-color: #ffffff;
-  height: 550px;
-}
-.boxOffer .wrapper .top article .right .rightTop {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  height: 45%;
-}
-.boxOffer .wrapper .top article .right .rightTop .boxPrice {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0 10px 0;
-}
-.boxOffer .wrapper .top article .right .rightTop .boxDetails {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.boxOffer .wrapper .top article .right .rightTop .boxDetails .details {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.boxOffer .wrapper .top article .right .rightTop .boxDetails .details div {
-  padding: 5px 0 5px 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 5px;
-}
-.boxOffer .wrapper .top article .right .boxLineOffer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.boxOffer .wrapper .top .left .imgLeft {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.boxOffer .wrapper .top article .right .boxLineOffer .lineOffer {
-  border: 2px solid rgba(110, 107, 96, 0.3);
-  width: 80%;
-  border-radius: 15px;
+.boxOffer .wrapper .top .left .imgLeft .boxImgOffer .prodPict0 {
+  width: 600px;
+  height: 500px;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.boxOffer .wrapper .top article .right .rightBottom {
-  min-height: 30%;
+.boxOffer .wrapper .top .left .imgsRight {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.boxOffer .wrapper .top .left .imgsRight .boxImgOffer .prodPict {
+  width: 100%;
+  height: calc(500px / var(--imgsLength));
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.boxOffer .wrapper .top .right {
+  width: 240px;
+  text-align: justify;
+  padding: 10px;
+  height: 500px;
+  background-color: var(--backLightInput);
+}
+.boxOffer .wrapper .top .right .rightTop {
+  width: 100%;
+  height: 60%;
+}
+.boxOffer .wrapper .top .right .rightTop div {
+  height: 10%;
+}
+.boxOffer .wrapper .top .right .rightTop .boxDetails {
+  height: 16.6666666667%;
+}
+.boxOffer .wrapper .top .right .rightTop .boxDetails div {
+  height: 100%;
+}
+.boxOffer .wrapper .top .right .rightBottom {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  width: 100%;
-  gap: 15px;
+  gap: 20px;
 }
-.boxOffer .wrapper .top article .right .rightBottom .up {
+.boxOffer .wrapper .top .right .rightBottom .up {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   gap: 10px;
 }
-.boxOffer .wrapper .top article .right .rightBottom .down .boxUser {
+.boxOffer .wrapper .top .right .rightBottom .down .boxUser {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 20px;
 }
-.boxOffer .wrapper .top article .right .rightBottom .btnPay {
+.boxOffer .wrapper .top .right .rightBottom a {
   color: #ffffff;
   background-color: #2DB0BA;
   width: 100%;
@@ -913,11 +899,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   text-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000;
 }
 .boxOffer .wrapper .bottom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  border: 2px solid red;
+  height: 30%;
 }
 
 .boxShoppingCart {
@@ -1467,6 +1449,53 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 290px !important;
 }
 
-.boxFavorites {
-  padding: 5%;
+.boxLoaderTyping {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  gap: 5%;
+  height: 12.5px;
+}
+.boxLoaderTyping .circleTyping {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #2DB0BA;
+  box-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000;
+}
+.boxLoaderTyping .circleTyping1 {
+  animation: appearLoaderTyping 1s ease-in-out 0.3s infinite both;
+}
+.boxLoaderTyping .circleTyping2 {
+  animation: appearLoaderTyping 1s ease-in-out 0.6s infinite both;
+}
+.boxLoaderTyping .circleTyping3 {
+  animation: appearLoaderTyping 1s ease-in-out 0.9s infinite both;
+}
+
+.boxChat {
+  padding: 2.5%;
+  width: 50%;
+}
+.boxChat p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 10px;
+  color: #2DB0BA;
+}
+.boxChat textarea {
+  width: 98.8%;
+}
+.boxChat button {
+  color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000;
 }/*# sourceMappingURL=App.css.map */

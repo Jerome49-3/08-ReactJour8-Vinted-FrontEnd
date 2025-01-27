@@ -1,11 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { UserContext } from "../context/UserProvider";
-import { useContext } from 'react';
+import { useUser } from "../assets/lib/userFunc";
 
 const PrivateRoute = () => {
-  const { token } = useContext(UserContext);
-  if (!token) return <Navigate to='/login' />
+  const { token } = useUser();
+  if (!token) return <Navigate to="/login" />;
   return <Outlet />;
 };
 
-export default PrivateRoute
+export default PrivateRoute;

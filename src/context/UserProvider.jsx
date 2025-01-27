@@ -1,93 +1,59 @@
-import { createContext, useState, useEffect } from "react";
-import { decryptUser } from "./lib/userFunc";
+import { createContext, useEffect, useState } from "react";
+import Cookies from "js-cookie";
 import axios from "axios";
+import saveToken from "../assets/lib/saveToken";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
-  console.log("token in userProvider:", token);
+  const [token, setToken] = useState(Cookies.get("accessTokenV") || null);
+  console.log("token in UserProvider:", token);
   const [user, setUser] = useState(null);
-  // console.log("user in userProvider:", user);
+  console.log("user in UserProvider:", user);
   const [isAdmin, setIsAdmin] = useState(false);
-  // console.log("isAdmin in userProvider:", isAdmin);
   const [errorMessage, setErrorMessage] = useState("");
-  // console.log("errorMessage in userProvider:", errorMessage);
+  const [isMounted, setIsMounted] = useState(true);
+  const [fav, setFav] = useState(() => {
+    const savedFav = localStorage.getItem("favCard");
+    // console.log("savedFav in app:", savedFav);
+    //if trythy
+    if (savedFav) {
+      try {
+        const favStored = JSON.parse(savedFav);
+        return favStored ? favStored : [];
+      } catch (error) {
+        //if null or undefined
+        console.log("Erreur du parsing de savedFav:", error);
+        return [];
+      }
+    }
+    return [];
+  });
 
   useEffect(() => {
-    try {
-      setToken(localStorage.getItem("userToken"));
-      if (token) {
-        const decryptedUser = decryptUser(token);
-        // console.log(
-        //   "decryptedUser in useEffect on userProvider:",
-        //   decryptedUser
-        // );
-        if (decryptedUser) {
-          setUser(decryptedUser);
-          if (decryptedUser.isAdmin === true) {
-            setIsAdmin(decryptedUser.isAdmin);
-          }
-        } else {
-          localStorage.removeItem("userToken");
-        }
-      }
-    } catch (error) {
-      // console.log("error in useEffect in userProvider:", error);
-    }
-  }, [token]);
-
-  const signup = async (username, email, password, newsletter) => {
-    try {
-      // const response = await axios.post(
-      //   `https://site--vintedbackend--s4qnmrl7fg46.code.run/user/signup`,
-      const response = await axios.post(`http://localhost:3000/user/signup`, {
-        username,
-        email,
-        password,
-        newsletter,
-      });
-      console.log("response in SignupService:", response);
-      if (response.data) {
-        console.log("response.data in SignupService:", response.data);
-        return response.data;
-      } else {
-        throw new Error("no data in /signup");
-      }
-    } catch (error) {
-      console.log("error in SignupService:", error.response.data.message);
-      if (error) {
-        return setErrorMessage(error.response.data.message);
+    if (isMounted && token && user) {
+      try {
+        saveToken(token, setToken, setUser, setIsAdmin);
+        setIsMounted(false);
+      } catch (error) {
+        console.log("error in useEffect on UserProvider:", error);
       }
     }
-  };
-
-  const saveUser = async (token) => {
-    try {
-      localStorage.setItem("userToken", token);
-      setToken(token);
-      const decryptedUser = decryptUser(token);
-      // console.log("decryptedUser in userProvider:", decryptedUser);
-      setUser(decryptedUser);
-      localStorage.setItem("isAdmin", decryptedUser.isAdmin);
-      setIsAdmin(decryptedUser.isAdmin ? decryptedUser.isAdmin : false);
-      // console.log("isAdmin in userProvider:", isAdmin);
-    } catch (error) {
-      setErrorMessage(error);
-      setUser(null);
-      localStorage.removeItem("userToken");
-    }
-  };
+  }, [token, user, isMounted]);
 
   const logout = () => {
     try {
-      setUser(null);
       setToken(null);
-      setIsAdmin(null);
-      localStorage.removeItem("userToken");
-      localStorage.removeItem("isAdmin");
+      setUser(null);
+      setIsAdmin(false);
+      Cookies.remove("accessTokenV");
+      Cookies.remove("refreshTokenV");
+      Cookies.remove("vintaidUser");
+      Cookies.remove("vintaidTeam");
+      localStorage.removeItem("favCard");
     } catch (error) {
-      setErrorMessage(error);
+      console.log("Error in logout:", error);
+      setErrorMessage("Error during logout");
     }
   };
 
@@ -95,7 +61,7 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         token,
-        saveUser,
+        setToken,
         user,
         setUser,
         logout,
@@ -103,7 +69,9 @@ export const UserProvider = ({ children }) => {
         setIsAdmin,
         errorMessage,
         setErrorMessage,
-        signup,
+        axios,
+        fav,
+        setFav,
       }}
     >
       {children}

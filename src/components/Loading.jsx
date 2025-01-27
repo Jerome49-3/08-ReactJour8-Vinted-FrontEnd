@@ -1,12 +1,5 @@
-
 const Loading = () => {
   return (
-    // <div className='boxDot'>
-    //   <h1>Loading</h1>
-    //   <div className="dot1 dot"></div>
-    //   <div className="dot2 dot"></div>
-    //   <div className="dot3 dot"></div>
-    // </div>
     <div className="boxLines">
       <div className="line line1"></div>
       <div className="line line2"></div>
@@ -24,9 +17,8 @@ const Loading = () => {
       <div className="line line14"></div>
       <div className="line line15"></div>
       <div className="line line16"></div>
-      {/* <div className="line line17"></div> */}
     </div>
-  )
-}
+  );
+};
 
-export default Loading
+export default Loading;

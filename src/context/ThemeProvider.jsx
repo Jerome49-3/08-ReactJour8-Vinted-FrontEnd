@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import { useEffect } from "react";
 
 export const ThemeContext = createContext();
@@ -8,34 +8,33 @@ export default function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    const cookieTheme = Cookies.get('vintedAppTheme');
-    if (cookieTheme === 'dark') {
-      setDarkMode(true)
+    const cookieTheme = Cookies.get("vintedAppTheme");
+    if (cookieTheme === "dark") {
+      setDarkMode(true);
     } else {
       setDarkMode(false);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (darkMode) {
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
+      document.body.classList.add("dark");
+      document.body.classList.remove("light");
+    } else {
+      document.body.classList.remove("dark");
+      document.body.classList.add("light");
     }
-    else {
-      document.body.classList.remove('dark');
-      document.body.classList.add('light');
-    }
-  }, [darkMode])
+  }, [darkMode]);
 
   function toggleTheme() {
-    const theme = !darkMode
+    const theme = !darkMode;
     setDarkMode(theme);
-    Cookies.set('vintedAppTheme', theme ? 'dark' : 'light', { expires: 15 });
+    Cookies.set("vintedAppTheme", theme ? "dark" : "light", { expires: 15 });
   }
 
   return (
     <ThemeContext.Provider value={{ toggleTheme, darkMode }}>
       {children}
     </ThemeContext.Provider>
-  )
+  );
 }

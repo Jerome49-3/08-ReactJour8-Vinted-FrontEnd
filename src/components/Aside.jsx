@@ -1,11 +1,16 @@
 import Links from "./Links";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../context/lib/userFunc";
+import { useUser } from "../assets/lib/userFunc";
 
 const Aside = ({ showToggleNav, setShowToggleNav }) => {
   // console.log('showToggleNav in aside:', showToggleNav);
-  const { token, isAdmin, logout } = useUser();
-  // console.log('token in Aside:', token);
+  const { token, isAdmin, user, logout } = useUser();
+  // console.log("user in aside:", user);
+  // console.log("token in Aside:", token);
+
+  const userId = user ? user._id : null;
+  // console.log("userId in Aside:", userId);
+
   const navigate = useNavigate();
   return (
     <div className={showToggleNav === true ? "toggleNav" : "hideToggle"}>
@@ -15,6 +20,9 @@ const Aside = ({ showToggleNav, setShowToggleNav }) => {
       {token && <Links path="/myOffers" linkText="Mes Offres" />}
       {token && <Links path="/my-purchases" linkText="Mes Achats" />}
       {token && <Links path="/favorites" linkText="Mes favoris" />}
+      {token && user && userId && (
+        <Links path={`/profile/${userId}`} linkText="Mon Profil" />
+      )}
       {token && (
         <button
           onClick={() => {

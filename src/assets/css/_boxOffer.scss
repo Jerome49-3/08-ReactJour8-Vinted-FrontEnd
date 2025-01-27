@@ -1,171 +1,130 @@
 .boxOffer {
-  @include flexCenter;
-  // border: 2px solid red;
-  width: 100%;
-  background-color: $backgdPage;
-  // height: 94vh;
+  padding: 10px;
 
   .wrapper {
     @include flexColCenter;
 
     .top {
+      @include flexCenter;
+      min-width: 100%;
+      gap: 2.5%;
+      // border: 1px solid purple;
 
-      & article {
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .left,
+      .right {
+        box-shadow: 0px 0px 0.5px $vertVinted, 0px 0px 1px $vertVinted, 0px 0px 1.25px $vertVinted, 0px 0px 1.5px $vertVinted, 0px 0px 2px $vertVinted, 0px 0px 5px $vertVinted;
+      }
+
+      .left {
+        width: 100%;
         @include flexCenter;
-        gap: 100px;
-        // border: 2px solid green;
 
-        .left {
-          width: 80%;
-          height: 550px;
-          // border: 2px solid blue;
-          background-color: $white;
-          display: flex;
+        .imgLeftAlone {
+          min-width: 100%;
+          @include flexCenter;
 
-          .imgsRight {
-            width: calc(100% / 2);
-            height: 100%;
-
-            .boxImgOffer {
-              height: calc(100% / var(--imgsLength));
-              display: contents;
-            }
-          }
-
-          .imgsRightNone {
-            display: none;
-          }
-
-          .imgLeftAlone {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-          }
 
           .boxImgOffer {
-            height: 100%;
-            // border: 2px solid yellow;
-            padding: 0;
+            overflow: hidden;
+            min-width: 100%;
 
             .prodImg {
               width: 100%;
-              height: 100%;
-              object-fit: cover;
-            }
-
-            .prodPict {
+              height: 500px;
               display: block;
-              width: 100%;
-              height: calc(100% / var(--imgsLength));
-            }
-
-            .prodPict0 {
-              height: 550px;
-            }
-
-            .prodImg,
-            .prodPict {
               object-fit: cover;
-              border: 1px solid $black;
-              outline: 1px solid $white;
             }
-
           }
         }
 
-        .right {
-          // border: 2px solid purple;
-          width: 30%;
-          @include flexColStart;
-          padding: 10px 40px 10px 40px;
-          background-color: $white;
-          height: 550px;
+        .imgLeft {
+          width: 100%;
+          @include flexCenter;
 
-          .rightTop {
-            display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-            height: 45%;
 
-            .boxPrice {
-              @include flexCenter;
-              padding: 10px 0 10px 0;
-            }
 
-            .boxDetails {
-              @include flexColCenter;
+          .boxImgOffer {
 
-              .details {
-                @include flexColStart;
-
-                & div {
-                  padding: 5px 0 5px 0;
-                  @include flexStart;
-                  gap: 5px;
-                }
-              }
+            .prodPict0 {
+              width: calc(1200px /2);
+              height: 500px;
+              display: block;
+              object-fit: cover;
             }
           }
+        }
 
-          .boxLineOffer {
-            @include flexColCenter;
-            width: 100%;
 
-            .lineOffer {
-              border: 2px solid rgba(110, 107, 96, 0.3);
-              width: 80%;
-              border-radius: 15px;
+        .imgsRight {
+          width: 100%;
+          @include flexColCenter;
+
+          .boxImgOffer {
+
+            .prodPict {
+              width: 100%;
+              height: calc(500px / var(--imgsLength));
+              object-fit: cover;
+              display: block;
             }
-          }
-
-          .rightBottom {
-            min-height: 30%;
-            @include flexColStart;
-            width: 100%;
-            gap: 15px;
-
-            .up {
-              @include flexColStart;
-              gap: 10px;
-            }
-
-            .down {
-              .boxUser {
-                @include flexCenter;
-                gap: 20px
-              }
-            }
-
-            .btnPay {
-              @include btn;
-            }
-
-            // .subDown {
-            //   @include flexColCenter;
-            //   width: 100%;
-
-            //   & button {
-            //     @include flexCenter;
-            //     background-color: $vertVinted;
-            //     color: $white;
-            //     border-radius: 5px;
-            //     height: 30px;
-
-            //     & p {
-            //       @include flexCenter;
-            //     }
-            //   }
-            // }
           }
         }
       }
+
+      .right {
+        width: calc(1200px /5);
+        text-align: justify;
+        padding: 10px;
+        height: 500px;
+        background-color: var(--backLightInput);
+
+        .rightTop {
+          width: 100%;
+          height: 60%;
+
+          & div {
+            height: calc(100% / 10);
+          }
+
+          .boxDetails {
+            height: calc(100% / 6);
+
+            & div {
+              height: 100%;
+            }
+          }
+        }
+
+        .rightBottom {
+          @include flexColStart;
+          gap: 20px;
+
+          .up {
+            @include flexColStart;
+            gap: 10px;
+          }
+
+          .down .boxUser {
+            @include flexStart;
+            gap: 20px;
+          }
+
+          & a {
+            @include btn;
+          }
+        }
+      }
+
+
     }
 
     .bottom {
-      @include flexCenter;
-      width: 100%;
-      border: 2px solid red;
+      height: 30%;
     }
   }
 }

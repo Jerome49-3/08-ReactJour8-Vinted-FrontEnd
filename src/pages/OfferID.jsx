@@ -14,6 +14,9 @@ import Image from "../components/Image";
 import Button from "../components/Button";
 import Chat from "../components/Chat";
 
+//lib
+import classRotation from "../assets/lib/classRotation";
+
 const OfferID = ({
   showHero,
   showImgsModal,
@@ -22,32 +25,37 @@ const OfferID = ({
 }) => {
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
   const { id } = useParams();
-  // console.log('id1 in /offers/${id}:', id);
+  console.log("id1 in /offers/${id}:", id);
   const [data, setData] = useState();
   const [imgsNbr, setImgsNbr] = useState(0);
-  // console.log('data in /offers/${id}:', data);
+  // const [wrappWidth, setWrappWidth] = useState(0);
+  // const [imgRightHeight, setImgRightHeight] = useState(0);
+  console.log("data in OfferId:", data);
   let [price, setPrice] = useState(0);
   const prices = Number(price).toFixed(2);
   // console.log('prices in /offers/${id}:', prices);
   // const [objId, setObjId] = useState(id);
   const [isLoading, setIsLoading] = useState(true);
+  const rotation = classRotation(data);
+  // const wrapperDimensions = useRef(null);
+  // const topHeightDimensions = useRef(null);
 
   // const handleShowImgs = () => {
   //   showImgsModal === false ? (setShowImgsModal(true)) : (setShowImgsModal(false))
   // }
 
   useEffect(() => {
-    // console.log('id inside useEffect in /offers/${id}:', id);
+    console.log("id inside useEffect in /offers/${id}:", id);
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://site--vintedbackend--s4qnmrl7fg46.code.run/offers/${id}`
-        );
-        // const response = await axios.get(`http/localhost:3000/offers/${id}`);
+        // const response = await axios.get(
+        //   `https://site--vintedbackend--s4qnmrl7fg46.code.run/offers/${id}`
+        // );
+        const response = await axios.get(`http://localhost:3000/offers/${id}`);
         if (response) {
           setData(response.data);
-          // console.log('response in /offers/${id}:', response);
-          // console.log('response.data in /offers/${id}:', response.data);
+          console.log("response in /offers/${id}:", response);
+          console.log("response.data in /offers/${id}:", response.data);
           // console.log('response.data.product_image in /offers/${id}:', response.data.product_image);
           // console.log('response.data.product_pictures in /offers/${id}:', response.data.product_pictures);
           setIsLoading(false);
@@ -85,6 +93,33 @@ const OfferID = ({
     }
   }, [isLoading, imgsNbr]);
 
+  // useEffect(() => {
+  //   const defineDimensions = () => {
+  //     if (wrapperDimensions.current) {
+  //       const rect = wrapperDimensions.current.getBoundingClientRect();
+  //       const wrapperDim = rect.width;
+  //       console.log("wrapperDim dans useLayoutEffect:", wrapperDim);
+  //       setWrappWidth(
+  //         document.documentElement.style.setProperty("--wrapperDim", wrapperDim)
+  //       );
+  //     }
+  //     if (topHeightDimensions.current) {
+  //       const rect2 = topHeightDimensions.current.getBoundingClientRect();
+  //       const imgRightHeight = Math.round(rect2.height);
+  //       console.log("imgRightHeight dans useLayoutEffect:", imgRightHeight);
+  //       setImgRightHeight(
+  //         document.documentElement.style.setProperty(
+  //           "--imgRightHeight",
+  //           imgRightHeight
+  //         )
+  //       );
+  //     }
+  //   };
+  //   if (isLoading === false) {
+  //     defineDimensions();
+  //   }
+  // }, [isLoading]);
+
   return isLoading ? (
     <>
       <Loading />
@@ -94,180 +129,180 @@ const OfferID = ({
       {showHero && <Hero />}
       <div className="boxOffer">
         <div className="wrapper">
-          <div className="top">
-            <article>
-              <div className="left">
-                <div
-                  className={data.product_image ? "imgLeftAlone" : "imgLeft"}
-                >
-                  {data.product_image ? (
-                    <Button
-                      classButton="boxImgOffer"
-                      src={data.product_image.secure_url}
-                      classImg={data.product_image && "prodImg"}
-                      handleClick={() => {
-                        if (showImgsModal === false) {
-                          setShowImgsModal(true);
-                          setSrcImgsModal(data.product_image.secure_url);
-                        } else {
-                          setShowImgsModal(true);
-                        }
-                      }}
-                    />
-                  ) : data.product_pictures ? (
-                    <>
-                      {data.product_pictures.map((images, index) => {
-                        // console.log('images:', images);
-                        return (
-                          <>
-                            {index === 0 ? (
-                              <Button
-                                classButton="boxImgOffer"
-                                key={index}
-                                src={images.secure_url}
-                                classImg={
-                                  index === 0 ? "prodPict0" : "prodPict"
+          <article className="top">
+            <div className="left">
+              <div className={data.product_image ? "imgLeftAlone" : "imgLeft"}>
+                {data.product_image ? (
+                  <Button
+                    classButton="boxImgOffer"
+                    src={data.product_image.secure_url}
+                    classImg={data?.product_image && "prodImg"}
+                    handleClick={() => {
+                      if (showImgsModal === false) {
+                        setShowImgsModal(true);
+                        setSrcImgsModal(data?.product_image?.secure_url);
+                      } else {
+                        setShowImgsModal(true);
+                      }
+                    }}
+                    rotation={rotation}
+                  />
+                ) : data.product_pictures ? (
+                  <>
+                    {data.product_pictures.map((images, index) => {
+                      // console.log('images:', images);
+                      const rotation = classRotation(images);
+                      return (
+                        <>
+                          {index === 0 ? (
+                            <Button
+                              classButton="boxImgOffer"
+                              key={index}
+                              src={images.secure_url}
+                              classImg={index === 0 ? "prodPict0" : "prodPict"}
+                              handleClick={() => {
+                                if (showImgsModal === false) {
+                                  setShowImgsModal(true);
+                                  setSrcImgsModal(images.secure_url);
+                                } else {
+                                  setShowImgsModal(true);
                                 }
-                                handleClick={() => {
-                                  if (showImgsModal === false) {
-                                    setShowImgsModal(true);
-                                    setSrcImgsModal(images.secure_url);
-                                  } else {
-                                    setShowImgsModal(true);
-                                  }
-                                }}
-                              />
-                            ) : null}
-                          </>
-                        );
-                      })}
-                    </>
-                  ) : (
-                    <Image src={noImg} classImg="prodImg" />
-                  )}
+                              }}
+                              rotation={rotation}
+                            />
+                          ) : null}
+                        </>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <Image src={noImg} classImg="prodImg" />
+                )}
+              </div>
+              <div
+                className={data.product_image ? "imgsRightNone" : "imgsRight"}
+              >
+                {data.product_pictures ? (
+                  <>
+                    {data.product_pictures.map((images, index) => {
+                      // console.log('images:', images);
+                      return (
+                        <>
+                          {index > 0 && (
+                            <Button
+                              classButton="boxImgOffer"
+                              key={index}
+                              src={images.secure_url}
+                              classImg={index > 0 && "prodPict"}
+                              handleClick={() => {
+                                if (showImgsModal === false) {
+                                  setShowImgsModal(true);
+                                  setSrcImgsModal(images.secure_url);
+                                } else {
+                                  setShowImgsModal(true);
+                                }
+                              }}
+                              rotation={rotation}
+                            />
+                          )}
+                        </>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <Image src={noImg} classImg="prodImg" />
+                )}
+              </div>
+            </div>
+            <div className="right">
+              <div className="rightTop">
+                <div className="boxPrice">
+                  <div>{prices} €</div>
                 </div>
-                <div
-                  className={data.product_image ? "imgsRightNone" : "imgsRight"}
-                >
-                  {data.product_pictures ? (
-                    <>
-                      {data.product_pictures.map((images, index) => {
-                        // console.log('images:', images);
-                        return (
-                          <>
-                            {index > 0 && (
-                              <Button
-                                classButton="boxImgOffer"
-                                key={index}
-                                src={images.secure_url}
-                                classImg={index > 0 && "prodPict"}
-                                handleClick={() => {
-                                  if (showImgsModal === false) {
-                                    setShowImgsModal(true);
-                                    setSrcImgsModal(images.secure_url);
-                                  } else {
-                                    setShowImgsModal(true);
-                                  }
-                                }}
-                              />
-                            )}
-                          </>
-                        );
-                      })}
-                    </>
-                  ) : (
-                    <Image src={noImg} classImg="prodImg" />
-                  )}
+                <div className="boxDetails">
+                  <div>
+                    <p>MARQUE: </p>
+                    <span>{data.product_details[0].MARQUE}</span>
+                  </div>
+                  <div>
+                    <p>TAILLE:</p> <span>{data.product_details[1].TAILLE}</span>
+                  </div>
+                  <div>
+                    <p>ÉTAT: </p> <span>{data.product_details[2].ÉTAT}</span>
+                  </div>
+                  <div>
+                    <p>COULEUR: </p>{" "}
+                    <span>{data.product_details[3].COULEUR}</span>
+                  </div>
+                  <div>
+                    <p>EMPLACEMENT: </p>{" "}
+                    <span>{data.product_details[4].EMPLACEMENT}</span>
+                  </div>
                 </div>
               </div>
-              <div className="right">
-                <div className="rightTop">
-                  <div className="boxPrice">
-                    <div>{prices} €</div>
-                  </div>
-                  <div className="boxDetails">
-                    <div className="details">
-                      <div>
-                        <p>MARQUE: </p>
-                        <span>{data.product_details[0].MARQUE}</span>
-                      </div>
-                      <div>
-                        <p>TAILLE:</p>{" "}
-                        <span>{data.product_details[1].TAILLE}</span>
-                      </div>
-                      <div>
-                        <p>ÉTAT: </p>{" "}
-                        <span>{data.product_details[2].ÉTAT}</span>
-                      </div>
-                      <div>
-                        <p>COULEUR: </p>{" "}
-                        <span>{data.product_details[3].COULEUR}</span>
-                      </div>
-                      <div>
-                        <p>EMPLACEMENT: </p>{" "}
-                        <span>{data.product_details[4].EMPLACEMENT}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="boxLineOffer">
-                  <div className="lineOffer"></div>
-                </div>
-                <div className="rightBottom">
-                  <div className="up">
+              <div className="boxLineOffer">
+                <div className="lineOffer"></div>
+              </div>
+              <div className="rightBottom">
+                <div className="up">
+                  <div>
+                    <p>Name:</p>
                     <div>{data.product_name}</div>
+                  </div>
+                  <div>
+                    <p>Description:</p>
                     <div>{data.product_description}</div>
                   </div>
-                  <div className="down">
-                    <div className="boxUser">
-                      {data.owner.account.avatar.secure_url ? (
-                        <>
-                          <Image
-                            src={data.owner.account.avatar.secure_url}
-                            alt="avatar"
-                            classImg="imgAvatar"
-                          />
-                        </>
-                      ) : (
+                </div>
+                <div className="down">
+                  <div className="boxUser">
+                    {data.owner.account.avatar.secure_url ? (
+                      <>
                         <Image
-                          src={data.owner.account.avatar}
+                          src={data.owner.account.avatar.secure_url}
                           alt="avatar"
                           classImg="imgAvatar"
                         />
-                      )}
-                      <div>{data.owner.account.username}</div>
-                    </div>
+                      </>
+                    ) : (
+                      <Image
+                        src={data.owner.account.avatar}
+                        alt="avatar"
+                        classImg="imgAvatar"
+                      />
+                    )}
+                    <div>{data.owner.account.username}</div>
                   </div>
-                  {data.product_image !== undefined ? (
-                    <Link
-                      to="/payment"
-                      state={{
-                        product_id: data.product_id,
-                        product_name: data.product_name,
-                        product_price: Number(data.product_price).toFixed(2),
-                        product_image: data.product_image.secure_url,
-                      }}
-                      className="btnPay"
-                    >
-                      Acheter
-                    </Link>
-                  ) : (
-                    <Link
-                      to="/payment"
-                      state={{
-                        product_id: data.product_id,
-                        product_name: data.product_name,
-                        product_price: Number(data.product_price).toFixed(2),
-                        product_pictures: data.product_pictures,
-                      }}
-                    >
-                      Acheter
-                    </Link>
-                  )}
                 </div>
+                {data.product_image !== undefined ? (
+                  <Link
+                    to="/payment"
+                    state={{
+                      product_id: data.product_id,
+                      product_name: data.product_name,
+                      product_price: Number(data.product_price).toFixed(2),
+                      product_image: data.product_image.secure_url,
+                    }}
+                    className="btnPay"
+                  >
+                    Acheter
+                  </Link>
+                ) : (
+                  <Link
+                    to="/payment"
+                    state={{
+                      product_id: data.product_id,
+                      product_name: data.product_name,
+                      product_price: Number(data.product_price).toFixed(2),
+                      product_pictures: data.product_pictures,
+                    }}
+                  >
+                    Acheter
+                  </Link>
+                )}
               </div>
-            </article>
-          </div>
+            </div>
+          </article>
           <div className="bottom">
             <Chat OfferID={data.product_id} />
           </div>

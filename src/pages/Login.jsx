@@ -1,12 +1,17 @@
-import Input from "../components/Input";
 import { useState } from "react";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useUser } from "../context/lib/userFunc";
+import { useUser } from "../assets/lib/userFunc";
 import { useNavigate } from "react-router-dom";
 
+//components
+import Links from "../components/Links";
+import Input from "../components/Input";
+
+//lib
+import saveToken from "../assets/lib/saveToken";
+
 const Login = ({ type, setType, icon1, icon2 }) => {
-  const { saveUser } = useUser();
+  const { token, setToken, setUser, setIsAdmin, axios } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -18,20 +23,21 @@ const Login = ({ type, setType, icon1, icon2 }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
+    axios.defaults.withCredentials = true;
     try {
+      // const response = await axios.post(
+      //   `https://site--vintedbackend--s4qnmrl7fg46.code.run/user/login`,
       const response = await axios.post(
-        `https://site--vintedbackend--s4qnmrl7fg46.code.run/user/login`,
-        // const response = await axios.post(`http://localhost:3000/user/login`,
+        `http://localhost:3000/user/login`,
         {
           email,
           password,
-        }
+        },
+        { withCredentials: true }
       );
       if (response) {
-        console.log("response in handleSubmit on /Login:", response);
-        console.log("response.data in handleSubmit on /Login:", response.data);
-        const token = response.data;
-        await saveUser(token);
+        saveToken(token, setToken, setUser, setIsAdmin);
+        // console.log("response in handlesubmit in /login:", response);
         navigate("/publish");
       }
     } catch (error) {
@@ -75,8 +81,14 @@ const Login = ({ type, setType, icon1, icon2 }) => {
           </div>
         </div>
         <Input type="submit" value="Se connecter" />
+        <div className="boxForgot">
+          <small>
+            <Links />
+          </small>
+        </div>
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      <Links path="/forgotPassword" />
     </div>
   );
 };

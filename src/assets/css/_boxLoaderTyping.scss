@@ -1,0 +1,27 @@
+.boxLoaderTyping {
+  @include flexCenter;
+  // border: 2px solid green;
+  padding: 4px;
+  gap: 5%;
+  height: 12.5px;
+
+  .circleTyping {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $vertVinted;
+    box-shadow: 0px 0px 1px $black, 0.25px 0.25px 1px $white, 0.5px 0.5px 1px $black;
+  }
+
+  .circleTyping1 {
+    animation: appearLoaderTyping 1s ease-in-out 0.3s infinite both;
+  }
+
+  .circleTyping2 {
+    animation: appearLoaderTyping 1s ease-in-out 0.6s infinite both;
+  }
+
+  .circleTyping3 {
+    animation: appearLoaderTyping 1s ease-in-out 0.9s infinite both;
+  }
+}

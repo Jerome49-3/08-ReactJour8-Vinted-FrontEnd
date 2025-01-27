@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
-import axios from "axios";
-import { useUser } from "../context/lib/userFunc";
+import { useUser } from "../assets/lib/userFunc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //components
@@ -9,15 +8,14 @@ import TextArea from "../components/TextArea";
 import Input from "../components/Input";
 
 const Publish = ({ faRotateRight }) => {
-  const [rotate, setRotate] = useState(0);
   const viewFile = useRef(null);
-  const { token, errorMessage, setErrorMessage } = useUser();
-  // console.log("token in publish:", token);
+  const { token, errorMessage, setErrorMessage, axios } = useUser();
+  console.log("token in publish:", token);
   const [pictures, setPictures] = useState([]);
-  // console.log("pictures in publish:", pictures);
+  console.log("pictures in publish:", pictures);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  let [price, setPrice] = useState(undefined);
+  let [price, setPrice] = useState(0);
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [condition, setCondition] = useState("");
@@ -27,16 +25,21 @@ const Publish = ({ faRotateRight }) => {
 
   const handleSubmit = async (e) => {
     setErrorMessage("");
-    // console.log("token inside handleSubmit in publish:", token);
+    console.log("token inside handleSubmit in publish:", token);
     // console.log('e:', e);
     e.preventDefault();
     const formData = new FormData();
     price = Number(price).toFixed(2);
+    let arrRotate = [];
     for (let i = 0; i < pictures.length; i++) {
       const el = pictures[i];
-      // console.log('el:', el);
-      formData.append("pictures", el);
+      console.log("el in for on handleSubmit to /publish:", el);
+      formData.append("pictures", el.file);
+      arrRotate.push(el.rotation);
+      console.log("el.rotate in for on handleSubmit to /publish:", el.rotation);
     }
+    const strArrRotate = JSON.stringify(arrRotate);
+    formData.append("rotations", strArrRotate);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("price", price);
@@ -77,10 +80,10 @@ const Publish = ({ faRotateRight }) => {
     // );
     try {
       // console.log("token inside try to handleSubmit in publish:", token);
+      // const response = await axios.post(
+      //   `https://site--vintedbackend--s4qnmrl7fg46.code.run/offer/publish`,
       const response = await axios.post(
-        `https://site--vintedbackend--s4qnmrl7fg46.code.run/offer/publish`,
-        // const response = await axios.post(
-        //   `http/localhost:3000/offer/publish`,
+        `http://localhost:3000/offer/publish`,
         formData,
         {
           headers: {
@@ -105,7 +108,7 @@ const Publish = ({ faRotateRight }) => {
     }
   };
 
-  return token ? (
+  return token !== null ? (
     <div className="boxForm boxFormPublish">
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
@@ -131,46 +134,55 @@ const Publish = ({ faRotateRight }) => {
                 multiple={true}
                 onChange={(e) => {
                   let newPic = [...pictures];
+                  const filesArray = Array.from(e.target.files);
                   console.log(
                     "e.target.files in onChange/inputFile on publish:",
                     e.target.files
                   );
                   console.log(
-                    "Array.isArray() e.target.files in onChange/inputFile on publish:",
-                    Array.isArray(e.target.files)
+                    "filesArray in onChange/inputFile on publish:",
+                    filesArray
                   );
                   // console.log(
                   //   "newPic in onChange/inputFile on publish:",
                   //   newPic
                   // );
-                  for (let i = 0; i < e.target.files.length; i++) {
-                    const el = e.target.files[i];
-                    // console.log("el in for on publish:", el);
-                    newPic.push(el);
-                  }
+                  filesArray.forEach((file) => {
+                    console.log("file in forEach:", file);
+                    const picAndRotate = {
+                      file: file,
+                      rotation: 0,
+                    };
+                    console.log("picAndRotate:", picAndRotate);
+                    newPic.push(picAndRotate);
+                  });
                   setPictures(newPic);
                 }}
               />
-              {pictures.map((files, key = index) => {
-                // console.log("files:", files);
+              {pictures.map((files, index) => {
+                console.log("files in .map:", files);
                 return (
-                  <div className="viewPics" key={key}>
+                  <div className="viewPics" key={index}>
                     <img
-                      src={URL.createObjectURL(files)}
+                      src={URL.createObjectURL(files.file)}
                       alt="Image"
                       ref={viewFile}
+                      style={{
+                        transform: `rotate(${
+                          pictures.find(
+                            (item) => item.file.name === files.file.name
+                          )?.rotation || 0
+                        }deg)`,
+                      }}
                     />
                     <button
                       type="button"
                       className="suppFiles"
                       onClick={() => {
-                        let newPic = [...pictures];
-                        // console.log(
-                        //   "newPic in onChange/inputFile on publish:",
-                        //   newPic
-                        // );
-                        newPic.pop();
-                        setPictures(newPic);
+                        const newPictures = pictures.filter(
+                          (picture) => picture.file !== files.file
+                        );
+                        setPictures(newPictures);
                       }}
                     >
                       X
@@ -179,11 +191,21 @@ const Publish = ({ faRotateRight }) => {
                       type="button"
                       className="rotateFiles"
                       onClick={() => {
-                        let newRotation = (rotate + 90) % 360;
-                        // console.log('newRotation:', newRotation);
-                        // console.log('typeof newRotation:', typeof newRotation);
-                        setRotate(newRotation);
-                        viewFile.current.style.transform = `rotate(${newRotation}deg)`;
+                        const updatedRotations = pictures.map((item) => {
+                          console.log("item in /publish:", item);
+                          if (item.file.name === files.file.name) {
+                            return {
+                              ...item,
+                              rotation: (item.rotation + 90) % 360,
+                            };
+                          }
+                          return item;
+                        });
+                        console.log(
+                          "updatedRotations in /publish:",
+                          updatedRotations
+                        );
+                        setPictures(updatedRotations);
                       }}
                     >
                       <FontAwesomeIcon

@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useUser } from "../context/lib/userFunc";
+import { useUser } from "../assets/lib/userFunc";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 //components
 import EyePassword from "./EyePassword";
@@ -11,16 +10,27 @@ import Image from "./Image";
 //images
 import SmallLogo from "../assets/images/favicon.png";
 
+//lib
+import saveToken from "../assets/lib/saveToken";
+
 const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
-  const { signup, errorMessage, setErrorMessage } = useUser();
+  const {
+    errorMessage,
+    setErrorMessage,
+    token,
+    setToken,
+    setUser,
+    setIsAdmin,
+    axios,
+  } = useUser();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    // console.log('e.target.file', e.target.file)
+  const handleSignup = async (e) => {
+    // console.log("e.target.file", e.target.file);
     e.preventDefault();
     setErrorMessage("");
     try {
@@ -33,10 +43,11 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
         newsletter,
       });
       console.log("response in /signup:", response);
-      if (response.data) {
+      if (response) {
         alert(response.data);
         setShow(false);
         navigate("/confirmemail");
+        saveToken(token, setToken, setUser, setIsAdmin);
       }
     } catch (error) {
       console.log(
@@ -63,7 +74,7 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
           </button>
         </div>
         <div className="boxForm boxFormSignUp">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSignup}>
             <Input
               value={username}
               id="username"

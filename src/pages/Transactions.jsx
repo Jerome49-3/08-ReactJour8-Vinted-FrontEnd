@@ -1,7 +1,7 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useUser } from "../assets/lib/userFunc";
 import axios from "axios";
-import { UserContext } from "../context/UserProvider";
 
 //components
 import Loading from "../components/Loading";
@@ -9,16 +9,17 @@ import Image from "../components/Image";
 
 const Transactions = () => {
   const { id } = useParams();
-  const { token } = useContext(UserContext);
+  const { token } = useUser();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // const response = await axios.get(
+        // `https://site--vintedbackend--s4qnmrl7fg46.code.run/transactions/${id}`,
         const response = await axios.get(
-          `https://site--vintedbackend--s4qnmrl7fg46.code.run/transactions/${id}`,
-          // const response = await axios.get(`http/localhost:3000/transactions/${id}`,
+          `http/localhost:3000/transactions/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -28,8 +29,8 @@ const Transactions = () => {
         );
         if (response) {
           setData(response.data);
-          console.log("response.data in /transactions/:id:", response.data);
-          console.log("data in /transactions/:id:", data);
+          // console.log("response.data in /transactions/:id:", response.data);
+          // console.log("data in /transactions/:id:", data);
           setIsLoading(false);
         }
       } catch (error) {

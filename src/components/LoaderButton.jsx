@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const LoaderButton = () => {
-  return (
-    <div>LoaderButton</div>
-  )
-}
+  return <div className="boxLoaderButton">LoaderButton</div>;
+};
 
-export default LoaderButton
+export default LoaderButton;

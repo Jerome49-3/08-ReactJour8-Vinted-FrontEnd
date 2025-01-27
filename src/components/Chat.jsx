@@ -1,13 +1,16 @@
 // Avec solution ws
-
-import React from "react";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { useUser } from "../assets/lib/userFunc";
 
 //components
 import TextArea from "./TextArea";
 import Button from "./Button";
 
 const Chat = ({ OfferID }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const { token, errorMessage, setErrorMessage } = useUser();
+  // console.log("token on chat:", token);
   const [messages, setMessages] = useState([]); // Liste des messages
   const [newMessage, setNewMessage] = useState(""); // Nouveau message à envoyer
   const [socket, setSocket] = useState(null); // Référence à la WebSocket
@@ -23,7 +26,7 @@ const Chat = ({ OfferID }) => {
     }
 
     const ws = new WebSocket(`ws://localhost:3000/messages/${OfferID}`);
-
+    console.log("ws on chat:", ws);
     ws.onopen = () => {
       console.log("Connexion WebSocket établie.");
       setIsConnected(true);
@@ -61,11 +64,33 @@ const Chat = ({ OfferID }) => {
     };
   }, [OfferID]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async (e) => {
+    console.log("token in handleMesssage on Chat:", token);
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("newMessage", newMessage);
+    console.log("${ObjectID} in handleMesssage on Chat:", `${OfferID}`);
+
     if (socket && socket.readyState === WebSocket.OPEN) {
       socket.send(
         JSON.stringify({ type: "message", offer: OfferID, text: newMessage })
       );
+      const response = await axios.post(
+        `http://localhost:3000/messages/${OfferID}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "content-type": "multipart/form-data",
+          },
+        }
+      );
+      // if (response) {
+      //   console.log("response in handleMesssage on Chat:", response);
+      //   console.log("response.data  in handleMesssage on Chat:", response.data);
+      //   setMessages(response.data);
+      //   setIsLoading(false);
+      // }
       setNewMessage(""); // Réinitialise le champ
     } else {
       console.error(
@@ -83,27 +108,39 @@ const Chat = ({ OfferID }) => {
   };
 
   return (
-    <div>
+    <div className="boxChat">
       {/* Indicateur de connexion */}
       <p>
         {isConnected
           ? "Connecté au serveur de chat."
           : "Connexion au serveur de chat..."}
       </p>
-
+      {isTyping ? (
+        <div className="boxLoaderTyping">
+          <div className="circleTyping circleTyping1"></div>
+          <div className="circleTyping circleTyping2"></div>
+          <div className="circleTyping circleTyping3"></div>
+        </div>
+      ) : (
+        <div className="boxLoaderTyping"></div>
+      )}
       <TextArea
         value={newMessage}
         setState={setNewMessage}
         onKeyPress={handleTyping}
       />
       <Button handleClick={handleSendMessage} buttonText="Envoyer" />
-
       <ul>
-        {messages.map((msg, index) => (
-          <li key={index}>
-            <b>{msg.user}:</b> {msg.text}
-          </li>
-        ))}
+        {messages.map((mssg, index) => {
+          console.log("mssg:", mssg);
+          return (
+            <li key={index}>
+              <p>{mssg.date}</p>
+              <p>{mssg.owner.account.username}</p>
+              <p>{mssg.message}</p>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
