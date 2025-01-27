@@ -49,7 +49,7 @@ const OfferID = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/offers/${id}`
+          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/${id}`
         );
         // const response = await axios.get(`http://localhost:3000/offers/${id}`);
         if (response) {

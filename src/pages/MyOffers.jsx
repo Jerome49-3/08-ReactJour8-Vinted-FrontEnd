@@ -7,7 +7,7 @@ import Loading from "../components/Loading";
 import OfferCard from "../components/OfferCard";
 
 const MySales = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
-  const { token, axios, fav, setFav } = useUser();
+  const { token, axios } = useUser();
   const [data, setData] = useState(null);
   // console.log("data on /mySales:", data);
   const [isLoading, setIsLoading] = useState(null);

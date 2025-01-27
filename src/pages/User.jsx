@@ -1,4 +1,4 @@
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import saveToken from "../assets/lib/saveToken";
@@ -38,13 +38,16 @@ const User = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/users/${id}`,
-        const response = await axios.get(`http://localhost:3000/users/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "content-type": "multipart/form-data",
-          },
-        });
+        const response = await axios.get(
+          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/${id}`,
+          // const response = await axios.get(`http://localhost:3000/users/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "content-type": "multipart/form-data",
+            },
+          }
+        );
         console.log("response in /users/${id}:", response);
         if (response.data) {
           console.log("response.data in /users/${id}:", response.data);

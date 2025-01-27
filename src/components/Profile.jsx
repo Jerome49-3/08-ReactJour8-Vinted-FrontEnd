@@ -29,9 +29,10 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/users/${id}`,
         const response = await axios.get(
-          `http://localhost:3000/profile/${id}`,
+          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/${id}`,
+          // const response = await axios.get(
+          //   `http://localhost:3000/profile/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -65,7 +66,9 @@ const Profile = () => {
     formData.append("userId", userId);
     try {
       const response = await axios.put(
-        `http://localhost:3000/profile/${id}`,
+        `https://site--vintaidbackend--s4qnmrl7fg46.code.run/profile/${id}`,
+        // const response = await axios.put(
+        //   `http://localhost:3000/profile/${id}`,
         formData,
         {
           headers: {
