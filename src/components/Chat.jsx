@@ -75,8 +75,10 @@ const Chat = ({ OfferID }) => {
       socket.send(
         JSON.stringify({ type: "message", offer: OfferID, text: newMessage })
       );
+      // const response = await axios.post(
+      //   `http://localhost:3000/messages/${OfferID}`,
       const response = await axios.post(
-        `http://localhost:3000/messages/${OfferID}`,
+        `https://site--vintaidbackend--s4qnmrl7fg46.code.run/${OfferID}`,
         formData,
         {
           headers: {

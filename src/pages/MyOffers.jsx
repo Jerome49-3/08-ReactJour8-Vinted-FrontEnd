@@ -15,13 +15,16 @@ const MySales = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(`https://site--vintedbackend--s4qnmrl7fg46.code.run/myOffers`,
-        const response = await axios.get("http://localhost:3000/myOffers", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "content-type": "multipart/form-data",
-          },
-        });
+        const response = await axios.get(
+          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/myOffers`,
+          // const response = await axios.get("http://localhost:3000/myOffers",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "content-type": "multipart/form-data",
+            },
+          }
+        );
         if (response.data) {
           // console.log("response on /mySales:", response);
           // console.log("response.data on /mySales:", response.data);
