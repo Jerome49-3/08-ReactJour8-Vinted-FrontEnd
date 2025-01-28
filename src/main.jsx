@@ -1,10 +1,13 @@
+// eslint-disable-next-line no-unused-vars
+import * as dotenv from "dotenv";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import * as Sentry from "@sentry/react";
 import "./assets/css/index.css";
 import App from "./App.jsx";
-import * as dotenv from "dotenv";
 import ThemeProvider from "./context/ThemeProvider.jsx";
+import * as Sentry from "@sentry/react";
+// eslint-disable-next-line no-unused-vars
+import { BrowserTracing, Replay, init, ErrorBoundary } from "@sentry/react";
 
 // Sentry Init
 Sentry.init({
