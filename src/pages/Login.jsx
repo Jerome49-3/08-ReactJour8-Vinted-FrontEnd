@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useUser } from "../assets/lib/userFunc";
 import { useNavigate } from "react-router-dom";
-
+import Cookies from "js-cookie";
 //components
 import Links from "../components/Links";
 import Input from "../components/Input";
@@ -44,8 +44,12 @@ const Login = ({ type, setType, icon1, icon2 }) => {
             resultIncludes
           );
           if (resultIncludes !== false) {
-            saveToken(token, setToken, setUser, setIsAdmin);
-            navigate("/publish");
+            setTimeout(() => {
+              setToken(Cookies.get("accessTokenV"));
+              console.log("token in saveToken:", token);
+              saveToken(token, setToken, setUser, setIsAdmin);
+              navigate("/publish");
+            }, 1000);
           }
         } catch (error) {
           console.log("error in try/catch after response in /login:", error);
