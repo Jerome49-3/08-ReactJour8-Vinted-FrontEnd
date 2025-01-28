@@ -12,8 +12,8 @@ Sentry.init({
   integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
   tracesSampleRate: 1.0,
   tracePropagationTargets: [
-    "https://vintaid.netlify.app/",
-    /^https:\/\/yourserver\.io\/api/,
+    import.meta.env.VITE_REACT_APP_SENTRY_CONFIG_URL_FRONTEND,
+    import.meta.env.VITE_REACT_APP_SENTRY_CONFIG_URL_BACKEND,
   ],
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
