@@ -6,20 +6,11 @@ import "./assets/css/index.css";
 import App from "./App.jsx";
 import ThemeProvider from "./context/ThemeProvider.jsx";
 import * as Sentry from "@sentry/react";
-// eslint-disable-next-line no-unused-vars
-import { BrowserTracing, Replay, init, ErrorBoundary } from "@sentry/react";
 
 // Sentry Init
 Sentry.init({
-  dsn: import.meta.env.VITE_REACT_APP_SENTRY_DSN,
-  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
-  tracesSampleRate: 1.0,
-  tracePropagationTargets: [
-    import.meta.env.VITE_REACT_APP_SENTRY_CONFIG_URL_FRONTEND,
-    import.meta.env.VITE_REACT_APP_SENTRY_CONFIG_URL_BACKEND,
-  ],
-  replaysSessionSampleRate: 0.1,
-  replaysOnErrorSampleRate: 1.0,
+  dsn: "https://3d7044201b1f0cf520ee5ba5549974ca@o4508718499758080.ingest.de.sentry.io/4508718503559248",
+  integrations: [],
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(

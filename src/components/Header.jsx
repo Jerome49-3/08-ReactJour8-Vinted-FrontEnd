@@ -50,6 +50,14 @@ const Header = ({
               setState={setSearch}
             />
           </div>
+          <button
+            onClick={() => {
+              throw new Error("This is your first error!");
+            }}
+          >
+            Break the world
+          </button>
+          ;
           <nav>
             <ul>
               {(token === null || user === null) && (
