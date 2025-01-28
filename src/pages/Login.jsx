@@ -40,11 +40,11 @@ const Login = ({ type, setType, icon1, icon2 }) => {
           const loginOk = import.meta.env.VITE_REACT_APP_URL_CONFIRM_LOGIN;
           const checkResponse = response.data;
           const resultIncludes = checkResponse.includes(loginOk);
-          console.log(
-            "resultIncludes in handlesubmit in /login:",
-            resultIncludes
-          );
           if (resultIncludes !== false) {
+            console.log(
+              "resultIncludes in handlesubmit in /login:",
+              resultIncludes
+            );
             setTimeout(() => {
               setIsDone(true);
               try {
