@@ -56,25 +56,21 @@ const ConfirmEmail = () => {
       );
       if (response) {
         saveToken(token, setToken, setUser, setIsAdmin);
-        console.log(
-          "token in /confirmEmail:",
-          token,
-          "user in /confirmEmail:",
-          user
-        );
-        console.log("response in /confirmEmail:", response);
-        console.log("response.data in /confirmEmail:", response.data);
-        console.log(
-          "response.data.token in /confirmEmail:",
-          response.data.token
-        );
-        console.log(
-          "response.data.message in /confirmEmail:",
-          response.data.message
-        );
+        // console.log(
+        //   "token in /confirmEmail:",
+        //   token,
+        //   "user in /confirmEmail:",
+        //   user
+        // );
+        // console.log("response in /confirmEmail:", response);
         if (response.data.message) {
-          const message = response.data.message;
-          alert(message);
+          const confirmEmailOk = import.meta.env
+            .VITE_REACT_APP_URL_CONFIRM_CONFIRMEMAIL;
+          const checkResponse = response.data.message;
+          const resultIncludes = checkResponse.includes(confirmEmailOk);
+          if (resultIncludes !== false) {
+            alert(checkResponse);
+          }
         }
         if (response.data.token) {
           const token = response.data.token;
