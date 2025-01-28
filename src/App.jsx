@@ -58,6 +58,7 @@ import SignUp from "./components/SignUp";
 import Aside from "./components/Aside";
 import ImgsModal from "./components/ImgsModal";
 import Profile from "./components/Profile";
+import Footer from "./components/Footer";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -198,6 +199,7 @@ function App() {
               }
             />
           </Routes>
+          <Footer />
           {show && (
             <SignUp
               show={show}

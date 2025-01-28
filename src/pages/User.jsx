@@ -39,8 +39,7 @@ const User = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/${id}`,
-          // const response = await axios.get(`http://localhost:3000/users/${id}`,
+          import.meta.env.VITE_REACT_APP_URL_USERID,
           {
             headers: {
               Authorization: `Bearer ${token}`,

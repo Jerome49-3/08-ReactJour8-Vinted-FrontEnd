@@ -47,9 +47,9 @@ const Home = ({ search, faHeart, farHeart }) => {
       <Loading />
     </>
   ) : (
-    <>
-      <Hero />
+    <div className="boxHome">
       <div className="wrapper">
+        <Hero />
         <OfferCard
           data={data}
           faHeart={faHeart}
@@ -67,7 +67,7 @@ const Home = ({ search, faHeart, farHeart }) => {
           for advertising purposes.{" "}
         </CookieConsent>
       </div>
-    </>
+    </div>
   );
 };
 

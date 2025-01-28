@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+div#root {
+  @include flexColBetween;
+  height: 100vh;
+}
+
 button {
   border: none;
   width: 100%;

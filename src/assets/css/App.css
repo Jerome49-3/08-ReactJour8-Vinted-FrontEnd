@@ -79,6 +79,14 @@
   width: 100%;
 }
 
+div#root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
 button {
   border: none;
   width: 100%;
@@ -382,11 +390,9 @@ header {
   width: 100%;
   display: block;
   height: 10vh;
-}
-header .wrapper {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 header .wrapper .topHeader {
   display: flex;
@@ -574,7 +580,16 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 .boxHome {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+.boxHome .wrapper {
+  flex: 1;
+}
+.boxHome .wrapper .boxImgs {
+  margin-top: 10px;
 }
 
 /* ARTICLE */
@@ -1498,4 +1513,17 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000;
+}
+
+footer {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=App.css.map */

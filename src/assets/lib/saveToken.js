@@ -3,10 +3,10 @@ import decryptUser from "./decryptUser";
 
 const saveToken = (token, setToken, setUser, setIsAdmin) => {
   token = Cookies.get("accessTokenV") || null;
-  // console.log("token in saveToken:", token);
+  console.log("token in saveToken:", token);
   setToken(token);
   const newDecryptedUser = decryptUser(token);
-  // console.log("newDecryptedUser in saveToken:", newDecryptedUser);
+  console.log("newDecryptedUser in saveToken:", newDecryptedUser);
   if (newDecryptedUser) {
     setUser(newDecryptedUser);
     Cookies.set("vintaidUser", JSON.stringify(newDecryptedUser));

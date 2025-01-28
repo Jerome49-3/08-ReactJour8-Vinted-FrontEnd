@@ -5,7 +5,7 @@
 
 :root {
   --vertVintDark: #007782;
-  --vertVintLight: #00757F;
+  --vertVintLight: #00757f;
   --vertVintedInput: rgb(0, 156, 104);
   --darkModeHeader: #121212;
   --darkMode: #181a1b;
@@ -13,8 +13,7 @@
   --black: #000000;
   --backDarkLink: #343434;
   --backLightInput: #9e9e9e;
-  --headerLibackgd: #2DB0BA;
-
+  --headerLibackgd: #2db0ba;
 
   a {
     text-decoration: none;
@@ -28,6 +27,7 @@
   }
 
   .dark header,
+  .dark footer,
   .dark .boxOffer .wrapper article .right,
   .dark .boxOffer .wrapper article .left {
     background-color: var(--darkModeHeader);
@@ -58,7 +58,8 @@
   .dark header nav ul li button,
   .dark header nav ul li a,
   .dark header button,
-  .light header button {
+  .light header button,
+  .dark * a:link {
     color: var(--headerLibackgd);
   }
 
@@ -70,14 +71,15 @@
   .dark .boxShoppingCart .shoppingCart .top,
   .dark .boxShoppingCart .shoppingCart .bottom,
   .dark .boxModalContent,
-  .dark .boxShoppingCart .shoppingCart .bottom>*>span {
-    background-color: #28282B;
+  .dark .boxShoppingCart .shoppingCart .bottom > * > span {
+    background-color: #28282b;
     color: var(--lightMode);
   }
 
   .dark input::placeholder,
-  .dark button p {
-    color: var(--lightMode);
+  .dark button p,
+  .dark a:visited {
+    color: var(--lightMode) !important;
   }
 
   /* LIGHT MODE */
@@ -235,7 +237,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 

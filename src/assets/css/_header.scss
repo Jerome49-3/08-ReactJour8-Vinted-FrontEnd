@@ -3,10 +3,10 @@ header {
   width: 100%;
   display: block;
   height: 10vh;
+  @include flexCenter;
 
 
   .wrapper {
-    @include wrapper;
 
     //header always visible
     .topHeader {

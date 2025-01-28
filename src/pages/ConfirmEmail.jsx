@@ -17,7 +17,6 @@ const ConfirmEmail = () => {
     token,
     setToken,
     setUser,
-    user,
     setIsAdmin,
   } = useUser();
   const navigate = useNavigate();
@@ -44,6 +43,7 @@ const ConfirmEmail = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("code", JSON.stringify(code));
+    axios.defaults.withCredentials = true;
     try {
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_CONFIRMEMAIL,
@@ -52,36 +52,27 @@ const ConfirmEmail = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        }
+        },
+        { withCredentials: true }
       );
-      if (response) {
-        saveToken(token, setToken, setUser, setIsAdmin);
-        // console.log(
-        //   "token in /confirmEmail:",
-        //   token,
-        //   "user in /confirmEmail:",
-        //   user
-        // );
-        // console.log("response in /confirmEmail:", response);
-        if (response.data.message) {
-          const confirmEmailOk = import.meta.env
-            .VITE_REACT_APP_URL_CONFIRM_CONFIRMEMAIL;
-          const checkResponse = response.data.message;
-          const resultIncludes = checkResponse.includes(confirmEmailOk);
-          if (resultIncludes !== false) {
+      console.log("response in /confirmEmail:", response);
+      if (response.data.message) {
+        const confirmEmailOk = import.meta.env
+          .VITE_REACT_APP_URL_CONFIRM_CONFIRMEMAIL;
+        const checkResponse = response.data.message;
+        const resultIncludes = checkResponse.includes(confirmEmailOk);
+        if (resultIncludes !== false) {
+          saveToken(token, setToken, setUser, setIsAdmin);
+          setTimeout(() => {
             alert(checkResponse);
-          }
+            navigate(`/publish`);
+          }, 1000);
         }
-        if (response.data.token) {
-          const token = response.data.token;
-          console.log("token in /confirmEmail:", token);
-        }
-        navigate("/publish");
       }
     } catch (error) {
       console.log("error:", error);
       console.log("Array.isArray(error):", Array.isArray(error));
-      setErrorMessage(error);
+      setErrorMessage(error.message);
     }
   };
 
