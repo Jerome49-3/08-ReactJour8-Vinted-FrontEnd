@@ -15,6 +15,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isDone, setIsDone] = useState();
   const navigate = useNavigate();
 
   const handleType = () => {
@@ -44,10 +45,25 @@ const Login = ({ type, setType, icon1, icon2 }) => {
             resultIncludes
           );
           if (resultIncludes !== false) {
-            setToken(Cookies.get("accessTokenV"));
-            console.log("token in saveToken:", token);
-            saveToken(token, setToken, setUser, setIsAdmin);
-            navigate("/publish");
+            setTimeout(() => {
+              setIsDone(true);
+              try {
+                const tokenCookie = Cookies.get("accessTokenV");
+                if (tokenCookie !== null) {
+                  setToken(tokenCookie);
+                  console.log("token in saveToken:", token);
+                }
+                if (token !== null) {
+                  saveToken(token, setToken, setUser, setIsAdmin);
+                }
+                setIsDone(false);
+              } catch (error) {
+                console.log("error:", error);
+              }
+            }, 100);
+            if (isDone !== true) {
+              navigate("/publish");
+            }
           }
         } catch (error) {
           console.log("error in try/catch after response in /login:", error);
