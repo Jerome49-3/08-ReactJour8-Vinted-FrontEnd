@@ -75,10 +75,8 @@ const User = () => {
     formData.append("newsletter", newsletter);
     formData.append("userId", userId);
     try {
-      // const response = await axios.put(
-      //   `http://localhost:3000/users/${id}`,
       const response = await axios.put(
-        `https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/${id}`,
+        import.meta.env.VITE_REACT_APP_URL_USERID,
         formData,
         {
           headers: {
@@ -114,9 +112,7 @@ const User = () => {
     if (confirm("Do yout want delete this user ?")) {
       try {
         const response = await axios.delete(
-          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/${id}`,
-          // const response = await axios.delete(
-          //   `http://localhost:3000/users/${id}`,
+          import.meta.env.VITE_REACT_APP_URL_USERID,
           {
             headers: {
               Authorization: `Bearer ${token}`,

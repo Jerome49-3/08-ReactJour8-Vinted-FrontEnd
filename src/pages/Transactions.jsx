@@ -17,9 +17,7 @@ const Transactions = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/transactions/${id}`,
-          // const response = await axios.get(
-          //   `http/localhost:3000/transactions/${id}`,
+          import.meta.env.VITE_REACT_APP_URL_TRANSACTIONSID,
           {
             headers: {
               Authorization: `Bearer ${token}`,

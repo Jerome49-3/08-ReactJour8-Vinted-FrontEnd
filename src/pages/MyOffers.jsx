@@ -16,8 +16,7 @@ const MySales = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/myOffers`,
-          // const response = await axios.get("http://localhost:3000/myOffers",
+          import.meta.env.VITE_REACT_APP_URL_MYOFFERS,
           {
             headers: {
               Authorization: `Bearer ${token}`,

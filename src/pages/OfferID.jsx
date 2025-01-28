@@ -49,9 +49,8 @@ const OfferID = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/${id}`
+          import.meta.env.VITE_REACT_APP_URL_OFFERID
         );
-        // const response = await axios.get(`http://localhost:3000/offers/${id}`);
         if (response) {
           setData(response.data);
           console.log("response in /offers/${id}:", response);

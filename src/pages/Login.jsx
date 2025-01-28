@@ -26,9 +26,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
     axios.defaults.withCredentials = true;
     try {
       const response = await axios.post(
-        `https://site--vintaidbackend--s4qnmrl7fg46.code.run/user/login`,
-        // const response = await axios.post(
-        //   `http://localhost:3000/user/login`,
+        import.meta.env.VITE_REACT_APP_URL_LOGIN,
         {
           email,
           password,

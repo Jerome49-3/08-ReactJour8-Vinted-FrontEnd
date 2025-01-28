@@ -27,9 +27,7 @@ const Home = ({ search, faHeart, farHeart }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/offers?title=${search}`
-          // const response = await axios.get(
-          //   `http://localhost:3000/offers?title=${search}`,
+          import.meta.env.VITE_REACT_APP_URL_HOME
         );
         if (response) {
           // console.log("response on /Home (Offer):", response);

@@ -30,9 +30,7 @@ const Profile = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/${id}`,
-          // const response = await axios.get(
-          //   `http://localhost:3000/profile/${id}`,
+          import.meta.env.VITE_REACT_APP_URL_PROFILE,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -66,9 +64,7 @@ const Profile = () => {
     formData.append("userId", userId);
     try {
       const response = await axios.put(
-        `https://site--vintaidbackend--s4qnmrl7fg46.code.run/profile/${id}`,
-        // const response = await axios.put(
-        //   `http://localhost:3000/profile/${id}`,
+        import.meta.env.VITE_REACT_APP_URL_PROFILE,
         formData,
         {
           headers: {
