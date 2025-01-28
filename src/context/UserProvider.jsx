@@ -6,7 +6,7 @@ import saveToken from "../assets/lib/saveToken";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [token, setToken] = useState(Cookies.get("accessTokenV") || null);
+  let [token, setToken] = useState(Cookies.get("accessTokenV") || null);
   console.log("token in UserProvider:", token);
   const [user, setUser] = useState(null);
   console.log("user in UserProvider:", user);
@@ -32,6 +32,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (isMounted && token && user) {
+      token = Cookies.get("accessTokenV") || null;
       try {
         saveToken(token, setToken, setUser, setIsAdmin);
         setIsMounted(false);

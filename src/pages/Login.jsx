@@ -35,16 +35,20 @@ const Login = ({ type, setType, icon1, icon2 }) => {
       );
       console.log("response in handlesubmit in /login:", response);
       if (response.data) {
-        const loginOk = import.meta.env.VITE_REACT_APP_URL_CONFIRM_LOGIN;
-        const checkResponse = response.data;
-        const resultIncludes = checkResponse.includes(loginOk);
-        // console.log(
-        //   "resultIncludes in handlesubmit in /login:",
-        //   resultIncludes
-        // );
-        if (resultIncludes !== false) {
-          saveToken(token, setToken, setUser, setIsAdmin);
-          navigate("/publish");
+        try {
+          const loginOk = import.meta.env.VITE_REACT_APP_URL_CONFIRM_LOGIN;
+          const checkResponse = response.data;
+          const resultIncludes = checkResponse.includes(loginOk);
+          console.log(
+            "resultIncludes in handlesubmit in /login:",
+            resultIncludes
+          );
+          if (resultIncludes !== false) {
+            saveToken(token, setToken, setUser, setIsAdmin);
+            navigate("/publish");
+          }
+        } catch (error) {
+          console.log("error in try/catch after response in /login:", error);
         }
       }
     } catch (error) {
