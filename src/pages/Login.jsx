@@ -62,6 +62,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
                   saveToken(token, setToken, setUser, setIsAdmin);
                 }
                 setIsDone(false);
+                console.log("isDone in setTimeout:", isDone);
               } catch (error) {
                 console.log("error:", error);
               }
