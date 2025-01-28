@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (isMounted && token && user) {
-      token = Cookies.get("accessTokenV") || null;
+      setToken(Cookies.get("accessTokenV") || null);
       try {
         saveToken(token, setToken, setUser, setIsAdmin);
         setIsMounted(false);

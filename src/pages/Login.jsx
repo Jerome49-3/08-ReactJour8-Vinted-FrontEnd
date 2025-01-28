@@ -44,12 +44,10 @@ const Login = ({ type, setType, icon1, icon2 }) => {
             resultIncludes
           );
           if (resultIncludes !== false) {
-            setTimeout(() => {
-              setToken(Cookies.get("accessTokenV"));
-              console.log("token in saveToken:", token);
-              saveToken(token, setToken, setUser, setIsAdmin);
-              navigate("/publish");
-            }, 1000);
+            setToken(Cookies.get("accessTokenV"));
+            console.log("token in saveToken:", token);
+            saveToken(token, setToken, setUser, setIsAdmin);
+            navigate("/publish");
           }
         } catch (error) {
           console.log("error in try/catch after response in /login:", error);
