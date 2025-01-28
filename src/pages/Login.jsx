@@ -49,9 +49,14 @@ const Login = ({ type, setType, icon1, icon2 }) => {
               setIsDone(true);
               try {
                 const tokenCookie = Cookies.get("accessTokenV");
+                console.log("tokenCookie in setTimeout:", tokenCookie);
                 if (tokenCookie !== null) {
+                  console.log(
+                    "tokenCookie after verif tokenCookie in setTimeout:",
+                    tokenCookie
+                  );
                   setToken(tokenCookie);
-                  console.log("token in saveToken:", token);
+                  console.log("token in setTimeout:", token);
                 }
                 if (token !== null) {
                   saveToken(token, setToken, setUser, setIsAdmin);
