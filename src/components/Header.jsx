@@ -26,7 +26,7 @@ const Header = ({
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user } = useUser();
-  // console.log("token in header:", token, "\n", "user: in header:", user);
+  console.log("token in header:", token, "\n", "user: in header:", user);
 
   return (
     <header>
@@ -81,18 +81,18 @@ const Header = ({
                     setShowToggleNav(!showToggleNav);
                   }}
                 >
-                  <div className="hello">Bonjour {user.account.username}</div>
-                  {user.account.avatar.secure_url ? (
+                  <div className="hello">Bonjour {user?.account?.username}</div>
+                  {user?.account?.avatar?.secure_url ? (
                     <>
                       <Image
-                        src={user.account.avatar.secure_url}
+                        src={user?.account?.avatar?.secure_url}
                         alt="avatar"
                         classImg="imgAvatar"
                       />
                     </>
                   ) : (
                     <Image
-                      src={user.account.avatar}
+                      src={user?.account?.avatar}
                       alt="avatar"
                       classImg="imgAvatar"
                     />

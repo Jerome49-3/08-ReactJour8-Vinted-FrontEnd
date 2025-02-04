@@ -2,29 +2,38 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useUser } from "../assets/lib/userFunc";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+
 //components
 import Links from "../components/Links";
 import Input from "../components/Input";
+import Loading from "../components/Loading";
 
 //lib
 import saveToken from "../assets/lib/saveToken";
 
 const Login = ({ type, setType, icon1, icon2 }) => {
-  const { token, setToken, setUser, setIsAdmin, axios } = useUser();
+  const {
+    token,
+    setToken,
+    setUser,
+    setIsAdmin,
+    axios,
+    isLoading,
+    setIsLoading,
+  } = useUser();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isDone, setIsDone] = useState();
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleType = () => {
     setType(type === "password" ? "text" : "password");
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-    axios.defaults.withCredentials = true;
+    // axios.defaults.withCredentials = true;
     try {
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_LOGIN,
@@ -34,55 +43,47 @@ const Login = ({ type, setType, icon1, icon2 }) => {
         },
         { withCredentials: true }
       );
+      setIsLoading(true);
       console.log("response in handlesubmit in /login:", response);
       if (response.data) {
         try {
-          const loginOk = import.meta.env.VITE_REACT_APP_URL_CONFIRM_LOGIN;
-          const checkResponse = response.data;
-          const resultIncludes = checkResponse.includes(loginOk);
-          if (resultIncludes !== false) {
+          if (response.data.token) {
             console.log(
-              "resultIncludes in handlesubmit in /login:",
-              resultIncludes
+              "response.data.token in handlesubmit in /login:",
+              response.data.token
             );
-            setTimeout(() => {
-              setIsDone(true);
-              try {
-                const tokenCookie = Cookies.get("accessTokenV");
-                console.log("tokenCookie in setTimeout:", tokenCookie);
-                if (tokenCookie !== null) {
-                  console.log(
-                    "tokenCookie after verif tokenCookie in setTimeout:",
-                    tokenCookie
-                  );
-                  setToken(tokenCookie);
-                  console.log("token in setTimeout:", token);
-                }
-                if (token !== null) {
-                  saveToken(token, setToken, setUser, setIsAdmin);
-                }
-                setIsDone(false);
-                console.log("isDone in setTimeout:", isDone);
-              } catch (error) {
-                console.log("error:", error);
-              }
-            }, 100);
-            if (isDone !== true) {
-              navigate("/publish");
-            }
+            setToken(response?.data?.token);
+            console.log("token in handlesubmit in /login:", token);
+            saveToken(response?.data?.token, setUser, setIsAdmin);
+            setIsLoading(false);
+          }
+          if (isLoading !== true) {
+            navigate("/publish");
           }
         } catch (error) {
           console.log("error in try/catch after response in /login:", error);
         }
       }
     } catch (error) {
-      // console.log('error.response in handleSubmit on Login:', error.response);
-      console.log("error:", error);
-      setErrorMessage(error?.response?.data?.message || "login failed");
+      console.log("error in handleSubmit on Login:", error);
+      console.log("error.response in handleSubmit on Login:", error.response);
+      console.log("error:", error?.response?.data?.message);
+      setErrorMessage(error?.response?.data?.message || error?.message);
+      const messageError = error?.response?.data?.message;
+      const messageNotConfirmEmail = import.meta.env
+        .VITE_REACT_APP_MSSG_NOT_CONFIRMEMAIL;
+      const confirmReceiptMssg = messageError.includes(messageNotConfirmEmail);
+      if (confirmReceiptMssg !== false) {
+        setTimeout(() => {
+          navigate("/confirmemail");
+        }, 3500);
+      }
     }
   };
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="boxForm boxFormCenter">
       <form onSubmit={handleSubmit}>
         <Input
@@ -122,7 +123,19 @@ const Login = ({ type, setType, icon1, icon2 }) => {
           </small>
         </div>
       </form>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      {errorMessage && (
+        <p
+          style={{
+            color: "red",
+            fontSize: "1.05rem",
+            fontWeight: "700",
+            textShadow:
+              "0px 0px 1px orangered, 0.15px 0.15px 1.25px black, 0.35px 0.35px 1.5px green",
+          }}
+        >
+          {errorMessage}
+        </p>
+      )}
       <Links path="/forgotPassword" />
     </div>
   );

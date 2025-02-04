@@ -12,6 +12,7 @@ import Button from "./Button";
 
 const Profile = () => {
   const { token } = useUser();
+  console.log("token in /profile/${id}:", token);
   const { id } = useParams();
   console.log("id in /profile/${id}:", id);
   const [data, setData] = useState(null);
@@ -29,33 +30,29 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          import.meta.env.VITE_REACT_APP_URL_PROFILE,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
-          }
-        );
-        console.log("response in /profile/${id}::", response);
-        if (response.data) {
-          console.log("response.data in /profile/${id}::", response.data);
+        const response = await axios.get(`http://localhost:3000/profile/${id}`);
+        console.log("response in /profile/${id}:", response);
+        if (response?.data) {
+          console.log("response.data in /profile/${id}::", response?.data);
           setData(response?.data);
-          setAvatar(response?.data?.avatar?.secure_url);
+          setAvatar(
+            response?.data?.avatar?.secure_url || response?.data?.avatar
+          );
           // console.log('data in /profile/${id}:', data);
           setIsLoading(false);
         }
       } catch (error) {
-        console.log(error);
+        console.log(error?.message);
+        setErrorMessage(error?.response?.data?.message || "update failed");
       }
     };
     fetchData();
   }, [id]);
 
   const handleUpdateData = async (e) => {
-    const userId = data.id;
+    setIsLoading(true);
     e.preventDefault();
+    const userId = data.id;
     const formData = new FormData();
     formData.append("pictures", pictures);
     formData.append("username", username);
@@ -64,7 +61,7 @@ const Profile = () => {
     formData.append("userId", userId);
     try {
       const response = await axios.put(
-        import.meta.env.VITE_REACT_APP_URL_PROFILE,
+        `http://localhost:3000/profile/${id}`,
         formData,
         {
           headers: {
@@ -79,12 +76,15 @@ const Profile = () => {
           "response.data in handleUpdateData in /profile/${id}::",
           response.data
         );
-        alert(response.data.message);
-        navigate(`/`);
+        setTimeout(() => {
+          alert(response?.data?.message);
+          setIsLoading(false);
+          navigate(`/`);
+        }, 1000);
       }
     } catch (error) {
-      console.log(error);
-      setErrorMessage(error);
+      console.log(error?.message);
+      setErrorMessage(error?.response?.data?.message || "update failed");
     }
   };
 
@@ -96,7 +96,7 @@ const Profile = () => {
         <div className="wrapper">
           <div className="top">
             <div className="title">
-              Voici le profil de <strong>{data.username}</strong>
+              Voici le profil de <strong>{data?.username}</strong>
             </div>
           </div>
           <form className="bottom">
@@ -109,13 +109,6 @@ const Profile = () => {
                 setPictures={setPictures}
                 setAvatar={setAvatar}
               />
-              {/* {pictures && (
-                <img
-                  src={URL.createObjectURL(pictures)}
-                  alt="Image"
-                  className="viewPictures"
-                />
-              )} */}
             </div>
             <div className="right">
               <div className="boxUsername">
@@ -123,7 +116,7 @@ const Profile = () => {
                   label="username:"
                   type="text"
                   id="username"
-                  placeholder={data.username}
+                  placeholder={data?.username}
                   value={username || ""}
                   setState={setUsername}
                 />
@@ -133,13 +126,13 @@ const Profile = () => {
                   label="email:"
                   type="email"
                   id="email"
-                  placeholder={data.email}
+                  placeholder={data?.email}
                   value={email || ""}
                   setState={setEmail}
                 />
               </div>
               <div className="boxNewsletter">
-                {data.newsletter === true ? (
+                {data?.newsletter === true ? (
                   <Input
                     label="newsletter:"
                     type="text"
@@ -161,7 +154,7 @@ const Profile = () => {
                   />
                 )}
               </div>
-              <div className="boxDate">Date de création: {data.date}</div>
+              <div className="boxDate">Date de création: {data?.date}</div>
               <div className="boxButton">
                 <Button
                   buttonText="Update profile"

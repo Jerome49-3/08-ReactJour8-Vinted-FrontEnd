@@ -12,6 +12,7 @@ const Transactions = () => {
   const { token } = useUser();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +37,7 @@ const Transactions = () => {
           "error in /transactions/${id}:",
           error.response.data.message
         );
+        setErrorMessage(error?.response?.data?.message);
       }
     };
     fetchData();
@@ -76,6 +78,7 @@ const Transactions = () => {
             </div>
           </div>
         </div>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>
     </div>
   );

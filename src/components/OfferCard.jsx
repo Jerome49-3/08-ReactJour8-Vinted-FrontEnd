@@ -11,7 +11,7 @@ import Hearths from "./Hearths";
 //images
 import noImg from "../assets/images/no-image.jpg";
 
-const OfferCard = ({ data, faHeart, farHeart }) => {
+const OfferCard = ({ data, faHeart, farHeart, errorMessage }) => {
   const { fav } = useUser();
   // console.log("data ds OfferCard:", data);
   // console.log("fav ds OfferCard:", fav);
@@ -98,6 +98,7 @@ const OfferCard = ({ data, faHeart, farHeart }) => {
           </React.Fragment>
         );
       })}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   );
 };

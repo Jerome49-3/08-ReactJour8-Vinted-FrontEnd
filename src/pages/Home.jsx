@@ -20,6 +20,7 @@ const Home = ({ search, faHeart, farHeart }) => {
   const [data, setData] = useState();
   // console.log('data in /Home:', data);
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
   // const [imgsNbr, setImgsNbr] = useState(0);
   const { axios, fav, setFav } = useUser();
 
@@ -29,14 +30,15 @@ const Home = ({ search, faHeart, farHeart }) => {
         const response = await axios.get(
           import.meta.env.VITE_REACT_APP_URL_HOME
         );
-        if (response) {
+        if (response.data) {
           // console.log("response on /Home (Offer):", response);
           // console.log("response.data on /Home (Offer):", response.data);
           setData(response.data);
           setIsLoading(false);
         }
       } catch (error) {
-        console.log(error.response.data.message);
+        console.log(error?.response?.data?.message);
+        setErrorMessage(error?.response?.data?.message);
       }
     };
     fetchData();
@@ -66,6 +68,7 @@ const Home = ({ search, faHeart, farHeart }) => {
           This website uses cookies only to enhance the user experience and not
           for advertising purposes.{" "}
         </CookieConsent>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>
     </div>
   );

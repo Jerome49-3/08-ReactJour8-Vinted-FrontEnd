@@ -30,10 +30,11 @@ const User = () => {
   const [avatar, setAvatar] = useState(null);
   console.log("pictures in /users/${id}:", pictures);
   console.log("avatar in /users/${id}:", avatar);
+  const [errorMessage, setErrorMessage] = useState("");
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const { token, setToken, setUser, errorMessage, setErrorMessage } = useUser();
+  const { token, setToken, setUser } = useUser();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,8 +65,8 @@ const User = () => {
 
   const handleUpdateData = async (e) => {
     setIsLoading(true);
-    const userId = data.id;
     e.preventDefault();
+    const userId = data.id;
     const formData = new FormData();
     formData.append("pictures", pictures);
     formData.append("username", username);
@@ -91,7 +92,7 @@ const User = () => {
           response.data
         );
         const newData = response.data.message;
-        const ok = "profile updated";
+        const ok = import.meta.env.VITE_REACT_APP_MSSG_CONFIRM_PROFILE;
         const newToken = Cookies.get("accessTokenV");
         if (newData.includes(ok)) {
           saveToken(newToken, setToken, setUser, setIsAdmin);

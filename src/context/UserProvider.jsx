@@ -1,18 +1,22 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useLayoutEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import axiosRetry from "axios-retry";
 import saveToken from "../assets/lib/saveToken";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  let [token, setToken] = useState(Cookies.get("accessTokenV") || null);
+  const [token, setToken] = useState(Cookies.get("accessTokenV") || null);
   console.log("token in UserProvider:", token);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(
+    sessionStorage.getItem("vintaidUser") || null
+  );
+  const [isLoading, setIsLoading] = useState();
   console.log("user in UserProvider:", user);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isMounted, setIsMounted] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(
+    sessionStorage.getItem("vintaidTeam") || false
+  );
   const [fav, setFav] = useState(() => {
     const savedFav = localStorage.getItem("favCard");
     // console.log("savedFav in app:", savedFav);
@@ -31,19 +35,65 @@ export const UserProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    if (isMounted && token && user) {
-      const tokenCookie = Cookies.get("accessTokenV");
-      console.log("tokenCookie in setTimeout:", tokenCookie);
-      setToken(tokenCookie);
-      console.log("token in useEffect on userProvider:", token);
+    console.log("token in useEffect on userProvider:", token);
+
+    const fetchData = async () => {
+      axios.defaults.withCredentials = true;
       try {
-        saveToken(token, setToken, setUser, setIsAdmin);
-        setIsMounted(false);
+        const response = await axios.get(
+          `http://localhost:3000/user/refreshToken`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "content-type": "multipart/form-data",
+            },
+          },
+          { withCredentials: true }
+        );
+        console.log("response in /user/refreshToken:", response);
+        if (response?.data?.token) {
+          setToken(response?.data?.token);
+          saveToken(response?.data?.token, setUser, setIsAdmin);
+          setIsLoading(false);
+        }
       } catch (error) {
-        console.log("error in useEffect on UserProvider:", error);
+        console.log(error?.response?.data?.message || "update token failed");
       }
-    }
-  }, [token, user, isMounted]);
+    };
+    fetchData();
+  }, []);
+
+  useLayoutEffect(() => {
+    axiosRetry(axios, {
+      retries: 3,
+      retryDelay: (retryCount) => {
+        return retryCount * 1000;
+      },
+      retryCondition: (error) => {
+        return (
+          error.response &&
+          (error.response.status === 500 || error.response.status === 503)
+        );
+      },
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    const configRequestGlobal = axios.interceptors.request.use(
+      (config) => {
+        config.headers.authorization = token
+          ? `Bearer ${token}`
+          : config.headers.authorization;
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+    return () => {
+      axios.interceptors.request.eject(configRequestGlobal);
+    };
+  }, [token]);
 
   const logout = () => {
     try {
@@ -51,13 +101,11 @@ export const UserProvider = ({ children }) => {
       setUser(null);
       setIsAdmin(false);
       Cookies.remove("accessTokenV");
-      Cookies.remove("refreshTokenV");
       Cookies.remove("vintaidUser");
       Cookies.remove("vintaidTeam");
       localStorage.removeItem("favCard");
     } catch (error) {
-      console.log("Error in logout:", error);
-      setErrorMessage("Error during logout");
+      console.log("Error in logout:", error || "error in logout");
     }
   };
 
@@ -71,11 +119,11 @@ export const UserProvider = ({ children }) => {
         logout,
         isAdmin,
         setIsAdmin,
-        errorMessage,
-        setErrorMessage,
         axios,
         fav,
         setFav,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

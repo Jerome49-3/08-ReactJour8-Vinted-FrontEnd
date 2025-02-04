@@ -56,18 +56,13 @@ const ConfirmEmail = () => {
         { withCredentials: true }
       );
       console.log("response in /confirmEmail:", response);
-      if (response.data.message) {
-        const confirmEmailOk = import.meta.env
-          .VITE_REACT_APP_URL_CONFIRM_CONFIRMEMAIL;
-        const checkResponse = response.data.message;
-        const resultIncludes = checkResponse.includes(confirmEmailOk);
-        if (resultIncludes !== false) {
-          saveToken(token, setToken, setUser, setIsAdmin);
-          setTimeout(() => {
-            alert(checkResponse);
-            navigate(`/publish`);
-          }, 1000);
+      if (response.data.token) {
+        setToken(response.data.token);
+        if (token) {
+          saveToken(token, setUser, setIsAdmin);
         }
+        alert(response.data.message);
+        navigate(`/publish`);
       }
     } catch (error) {
       console.log("error:", error);

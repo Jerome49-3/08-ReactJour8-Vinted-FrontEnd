@@ -11,6 +11,7 @@ const MyPurchases = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
   console.log("data in /mypurchases:", data);
   const [isloading, setIsLoading] = useState(true);
   const { token, axios, fav, setFav } = useUser();
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +33,7 @@ const MyPurchases = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
         }
       } catch (error) {
         console.log(error.response.data.message);
+        setErrorMessage(error?.response?.data?.message);
         setShowNoOffer(true);
       }
     };
@@ -50,6 +52,8 @@ const MyPurchases = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
             farHeart={farHeart}
             fav={fav}
             setFav={setFav}
+            errorMessage={errorMessage}
+            setErrorMessage={errorMessage}
           />
         ) : (
           showNoOffer && (

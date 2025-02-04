@@ -33,6 +33,7 @@ const OfferID = ({
   console.log("data in OfferId:", data);
   let [price, setPrice] = useState(0);
   const prices = Number(price).toFixed(2);
+  const [errorMessage, setErrorMessage] = useState("");
   // console.log('prices in /offers/${id}:', prices);
   // const [objId, setObjId] = useState(id);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,7 +61,8 @@ const OfferID = ({
           setIsLoading(false);
         }
       } catch (error) {
-        console.log(error.response.data.message);
+        console.log(error?.response?.data?.message);
+        setErrorMessage(error?.response?.data?.message);
       }
     };
     fetchData();
@@ -306,6 +308,7 @@ const OfferID = ({
             <Chat OfferID={data.product_id} />
           </div>
         </div>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>
     </>
   );

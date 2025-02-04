@@ -9,10 +9,11 @@ import Input from "../components/Input";
 
 const Publish = ({ faRotateRight }) => {
   const viewFile = useRef(null);
-  const { token, errorMessage, setErrorMessage, axios } = useUser();
-  console.log("token in publish:", token);
+  const { token, axios } = useUser();
+  console.log("token in in /publish:", token);
+  const [errorMessage, setErrorMessage] = useState("");
   const [pictures, setPictures] = useState([]);
-  console.log("pictures in publish:", pictures);
+  console.log("pictures in in /publish:", pictures);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   let [price, setPrice] = useState(0);
@@ -25,18 +26,22 @@ const Publish = ({ faRotateRight }) => {
 
   const handleSubmit = async (e) => {
     setErrorMessage("");
-    console.log("token inside handleSubmit in publish:", token);
+    console.log("token inside handleSubmit in /publish:", token);
     // console.log('e:', e);
     e.preventDefault();
     const formData = new FormData();
     price = Number(price).toFixed(2);
     let arrRotate = [];
     for (let i = 0; i < pictures.length; i++) {
+      console.log(
+        "pictures.length in for on handleSubmit in /publish:",
+        pictures.length
+      );
       const el = pictures[i];
-      console.log("el in for on handleSubmit to /publish:", el);
-      formData.append("pictures", el.file);
+      console.log("el in for on handleSubmit in /publish:", el);
+      formData.append("pictures in for on handleSubmit in /publish:", el.file);
       arrRotate.push(el.rotation);
-      console.log("el.rotate in for on handleSubmit to /publish:", el.rotation);
+      console.log("el.rotate in for on handleSubmit in /publish:", el.rotation);
     }
     const strArrRotate = JSON.stringify(arrRotate);
     formData.append("rotations", strArrRotate);
@@ -82,13 +87,13 @@ const Publish = ({ faRotateRight }) => {
       // console.log("token inside try to handleSubmit in publish:", token);
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_PUBLISH,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "content-type": "multipart/form-data",
-          },
-        }
+        formData
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //     "content-type": "multipart/form-data",
+        //   },
+        // }
       );
       // console.log(response);
       if (response) {
@@ -134,11 +139,11 @@ const Publish = ({ faRotateRight }) => {
                   let newPic = [...pictures];
                   const filesArray = Array.from(e.target.files);
                   console.log(
-                    "e.target.files in onChange/inputFile on publish:",
+                    "e.target.files on onChange/inputFile in /publish:",
                     e.target.files
                   );
                   console.log(
-                    "filesArray in onChange/inputFile on publish:",
+                    "filesArray on onChange/inputFile in /publish:",
                     filesArray
                   );
                   // console.log(
@@ -146,19 +151,19 @@ const Publish = ({ faRotateRight }) => {
                   //   newPic
                   // );
                   filesArray.forEach((file) => {
-                    console.log("file in forEach:", file);
+                    console.log("file on forEach in /publish:", file);
                     const picAndRotate = {
                       file: file,
                       rotation: 0,
                     };
-                    console.log("picAndRotate:", picAndRotate);
+                    console.log("picAndRotate in /publish::", picAndRotate);
                     newPic.push(picAndRotate);
                   });
                   setPictures(newPic);
                 }}
               />
               {pictures.map((files, index) => {
-                console.log("files in .map:", files);
+                console.log("files on .map in /publish::", files);
                 return (
                   <div className="viewPics" key={index}>
                     <img
