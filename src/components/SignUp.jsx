@@ -18,15 +18,8 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
-  const {
-    errorMessage,
-    setErrorMessage,
-    token,
-    setToken,
-    setUser,
-    setIsAdmin,
-    axios,
-  } = useUser();
+  const [errorMessage, setErrorMessage] = useState("");
+  const { token, setToken, setUser, setIsAdmin, axios } = useUser();
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -34,18 +27,15 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = await axios.post(
-        import.meta.env.VITE_REACT_APP_URL_SIGNUP,
-        {
-          username,
-          email,
-          password,
-          newsletter,
-        }
-      );
+      const response = await axios.post(`http://localhost:3000/user/signup`, {
+        username,
+        email,
+        password,
+        newsletter,
+      });
       console.log("response in /signup:", response);
       if (response) {
-        alert(response.data);
+        alert(response?.data?.message);
         setShow(false);
         navigate("/confirmemail");
         saveToken(token, setToken, setUser, setIsAdmin);

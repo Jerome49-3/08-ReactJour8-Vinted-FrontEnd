@@ -177,9 +177,8 @@ header {
           & ul {
 
             & li {
-              min-width: 200px;
+              width: 50%;
               min-height: 30px;
-              width: calc(100% / 2);
 
               & div {
                 display: flex;

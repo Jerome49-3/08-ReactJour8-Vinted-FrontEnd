@@ -490,9 +490,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     width: 25%;
   }
   header .wrapper .topHeader nav ul li {
-    min-width: 200px;
-    min-height: 30px;
     width: 50%;
+    min-height: 30px;
   }
   header .wrapper .topHeader nav ul li div {
     display: flex;
@@ -516,6 +515,9 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   header .wrapper .bottomHeader div:first-child {
     margin-left: 5%;
   }
+}
+.boxImgs {
+  margin-top: 6px;
 }
 .boxImgs .imgBanner {
   width: 100%;
@@ -542,9 +544,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 .boxHome .wrapper {
   flex: 1;
-}
-.boxHome .wrapper .boxImgs {
-  margin-top: 10px;
 }
 
 /* ARTICLE */
@@ -1509,9 +1508,16 @@ form input:last-child:not(.boxFormSignUp form div input) {
 .boxChat {
   padding-top: 2.5%;
 }
-.boxChat ul {
+.boxChat .boxMessages {
   height: 10vh;
   overflow-x: hidden;
+}
+.boxChat .boxMessages .top .sellerAvatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .boxChat p {
   display: flex;

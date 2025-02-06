@@ -2,6 +2,7 @@ import { useUser } from "../assets/lib/userFunc";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import saveToken from "../assets/lib/saveToken";
 
 //components
 import Loading from "./Loading";
@@ -11,7 +12,7 @@ import InputFile from "./InputFile";
 import Button from "./Button";
 
 const Profile = () => {
-  const { token } = useUser();
+  const { token, setToken, setUser, setIsAdmin } = useUser();
   console.log("token in /profile/${id}:", token);
   const { id } = useParams();
   console.log("id in /profile/${id}:", id);
@@ -38,6 +39,10 @@ const Profile = () => {
           setAvatar(
             response?.data?.avatar?.secure_url || response?.data?.avatar
           );
+          if (response?.data?.token) {
+            setToken(response?.data?.token);
+            saveToken(response?.data?.token, setUser, setIsAdmin);
+          }
           // console.log('data in /profile/${id}:', data);
           setIsLoading(false);
         }

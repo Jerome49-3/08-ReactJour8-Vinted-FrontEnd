@@ -6,7 +6,7 @@ import { useUser } from "../assets/lib/userFunc";
 
 //components
 import TextArea from "./TextArea";
-// import Button from "./Button";
+import GetMessages from "./GetMessages";
 
 const Chat = ({ OfferID }) => {
   const [loadMessages, setLoadMessages] = useState(true);
@@ -21,80 +21,59 @@ const Chat = ({ OfferID }) => {
   const [isConnected, setIsConnected] = useState(false); // État de connexion WebSocket
 
   useEffect(() => {
-    console.log("user on /messages/${OfferID}:", user);
-
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:3000/messages/${OfferID}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
-          }
+    try {
+      if (!OfferID) {
+        console.error(
+          "OfferID manquant. Impossible d'établir la connexion WebSocket."
         );
-        console.log("response in /messages/${OfferID} (GET):", response);
-        if (response.data) {
-          setMessages(response?.data);
-          if (!OfferID) {
+        return;
+      } else {
+        const ws = new WebSocket(`ws://localhost:3000/messages/${OfferID}`);
+        // console.log("ws on chat:", ws);
+
+        ws.onopen = () => {
+          console.log("Connexion WebSocket établie.");
+          setIsConnected(true);
+        };
+
+        ws.onmessage = (event) => {
+          console.log("event in ws.onmessage:", event);
+
+          try {
+            const data = JSON.parse(event.data);
+            console.log("Message reçu in ws.onmessage:", data);
+
+            if (data.type === "message") {
+              setMessages((prev) => [...prev, data]);
+            } else if (data.type === "typing") {
+              console.log(`${user} est en train d'écrire...`);
+            }
+          } catch (error) {
             console.error(
-              "OfferID manquant. Impossible d'établir la connexion WebSocket."
+              "Erreur lors du traitement du message WebSocket:",
+              error
             );
-            return;
-          } else {
-            const ws = new WebSocket(`ws://localhost:3000/messages/${OfferID}`);
-            // console.log("ws on chat:", ws);
-
-            ws.onopen = () => {
-              console.log("Connexion WebSocket établie.");
-              setIsConnected(true);
-            };
-
-            ws.onmessage = (event) => {
-              console.log("event in ws.onmessage:", event);
-
-              try {
-                const data = JSON.parse(event.data);
-                console.log("Message reçu in ws.onmessage:", data);
-
-                if (data.type === "message") {
-                  setMessages((prev) => [...prev, data]);
-                } else if (data.type === "typing") {
-                  console.log(`${user} est en train d'écrire...`);
-                }
-              } catch (error) {
-                console.error(
-                  "Erreur lors du traitement du message WebSocket:",
-                  error
-                );
-                setErrorMessage(error);
-              }
-            };
-
-            ws.onerror = (error) => {
-              console.error("Erreur WebSocket:", error);
-            };
-
-            setSocket(ws);
+            setErrorMessage(error);
           }
-          setLoadMessages(false);
-        }
-      } catch (error) {
-        console.log(error?.message);
-        setErrorMessage(error?.response?.data?.message || "update failed");
+        };
+
+        ws.onerror = (error) => {
+          console.error("Erreur WebSocket:", error);
+        };
+
+        setSocket(ws);
       }
-    };
-    fetchData();
+    } catch (error) {
+      setErrorMessage(error);
+    }
   }, [OfferID]);
 
-  // const handleSendMessage = async (e) => {
-  const handleSubmitMessage = async (e) => {
+  const handleSendMessage = async (e) => {
     // setViewKey(e.key)
     if (e.key === "Enter") {
+      e.preventDefault();
       console.log("e.key in handleMesssage on Chat:", e.key);
       console.log("token in handleMesssage on Chat:", token);
-      e.preventDefault();
       const formData = new FormData();
       formData.append("newMessage", newMessage);
       console.log("${ObjectID} in handleMesssage on Chat:", `${OfferID}`);
@@ -121,7 +100,7 @@ const Chat = ({ OfferID }) => {
             "response.data  in handleMesssage on Chat:",
             response.data
           );
-          setMessages((prev) => [...prev, response.data]);
+          setMessages(response.data);
           setIsLoading(false);
         }
         setNewMessage("");
@@ -161,31 +140,23 @@ const Chat = ({ OfferID }) => {
       ) : (
         <div className="boxLoaderTyping"></div>
       )}
-      <ul>
-        {messages.map((mssg, index) => {
-          console.log("mssg:", mssg);
-          return (
-            <li key={index}>
-              <div className="top">
-                <p>{mssg?.date}</p>
-                <p>{mssg?.owner?.account?.username}</p>
-              </div>
-              <div className="bottom">
-                <p>{mssg?.text}</p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <GetMessages
+        OfferID={OfferID}
+        messages={messages}
+        setMessages={setMessages}
+        loadMessages={loadMessages}
+        setLoadMessages={setLoadMessages}
+      />
+
       {/* <p>{viewKey}</p> */}
       <TextArea
-        value={newMessage || ""}
+        value={newMessage}
         setState={setNewMessage}
         onKeyPress={handleTyping}
-        onKeyDown={handleSubmitMessage}
-        placeholder="Message"
+        onKeyDown={handleSendMessage}
+        placeholder="les messages sont visibles par tous les visiteurs de l'offre"
       />
-      {/* <Button handleClick={handleSendMessage} buttonText="Envoyer" /> */}
+      {errorMessage && <div className="red">{errorMessage}</div>}
     </div>
   );
 };

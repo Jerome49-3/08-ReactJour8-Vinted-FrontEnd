@@ -3,6 +3,7 @@ import Logo from "../assets/images/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeButton from "./ThemeButton";
 import { useUser } from "../assets/lib/userFunc";
+import { useEffect } from "react";
 
 //components
 import Image from "./Image";
@@ -26,12 +27,19 @@ const Header = ({
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user } = useUser();
-  // console.log("token in header:", token, "\n", "user: in header:", user);
+  console.log("token in header:", token, "\n", "user: in header:", user);
 
   return (
     <header>
       <div className="wrapper">
-        <div className="topHeader">
+        <div
+          className="topHeader"
+          onMouseOut={() => {
+            setTimeout(() => {
+              setShowToggleNav(false);
+            }, 5000);
+          }}
+        >
           <div className="boxLogoTheme">
             <Link to="/">
               <Image src={Logo} alt="Vinted" classImg="logo" />

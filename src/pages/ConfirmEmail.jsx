@@ -56,7 +56,7 @@ const ConfirmEmail = () => {
         { withCredentials: true }
       );
       console.log("response in /confirmEmail:", response);
-      if (response.data.token) {
+      if (response?.data?.token) {
         setToken(response.data.token);
         if (token) {
           saveToken(token, setUser, setIsAdmin);
@@ -67,7 +67,7 @@ const ConfirmEmail = () => {
     } catch (error) {
       console.log("error:", error);
       console.log("Array.isArray(error):", Array.isArray(error));
-      setErrorMessage(error.message);
+      setErrorMessage(error?.message);
     }
   };
 
@@ -103,8 +103,8 @@ const ConfirmEmail = () => {
           classInput="submitInputCode"
         />
       </form>
-      {errorMessage.message && (
-        <p style={{ color: "red" }}>{errorMessage.message}</p>
+      {errorMessage?.message && (
+        <p style={{ color: "red" }}>{errorMessage?.message}</p>
       )}
     </>
   );

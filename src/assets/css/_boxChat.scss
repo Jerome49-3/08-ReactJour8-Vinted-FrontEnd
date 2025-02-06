@@ -1,9 +1,18 @@
 .boxChat {
   padding-top: 2.5%;
 
-  & ul {
+  .boxMessages {
     height: 10vh;
     overflow-x: hidden;
+
+    .top {
+      .sellerAvatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
   }
 
   & p {

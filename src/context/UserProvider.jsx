@@ -61,7 +61,7 @@ export const UserProvider = ({ children }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [token, user]);
 
   useLayoutEffect(() => {
     axiosRetry(axios, {
@@ -101,6 +101,7 @@ export const UserProvider = ({ children }) => {
       setUser(null);
       setIsAdmin(false);
       Cookies.remove("accessTokenV");
+      Cookies.remove("refreshTokenV");
       Cookies.remove("vintaidUser");
       Cookies.remove("vintaidTeam");
       localStorage.removeItem("favCard");
