@@ -476,10 +476,18 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     justify-content: space-between;
   }
   header .wrapper .topHeader .boxLogoTheme {
-    width: 40%;
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header .wrapper .topHeader .containerBoxSearch {
+    width: 50%;
+    display: flex;
+    justify-content: center;
   }
   header .wrapper .topHeader nav {
-    width: 40%;
+    width: 25%;
   }
   header .wrapper .topHeader nav ul li {
     min-width: 200px;
@@ -1349,6 +1357,8 @@ form input:last-child:not(.boxFormSignUp form div input) {
   /* FORM */
   .boxForm {
     width: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
   .boxForm .wrapper {
     height: 100%;

@@ -156,18 +156,23 @@ header {
     min-height: 10vh;
 
     .wrapper {
-
-
       .topHeader {
         flex-direction: row !important;
         justify-content: space-between;
 
         .boxLogoTheme {
-          width: 40%;
+          width: 25%;
+          @include flexBetween;
+        }
+
+        .containerBoxSearch {
+          width: 50%;
+          display: flex;
+          justify-content: center;
         }
 
         & nav {
-          width: 40%;
+          width: 25%;
 
           & ul {
 
