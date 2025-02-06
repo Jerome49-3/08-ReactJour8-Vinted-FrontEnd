@@ -1,6 +1,10 @@
 .boxChat {
-  padding: 2.5%;
-  width: 50%;
+  padding-top: 2.5%;
+
+  & ul {
+    height: 10vh;
+    overflow-x: hidden;
+  }
 
   & p {
     @include flexCenter;
@@ -9,7 +13,9 @@
   }
 
   & textarea {
-    width: 98.8%;
+    width: 99%;
+    border: none;
+    border-radius: 5px;
   }
 
   & button {

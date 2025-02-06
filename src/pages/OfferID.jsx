@@ -25,37 +25,27 @@ const OfferID = ({
 }) => {
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
   const { id } = useParams();
-  console.log("id1 in /offers/${id}:", id);
+  // console.log("id1 in /offers/${id}:", id);
   const [data, setData] = useState();
   const [imgsNbr, setImgsNbr] = useState(0);
-  // const [wrappWidth, setWrappWidth] = useState(0);
-  // const [imgRightHeight, setImgRightHeight] = useState(0);
-  console.log("data in OfferId:", data);
+  // console.log("data in OfferId:", data);
   let [price, setPrice] = useState(0);
   const prices = Number(price).toFixed(2);
+  // console.log("prices in OfferId:", prices);
   const [errorMessage, setErrorMessage] = useState("");
   // console.log('prices in /offers/${id}:', prices);
-  // const [objId, setObjId] = useState(id);
   const [isLoading, setIsLoading] = useState(true);
   const rotation = classRotation(data);
-  // const wrapperDimensions = useRef(null);
-  // const topHeightDimensions = useRef(null);
-
-  // const handleShowImgs = () => {
-  //   showImgsModal === false ? (setShowImgsModal(true)) : (setShowImgsModal(false))
-  // }
 
   useEffect(() => {
-    console.log("id inside useEffect in /offers/${id}:", id);
+    // console.log("id inside useEffect in /offers/${id}:", id);
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          import.meta.env.VITE_REACT_APP_URL_OFFERID
-        );
-        if (response) {
+        const response = await axios.get(`http://localhost:3000/offers/${id}`);
+        if (response?.data) {
           setData(response.data);
-          console.log("response in /offers/${id}:", response);
-          console.log("response.data in /offers/${id}:", response.data);
+          // console.log("response in /offers/${id}:", response);
+          // console.log("response.data in /offers/${id}:", response.data);
           // console.log('response.data.product_image in /offers/${id}:', response.data.product_image);
           // console.log('response.data.product_pictures in /offers/${id}:', response.data.product_pictures);
           setIsLoading(false);
@@ -70,10 +60,9 @@ const OfferID = ({
 
   useEffect(() => {
     const setPrices = () => {
-      setPrice(data.product_price);
+      setPrice(data?.product_price);
       // console.log('data.product_price in second useEffect:', data.product_price);
     };
-    //si les data sont bien chargés, alors j'execute la fonction setPrice
     if (isLoading === false) {
       setPrices();
     }
@@ -81,7 +70,7 @@ const OfferID = ({
 
   useEffect(() => {
     const setImgsLength = () => {
-      const imgsLength = data.product_pictures.length - 1;
+      const imgsLength = data?.product_pictures.length - 1;
       // console.log('imgsLength in useEffect in /offer/:id:', imgsLength);
       if (data.product_pictures.length > 1) {
         setImgsNbr(
@@ -89,37 +78,10 @@ const OfferID = ({
         );
       }
     };
-    if (isLoading === false) {
+    if (isLoading === false && data?.product_pictures) {
       setImgsLength();
     }
   }, [isLoading, imgsNbr]);
-
-  // useEffect(() => {
-  //   const defineDimensions = () => {
-  //     if (wrapperDimensions.current) {
-  //       const rect = wrapperDimensions.current.getBoundingClientRect();
-  //       const wrapperDim = rect.width;
-  //       console.log("wrapperDim dans useLayoutEffect:", wrapperDim);
-  //       setWrappWidth(
-  //         document.documentElement.style.setProperty("--wrapperDim", wrapperDim)
-  //       );
-  //     }
-  //     if (topHeightDimensions.current) {
-  //       const rect2 = topHeightDimensions.current.getBoundingClientRect();
-  //       const imgRightHeight = Math.round(rect2.height);
-  //       console.log("imgRightHeight dans useLayoutEffect:", imgRightHeight);
-  //       setImgRightHeight(
-  //         document.documentElement.style.setProperty(
-  //           "--imgRightHeight",
-  //           imgRightHeight
-  //         )
-  //       );
-  //     }
-  //   };
-  //   if (isLoading === false) {
-  //     defineDimensions();
-  //   }
-  // }, [isLoading]);
 
   return isLoading ? (
     <>
@@ -132,11 +94,11 @@ const OfferID = ({
         <div className="wrapper">
           <article className="top">
             <div className="left">
-              <div className={data.product_image ? "imgLeftAlone" : "imgLeft"}>
-                {data.product_image ? (
+              <div className={data?.product_image ? "imgLeftAlone" : "imgLeft"}>
+                {data?.product_image ? (
                   <Button
                     classButton="boxImgOffer"
-                    src={data.product_image.secure_url}
+                    src={data?.product_image?.secure_url}
                     classImg={data?.product_image && "prodImg"}
                     handleClick={() => {
                       if (showImgsModal === false) {
@@ -159,12 +121,12 @@ const OfferID = ({
                             <Button
                               classButton="boxImgOffer"
                               key={index}
-                              src={images.secure_url}
+                              src={images?.secure_url}
                               classImg={index === 0 ? "prodPict0" : "prodPict"}
                               handleClick={() => {
                                 if (showImgsModal === false) {
                                   setShowImgsModal(true);
-                                  setSrcImgsModal(images.secure_url);
+                                  setSrcImgsModal(images?.secure_url);
                                 } else {
                                   setShowImgsModal(true);
                                 }
@@ -181,11 +143,11 @@ const OfferID = ({
                 )}
               </div>
               <div
-                className={data.product_image ? "imgsRightNone" : "imgsRight"}
+                className={data?.product_image ? "imgsRightNone" : "imgsRight"}
               >
-                {data.product_pictures ? (
+                {data?.product_pictures ? (
                   <>
-                    {data.product_pictures.map((images, index) => {
+                    {data?.product_pictures.map((images, index) => {
                       // console.log('images:', images);
                       return (
                         <>
@@ -193,12 +155,12 @@ const OfferID = ({
                             <Button
                               classButton="boxImgOffer"
                               key={index}
-                              src={images.secure_url}
+                              src={images?.secure_url}
                               classImg={index > 0 && "prodPict"}
                               handleClick={() => {
                                 if (showImgsModal === false) {
                                   setShowImgsModal(true);
-                                  setSrcImgsModal(images.secure_url);
+                                  setSrcImgsModal(images?.secure_url);
                                 } else {
                                   setShowImgsModal(true);
                                 }
@@ -223,21 +185,33 @@ const OfferID = ({
                 <div className="boxDetails">
                   <div>
                     <p>MARQUE: </p>
-                    <span>{data.product_details[0].MARQUE}</span>
+                    {data?.product_details && (
+                      <span>{data?.product_details[0].MARQUE}</span>
+                    )}
                   </div>
                   <div>
-                    <p>TAILLE:</p> <span>{data.product_details[1].TAILLE}</span>
+                    <p>TAILLE:</p>
+                    {data?.product_details && (
+                      <span>{data?.product_details[1].TAILLE}</span>
+                    )}
                   </div>
                   <div>
-                    <p>ÉTAT: </p> <span>{data.product_details[2].ÉTAT}</span>
+                    <p>ÉTAT: </p>
+                    {data?.product_details && (
+                      <span>{data?.product_details[2].ÉTAT}</span>
+                    )}
                   </div>
                   <div>
-                    <p>COULEUR: </p>{" "}
-                    <span>{data.product_details[3].COULEUR}</span>
+                    <p>COULEUR: </p>
+                    {data?.product_details && (
+                      <span>{data?.product_details[3].COULEUR}</span>
+                    )}
                   </div>
                   <div>
-                    <p>EMPLACEMENT: </p>{" "}
-                    <span>{data.product_details[4].EMPLACEMENT}</span>
+                    <p>EMPLACEMENT: </p>
+                    {data?.product_details && (
+                      <span>{data?.product_details[4].EMPLACEMENT}</span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -248,41 +222,41 @@ const OfferID = ({
                 <div className="up">
                   <div>
                     <p>Name:</p>
-                    <div>{data.product_name}</div>
+                    <div>{data?.product_name}</div>
                   </div>
                   <div>
                     <p>Description:</p>
-                    <div>{data.product_description}</div>
+                    <div>{data?.product_description}</div>
                   </div>
                 </div>
                 <div className="down">
                   <div className="boxUser">
-                    {data.owner.account.avatar.secure_url ? (
+                    {data?.owner?.account?.avatar?.secure_url ? (
                       <>
                         <Image
-                          src={data.owner.account.avatar.secure_url}
+                          src={data?.owner?.account?.avatar?.secure_url}
                           alt="avatar"
                           classImg="imgAvatar"
                         />
                       </>
                     ) : (
                       <Image
-                        src={data.owner.account.avatar}
+                        src={data?.owner?.account?.avatar}
                         alt="avatar"
                         classImg="imgAvatar"
                       />
                     )}
-                    <div>{data.owner.account.username}</div>
+                    <div>{data?.owner?.account?.username}</div>
                   </div>
                 </div>
-                {data.product_image !== undefined ? (
+                {data?.product_image !== undefined ? (
                   <Link
                     to="/payment"
                     state={{
-                      product_id: data.product_id,
-                      product_name: data.product_name,
-                      product_price: Number(data.product_price).toFixed(2),
-                      product_image: data.product_image.secure_url,
+                      product_id: data?.product_id,
+                      product_name: data?.product_name,
+                      product_price: Number(data?.product_price).toFixed(2),
+                      product_image: data?.product_image?.secure_url,
                     }}
                     className="btnPay"
                   >
@@ -292,10 +266,10 @@ const OfferID = ({
                   <Link
                     to="/payment"
                     state={{
-                      product_id: data.product_id,
-                      product_name: data.product_name,
-                      product_price: Number(data.product_price).toFixed(2),
-                      product_pictures: data.product_pictures,
+                      product_id: data?.product_id,
+                      product_name: data?.product_name,
+                      product_price: Number(data?.product_price).toFixed(2),
+                      product_pictures: data?.product_pictures,
                     }}
                   >
                     Acheter
@@ -305,7 +279,7 @@ const OfferID = ({
             </div>
           </article>
           <div className="bottom">
-            <Chat OfferID={data.product_id} />
+            <Chat OfferID={data?.product_id} />
           </div>
         </div>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

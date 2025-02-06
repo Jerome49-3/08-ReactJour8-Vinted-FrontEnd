@@ -1,6 +1,11 @@
-import React from "react";
-
-const TextArea = ({ setState, value, name, placeholder, onKeyPress }) => {
+const TextArea = ({
+  setState,
+  value,
+  name,
+  placeholder,
+  onKeyPress,
+  onKeyDown,
+}) => {
   return (
     <textarea
       value={value}
@@ -8,6 +13,7 @@ const TextArea = ({ setState, value, name, placeholder, onKeyPress }) => {
       id={name}
       placeholder={placeholder}
       onKeyPress={onKeyPress}
+      onKeyDown={onKeyDown}
       onChange={(e) => {
         setState(e.target.value);
       }}

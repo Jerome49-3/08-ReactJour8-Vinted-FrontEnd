@@ -19,14 +19,6 @@
       box-shadow: 0px 0px 1px $vertVinted, 0.25px 0.25px 1px $vertVinted, inset 0px 0px 10px $vertVinted;
       text-align: center;
       border-radius: 5px;
-
-      &:focus-visible {
-        outline: transparent;
-
-        &::placeholder {
-          color: transparent;
-        }
-      }
     }
   }
 

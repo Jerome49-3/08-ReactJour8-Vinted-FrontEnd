@@ -17,6 +17,18 @@ button {
   background-color: transparent;
 }
 
+input {
+  @include inputText;
+}
+
+input[type="submit"] {
+  @include btn;
+}
+
+input:not([type="submit"], [type="search"]) {
+  border-bottom: 2px solid $borderInput;
+}
+
 .hide {
   display: none;
 }
@@ -24,4 +36,13 @@ button {
 .show {
   display: flex !important;
   color: $vertVinted;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: transparent;
+
+  &::placeholder {
+    color: transparent;
+  }
 }

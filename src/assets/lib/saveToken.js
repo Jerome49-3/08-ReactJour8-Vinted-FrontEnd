@@ -2,10 +2,10 @@ import decryptUser from "./decryptUser";
 import Cookies from "js-cookie";
 
 const saveToken = (token, setUser, setIsAdmin) => {
-  console.log("token in saveToken:", token);
+  // console.log("token in saveToken:", token);
   Cookies.set("accessTokenV", token);
   const newDecryptedUser = decryptUser(token);
-  console.log("newDecryptedUser in saveToken:", newDecryptedUser);
+  // console.log("newDecryptedUser in saveToken:", newDecryptedUser);
   if (newDecryptedUser) {
     setUser(newDecryptedUser);
     sessionStorage.setItem("vintaidUser", JSON.stringify(newDecryptedUser));

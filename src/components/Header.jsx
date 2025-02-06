@@ -26,7 +26,7 @@ const Header = ({
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user } = useUser();
-  console.log("token in header:", token, "\n", "user: in header:", user);
+  // console.log("token in header:", token, "\n", "user: in header:", user);
 
   return (
     <header>
@@ -40,15 +40,20 @@ const Header = ({
               <ThemeButton />
             </div>
           </div>
-          <div className="boxSearch">
-            <FontAwesomeIcon icon="magnifying-glass" className="search-icons" />
-            <Input
-              id="search"
-              type="search"
-              placeholder="Rechercher des articles"
-              value={search}
-              setState={setSearch}
-            />
+          <div className="containerBoxSearch">
+            <div className="boxSearch">
+              <FontAwesomeIcon
+                icon="magnifying-glass"
+                className="search-icons"
+              />
+              <Input
+                id="search"
+                type="search"
+                placeholder="Rechercher des articles"
+                value={search}
+                setState={setSearch}
+              />
+            </div>
           </div>
           <nav>
             <ul>
@@ -81,7 +86,7 @@ const Header = ({
                     setShowToggleNav(!showToggleNav);
                   }}
                 >
-                  <div className="hello">Bonjour {user?.account?.username}</div>
+                  <div className="hello">{user?.account?.username}</div>
                   {user?.account?.avatar?.secure_url ? (
                     <>
                       <Image

@@ -10,10 +10,10 @@ import Input from "../components/Input";
 const Publish = ({ faRotateRight }) => {
   const viewFile = useRef(null);
   const { token, axios } = useUser();
-  console.log("token in in /publish:", token);
+  // console.log("token in in /publish:", token);
   const [errorMessage, setErrorMessage] = useState("");
   const [pictures, setPictures] = useState([]);
-  console.log("pictures in in /publish:", pictures);
+  // console.log("pictures in in /publish:", pictures);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   let [price, setPrice] = useState(0);
@@ -39,7 +39,7 @@ const Publish = ({ faRotateRight }) => {
       );
       const el = pictures[i];
       console.log("el in for on handleSubmit in /publish:", el);
-      formData.append("pictures in for on handleSubmit in /publish:", el.file);
+      formData.append("pictures", el.file);
       arrRotate.push(el.rotation);
       console.log("el.rotate in for on handleSubmit in /publish:", el.rotation);
     }
@@ -112,7 +112,7 @@ const Publish = ({ faRotateRight }) => {
   };
 
   return token !== null ? (
-    <div className="boxForm boxFormPublish">
+    <div className="boxForm">
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
           <div className="boxPicTop">
@@ -222,7 +222,7 @@ const Publish = ({ faRotateRight }) => {
             </div>
           </div>
           <Input
-            value={title}
+            value={title || ""}
             id="title"
             type="text"
             placeholder="Titre"
@@ -230,14 +230,14 @@ const Publish = ({ faRotateRight }) => {
           />
           <TextArea
             name="description"
-            value={description}
+            value={description || ""}
             id="description"
             type="text"
             placeholder="Description"
             setState={setDescription}
           />
           <Input
-            value={price}
+            value={price || ""}
             id="price"
             type="number"
             placeholder="Prix"
@@ -246,35 +246,35 @@ const Publish = ({ faRotateRight }) => {
             max="100000"
           />
           <Input
-            value={brand}
+            value={brand || ""}
             id="brand"
             type="text"
             placeholder="Marque"
             setState={setBrand}
           />
           <Input
-            value={size}
+            value={size || ""}
             id="size"
             type="text"
             placeholder="Taille"
             setState={setSize}
           />
           <Input
-            value={condition}
+            value={condition || ""}
             id="condition"
             type="text"
             placeholder="Condition"
             setState={setCondition}
           />
           <Input
-            value={color}
+            value={color || ""}
             id="color"
             type="text"
             placeholder="Couleur"
             setState={setColor}
           />
           <Input
-            value={city}
+            value={city || ""}
             id="city"
             type="text"
             placeholder="Emplacement"

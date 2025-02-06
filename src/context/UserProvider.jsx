@@ -8,12 +8,12 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [token, setToken] = useState(Cookies.get("accessTokenV") || null);
-  console.log("token in UserProvider:", token);
+  // console.log("token in UserProvider:", token);
   const [user, setUser] = useState(
     sessionStorage.getItem("vintaidUser") || null
   );
   const [isLoading, setIsLoading] = useState();
-  console.log("user in UserProvider:", user);
+  // console.log("user in UserProvider:", user);
   const [isAdmin, setIsAdmin] = useState(
     sessionStorage.getItem("vintaidTeam") || false
   );
@@ -35,7 +35,7 @@ export const UserProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    console.log("token in useEffect on userProvider:", token);
+    // console.log("token in useEffect on userProvider:", token);
 
     const fetchData = async () => {
       axios.defaults.withCredentials = true;
@@ -50,7 +50,7 @@ export const UserProvider = ({ children }) => {
           },
           { withCredentials: true }
         );
-        console.log("response in /user/refreshToken:", response);
+        // console.log("response in /user/refreshToken:", response);
         if (response?.data?.token) {
           setToken(response?.data?.token);
           saveToken(response?.data?.token, setUser, setIsAdmin);

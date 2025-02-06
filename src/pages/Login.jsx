@@ -12,6 +12,8 @@ import Loading from "../components/Loading";
 import saveToken from "../assets/lib/saveToken";
 
 const Login = ({ type, setType, icon1, icon2 }) => {
+  const boxForm = "boxForm";
+  const boxLogin = "boxLogin";
   const {
     token,
     setToken,
@@ -68,15 +70,15 @@ const Login = ({ type, setType, icon1, icon2 }) => {
       console.log("error in handleSubmit on Login:", error);
       console.log("error.response in handleSubmit on Login:", error.response);
       console.log("error:", error?.response?.data?.message);
-      setErrorMessage(error?.response?.data?.message || error?.message);
       const messageError = error?.response?.data?.message;
       const messageNotConfirmEmail = import.meta.env
         .VITE_REACT_APP_MSSG_NOT_CONFIRMEMAIL;
-      const confirmReceiptMssg = messageError.includes(messageNotConfirmEmail);
-      if (confirmReceiptMssg !== false) {
+      if (messageError === messageNotConfirmEmail) {
         setTimeout(() => {
           navigate("/confirmemail");
         }, 3500);
+      } else {
+        setErrorMessage(messageError || error?.message);
       }
     }
   };
@@ -84,59 +86,61 @@ const Login = ({ type, setType, icon1, icon2 }) => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="boxForm boxFormCenter">
-      <form onSubmit={handleSubmit}>
-        <Input
-          id="email"
-          type="email"
-          placeholder="jerome@test.com"
-          value={email}
-          setState={setEmail}
-          autocomplete="on"
-        />
-        <div className="boxPsswd">
+    <div className={`${boxForm} ${boxLogin}`}>
+      <div className="wrapper">
+        <form onSubmit={handleSubmit}>
           <Input
-            value={password}
-            id="password"
-            type={type}
-            placeholder="Mot de passe"
-            setState={setPassword}
+            id="email"
+            type="email"
+            placeholder="jerome@test.com"
+            value={email}
+            setState={setEmail}
             autocomplete="on"
           />
-          <div className="boxIcons">
-            <FontAwesomeIcon
-              icon={icon1}
-              onClick={handleType}
-              className={type !== "password" ? "hide" : null}
+          <div className="boxPsswd">
+            <Input
+              value={password}
+              id="password"
+              type={type}
+              placeholder="Mot de passe"
+              setState={setPassword}
+              autocomplete="on"
             />
-            <FontAwesomeIcon
-              icon={icon2}
-              onClick={handleType}
-              className={type !== "text" ? "hide" : null}
-            />
+            <div className="boxIcons">
+              <FontAwesomeIcon
+                icon={icon1}
+                onClick={handleType}
+                className={type !== "password" ? "hide" : null}
+              />
+              <FontAwesomeIcon
+                icon={icon2}
+                onClick={handleType}
+                className={type !== "text" ? "hide" : null}
+              />
+            </div>
           </div>
-        </div>
-        <Input type="submit" value="Se connecter" />
-        <div className="boxForgot">
-          <small>
-            <Links />
-          </small>
-        </div>
-      </form>
-      {errorMessage && (
-        <p
-          style={{
-            color: "red",
-            fontSize: "1.05rem",
-            fontWeight: "700",
-            textShadow:
-              "0px 0px 1px orangered, 0.15px 0.15px 1.25px black, 0.35px 0.35px 1.5px green",
-          }}
-        >
-          {errorMessage}
-        </p>
-      )}
-      <Links path="/forgotPassword" />
+          <Input type="submit" value="Se connecter" />
+          <div className="boxForgot">
+            <small>
+              <Links />
+            </small>
+          </div>
+        </form>
+        {errorMessage && (
+          <p
+            style={{
+              color: "red",
+              fontSize: "1.05rem",
+              fontWeight: "700",
+              textShadow:
+                "0px 0px 1px orangered, 0.15px 0.15px 1.25px black, 0.35px 0.35px 1.5px green",
+            }}
+          >
+            {errorMessage}
+          </p>
+        )}
+        <Links path="/forgotPassword" />
+      </div>
     </div>
   );
 };
