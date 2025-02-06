@@ -13,6 +13,8 @@
     // margin: auto;
     margin-bottom: 20px;
 
+
+
     & article {
       display: flex;
       justify-content: center;
@@ -25,6 +27,11 @@
       // border: 2px solid crimson;
       margin: auto;
       position: relative;
+
+      &:hover {
+        -webkit-animation: scaleArticle 01s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+        animation: scaleArticle 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+      }
 
       .boxImgArticle {
         width: 100%;

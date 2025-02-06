@@ -86,6 +86,18 @@
   text-shadow: 0px 0px 1px $black, 0.25px 0.25px 1px $white, 0.5px 0.5px 1px $black;
 }
 
+@mixin textShadow {
+  text-shadow: 0px 0px 1px $black, 0.5px 0.5px 1px $white, 1px 1px 1px $black;
+}
+
+@mixin boxShadow {
+  box-shadow: 0px 0px 4px $black, 0.5px 0.5px 2px $black;
+}
+
+@mixin boxShadowInset {
+  box-shadow: inset 0px 0px 4px $black, inset 0.5px 0.5px 2px $black;
+}
+
 @mixin inputText {
   padding-left: 5px;
   outline: none;

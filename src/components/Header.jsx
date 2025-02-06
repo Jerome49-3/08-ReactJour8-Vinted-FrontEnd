@@ -95,21 +95,23 @@ const Header = ({
                   }}
                 >
                   <div className="hello">{user?.account?.username}</div>
-                  {user?.account?.avatar?.secure_url ? (
-                    <>
+                  <div className="boxAvatar">
+                    {user?.account?.avatar?.secure_url ? (
+                      <>
+                        <Image
+                          src={user?.account?.avatar?.secure_url}
+                          alt="avatar"
+                          classImg="imgAvatar"
+                        />
+                      </>
+                    ) : (
                       <Image
-                        src={user?.account?.avatar?.secure_url}
+                        src={user?.account?.avatar}
                         alt="avatar"
                         classImg="imgAvatar"
                       />
-                    </>
-                  ) : (
-                    <Image
-                      src={user?.account?.avatar}
-                      alt="avatar"
-                      classImg="imgAvatar"
-                    />
-                  )}
+                    )}
+                  </div>
                 </li>
               ) : null}
               <Aside

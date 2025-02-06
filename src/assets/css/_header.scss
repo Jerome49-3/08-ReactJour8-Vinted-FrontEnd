@@ -35,7 +35,7 @@ header {
         width: calc(100% / 2);
 
         & ul {
-          gap: 20px;
+          gap: 10px;
           // @include flexColCenter;
           width: 100%;
 
@@ -47,6 +47,7 @@ header {
             & a {
               height: 30px;
               @include flexCenter;
+              @include textShadow;
             }
 
             & div {
@@ -58,7 +59,6 @@ header {
             & div a {
               height: 100%;
               width: 100%;
-              // padding: 4px 8px 4px 8px;
               @include flexCenter;
             }
 
@@ -72,24 +72,25 @@ header {
             }
 
             &:nth-child(2) {
-              background-color: #2DB0BA;
-              box-shadow: 0px 0px 2px $black;
+              background-color: $vertVinted;
+              height: 30px;
+              border: 2px solid $vertVinted;
+              box-shadow: 0px 0px 4px $black, 0.5px 0.5px 2px $black;
+              @include textShadow;
 
               & a {
                 color: $white;
               }
 
               &:active {
-                box-shadow: inset 0px 0px 2px $black;
+                box-shadow: inset 0px 0px 4px $black, inset 0.5px 0.5px 2px $black;
               }
             }
           }
 
           .boxUser {
-            @include flexCenter;
-            gap: 20px;
+            @include flexAround;
             border: 2px solid $vertVinted;
-            padding: 5px 10px 5px 10px;
             border-radius: 5px;
             cursor: pointer;
           }
@@ -126,10 +127,16 @@ header {
   }
 }
 
+.boxUser:active .imgAvatar {
+  width: 20px;
+  height: 20px;
+}
+
 .imgAvatar {
   width: 25px;
   height: 25px;
   border-radius: 50%;
+  @include boxShadow;
 }
 
 .boxSearch {
@@ -142,6 +149,7 @@ header {
   padding: 2px 2px 2px 10px;
   width: 300px;
   height: 30px;
+  @include boxShadow;
 }
 
 .search-icons {
@@ -197,7 +205,6 @@ header {
 
               &:nth-child(2) {
                 background-color: $vertVinted;
-                padding: 4px 8px 4px 8px;
               }
             }
           }

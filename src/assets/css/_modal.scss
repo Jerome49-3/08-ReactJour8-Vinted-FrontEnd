@@ -34,7 +34,7 @@
     }
 
     & button {
-      text-shadow: 1px 1px 2px white, 1.25px 1.25px 2.25px #000000;
+      @include textShadow;
       background-color: #f1f1f1f1;
 
       &:active {

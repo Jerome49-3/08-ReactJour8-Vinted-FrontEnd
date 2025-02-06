@@ -93,6 +93,31 @@
   }
 }
 
+//scale Articles
+@keyframes scaleArticle {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  to {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+
+@-webkit-keyframes scaleArticle {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  to {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+
 //rotation pictures
 .rotate {
   transform: rotate(var(--rotation, 0deg));
