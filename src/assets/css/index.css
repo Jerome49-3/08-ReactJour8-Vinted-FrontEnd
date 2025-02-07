@@ -147,6 +147,7 @@ table {
   --headerLibackgd: #2db0ba;
   --borderInput: rgba(255, 0, 0, 0.197);
   --backgHeader: #c9c9c9;
+  --darkBackgForm: #3c595b;
 
   a {
     text-decoration: none;

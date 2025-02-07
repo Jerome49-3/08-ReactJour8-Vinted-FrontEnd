@@ -58,7 +58,13 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
       "dataShoppingCart inside handleclick in offer/:id:",
       dataShoppingCart
     );
-  }, []);
+  }, [
+    dataShoppingCart,
+    product_id,
+    product_name,
+    product_price,
+    product_image,
+  ]);
 
   useEffect(() => {
     const StrDataShoppingCart = JSON.stringify(dataShoppingCart);

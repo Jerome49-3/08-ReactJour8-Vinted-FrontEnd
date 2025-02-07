@@ -42,7 +42,7 @@ const Home = ({ search, faHeart, farHeart }) => {
       }
     };
     fetchData();
-  }, [search]);
+  }, [search, data]);
 
   return isLoading ? (
     <>

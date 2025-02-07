@@ -27,7 +27,7 @@ const GetMessages = ({
             },
           }
         );
-        console.log("response in /messages/${OfferID} (GET):", response);
+        // console.log("response in /messages/${OfferID} (GET):", response);
         if (response?.data) {
           setMessages(response?.data);
           setLoadMessages(false);
@@ -45,7 +45,7 @@ const GetMessages = ({
   ) : (
     <ul className="boxMessages">
       {messages?.map((mssg, index) => {
-        console.log("mssg:", mssg);
+        console.log("mssg in getMessages:", mssg);
         return (
           <li key={index}>
             <div className="top">

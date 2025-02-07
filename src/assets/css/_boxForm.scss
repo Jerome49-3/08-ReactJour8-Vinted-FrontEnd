@@ -2,6 +2,13 @@
 .boxForm {
   width: 100%;
   height: 100%;
+  display: flex;
+
+  .wrapper {
+    background-color: $backgVinted;
+    height: 100%;
+    padding-bottom: 20px;
+  }
 
   #pictures {
     display: none;
@@ -11,17 +18,22 @@
     width: 100%;
     @include flexColStart;
     border: 2px solid #ededed;
-    padding: 80px;
     margin-bottom: 2.5%;
+
+    .boxPicBottom {
+      padding: 5px 0px 5px 5px;
+    }
+
+    .boxPicBottomEmpty {
+      padding: 110px;
+    }
 
     .boxPicBottom,
     .boxPicBottomEmpty {
       @include flexStart;
       width: 100%;
-      // height: 200px;
       border: 2px dashed rgb(237, 237, 237, 0.7);
       gap: 5px;
-      padding: 5px;
       flex-wrap: wrap;
       position: relative;
 
@@ -41,6 +53,7 @@
         transform: translate(-50%, -50%);
         z-index: 500;
         box-shadow: 0px 0px 2px $black, 1px 1px 2px $black;
+        transition: all 1s ease-in-out;
 
         &:active {
           box-shadow: inset 0px 0px 2px $black, inset 0px 0px 5px $black;
@@ -116,6 +129,7 @@
     & textarea,
     & div.boxPsswd {
       width: 100%;
+      @include boxShadow;
     }
 
     .boxCheckBox {
@@ -173,8 +187,8 @@ form input:last-child:not(.boxFormSignUp form div input) {
 @media all and (min-width: 768px) {
 
   /* FORM */
-  .boxForm {
-    width: 50%;
+  .boxForm form {
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
 

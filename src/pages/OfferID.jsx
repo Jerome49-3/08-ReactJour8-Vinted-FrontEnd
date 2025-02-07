@@ -12,7 +12,6 @@ import noImg from "../assets/images/no-image.jpg";
 import Hero from "../components/Hero";
 import Image from "../components/Image";
 import Button from "../components/Button";
-import Chat from "../components/Chat";
 
 //lib
 import classRotation from "../assets/lib/classRotation";
@@ -44,8 +43,8 @@ const OfferID = ({
         const response = await axios.get(`http://localhost:3000/offers/${id}`);
         if (response?.data) {
           setData(response.data);
-          // console.log("response in /offers/${id}:", response);
-          // console.log("response.data in /offers/${id}:", response.data);
+          console.log("response in /offers/${id}:", response);
+          console.log("response.data in /offers/${id}:", response.data);
           // console.log('response.data.product_image in /offers/${id}:', response.data.product_image);
           // console.log('response.data.product_pictures in /offers/${id}:', response.data.product_pictures);
           setIsLoading(false);
@@ -116,7 +115,7 @@ const OfferID = ({
                       // console.log('images:', images);
                       const rotation = classRotation(images);
                       return (
-                        <>
+                        <article key={index}>
                           {index === 0 ? (
                             <Button
                               classButton="boxImgOffer"
@@ -134,7 +133,7 @@ const OfferID = ({
                               rotation={rotation}
                             />
                           ) : null}
-                        </>
+                        </article>
                       );
                     })}
                   </>
@@ -150,7 +149,7 @@ const OfferID = ({
                     {data?.product_pictures.map((images, index) => {
                       // console.log('images:', images);
                       return (
-                        <>
+                        <article key={index}>
                           {index > 0 && (
                             <Button
                               classButton="boxImgOffer"
@@ -168,7 +167,7 @@ const OfferID = ({
                               rotation={rotation}
                             />
                           )}
-                        </>
+                        </article>
                       );
                     })}
                   </>
@@ -248,39 +247,46 @@ const OfferID = ({
                     )}
                     <div>{data?.owner?.account?.username}</div>
                   </div>
+                  <div className="boxLinks">
+                    <Link to="/chat" state={{ product_id: data?.product_id }}>
+                      Contacter le vendeur
+                    </Link>
+                    {/* <Links
+                      to="/chat"
+                      linkText="Contacter le vendeur"
+                      state={{ product_id: data?.product_id }}
+                    /> */}
+                    {data?.product_image !== undefined ? (
+                      <Link
+                        to="/payment"
+                        state={{
+                          product_id: data?.product_id,
+                          product_name: data?.product_name,
+                          product_price: Number(data?.product_price).toFixed(2),
+                          product_image: data?.product_image?.secure_url,
+                        }}
+                        className="btnPay"
+                      >
+                        Acheter
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/payment"
+                        state={{
+                          product_id: data?.product_id,
+                          product_name: data?.product_name,
+                          product_price: Number(data?.product_price).toFixed(2),
+                          product_pictures: data?.product_pictures,
+                        }}
+                      >
+                        Acheter
+                      </Link>
+                    )}
+                  </div>
                 </div>
-                {data?.product_image !== undefined ? (
-                  <Link
-                    to="/payment"
-                    state={{
-                      product_id: data?.product_id,
-                      product_name: data?.product_name,
-                      product_price: Number(data?.product_price).toFixed(2),
-                      product_image: data?.product_image?.secure_url,
-                    }}
-                    className="btnPay"
-                  >
-                    Acheter
-                  </Link>
-                ) : (
-                  <Link
-                    to="/payment"
-                    state={{
-                      product_id: data?.product_id,
-                      product_name: data?.product_name,
-                      product_price: Number(data?.product_price).toFixed(2),
-                      product_pictures: data?.product_pictures,
-                    }}
-                  >
-                    Acheter
-                  </Link>
-                )}
               </div>
             </div>
           </article>
-          <div className="bottom">
-            <Chat OfferID={data?.product_id} />
-          </div>
         </div>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>

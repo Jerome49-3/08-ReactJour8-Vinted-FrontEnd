@@ -102,8 +102,8 @@ export const UserProvider = ({ children }) => {
       setIsAdmin(false);
       Cookies.remove("accessTokenV");
       Cookies.remove("refreshTokenV");
-      Cookies.remove("vintaidUser");
-      Cookies.remove("vintaidTeam");
+      sessionStorage.removeItem("vintaidUser");
+      sessionStorage.removeItem("vintaidTeam");
       localStorage.removeItem("favCard");
     } catch (error) {
       console.log("Error in logout:", error || "error in logout");

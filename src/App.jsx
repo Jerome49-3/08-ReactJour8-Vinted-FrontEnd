@@ -51,6 +51,7 @@ import MyPurchases from "./pages/MyPurchases";
 import ConfirmEmail from "./pages/ConfirmEmail";
 import PrivateRoute from "./pages/PrivateRoute";
 import Favorites from "./pages/Favorites";
+import Chat from "./pages/Chat";
 
 //components
 import Header from "./components/Header";
@@ -126,6 +127,7 @@ function App() {
                   />
                 }
               />
+              <Route path="/chat" element={<Chat />} />
               <Route path="/profile/:id" element={<Profile />} />
               <Route
                 path="/payment"
