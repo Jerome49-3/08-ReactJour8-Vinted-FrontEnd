@@ -13,7 +13,9 @@ import Button from "./Button";
 import saveToken from "../assets/lib/saveToken";
 
 const Profile = () => {
-  const { token, setToken, user, setUser, setIsAdmin } = useUser();
+  const { token, setToken, user, setUser, setIsAdmin, avatar, setAvatar } =
+    useUser();
+  console.log("user in /profile/${id}:", user);
   // console.log("token in /profile/${id}:", token);
   const { id } = useParams();
   // console.log("id in /profile/${id}:", id);
@@ -25,8 +27,7 @@ const Profile = () => {
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [newsletter, setNewsletter] = useState(null);
-  const [avatar, setAvatar] = useState(null);
-  // console.log("avatar in /profile/${id}::", avatar);
+  console.log("avatar in /profile/${id}::", avatar);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,7 +44,6 @@ const Profile = () => {
               if (newToken) {
                 setToken(newToken);
                 saveToken(newToken, setUser, setIsAdmin);
-                console.log("user in /profile/${id}:", user);
                 setData(user);
                 setAvatar(data?.account?.avatar?.secure_url);
               } else {

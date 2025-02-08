@@ -26,7 +26,7 @@ const Header = ({
 }) => {
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
-  const { token, user } = useUser();
+  const { token, user, avatar } = useUser();
   // console.log("token in header:", token, "\n", "user: in header:", user);
   useEffect(() => {}, []);
 
@@ -93,20 +93,8 @@ const Header = ({
                 >
                   <div className="hello">{user?.account?.username}</div>
                   <div className="boxAvatar">
-                    {user?.account?.avatar?.secure_url ? (
-                      <>
-                        <Image
-                          src={user?.account?.avatar?.secure_url}
-                          alt="avatar"
-                          classImg="imgAvatar"
-                        />
-                      </>
-                    ) : (
-                      <Image
-                        src={user?.account?.avatar}
-                        alt="avatar"
-                        classImg="imgAvatar"
-                      />
+                    {avatar && (
+                      <Image src={avatar} alt="avatar" classImg="imgAvatar" />
                     )}
                   </div>
                 </li>

@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(
     sessionStorage.getItem("vintaidUser") || null
   );
+  const [avatar, setAvatar] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   // console.log("user in UserProvider:", user);
   const [isAdmin, setIsAdmin] = useState(() => {
@@ -82,7 +83,9 @@ export const UserProvider = ({ children }) => {
     };
     fetchData();
   }, [token]);
-
+  useEffect(() => {
+    setAvatar(user?.account?.avatar?.secure_url);
+  }, [user]);
   useLayoutEffect(() => {
     axiosRetry(axios, {
       retries: 3,
@@ -144,6 +147,8 @@ export const UserProvider = ({ children }) => {
         setFav,
         isLoading,
         setIsLoading,
+        avatar,
+        setAvatar,
       }}
     >
       {children}
