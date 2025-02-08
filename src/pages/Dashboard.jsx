@@ -15,9 +15,6 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
   return token && isAdmin ? (
     <div className="boxDashboard">
       <div className="wrapper">
-        <div className="title">
-          <h1>Dashboard</h1>
-        </div>
         <div className="top">
           <div className="left">
             <div className="title">

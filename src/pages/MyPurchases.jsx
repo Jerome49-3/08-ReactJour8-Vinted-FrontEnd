@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../assets/lib/userFunc";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 //components
 import Loading from "../components/Loading";
@@ -10,7 +11,7 @@ const MyPurchases = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
   const [data, setData] = useState(null);
   console.log("data in /mypurchases:", data);
   const [isloading, setIsLoading] = useState(true);
-  const { token, axios, fav, setFav } = useUser();
+  const { token, fav, setFav } = useUser();
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {

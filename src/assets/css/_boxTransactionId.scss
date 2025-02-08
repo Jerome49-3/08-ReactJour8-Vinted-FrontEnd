@@ -1,44 +1,63 @@
 .boxTransactionId {
-  border: 2px solid red;
+  width: 100%;
+  height: 100%;
 
   .wrapper {
-    border: 2px solid green;
-    height: 89vh;
+    height: 100%;
 
     .transactionId {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      height: 100%;
       gap: 20px;
-      @include flexCenter;
+      @include flexAround;
 
       .left,
       .middle,
-      .right {}
+      .right {
+        width: calc(100%/3);
+        height: 80%;
 
-      .left {
-        .top {}
+        & h3 {
+          height: 20px;
+        }
 
-        .bottom {
-          & img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
+        .boxInfos {
+          height: calc((100% - 20px));
+
+          .top,
+          .middle {
+            height: calc(25%);
+            @include flexCenter;
+          }
+
+          .middle {
+            width: 100%;
+          }
+
+          .bottom {
+            height: 50%;
+
+            & img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
           }
         }
+
       }
 
-      .middle {}
+      .middle {
+        .boxInfos {
 
-      .right {
-        .top {}
+          .top .name,
+          .middle .price,
+          .bottom .date {
+            @include flexColCenter;
+            gap: 20px;
+          }
 
-        .bottom {
-          & img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
+          .bottom .date {
+            height: 100%;
           }
         }
       }

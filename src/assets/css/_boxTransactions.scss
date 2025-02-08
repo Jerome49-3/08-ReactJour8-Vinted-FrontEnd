@@ -33,26 +33,13 @@
           padding-left: 5px;
         }
 
-        & thead>tr:first-child,
-        & thead>tr:nth-child(3),
-        & thead>tr:nth-child(4),
-        & thead>tr:last-child,
-        & body>td:first-child,
-        & body>td:nth-child(3),
-        & body>td:nth-child(4),
-        & body>td:last-child {
-          width: 150px;
-        }
-
-        & thead>tr:nth-child(2),
-        & body>td:nth-child(2) {
-          width: 50px;
-        }
-
         & thead>tr,
         & body>td {
+          width: calc(100% / 5);
+          @include flexStart;
+          text-wrap: nowrap;
           padding: 5px;
-          text-align: center;
+          overflow: hidden;
         }
 
         & thead>tr:not(tr:last-child),

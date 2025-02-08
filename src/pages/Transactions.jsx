@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useUser } from "../assets/lib/userFunc";
 import axios from "axios";
 
@@ -11,6 +11,7 @@ const Transactions = () => {
   const { id } = useParams();
   const { token } = useUser();
   const [data, setData] = useState();
+  console.log("data in /transactions/:id:", data);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -18,7 +19,7 @@ const Transactions = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          import.meta.env.VITE_REACT_APP_URL_TRANSACTIONSID,
+          `${import.meta.env.VITE_REACT_APP_URL_TRANSACTIONSID}${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -26,10 +27,9 @@ const Transactions = () => {
             },
           }
         );
-        if (response) {
+        if (response.data) {
           setData(response.data);
-          // console.log("response.data in /transactions/:id:", response.data);
-          // console.log("data in /transactions/:id:", data);
+          console.log("response.data in /transactions/:id:", response.data);
           setIsLoading(false);
         }
       } catch (error) {
@@ -49,34 +49,57 @@ const Transactions = () => {
     <div className="boxTransactionId">
       <div className="wrapper">
         <div className="transactionId">
-          <div className="left"></div>
-          <div className="middle">
-            <div className="name">
-              <div>Nom du produit:</div>
-              <div>{data.product_name}</div>
-            </div>
-            <div className="price">
-              <div>Prix:</div>
-              <div>{data.product_price} €</div>
-            </div>
-            <div className="date">
-              <div>Date d'achat:</div>
-              <div>{data.date}</div>
-            </div>
-          </div>
-          <div className="right">
-            <h3>Vendeur:</h3>
-            <div className="top">{data.seller.account.username}</div>
-            <div className="middle">{data.seller.email}</div>
-            <div className="bottom">
-              {data.seller.account.avatar ? (
+          <Link to={`/users/${data?.buyerId}`} className="left">
+            <h3>Acheteur:</h3>
+            <div className="boxInfos">
+              <div className="top">{data?.buyer?.account?.username}</div>
+              <div className="middle">{data?.buyer?.email}</div>
+              <div className="bottom">
                 <Image
-                  src={data.seller.account.avatar.secure_url}
+                  src={data?.buyer?.account?.avatar?.secure_url}
                   alt="avatar"
                 />
-              ) : null}
+              </div>
             </div>
-          </div>
+          </Link>
+          <Link to={`/offers/${data?.product_id}`} className="middle">
+            <h3>Offre:</h3>
+            <div className="boxInfos">
+              <div className="top">
+                <div className="name">
+                  <div>Nom du produit:</div>
+                  <div>{data?.product_name}</div>
+                </div>
+              </div>
+              <div className="middle">
+                <div className="price">
+                  <div>Prix:</div>
+                  <div>{data?.product_price} €</div>
+                </div>
+              </div>
+              <div className="bottom">
+                <div className="date">
+                  <div>Date d'achat:</div>
+                  <div>{data?.date}</div>
+                </div>
+              </div>
+            </div>
+          </Link>
+          <Link to={`/users/${data?.seller._id}`} className="right">
+            <h3>Vendeur:</h3>
+            <div className="boxInfos">
+              <div className="top">{data?.seller?.account?.username}</div>
+              <div className="middle">{data?.seller?.email}</div>
+              <div className="bottom">
+                {data?.seller?.account?.avatar ? (
+                  <Image
+                    src={data?.seller?.account?.avatar?.secure_url}
+                    alt="avatar"
+                  />
+                ) : null}
+              </div>
+            </div>
+          </Link>
         </div>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>

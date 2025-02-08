@@ -56,8 +56,7 @@ export const UserProvider = ({ children }) => {
   }, [token]);
 
   useEffect(() => {
-    // console.log("token in useEffect on userProvider:", token);
-
+    console.log("token in useEffect on userProvider:", token);
     const fetchData = async () => {
       axios.defaults.withCredentials = true;
       try {
@@ -82,10 +81,12 @@ export const UserProvider = ({ children }) => {
       }
     };
     fetchData();
-  }, [token]);
+  }, []);
+
   useEffect(() => {
     setAvatar(user?.account?.avatar?.secure_url);
   }, [user]);
+
   useLayoutEffect(() => {
     axiosRetry(axios, {
       retries: 3,

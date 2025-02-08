@@ -1,11 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 import { useLocation, Navigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "cookies-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
-import { useState } from "react";
 import { useUser } from "../assets/lib/userFunc";
 
 //connection Stripe
@@ -16,6 +15,7 @@ const stripeConnect = loadStripe(
 const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
   const { token } = useUser();
   const [succes, setSucces] = useState(false);
+  const [numCmd, setNumCmd] = useState(null);
   const { state } = useLocation();
   console.log("state in /payment:", state);
   const {
@@ -41,40 +41,44 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
     "product_pictures in /payment:",
     product_pictures
   );
-
   useEffect(() => {
-    const newDataShoppingCart = [...dataShoppingCart];
-    const objData = {
-      product_id: product_id,
-      product_name: product_name,
-      product_price: product_price,
-      product_image: product_image,
-    };
-    console.log("objData in offer/:id:", objData);
-    newDataShoppingCart.push(objData);
-    console.log("newDataShoppingCart in offer/:id:", newDataShoppingCart);
-    setDataShoppingCart(newDataShoppingCart);
-    console.log(
-      "dataShoppingCart inside handleclick in offer/:id:",
-      dataShoppingCart
-    );
-  }, [
-    dataShoppingCart,
-    product_id,
-    product_name,
-    product_price,
-    product_image,
-  ]);
+    const numberCommand = uuidv4();
+    setNumCmd(numberCommand);
+  }, []);
 
-  useEffect(() => {
-    const StrDataShoppingCart = JSON.stringify(dataShoppingCart);
-    Cookies.set("vintedShoppingCart", StrDataShoppingCart, {
-      expires: 15,
-      secure: true,
-    });
-    // Vérification de la création du cookie
-    console.log("Cookie set:", Cookies.get("vintedShoppingCart"));
-  }, [dataShoppingCart]);
+  // useEffect(() => {
+  //   const newDataShoppingCart = [...dataShoppingCart];
+  //   const objData = {
+  //     product_id: product_id,
+  //     product_name: product_name,
+  //     product_price: product_price,
+  //     product_image: product_image,
+  //   };
+  //   console.log("objData in offer/:id:", objData);
+  //   newDataShoppingCart.push(objData);
+  //   console.log("newDataShoppingCart in offer/:id:", newDataShoppingCart);
+  //   setDataShoppingCart(newDataShoppingCart);
+  //   console.log(
+  //     "dataShoppingCart inside handleclick in offer/:id:",
+  //     dataShoppingCart
+  //   );
+  // }, [
+  //   dataShoppingCart,
+  //   product_id,
+  //   product_name,
+  //   product_price,
+  //   product_image,
+  // ]);
+
+  // useEffect(() => {
+  //   const StrDataShoppingCart = JSON.stringify(dataShoppingCart);
+  //   Cookies.set("vintedShoppingCart", StrDataShoppingCart, {
+  //     expires: 15,
+  //     secure: true,
+  //   });
+  //   // Vérification de la création du cookie
+  //   console.log("Cookie set:", Cookies.get("vintedShoppingCart"));
+  // }, [dataShoppingCart]);
 
   console.log(
     "Number((product_price * 100).toFixed(0)):",
@@ -141,11 +145,11 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
   console.log("total:", total);
   console.log("dataShoppingCart in /payment:", dataShoppingCart);
 
-  return token ? (
+  return (
     <div className="boxShoppingCart">
       <div className="wrapper">
         <div className="shoppingCart">
-          <h1>Commande N° {uuidv4()}</h1>
+          <h1>Commande N° {numCmd}</h1>
           <div className={succes ? "hide" : "top"}>
             {/* {dataShoppingCart.map((dataShop, key = dataShop.product_id) => {
               const num = dataShop.product_price;
@@ -213,8 +217,6 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
         </div>
       </div>
     </div>
-  ) : (
-    <Navigate to="/login" />
   );
 };
 

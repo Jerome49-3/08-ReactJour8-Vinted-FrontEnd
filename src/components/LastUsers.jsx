@@ -23,16 +23,15 @@ const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
       try {
         if (isAdmin !== false) {
           console.log("isAdmin in LastUsers:", isAdmin);
-          const response = await axios.get(
-            "https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/",
-            // const response = await axios.get("http://localhost:3000/users/",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "content-type": "multipart/form-data",
-              },
-            }
-          );
+          // const response = await axios.get(
+          //   "https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/",
+          const response = await axios.get("http://localhost:3000/users/", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "content-type": "multipart/form-data",
+            },
+            withCredentials: true,
+          });
           console.log("response in LastUsers:", response);
           console.log("response.data in LastUsers:", response.data);
           if (response.data) {

@@ -14,16 +14,14 @@ const LastSales = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/transactions`,
-          // const response = await axios.get(`http://localhost:3000/transactions`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
-          }
-        );
+        // const response = await axios.get(
+        //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/transactions`,
+        const response = await axios.get(`http://localhost:3000/transactions`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "content-type": "multipart/form-data",
+          },
+        });
         if (response) {
           setData(response.data);
           console.log("response.data in /transactions:", response.data);

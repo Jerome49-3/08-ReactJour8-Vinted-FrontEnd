@@ -9,7 +9,7 @@ import AddressForm from "../components/AdressForm";
 import Image from "../components/Image";
 
 const CheckoutForm = ({ data, succes, setSucces }) => {
-  // console.log('data on checkOutForm:', data);
+  console.log("data on checkOutForm:", data);
   console.log(
     "data.product_name in CheckoutForm:",
     data.product_name,
@@ -51,10 +51,10 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         setIspayed(false);
         return;
       }
-      // const response = await axios.post(
-      //   `http://localhost:3000/payment`,
       const response = await axios.post(
-        `https://site--vintaidbackend--s4qnmrl7fg46.code.run/payment`,
+        `http://localhost:3000/payment`,
+        // const response = await axios.post(
+        //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/payment`,
         {
           product_title: data.product_name,
           amount: data.total,
@@ -76,8 +76,8 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         clientSecret: clientSecret,
         payment_method: "pm_card_visa",
         confirmParams: {
-          // return_url: "http://localhost:5173/",
-          return_url: "https://vintaid.netlify.app/",
+          return_url: "http://localhost:5173/",
+          // return_url: "https://vintaid.netlify.app/",
         },
         redirect: "if_required",
       });
@@ -92,10 +92,10 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
           paymentIntent.shipping.address
         );
         console.log("address in /payment:", address);
-        // const sendSuccess = await axios.post(
-        //   `http://localhost:3000/confirmPayment`,
         const sendSuccess = await axios.post(
-          `https://site--vintaidbackend--s4qnmrl7fg46.code.run/confirmPayment`,
+          `http://localhost:3000/confirmPayment`,
+          // const sendSuccess = await axios.post(
+          //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/confirmPayment`,
           {
             product_title: data.product_name,
             amount: data.total,
