@@ -12,11 +12,21 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(
     sessionStorage.getItem("vintaidUser") || null
   );
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   // console.log("user in UserProvider:", user);
-  const [isAdmin, setIsAdmin] = useState(
-    sessionStorage.getItem("vintaidTeam") || false
-  );
+  const [isAdmin, setIsAdmin] = useState(() => {
+    const newAdmin = sessionStorage.getItem("vintaidTeam");
+    if (newAdmin) {
+      try {
+        const admin = Boolean(newAdmin);
+        console.log("admin in isAdmin:", admin);
+        return admin;
+      } catch (error) {
+        console.log("Erreur Boolean isAdmin:", error);
+        return false;
+      }
+    }
+  });
   const [fav, setFav] = useState(() => {
     const savedFav = localStorage.getItem("favCard");
     // console.log("savedFav in app:", savedFav);
@@ -35,6 +45,16 @@ export const UserProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    if (token) {
+      try {
+        saveToken(token, setUser, setIsAdmin);
+      } catch (error) {
+        console.log("error after saveToken:", error);
+      }
+    }
+  }, [token]);
+
+  useEffect(() => {
     // console.log("token in useEffect on userProvider:", token);
 
     const fetchData = async () => {
@@ -47,8 +67,8 @@ export const UserProvider = ({ children }) => {
               Authorization: `Bearer ${token}`,
               "content-type": "multipart/form-data",
             },
-          },
-          { withCredentials: true }
+            withCredentials: true,
+          }
         );
         // console.log("response in /user/refreshToken:", response);
         if (response?.data?.token) {
@@ -61,7 +81,7 @@ export const UserProvider = ({ children }) => {
       }
     };
     fetchData();
-  }, [token, user]);
+  }, [token]);
 
   useLayoutEffect(() => {
     axiosRetry(axios, {
@@ -102,8 +122,7 @@ export const UserProvider = ({ children }) => {
       setIsAdmin(false);
       Cookies.remove("accessTokenV");
       Cookies.remove("refreshTokenV");
-      sessionStorage.removeItem("vintaidUser");
-      sessionStorage.removeItem("vintaidTeam");
+      sessionStorage.clear();
       localStorage.removeItem("favCard");
     } catch (error) {
       console.log("Error in logout:", error || "error in logout");

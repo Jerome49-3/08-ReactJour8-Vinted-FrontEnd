@@ -35,7 +35,7 @@ const Chat = () => {
         return;
       } else {
         const ws = new WebSocket(`ws://localhost:3000/messages/${OfferID}`);
-        // console.log("ws on chat:", ws);
+        console.log("ws on chat:", ws);
 
         ws.onopen = () => {
           console.log("Connexion WebSocket établie.");
@@ -107,7 +107,6 @@ const Chat = () => {
             response.data
           );
           setMessages(response.data);
-          setIsLoading(false);
         }
         setNewMessage("");
       } else {
@@ -133,9 +132,7 @@ const Chat = () => {
     }
   };
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+  return (
     <div className="boxChat">
       {/* Indicateur de connexion */}
       <p>{isConnected ? "Connecté" : "Connexion..."}</p>
@@ -154,6 +151,8 @@ const Chat = () => {
         setMessages={setMessages}
         loadMessages={loadMessages}
         setLoadMessages={setLoadMessages}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
       />
 
       {/* <p>{viewKey}</p> */}

@@ -28,7 +28,7 @@ const OfferCard = ({ data, faHeart, farHeart, errorMessage }) => {
     <div className="boxArticles">
       {(location.pathname === "/favorites" ? fav : data).map((article) => {
         // const isFavorite = fav.some((favArticle) => favArticle?._id);
-        console.log("article ds .boxOffer:", article);
+        // console.log("article ds .boxOffer:", article);
         return (
           <React.Fragment key={article._id}>
             <Link

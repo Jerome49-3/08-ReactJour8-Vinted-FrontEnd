@@ -43,10 +43,7 @@ const OfferID = ({
         const response = await axios.get(`http://localhost:3000/offers/${id}`);
         if (response?.data) {
           setData(response.data);
-          console.log("response in /offers/${id}:", response);
-          console.log("response.data in /offers/${id}:", response.data);
-          // console.log('response.data.product_image in /offers/${id}:', response.data.product_image);
-          // console.log('response.data.product_pictures in /offers/${id}:', response.data.product_pictures);
+          // console.log("response in /offers/${id}:", response);
           setIsLoading(false);
         }
       } catch (error) {
@@ -251,11 +248,6 @@ const OfferID = ({
                     <Link to="/chat" state={{ product_id: data?.product_id }}>
                       Contacter le vendeur
                     </Link>
-                    {/* <Links
-                      to="/chat"
-                      linkText="Contacter le vendeur"
-                      state={{ product_id: data?.product_id }}
-                    /> */}
                     {data?.product_image !== undefined ? (
                       <Link
                         to="/payment"

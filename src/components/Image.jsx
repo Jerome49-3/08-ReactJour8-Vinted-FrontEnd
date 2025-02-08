@@ -1,5 +1,17 @@
 const Image = ({ src, alt, classImg, rotation }) => {
-  // console.log("src, alt, imgHeader in image:", src, alt, classImg);
+  // console.log(
+  //   "src in image:",
+  //   src,
+  //   "\n",
+  //   "alt in image:",
+  //   alt,
+  //   "\n",
+  //   "classImg in image:",
+  //   classImg,
+  //   "\n",
+  //   "rotation in image:",
+  //   rotation
+  // );
   return (
     <>
       <img

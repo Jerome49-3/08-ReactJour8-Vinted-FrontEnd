@@ -9,8 +9,8 @@ const GetMessages = ({
   OfferID,
   messages,
   setMessages,
-  setLoadMessages,
-  loadMessages,
+  isLoading,
+  setIsLoading,
 }) => {
   const { token, setErrorMessage, user } = useUser();
 
@@ -30,7 +30,7 @@ const GetMessages = ({
         // console.log("response in /messages/${OfferID} (GET):", response);
         if (response?.data) {
           setMessages(response?.data);
-          setLoadMessages(false);
+          setIsLoading(false);
         }
       } catch (error) {
         console.log(error?.message);
@@ -40,7 +40,7 @@ const GetMessages = ({
     fetchData();
   }, [OfferID]);
 
-  return loadMessages ? (
+  return isLoading ? (
     <Loading />
   ) : (
     <ul className="boxMessages">
@@ -51,10 +51,17 @@ const GetMessages = ({
             <div className="top">
               <p>{mssg?.date}</p>
               <p>{mssg?.owner?.account?.username}</p>
-              <Image
-                src={mssg?.buyerObj?.account?.avatar}
-                classImg="sellerAvatar"
-              />
+              {mssg?.buyerObj?.account?.avatar?.secure_url ? (
+                <Image
+                  src={mssg?.buyerObj?.account?.avatar?.secure_url}
+                  classImg="sellerAvatar"
+                />
+              ) : (
+                <Image
+                  src={mssg?.buyerObj?.account?.avatar}
+                  classImg="sellerAvatar"
+                />
+              )}
             </div>
             <div className="bottom">
               <p>{mssg?.text}</p>

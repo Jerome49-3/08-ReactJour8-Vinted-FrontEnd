@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useUser } from "../assets/lib/userFunc";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import saveToken from "../assets/lib/saveToken";
 
 //components
 import Loading from "./Loading";
@@ -10,38 +10,48 @@ import Image from "./Image";
 import Input from "./Input";
 import InputFile from "./InputFile";
 import Button from "./Button";
+import saveToken from "../assets/lib/saveToken";
 
 const Profile = () => {
-  const { token, setToken, setUser, setIsAdmin } = useUser();
-  console.log("token in /profile/${id}:", token);
+  const { token, setToken, user, setUser, setIsAdmin } = useUser();
+  // console.log("token in /profile/${id}:", token);
   const { id } = useParams();
-  console.log("id in /profile/${id}:", id);
+  // console.log("id in /profile/${id}:", id);
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [pictures, setPictures] = useState(null);
-  console.log("pictures in /profile/${id}::", pictures);
+  // console.log("pictures in /profile/${id}::", pictures);
   const [errorMessage, setErrorMessage] = useState(null);
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [newsletter, setNewsletter] = useState(null);
   const [avatar, setAvatar] = useState(null);
-  console.log("avatar in /profile/${id}::", avatar);
+  // console.log("avatar in /profile/${id}::", avatar);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/profile/${id}`);
-        console.log("response in /profile/${id}:", response);
+        // console.log("response in /profile/${id}:", response);
         if (response?.data) {
-          console.log("response.data in /profile/${id}::", response?.data);
-          setData(response?.data);
-          setAvatar(
-            response?.data?.avatar?.secure_url || response?.data?.avatar
-          );
+          console.log("response.data in /profile/${id}:", response?.data);
+          // setData(response?.data);
           if (response?.data?.token) {
-            setToken(response?.data?.token);
-            saveToken(response?.data?.token, setUser, setIsAdmin);
+            try {
+              const newToken = await response?.data?.token;
+              if (newToken) {
+                setToken(newToken);
+                saveToken(newToken, setUser, setIsAdmin);
+                console.log("user in /profile/${id}:", user);
+                setData(user);
+                setAvatar(data?.account?.avatar?.secure_url);
+              } else {
+                console.log("not newToken in /profile");
+              }
+            } catch (error) {
+              console.log("error after response?.data?.token:", error);
+            }
           }
           // console.log('data in /profile/${id}:', data);
           setIsLoading(false);
@@ -101,7 +111,7 @@ const Profile = () => {
         <div className="wrapper">
           <div className="top">
             <div className="title">
-              Voici le profil de <strong>{data?.username}</strong>
+              Voici le profil de <strong>{data?.account?.username}</strong>
             </div>
           </div>
           <form className="bottom">
@@ -121,7 +131,7 @@ const Profile = () => {
                   label="username:"
                   type="text"
                   id="username"
-                  placeholder={data?.username}
+                  placeholder={data?.account?.username}
                   value={username || ""}
                   setState={setUsername}
                 />

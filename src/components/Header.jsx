@@ -3,6 +3,7 @@ import Logo from "../assets/images/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeButton from "./ThemeButton";
 import { useUser } from "../assets/lib/userFunc";
+import { useEffect } from "react";
 
 //components
 import Image from "./Image";
@@ -27,6 +28,7 @@ const Header = ({
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user } = useUser();
   // console.log("token in header:", token, "\n", "user: in header:", user);
+  useEffect(() => {}, []);
 
   return (
     <header>
@@ -64,7 +66,7 @@ const Header = ({
           </div>
           <nav>
             <ul>
-              {(token === null || user === null) && (
+              {(!token || !user) && (
                 <li>
                   <div className="buttonSignIn">
                     <button onClick={() => setShow(!show)}>s'inscrire</button>
@@ -78,11 +80,7 @@ const Header = ({
               )}
               <li>
                 <Links
-                  path={
-                    token !== null && token !== undefined
-                      ? "/publish"
-                      : "/login"
-                  }
+                  path={!token ? "/publish" : "/login"}
                   linkText="vendre tes articles"
                 />
               </li>
