@@ -58,7 +58,6 @@ const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
         return (
           <div className="boxUsers" key={key}>
             <Link to={`/users/${user.id}`}>
-              {/* <Link to={`/users/${user.id}`} state={{ token: user.token }}> */}
               <div className="username">{user.username}</div>
               <div className="avatar">
                 {user.avatar.secure_url ? (

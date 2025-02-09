@@ -10,6 +10,15 @@
       gap: 20px;
       @include flexAround;
 
+      & a {
+        @include boxShadowVinted;
+        padding: 10px;
+
+        &:active {
+          @include boxShadowInsetVinted;
+        }
+      }
+
       .left,
       .middle,
       .right {

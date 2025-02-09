@@ -94,6 +94,14 @@
   box-shadow: 0px 0px 4px $black, 0.5px 0.5px 2px $black;
 }
 
+@mixin boxShadowVinted {
+  box-shadow: 0px 0px 2px $black, 0px 0px 2px $vertVinted, 0px 0px 2px $vertVinted, 0px 0px 10px $black;
+}
+
+@mixin boxShadowInsetVinted {
+  box-shadow: inset 0px 0px 2px $black, inset 0px 0px 2px $vertVinted, inset 0px 0px 2px $vertVinted, inset 0px 0px 10px $black;
+}
+
 @mixin boxShadowInset {
   box-shadow: inset 0px 0px 4px $black, inset 0.5px 0.5px 2px $black;
 }

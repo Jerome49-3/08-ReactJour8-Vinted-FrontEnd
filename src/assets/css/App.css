@@ -1479,6 +1479,13 @@ form input:last-child:not(.boxFormSignUp form div input) {
   justify-content: space-around;
   align-items: center;
 }
+.boxTransactionId .wrapper .transactionId a {
+  box-shadow: 0px 0px 2px #000000, 0px 0px 2px #2DB0BA, 0px 0px 2px #2DB0BA, 0px 0px 10px #000000;
+  padding: 10px;
+}
+.boxTransactionId .wrapper .transactionId a:active {
+  box-shadow: inset 0px 0px 2px #000000, inset 0px 0px 2px #2DB0BA, inset 0px 0px 2px #2DB0BA, inset 0px 0px 10px #000000;
+}
 .boxTransactionId .wrapper .transactionId .left,
 .boxTransactionId .wrapper .transactionId .middle,
 .boxTransactionId .wrapper .transactionId .right {

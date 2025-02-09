@@ -111,7 +111,7 @@ const Publish = ({ faRotateRight }) => {
     }
   };
 
-  return token !== null ? (
+  return token ? (
     <div className="boxForm">
       <div className="wrapper">
         <form onSubmit={handleSubmit}>

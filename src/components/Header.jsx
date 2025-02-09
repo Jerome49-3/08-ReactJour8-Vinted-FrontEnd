@@ -80,7 +80,7 @@ const Header = ({
               )}
               <li>
                 <Links
-                  path={!token ? "/publish" : "/login"}
+                  path={token ? "/publish" : "/login"}
                   linkText="vendre tes articles"
                 />
               </li>
