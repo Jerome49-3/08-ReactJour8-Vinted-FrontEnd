@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useLocation } from "react-router";
 import { useUser } from "../assets/lib/userFunc";
+import bannerSold from "../assets/images/bannerSolded.png";
 
 //components
 import Image from "./Image";
@@ -21,7 +22,8 @@ const OfferCard = ({ data, faHeart, farHeart, errorMessage }) => {
     // console.log("Location has changed:", location);
     localStorage.setItem("favCard", JSON.stringify(fav));
   }, [fav, location]);
-
+  const classImgArticle = "imgArticle";
+  const classBannerSold = "classBannerSold";
   // console.log("fav after useEffect in OfferCard:", fav);
 
   return (
@@ -59,29 +61,67 @@ const OfferCard = ({ data, faHeart, farHeart, errorMessage }) => {
                   )}
                   <h5>{article?.owner?.account?.username}</h5>
                 </div>
-                <div className="boxImgArticle">
-                  {article?.product_image ? (
-                    <Image
-                      src={article?.product_image?.secure_url}
-                      classImg="imgArticle"
-                    />
-                  ) : article?.product_pictures ? (
-                    article?.product_pictures.map((images, index) => {
-                      return (
-                        index === 0 && (
-                          <React.Fragment key={index}>
-                            <Image
-                              src={images?.secure_url}
-                              classImg="imgArticle"
-                            />
-                          </React.Fragment>
-                        )
-                      );
-                    })
-                  ) : (
-                    <Image src={noImg} alt="no image" />
-                  )}
-                </div>
+                {location.pathname === "/myOffers" &&
+                article?.offer_solded === true ? (
+                  <div className="boxImgArticle">
+                    {article?.product_image ? (
+                      <>
+                        <Image
+                          src={article?.product_image?.secure_url}
+                          classImg="imgArticle"
+                        />
+                        <Image
+                          src={bannerSold}
+                          classImg={`${classImgArticle} ${classBannerSold}`}
+                        />
+                      </>
+                    ) : article?.product_pictures ? (
+                      article?.product_pictures.map((images, index) => {
+                        return (
+                          index === 0 && (
+                            <React.Fragment key={index}>
+                              <Image
+                                src={images?.secure_url}
+                                classImg="imgArticle"
+                              />
+                              <Image
+                                src={bannerSold}
+                                classImg={`${classImgArticle} ${classBannerSold}`}
+                              />
+                            </React.Fragment>
+                          )
+                        );
+                      })
+                    ) : (
+                      <Image src={noImg} alt="no image" />
+                    )}
+                  </div>
+                ) : (
+                  <div className="boxImgArticle">
+                    {article?.product_image ? (
+                      <Image
+                        src={article?.product_image?.secure_url}
+                        classImg="imgArticle"
+                      />
+                    ) : article?.product_pictures ? (
+                      article?.product_pictures.map((images, index) => {
+                        return (
+                          index === 0 && (
+                            <React.Fragment key={index}>
+                              <Image
+                                src={images?.secure_url}
+                                classImg="imgArticle"
+                              />
+                            </React.Fragment>
+                          )
+                        );
+                      })
+                    ) : (
+                      <Image src={noImg} alt="no image" />
+                    )}
+                  </div>
+                )}
+
                 <Hearths
                   article={article}
                   faHeart={faHeart}

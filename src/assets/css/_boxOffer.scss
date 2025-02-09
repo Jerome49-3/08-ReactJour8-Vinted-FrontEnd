@@ -1,8 +1,16 @@
 .boxOffer {
   padding: 10px;
+  width: 100%;
+  height: 100%;
 
   .wrapper {
     @include flexColCenter;
+    height: 100%;
+
+    .top,
+    .right {
+      height: 100%;
+    }
 
     .top {
       @include flexCenter;
@@ -25,17 +33,19 @@
         @include flexCenter;
 
         .imgLeftAlone {
-          min-width: 100%;
+          width: 100%;
           @include flexCenter;
+          height: 100%;
 
 
           .boxImgOffer {
             overflow: hidden;
-            min-width: 100%;
+            width: 100%;
+            height: 78vh;
 
             .prodImg {
               width: 100%;
-              height: 500px;
+              height: 100%;
               display: block;
               object-fit: cover;
             }
@@ -82,25 +92,55 @@
       }
 
       .right {
-        width: calc(1200px /5);
+        width: calc(1200px /4);
         text-align: justify;
         padding: 10px;
-        height: 500px;
+        gap: 10px;
         background-color: var(--backLightInput);
+        @include flexColBetween;
 
-        .rightTop {
+        .title {
           width: 100%;
-          height: 60%;
+          height: 5%;
+          @include flexColCenter;
+          gap: 5px
+        }
 
-          & div {
-            height: calc(100% / 10);
+        .boxLineOffer {
+          @include flexCenter;
+          width: 100%;
+
+          .lineOffer {
+            width: 70%;
+            border-radius: 5px;
+            border: 2px solid $vertVinted;
+            @include boxShadow;
           }
 
-          .boxDetails {
-            height: calc(100% / 6);
+        }
+
+        .boxDetails {
+          width: 100%;
+          @include flexColAroundStart;
+
+          & div {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
 
             & div {
+              width: 100%;
+            }
+          }
+
+          & div:last-child {
+            width: 100%;
+            height: 15%;
+
+            .imgOfferSold {
+              width: 100%;
               height: 100%;
+              object-fit: contain;
             }
           }
         }
@@ -108,6 +148,7 @@
         .rightBottom {
           @include flexColStart;
           gap: 20px;
+          width: 100%;
 
           .up {
             @include flexColStart;

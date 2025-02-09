@@ -5,6 +5,7 @@ const TextArea = ({
   placeholder,
   onKeyPress,
   onKeyDown,
+  classTextArea,
 }) => {
   return (
     <textarea
@@ -14,6 +15,7 @@ const TextArea = ({
       placeholder={placeholder}
       onKeyPress={onKeyPress}
       onKeyDown={onKeyDown}
+      className={classTextArea}
       onChange={(e) => {
         setState(e.target.value);
       }}

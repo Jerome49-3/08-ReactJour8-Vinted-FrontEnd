@@ -47,12 +47,10 @@ const MySales = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
           <OfferCard data={data} faHeart={faHeart} farHeart={farHeart} />
         ) : (
           showNoOffer && (
-            <>
-              <div>
-                Vous n'avez pas d'annonces publiés:{" "}
-                <Link path="/publish">Mettez en vente un produit</Link>
-              </div>
-            </>
+            <div className="boxNoOffers">
+              <p> Vous n'avez pas d'annonces publiés:</p>
+              <Link path="/publish">Mettez en vente un produit</Link>
+            </div>
           )
         )}
       </div>

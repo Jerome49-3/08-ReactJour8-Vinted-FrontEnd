@@ -180,9 +180,9 @@ table {
     background-color: var(--darkModeHeader);
   }
 
-  .dark .boxOffer .wrapper article .right .boxLineOffer {
+  /* .dark .boxOffer .wrapper article .right .boxLineOffer {
     background-color: var(--vertVintDark);
-  }
+  } */
 
   .dark .boxUsers a,
   .dark * input:not(input[type="submit"]),

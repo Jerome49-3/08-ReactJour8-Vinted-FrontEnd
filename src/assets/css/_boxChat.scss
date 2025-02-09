@@ -1,34 +1,71 @@
 .boxChat {
-  padding-top: 2.5%;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  // border: 2px solid yellow;
 
-  .boxMessages {
-    height: 10vh;
-    overflow-x: hidden;
+  .wrapper {
+    // border: 2px solid green;
+    @include flexColBetween;
+    padding: 10px 0px 10px 0px;
 
-    .top {
-      .sellerAvatar {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        object-fit: cover;
+    .boxChatInfos {
+      height: 10%;
+      width: 100%;
+      // border: 2px solid green;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+
+      .boxLoaderTyping {
+        width: 50%;
       }
     }
-  }
 
-  & p {
-    @include flexCenter;
-    letter-spacing: 10px;
-    color: $vertVinted;
-  }
+    .boxMessages {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+      gap: 8px;
+      overflow-x: hidden;
+      width: 90%;
+      padding: 20px;
 
-  & textarea {
-    width: 99%;
-    border: none;
-    border-radius: 5px;
-  }
+      & li {
+        @include boxShadow;
+        padding: 5px;
+      }
 
-  & button {
-    @include btn;
+      .top {
+
+
+        .sellerAvatar {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-left: 10px
+        }
+      }
+    }
+
+    & p {
+      @include flexCenter;
+      letter-spacing: 10px;
+      color: $vertVinted;
+    }
+
+    & textarea {
+      width: 99%;
+      border: none;
+      border-radius: 5px;
+    }
+
+    & button {
+      @include btn;
+    }
   }
 
 }

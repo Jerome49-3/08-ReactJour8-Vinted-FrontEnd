@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 
 //images
 import noImg from "../assets/images/no-image.jpg";
+import bannerSold from "../assets/images/bannerSolded.png";
 
 //components
 import Hero from "../components/Hero";
@@ -41,9 +42,9 @@ const OfferID = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/offers/${id}`);
+        console.log("response in /offers/${id}:", response);
         if (response?.data) {
           setData(response.data);
-          // console.log("response in /offers/${id}:", response);
           setIsLoading(false);
         }
       } catch (error) {
@@ -109,7 +110,7 @@ const OfferID = ({
                 ) : data.product_pictures ? (
                   <>
                     {data.product_pictures.map((images, index) => {
-                      // console.log('images:', images);
+                      console.log("images:", images);
                       const rotation = classRotation(images);
                       return (
                         <article key={index}>
@@ -174,56 +175,69 @@ const OfferID = ({
               </div>
             </div>
             <div className="right">
-              <div className="rightTop">
-                <div className="boxPrice">
-                  <div>{prices} €</div>
-                </div>
-                <div className="boxDetails">
-                  <div>
-                    <p>MARQUE: </p>
-                    {data?.product_details && (
-                      <span>{data?.product_details[0].MARQUE}</span>
-                    )}
-                  </div>
-                  <div>
-                    <p>TAILLE:</p>
-                    {data?.product_details && (
-                      <span>{data?.product_details[1].TAILLE}</span>
-                    )}
-                  </div>
-                  <div>
-                    <p>ÉTAT: </p>
-                    {data?.product_details && (
-                      <span>{data?.product_details[2].ÉTAT}</span>
-                    )}
-                  </div>
-                  <div>
-                    <p>COULEUR: </p>
-                    {data?.product_details && (
-                      <span>{data?.product_details[3].COULEUR}</span>
-                    )}
-                  </div>
-                  <div>
-                    <p>EMPLACEMENT: </p>
-                    {data?.product_details && (
-                      <span>{data?.product_details[4].EMPLACEMENT}</span>
-                    )}
-                  </div>
+              <div className="title">
+                <p>Infos de l'offre: </p>
+                <div className="boxLineOffer">
+                  <div className="lineOffer"></div>
                 </div>
               </div>
-              <div className="boxLineOffer">
-                <div className="lineOffer"></div>
+              <div className="boxDetails">
+                <div>
+                  <p>Name:</p>
+                  <span>{data?.product_name}</span>
+                </div>
+                <div>
+                  <p>Description:</p>
+                  <span>{data?.product_description}</span>
+                </div>
+                <div>
+                  <p>Prix: </p>
+                  <span>{prices} €</span>
+                </div>
+                <div>
+                  <p>Marque: </p>
+                  {data?.product_details && (
+                    <span>{data?.product_details[0].MARQUE}</span>
+                  )}
+                </div>
+                <div>
+                  <p>Taille:</p>
+                  {data?.product_details && (
+                    <span>{data?.product_details[1].TAILLE}</span>
+                  )}
+                </div>
+                <div>
+                  <p>État: </p>
+                  {data?.product_details && (
+                    <span>{data?.product_details[2].ÉTAT}</span>
+                  )}
+                </div>
+                <div>
+                  <p>Couleur: </p>
+                  {data?.product_details && (
+                    <span>{data?.product_details[3].COULEUR}</span>
+                  )}
+                </div>
+                <div>
+                  <p>Emplacement: </p>
+                  {data?.product_details && (
+                    <span>{data?.product_details[4].EMPLACEMENT}</span>
+                  )}
+                </div>
+                {data?.offer_solded === true && (
+                  <div>
+                    <Image
+                      src={bannerSold}
+                      classImg="imgOfferSold"
+                      alt="bannière vendu"
+                    />
+                  </div>
+                )}
               </div>
+
               <div className="rightBottom">
-                <div className="up">
-                  <div>
-                    <p>Name:</p>
-                    <div>{data?.product_name}</div>
-                  </div>
-                  <div>
-                    <p>Description:</p>
-                    <div>{data?.product_description}</div>
-                  </div>
+                <div className="boxLineOffer">
+                  <div className="lineOffer"></div>
                 </div>
                 <div className="down">
                   <div className="boxUser">

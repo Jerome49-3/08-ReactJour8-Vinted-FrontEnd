@@ -38,6 +38,10 @@ input:not([type="submit"], [type="search"]) {
   color: $vertVinted;
 }
 
+textarea {
+  border: transparent;
+}
+
 input:focus-visible,
 textarea:focus-visible {
   outline: transparent;

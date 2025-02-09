@@ -134,36 +134,41 @@ const Chat = () => {
 
   return (
     <div className="boxChat">
-      {/* Indicateur de connexion */}
-      <p>{isConnected ? "Connecté" : "Connexion..."}</p>
-      {isTyping ? (
-        <div className="boxLoaderTyping">
-          <div className="circleTyping circleTyping1"></div>
-          <div className="circleTyping circleTyping2"></div>
-          <div className="circleTyping circleTyping3"></div>
+      <div className="wrapper">
+        {/* Indicateur de connexion */}
+        <div className="boxChatInfos">
+          <p>{isConnected ? "Connecté" : "Connexion..."}</p>
+          {isTyping ? (
+            <div className="boxLoaderTyping">
+              <div className="circleTyping circleTyping1"></div>
+              <div className="circleTyping circleTyping2"></div>
+              <div className="circleTyping circleTyping3"></div>
+            </div>
+          ) : (
+            <div className="boxLoaderTyping"></div>
+          )}
         </div>
-      ) : (
-        <div className="boxLoaderTyping"></div>
-      )}
-      <GetMessages
-        OfferID={OfferID}
-        messages={messages}
-        setMessages={setMessages}
-        loadMessages={loadMessages}
-        setLoadMessages={setLoadMessages}
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-      />
+        <GetMessages
+          OfferID={OfferID}
+          messages={messages}
+          setMessages={setMessages}
+          loadMessages={loadMessages}
+          setLoadMessages={setLoadMessages}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
 
-      {/* <p>{viewKey}</p> */}
-      <TextArea
-        value={newMessage}
-        setState={setNewMessage}
-        onKeyPress={handleTyping}
-        onKeyDown={handleSendMessage}
-        placeholder="les messages sont visibles par tous les visiteurs de l'offre"
-      />
-      {errorMessage && <div className="red">{errorMessage}</div>}
+        {/* <p>{viewKey}</p> */}
+        <TextArea
+          value={newMessage}
+          setState={setNewMessage}
+          onKeyPress={handleTyping}
+          onKeyDown={handleSendMessage}
+          classTextArea="textAreaChat"
+          placeholder="les messages sont visibles par tous les visiteurs de l'offre"
+        />
+        {errorMessage && <div className="red">{errorMessage}</div>}
+      </div>
     </div>
   );
 };

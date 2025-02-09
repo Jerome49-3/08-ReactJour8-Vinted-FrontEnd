@@ -41,12 +41,23 @@
         align-items: flex-start;
         flex-wrap: wrap;
         flex-direction: column;
+        position: relative;
         // border: 2px solid blue;
 
         .imgArticle {
           width: 100%;
           height: 100%;
           object-fit: cover;
+        }
+
+        .classBannerSold {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          position: absolute;
+          top: 90%;
+          left: 81%;
+          transform: translate(-50%, -50%);
         }
 
         .imgsArticle {
