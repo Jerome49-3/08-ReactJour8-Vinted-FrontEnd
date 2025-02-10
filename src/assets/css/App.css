@@ -702,6 +702,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 .boxOffer .wrapper .top .left .imgLeftAlone {
   width: 100%;
@@ -713,7 +714,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 .boxOffer .wrapper .top .left .imgLeftAlone .boxImgOffer {
   overflow: hidden;
   width: 100%;
-  height: 78vh;
+  height: 100%;
 }
 .boxOffer .wrapper .top .left .imgLeftAlone .boxImgOffer .prodImg {
   width: 100%;
@@ -724,12 +725,17 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 .boxOffer .wrapper .top .left .imgLeft article {
   display: flex;
+  height: 100%;
 }
 .boxOffer .wrapper .top .left .imgLeft {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+}
+.boxOffer .wrapper .top .left .imgLeft .boxImgOffer {
+  height: 100%;
 }
 .boxOffer .wrapper .top .left .imgLeft .boxImgOffer .prodPict0 {
   width: 600px;
@@ -737,6 +743,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
+  height: 100%;
 }
 .boxOffer .wrapper .top .left .imgsRight {
   width: 100%;
@@ -744,13 +751,25 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100%;
 }
-.boxOffer .wrapper .top .left .imgsRight .boxImgOffer {
+.boxOffer .wrapper .top .left .imgsRight article {
+  height: 100%;
+}
+.boxOffer .wrapper .top .left .imgsRight article .boxImgOffer {
   display: flex;
+  height: 100%;
 }
-.boxOffer .wrapper .top .left .imgsRight .boxImgOffer .prodPict {
+.boxOffer .wrapper .top .left .imgsRight article .boxImgOffer .prodPict {
   width: 100%;
-  height: calc(500px / var(--imgsLength));
+  height: calc(100% / (var(--imgsLength)));
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.boxOffer .wrapper .top .left .imgsRight article .boxImgOffer .prodPict100 {
+  width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;

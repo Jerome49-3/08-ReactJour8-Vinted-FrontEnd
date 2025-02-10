@@ -45,7 +45,6 @@ const Login = ({ type, setType, icon1, icon2 }) => {
         },
         { withCredentials: true }
       );
-      setIsLoading(true);
       console.log("response in handlesubmit in /login:", response);
       if (response.data) {
         try {

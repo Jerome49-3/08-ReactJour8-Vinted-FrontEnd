@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import axiosRetry from "axios-retry";
 import saveToken from "../assets/lib/saveToken";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
@@ -13,8 +14,9 @@ export const UserProvider = ({ children }) => {
     sessionStorage.getItem("vintaidUser") || null
   );
   const [avatar, setAvatar] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(null);
   // console.log("user in UserProvider:", user);
+  const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(() => {
     const newAdmin = sessionStorage.getItem("vintaidTeam");
     if (newAdmin) {
@@ -52,36 +54,39 @@ export const UserProvider = ({ children }) => {
       } catch (error) {
         console.log("error after saveToken:", error);
       }
+    } else {
+      const fetchData = async () => {
+        axios.defaults.withCredentials = true;
+        try {
+          const response = await axios.get(
+            `http://localhost:3000/user/refreshToken`,
+            {
+              withCredentials: true,
+            }
+          );
+          // console.log("response in /user/refreshToken:", response);
+          if (response?.data?.token) {
+            setToken(response?.data?.token);
+            saveToken(response?.data?.token, setUser, setIsAdmin);
+            setIsLoading(false);
+          } else {
+            console.log("response?.status:", response?.status);
+          }
+        } catch (error) {
+          console.log(error?.response?.data?.message || error?.message);
+          console.log("error?.response?.status:", error?.response?.status);
+          // console.log(
+          //   "typeof error?.response?.status:",
+          //   typeof error?.response?.status
+          // );
+          if (error?.response?.status === 401) {
+            setTimeout(() => navigate("/login"), 0);
+          }
+        }
+      };
+      fetchData();
     }
   }, [token]);
-
-  useEffect(() => {
-    console.log("token in useEffect on userProvider:", token);
-    const fetchData = async () => {
-      axios.defaults.withCredentials = true;
-      try {
-        const response = await axios.get(
-          `http://localhost:3000/user/refreshToken`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
-            withCredentials: true,
-          }
-        );
-        // console.log("response in /user/refreshToken:", response);
-        if (response?.data?.token) {
-          setToken(response?.data?.token);
-          saveToken(response?.data?.token, setUser, setIsAdmin);
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.log(error?.response?.data?.message || "update token failed");
-      }
-    };
-    fetchData();
-  }, []);
 
   useEffect(() => {
     setAvatar(user?.account?.avatar?.secure_url);

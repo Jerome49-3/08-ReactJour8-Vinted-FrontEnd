@@ -31,6 +31,7 @@
       .left {
         width: 100%;
         @include flexCenter;
+        height: 100%;
 
         .imgLeftAlone {
           width: 100%;
@@ -41,7 +42,7 @@
           .boxImgOffer {
             overflow: hidden;
             width: 100%;
-            height: 78vh;
+            height: 100%;
 
             .prodImg {
               width: 100%;
@@ -53,22 +54,26 @@
         }
 
         .imgLeft article {
-          display: flex
+          display: flex;
+          height: 100%;
         }
 
         .imgLeft {
           width: 100%;
           @include flexCenter;
+          height: 100%;
 
 
 
           .boxImgOffer {
+            height: 100%;
 
             .prodPict0 {
               width: calc(1200px /2);
               height: 500px;
               display: block;
               object-fit: cover;
+              height: 100%;
             }
           }
         }
@@ -77,15 +82,28 @@
         .imgsRight {
           width: 100%;
           @include flexColCenter;
+          height: 100%;
 
-          .boxImgOffer {
-            display: flex;
+          & article {
+            height: 100%;
 
-            .prodPict {
-              width: 100%;
-              height: calc(500px / var(--imgsLength));
-              object-fit: cover;
-              display: block;
+            .boxImgOffer {
+              display: flex;
+              height: 100%;
+
+              .prodPict {
+                width: 100%;
+                height: calc(100% / (var(--imgsLength)));
+                object-fit: cover;
+                display: block;
+              }
+
+              .prodPict100 {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              }
             }
           }
         }

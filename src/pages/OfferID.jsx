@@ -1,9 +1,11 @@
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
+import React from "react";
 import Loading from "../components/Loading";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ReactFragment } from "react";
 
 //images
 import noImg from "../assets/images/no-image.jpg";
@@ -69,7 +71,7 @@ const OfferID = ({
     const setImgsLength = () => {
       const imgsLength = data?.product_pictures.length - 1;
       // console.log('imgsLength in useEffect in /offer/:id:', imgsLength);
-      if (data.product_pictures.length > 1) {
+      if (data.product_pictures.length > 3) {
         setImgsNbr(
           document.documentElement.style.setProperty("--imgsLength", imgsLength)
         );
@@ -113,25 +115,29 @@ const OfferID = ({
                       console.log("images:", images);
                       const rotation = classRotation(images);
                       return (
-                        <article key={index}>
+                        <React.Fragment key={index}>
                           {index === 0 ? (
-                            <Button
-                              classButton="boxImgOffer"
-                              key={index}
-                              src={images?.secure_url}
-                              classImg={index === 0 ? "prodPict0" : "prodPict"}
-                              handleClick={() => {
-                                if (showImgsModal === false) {
-                                  setShowImgsModal(true);
-                                  setSrcImgsModal(images?.secure_url);
-                                } else {
-                                  setShowImgsModal(true);
+                            <article className="article2">
+                              <Button
+                                classButton="boxImgOffer"
+                                key={index}
+                                src={images?.secure_url}
+                                classImg={
+                                  index === 0 ? "prodPict0" : "prodPict"
                                 }
-                              }}
-                              rotation={rotation}
-                            />
+                                handleClick={() => {
+                                  if (showImgsModal === false) {
+                                    setShowImgsModal(true);
+                                    setSrcImgsModal(images?.secure_url);
+                                  } else {
+                                    setShowImgsModal(true);
+                                  }
+                                }}
+                                rotation={rotation}
+                              />
+                            </article>
                           ) : null}
-                        </article>
+                        </React.Fragment>
                       );
                     })}
                   </>
@@ -147,25 +153,29 @@ const OfferID = ({
                     {data?.product_pictures.map((images, index) => {
                       // console.log('images:', images);
                       return (
-                        <article key={index}>
+                        <React.Fragment key={index}>
                           {index > 0 && (
-                            <Button
-                              classButton="boxImgOffer"
-                              key={index}
-                              src={images?.secure_url}
-                              classImg={index > 0 && "prodPict"}
-                              handleClick={() => {
-                                if (showImgsModal === false) {
-                                  setShowImgsModal(true);
-                                  setSrcImgsModal(images?.secure_url);
-                                } else {
-                                  setShowImgsModal(true);
+                            <article className="article3">
+                              <Button
+                                classButton="boxImgOffer"
+                                key={index}
+                                src={images?.secure_url}
+                                classImg={
+                                  index > 2 ? "prodPict" : "prodPict100"
                                 }
-                              }}
-                              rotation={rotation}
-                            />
+                                handleClick={() => {
+                                  if (showImgsModal === false) {
+                                    setShowImgsModal(true);
+                                    setSrcImgsModal(images?.secure_url);
+                                  } else {
+                                    setShowImgsModal(true);
+                                  }
+                                }}
+                                rotation={rotation}
+                              />
+                            </article>
                           )}
-                        </article>
+                        </React.Fragment>
                       );
                     })}
                   </>
