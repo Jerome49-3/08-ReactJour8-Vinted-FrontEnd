@@ -18,7 +18,7 @@ const Counter = ({ icon1, icon2, token, id, isEndloading, comment }) => {
     setCounter(counter = counter + 1);
     // console.log('counter after +1:', counter);
     try {
-      const response = await axios.post(`http://localhost:3000/review/${id}`,
+      // const response = await axios.post(`http://localhost:3000/review/${id}`,
         {
           counter,
         },
@@ -42,7 +42,7 @@ const Counter = ({ icon1, icon2, token, id, isEndloading, comment }) => {
     // console.log('counter after -1:', counter);
 
     try {
-      const response = await axios.post(`http://localhost:3000/review/${id}`,
+      // const response = await axios.post(`http://localhost:3000/review/${id}`,
         {
           counter,
         },

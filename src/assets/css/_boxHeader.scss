@@ -7,7 +7,6 @@ header {
 
   .wrapper {
 
-    //header always visible
     .topHeader {
 
       display: flex;
@@ -20,19 +19,19 @@ header {
 
       .boxLogoTheme {
         @include flexStart;
-        width: calc(100% / 3);
 
-        & a .logo {
-          width: 78px;
-          height: 34.8px;
-          object-fit: cover;
+        & a {
+          display: flex;
+          justify-content: flex-start;
         }
+
+
       }
 
       & nav {
-        @include flexCenter;
+        @include flexBetween;
         padding: 0 0 5px 0;
-        width: calc(100% / 2);
+        width: calc(100% /2);
 
         & ul {
           gap: 10px;
@@ -169,8 +168,9 @@ header {
         justify-content: space-between;
 
         .boxLogoTheme {
-          width: 25%;
-          @include flexBetween;
+          width: calc(100%/3);
+          display: flex;
+          align-items: center;
         }
 
         .containerBoxSearch {
@@ -180,31 +180,32 @@ header {
         }
 
         & nav {
-          width: 25%;
+          width: calc(100%/3);
 
           & ul {
+            width: 100%;
 
             & li {
-              width: 50%;
               min-height: 30px;
 
               & div {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                min-height: 30px;
+                height: 30px;
 
                 & a,
                 & button {
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  min-height: 30px;
+                  height: 30px;
                 }
               }
 
               &:nth-child(2) {
                 background-color: $vertVinted;
+                width: 65%;
               }
             }
           }

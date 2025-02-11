@@ -61,8 +61,8 @@ const Home = ({ search, faHeart, farHeart }) => {
         />
         <CookieConsent
           location="bottom"
-          buttonText="Sure Bro !"
-          cookieName="VintedAppCookiesAccept"
+          buttonText="Sure !"
+          cookieName="VintaidAppCookiesAccept"
           expires={150}
         >
           This website uses cookies only to enhance the user experience and not

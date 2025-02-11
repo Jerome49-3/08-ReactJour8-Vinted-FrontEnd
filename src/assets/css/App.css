@@ -366,17 +366,14 @@ header .wrapper .topHeader .boxLogoTheme {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 33.3333333333%;
 }
-header .wrapper .topHeader .boxLogoTheme a .logo {
-  width: 78px;
-  height: 34.8px;
-  -o-object-fit: cover;
-     object-fit: cover;
+header .wrapper .topHeader .boxLogoTheme a {
+  display: flex;
+  justify-content: flex-start;
 }
 header .wrapper .topHeader nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 0 0 5px 0;
   width: 50%;
@@ -498,9 +495,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     justify-content: space-between;
   }
   header .wrapper .topHeader .boxLogoTheme {
-    width: 25%;
+    width: 33.3333333333%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
   }
   header .wrapper .topHeader .containerBoxSearch {
@@ -509,26 +505,29 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     justify-content: center;
   }
   header .wrapper .topHeader nav {
-    width: 25%;
+    width: 33.3333333333%;
+  }
+  header .wrapper .topHeader nav ul {
+    width: 100%;
   }
   header .wrapper .topHeader nav ul li {
-    width: 50%;
     min-height: 30px;
   }
   header .wrapper .topHeader nav ul li div {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 30px;
+    height: 30px;
   }
   header .wrapper .topHeader nav ul li div a, header .wrapper .topHeader nav ul li div button {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 30px;
+    height: 30px;
   }
   header .wrapper .topHeader nav ul li:nth-child(2) {
     background-color: #2DB0BA;
+    width: 65%;
   }
   header .wrapper .bottomHeader {
     align-items: flex-start;

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useState, useLayoutEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
@@ -80,7 +81,7 @@ export const UserProvider = ({ children }) => {
           //   typeof error?.response?.status
           // );
           if (error?.response?.status === 401) {
-            setTimeout(() => navigate("/login"), 0);
+            navigate("/");
           }
         }
       };
@@ -124,15 +125,22 @@ export const UserProvider = ({ children }) => {
     };
   }, [token]);
 
-  const logout = () => {
+  const logout = async () => {
     try {
-      setToken(null);
-      setUser(null);
-      setIsAdmin(false);
-      Cookies.remove("accessTokenV");
-      Cookies.remove("refreshTokenV");
-      sessionStorage.clear();
-      localStorage.removeItem("favCard");
+      const response = await axios.post(
+        "http://localhost:3000/user/logout",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      console.log("response in logout", response);
+      if (response) {
+        setToken(null);
+        setUser(null);
+        setIsAdmin(false);
+        sessionStorage.clear();
+      }
     } catch (error) {
       console.log("Error in logout:", error || "error in logout");
     }

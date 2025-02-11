@@ -8,7 +8,15 @@ export default function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    const cookieTheme = Cookies.get("vintedAppTheme");
+    const cookieTheme = Cookies.get("vintaidAppTheme");
+    console.log(
+      "cookieTheme",
+      cookieTheme,
+      "\n",
+      "typeof cookieTheme",
+      typeof cookieTheme
+    );
+
     if (cookieTheme === "dark") {
       setDarkMode(true);
     } else {
@@ -29,7 +37,7 @@ export default function ThemeProvider({ children }) {
   function toggleTheme() {
     const theme = !darkMode;
     setDarkMode(theme);
-    Cookies.set("vintedAppTheme", theme ? "dark" : "light", { expires: 15 });
+    Cookies.set("vintaidAppTheme", theme ? "dark" : "light", { expires: 15 });
   }
 
   return (
