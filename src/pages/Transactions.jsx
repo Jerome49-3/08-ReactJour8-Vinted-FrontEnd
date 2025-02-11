@@ -25,6 +25,7 @@ const Transactions = () => {
               Authorization: `Bearer ${token}`,
               "content-type": "multipart/form-data",
             },
+            withCredentials: true,
           }
         );
         if (response.data) {

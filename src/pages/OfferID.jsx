@@ -117,7 +117,7 @@ const OfferID = ({
                       return (
                         <React.Fragment key={index}>
                           {index === 0 ? (
-                            <article className="article2">
+                            <article>
                               <Button
                                 classButton="boxImgOffer"
                                 key={index}
@@ -155,7 +155,7 @@ const OfferID = ({
                       return (
                         <React.Fragment key={index}>
                           {index > 0 && (
-                            <article className="article3">
+                            <article>
                               <Button
                                 classButton="boxImgOffer"
                                 key={index}
