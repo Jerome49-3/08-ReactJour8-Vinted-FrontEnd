@@ -78,7 +78,7 @@ header {
             &:nth-child(2) {
               background-color: $vertVinted;
               height: 30px;
-              width: 45%;
+              width: 65%;
               border: 2px solid $vertVinted;
               box-shadow: 0px 0px 4px $black, 0.5px 0.5px 2px $black;
               @include textShadow;
@@ -186,7 +186,7 @@ header {
         }
 
         & nav {
-          width: calc(100%/3);
+          min-width: calc(100%/3);
 
           & ul {
             width: 100%;
@@ -211,7 +211,6 @@ header {
 
               &:nth-child(2) {
                 background-color: $vertVinted;
-                width: 65%;
               }
             }
           }
