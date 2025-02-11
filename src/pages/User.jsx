@@ -2,7 +2,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import saveToken from "../assets/lib/saveToken";
-import Cookies from "js-cookie";
 import { useUser } from "../assets/lib/userFunc";
 
 //components
