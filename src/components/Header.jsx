@@ -24,7 +24,7 @@ const Header = ({
   priceMin,
   setPriceMin,
 }) => {
-  console.log("search in header:", search);
+  // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user, avatar } = useUser();
   // console.log("token in header:", token, "\n", "user: in header:", user);

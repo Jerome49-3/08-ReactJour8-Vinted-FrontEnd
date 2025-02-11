@@ -25,36 +25,57 @@ const User = () => {
   const [pictures, setPictures] = useState(null);
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(null);
   const [newsletter, setNewsletter] = useState(null);
-  const [avatar, setAvatar] = useState(null);
+
   // console.log("pictures in /users/${id}:", pictures);
   // console.log("avatar in /users/${id}:", avatar);
   const [errorMessage, setErrorMessage] = useState("");
   const [data, setData] = useState();
+  // console.log("data /users/${userId}:", data);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const { token, setToken, setUser } = useUser();
-
+  const {
+    token,
+    setToken,
+    user,
+    setUser,
+    isAdmin,
+    setIsAdmin,
+    avatar,
+    setAvatar,
+  } = useUser();
+  // console.log("token /users/${userId}:", token);
+  // console.log("user /users/${userId}:", user);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          import.meta.env.VITE_REACT_APP_URL_USERID,
+          `${import.meta.env.VITE_REACT_APP_URL_USERID}${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
               "content-type": "multipart/form-data",
             },
+            withCredentials: true,
           }
         );
-        console.log("response in /users/${id}:", response);
-        if (response.data) {
-          console.log("response.data in /users/${id}:", response.data);
-          setData(response?.data);
-          setAvatar(response?.data?.avatar?.secure_url);
-          // console.log('data in /users/${id}:', data);
-          setIsLoading(false);
+        // console.log("response in /users/${id} (GET):", response);
+        if (response?.data?.token) {
+          try {
+            const newToken = await response?.data?.token;
+            // console.log("newToken in /users/${id} (GET):", newToken);
+            if (newToken) {
+              setToken(newToken);
+              saveToken(newToken, setUser, setIsAdmin);
+              setData(user);
+              setAvatar(data?.account?.avatar?.secure_url);
+              setIsLoading(false);
+            } else {
+              console.log("not newToken in /profile");
+            }
+          } catch (error) {
+            console.log("error after response?.data?.token:", error);
+          }
         }
       } catch (error) {
         console.log(error);
@@ -76,32 +97,26 @@ const User = () => {
     formData.append("userId", userId);
     try {
       const response = await axios.put(
-        import.meta.env.VITE_REACT_APP_URL_USERID,
+        `http://localhost:3000/users/${id}`,
         formData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
             "content-type": "multipart/form-data",
           },
+          withCredentials: true,
         }
       );
-      if (response.data) {
-        // console.log('response in /users/${id}:', response);
+      if (response) {
         console.log(
-          "response.data in handleUpdateData on /users/${id}:",
+          "response.data in handleUpdateData in /users/${id}:",
           response.data
         );
-        const newData = response.data.message;
-        const ok = import.meta.env.VITE_REACT_APP_MSSG_CONFIRM_PROFILE;
-        const newToken = Cookies.get("accessTokenV");
-        if (newData.includes(ok)) {
-          saveToken(newToken, setToken, setUser, setIsAdmin);
-          alert(response.data.message);
-          setTimeout(() => {
-            setIsLoading(false);
-            navigate(`/dashboard`);
-          }, 1000);
-        }
+        setTimeout(() => {
+          alert(response?.data?.message);
+          setIsLoading(false);
+          navigate(`/`);
+        }, 1000);
       }
     } catch (error) {
       console.log(error);
@@ -112,7 +127,7 @@ const User = () => {
     if (confirm("Do yout want delete this user ?")) {
       try {
         const response = await axios.delete(
-          import.meta.env.VITE_REACT_APP_URL_USERID,
+          `http://localhost:3000/users/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -145,7 +160,7 @@ const User = () => {
       <div className="wrapper">
         <div className="top">
           <div className="title">
-            Voici la page de <strong>{data.username}</strong>
+            Voici la page de <strong>{data?.account?.username}</strong>
           </div>
         </div>
         <form className="bottom">
@@ -172,7 +187,7 @@ const User = () => {
                 label="username:"
                 type="text"
                 id="username"
-                placeholder={data.username}
+                placeholder={data?.account?.username}
                 value={username || ""}
                 setState={setUsername}
               />
@@ -182,13 +197,13 @@ const User = () => {
                 label="email:"
                 type="email"
                 id="email"
-                placeholder={data.email}
+                placeholder={data?.email}
                 value={email || ""}
                 setState={setEmail}
               />
             </div>
             <div className="boxIsAdmin">
-              {data.isAdmin === true ? (
+              {data?.isAdmin === true ? (
                 <Input
                   label="Admin:"
                   id="admin"
@@ -211,7 +226,7 @@ const User = () => {
               )}
             </div>
             <div className="boxNewsletter">
-              {data.newsletter === true ? (
+              {data?.newsletter === true ? (
                 <Input
                   label="newsletter:"
                   type="text"
@@ -233,7 +248,7 @@ const User = () => {
                 />
               )}
             </div>
-            <div className="boxDate">Date de création: {data.date}</div>
+            <div className="boxDate">Date de création: {data?.date}</div>
             <div className="boxButton">
               <Button
                 buttonText="Update profile"
