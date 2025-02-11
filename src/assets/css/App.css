@@ -683,7 +683,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   .boxArticles {
     justify-content: flex-start;
     gap: 19px;
-    padding: 0;
+    padding: 10px 0 10px 0;
   }
   .boxArticles a {
     width: 23.8095238095%;
