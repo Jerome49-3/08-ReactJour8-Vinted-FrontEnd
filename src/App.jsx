@@ -77,6 +77,7 @@ function App() {
   const [priceMax, setPriceMax] = useState(0);
   // console.log('priceMax in app:', priceMax);
   const [search, setSearch] = useState("");
+  console.log("search in app:", search);
   const [type, setType] = useState("password");
   const [dataShoppingCart, setDataShoppingCart] = useState(() => {
     const savedShop = Cookies.get("vintedShoppingCart");

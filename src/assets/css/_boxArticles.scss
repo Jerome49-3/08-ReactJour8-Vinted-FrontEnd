@@ -88,19 +88,25 @@
       }
 
       .footerArticle {
-        @include flexColStart;
         padding: 5px 10px 5px 10px;
         gap: 5px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
         width: 100%;
+        @include flexBetween;
 
-        .description {
+        .boxNameMarque,
+        .price {
+          width: 50%;
+        }
+
+        .boxNameMarque {
+          @include flexColStart;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          width: 100%;
+        }
+
+        .price {
+          @include flexEnd;
         }
       }
     }

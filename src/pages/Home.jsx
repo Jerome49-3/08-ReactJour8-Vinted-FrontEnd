@@ -28,7 +28,7 @@ const Home = ({ search, faHeart, farHeart }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          import.meta.env.VITE_REACT_APP_URL_HOME
+          `${import.meta.env.VITE_REACT_APP_URL_HOME}?title=${search}`
         );
         if (response.data) {
           // console.log("response on /Home (Offer):", response);

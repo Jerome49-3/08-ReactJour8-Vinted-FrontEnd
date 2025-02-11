@@ -654,22 +654,30 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   box-shadow: 0px 0px 1px #000000;
 }
 .boxArticles a article .footerArticle {
+  padding: 5px 10px 5px 10px;
+  gap: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.boxArticles a article .footerArticle .boxNameMarque,
+.boxArticles a article .footerArticle .price {
+  width: 50%;
+}
+.boxArticles a article .footerArticle .boxNameMarque {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  padding: 5px 10px 5px 10px;
-  gap: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 100%;
 }
-.boxArticles a article .footerArticle .description {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
+.boxArticles a article .footerArticle .price {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 @media all and (min-width: 768px) {
