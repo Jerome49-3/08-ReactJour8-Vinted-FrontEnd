@@ -575,22 +575,23 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 /* ARTICLE */
 .boxArticles {
   display: flex;
+  justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  gap: 5%;
   font-size: 1.15rem;
-  padding: 10px;
+  padding: 5px;
 }
 .boxArticles a {
-  margin-bottom: 20px;
+  width: 50%;
+  margin-bottom: 5%;
 }
 .boxArticles a article {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
-  width: 250px;
+  width: 220px;
   height: 350px;
   gap: 5px;
   background-color: rgb(189, 189, 189);
@@ -671,6 +672,21 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 100%;
 }
 
+@media all and (min-width: 768px) {
+  .boxArticles {
+    justify-content: flex-start;
+    gap: 19px;
+    padding: 0;
+  }
+  .boxArticles a {
+    width: 23.8095238095%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .boxArticles a article {
+    width: 100%;
+  }
+}
 .boxOffer {
   padding: 10px;
   width: 100%;
@@ -1533,24 +1549,42 @@ form input:last-child:not(.boxFormSignUp form div input) {
 .boxLastSales .boxTansactions a table thead {
   border-bottom: 2px solid #2DB0BA;
 }
-.boxLastSales .boxTansactions a table thead,
-.boxLastSales .boxTansactions a table body {
-  display: flex;
-  justify-content: space-around;
+.boxLastSales .boxTansactions a table thead, .boxLastSales .boxTansactions a table tbody, .boxLastSales .boxTansactions a table tbody > tr {
   width: 100%;
-  gap: 2.5px;
-  padding-left: 5px;
+  display: flex;
+  justify-content: flex-start;
 }
-.boxLastSales .boxTansactions a table thead > tr, .boxLastSales .boxTansactions a table body > td {
+.boxLastSales .boxTansactions a table thead > tr, .boxLastSales .boxTansactions a table tbody > tr > td {
   width: 20%;
+}
+.boxLastSales .boxTansactions a table thead > tr {
+  overflow: hidden;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+.boxLastSales .boxTansactions a table tbody > tr {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.boxLastSales .boxTansactions a table tbody > tr td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+.boxLastSales .boxTansactions a table tbody > tr td div {
+  max-width: 100%;
+}
+.boxLastSales .boxTansactions a table thead > tr > th {
+  width: 100%;
   text-wrap: nowrap;
   padding: 5px;
-  overflow: hidden;
 }
-.boxLastSales .boxTansactions a table thead > tr:not(tr:last-child), .boxLastSales .boxTansactions a table body > td:not(td:last-child) {
+.boxLastSales .boxTansactions a table thead > tr:not(tr:last-child), .boxLastSales .boxTansactions a table tbody > tr > td:not(td:last-child) {
   border-right: 2px solid #2DB0BA;
 }
 

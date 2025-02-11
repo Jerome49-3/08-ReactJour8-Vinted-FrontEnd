@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const LastSales = () => {
   const [data, setData] = useState();
-  console.log("data in LastUsers:", data);
+  console.log("data in LastSales:", data);
   const [isLoading, setIsLoading] = useState(true);
   const { token, axios } = useUser();
 
@@ -21,8 +21,10 @@ const LastSales = () => {
             Authorization: `Bearer ${token}`,
             "content-type": "multipart/form-data",
           },
+          withCredentials: true,
         });
         if (response) {
+          console.log("response in /transactions:", response);
           setData(response.data);
           console.log("response.data in /transactions:", response.data);
           setIsLoading(false);
@@ -39,42 +41,46 @@ const LastSales = () => {
   ) : (
     <div className="wrapper">
       <div className="boxLastSales">
-        {data.map((transactions, key = transactions._id) => {
+        {data.map((transactions) => {
           console.log("transactions in map on /transactions:", transactions);
           return (
-            <div className="boxTansactions" key={key}>
+            <div className="boxTansactions" key={transactions._id}>
               <Link to={`/transactions/${transactions._id}`}>
                 <table>
                   <thead>
-                    <tr>nom du produit:</tr>
-                    <tr>Prix:</tr>
-                    <tr>Vendeur:</tr>
-                    <tr>Date d'achat:</tr>
-                    <tr>Acheteur:</tr>
+                    <tr>
+                      <th>Nom du produit</th>
+                    </tr>
+                    <tr>
+                      <th>Prix:</th>
+                    </tr>
+                    <tr>
+                      <th>Vendeur:</th>
+                    </tr>
+                    <tr>
+                      <th>Date d'achat:</th>
+                    </tr>
+                    <tr>
+                      <th>Acheteur:</th>
+                    </tr>
                   </thead>
-                  <body>
-                    <td>{transactions.product_name}</td>
-                    <td>{transactions.product_price}</td>
-                    <td>
-                      <div className="boxSeller">
+                  <tbody>
+                    <tr>
+                      <td>{transactions.product_name}</td>
+                      <td>{transactions.product_price}</td>
+                      <td>
                         <div>{transactions.seller.account.username}</div>
                         <div>{transactions.seller.email}</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="boxDate">
-                        <div></div>
+                      </td>
+                      <td>
                         <div>{transactions.date}</div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="boxBuyer">
-                        <div></div>
+                      </td>
+                      <td>
                         <div>{transactions.buyer.account.username}</div>
                         <div>{transactions.buyer.email}</div>
-                      </div>
-                    </td>
-                  </body>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </Link>
             </div>

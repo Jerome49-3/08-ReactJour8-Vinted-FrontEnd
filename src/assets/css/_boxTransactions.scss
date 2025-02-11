@@ -24,26 +24,46 @@
           border-bottom: 2px solid $vertVinted;
         }
 
-        thead,
-        body {
-          display: flex;
-          justify-content: space-around;
+        & thead,
+        & tbody,
+        & tbody>tr {
           width: 100%;
-          gap: 2.5px;
-          padding-left: 5px;
+          display: flex;
+          justify-content: flex-start;
         }
 
         & thead>tr,
-        & body>td {
+        & tbody>tr>td {
           width: calc(100% / 5);
+        }
+
+        & thead>tr {
+          overflow: hidden;
           @include flexStart;
+        }
+
+        & tbody>tr {
+          @include flexStart;
+
+          & td {
+            @include flexColCenter;
+            overflow: hidden;
+            height: 100%;
+
+            & div {
+              max-width: 100%;
+            }
+          }
+        }
+
+        & thead>tr>th {
+          width: 100%;
           text-wrap: nowrap;
           padding: 5px;
-          overflow: hidden;
         }
 
         & thead>tr:not(tr:last-child),
-        & body>td:not(td:last-child) {
+        & tbody>tr>td:not(td:last-child) {
           border-right: 2px solid $vertVinted;
         }
       }

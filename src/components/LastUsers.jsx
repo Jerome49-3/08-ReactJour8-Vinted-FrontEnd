@@ -10,13 +10,13 @@ import Loading from "./Loading";
 
 const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
   const [data, setData] = useState();
-  console.log("data in LastUsers:", data);
+  // console.log("data in LastUsers:", data);
   const [isLoading, setIsLoading] = useState(true);
-  console.log("isLoading in LastUsers:", isLoading);
+  // console.log("isLoading in LastUsers:", isLoading);
   const navigate = useNavigate();
   const { token, isAdmin } = useUser();
-  console.log("isAdmin in LastUsers:", isAdmin);
-  console.log("token in LastUsers:", token);
+  // console.log("isAdmin in LastUsers:", isAdmin);
+  // console.log("token in LastUsers:", token);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +32,7 @@ const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
             },
             withCredentials: true,
           });
-          console.log("response in LastUsers:", response);
+          // console.log("response in LastUsers:", response);
           console.log("response.data in LastUsers:", response.data);
           if (response.data) {
             setData(response.data);

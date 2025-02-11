@@ -17,7 +17,7 @@ import updateIcon from "../assets/images/updateIcon.png";
 
 const User = () => {
   const { id } = useParams();
-  console.log("id /users/${userId}:", id);
+  // console.log("id /users/${userId}:", id);
   // const { state } = useLocation();
   // console.log("state: in /users/${userId}:", state);
   // const { token } = state;
@@ -28,8 +28,8 @@ const User = () => {
   const [isAdmin, setIsAdmin] = useState(null);
   const [newsletter, setNewsletter] = useState(null);
   const [avatar, setAvatar] = useState(null);
-  console.log("pictures in /users/${id}:", pictures);
-  console.log("avatar in /users/${id}:", avatar);
+  // console.log("pictures in /users/${id}:", pictures);
+  // console.log("avatar in /users/${id}:", avatar);
   const [errorMessage, setErrorMessage] = useState("");
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
