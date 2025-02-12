@@ -516,9 +516,29 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   }
   header .wrapper .topHeader nav ul {
     width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  header .wrapper .topHeader nav ul .boxUser {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+  }
+  header .wrapper .topHeader nav ul .boxUser .hello {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  header .wrapper .topHeader nav ul .boxUser .boxAvatar {
+    width: 30%;
   }
   header .wrapper .topHeader nav ul li {
     min-height: 30px;
+  }
+  header .wrapper .topHeader nav ul li:nth-child(1), header .wrapper .topHeader nav ul li:nth-child(2) {
+    width: 40%;
   }
   header .wrapper .topHeader nav ul li div {
     display: flex;
@@ -683,7 +703,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   .boxArticles {
     justify-content: flex-start;
     gap: 19px;
-    padding: 10px 0 10px 0;
+    padding: 20px 0 20px 0;
   }
   .boxArticles a {
     width: 23.8095238095%;

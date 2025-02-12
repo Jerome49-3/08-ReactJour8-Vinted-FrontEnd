@@ -35,7 +35,6 @@ header {
 
         & ul {
           gap: 10px;
-          // @include flexColCenter;
           width: 100%;
 
           & li {
@@ -190,9 +189,28 @@ header {
 
           & ul {
             width: 100%;
+            @include flexEnd;
+
+            .boxUser {
+              @include flexAround;
+              padding: 15px;
+
+              .hello {
+                @include flexStart;
+              }
+
+              .boxAvatar {
+                width: 30%;
+              }
+            }
 
             & li {
               min-height: 30px;
+
+              &:nth-child(1),
+              &:nth-child(2) {
+                width: 40%;
+              }
 
               & div {
                 display: flex;
