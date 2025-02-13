@@ -10,11 +10,18 @@ import CookieConsent from "react-cookie-consent";
 import Hero from "../components/Hero";
 import Loading from "../components/Loading";
 import OfferCard from "../components/OfferCard";
+import Aside from "../components/Aside";
 
 //images
 // import noImg from '../assets/images/no-image.jpg';
 
-const Home = ({ search, faHeart, farHeart }) => {
+const Home = ({
+  search,
+  faHeart,
+  farHeart,
+  showToggleNav,
+  setShowToggleNav,
+}) => {
   // console.log("isFavorite in Home:", isFavorite);
   // console.log('search in Home:', search);
   const [data, setData] = useState();
@@ -50,8 +57,8 @@ const Home = ({ search, faHeart, farHeart }) => {
     </>
   ) : (
     <div className="boxHome">
+      <Hero />
       <div className="wrapper">
-        <Hero />
         <OfferCard
           data={data}
           faHeart={faHeart}
@@ -69,6 +76,12 @@ const Home = ({ search, faHeart, farHeart }) => {
           for advertising purposes.{" "}
         </CookieConsent>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        {showToggleNav && (
+          <Aside
+            showToggleNav={showToggleNav}
+            setShowToggleNav={setShowToggleNav}
+          />
+        )}
       </div>
     </div>
   );

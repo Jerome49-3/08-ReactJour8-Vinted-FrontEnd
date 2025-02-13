@@ -2,9 +2,4 @@
 .boxHome {
   @include flexColStart;
   width: 100%;
-  flex: 1;
-
-  .wrapper {
-    flex: 1;
-  }
 }

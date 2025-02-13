@@ -22,6 +22,7 @@ const MySales = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
               Authorization: `Bearer ${token}`,
               "content-type": "multipart/form-data",
             },
+            withCredentials: true,
           }
         );
         if (response.data) {

@@ -66,6 +66,7 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
           headers: {
             Authorization: `Bearer ${data.buyer_token}`,
           },
+          withCredentials: true,
         }
       );
       console.log("response.data in checkOutForm:", response.data);
@@ -108,6 +109,7 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
             headers: {
               Authorization: `Bearer ${data.buyer_token}`,
             },
+            withCredentials: true,
           }
         );
         if (sendSuccess) {

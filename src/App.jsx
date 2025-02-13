@@ -198,7 +198,13 @@ function App() {
             <Route
               path="/"
               element={
-                <Home search={search} faHeart={faHeart} farHeart={farHeart} />
+                <Home
+                  search={search}
+                  faHeart={faHeart}
+                  farHeart={farHeart}
+                  showToggleNav={showToggleNav}
+                  setShowToggleNav={setShowToggleNav}
+                />
               }
             />
           </Routes>
@@ -211,12 +217,6 @@ function App() {
               icon2="eye-slash"
               type={type}
               setType={setType}
-            />
-          )}
-          {showToggleNav && (
-            <Aside
-              showToggleNav={showToggleNav}
-              setShowToggleNav={setShowToggleNav}
             />
           )}
           {showImgsModal && (

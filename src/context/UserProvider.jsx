@@ -50,6 +50,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
+      console.log("token in useEffect on UserProvider:", token);
       try {
         saveToken(token, setUser, setIsAdmin);
       } catch (error) {

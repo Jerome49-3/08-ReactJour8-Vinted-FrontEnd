@@ -24,14 +24,12 @@ header {
           display: flex;
           justify-content: flex-start;
         }
-
-
       }
 
       & nav {
         @include flexBetween;
         padding: 0 0 5px 0;
-        min-width: 72%;
+        min-width: 100%;
 
         & ul {
           gap: 10px;
@@ -161,6 +159,92 @@ header {
   width: 14px;
 }
 
+@media all and (min-device-width : 576px) {
+  header {
+    min-height: 10vh;
+
+    .wrapper {
+      .topHeader {
+        flex-direction: row !important;
+        justify-content: space-between;
+
+        .boxLogoTheme {
+          width: calc(100%/3);
+          display: flex;
+          align-items: center;
+        }
+
+        .containerBoxSearch {
+          width: 50%;
+          display: flex;
+          justify-content: center;
+        }
+
+        & nav {
+          min-width: calc(100%/3);
+
+          & ul {
+            width: 100%;
+            @include flexEnd;
+            position: relative;
+
+            .boxUser {
+              @include flexAround;
+              padding: 15px;
+
+
+              .hello {
+                @include flexStart;
+              }
+
+              .boxAvatar {
+                width: 30%;
+              }
+            }
+
+            & li {
+              min-height: 30px;
+
+              &:nth-child(1),
+              &:nth-child(2) {
+                width: 40%;
+              }
+
+              & div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 30px;
+
+                & a,
+                & button {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 30px;
+                }
+              }
+
+              &:nth-child(2) {
+                background-color: $vertVinted;
+              }
+            }
+          }
+        }
+      }
+
+      .bottomHeader {
+        align-items: flex-start;
+
+        & div:first-child {
+          margin-left: 5%;
+        }
+      }
+
+    }
+  }
+}
+
 @media all and (min-width: 768px) {
 
   /* HEADER */
@@ -246,3 +330,9 @@ header {
     }
   }
 }
+
+@media all and (min-device-width : 992px) {}
+
+@media all and (min-device-width : 1200px) {}
+
+@media all and (min-device-width : 1400px) {}

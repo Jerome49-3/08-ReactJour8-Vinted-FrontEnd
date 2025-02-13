@@ -7,7 +7,6 @@ import { useEffect } from "react";
 
 //components
 import Image from "./Image";
-import Aside from "./Aside";
 import Input from "./Input";
 import Links from "./Links";
 import LabeledTwoThumbs from "./LabeledTwoThumbs";
@@ -99,10 +98,6 @@ const Header = ({
                   </div>
                 </li>
               ) : null}
-              <Aside
-                showToggleNav={showToggleNav}
-                setShowToggleNav={setShowToggleNav}
-              />
             </ul>
           </nav>
         </div>

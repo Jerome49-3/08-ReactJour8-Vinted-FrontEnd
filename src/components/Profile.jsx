@@ -20,6 +20,7 @@ const Profile = () => {
   const { id } = useParams();
   // console.log("id in /profile/${id}:", id);
   const [data, setData] = useState(null);
+  console.log("data in /profile/${id}:", data);
   const [isLoading, setIsLoading] = useState(true);
   const [pictures, setPictures] = useState(null);
   // console.log("pictures in /profile/${id}::", pictures);
@@ -33,7 +34,16 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/profile/${id}`);
+        const response = await axios.get(
+          `http://localhost:3000/profile/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "content-type": "multipart/form-data",
+            },
+            withCredentials: true,
+          }
+        );
         // console.log("response in /profile/${id}:", response);
         if (response?.data) {
           console.log("response.data in /profile/${id}:", response?.data);
@@ -43,7 +53,7 @@ const Profile = () => {
               const newToken = await response?.data?.token;
               if (newToken) {
                 setToken(newToken);
-                saveToken(newToken, setUser, setIsAdmin);
+                await saveToken(newToken, setUser, setIsAdmin);
                 setData(user);
                 setAvatar(data?.account?.avatar?.secure_url);
               } else {

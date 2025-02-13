@@ -81,10 +81,35 @@
 }
 
 .wrapper {
-  max-width: 1200px;
+  max-width: 300px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+}
+@media all and (min-device-width: 576px) {
+  .wrapper {
+    max-width: 560px;
+  }
+}
+@media all and (min-device-width: 768px) {
+  .wrapper {
+    max-width: 700px;
+  }
+}
+@media all and (min-device-width: 992px) {
+  .wrapper {
+    max-width: 900px;
+  }
+}
+@media all and (min-device-width: 1200px) {
+  .wrapper {
+    max-width: 1200px;
+  }
+}
+@media all and (min-device-width: 1400px) {
+  .wrapper {
+    max-width: 1300px;
+  }
 }
 
 div#root {
@@ -150,6 +175,14 @@ input:not([type=submit], [type=search]) {
 
 textarea {
   border: transparent;
+}
+
+* .red {
+  color: red;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #2DB0BA, 1.25px 1.25px 1px #000000, 1.5px 1.5px 3px #000000;
+  padding: 0px 0px 10px 0px;
 }
 
 input:focus-visible,
@@ -315,7 +348,7 @@ textarea:focus-visible::placeholder {
      object-fit: cover;
 }
 .boxModal .boxModalContent button {
-  text-shadow: 0px 0px 1px #000000, 0.5px 0.5px 1px #ffffff, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #2DB0BA, 1.25px 1.25px 1px #000000, 1.5px 1.5px 3px #000000;
   background-color: rgba(241, 241, 241, 0.9450980392);
 }
 .boxModal .boxModalContent button:active {
@@ -376,7 +409,7 @@ header .wrapper .topHeader nav {
   justify-content: space-between;
   align-items: center;
   padding: 0 0 5px 0;
-  min-width: 72%;
+  min-width: 100%;
 }
 header .wrapper .topHeader nav ul {
   gap: 10px;
@@ -423,7 +456,7 @@ header .wrapper .topHeader nav ul li:nth-child(2) {
   height: 30px;
   border: 2px solid #2DB0BA;
   box-shadow: 0px 0px 4px #000000, 0.5px 0.5px 2px #000000;
-  text-shadow: 0px 0px 1px #000000, 0.5px 0.5px 1px #ffffff, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #2DB0BA, 1.25px 1.25px 1px #000000, 1.5px 1.5px 3px #000000;
 }
 header .wrapper .topHeader nav ul li:nth-child(2) a {
   color: #ffffff;
@@ -491,6 +524,76 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 14px;
 }
 
+@media all and (min-device-width: 576px) {
+  header {
+    min-height: 10vh;
+  }
+  header .wrapper .topHeader {
+    flex-direction: row !important;
+    justify-content: space-between;
+  }
+  header .wrapper .topHeader .boxLogoTheme {
+    width: 33.3333333333%;
+    display: flex;
+    align-items: center;
+  }
+  header .wrapper .topHeader .containerBoxSearch {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+  header .wrapper .topHeader nav {
+    min-width: 33.3333333333%;
+  }
+  header .wrapper .topHeader nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+  }
+  header .wrapper .topHeader nav ul .boxUser {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+  }
+  header .wrapper .topHeader nav ul .boxUser .hello {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  header .wrapper .topHeader nav ul .boxUser .boxAvatar {
+    width: 30%;
+  }
+  header .wrapper .topHeader nav ul li {
+    min-height: 30px;
+  }
+  header .wrapper .topHeader nav ul li:nth-child(1), header .wrapper .topHeader nav ul li:nth-child(2) {
+    width: 40%;
+  }
+  header .wrapper .topHeader nav ul li div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+  }
+  header .wrapper .topHeader nav ul li div a, header .wrapper .topHeader nav ul li div button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+  }
+  header .wrapper .topHeader nav ul li:nth-child(2) {
+    background-color: #2DB0BA;
+  }
+  header .wrapper .bottomHeader {
+    align-items: flex-start;
+  }
+  header .wrapper .bottomHeader div:first-child {
+    margin-left: 5%;
+  }
+}
 @media all and (min-width: 768px) {
   /* HEADER */
   header {
@@ -565,8 +668,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   margin-top: 6px;
 }
 .boxImgs .imgBanner {
-  width: 100%;
-  height: 300px;
+  max-width: 100%;
+  max-height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
   margin-top: -6px;
@@ -574,10 +677,23 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
      object-position: center 28%;
 }
 .boxImgs .imgBannerBottom {
-  width: 100%;
+  max-width: 100%;
   margin-top: -80px;
 }
 
+@media all and (min-device-width: 576px) {
+  .boxImgs {
+    width: 100%;
+  }
+  .boxImgs .imgBanner {
+    width: 100%;
+  }
+}
+@media all and (min-device-width: 1400px) {
+  .boxImgs .imgBanner {
+    max-height: 400px;
+  }
+}
 /* HOME */
 .boxHome {
   display: flex;
@@ -585,16 +701,12 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
-  flex: 1;
-}
-.boxHome .wrapper {
-  flex: 1;
 }
 
 /* ARTICLE */
 .boxArticles {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
@@ -602,14 +714,14 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
 }
 .boxArticles a {
-  width: 50%;
+  width: 100%;
 }
 .boxArticles a article {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 180px;
+  width: 100%;
   height: 350px;
   gap: 5px;
   background-color: rgb(189, 189, 189);
@@ -699,14 +811,24 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
 }
 
-@media all and (min-width: 768px) {
+@media all and (min-device-width: 576px) {
   .boxArticles {
     justify-content: flex-start;
+  }
+  .boxArticles a {
+    width: 50%;
+  }
+  .boxArticles a article {
+    width: 95%;
+  }
+}
+@media all and (min-width: 768px) {
+  .boxArticles {
     gap: 19px;
     padding: 20px 0 20px 0;
   }
   .boxArticles a {
-    width: 23.8095238095%;
+    width: 31.25%;
   }
   .boxArticles a article {
     width: 100%;
@@ -1241,11 +1363,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
 }
 .boxUserId .top {
   display: flex;
@@ -1259,7 +1376,9 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   gap: 20px;
+  padding-bottom: 10px;
 }
 .boxUserId .bottom .left {
   display: flex;
@@ -1269,8 +1388,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   gap: 10px;
 }
 .boxUserId .bottom .left img {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
@@ -1337,54 +1456,90 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   min-width: 50%;
 }
 
+@media screen and (min-width: 1224px) {
+  .boxUserId .wrapper .top .bottom {
+    flex-direction: row;
+  }
+  .boxUserId .wrapper .top .bottom .left img {
+    width: 400px;
+    height: 400px;
+  }
+}
 .toggleNav {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 200px;
-  position: absolute;
-  top: 32.5%;
-  right: -20%;
-  transform: translate(-50%, -50%);
+  width: 60%;
   z-index: 200;
   background-color: #ffffff;
   animation: appearPanel 0.5s linear 0.25s 1 normal both;
   box-shadow: 0px 0px 1px #2DB0BA;
-  gap: 10px;
+  gap: 50px;
+  padding: 10px;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #2DB0BA;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 1.5px #000000, 0px 0px 3px #000000;
+}
+.toggleNav .headAside {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   padding: 10px;
 }
-.toggleNav a {
+.toggleNav .headAside .btnCloseAside {
+  color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000;
+  width: 20%;
+}
+.toggleNav .bodyAside {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  gap: 90px;
+}
+.toggleNav .bodyAside a, .toggleNav .bodyAside button {
+  letter-spacing: 20%;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #2DB0BA, 1.25px 1.25px 1px #000000, 1.5px 1.5px 3px #000000;
+}
+.toggleNav .bodyAside a {
   color: #9e9e9e;
   width: 100%;
   text-align: center;
   padding: 5px;
   border-radius: 5px;
 }
-.toggleNav a:active {
+.toggleNav .bodyAside a:active {
   box-shadow: inset 0px 0px 5px #000000, inset 0px 0px 5px #2DB0BA;
 }
-.toggleNav a p {
+.toggleNav .bodyAside a p {
   font-size: 1.15rem;
   text-shadow: 0.25px 0.25px 1px #000000;
 }
-.toggleNav button {
+.toggleNav .bodyAside button {
   color: red;
 }
 
 .hideToggle {
-  display: none;
+  transform: translateX(-100%);
   animation: disappearPanel 1s linear 0.25s 1 normal both;
 }
 
-@media all and (min-width: 1224px) {
-  .toggleNav {
-    position: absolute;
-    top: 20%;
-    right: 12.5%;
-    transform: translate(-50%, -50%);
-  }
-}
 /* FORM */
 .boxForm {
   width: 100%;
