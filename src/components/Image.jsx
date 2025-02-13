@@ -20,7 +20,10 @@ const Image = ({ src, alt, classImg, rotation }) => {
         className={classImg}
         style={{
           ...{ classImg },
-          ...(rotation && { transform: `rotate(${rotation}deg)` }),
+          ...(rotation && {
+            transform: `rotate(${rotation}deg)`,
+            width: `78vh`,
+          }),
         }}
       />
     </>

@@ -1,8 +1,8 @@
 /* ARTICLE */
 .boxArticles {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   width: 100%;
   font-size: 1.15rem;
@@ -11,20 +11,19 @@
   & a {
     width: calc(100% / 2);
 
-
-
     & article {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      width: 220px;
+      width: 180px;
       height: 350px;
       gap: 5px;
       background-color: rgb(189, 189, 189);
       // border: 2px solid crimson;
       margin: auto;
       position: relative;
+      margin-bottom: 10px;
 
       &:hover {
         -webkit-animation: scaleArticle 01s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
@@ -127,5 +126,4 @@
       }
     }
   }
-
 }

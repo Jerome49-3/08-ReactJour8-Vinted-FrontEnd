@@ -31,7 +31,7 @@ header {
       & nav {
         @include flexBetween;
         padding: 0 0 5px 0;
-        min-width: 62.5%;
+        min-width: 72%;
 
         & ul {
           gap: 10px;
@@ -70,14 +70,14 @@ header {
               text-align: center;
             }
 
-            &:nth-child(1) {
-              width: 55%;
+            &:nth-child(1),
+            &:nth-child(2) {
+              width: 50%;
             }
 
             &:nth-child(2) {
               background-color: $vertVinted;
               height: 30px;
-              width: 65%;
               border: 2px solid $vertVinted;
               box-shadow: 0px 0px 4px $black, 0.5px 0.5px 2px $black;
               @include textShadow;

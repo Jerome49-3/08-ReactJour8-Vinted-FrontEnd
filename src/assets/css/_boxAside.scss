@@ -2,8 +2,9 @@
   @include flexColCenter;
   width: 200px;
   position: absolute;
-  top: 5.5%;
-  right: 19%;
+  top: 32.5%;
+  right: -20%;
+  transform: translate(-50%, -50%);
   z-index: 200;
   background-color: $white;
   animation: appearPanel 0.5s linear 0.25s 1 normal both;
@@ -36,4 +37,13 @@
 .hideToggle {
   display: none;
   animation: disappearPanel 1s linear 0.25s 1 normal both;
+}
+
+@media all and (min-width: 1224px) {
+  .toggleNav {
+    position: absolute;
+    top: 20%;
+    right: 12.5%;
+    transform: translate(-50%, -50%);
+  }
 }

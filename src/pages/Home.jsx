@@ -31,7 +31,7 @@ const Home = ({ search, faHeart, farHeart }) => {
           `${import.meta.env.VITE_REACT_APP_URL_HOME}?title=${search}`
         );
         if (response.data) {
-          // console.log("response on /Home (Offer):", response);
+          console.log("response on /Home (Offer):", response);
           // console.log("response.data on /Home (Offer):", response.data);
           setData(response.data);
           setIsLoading(false);
@@ -42,7 +42,7 @@ const Home = ({ search, faHeart, farHeart }) => {
       }
     };
     fetchData();
-  }, [search, data]);
+  }, [search]);
 
   return isLoading ? (
     <>

@@ -87,7 +87,14 @@ const Publish = ({ faRotateRight }) => {
       // console.log("token inside try to handleSubmit in publish:", token);
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_PUBLISH,
-        formData
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "content-type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
         // {
         //   headers: {
         //     Authorization: `Bearer ${token}`,
