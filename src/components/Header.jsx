@@ -26,20 +26,14 @@ const Header = ({
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user, avatar } = useUser();
-  // console.log("token in header:", token, "\n", "user: in header:", user);
+  // console.log("token in header:", token);
+  console.log("user: in header:", user);
   useEffect(() => {}, []);
 
   return (
     <header>
       <div className="wrapper">
-        <div
-          className="topHeader"
-          onMouseOut={() => {
-            setTimeout(() => {
-              setShowToggleNav(false);
-            }, 5000);
-          }}
-        >
+        <div className="topHeader">
           <div className="boxLogoTheme">
             <Link to="/">
               <Image src={Logo} alt="Vinted" classImg="logo" />

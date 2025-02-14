@@ -3,6 +3,7 @@ header {
   width: 100%;
   display: block;
   @include flexCenter;
+  height: 200px;
 
 
   .wrapper {
@@ -39,67 +40,38 @@ header {
             border-radius: 5px;
             border: 2px solid $vertVinted;
 
-            & a {
-              height: 30px;
-              @include flexCenter;
-            }
-
             & div {
               width: 100%;
-              @include flexCenter;
               text-wrap: nowrap;
-              height: 30px;
-            }
-
-            & div button,
-            & div a {
-              height: 100%;
-              width: 100%;
-              @include flexCenter;
-              padding: 0px 2.5px 0px 2.5px;
-            }
-
-            & div button {
-              border-right: 2.5px solid $vertVinted;
-            }
-
-            & a:not(li div a) {
-              width: 100%;
-              text-align: center;
-            }
-
-            &:nth-child(1),
-            &:nth-child(2) {
-              width: 50%;
             }
 
             &:nth-child(2) {
-              background-color: $vertVinted;
-              height: 30px;
-              border: 2px solid $vertVinted;
-              box-shadow: 0px 0px 4px $black, 0.5px 0.5px 2px $black;
+              @include btn;
               @include textShadow;
+              @include flexAround;
 
-              & a {
-                color: $white;
-              }
 
               &:active {
                 box-shadow: inset 0px 0px 4px $black, inset 0.5px 0.5px 2px $black;
               }
             }
-          }
 
-          .boxUser {
-            @include flexAround;
-            border: 2px solid $vertVinted;
-            border-radius: 5px;
-            cursor: pointer;
+            &:nth-child(1),
+            &:nth-child(2) {
+              @include flexCenter;
+              width: 50%;
+              border: 2px solid $vertVinted;
+              box-shadow: 0px 0px 4px $black, 0.5px 0.5px 2px $black;
+              cursor: pointer;
+              height: 35px;
+            }
           }
         }
 
         & ul,
         & ul li,
+        & ul li div,
+        & ul li:nth-child(1),
         & ul li:nth-child(2),
         & ul li div button,
         & ul li div a {
@@ -150,13 +122,13 @@ header {
   border-radius: 5px;
   padding: 2px 2px 2px 10px;
   width: 300px;
-  height: 30px;
+  height: 35px;
   @include boxShadow;
 }
 
 .search-icons {
   color: var(--vertVintDark);
-  width: 14px;
+  font-size: 1.25rem;
 }
 
 @media all and (min-device-width : 576px) {
@@ -166,7 +138,7 @@ header {
     .wrapper {
       .topHeader {
         flex-direction: row !important;
-        justify-content: space-between;
+        justify-content: center;
 
         .boxLogoTheme {
           width: calc(100%/3);
@@ -207,21 +179,16 @@ header {
 
               &:nth-child(1),
               &:nth-child(2) {
-                width: 40%;
+                width: 50%;
               }
 
               & div {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                @include flexCenter;
                 height: 30px;
 
                 & a,
                 & button {
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  height: 30px;
+                  @include flexCenter;
                 }
               }
 

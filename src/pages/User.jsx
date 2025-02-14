@@ -30,7 +30,7 @@ const User = () => {
   // console.log("avatar in /users/${id}:", avatar);
   const [errorMessage, setErrorMessage] = useState("");
   const [data, setData] = useState();
-  // console.log("data /users/${userId}:", data);
+  console.log("data /users/${userId}:", data);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const {
@@ -67,7 +67,9 @@ const User = () => {
               setToken(newToken);
               saveToken(newToken, setUser, setIsAdmin);
               setData(user);
-              setAvatar(data?.account?.avatar?.secure_url);
+              setAvatar(
+                data?.account?.avatar || data?.account?.avatar?.secure_url
+              );
               setIsLoading(false);
             } else {
               console.log("not newToken in /profile");
@@ -86,17 +88,15 @@ const User = () => {
   const handleUpdateData = async (e) => {
     setIsLoading(true);
     e.preventDefault();
-    const userId = data.id;
     const formData = new FormData();
     formData.append("pictures", pictures);
     formData.append("username", username);
     formData.append("email", email);
     formData.append("isAdmin", isAdmin);
     formData.append("newsletter", newsletter);
-    formData.append("userId", userId);
     try {
       const response = await axios.put(
-        `http://localhost:3000/users/${id}`,
+        `${import.meta.env.VITE_REACT_APP_URL_USERID}${id}`,
         formData,
         {
           headers: {
@@ -122,30 +122,37 @@ const User = () => {
       setErrorMessage(error.message);
     }
   };
-  const handleDeleteData = async () => {
-    if (confirm("Do yout want delete this user ?")) {
+  const handleDeleteData = async (e) => {
+    setIsLoading(true);
+    e.preventDefault();
+    if (confirm("Do yout want delete this user and their  offers ?")) {
       try {
         const response = await axios.delete(
-          `http://localhost:3000/users/${id}`,
+          `${import.meta.env.VITE_REACT_APP_URL_USERID}${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
               "content-type": "multipart/form-data",
             },
+            withCredentials: true,
           }
         );
         if (response) {
-          // console.log('response in /users/${id}:', response);
+          console.log(
+            "response in handleDeleteData on /users/${id}:",
+            response
+          );
           console.log(
             "response.data in handleDeleteData on /users/${id}:",
             response.data
           );
+          setIsLoading(false);
           alert(response.data.message);
           navigate(`/dashboard`);
         }
       } catch (error) {
-        console.log("error:", error);
-        setErrorMessage(error.response.data.message);
+        console.log("error:", error?.response);
+        setErrorMessage(error?.response?.data?.message);
       }
     } else {
       navigate(`/dashboard`);
@@ -256,7 +263,7 @@ const User = () => {
                 classButton="updateButton"
               />
               <Button
-                buttonText="Delete profile"
+                buttonText="Delete account"
                 handleClick={handleDeleteData}
                 src={updateIcon}
                 classButton="deleteButton"

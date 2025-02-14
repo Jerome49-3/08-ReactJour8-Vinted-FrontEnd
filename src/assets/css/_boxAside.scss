@@ -70,7 +70,13 @@
 }
 
 // BREAKPOINTS
-@media all and (min-device-width : 576px) {}
+@media all and (min-device-width : 576px) {
+  .toggleNav {
+    width: 50%;
+    top: 50%;
+    left: 75%;
+  }
+}
 
 @media all and (min-device-width : 768px) {}
 

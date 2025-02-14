@@ -56,9 +56,9 @@ import Chat from "./pages/Chat";
 //components
 import Header from "./components/Header";
 import SignUp from "./components/SignUp";
-import Aside from "./components/Aside";
 import ImgsModal from "./components/ImgsModal";
 import Profile from "./components/Profile";
+import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 
 function App() {
@@ -77,7 +77,7 @@ function App() {
   const [priceMax, setPriceMax] = useState(0);
   // console.log('priceMax in app:', priceMax);
   const [search, setSearch] = useState("");
-  console.log("search in app:", search);
+  // console.log("search in app:", search);
   const [type, setType] = useState("password");
   const [dataShoppingCart, setDataShoppingCart] = useState(() => {
     const savedShop = Cookies.get("vintedShoppingCart");
@@ -209,6 +209,12 @@ function App() {
             />
           </Routes>
           <Footer />
+          {showToggleNav && (
+            <Aside
+              showToggleNav={showToggleNav}
+              setShowToggleNav={setShowToggleNav}
+            />
+          )}
           {show && (
             <SignUp
               show={show}

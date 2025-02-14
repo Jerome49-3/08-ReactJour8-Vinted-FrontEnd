@@ -385,6 +385,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 200px;
 }
 header .wrapper .topHeader {
   display: flex;
@@ -419,60 +420,39 @@ header .wrapper .topHeader nav ul li {
   border-radius: 5px;
   border: 2px solid #2DB0BA;
 }
-header .wrapper .topHeader nav ul li a {
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 header .wrapper .topHeader nav ul li div {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-wrap: nowrap;
-  height: 30px;
-}
-header .wrapper .topHeader nav ul li div button, header .wrapper .topHeader nav ul li div a {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0px 2.5px 0px 2.5px;
-}
-header .wrapper .topHeader nav ul li div button {
-  border-right: 2.5px solid #2DB0BA;
-}
-header .wrapper .topHeader nav ul li a:not(li div a) {
-  width: 100%;
-  text-align: center;
-}
-header .wrapper .topHeader nav ul li:nth-child(1), header .wrapper .topHeader nav ul li:nth-child(2) {
-  width: 50%;
 }
 header .wrapper .topHeader nav ul li:nth-child(2) {
-  background-color: #2DB0BA;
-  height: 30px;
-  border: 2px solid #2DB0BA;
-  box-shadow: 0px 0px 4px #000000, 0.5px 0.5px 2px #000000;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #2DB0BA, 1.25px 1.25px 1px #000000, 1.5px 1.5px 3px #000000;
-}
-header .wrapper .topHeader nav ul li:nth-child(2) a {
   color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #2DB0BA, 1.25px 1.25px 1px #000000, 1.5px 1.5px 3px #000000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 header .wrapper .topHeader nav ul li:nth-child(2):active {
   box-shadow: inset 0px 0px 4px #000000, inset 0.5px 0.5px 2px #000000;
 }
-header .wrapper .topHeader nav ul .boxUser {
+header .wrapper .topHeader nav ul li:nth-child(1), header .wrapper .topHeader nav ul li:nth-child(2) {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  width: 50%;
   border: 2px solid #2DB0BA;
-  border-radius: 5px;
+  box-shadow: 0px 0px 4px #000000, 0.5px 0.5px 2px #000000;
   cursor: pointer;
+  height: 35px;
 }
-header .wrapper .topHeader nav ul, header .wrapper .topHeader nav ul li, header .wrapper .topHeader nav ul li:nth-child(2), header .wrapper .topHeader nav ul li div button, header .wrapper .topHeader nav ul li div a {
+header .wrapper .topHeader nav ul, header .wrapper .topHeader nav ul li, header .wrapper .topHeader nav ul li div, header .wrapper .topHeader nav ul li:nth-child(1), header .wrapper .topHeader nav ul li:nth-child(2), header .wrapper .topHeader nav ul li div button, header .wrapper .topHeader nav ul li div a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -515,13 +495,13 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   border-radius: 5px;
   padding: 2px 2px 2px 10px;
   width: 300px;
-  height: 30px;
+  height: 35px;
   box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
 }
 
 .search-icons {
   color: var(--vertVintDark);
-  width: 14px;
+  font-size: 1.25rem;
 }
 
 @media all and (min-device-width: 576px) {
@@ -530,7 +510,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   }
   header .wrapper .topHeader {
     flex-direction: row !important;
-    justify-content: space-between;
+    justify-content: center;
   }
   header .wrapper .topHeader .boxLogoTheme {
     width: 33.3333333333%;
@@ -570,7 +550,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     min-height: 30px;
   }
   header .wrapper .topHeader nav ul li:nth-child(1), header .wrapper .topHeader nav ul li:nth-child(2) {
-    width: 40%;
+    width: 50%;
   }
   header .wrapper .topHeader nav ul li div {
     display: flex;
@@ -582,7 +562,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
   }
   header .wrapper .topHeader nav ul li:nth-child(2) {
     background-color: #2DB0BA;
@@ -1540,6 +1519,13 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   animation: disappearPanel 1s linear 0.25s 1 normal both;
 }
 
+@media all and (min-device-width: 576px) {
+  .toggleNav {
+    width: 50%;
+    top: 50%;
+    left: 75%;
+  }
+}
 /* FORM */
 .boxForm {
   width: 100%;

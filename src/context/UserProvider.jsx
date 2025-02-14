@@ -23,7 +23,7 @@ export const UserProvider = ({ children }) => {
     if (newAdmin) {
       try {
         const admin = Boolean(newAdmin);
-        console.log("admin in isAdmin:", admin);
+        // console.log("admin in isAdmin:", admin);
         return admin;
       } catch (error) {
         console.log("Erreur Boolean isAdmin:", error);
@@ -50,7 +50,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      console.log("token in useEffect on UserProvider:", token);
+      // console.log("token in useEffect on UserProvider:", token);
       try {
         saveToken(token, setUser, setIsAdmin);
       } catch (error) {
@@ -91,7 +91,13 @@ export const UserProvider = ({ children }) => {
   }, [token]);
 
   useEffect(() => {
-    setAvatar(user?.account?.avatar?.secure_url);
+    const avatarUrl = user?.account?.avatar;
+    const avatarSecureUrl = user?.account?.avatar?.secure_url;
+    if (typeof avatarUrl !== "object") {
+      setAvatar(avatarUrl);
+    } else {
+      setAvatar(avatarSecureUrl);
+    }
   }, [user]);
 
   useLayoutEffect(() => {

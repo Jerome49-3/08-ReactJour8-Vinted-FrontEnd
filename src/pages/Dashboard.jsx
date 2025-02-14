@@ -9,8 +9,8 @@ import LastSales from "../components/LastSales";
 
 const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
   const { token, isAdmin } = useUser();
-  console.log("isAdmin in Dashboard:", isAdmin);
-  console.log("token in Dashboard:", token);
+  // console.log("isAdmin in Dashboard:", isAdmin);
+  // console.log("token in Dashboard:", token);
 
   return token && isAdmin ? (
     <div className="boxDashboard">
