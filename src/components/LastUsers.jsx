@@ -10,7 +10,7 @@ import Loading from "./Loading";
 
 const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
   const [data, setData] = useState();
-  // console.log("data in LastUsers:", data);
+  console.log("data in LastUsers:", data);
   const [isLoading, setIsLoading] = useState(true);
   // console.log("isLoading in LastUsers:", isLoading);
   const navigate = useNavigate();
@@ -54,26 +54,26 @@ const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
   ) : (
     <div className="boxLastUsers">
       {data.map((user, key = user.id) => {
-        console.log("user:", user);
+        console.log("user in LastUsers:", user);
         return (
           <div className="boxUsers" key={key}>
             <Link to={`/users/${user.id}`}>
-              <div className="username">{user.username}</div>
+              <div className="username">{user?.username}</div>
               <div className="avatar">
-                {user.avatar.secure_url ? (
-                  <Image src={user.avatar.secure_url} alt="avatar" />
+                {user?.account?.avatar?.secure_url ? (
+                  <Image src={user?.account?.avatar?.secure_url} alt="avatar" />
                 ) : (
-                  <Image src={user.avatar} alt="avatar" />
+                  <Image src={user?.account?.avatar} alt="avatar" />
                 )}
               </div>
-              <div className="email">{user.email}</div>
+              <div className="email">{user?.email}</div>
               {user.newsletter === true ? (
                 <FontAwesomeIcon icon={faNewspaper} className="news" />
               ) : (
                 <FontAwesomeIcon icon={faXmark} className="news" />
               )}
               {user.date ? (
-                <div className="date">{user.date}</div>
+                <div className="date">{user?.date}</div>
               ) : (
                 <div className="date">no date</div>
               )}

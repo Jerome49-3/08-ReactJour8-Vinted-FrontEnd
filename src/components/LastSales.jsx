@@ -42,7 +42,7 @@ const LastSales = () => {
     <div className="wrapper">
       <div className="boxLastSales">
         {data.map((transactions) => {
-          console.log("transactions in map on /transactions:", transactions);
+          // console.log("transactions in map on /transactions:", transactions);
           return (
             <div className="boxTansactions" key={transactions._id}>
               <Link to={`/transactions/${transactions._id}`}>

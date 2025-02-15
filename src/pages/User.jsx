@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import saveToken from "../assets/lib/saveToken";
+// import saveToken from "../assets/lib/saveToken";
 import { useUser } from "../assets/lib/userFunc";
+import decryptUser from "../assets/lib/decryptUser";
 
 //components
 import Image from "../components/Image";
@@ -25,24 +27,26 @@ const User = () => {
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [newsletter, setNewsletter] = useState(null);
+  const [newAdmin, setNewAdmin] = useState(null);
+  const [sendEmail, setSendMail] = useState(null);
+  const [dataAdmin, setDataAdmin] = useState(null);
+  console.log("dataAdmin in /users/${id} (GET):", dataAdmin);
+  const [dataNews, setDataNews] = useState(null);
+  console.log("dataNews in /users/${id} (GET):", dataNews);
 
   // console.log("pictures in /users/${id}:", pictures);
   // console.log("avatar in /users/${id}:", avatar);
   const [errorMessage, setErrorMessage] = useState("");
-  const [data, setData] = useState();
-  console.log("data /users/${userId}:", data);
+  const [data, setData] = useState(null);
+  console.log("data in /users/${userId}:", data);
+  console.log(
+    "data?.emailIsConfirmed in /users/${userId:",
+    data?.emailIsConfirmed
+  );
+
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const {
-    token,
-    setToken,
-    user,
-    setUser,
-    isAdmin,
-    setIsAdmin,
-    avatar,
-    setAvatar,
-  } = useUser();
+  const { token, isAdmin, avatar, setAvatar } = useUser();
   // console.log("token /users/${userId}:", token);
   // console.log("user /users/${userId}:", user);
   useEffect(() => {
@@ -58,17 +62,22 @@ const User = () => {
             withCredentials: true,
           }
         );
-        // console.log("response in /users/${id} (GET):", response);
+        console.log("response in /users/${id} (GET):", response);
         if (response?.data?.token) {
           try {
             const newToken = await response?.data?.token;
             // console.log("newToken in /users/${id} (GET):", newToken);
             if (newToken) {
-              setToken(newToken);
-              saveToken(newToken, setUser, setIsAdmin);
-              setData(user);
+              const userUpdated = await decryptUser(newToken);
+              console.log("userUpdated in /users/${id} (GET):", userUpdated);
+              if (userUpdated) {
+                setData(userUpdated);
+                setDataAdmin(userUpdated?.isAdmin.toString());
+                setDataNews(userUpdated?.newsletter.toString());
+              }
               setAvatar(
-                data?.account?.avatar || data?.account?.avatar?.secure_url
+                userUpdated?.account?.avatar?.secure_url ||
+                  userUpdated?.account?.avatar
               );
               setIsLoading(false);
             } else {
@@ -92,7 +101,7 @@ const User = () => {
     formData.append("pictures", pictures);
     formData.append("username", username);
     formData.append("email", email);
-    formData.append("isAdmin", isAdmin);
+    formData.append("isAdmin", newAdmin);
     formData.append("newsletter", newsletter);
     try {
       const response = await axios.put(
@@ -159,6 +168,30 @@ const User = () => {
     }
   };
 
+  const handleSendMailCode = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/sendMail/sendCode/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: "Bearer token",
+            "content-type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      );
+      if (response.data) {
+        console.log("response.data:", response.data);
+        setSendMail(response.data);
+      }
+    } catch (error) {
+      console.log(error.message);
+      setErrorMessage(error.message);
+    }
+  };
+
   return isLoading ? (
     <Loading />
   ) : (
@@ -209,52 +242,59 @@ const User = () => {
               />
             </div>
             <div className="boxIsAdmin">
-              {data?.isAdmin === true ? (
+              {isAdmin === true && (
                 <Input
                   label="Admin:"
                   id="admin"
                   type="text"
-                  placeholder="true"
-                  value={isAdmin || ""}
+                  placeholder={dataAdmin}
+                  value={newAdmin || ""}
                   classInput="isAdmin"
-                  setState={setIsAdmin}
-                />
-              ) : (
-                <Input
-                  label="Admin:"
-                  type="text"
-                  id="admin"
-                  placeholder="false"
-                  value={isAdmin || ""}
-                  classInput="isAdmin"
-                  setState={setIsAdmin}
+                  setState={setNewAdmin}
                 />
               )}
             </div>
             <div className="boxNewsletter">
-              {data?.newsletter === true ? (
-                <Input
-                  label="newsletter:"
-                  type="text"
-                  placeholder="true"
-                  id="newsletter"
-                  value={newsletter || ""}
-                  classInput="newsletter"
-                  setState={setNewsletter}
-                />
-              ) : (
-                <Input
-                  label="newsletter:"
-                  type="text"
-                  id="newsletter"
-                  placeholder="false"
-                  value={newsletter || ""}
-                  classInput="newsletter"
-                  setState={setNewsletter}
-                />
+              <Input
+                label="newsletter:"
+                type="text"
+                placeholder={dataNews}
+                id="newsletter"
+                value={dataNews || ""}
+                classInput="newsletter"
+                setState={setNewsletter}
+              />
+            </div>
+            <div className="boxEmailIsConfirmed">
+              <h3>email confirmé:</h3>
+              <div>{data?.emailIsConfirmed.toString()}</div>
+              {/* <Links
+                path="/sendEmail"
+                classLink="linkSendMail"
+                state={{
+                  data: {
+                    usernameDest: data?.account?.username,
+                    admin: user?.account?.username,
+                    codeDest: null,
+                  },
+                }}
+                linkText="Renvoyer le code"
+              /> */}
+              {data?.emailIsConfirmed.toString() === "false" && (
+                <>
+                  <Button
+                    handleClick={handleSendMailCode}
+                    buttonText="Renvoyer le code"
+                    classButton="btnSendMailCode"
+                  />
+                  {<p>{sendEmail}</p>}
+                </>
               )}
             </div>
-            <div className="boxDate">Date de création: {data?.date}</div>
+            <div className="boxDate">
+              <div>Date de création:</div>
+              <div>{data?.date}</div>
+            </div>
             <div className="boxButton">
               <Button
                 buttonText="Update profile"

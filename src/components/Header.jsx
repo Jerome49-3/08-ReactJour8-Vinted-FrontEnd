@@ -25,10 +25,10 @@ const Header = ({
 }) => {
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
-  const { token, user, avatar } = useUser();
+  const { token, user, avatarHeader } = useUser();
   // console.log("token in header:", token);
   console.log("user: in header:", user);
-  useEffect(() => {}, []);
+  console.log("avatarHeader in header:", avatarHeader);
 
   return (
     <header>
@@ -86,9 +86,11 @@ const Header = ({
                 >
                   <div className="hello">{user?.account?.username}</div>
                   <div className="boxAvatar">
-                    {avatar && (
-                      <Image src={avatar} alt="avatar" classImg="imgAvatar" />
-                    )}
+                    <Image
+                      src={avatarHeader}
+                      alt="avatarHeader"
+                      classImg="imgAvatar"
+                    />
                   </div>
                 </li>
               ) : null}

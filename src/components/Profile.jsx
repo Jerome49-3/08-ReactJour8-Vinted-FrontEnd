@@ -10,11 +10,22 @@ import Image from "./Image";
 import Input from "./Input";
 import InputFile from "./InputFile";
 import Button from "./Button";
+
+//lib
+import decryptUser from "../assets/lib/decryptUser";
 import saveToken from "../assets/lib/saveToken";
 
 const Profile = () => {
-  const { token, setToken, user, setUser, setIsAdmin, avatar, setAvatar } =
-    useUser();
+  const {
+    token,
+    setToken,
+    user,
+    setUser,
+    setIsAdmin,
+    avatar,
+    setAvatar,
+    setAvatarHeader,
+  } = useUser();
   console.log("user in /profile/${id}:", user);
   // console.log("token in /profile/${id}:", token);
   const { id } = useParams();
@@ -29,6 +40,7 @@ const Profile = () => {
   const [email, setEmail] = useState(null);
   const [newsletter, setNewsletter] = useState(null);
   console.log("avatar in /profile/${id}::", avatar);
+  const [dataNews, setDataNews] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -52,10 +64,17 @@ const Profile = () => {
             try {
               const newToken = await response?.data?.token;
               if (newToken) {
-                setToken(newToken);
-                await saveToken(newToken, setUser, setIsAdmin);
-                setData(user);
-                setAvatar(data?.account?.avatar?.secure_url);
+                const userUpdated = await decryptUser(newToken);
+                console.log("userUpdated in /users/${id} (GET):", userUpdated);
+                if (userUpdated) {
+                  setData(userUpdated);
+                  setDataNews(userUpdated?.newsletter.toString());
+                }
+                setAvatar(
+                  userUpdated?.account?.avatar?.secure_url ||
+                    userUpdated?.account?.avatar
+                );
+                setIsLoading(false);
               } else {
                 console.log("not newToken in /profile");
               }
@@ -93,20 +112,62 @@ const Profile = () => {
             Authorization: `Bearer ${token}`,
             "content-type": "multipart/form-data",
           },
+          withCredentials: true,
         }
       );
-      if (response) {
-        // console.log('response in /profile/${id}::', response);
-        console.log(
-          "response.data in handleUpdateData in /profile/${id}::",
-          response.data
-        );
-        setTimeout(() => {
-          alert(response?.data?.message);
-          setIsLoading(false);
-          navigate(`/`);
-        }, 1000);
+      // console.log('response in /profile/${id}::', response);
+      console.log(
+        "response.data in handleUpdateData in /profile/${id}::",
+        response.data
+      );
+      if (response?.data?.token) {
+        try {
+          const newToken = await response?.data?.token;
+          if (newToken) {
+            const userUpdated = await decryptUser(newToken);
+            console.log("userUpdated in /users/${id} (GET):", userUpdated);
+            if (userUpdated) {
+              setData(userUpdated);
+              setDataNews(userUpdated?.newsletter.toString());
+            }
+            setAvatar(
+              userUpdated?.account?.avatar?.secure_url ||
+                userUpdated?.account?.avatar
+            );
+            if (id === userUpdated._id) {
+              console.log("userUpdated._id in profile:", userUpdated._id);
+              console.log("id in profile:", id);
+              console.log(
+                "typeof userUpdated._id in profile:",
+                typeof userUpdated._id
+              );
+              const avatarSecureUrl = await userUpdated?.account?.avatar
+                ?.secure_url;
+              const avatarUrl = await userUpdated?.account?.avatar;
+              console.log("typeof id in profile:", typeof id);
+              console.log("avatarSecureUrl in profile:", avatarSecureUrl);
+              console.log("avatarUrl in profile:", avatarUrl);
+              setToken(newToken);
+              saveToken(newToken, setUser, setIsAdmin);
+              if (typeof avatarUrl !== "object") {
+                setAvatarHeader(avatarUrl);
+              } else {
+                setAvatarHeader(avatarSecureUrl);
+              }
+            }
+            setIsLoading(false);
+          } else {
+            console.log("not newToken in /profile");
+          }
+        } catch (error) {
+          console.log("error after response?.data?.token:", error);
+        }
       }
+      setTimeout(() => {
+        alert(response?.data?.message);
+        setIsLoading(false);
+        navigate(`/`);
+      }, 1000);
     } catch (error) {
       console.log(error?.message);
       setErrorMessage(error?.response?.data?.message || "update failed");

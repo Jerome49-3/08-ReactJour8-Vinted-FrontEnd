@@ -133,7 +133,7 @@ header {
 
 @media all and (min-device-width : 576px) {
   header {
-    min-height: 10vh;
+    height: 10vh;
 
     .wrapper {
       .topHeader {
@@ -216,7 +216,6 @@ header {
 
   /* HEADER */
   header {
-    min-height: 10vh;
 
     .wrapper {
       .topHeader {

@@ -1,6 +1,7 @@
 .boxUserId {
   @include flexColCenter;
   gap: 20px;
+  width: 100%;
 
   .top {
     @include flexCenter;
@@ -20,13 +21,11 @@
       gap: 10px;
 
       & img {
-        width: 100%;
-        height: 100%;
+        width: 400px;
+        height: 400px;
         object-fit: cover;
         border-radius: 5px;
       }
-
-      .boxPictures {}
     }
 
     .right {
@@ -35,6 +34,18 @@
       justify-content: space-around;
       padding: 0 10px 0 10px;
       gap: 1.25em;
+
+      .boxEmailIsConfirmed {
+        .btnSendMailCode {
+          @include btn;
+        }
+      }
+
+      .boxDate,
+      .boxEmailIsConfirmed {
+        @include flexBetween;
+        width: 100%;
+      }
 
       .boxUsername,
       .boxEmail,

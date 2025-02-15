@@ -15,6 +15,11 @@ export const UserProvider = ({ children }) => {
     sessionStorage.getItem("vintaidUser") || null
   );
   const [avatar, setAvatar] = useState(null);
+  const [avatarHeader, setAvatarHeader] = useState(null);
+  const avatarSecureUrl = user?.account?.avatar?.secure_url;
+  console.log("avatarSecureUrl: in userProvider:", avatarSecureUrl);
+  const avatarUrl = user?.account?.avatar;
+  console.log("avatarUrl: in userProvider:", avatarUrl);
   const [isLoading, setIsLoading] = useState(null);
   // console.log("user in UserProvider:", user);
   const navigate = useNavigate();
@@ -47,6 +52,13 @@ export const UserProvider = ({ children }) => {
     }
     return [];
   });
+  useEffect(() => {
+    if (typeof avatarSecureUrl !== "object") {
+      setAvatarHeader(avatarSecureUrl);
+    } else {
+      setAvatarHeader(avatarUrl);
+    }
+  }, []);
 
   useEffect(() => {
     if (token) {
@@ -70,6 +82,7 @@ export const UserProvider = ({ children }) => {
           if (response?.data?.token) {
             setToken(response?.data?.token);
             saveToken(response?.data?.token, setUser, setIsAdmin);
+            setAvatarHeader(user?.account?.avatar?.secure_url);
             setIsLoading(false);
           } else {
             console.log("response?.status:", response?.status);
@@ -91,14 +104,12 @@ export const UserProvider = ({ children }) => {
   }, [token]);
 
   useEffect(() => {
-    const avatarUrl = user?.account?.avatar;
-    const avatarSecureUrl = user?.account?.avatar?.secure_url;
     if (typeof avatarUrl !== "object") {
-      setAvatar(avatarUrl);
+      setAvatarHeader(avatarUrl);
     } else {
-      setAvatar(avatarSecureUrl);
+      setAvatarHeader(avatarSecureUrl);
     }
-  }, [user]);
+  }, []);
 
   useLayoutEffect(() => {
     axiosRetry(axios, {
@@ -146,6 +157,7 @@ export const UserProvider = ({ children }) => {
         setToken(null);
         setUser(null);
         setIsAdmin(false);
+        setAvatarHeader(null);
         sessionStorage.clear();
       }
     } catch (error) {
@@ -170,6 +182,8 @@ export const UserProvider = ({ children }) => {
         setIsLoading,
         avatar,
         setAvatar,
+        avatarHeader,
+        setAvatarHeader,
       }}
     >
       {children}

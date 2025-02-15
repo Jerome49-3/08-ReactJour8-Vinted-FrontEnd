@@ -506,7 +506,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 
 @media all and (min-device-width: 576px) {
   header {
-    min-height: 10vh;
+    height: 10vh;
   }
   header .wrapper .topHeader {
     flex-direction: row !important;
@@ -575,9 +575,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 @media all and (min-width: 768px) {
   /* HEADER */
-  header {
-    min-height: 10vh;
-  }
   header .wrapper .topHeader {
     flex-direction: row !important;
     justify-content: space-between;
@@ -1342,6 +1339,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 .boxUserId .top {
   display: flex;
@@ -1367,8 +1365,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   gap: 10px;
 }
 .boxUserId .bottom .left img {
-  width: 100%;
-  height: 100%;
+  width: 400px;
+  height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
@@ -1379,6 +1377,24 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   justify-content: space-around;
   padding: 0 10px 0 10px;
   gap: 1.25em;
+}
+.boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode {
+  color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000;
+}
+.boxUserId .bottom .right .boxDate,
+.boxUserId .bottom .right .boxEmailIsConfirmed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 .boxUserId .bottom .right .boxUsername,
 .boxUserId .bottom .right .boxEmail,
@@ -1448,8 +1464,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 60%;
-  z-index: 200;
+  max-width: 60%;
+  z-index: 600;
   background-color: #ffffff;
   animation: appearPanel 0.5s linear 0.25s 1 normal both;
   box-shadow: 0px 0px 1px #2DB0BA;
@@ -1487,7 +1503,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  width: 100%;
+  max-width: 100%;
   gap: 90px;
 }
 .toggleNav .bodyAside a, .toggleNav .bodyAside button {
@@ -1519,11 +1535,35 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   animation: disappearPanel 1s linear 0.25s 1 normal both;
 }
 
-@media all and (min-device-width: 576px) {
+@media all and (min-width: 576px) and (max-width: 767px) {
   .toggleNav {
     width: 50%;
     top: 50%;
     left: 75%;
+  }
+}
+@media all and (min-width: 768px) {
+  .toggleNav {
+    width: 40%;
+    left: 75%;
+  }
+}
+@media all and (min-width: 992px) {
+  .toggleNav {
+    width: 30%;
+    left: 84.75%;
+  }
+}
+@media all and (min-width: 12OOpx) {
+  .toggleNav {
+    width: 50%;
+    left: 75%;
+  }
+}
+@media all and (min-device-width: 1400px) {
+  .toggleNav {
+    width: 25%;
+    left: 87.45%;
   }
 }
 /* FORM */

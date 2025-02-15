@@ -11,7 +11,7 @@ const Transactions = () => {
   const { id } = useParams();
   const { token } = useUser();
   const [data, setData] = useState();
-  console.log("data in /transactions/:id:", data);
+  // console.log("data in /transactions/:id:", data);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -30,7 +30,7 @@ const Transactions = () => {
         );
         if (response.data) {
           setData(response.data);
-          console.log("response.data in /transactions/:id:", response.data);
+          // console.log("response.data in /transactions/:id:", response.data);
           setIsLoading(false);
         }
       } catch (error) {
