@@ -287,3 +287,7 @@ body {
 input[type="file"] {
   display: none;
 }
+
+a:visited {
+  color: #2db0ba;
+}

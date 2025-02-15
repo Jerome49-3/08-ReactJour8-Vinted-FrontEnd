@@ -3,7 +3,6 @@
   @include flexCenter;
   flex-wrap: wrap;
   width: 100%;
-  font-size: 1.15rem;
   padding: 5px;
 
   & a {
@@ -15,13 +14,12 @@
       align-items: center;
       flex-direction: column;
       width: 100%;
-      height: 350px;
       gap: 5px;
+      min-height: 350px;
       background-color: rgb(189, 189, 189);
       // border: 2px solid crimson;
-      margin: auto;
       position: relative;
-      margin-bottom: 10px;
+      font-size: 1.15rem;
 
       &:hover {
         -webkit-animation: scaleArticle 01s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
@@ -30,18 +28,17 @@
 
       .boxImgArticle {
         width: 100%;
-        height: 250px;
         display: flex;
         justify-content: center;
-        align-items: flex-start;
-        flex-wrap: wrap;
+        align-items: center;
         flex-direction: column;
-        position: relative;
+
         // border: 2px solid blue;
 
         .imgArticle {
+          display: block;
           width: 100%;
-          height: 100%;
+          height: 250px;
           object-fit: cover;
         }
 
@@ -62,11 +59,22 @@
       }
 
       .boxUser {
-        display: flex;
-        align-items: center;
+        @include flexStart;
         gap: 10px;
         width: 100%;
+        height: 50px;
         padding: 5px 10px 5px 10px;
+
+        & h5 {
+          font-weight: 700;
+          font-size: 20px;
+          text-shadow: 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black, 1px 1px 1px $black, 0px 0px 5px $black;
+        }
+
+        .imgAvatar {
+          height: 30px;
+          width: 30px;
+        }
       }
 
       .boxHearth {
@@ -80,25 +88,37 @@
         z-index: 200;
         @include flexCenter;
         font-size: 1.25rem;
-        box-shadow: 0px 0px 1px $black;
+
+        .svg-inline--fa {
+          filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black) drop-shadow(1px 1px 1px $black);
+        }
       }
 
       .footerArticle {
         padding: 5px 10px 5px 10px;
         gap: 5px;
         width: 100%;
+        height: 50px;
         @include flexBetween;
 
         .boxNameMarque,
         .price {
-          width: 50%;
+          font-weight: 700;
+          font-size: 20px;
+          text-shadow: 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black, 1px 1px 1px $black, 0px 0px 5px $black;
         }
 
         .boxNameMarque {
           @include flexColStart;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          width: calc(50%);
+
+          & div:nth-child(1) {
+            display: inline-block;
+            width: calc(100%);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
         }
 
         .price {
@@ -109,7 +129,7 @@
   }
 }
 
-@media all and (min-device-width : 576px) {
+@media all and (min-width : 576px) {
   .boxArticles {
     justify-content: flex-start;
 
@@ -129,7 +149,7 @@
     padding: 20px 0 20px 0;
 
     & a {
-      width: calc(100% / 3.20);
+      width: calc(100% / 4.20);
 
       & article {
         width: 100%;
@@ -139,8 +159,8 @@
   }
 }
 
-// @media all and (min-device-width : 992px) {}
+// @media all and (min-width : 992px) {}
 
-// @media all and (min-device-width : 1200px) {}
+// @media all and (min-width : 1200px) {}
 
-// @media all and (min-device-width : 1400px) {}
+// @media all and (min-width : 1400px) {}

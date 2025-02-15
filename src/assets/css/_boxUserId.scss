@@ -36,8 +36,29 @@
       gap: 1.25em;
 
       .boxEmailIsConfirmed {
+        @include flexBetween;
+        width: 100%;
+
+        .infosEmailIsConfirmed {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+
+          & h3 {
+            width: calc(100%/3);
+            @include flexStart;
+          }
+
+          & div {
+            width: calc(100%/3);
+            @include flexStart;
+          }
+        }
+
         .btnSendMailCode {
           @include btn;
+          width: calc(100%/3);
         }
       }
 

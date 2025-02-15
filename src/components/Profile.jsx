@@ -15,6 +15,9 @@ import Button from "./Button";
 import decryptUser from "../assets/lib/decryptUser";
 import saveToken from "../assets/lib/saveToken";
 
+//images
+import updateIcon from "../assets/images/updateIcon.png";
+
 const Profile = () => {
   const {
     token,
@@ -24,7 +27,7 @@ const Profile = () => {
     setIsAdmin,
     avatar,
     setAvatar,
-    setAvatarHeader,
+    setImgBoxUser,
   } = useUser();
   console.log("user in /profile/${id}:", user);
   // console.log("token in /profile/${id}:", token);
@@ -130,6 +133,21 @@ const Profile = () => {
               setData(userUpdated);
               setDataNews(userUpdated?.newsletter.toString());
             }
+            const avatarSecureUrl = userUpdated?.account?.avatar?.secure_url;
+            console.log("avatarSecureUrl: in userProvider:", avatarSecureUrl);
+            console.log(
+              "typeof avatarSecureUrl: in userProvider:",
+              typeof avatarSecureUrl
+            );
+            const avatarUrl = userUpdated?.account?.avatar;
+            console.log("typeof avatarUrl: in userProvider:", typeof avatarUrl);
+            if (typeof avatarSecureUrl === "string") {
+              setImgBoxUser(avatarSecureUrl);
+            } else if (typeof avatarUrl === "string") {
+              setImgBoxUser(avatarUrl);
+            } else {
+              setImgBoxUser(null);
+            }
             setAvatar(
               userUpdated?.account?.avatar?.secure_url ||
                 userUpdated?.account?.avatar
@@ -148,11 +166,11 @@ const Profile = () => {
               console.log("avatarSecureUrl in profile:", avatarSecureUrl);
               console.log("avatarUrl in profile:", avatarUrl);
               setToken(newToken);
-              saveToken(newToken, setUser, setIsAdmin);
+              saveToken(newToken, setUser, setIsAdmin, setImgBoxUser);
               if (typeof avatarUrl !== "object") {
-                setAvatarHeader(avatarUrl);
+                setImgBoxUser(avatarUrl);
               } else {
-                setAvatarHeader(avatarSecureUrl);
+                setImgBoxUser(avatarSecureUrl);
               }
             }
             setIsLoading(false);
@@ -245,13 +263,13 @@ const Profile = () => {
                 <Button
                   buttonText="Update profile"
                   handleClick={handleUpdateData}
-                  // src={updateIcon}
+                  src={updateIcon}
                   classButton="updateButton"
                 />
                 <Button
                   buttonText="Delete profile"
                   // handleClick={handleDeleteData}
-                  // src={updateIcon}
+                  src={updateIcon}
                   classButton="deleteButton"
                 />
               </div>

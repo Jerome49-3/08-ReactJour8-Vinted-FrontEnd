@@ -20,12 +20,14 @@ const Login = ({ type, setType, icon1, icon2 }) => {
     setUser,
     setIsAdmin,
     axios,
-    isLoading,
-    setIsLoading,
+    imgBoxUser,
+    setImgBoxUser,
   } = useUser();
+  console.log("imgBoxUser in Login:", imgBoxUser);
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(null);
   const navigate = useNavigate();
 
   const handleType = () => {
@@ -55,7 +57,12 @@ const Login = ({ type, setType, icon1, icon2 }) => {
             );
             setToken(response?.data?.token);
             console.log("token in handlesubmit in /login:", token);
-            saveToken(response?.data?.token, setUser, setIsAdmin);
+            saveToken(
+              response?.data?.token,
+              setUser,
+              setIsAdmin,
+              setImgBoxUser
+            );
             setIsLoading(false);
           }
           if (isLoading !== true) {
@@ -124,20 +131,20 @@ const Login = ({ type, setType, icon1, icon2 }) => {
               <Links />
             </small>
           </div>
+          {errorMessage && (
+            <p
+              style={{
+                color: "red",
+                fontSize: "1.05rem",
+                fontWeight: "700",
+                textShadow:
+                  "0px 0px 1px orangered, 0.15px 0.15px 1.25px black, 0.35px 0.35px 1.5px green",
+              }}
+            >
+              {errorMessage}
+            </p>
+          )}
         </form>
-        {errorMessage && (
-          <p
-            style={{
-              color: "red",
-              fontSize: "1.05rem",
-              fontWeight: "700",
-              textShadow:
-                "0px 0px 1px orangered, 0.15px 0.15px 1.25px black, 0.35px 0.35px 1.5px green",
-            }}
-          >
-            {errorMessage}
-          </p>
-        )}
         <Links path="/forgotPassword" />
       </div>
     </div>

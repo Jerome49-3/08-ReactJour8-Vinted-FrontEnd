@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-else-if */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useState, useLayoutEffect } from "react";
 import Cookies from "js-cookie";
@@ -10,16 +11,23 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [token, setToken] = useState(Cookies.get("accessTokenV") || null);
-  // console.log("token in UserProvider:", token);
+  console.log("token in UserProvider:", token);
   const [user, setUser] = useState(
     sessionStorage.getItem("vintaidUser") || null
   );
   const [avatar, setAvatar] = useState(null);
-  const [avatarHeader, setAvatarHeader] = useState(null);
+  const [imgBoxUser, setImgBoxUser] = useState(
+    sessionStorage.getItem("vintaidImgBoxUser") || null
+  );
+  console.log("imgBoxUser: in userProvider:", imgBoxUser);
   const avatarSecureUrl = user?.account?.avatar?.secure_url;
-  console.log("avatarSecureUrl: in userProvider:", avatarSecureUrl);
   const avatarUrl = user?.account?.avatar;
-  console.log("avatarUrl: in userProvider:", avatarUrl);
+  // console.log("avatarSecureUrl: in userProvider:", avatarSecureUrl);
+  // console.log(
+  //   "typeof avatarSecureUrl: in userProvider:",
+  //   typeof avatarSecureUrl
+  // );
+  // console.log("typeof avatarUrl: in userProvider:", typeof avatarUrl);
   const [isLoading, setIsLoading] = useState(null);
   // console.log("user in UserProvider:", user);
   const navigate = useNavigate();
@@ -52,19 +60,12 @@ export const UserProvider = ({ children }) => {
     }
     return [];
   });
-  useEffect(() => {
-    if (typeof avatarSecureUrl !== "object") {
-      setAvatarHeader(avatarSecureUrl);
-    } else {
-      setAvatarHeader(avatarUrl);
-    }
-  }, []);
 
   useEffect(() => {
     if (token) {
-      // console.log("token in useEffect on UserProvider:", token);
+      console.log("token in useEffect on UserProvider:", token);
       try {
-        saveToken(token, setUser, setIsAdmin);
+        saveToken(token, setUser, setIsAdmin, setImgBoxUser);
       } catch (error) {
         console.log("error after saveToken:", error);
       }
@@ -81,8 +82,12 @@ export const UserProvider = ({ children }) => {
           // console.log("response in /user/refreshToken:", response);
           if (response?.data?.token) {
             setToken(response?.data?.token);
-            saveToken(response?.data?.token, setUser, setIsAdmin);
-            setAvatarHeader(user?.account?.avatar?.secure_url);
+            saveToken(
+              response?.data?.token,
+              setUser,
+              setIsAdmin,
+              setImgBoxUser
+            );
             setIsLoading(false);
           } else {
             console.log("response?.status:", response?.status);
@@ -104,12 +109,14 @@ export const UserProvider = ({ children }) => {
   }, [token]);
 
   useEffect(() => {
-    if (typeof avatarUrl !== "object") {
-      setAvatarHeader(avatarUrl);
-    } else {
-      setAvatarHeader(avatarSecureUrl);
+    if (token) {
+      if (typeof avatarUrl !== "object") {
+        setImgBoxUser(avatarUrl);
+      } else {
+        setImgBoxUser(avatarSecureUrl);
+      }
     }
-  }, []);
+  }, [imgBoxUser]);
 
   useLayoutEffect(() => {
     axiosRetry(axios, {
@@ -157,7 +164,7 @@ export const UserProvider = ({ children }) => {
         setToken(null);
         setUser(null);
         setIsAdmin(false);
-        setAvatarHeader(null);
+        setImgBoxUser(null);
         sessionStorage.clear();
       }
     } catch (error) {
@@ -182,8 +189,8 @@ export const UserProvider = ({ children }) => {
         setIsLoading,
         avatar,
         setAvatar,
-        avatarHeader,
-        setAvatarHeader,
+        imgBoxUser,
+        setImgBoxUser,
       }}
     >
       {children}

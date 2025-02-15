@@ -16,7 +16,7 @@ import Loading from "../components/Loading";
 //images
 import updateIcon from "../assets/images/updateIcon.png";
 
-const User = () => {
+const UserId = () => {
   const { id } = useParams();
   // console.log("id /users/${userId}:", id);
   // const { state } = useLocation();
@@ -184,7 +184,8 @@ const User = () => {
       );
       if (response.data) {
         console.log("response.data:", response.data);
-        setSendMail(response.data);
+        alert(response.data.message);
+        navigate(`/dashboard`);
       }
     } catch (error) {
       console.log(error.message);
@@ -266,8 +267,11 @@ const User = () => {
               />
             </div>
             <div className="boxEmailIsConfirmed">
-              <h3>email confirmé:</h3>
-              <div>{data?.emailIsConfirmed.toString()}</div>
+              <div className="infosEmailIsConfirmed">
+                <h3>email confirmé:</h3>
+                <div>{data?.emailIsConfirmed.toString()}</div>
+              </div>
+
               {/* <Links
                 path="/sendEmail"
                 classLink="linkSendMail"
@@ -317,4 +321,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default UserId;

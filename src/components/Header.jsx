@@ -25,10 +25,10 @@ const Header = ({
 }) => {
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
-  const { token, user, avatarHeader } = useUser();
+  const { token, user, imgBoxUser } = useUser();
   // console.log("token in header:", token);
   console.log("user: in header:", user);
-  console.log("avatarHeader in header:", avatarHeader);
+  console.log("imgBoxUser in header:", imgBoxUser);
 
   return (
     <header>
@@ -87,8 +87,8 @@ const Header = ({
                   <div className="hello">{user?.account?.username}</div>
                   <div className="boxAvatar">
                     <Image
-                      src={avatarHeader}
-                      alt="avatarHeader"
+                      src={imgBoxUser}
+                      alt="imgBoxUser"
                       classImg="imgAvatar"
                     />
                   </div>

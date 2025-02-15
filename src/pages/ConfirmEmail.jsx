@@ -43,7 +43,6 @@ const ConfirmEmail = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("code", JSON.stringify(code));
-    axios.defaults.withCredentials = true;
     try {
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_CONFIRMEMAIL,
@@ -52,8 +51,8 @@ const ConfirmEmail = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        },
-        { withCredentials: true }
+          withCredentials: true,
+        }
       );
       console.log("response in /confirmEmail:", response);
       if (response?.data?.token) {

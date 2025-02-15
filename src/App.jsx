@@ -44,7 +44,6 @@ import Login from "./pages/Login";
 import Publish from "./pages/Publish";
 import Payment from "./pages/Payment";
 import Dashboard from "./pages/Dashboard";
-import User from "./pages/User";
 import Transactions from "./pages/Transactions";
 import MyOffers from "./pages/MyOffers";
 import MyPurchases from "./pages/MyPurchases";
@@ -60,6 +59,7 @@ import ImgsModal from "./components/ImgsModal";
 import Profile from "./components/Profile";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
+import UserId from "./pages/UserId";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -146,7 +146,7 @@ function App() {
               <Route
                 path="/users/:id"
                 element={
-                  <User
+                  <UserId
                     faUserTie={faUserTie}
                     faNewspaper={faNewspaper}
                     faXmark={faXmark}
