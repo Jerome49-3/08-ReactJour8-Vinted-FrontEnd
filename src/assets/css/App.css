@@ -879,6 +879,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   -o-object-fit: cover;
      object-fit: cover;
   max-height: 78vh;
+  -o-object-position: top;
+     object-position: top;
 }
 .boxOffer .wrapper .top .left .imgLeft article {
   display: flex;

@@ -287,7 +287,9 @@ body {
 input[type="file"] {
   display: none;
 }
-
+a {
+  color: #2db0ba;
+}
 a:visited {
   color: #2db0ba;
 }
