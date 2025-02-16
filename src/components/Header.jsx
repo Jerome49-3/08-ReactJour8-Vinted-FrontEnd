@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeButton from "./ThemeButton";
 import { useUser } from "../assets/lib/userFunc";
 import { useEffect } from "react";
-
 //components
 import Image from "./Image";
 import Input from "./Input";
@@ -66,7 +65,7 @@ const Header = ({
                   </div>
                   <div>
                     <Link to="/login" className="linkConnect">
-                      se connecter
+                      connexion
                     </Link>
                   </div>
                 </li>

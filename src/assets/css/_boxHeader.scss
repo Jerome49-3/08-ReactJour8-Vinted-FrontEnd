@@ -115,14 +115,14 @@ header {
 
 .boxSearch {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 5%;
   background-color: #F5F6F7;
   border-radius: 5px;
   padding: 2px 2px 2px 10px;
-  width: 300px;
-  height: 35px;
+  width: 400px;
+  height: 30px;
   @include boxShadow;
 }
 
@@ -190,6 +190,14 @@ header {
                 & button {
                   @include flexCenter;
                 }
+
+                & a {
+                  padding: 2px;
+                }
+
+                & button {
+                  border-right: 2px solid $vertVinted;
+                }
               }
 
               &:nth-child(2) {
@@ -231,7 +239,7 @@ header {
         .containerBoxSearch {
           width: 50%;
           display: flex;
-          justify-content: center;
+          justify-content: flex-end;
         }
 
         & nav {

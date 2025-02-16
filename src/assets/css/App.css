@@ -488,14 +488,14 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 
 .boxSearch {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 5%;
   background-color: #F5F6F7;
   border-radius: 5px;
   padding: 2px 2px 2px 10px;
-  width: 300px;
-  height: 35px;
+  width: 400px;
+  height: 30px;
   box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
 }
 
@@ -563,6 +563,12 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     justify-content: center;
     align-items: center;
   }
+  header .wrapper .topHeader nav ul li div a {
+    padding: 2px;
+  }
+  header .wrapper .topHeader nav ul li div button {
+    border-right: 2px solid #2DB0BA;
+  }
   header .wrapper .topHeader nav ul li:nth-child(2) {
     background-color: #2DB0BA;
   }
@@ -587,7 +593,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   header .wrapper .topHeader .containerBoxSearch {
     width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
   }
   header .wrapper .topHeader nav {
     min-width: 33.3333333333%;

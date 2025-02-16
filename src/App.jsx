@@ -204,6 +204,10 @@ function App() {
                   farHeart={farHeart}
                   showToggleNav={showToggleNav}
                   setShowToggleNav={setShowToggleNav}
+                  priceMin={priceMin}
+                  setPriceMin={setPriceMin}
+                  priceMax={priceMax}
+                  setPriceMax={setPriceMax}
                 />
               }
             />
