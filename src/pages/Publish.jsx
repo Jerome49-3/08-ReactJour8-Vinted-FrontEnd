@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useUser } from "../assets/lib/userFunc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,6 +23,9 @@ const Publish = ({ faRotateRight }) => {
   const [color, setColor] = useState("");
   const [city, setCity] = useState("");
   const navigate = useNavigate();
+  useEffect(() => {
+    setErrorMessage("");
+  }, []);
 
   const handleSubmit = async (e) => {
     setErrorMessage("");
@@ -288,8 +291,8 @@ const Publish = ({ faRotateRight }) => {
             setState={setCity}
           />
           <Input type="submit" value="poster votre annonce" />
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </form>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>
     </div>
   ) : (

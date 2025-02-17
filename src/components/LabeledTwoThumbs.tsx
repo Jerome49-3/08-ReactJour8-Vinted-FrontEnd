@@ -78,11 +78,11 @@ const LabeledTwoThumbs: React.FC<Props> = ({ rtl, priceMin, setPriceMin, priceMa
               height: "15px",
               width: "15px",
               borderRadius: "50%",
-              backgroundColor: "#FFF",
+              backgroundColor: "#2DB0BA",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              boxShadow: "0px 2px 6px #AAA",
+              boxShadow: "0px 0px 4px #000",
             }} className="dotBarPrice"
           >
             <div

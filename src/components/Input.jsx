@@ -18,7 +18,7 @@ const Input = ({
     console.log("e.target.value:", e.target.value);
     console.log("e on input:", e);
     setState(e.target.value);
-    if (e.target.value < e.target.min || e.target.value > e.target.max) {
+    if (e.target.value < e.target.min || e.target.value > e.target.min) {
       setErrorValidInput(e.target.validationMessage);
     }
   };

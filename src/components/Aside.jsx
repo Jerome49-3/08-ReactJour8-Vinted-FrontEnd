@@ -15,6 +15,7 @@ const Aside = ({
   priceMax,
   setPriceMax,
   showFilter,
+  setShowFilter,
 }) => {
   // console.log('showToggleNav in aside:', showToggleNav);
   const { token, isAdmin, user, logout } = useUser();
@@ -31,6 +32,7 @@ const Aside = ({
           buttonText="X"
           handleClick={() => {
             setShowToggleNav(false);
+            setShowFilter(false);
           }}
           classButton="btnCloseAside"
         />

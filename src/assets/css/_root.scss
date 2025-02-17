@@ -43,6 +43,7 @@ input {
 
 input[type="submit"] {
   @include btn;
+  height: 30px;
 }
 
 input:not([type="submit"], [type="search"]) {
