@@ -83,6 +83,16 @@
   }
 }
 
+@keyframes appearFilter {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes disappearPanel {
   0% {
     opacity: 1;

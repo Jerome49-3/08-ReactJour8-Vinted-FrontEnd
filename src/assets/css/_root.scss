@@ -70,6 +70,12 @@ textarea {
   padding: 0px 0px 10px 0px;
 }
 
+.redInput {
+  font-size: 12px;
+  color: red;
+  height: 10px;
+}
+
 input:focus-visible,
 textarea:focus-visible {
   outline: transparent;

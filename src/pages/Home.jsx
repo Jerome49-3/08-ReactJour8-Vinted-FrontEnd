@@ -14,7 +14,9 @@ import OfferCard from "../components/OfferCard";
 //images
 // import noImg from '../assets/images/no-image.jpg';
 
-const Home = ({ search, faHeart, farHeart }) => {
+const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
+  console.log("priceMin in Home:", priceMin);
+  console.log("priceMax in Home:", priceMax);
   // console.log("isFavorite in Home:", isFavorite);
   // console.log('search in Home:', search);
   const [data, setData] = useState();
@@ -28,7 +30,9 @@ const Home = ({ search, faHeart, farHeart }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_URL_HOME}?title=${search}`
+          `${
+            import.meta.env.VITE_REACT_APP_URL_HOME
+          }?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}`
         );
         if (response.data) {
           console.log("response on /Home (Offer):", response);
@@ -42,7 +46,7 @@ const Home = ({ search, faHeart, farHeart }) => {
       }
     };
     fetchData();
-  }, [search]);
+  }, [search, priceMin, priceMax]);
 
   return isLoading ? (
     <>

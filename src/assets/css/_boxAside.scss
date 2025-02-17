@@ -4,11 +4,11 @@
   flex-direction: column;
   max-width: 60%;
   z-index: 600;
-  background-color: $white;
+  background-color: $backgAside;
   animation: appearPanel 0.5s linear 0.25s 1 normal both;
   box-shadow: 0px 0px 1px $vertVinted;
-  gap: 50px;
-  padding: 20px;
+  gap: 20px;
+  padding: 10px 20px;
   height: 100%;
   position: absolute;
   top: 50%;
@@ -20,46 +20,131 @@
   .headAside {
     width: 100%;
     @include flexEnd;
-    padding: 10px;
 
     .btnCloseAside {
       @include btn;
       width: 20%;
+      @include boxShadow;
     }
   }
 
-  .bodyAside {
-    @include flexColStart;
-    max-width: 100%;
+  .boxAside {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
     gap: 10px;
+    background-color: $backgBodyAside;
+    padding: 10px;
+    border-radius: 10px;
+    height: 90%;
+    @include boxShadow;
 
-    & a,
-    & button {
-      letter-spacing: 20%;
-      font-weight: 700;
-      font-size: 1.25rem;
-      @include textShadow;
-    }
-
-    & a {
-      color: #9e9e9e;
+    .boxFilterSearch {
       width: 100%;
-      text-align: center;
-      padding: 5px;
-      border-radius: 5px;
+      @include flexColStart;
+      animation: appearFilter 1s linear 0.45s 1 normal both;
 
-      &:active {
-        box-shadow: inset 0px 0px 5px $black, inset 0px 0px 5px $vertVinted;
+      .boxPriceMinMax {
+        @include flexColStart;
+        gap: 10px;
+        padding: 0px 10px 0px 10px;
+        width: 100%;
+
+        & h3 {
+          color: $vertVinted;
+          width: 100%;
+          border-bottom: 2px solid $vertVinted;
+          padding-bottom: 2px;
+        }
+
+        .boxInputFilter {
+          @include flexBetween;
+          gap: 40px;
+          width: 100%;
+
+          .priceMin,
+          .priceMax {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 50%;
+
+
+            & label {
+              color: $vertVinted;
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            }
+          }
+
+          & input {
+            border-bottom: transparent;
+            outline: 2px solid $vertVinted;
+            border-radius: 5px;
+            filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
+
+            &::placeholder {
+              text-align: center;
+              filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
+            }
+          }
+        }
       }
 
-      & p {
-        font-size: 1.15rem;
-        text-shadow: 0.25px 0.25px 1px $black;
+      .filterTwoThumbs {
+        width: 100%;
+        padding-top: 30px
       }
     }
 
-    & button {
-      color: red;
+    .bodyAside {
+      @include flexColStart;
+      width: 100%;
+      gap: 10px;
+
+      .boxTitleAside {
+        @include flexColStart;
+        gap: 5px;
+        padding: 0px 10px 0px 10px;
+        width: 100%;
+
+        & h3 {
+          color: $vertVinted;
+          width: 100%;
+          border-bottom: 2px solid $vertVinted;
+          padding-bottom: 2px;
+        }
+      }
+
+      & a,
+      & button {
+        letter-spacing: 20%;
+        font-weight: 700;
+        font-size: 1.25rem;
+        @include textShadow;
+      }
+
+      & a {
+        color: #9e9e9e;
+        width: 100%;
+        text-align: center;
+        padding: 5px;
+        border-radius: 5px;
+
+        &:active {
+          box-shadow: inset 0px 0px 5px $black, inset 0px 0px 5px $vertVinted;
+        }
+
+        & p {
+          font-size: 1.15rem;
+          text-shadow: 0.25px 0.25px 1px $black;
+        }
+      }
+
+      & button {
+        color: red;
+      }
     }
   }
 }

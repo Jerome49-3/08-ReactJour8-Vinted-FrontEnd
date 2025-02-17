@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Range, getTrackBackground } from "react-range";
 
-const STEP = 10;
+const STEP = 1000;
 const MIN = 0;
-const MAX = 5000;
+const MAX = 100000;
 
 interface Props {
   rtl: boolean;
@@ -15,7 +15,7 @@ interface Props {
 
 
 const LabeledTwoThumbs: React.FC<Props> = ({ rtl, priceMin, setPriceMin, priceMax, setPriceMax }) => {
-  const [values, setValues] = React.useState([500, 3500]);
+  const [values, setValues] = React.useState([0, 100000]);
 
   React.useEffect(() => {
     setPriceMin(values[0]);
@@ -75,8 +75,8 @@ const LabeledTwoThumbs: React.FC<Props> = ({ rtl, priceMin, setPriceMin, priceMa
             key={props.key}
             style={{
               ...props.style,
-              height: "25px",
-              width: "25px",
+              height: "15px",
+              width: "15px",
               borderRadius: "50%",
               backgroundColor: "#FFF",
               display: "flex",

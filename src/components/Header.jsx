@@ -3,12 +3,11 @@ import Logo from "../assets/images/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeButton from "./ThemeButton";
 import { useUser } from "../assets/lib/userFunc";
-import { useEffect } from "react";
 //components
 import Image from "./Image";
 import Input from "./Input";
 import Links from "./Links";
-import LabeledTwoThumbs from "./LabeledTwoThumbs";
+import Button from "./Button";
 
 const Header = ({
   show,
@@ -17,17 +16,24 @@ const Header = ({
   setSearch,
   showToggleNav,
   setShowToggleNav,
-  priceMax,
-  setPriceMax,
-  priceMin,
-  setPriceMin,
+  faFilter,
+  setShowFilter,
+  showFilter,
 }) => {
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user, imgBoxUser } = useUser();
   // console.log("token in header:", token);
-  console.log("user: in header:", user);
-  console.log("imgBoxUser in header:", imgBoxUser);
+  // console.log("user: in header:", user);
+  // console.log("imgBoxUser in header:", imgBoxUser);
+
+  const filterIcons = "filterIcons";
+  const btnFilter = "btnFilter";
+
+  const handleFilter = () => {
+    setShowFilter(!showFilter);
+    setShowToggleNav(!showToggleNav);
+  };
 
   return (
     <header>
@@ -45,7 +51,7 @@ const Header = ({
             <div className="boxSearch">
               <FontAwesomeIcon
                 icon="magnifying-glass"
-                className="search-icons"
+                className="searchIcons"
               />
               <Input
                 id="search"
@@ -53,6 +59,11 @@ const Header = ({
                 placeholder="Rechercher des articles"
                 value={search}
                 setState={setSearch}
+              />
+              <Button
+                icon={faFilter}
+                classButton={`${filterIcons} ${btnFilter}`}
+                handleClick={handleFilter}
               />
             </div>
           </div>
@@ -95,16 +106,6 @@ const Header = ({
               ) : null}
             </ul>
           </nav>
-        </div>
-        <div className="bottomHeader">
-          {search && (
-            <LabeledTwoThumbs
-              priceMin={priceMin}
-              setPriceMin={setPriceMin}
-              priceMax={priceMax}
-              setPriceMax={setPriceMax}
-            />
-          )}
         </div>
       </div>
     </header>

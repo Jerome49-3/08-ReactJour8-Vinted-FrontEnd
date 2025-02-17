@@ -11,7 +11,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [token, setToken] = useState(Cookies.get("accessTokenV") || null);
-  console.log("token in UserProvider:", token);
+  // console.log("token in UserProvider:", token);
   const [user, setUser] = useState(
     sessionStorage.getItem("vintaidUser") || null
   );
@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
   const [imgBoxUser, setImgBoxUser] = useState(
     sessionStorage.getItem("vintaidImgBoxUser") || null
   );
-  console.log("imgBoxUser: in userProvider:", imgBoxUser);
+  // console.log("imgBoxUser: in userProvider:", imgBoxUser);
   const avatarSecureUrl = user?.account?.avatar?.secure_url;
   const avatarUrl = user?.account?.avatar;
   // console.log("avatarSecureUrl: in userProvider:", avatarSecureUrl);

@@ -27,6 +27,24 @@ header {
         }
       }
 
+      .containerBoxSearch {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+
+        .boxSearch {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 5%;
+          border-radius: 5px;
+          padding: 2px 2px 2px 10px;
+          width: 100%;
+          height: 30px;
+          @include boxShadow;
+        }
+      }
+
       & nav {
         @include flexBetween;
         padding: 0 0 5px 0;
@@ -113,22 +131,19 @@ header {
   @include boxShadow;
 }
 
-.boxSearch {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5%;
-  background-color: #F5F6F7;
-  border-radius: 5px;
-  padding: 2px 2px 2px 10px;
-  width: 400px;
-  height: 30px;
-  @include boxShadow;
+.searchIcons,
+.filterIcons {
+  color: $vertVinted;
+  font-size: 1.25rem;
+  filter: drop-shadow(0px 0px 0.25px $black) drop-shadow(0.15px 0.15px 0.5px $black) drop-shadow(0.25px 0.25px 1px $black);
 }
 
-.search-icons {
-  color: var(--vertVintDark);
-  font-size: 1.25rem;
+.btnFilter {
+  width: 10%;
+}
+
+.filterIcons {
+  padding-right: 10px;
 }
 
 @media all and (min-device-width : 576px) {
@@ -240,6 +255,10 @@ header {
           width: 50%;
           display: flex;
           justify-content: flex-end;
+
+          .boxSearch {
+            width: 400px;
+          }
         }
 
         & nav {

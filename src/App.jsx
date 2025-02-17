@@ -15,6 +15,7 @@ import {
   faUser,
   faRotateRight,
   faHeart,
+  faFilter,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 library.add(
@@ -29,7 +30,8 @@ library.add(
   faUserTie,
   faUser,
   faRotateRight,
-  farHeart
+  farHeart,
+  faFilter
 );
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -67,15 +69,17 @@ function App() {
   const [showHero, setShowHero] = useState(false);
   const [showToggleNav, setShowToggleNav] = useState(false);
   const [showImgsModal, setShowImgsModal] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
   const [srcImgsModal, setSrcImgsModal] = useState(null);
   // console.log("srcImgsModal in app:", srcImgsModal);
   const [showNoOffer, setShowNoOffer] = useState(false);
 
   // console.log('showToggleNav in app:', showToggleNav);
   const [priceMin, setPriceMin] = useState(0);
-  // console.log('priceMin in app:', priceMin);
+  console.log("priceMin in app:", priceMin);
+  console.log("typeof priceMin in app:", typeof priceMin);
   const [priceMax, setPriceMax] = useState(0);
-  // console.log('priceMax in app:', priceMax);
+  console.log("typeof priceMax in app:", typeof priceMax);
   const [search, setSearch] = useState("");
   // console.log("search in app:", search);
   const [type, setType] = useState("password");
@@ -99,10 +103,9 @@ function App() {
             setSearch={setSearch}
             showToggleNav={showToggleNav}
             setShowToggleNav={setShowToggleNav}
-            priceMin={priceMin}
-            setPriceMin={setPriceMin}
-            priceMax={priceMax}
-            setPriceMax={setPriceMax}
+            faFilter={faFilter}
+            showFilter={showFilter}
+            setShowFilter={setShowFilter}
           />
           <Routes>
             <Route
@@ -205,9 +208,9 @@ function App() {
                   showToggleNav={showToggleNav}
                   setShowToggleNav={setShowToggleNav}
                   priceMin={priceMin}
-                  setPriceMin={setPriceMin}
                   priceMax={priceMax}
-                  setPriceMax={setPriceMax}
+                  showFilter={showFilter}
+                  setShowFilter={setShowFilter}
                 />
               }
             />
@@ -215,8 +218,15 @@ function App() {
           <Footer />
           {showToggleNav && (
             <Aside
+              search={search}
               showToggleNav={showToggleNav}
               setShowToggleNav={setShowToggleNav}
+              priceMin={priceMin}
+              setPriceMin={setPriceMin}
+              priceMax={priceMax}
+              setPriceMax={setPriceMax}
+              showFilter={showFilter}
+              setShowFilter={setShowFilter}
             />
           )}
           {show && (

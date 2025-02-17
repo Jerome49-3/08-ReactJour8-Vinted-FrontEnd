@@ -135,6 +135,7 @@ table {
   border-spacing: 0;
 }
 :root {
+  --vertVintaidBtn: #2db0ba;
   --vertVintDark: #007782;
   --vertVintLight: #00757f;
   --vertVintedInput: rgb(0, 156, 104);
@@ -180,14 +181,9 @@ table {
     background-color: var(--darkModeHeader);
   }
 
-  /* .dark .boxOffer .wrapper article .right .boxLineOffer {
-    background-color: var(--vertVintDark);
-  } */
-
   .dark .boxUsers a,
   .dark * input:not(input[type="submit"]),
   .dark .boxSearch,
-  .dark .toggleNav,
   .dark textarea,
   .dark form * input:not(input[type="submit"]),
   .dark .boxModalContent .boxFormSignUp input:not(input[type="submit"]),
@@ -200,10 +196,11 @@ table {
     font-weight: 700;
     font-size: 1.15rem;
   }
-
+  .dark header * button {
+    color: var(--vertVintaidBtn);
+  }
   .dark header nav ul li button,
   .dark header nav ul li a,
-  .dark header button,
   .light header button,
   .dark * a:link {
     color: var(--headerLibackgd);

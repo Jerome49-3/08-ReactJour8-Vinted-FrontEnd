@@ -1,11 +1,39 @@
-const Input = ({ value, id, type, placeholder, setState, label, min, max, classInput, classLabel, isRequired }) => {
+import { useState, useEffect } from "react";
+
+const Input = ({
+  value,
+  id,
+  type,
+  placeholder,
+  setState,
+  label,
+  min,
+  max,
+  classInput,
+  classLabel,
+  isRequired,
+}) => {
+  const [errorValidInput, setErrorValidInput] = useState("");
   const handleChange = (e) => {
+    console.log("e.target.value:", e.target.value);
+    console.log("e on input:", e);
     setState(e.target.value);
+    if (e.target.value < e.target.min || e.target.value > e.target.max) {
+      setErrorValidInput(e.target.validationMessage);
+    }
   };
+  useEffect(() => {
+    if (!value) {
+      setErrorValidInput("");
+    }
+  }, [value]);
+
   return (
     <>
       {label !== undefined ? (
-        <label htmlFor={id} className={classLabel}>{label}</label>
+        <label htmlFor={id} className={classLabel}>
+          {label}
+        </label>
       ) : null}
       <input
         id={id}
@@ -19,6 +47,7 @@ const Input = ({ value, id, type, placeholder, setState, label, min, max, classI
         className={classInput}
         required={isRequired || false}
       />
+      <small className="redInput">{errorValidInput}</small>
     </>
   );
 };
