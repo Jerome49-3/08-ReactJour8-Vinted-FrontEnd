@@ -141,17 +141,15 @@ const Profile = () => {
             );
             const avatarUrl = userUpdated?.account?.avatar;
             console.log("typeof avatarUrl: in userProvider:", typeof avatarUrl);
-            if (typeof avatarSecureUrl === "string") {
-              setImgBoxUser(avatarSecureUrl);
-            } else if (typeof avatarUrl === "string") {
+            if (typeof avatarUrl === "string") {
               setImgBoxUser(avatarUrl);
+              setAvatar(avatarUrl);
+            } else if (typeof avatarSecureUrl === "string") {
+              setImgBoxUser(avatarSecureUrl);
+              setAvatar(avatarSecureUrl);
             } else {
               setImgBoxUser(null);
             }
-            setAvatar(
-              userUpdated?.account?.avatar?.secure_url ||
-                userUpdated?.account?.avatar
-            );
             if (id === userUpdated._id) {
               console.log("userUpdated._id in profile:", userUpdated._id);
               console.log("id in profile:", id);

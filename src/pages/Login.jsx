@@ -74,17 +74,30 @@ const Login = ({ type, setType, icon1, icon2 }) => {
       }
     } catch (error) {
       console.log("error in handleSubmit on Login:", error);
-      console.log("error.response in handleSubmit on Login:", error.response);
-      console.log("error:", error?.response?.data?.message);
-      const messageError = error?.response?.data?.message;
+      const errRespData = error?.response?.data;
+      console.log("errRespData in handleSubmit on Login:", errRespData);
+      console.log("typeof errRespData:", typeof errRespData);
+      const errorMessage = error?.message;
+      console.log("errorMessage in handleSubmit on Login:", errorMessage);
+      console.log("typeof errorMessage:", typeof errorMessage);
+      const errRespDataMssg = error?.response?.data?.message;
+      console.log("errRespDataMssg in handleSubmit on Login:", errRespDataMssg);
+      console.log("typeof errRespDataMssg:", typeof errRespDataMssg);
+      const mssgErrConcat = errRespData.message.concat(": ", errorMessage);
+      console.log("mssgErrConcat in handleSubmit on Login:", mssgErrConcat);
+      console.log("typeof mssgErrConcat:", typeof mssgErrConcat);
       const messageNotConfirmEmail = import.meta.env
         .VITE_REACT_APP_MSSG_NOT_CONFIRMEMAIL;
-      if (messageError === messageNotConfirmEmail) {
+      if (
+        typeof errRespDataMssg === "string" &&
+        errRespDataMssg === messageNotConfirmEmail
+      ) {
+        alert(errRespDataMssg);
         setTimeout(() => {
           navigate("/confirmemail");
         }, 3500);
-      } else {
-        setErrorMessage(messageError || error?.message);
+      } else if (typeof errRespDataMssg === "object") {
+        setErrorMessage(mssgErrConcat);
       }
     }
   };

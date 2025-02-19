@@ -15,8 +15,8 @@ const Input = ({
 }) => {
   const [errorValidInput, setErrorValidInput] = useState("");
   const handleChange = (e) => {
-    console.log("e.target.value:", e.target.value);
-    console.log("e on input:", e);
+    // console.log("e.target.value:", e.target.value);
+    // console.log("e on input:", e);
     setState(e.target.value);
     if (e.target.value < e.target.min || e.target.value > e.target.min) {
       setErrorValidInput(e.target.validationMessage);

@@ -8,21 +8,31 @@
   .boxContainerInputCode {
     @include flexCenter;
     // border: 2px solid green;
-    gap: 2%;
+    gap: 8px;
 
     .classInputCode {
-      width: 40px;
-      height: 40px;
+      @include flexCenter;
+      width: 45px;
+      height: 45px;
       background-color: transparent;
       font-size: 2rem;
       border: 1px solid green;
-      box-shadow: 0px 0px 1px $vertVinted, 0.25px 0.25px 1px $vertVinted, inset 0px 0px 10px $vertVinted;
-      text-align: center;
+      box-shadow: 0px 0px 1px $vertVinted, 0.10px 0.10px 1px $vertVinted, inset 0.15px 0.15px 5px $vertVinted, inset 0.20px 0.20px 10px $black;
       border-radius: 5px;
+      padding: 0;
+      text-align: center;
+
+      &::placeholder {
+        font-size: 2rem;
+        // padding-right: 5px;
+        text-align: center;
+        margin-left: 10px;
+      }
     }
   }
 
   .submitInputCode {
-    width: 290px !important;
+    @include btn;
+    width: 50%;
   }
 }

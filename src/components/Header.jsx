@@ -85,6 +85,7 @@ const Header = ({
                 <Links
                   path={token ? "/publish" : "/login"}
                   linkText="vendre tes articles"
+                  classLink="linkPublish"
                 />
               </li>
               {token && user ? (

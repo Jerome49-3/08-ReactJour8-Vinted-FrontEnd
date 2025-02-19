@@ -205,7 +205,9 @@ table {
   .dark * a:link {
     color: var(--headerLibackgd);
   }
-
+  .dark header .linkPublish {
+    color: var(--lightMode);
+  }
   .dark .boxShoppingCart .shoppingCart,
   .dark .boxShoppingCart .shoppingCart .top,
   .dark .boxShoppingCart .shoppingCart .bottom,
@@ -271,7 +273,6 @@ table {
   .light .topHeader .boxSearch input::placeholder {
     font-size: 14px;
     font-weight: 500;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
 }
 

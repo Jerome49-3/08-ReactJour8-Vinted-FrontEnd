@@ -19,7 +19,7 @@ const PriceMinMaxInput = ({ priceMin, setPriceMin, priceMax, setPriceMax }) => {
             id="priceMin"
             type="number"
             placeholder="0"
-            value={priceMin || ""}
+            value={priceMin || "0"}
             setState={setPriceMin}
             classInput="inputPriceMin"
             label="Prix min"
@@ -31,7 +31,7 @@ const PriceMinMaxInput = ({ priceMin, setPriceMin, priceMax, setPriceMax }) => {
             id="priceMax"
             type="number"
             placeholder="100000"
-            value={priceMax || ""}
+            value={priceMax || "100000"}
             setState={setPriceMax}
             classInput="inputPriceMax"
             label="Prix max"

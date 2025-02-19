@@ -8,10 +8,12 @@ const saveToken = (token, setUser, setIsAdmin, setImgBoxUser) => {
   console.log("newDecryptedUser in saveToken:", newDecryptedUser);
   if (newDecryptedUser) {
     setUser(newDecryptedUser);
-    if (typeof newDecryptedUser?.account?.avatar?.secure_url === "string") {
-      setImgBoxUser(newDecryptedUser?.account?.avatar?.secure_url);
-    } else if (typeof avatarUrl === "string") {
+    if (typeof newDecryptedUser?.account?.avatar === "string") {
       setImgBoxUser(newDecryptedUser?.account?.avatar);
+    } else if (
+      typeof newDecryptedUser?.account?.avatar?.secure_url === "string"
+    ) {
+      setImgBoxUser(newDecryptedUser?.account?.avatar?.secure_url);
     } else {
       setImgBoxUser(null);
     }

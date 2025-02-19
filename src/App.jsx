@@ -75,10 +75,10 @@ function App() {
   const [showNoOffer, setShowNoOffer] = useState(false);
 
   // console.log('showToggleNav in app:', showToggleNav);
-  const [priceMin, setPriceMin] = useState(0);
+  const [priceMin, setPriceMin] = useState("0");
   console.log("priceMin in app:", priceMin);
   console.log("typeof priceMin in app:", typeof priceMin);
-  const [priceMax, setPriceMax] = useState(0);
+  const [priceMax, setPriceMax] = useState("100000");
   console.log("typeof priceMax in app:", typeof priceMax);
   const [search, setSearch] = useState("");
   // console.log("search in app:", search);

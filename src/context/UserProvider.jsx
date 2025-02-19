@@ -19,7 +19,8 @@ export const UserProvider = ({ children }) => {
   const [imgBoxUser, setImgBoxUser] = useState(
     sessionStorage.getItem("vintaidImgBoxUser") || null
   );
-  // console.log("imgBoxUser: in userProvider:", imgBoxUser);
+  console.log("imgBoxUser: in userProvider:", imgBoxUser);
+  console.log("typeof imgBoxUser: in userProvider:", typeof imgBoxUser);
   const avatarSecureUrl = user?.account?.avatar?.secure_url;
   const avatarUrl = user?.account?.avatar;
   // console.log("avatarSecureUrl: in userProvider:", avatarSecureUrl);
@@ -108,15 +109,20 @@ export const UserProvider = ({ children }) => {
     }
   }, [token]);
 
-  useEffect(() => {
-    if (token) {
-      if (typeof avatarUrl !== "object") {
-        setImgBoxUser(avatarUrl);
-      } else {
-        setImgBoxUser(avatarSecureUrl);
-      }
-    }
-  }, [imgBoxUser]);
+  // useEffect(() => {
+  //   if (token && user) {
+  //     if (typeof avatarUrl === "string") {
+  //       setImgBoxUser(avatarUrl);
+  //       setAvatar(avatarUrl);
+  //     } else if (typeof avatarSecureUrl === "string") {
+  //       setImgBoxUser(avatarSecureUrl);
+  //       setAvatar(avatarSecureUrl);
+  //     } else {
+  //       setImgBoxUser(null);
+  //       setAvatar(null);
+  //     }
+  //   }
+  // }, [imgBoxUser, avatar]);
 
   useLayoutEffect(() => {
     axiosRetry(axios, {

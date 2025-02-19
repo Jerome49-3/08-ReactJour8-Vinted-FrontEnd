@@ -10,15 +10,8 @@ import saveToken from "../assets/lib/saveToken";
 
 const ConfirmEmail = () => {
   const [code, setCode] = useState([null, null, null, null, null, null]);
-  const {
-    errorMessage,
-    setErrorMessage,
-    axios,
-    token,
-    setToken,
-    setUser,
-    setIsAdmin,
-  } = useUser();
+  const [errorMessage, setErrorMessage] = useState("");
+  const { axios, token, setToken, setUser, setIsAdmin } = useUser();
   const navigate = useNavigate();
   const inputRefs = useRef([]);
 
@@ -102,9 +95,7 @@ const ConfirmEmail = () => {
           classInput="submitInputCode"
         />
       </form>
-      {errorMessage?.message && (
-        <p style={{ color: "red" }}>{errorMessage?.message}</p>
-      )}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </>
   );
 };
