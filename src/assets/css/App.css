@@ -727,6 +727,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   flex-wrap: wrap;
   width: 100%;
   padding: 5px;
+  gap: 20px;
 }
 .boxArticles a {
   width: 100%;

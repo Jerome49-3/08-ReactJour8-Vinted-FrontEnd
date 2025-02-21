@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "../assets/lib/userFunc";
 
@@ -12,7 +12,8 @@ const GetMessages = ({
   isLoading,
   setIsLoading,
 }) => {
-  const { token, setErrorMessage, user } = useUser();
+  const { token, user } = useUser();
+  const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
     console.log("user on /messages/${OfferID}:", user);
@@ -25,6 +26,7 @@ const GetMessages = ({
               Authorization: `Bearer ${token}`,
               "content-type": "multipart/form-data",
             },
+            withCredentials: true,
           }
         );
         // console.log("response in /messages/${OfferID} (GET):", response);
@@ -33,8 +35,8 @@ const GetMessages = ({
           setIsLoading(false);
         }
       } catch (error) {
-        console.log(error?.message);
-        setErrorMessage(error?.response?.data?.message || "update failed");
+        console.log("error on GetMessages:", error);
+        setErrorMessage(error?.response?.data || "update failed");
       }
     };
     fetchData();
