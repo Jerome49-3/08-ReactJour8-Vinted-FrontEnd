@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../assets/lib/userFunc";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 //components
 import Loading from "../components/Loading";
 import OfferCard from "../components/OfferCard";
+import Links from "../components/Links";
 
-const MyPurchases = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
+const MyPurchases = ({ faHeart, farHeart }) => {
   const [data, setData] = useState(null);
   console.log("data in /mypurchases:", data);
   const [isloading, setIsLoading] = useState(true);
@@ -36,7 +36,6 @@ const MyPurchases = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
       } catch (error) {
         console.log(error.response.data.message);
         setErrorMessage(error?.response?.data?.message);
-        setShowNoOffer(true);
       }
     };
     fetchData();
@@ -47,7 +46,7 @@ const MyPurchases = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
   ) : (
     <>
       <div className="wrapper">
-        {data ? (
+        {data.length > 0 ? (
           <OfferCard
             data={data}
             faHeart={faHeart}
@@ -58,14 +57,10 @@ const MyPurchases = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
             setErrorMessage={errorMessage}
           />
         ) : (
-          showNoOffer && (
-            <>
-              <div>
-                Vous n'avez pas d'achat réalisés:{" "}
-                <Link path="/">Consultez nos offres disponibles</Link>
-              </div>
-            </>
-          )
+          <div className="boxNoPurchases">
+            <p> Vous n'avez pas d'achat réalisés:</p>
+            <Links path="/" linkText="Consultez nos offres disponibles" />
+          </div>
         )}
       </div>
     </>

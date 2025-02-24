@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Range, getTrackBackground } from "react-range";
 
-const STEP = 1000;
+const STEP = 3000;
 const MIN = 0;
 const MAX = 100000;
 

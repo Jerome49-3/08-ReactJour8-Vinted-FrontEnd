@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-dupe-else-if */
 /* eslint-disable react-hooks/exhaustive-deps */
+import * as dotenv from "dotenv";
 import { createContext, useEffect, useState, useLayoutEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
@@ -19,10 +21,10 @@ export const UserProvider = ({ children }) => {
   const [imgBoxUser, setImgBoxUser] = useState(
     sessionStorage.getItem("vintaidImgBoxUser") || null
   );
-  console.log("imgBoxUser: in userProvider:", imgBoxUser);
-  console.log("typeof imgBoxUser: in userProvider:", typeof imgBoxUser);
-  const avatarSecureUrl = user?.account?.avatar?.secure_url;
-  const avatarUrl = user?.account?.avatar;
+  // console.log("imgBoxUser: in userProvider:", imgBoxUser);
+  // console.log("typeof imgBoxUser: in userProvider:", typeof imgBoxUser);
+  // const avatarSecureUrl = user?.account?.avatar?.secure_url;
+  // const avatarUrl = user?.account?.avatar;
   // console.log("avatarSecureUrl: in userProvider:", avatarSecureUrl);
   // console.log(
   //   "typeof avatarSecureUrl: in userProvider:",
@@ -64,65 +66,80 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      console.log("token in useEffect on UserProvider:", token);
-      try {
-        saveToken(token, setUser, setIsAdmin, setImgBoxUser);
-      } catch (error) {
-        console.log("error after saveToken:", error);
-      }
-    } else {
-      const fetchData = async () => {
-        axios.defaults.withCredentials = true;
+      // console.log("token in useEffect on UserProvider:", token);
+      const verifyToken = async () => {
         try {
-          const response = await axios.get(
-            `http://localhost:3000/user/refreshToken`,
+          const response = await axios.post(
+            `http://localhost:3000/user/verifyToken`,
+            {},
             {
-              withCredentials: true,
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "content-type": "multipart/form-data",
+              },
             }
           );
-          // console.log("response in /user/refreshToken:", response);
-          if (response?.data?.token) {
-            setToken(response?.data?.token);
-            saveToken(
-              response?.data?.token,
-              setUser,
-              setIsAdmin,
-              setImgBoxUser
-            );
-            setIsLoading(false);
-          } else {
-            console.log("response?.status:", response?.status);
+          console.log("response in /user/verifyToken:", response);
+          console.log(
+            "typeof response in /user/verifyToken:",
+            typeof response.status
+          );
+          if (
+            response.status ===
+              Number(import.meta.env.VITE_REACT_APP_RESPONSEVALID) &&
+            response.data.message ===
+              import.meta.env.VITE_REACT_APP_RESPONSEDATAVALID
+          ) {
+            // console.log(
+            //   "import.meta.env.RESPONSEVALID in /user/verifyToken:",
+            //   import.meta.env.VITE_REACT_APP_RESPONSEVALID
+            // );
+            // console.log(
+            //   "import.meta.env.RESPONSEDATAVALID in /user/verifyToken:",
+            //   import.meta.env.VITE_REACT_APP_RESPONSEDATAVALID
+            // );
+            // console.log("token in /verifyToken:", token);
+            saveToken(token, setUser, setIsAdmin, setImgBoxUser);
           }
         } catch (error) {
-          console.log(error?.response?.data?.message || error?.message);
-          console.log("error?.response?.status:", error?.response?.status);
-          // console.log(
-          //   "typeof error?.response?.status:",
-          //   typeof error?.response?.status
-          // );
-          if (error?.response?.status === 401) {
-            navigate("/");
-          }
+          const getToken = async () => {
+            try {
+              const response = await axios.get(
+                `http://localhost:3000/user/refreshToken`
+              );
+              console.log("response in /user/refreshToken:", response);
+              if (response?.data?.token) {
+                setToken(response?.data?.token);
+                saveToken(
+                  response?.data?.token,
+                  setUser,
+                  setIsAdmin,
+                  setImgBoxUser
+                );
+                setIsLoading(false);
+              } else {
+                console.log("response?.status:", response?.status);
+              }
+            } catch (error) {
+              console.log(error?.response?.data?.message || error?.message);
+              console.log("error?.response?.status:", error?.response?.status);
+              // console.log(
+              //   "typeof error?.response?.status:",
+              //   typeof error?.response?.status
+              // );
+              if (error?.response?.status === 401) {
+                navigate("/");
+              }
+            }
+          };
+          getToken();
         }
       };
-      fetchData();
+      verifyToken();
+    } else {
+      navigate("/");
     }
-  }, [token]);
-
-  // useEffect(() => {
-  //   if (token && user) {
-  //     if (typeof avatarUrl === "string") {
-  //       setImgBoxUser(avatarUrl);
-  //       setAvatar(avatarUrl);
-  //     } else if (typeof avatarSecureUrl === "string") {
-  //       setImgBoxUser(avatarSecureUrl);
-  //       setAvatar(avatarSecureUrl);
-  //     } else {
-  //       setImgBoxUser(null);
-  //       setAvatar(null);
-  //     }
-  //   }
-  // }, [imgBoxUser, avatar]);
+  }, [token, axios]);
 
   useLayoutEffect(() => {
     axiosRetry(axios, {
@@ -142,9 +159,9 @@ export const UserProvider = ({ children }) => {
   useLayoutEffect(() => {
     const configRequestGlobal = axios.interceptors.request.use(
       (config) => {
-        config.headers.authorization = token
-          ? `Bearer ${token}`
-          : config.headers.authorization;
+        // console.log("config in userProvider:", config);
+        config.withCredentials = true;
+        config.headers.Authorization = token ? `Bearer ${token}` : null;
         return config;
       },
       (error) => {
@@ -154,7 +171,7 @@ export const UserProvider = ({ children }) => {
     return () => {
       axios.interceptors.request.eject(configRequestGlobal);
     };
-  }, [token]);
+  }, [token, axios]);
 
   const logout = async () => {
     try {

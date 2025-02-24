@@ -44,8 +44,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
         {
           email,
           password,
-        },
-        { withCredentials: true }
+        }
       );
       console.log("response in handlesubmit in /login:", response);
       if (response.data) {
@@ -75,17 +74,17 @@ const Login = ({ type, setType, icon1, icon2 }) => {
     } catch (error) {
       console.log("error in handleSubmit on Login:", error);
       const errRespData = error?.response?.data;
-      console.log("errRespData in handleSubmit on Login:", errRespData);
-      console.log("typeof errRespData:", typeof errRespData);
+      // console.log("errRespData in handleSubmit on Login:", errRespData);
+      // console.log("typeof errRespData:", typeof errRespData);
       const errorMessage = error?.message;
-      console.log("errorMessage in handleSubmit on Login:", errorMessage);
-      console.log("typeof errorMessage:", typeof errorMessage);
+      // console.log("errorMessage in handleSubmit on Login:", errorMessage);
+      // console.log("typeof errorMessage:", typeof errorMessage);
       const errRespDataMssg = error?.response?.data?.message;
-      console.log("errRespDataMssg in handleSubmit on Login:", errRespDataMssg);
-      console.log("typeof errRespDataMssg:", typeof errRespDataMssg);
+      // console.log("errRespDataMssg in handleSubmit on Login:", errRespDataMssg);
+      // console.log("typeof errRespDataMssg:", typeof errRespDataMssg);
       const mssgErrConcat = errRespData.message.concat(": ", errorMessage);
-      console.log("mssgErrConcat in handleSubmit on Login:", mssgErrConcat);
-      console.log("typeof mssgErrConcat:", typeof mssgErrConcat);
+      // console.log("mssgErrConcat in handleSubmit on Login:", mssgErrConcat);
+      // console.log("typeof mssgErrConcat:", typeof mssgErrConcat);
       const messageNotConfirmEmail = import.meta.env
         .VITE_REACT_APP_MSSG_NOT_CONFIRMEMAIL;
       if (

@@ -9,13 +9,13 @@ export default function ThemeProvider({ children }) {
 
   useEffect(() => {
     const cookieTheme = Cookies.get("vintaidAppTheme");
-    console.log(
-      "cookieTheme",
-      cookieTheme,
-      "\n",
-      "typeof cookieTheme",
-      typeof cookieTheme
-    );
+    // console.log(
+    //   "cookieTheme",
+    //   cookieTheme,
+    //   "\n",
+    //   "typeof cookieTheme",
+    //   typeof cookieTheme
+    // );
 
     if (cookieTheme === "dark") {
       setDarkMode(true);

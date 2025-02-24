@@ -68,18 +68,17 @@ function App() {
   // eslint-disable-next-line no-unused-vars
   const [showHero, setShowHero] = useState(false);
   const [showToggleNav, setShowToggleNav] = useState(false);
+  // console.log('showToggleNav in app:', showToggleNav);
   const [showImgsModal, setShowImgsModal] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [srcImgsModal, setSrcImgsModal] = useState(null);
   // console.log("srcImgsModal in app:", srcImgsModal);
   const [showNoOffer, setShowNoOffer] = useState(false);
-
-  // console.log('showToggleNav in app:', showToggleNav);
   const [priceMin, setPriceMin] = useState("0");
-  console.log("priceMin in app:", priceMin);
-  console.log("typeof priceMin in app:", typeof priceMin);
+  // console.log("priceMin in app:", priceMin);
+  // console.log("typeof priceMin in app:", typeof priceMin);
   const [priceMax, setPriceMax] = useState("100000");
-  console.log("typeof priceMax in app:", typeof priceMax);
+  // console.log("typeof priceMax in app:", typeof priceMax);
   const [search, setSearch] = useState("");
   // console.log("search in app:", search);
   const [type, setType] = useState("password");
@@ -175,8 +174,8 @@ function App() {
                   <MyPurchases
                     faHeart={faHeart}
                     farHeart={farHeart}
-                    showNoOffer={showNoOffer}
-                    setShowNoOffer={setShowNoOffer}
+                    // showNoOffer={showNoOffer}
+                    // setShowNoOffer={setShowNoOffer}
                   />
                 }
               />

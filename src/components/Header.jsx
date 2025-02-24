@@ -24,7 +24,7 @@ const Header = ({
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user, imgBoxUser } = useUser();
   // console.log("token in header:", token);
-  // console.log("user: in header:", user);
+  console.log("user: in header:", user);
   // console.log("imgBoxUser in header:", imgBoxUser);
 
   const filterIcons = "filterIcons";

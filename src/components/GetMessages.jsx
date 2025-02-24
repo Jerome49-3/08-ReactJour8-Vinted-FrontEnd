@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useUser } from "../assets/lib/userFunc";
 
 import Loading from "./Loading";
@@ -12,7 +11,8 @@ const GetMessages = ({
   isLoading,
   setIsLoading,
 }) => {
-  const { token, user } = useUser();
+  const { token, user, axios } = useUser();
+
   const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
@@ -26,7 +26,6 @@ const GetMessages = ({
               Authorization: `Bearer ${token}`,
               "content-type": "multipart/form-data",
             },
-            withCredentials: true,
           }
         );
         // console.log("response in /messages/${OfferID} (GET):", response);

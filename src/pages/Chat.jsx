@@ -85,6 +85,8 @@ const Chat = () => {
       console.log("${ObjectID} in handleMesssage on Chat:", `${OfferID}`);
 
       if (socket && socket.readyState === WebSocket.OPEN) {
+        console.log("socket.readyState:", socket.readyState);
+
         socket.send(
           JSON.stringify({ type: "message", offer: OfferID, text: newMessage })
         );
@@ -94,10 +96,6 @@ const Chat = () => {
           //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/${OfferID}`,
           formData,
           {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
             withCredentials: true,
           }
         );
