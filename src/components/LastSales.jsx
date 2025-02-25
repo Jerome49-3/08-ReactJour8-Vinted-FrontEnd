@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useUser } from "../assets/lib/userFunc";
 
@@ -40,53 +41,33 @@ const LastSales = () => {
     <Loading />
   ) : (
     <div className="wrapper">
-      <div className="boxLastSales">
+      <table className="boxLastSales">
+        <thead>
+          <tr>
+            <th>Nom du produit</th>
+            <th>Prix:</th>
+            <th>Vendeur:</th>
+            <th>Date d'achat:</th>
+            <th>Acheteur:</th>
+          </tr>
+        </thead>
         {data.map((transactions) => {
-          // console.log("transactions in map on /transactions:", transactions);
           return (
-            <div className="boxTansactions" key={transactions._id}>
+            // console.log("transactions in map on /transactions:", transactions);
+            <tbody className="boxTansactions" key={transactions._id}>
               <Link to={`/transactions/${transactions._id}`}>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Nom du produit</th>
-                    </tr>
-                    <tr>
-                      <th>Prix:</th>
-                    </tr>
-                    <tr>
-                      <th>Vendeur:</th>
-                    </tr>
-                    <tr>
-                      <th>Date d'achat:</th>
-                    </tr>
-                    <tr>
-                      <th>Acheteur:</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{transactions.product_name}</td>
-                      <td>{transactions.product_price}</td>
-                      <td>
-                        <div>{transactions.seller.account.username}</div>
-                        <div>{transactions.seller.email}</div>
-                      </td>
-                      <td>
-                        <div>{transactions.date}</div>
-                      </td>
-                      <td>
-                        <div>{transactions.buyer.account.username}</div>
-                        <div>{transactions.buyer.email}</div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <tr>
+                  <td>{transactions.product_name}</td>
+                  <td>{transactions.product_price}</td>
+                  <td>{transactions.seller.account.username}</td>
+                  <td>{transactions.date}</td>
+                  <td>{transactions.buyer.account.username}</td>
+                </tr>
               </Link>
-            </div>
+            </tbody>
           );
         })}
-      </div>
+      </table>
     </div>
   );
 };

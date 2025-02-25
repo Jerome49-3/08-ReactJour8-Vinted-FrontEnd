@@ -150,7 +150,7 @@ function App() {
                 element={<Favorites faHeart={faHeart} farHeart={farHeart} />}
               />
               <Route
-                path="/users/:id"
+                path="/userId/:id"
                 element={
                   <UserId
                     faUserTie={faUserTie}

@@ -59,7 +59,7 @@ const LastUsers = ({
         console.log("user in LastUsers:", user);
         return (
           <div className="boxUsers" key={key}>
-            <Link to={`/users/${user.id}`}>
+            <Link to={`/userId/${user.id}`}>
               <div className="username">{user?.account?.username}</div>
               <div className="avatar">
                 {user?.account?.avatar?.secure_url ? (

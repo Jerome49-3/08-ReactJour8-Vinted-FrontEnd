@@ -1,6 +1,7 @@
 .boxTitleSearch {
   @include flexBetween;
   padding: 5px;
+  height: 14%;
 
   .containerBoxSearch {
     width: 50%;

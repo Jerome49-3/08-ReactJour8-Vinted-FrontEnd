@@ -47,40 +47,36 @@ const Dashboard = ({
             </div>
           </div>
           <div className="right">
-            <div className="title">
-              <TitleSearch
-                title="Annonces"
-                value={searchOffer}
-                setState={setSearchOffer}
-                txtPlaceholder="search by name or id"
-              />
-            </div>
+            <TitleSearch
+              title="Annonces"
+              value={searchOffer}
+              setState={setSearchOffer}
+              txtPlaceholder="search by name or id"
+            />
             <div className="boxDetails"></div>
           </div>
         </div>
         <div className="bottom">
           <div className="left">
-            <div className="title">
-              <TitleSearch
-                title="Ventes"
-                value={searchTransactions}
-                setState={setSearchTransactions}
-                txtPlaceholder="search by name or number"
-              />
-            </div>
+            <TitleSearch
+              title="Ventes"
+              value={searchTransactions}
+              setState={setSearchTransactions}
+              txtPlaceholder="search by name or number"
+            />
+
             <div className="boxDetails">
               <LastSales searchTransactions={searchTransactions} />
             </div>
           </div>
           <div className="right">
-            <div className="title">
-              <TitleSearch
-                title="Messages"
-                value={searchMessage}
-                setState={setSearchMessage}
-                txtPlaceholder="search by name or id"
-              />
-            </div>
+            <TitleSearch
+              title="Messages"
+              value={searchMessage}
+              setState={setSearchMessage}
+              txtPlaceholder="search by name or id"
+            />
+
             <div className="boxDetails"></div>
           </div>
         </div>

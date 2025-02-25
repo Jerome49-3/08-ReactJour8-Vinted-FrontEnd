@@ -1,0 +1,56 @@
+.boxLastSales {
+  @include flexColTopStart;
+  gap: 5px;
+  padding: 0 5px 0 5px;
+  width: 100%;
+  height: 100%;
+
+  & thead {
+    @include flexStart;
+    width: 100%;
+    border: 2px solid $vertVinted;
+    padding: 2px;
+    position: relative;
+    z-index: 10;
+
+    & tr {
+      width: 100%;
+      @include flexCenter;
+
+
+      & th {
+        width: calc(100%/5);
+      }
+
+      & th:not(:last-child) {
+        border-right: 2px solid $vertVinted;
+      }
+    }
+  }
+
+  .boxTansactions {
+    @include flexColTopStart;
+    width: 98%;
+    // border: 2px solid $vertVinted;
+    border-radius: 5px;
+    padding: 2px;
+    background-color: $backDarkLink;
+    overflow-y: auto;
+
+    & a {
+      width: 100%;
+      color: $white;
+
+      & tr {
+        width: 100%;
+        @include flexStart;
+
+        & td {
+          @include flexCenter;
+          width: calc(100%/5);
+          @include ellipsis;
+        }
+      }
+    }
+  }
+}

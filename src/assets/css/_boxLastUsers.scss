@@ -1,55 +1,21 @@
 .boxLastUsers {
-  @include flexColCenter;
+  @include flexColTopStart;
   gap: 5px;
   padding: 0 5px 0 5px;
   overflow-y: auto;
+  height: 100%;
 
   .boxUsers {
     @include flexStart;
-    width: 100%;
-    border: 2px solid green;
-
-    .username {
-      padding-left: 2.5px;
-      flex: 2;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-
-      &:hover {
-        overflow: visible;
-      }
-    }
-
-    .avatar {
-
-      width: 40px;
-    }
-
-    .email {
-      flex: 6;
-      @include flexStart;
-    }
-
-    .date {
-      flex: 1 40px;
-    }
-
-    .isAdmin,
-    .news {
-      width: 20px;
-      ;
-    }
-
-    & div {
-      @include flexStart;
-    }
+    width: 98%;
+    border-radius: 5px;
 
     & a {
       @include flexStart;
       width: 100%;
       gap: 5px;
       background-color: $backLightUser;
+      border-radius: 5px;
 
       .avatar {
         & img {
@@ -59,6 +25,45 @@
           border-radius: 5px;
           margin-right: 10px;
         }
+      }
+
+      .username {
+        padding-left: 4px;
+        flex: 2;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &:hover {
+          overflow: visible;
+        }
+      }
+
+      .avatar {
+
+        width: 40px;
+      }
+
+      .email {
+        flex: 6;
+        @include flexStart;
+      }
+
+      .date {
+        flex: 1 40px;
+      }
+
+      .isAdmin,
+      .news {
+        width: 20px;
+      }
+
+      .isAdmin {
+        padding-right: 4px;
+      }
+
+      & div {
+        @include flexStart;
       }
     }
   }

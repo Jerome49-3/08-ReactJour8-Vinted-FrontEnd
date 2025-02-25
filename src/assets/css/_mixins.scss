@@ -71,6 +71,13 @@
   flex-direction: column;
 }
 
+@mixin flexColTopStart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
 @mixin flexColEnd {
   display: flex;
   justify-content: center;

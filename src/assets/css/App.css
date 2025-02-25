@@ -1309,6 +1309,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   justify-content: space-between;
   align-items: center;
   padding: 5px;
+  height: 14%;
 }
 .boxTitleSearch .containerBoxSearch {
   width: 50%;
@@ -1364,32 +1365,26 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 .boxDashboard .top {
   min-height: 50%;
-  border: 2px solid red;
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 5px;
 }
 .boxDashboard .top .left {
-  border: 2px solid #000000;
   padding-bottom: 10px;
-}
-.boxDashboard .top .right {
-  border: 2px solid green;
 }
 .boxDashboard .bottom {
   display: flex;
   justify-content: center;
   flex-direction: column;
   min-height: 50%;
-  border: 2px solid yellow;
   gap: 5px;
 }
-.boxDashboard .bottom .left {
-  border: 2px solid peru;
-}
-.boxDashboard .bottom .right {
-  border: 2px solid purple;
+.boxDashboard .bottom .left .boxDetails,
+.boxDashboard .bottom .right .boxDetails,
+.boxDashboard .top .left .boxDetails,
+.boxDashboard .top .right .boxDetails {
+  height: 86%;
 }
 
 @media all and (min-width: 768px) {
@@ -1406,50 +1401,20 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 .boxLastUsers {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   gap: 5px;
   padding: 0 5px 0 5px;
   overflow-y: auto;
+  height: 100%;
 }
 .boxLastUsers .boxUsers {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
-  border: 2px solid green;
-}
-.boxLastUsers .boxUsers .username {
-  padding-left: 2.5px;
-  flex: 2;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.boxLastUsers .boxUsers .username:hover {
-  overflow: visible;
-}
-.boxLastUsers .boxUsers .avatar {
-  width: 40px;
-}
-.boxLastUsers .boxUsers .email {
-  flex: 6;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.boxLastUsers .boxUsers .date {
-  flex: 1 40px;
-}
-.boxLastUsers .boxUsers .isAdmin,
-.boxLastUsers .boxUsers .news {
-  width: 20px;
-}
-.boxLastUsers .boxUsers div {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  width: 98%;
+  border-radius: 5px;
 }
 .boxLastUsers .boxUsers a {
   display: flex;
@@ -1458,6 +1423,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 100%;
   gap: 5px;
   background-color: #FAF9F6;
+  border-radius: 5px;
 }
 .boxLastUsers .boxUsers a .avatar img {
   width: 25px;
@@ -1466,6 +1432,40 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
      object-fit: cover;
   border-radius: 5px;
   margin-right: 10px;
+}
+.boxLastUsers .boxUsers a .username {
+  padding-left: 4px;
+  flex: 2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.boxLastUsers .boxUsers a .username:hover {
+  overflow: visible;
+}
+.boxLastUsers .boxUsers a .avatar {
+  width: 40px;
+}
+.boxLastUsers .boxUsers a .email {
+  flex: 6;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.boxLastUsers .boxUsers a .date {
+  flex: 1 40px;
+}
+.boxLastUsers .boxUsers a .isAdmin,
+.boxLastUsers .boxUsers a .news {
+  width: 20px;
+}
+.boxLastUsers .boxUsers a .isAdmin {
+  padding-right: 4px;
+}
+.boxLastUsers .boxUsers a div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 @media all and (min-width: 768px) {
@@ -2021,70 +2021,65 @@ form input:last-child:not(.boxFormSignUp form div input) {
 
 .boxLastSales {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   gap: 5px;
   padding: 0 5px 0 5px;
+  width: 100%;
+  height: 100%;
 }
-.boxLastSales .boxTansactions {
+.boxLastSales thead {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
   border: 2px solid #2DB0BA;
+  padding: 2px;
+  position: relative;
+  z-index: 10;
+}
+.boxLastSales thead tr {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxLastSales thead tr th {
+  width: 20%;
+}
+.boxLastSales thead tr th:not(:last-child) {
+  border-right: 2px solid #2DB0BA;
+}
+.boxLastSales .boxTansactions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 98%;
   border-radius: 5px;
+  padding: 2px;
   background-color: #343434;
+  overflow-y: auto;
 }
 .boxLastSales .boxTansactions a {
   width: 100%;
   color: #ffffff;
 }
-.boxLastSales .boxTansactions a table {
-  table-layout: fixed;
+.boxLastSales .boxTansactions a tr {
   width: 100%;
-  border-collapse: collapse;
-}
-.boxLastSales .boxTansactions a table thead {
-  border-bottom: 2px solid #2DB0BA;
-}
-.boxLastSales .boxTansactions a table thead, .boxLastSales .boxTansactions a table tbody, .boxLastSales .boxTansactions a table tbody > tr {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-}
-.boxLastSales .boxTansactions a table thead > tr, .boxLastSales .boxTansactions a table tbody > tr > td {
-  width: 20%;
-}
-.boxLastSales .boxTansactions a table thead > tr {
-  overflow: hidden;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.boxLastSales .boxTansactions a table tbody > tr {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.boxLastSales .boxTansactions a table tbody > tr td {
+.boxLastSales .boxTansactions a tr td {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  width: 20%;
   overflow: hidden;
-  height: 100%;
-}
-.boxLastSales .boxTansactions a table tbody > tr td div {
-  max-width: 100%;
-}
-.boxLastSales .boxTansactions a table thead > tr > th {
-  width: 100%;
-  text-wrap: nowrap;
-  padding: 5px;
-}
-.boxLastSales .boxTansactions a table thead > tr:not(tr:last-child), .boxLastSales .boxTansactions a table tbody > tr > td:not(td:last-child) {
-  border-right: 2px solid #2DB0BA;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .boxTransactionId {

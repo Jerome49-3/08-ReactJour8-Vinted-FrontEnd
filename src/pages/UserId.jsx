@@ -53,14 +53,7 @@ const UserId = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_URL_USERID}${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
-            withCredentials: true,
-          }
+          `${import.meta.env.VITE_REACT_APP_URL_USERID}${id}`
         );
         console.log("response in /user/${id} (GET):", response);
         if (response?.data?.token) {
