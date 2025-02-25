@@ -74,6 +74,7 @@ function App() {
   const [srcImgsModal, setSrcImgsModal] = useState(null);
   // console.log("srcImgsModal in app:", srcImgsModal);
   const [showNoOffer, setShowNoOffer] = useState(false);
+  const [showSearch, setShowSearch] = useState(true);
   const [priceMin, setPriceMin] = useState("0");
   // console.log("priceMin in app:", priceMin);
   // console.log("typeof priceMin in app:", typeof priceMin);
@@ -105,6 +106,7 @@ function App() {
             faFilter={faFilter}
             showFilter={showFilter}
             setShowFilter={setShowFilter}
+            showSearch={showSearch}
           />
           <Routes>
             <Route
@@ -127,6 +129,8 @@ function App() {
                     faXmark={faXmark}
                     faUserTie={faUserTie}
                     faUser={faUser}
+                    search={search}
+                    setShowSearch={setShowSearch}
                   />
                 }
               />

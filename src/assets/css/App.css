@@ -84,6 +84,31 @@
     transform: scale(1.1);
   }
 }
+@keyframes appearBoxSearch {
+  0% {
+    width: 20px;
+  }
+  100% {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+}
+@keyframes appearInputSearch {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  75% {
+    opacity: 0.3;
+  }
+  100% {
+    display: flex;
+    opacity: 1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+}
 .rotate {
   transform: rotate(var(--rotation, 0deg));
 }
@@ -213,6 +238,12 @@ input:focus-visible::-moz-placeholder, textarea:focus-visible::-moz-placeholder 
 input:focus-visible::placeholder,
 textarea:focus-visible::placeholder {
   color: transparent;
+}
+
+.infoTestPayment {
+  font-size: 14px;
+  color: purple;
+  font-weight: 600;
 }
 
 .buttonTheme {
@@ -1273,16 +1304,66 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   -webkit-box-shadow: inset 0px 0px 5px 3.5px #000000 !important;
 }
 
+.boxTitleSearch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+.boxTitleSearch .containerBoxSearch {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.boxTitleSearch .containerBoxSearch .boxSearch {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.boxTitleSearch .containerBoxSearch .boxSearch:hover {
+  width: 100%;
+  animation: appearBoxSearch 1s ease-in-out 0.5s 1 normal both;
+}
+.boxTitleSearch .containerBoxSearch .boxSearch:hover input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: appearInputSearch 1s ease-in-out 0.5s 1 normal both;
+  width: 100%;
+}
+.boxTitleSearch .containerBoxSearch .boxSearch:hover input::-moz-placeholder {
+  width: 100%;
+  text-align: start;
+}
+.boxTitleSearch .containerBoxSearch .boxSearch:hover input::placeholder {
+  width: 100%;
+  text-align: start;
+}
+.boxTitleSearch .containerBoxSearch .boxSearch .searchIcons {
+  font-size: 14px;
+  padding: 2px 3px 2px 0px;
+}
+.boxTitleSearch .containerBoxSearch .boxSearch input {
+  padding-right: 5px;
+  margin-left: 2px;
+  display: none;
+}
+
 .boxDashboard {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
+  height: 100%;
   gap: 5px;
   width: 100%;
 }
 .boxDashboard .top {
-  min-height: 40vh;
+  min-height: 50%;
   border: 2px solid red;
   display: flex;
   justify-content: center;
@@ -1300,7 +1381,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  min-height: 40vh;
+  min-height: 50%;
   border: 2px solid yellow;
   gap: 5px;
 }
@@ -1329,7 +1410,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-direction: column;
   gap: 5px;
-  padding: 0 15px 0 15px;
+  padding: 0 5px 0 5px;
   overflow-y: auto;
 }
 .boxLastUsers .boxUsers {
@@ -1340,6 +1421,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   border: 2px solid green;
 }
 .boxLastUsers .boxUsers .username {
+  padding-left: 2.5px;
   flex: 2;
   overflow: hidden;
   white-space: nowrap;
@@ -1943,7 +2025,7 @@ form input:last-child:not(.boxFormSignUp form div input) {
   align-items: center;
   flex-direction: column;
   gap: 5px;
-  padding: 0 15px 0 15px;
+  padding: 0 5px 0 5px;
 }
 .boxLastSales .boxTansactions {
   display: flex;

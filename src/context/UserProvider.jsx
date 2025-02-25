@@ -71,13 +71,7 @@ export const UserProvider = ({ children }) => {
         try {
           const response = await axios.post(
             `http://localhost:3000/user/verifyToken`,
-            {},
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "content-type": "multipart/form-data",
-              },
-            }
+            {}
           );
           console.log("response in /user/verifyToken:", response);
           console.log(
@@ -121,6 +115,8 @@ export const UserProvider = ({ children }) => {
                 console.log("response?.status:", response?.status);
               }
             } catch (error) {
+              console.log("error in /refreshToken:", error);
+
               console.log(error?.response?.data?.message || error?.message);
               console.log("error?.response?.status:", error?.response?.status);
               // console.log(

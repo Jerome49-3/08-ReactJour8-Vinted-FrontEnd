@@ -205,7 +205,8 @@ table {
   .dark * a:link {
     color: var(--headerLibackgd);
   }
-  .dark header .linkPublish {
+  .dark header .linkPublish,
+  .dark .labelContent {
     color: var(--lightMode);
   }
   .dark .boxShoppingCart .shoppingCart,

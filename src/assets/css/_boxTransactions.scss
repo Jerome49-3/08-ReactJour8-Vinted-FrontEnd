@@ -1,7 +1,7 @@
 .boxLastSales {
   @include flexColCenter;
   gap: 5px;
-  padding: 0 15px 0 15px;
+  padding: 0 5px 0 5px;
 
   .boxTansactions {
     @include flexStart;

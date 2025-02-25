@@ -27,7 +27,10 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
     data.product_image,
     "\n",
     "buyer_token in CheckoutForm:",
-    data.buyer_token
+    data.buyer_token,
+    "\n",
+    "numberOfCommand in CheckoutForm:",
+    data.numberOfCommand
   );
 
   const stripe = useStripe();
@@ -60,13 +63,6 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
           amount: data.total,
           product_price: data.product_price,
           product_id: data.product_id,
-          buyer_token: data.buyer_token,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${data.buyer_token}`,
-          },
-          withCredentials: true,
         }
       );
       console.log("response.data in checkOutForm:", response.data);
@@ -104,6 +100,8 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
             product_id: data.product_id,
             offer_solded: true,
             buyer_address: address,
+            buyer_token: data.buyer_token,
+            numberOfCommand: data.numberOfCommand,
           },
           {
             headers: {
@@ -152,6 +150,10 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
     <form onSubmit={handleSubmit}>
       <AddressForm />
       <PaymentElement />
+      <p className="infoTestPayment">
+        for testing the payment, use this number card: 4242 4242 4242 4242,
+        expiry date: valid date and cvc: when ever.
+      </p>
       <button disabled={ispayed || !stripe || !elements}>Payer</button>
       {errorMessage && <div className="red">{errorMessage}</div>}
     </form>

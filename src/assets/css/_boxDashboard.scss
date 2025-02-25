@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
+  height: 100%;
   gap: 5px;
   width: 100%;
 
   .top {
-    min-height: calc(80vh /2);
+    min-height: calc(100% /2);
     border: 2px solid red;
     display: flex;
     justify-content: center;
@@ -17,6 +17,7 @@
     .left {
       border: 2px solid $black;
       padding-bottom: 10px;
+
     }
 
     .right {
@@ -28,7 +29,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    min-height: calc(80vh /2);
+    min-height: calc(100% /2);
     border: 2px solid yellow;
     gap: 5px;
 

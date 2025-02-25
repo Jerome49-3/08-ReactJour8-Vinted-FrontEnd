@@ -2,19 +2,25 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useUser } from "../assets/lib/userFunc";
-import axios from "axios";
 
 //components
 import Image from "./Image";
 import Loading from "./Loading";
 
-const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
+const LastUsers = ({
+  faNewspaper,
+  faXmark,
+  faUserTie,
+  faUser,
+  searchUsers,
+}) => {
   const [data, setData] = useState();
   console.log("data in LastUsers:", data);
+  console.log("searchUsers in LastUsers:", searchUsers);
   const [isLoading, setIsLoading] = useState(true);
   // console.log("isLoading in LastUsers:", isLoading);
   const navigate = useNavigate();
-  const { token, isAdmin } = useUser();
+  const { isAdmin, axios } = useUser();
   // console.log("isAdmin in LastUsers:", isAdmin);
   // console.log("token in LastUsers:", token);
 
@@ -25,13 +31,9 @@ const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
           console.log("isAdmin in LastUsers:", isAdmin);
           // const response = await axios.get(
           //   "https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/",
-          const response = await axios.get("http://localhost:3000/users/", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
-            withCredentials: true,
-          });
+          const response = await axios.get(
+            `http://localhost:3000/users?title=${searchUsers}`
+          );
           // console.log("response in LastUsers:", response);
           console.log("response.data in LastUsers:", response.data);
           if (response.data) {
@@ -47,7 +49,7 @@ const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAdmin, token]);
+  }, [isAdmin, searchUsers]);
 
   return isLoading ? (
     <Loading />
@@ -58,7 +60,7 @@ const LastUsers = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
         return (
           <div className="boxUsers" key={key}>
             <Link to={`/users/${user.id}`}>
-              <div className="username">{user?.username}</div>
+              <div className="username">{user?.account?.username}</div>
               <div className="avatar">
                 {user?.account?.avatar?.secure_url ? (
                   <Image src={user?.account?.avatar?.secure_url} alt="avatar" />

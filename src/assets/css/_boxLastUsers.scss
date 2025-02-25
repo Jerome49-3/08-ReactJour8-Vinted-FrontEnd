@@ -1,7 +1,7 @@
 .boxLastUsers {
   @include flexColCenter;
   gap: 5px;
-  padding: 0 15px 0 15px;
+  padding: 0 5px 0 5px;
   overflow-y: auto;
 
   .boxUsers {
@@ -10,6 +10,7 @@
     border: 2px solid green;
 
     .username {
+      padding-left: 2.5px;
       flex: 2;
       overflow: hidden;
       white-space: nowrap;

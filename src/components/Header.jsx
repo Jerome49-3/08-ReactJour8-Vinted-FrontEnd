@@ -19,12 +19,13 @@ const Header = ({
   faFilter,
   setShowFilter,
   showFilter,
+  showSearch,
 }) => {
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user, imgBoxUser } = useUser();
   // console.log("token in header:", token);
-  console.log("user: in header:", user);
+  // console.log("user: in header:", user);
   // console.log("imgBoxUser in header:", imgBoxUser);
 
   const filterIcons = "filterIcons";
@@ -47,26 +48,30 @@ const Header = ({
               <ThemeButton />
             </div>
           </div>
-          <div className="containerBoxSearch">
-            <div className="boxSearch">
-              <FontAwesomeIcon
-                icon="magnifying-glass"
-                className="searchIcons"
-              />
-              <Input
-                id="search"
-                type="search"
-                placeholder="Rechercher des articles"
-                value={search}
-                setState={setSearch}
-              />
-              <Button
-                icon={faFilter}
-                classButton={`${filterIcons} ${btnFilter}`}
-                handleClick={handleFilter}
-              />
+          {showSearch ? (
+            <div className="containerBoxSearch">
+              <div className="boxSearch">
+                <FontAwesomeIcon
+                  icon="magnifying-glass"
+                  className="searchIcons"
+                />
+                <Input
+                  id="search"
+                  type="search"
+                  placeholder="Rechercher des articles"
+                  value={search}
+                  setState={setSearch}
+                />
+                <Button
+                  icon={faFilter}
+                  classButton={`${filterIcons} ${btnFilter}`}
+                  handleClick={handleFilter}
+                />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="boxContainerSearch"></div>
+          )}
           <nav>
             <ul>
               {(!token || !user) && (

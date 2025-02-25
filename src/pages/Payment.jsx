@@ -189,7 +189,7 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
               </div>
               <div>
                 <p>
-                  Il ne vous reste plus qu'une étape pour vous offfir{" "}
+                  Il ne vous reste plus qu'une étape pour vous offir{" "}
                   <span>{product_name}</span>. Vous allez payer {total} € (frais
                   de protection acheteurs et frais de port inclus )
                 </p>
@@ -208,6 +208,7 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
                   product_pictures: state.product_pictures,
                   product_id: state.product_id,
                   buyer_token: token,
+                  numberOfCommand: numCmd,
                 }}
                 succes={succes}
                 setSucces={setSucces}

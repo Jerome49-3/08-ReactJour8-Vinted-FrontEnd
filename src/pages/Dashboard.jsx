@@ -1,37 +1,59 @@
 import { Navigate } from "react-router-dom";
-
+import { useEffect, useState } from "react";
 //context
 import { useUser } from "../assets/lib/userFunc";
-
 //components
 import LastUsers from "../components/LastUsers";
 import LastSales from "../components/LastSales";
+import TitleSearch from "../components/TitleSearch";
 
-const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
+const Dashboard = ({
+  faNewspaper,
+  faXmark,
+  faUserTie,
+  faUser,
+  setShowSearch,
+}) => {
   const { token, isAdmin } = useUser();
+  const [searchUsers, setSearchUsers] = useState("");
+  const [searchTransactions, setSearchTransactions] = useState("");
+  const [searchOffer, setSearchOffer] = useState("");
+  const [searchMessage, setSearchMessage] = useState("");
   // console.log("isAdmin in Dashboard:", isAdmin);
   // console.log("token in Dashboard:", token);
+  useEffect(() => {
+    setShowSearch(false);
+  }, []);
 
   return token && isAdmin ? (
     <div className="boxDashboard">
       <div className="wrapper">
         <div className="top">
           <div className="left">
-            <div className="title">
-              <h2>Users</h2>
-            </div>
+            <TitleSearch
+              title="Users"
+              value={searchUsers}
+              setState={setSearchUsers}
+              txtPlaceholder="search by name or email"
+            />
             <div className="boxDetails">
               <LastUsers
                 faNewspaper={faNewspaper}
                 faXmark={faXmark}
                 faUserTie={faUserTie}
                 faUser={faUser}
+                searchUsers={searchUsers}
               />
             </div>
           </div>
           <div className="right">
             <div className="title">
-              <h2>Dernières annonces</h2>
+              <TitleSearch
+                title="Annonces"
+                value={searchOffer}
+                setState={setSearchOffer}
+                txtPlaceholder="search by name or id"
+              />
             </div>
             <div className="boxDetails"></div>
           </div>
@@ -39,15 +61,25 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
         <div className="bottom">
           <div className="left">
             <div className="title">
-              <h2>Ventes</h2>
+              <TitleSearch
+                title="Ventes"
+                value={searchTransactions}
+                setState={setSearchTransactions}
+                txtPlaceholder="search by name or number"
+              />
             </div>
             <div className="boxDetails">
-              <LastSales />
+              <LastSales searchTransactions={searchTransactions} />
             </div>
           </div>
           <div className="right">
             <div className="title">
-              <h2>Derniers litiges</h2>
+              <TitleSearch
+                title="Messages"
+                value={searchMessage}
+                setState={setSearchMessage}
+                txtPlaceholder="search by name or id"
+              />
             </div>
             <div className="boxDetails"></div>
           </div>

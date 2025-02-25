@@ -62,7 +62,7 @@ const UserId = () => {
             withCredentials: true,
           }
         );
-        console.log("response in /users/${id} (GET):", response);
+        console.log("response in /user/${id} (GET):", response);
         if (response?.data?.token) {
           try {
             const newToken = await response?.data?.token;
