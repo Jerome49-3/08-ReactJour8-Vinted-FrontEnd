@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 //context
@@ -17,8 +18,12 @@ const Dashboard = ({
   const { token, isAdmin } = useUser();
   const [searchUsers, setSearchUsers] = useState("");
   const [searchTransactions, setSearchTransactions] = useState("");
+  console.log("searchTransactions in Dashboard:", searchTransactions);
+  const [searchPrice, setSearchPrice] = useState("");
+  console.log("searchPrice in Dashboard:", searchPrice);
   const [searchOffer, setSearchOffer] = useState("");
   const [searchMessage, setSearchMessage] = useState("");
+
   // console.log("isAdmin in Dashboard:", isAdmin);
   // console.log("token in Dashboard:", token);
   useEffect(() => {
@@ -32,8 +37,8 @@ const Dashboard = ({
           <div className="left">
             <TitleSearch
               title="Users"
-              value={searchUsers}
-              setState={setSearchUsers}
+              valueStr={searchUsers}
+              setStateStr={setSearchUsers}
               txtPlaceholder="search by name or email"
             />
             <div className="boxDetails">
@@ -49,8 +54,8 @@ const Dashboard = ({
           <div className="right">
             <TitleSearch
               title="Annonces"
-              value={searchOffer}
-              setState={setSearchOffer}
+              valueStr={searchOffer}
+              setStateStr={setSearchOffer}
               txtPlaceholder="search by name or id"
             />
             <div className="boxDetails"></div>
@@ -60,13 +65,19 @@ const Dashboard = ({
           <div className="left">
             <TitleSearch
               title="Ventes"
-              value={searchTransactions}
-              setState={setSearchTransactions}
-              txtPlaceholder="search by name or number"
+              valueStr={searchTransactions}
+              setStateStr={setSearchTransactions}
+              txtPlaceholder="search by name"
+              txtNumber="by number"
+              setStateNum={setSearchPrice}
+              valueNum={searchPrice}
             />
 
             <div className="boxDetails">
-              <LastSales searchTransactions={searchTransactions} />
+              <LastSales
+                searchTransactions={searchTransactions}
+                searchPrice={searchPrice}
+              />
             </div>
           </div>
           <div className="right">

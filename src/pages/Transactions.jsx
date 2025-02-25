@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useUser } from "../assets/lib/userFunc";
-import axios from "axios";
 
 //components
 import Loading from "../components/Loading";
@@ -9,7 +9,7 @@ import Image from "../components/Image";
 
 const Transactions = () => {
   const { id } = useParams();
-  const { token } = useUser();
+  const { axios } = useUser();
   const [data, setData] = useState();
   // console.log("data in /transactions/:id:", data);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,14 +19,7 @@ const Transactions = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_URL_TRANSACTIONSID}${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
-            withCredentials: true,
-          }
+          `${import.meta.env.VITE_REACT_APP_URL_TRANSACTIONSID}${id}`
         );
         if (response.data) {
           setData(response.data);

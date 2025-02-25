@@ -6,24 +6,27 @@ import { useUser } from "../assets/lib/userFunc";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
 
-const LastSales = () => {
+const LastSales = ({ searchTransactions, searchPrice }) => {
+  console.log(
+    "searchPrice in LastSales:",
+    searchPrice,
+    "\n",
+    "searchTransactions in LastSales:",
+    searchTransactions
+  );
   const [data, setData] = useState();
   console.log("data in LastSales:", data);
   const [isLoading, setIsLoading] = useState(true);
-  const { token, axios } = useUser();
+  const { axios } = useUser();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         // const response = await axios.get(
         //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/transactions`,
-        const response = await axios.get(`http://localhost:3000/transactions`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "content-type": "multipart/form-data",
-          },
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          `http://localhost:3000/transactions?title=${searchTransactions}&num=${searchPrice}`
+        );
         if (response) {
           console.log("response in /transactions:", response);
           setData(response.data);
@@ -35,7 +38,7 @@ const LastSales = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [searchTransactions, searchPrice]);
 
   return isLoading ? (
     <Loading />

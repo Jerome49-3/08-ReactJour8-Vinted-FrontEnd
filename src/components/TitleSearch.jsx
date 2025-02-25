@@ -1,9 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Input from "../components/Input";
 
-const TitleSearch = ({ value, setState, title, txtPlaceholder }) => {
-  console.log("value in TitleSearch:", value);
-
+const TitleSearch = ({
+  valueStr,
+  setStateStr,
+  title,
+  txtPlaceholder,
+  txtNumber,
+  valueNum,
+  setStateNum,
+}) => {
+  console.log("value in TitleSearch:", valueStr);
+  console.log("valueNum in TitleSearch:", valueNum);
   return (
     <div className="boxTitleSearch">
       <h2>{title}</h2>
@@ -13,9 +21,18 @@ const TitleSearch = ({ value, setState, title, txtPlaceholder }) => {
             id="search"
             type="search"
             placeholder={txtPlaceholder}
-            value={value || ""}
-            setState={setState}
+            value={valueStr || ""}
+            setState={setStateStr}
           />
+          {setStateNum && txtNumber && (
+            <Input
+              id="search"
+              type="search"
+              placeholder={txtNumber}
+              value={valueNum || ""}
+              setState={setStateNum}
+            />
+          )}
           <FontAwesomeIcon icon="magnifying-glass" className="searchIcons" />
         </div>
       </div>
