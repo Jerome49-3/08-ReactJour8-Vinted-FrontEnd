@@ -13,11 +13,10 @@ const Input = ({
   classLabel,
   isRequired,
 }) => {
-  console.log("value on input:", value);
-  console.log("setState on input:", setState);
+  // console.log("value on input:", value);
   const [errorValidInput, setErrorValidInput] = useState("");
   const handleChange = (e) => {
-    console.log("e.target.value:", e.target.value);
+    // console.log("e.target.value:", e.target.value);
     // console.log("e on input:", e);
     setState(e.target.value);
     if (e.target.value < e.target.min || e.target.value > e.target.min) {
@@ -49,7 +48,7 @@ const Input = ({
         className={classInput}
         required={isRequired || false}
       />
-      <small className="redInput">{errorValidInput}</small>
+      {errorValidInput && <small className="redInput">{errorValidInput}</small>}
     </>
   );
 };

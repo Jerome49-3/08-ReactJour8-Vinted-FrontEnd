@@ -15,8 +15,8 @@ const LastUsers = ({
   searchUsers,
 }) => {
   const [data, setData] = useState();
-  console.log("data in LastUsers:", data);
-  console.log("searchUsers in LastUsers:", searchUsers);
+  // console.log("data in LastUsers:", data);
+  // console.log("searchUsers in LastUsers:", searchUsers);
   const [isLoading, setIsLoading] = useState(true);
   // console.log("isLoading in LastUsers:", isLoading);
   const navigate = useNavigate();
@@ -28,14 +28,14 @@ const LastUsers = ({
     const fetchData = async () => {
       try {
         if (isAdmin !== false) {
-          console.log("isAdmin in LastUsers:", isAdmin);
+          // console.log("isAdmin in LastUsers:", isAdmin);
           // const response = await axios.get(
           //   "https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/",
           const response = await axios.get(
             `http://localhost:3000/users?title=${searchUsers}`
           );
           // console.log("response in LastUsers:", response);
-          console.log("response.data in LastUsers:", response.data);
+          // console.log("response.data in LastUsers:", response.data);
           if (response.data) {
             setData(response.data);
             setIsLoading(false);
@@ -56,7 +56,7 @@ const LastUsers = ({
   ) : (
     <div className="boxLastUsers">
       {data.map((user, key = user.id) => {
-        console.log("user in LastUsers:", user);
+        // console.log("user in LastUsers:", user);
         return (
           <div className="boxUsers" key={key}>
             <Link to={`/userId/${user.id}`}>

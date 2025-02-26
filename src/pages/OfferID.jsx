@@ -1,11 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
-import axios from "axios";
 import React from "react";
 import Loading from "../components/Loading";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ReactFragment } from "react";
+// import { ReactFragment } from "react";
 
 //images
 import noImg from "../assets/images/no-image.jpg";
@@ -25,6 +24,7 @@ const OfferID = ({
   setShowImgsModal,
   setSrcImgsModal,
 }) => {
+  const { axios } = useUser();
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
   const { id } = useParams();
   // console.log("id1 in /offers/${id}:", id);

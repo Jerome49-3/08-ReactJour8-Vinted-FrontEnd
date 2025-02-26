@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @keyframes bounce-in-top {
   0% {
     transform: translateY(-100px);
@@ -109,6 +110,28 @@
     border-bottom-left-radius: 5px;
   }
 }
+@keyframes appearBlur {
+  0% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(1px);
+  }
+  85% {
+    filter: blur(0.75px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .rotate {
   transform: rotate(var(--rotation, 0deg));
 }
@@ -193,10 +216,21 @@ input[type=submit] {
   height: 30px;
   padding: 5px;
   border-radius: 5px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
   height: 30px;
 }
-
+input[type=submit] p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+input[type=submit] p:hover, input[type=submit] p:focus {
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+input[type=submit]:hover, input[type=submit]:focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
 input:not([type=submit], [type=search]) {
   border-bottom: 2px solid rgba(255, 0, 0, 0.197);
 }
@@ -357,6 +391,41 @@ textarea:focus-visible::placeholder {
   animation: appearLine 1.5s ease-in-out 1.5s infinite both;
 }
 
+.boxLoaded {
+  color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.boxLoaded p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.boxLoaded p:hover, .boxLoaded p:focus {
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.boxLoaded:hover, .boxLoaded:focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.boxLoaded .loaded {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border-right: 2px solid transparent;
+  border-top: 2px solid #000000;
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid #000000;
+  animation: rotate 0.8s ease-in-out infinite both;
+}
+
 /* ERROR MESSAGE */
 .red {
   color: red;
@@ -499,10 +568,22 @@ header .wrapper .topHeader nav ul li:nth-child(2) {
   height: 30px;
   padding: 5px;
   border-radius: 5px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+header .wrapper .topHeader nav ul li:nth-child(2) p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+header .wrapper .topHeader nav ul li:nth-child(2) p:hover, header .wrapper .topHeader nav ul li:nth-child(2) p:focus {
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+header .wrapper .topHeader nav ul li:nth-child(2):hover, header .wrapper .topHeader nav ul li:nth-child(2):focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 header .wrapper .topHeader nav ul li:nth-child(2):active {
   box-shadow: inset 0px 0px 4px #000000, inset 0.5px 0.5px 2px #000000;
@@ -1106,7 +1187,19 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   height: 30px;
   padding: 5px;
   border-radius: 5px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.boxOffer .wrapper .top .right .rightBottom .down .boxLinks a p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.boxOffer .wrapper .top .right .rightBottom .down .boxLinks a p:hover, .boxOffer .wrapper .top .right .rightBottom .down .boxLinks a p:focus {
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.boxOffer .wrapper .top .right .rightBottom .down .boxLinks a:hover, .boxOffer .wrapper .top .right .rightBottom .down .boxLinks a:focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .boxOffer .wrapper .bottom {
   width: 100%;
@@ -1556,8 +1649,20 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   height: 30px;
   padding: 5px;
   border-radius: 5px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
   width: 33.3333333333%;
+}
+.boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode p:hover, .boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode p:focus {
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode:hover, .boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode:focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .boxUserId .bottom .right .boxDate,
 .boxUserId .bottom .right .boxEmailIsConfirmed {
@@ -1665,9 +1770,21 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   height: 30px;
   padding: 5px;
   border-radius: 5px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
   width: 20%;
   box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
+}
+.toggleNav .headAside .btnCloseAside p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.toggleNav .headAside .btnCloseAside p:hover, .toggleNav .headAside .btnCloseAside p:focus {
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.toggleNav .headAside .btnCloseAside:hover, .toggleNav .headAside .btnCloseAside:focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .toggleNav .boxAside {
   width: 100%;
@@ -1748,7 +1865,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
-  gap: 10px;
+  gap: 5px;
 }
 .toggleNav .boxAside .bodyAside .boxTitleAside {
   display: flex;
@@ -1756,7 +1873,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: flex-start;
   flex-direction: column;
   gap: 5px;
-  padding: 0px 10px 0px 10px;
   width: 100%;
 }
 .toggleNav .boxAside .bodyAside .boxTitleAside h3 {
@@ -1767,16 +1883,20 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 .toggleNav .boxAside .bodyAside a, .toggleNav .boxAside .bodyAside button {
   letter-spacing: 20%;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.25rem;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
 }
 .toggleNav .boxAside .bodyAside a {
-  color: #9e9e9e;
+  color: #f1f1f1;
   width: 100%;
   text-align: center;
   padding: 5px;
   border-radius: 5px;
+}
+.toggleNav .boxAside .bodyAside a:hover {
+  color: #2DB0BA;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 .toggleNav .boxAside .bodyAside a:active {
   box-shadow: inset 0px 0px 5px #000000, inset 0px 0px 5px #2DB0BA;
@@ -1785,8 +1905,12 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   font-size: 1.15rem;
   text-shadow: 0.25px 0.25px 1px #000000;
 }
-.toggleNav .boxAside .bodyAside button {
-  color: red;
+.toggleNav .boxAside .bodyAside button p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.toggleNav .boxAside .bodyAside button p:hover {
+  color: red !important;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 
 .hideToggle {
@@ -2012,6 +2136,74 @@ form input:last-child:not(.boxFormSignUp form div input) {
     height: 100%;
   }
 }
+.boxContact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+}
+.boxContact .boxMenuSelect {
+  padding: 5px 0 5px 0;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+.boxContact .boxMenuSelect .boxSubject {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.boxContact .boxMenuSelect .boxSubject select {
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  color: #ffffff;
+  padding: 2px 0px 2px 5px;
+  filter: none;
+}
+.boxContact .boxMenuSelect .boxSubject select::-ms-expand {
+  display: none;
+}
+.boxContact .boxMenuSelect .boxSubject select option {
+  border-radius: none;
+  background-color: #2DB0BA;
+}
+.boxContact .boxMenuSelect .boxSubject select:focus {
+  padding: 2px 0px 2px 5px;
+  width: 100%;
+  animation: appearBlur 3s ease-in-out 1 normal forwards;
+}
+.boxContact .boxMenuSelect .boxSubject .wrapperSelect {
+  overflow: hidden;
+  position: relative;
+  width: 200px;
+  background-color: #2DB0BA;
+  border-radius: 5px;
+  padding: 2px 0px 2px 5px;
+}
+.boxContact .boxMenuSelect .boxSubject .wrapperSelect:after {
+  content: "▼";
+  font-size: 0.8rem;
+  pointer-events: none;
+  position: absolute;
+  right: 0.2rem;
+  top: 0.3rem;
+  z-index: 1;
+  border-radius: 5px;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+}
+.boxContact textarea {
+  min-width: 100%;
+  margin-bottom: 10px;
+}
+
 .boxLogin {
   width: 30%;
 }
@@ -2210,10 +2402,21 @@ form input:last-child:not(.boxFormSignUp form div input) {
   height: 30px;
   padding: 5px;
   border-radius: 5px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
   width: 50%;
 }
-
+.boxFormInputCode .submitInputCode p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.boxFormInputCode .submitInputCode p:hover, .boxFormInputCode .submitInputCode p:focus {
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.boxFormInputCode .submitInputCode:hover, .boxFormInputCode .submitInputCode:focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
 .boxLoaderTyping {
   display: flex;
   justify-content: center;
@@ -2307,9 +2510,20 @@ form input:last-child:not(.boxFormSignUp form div input) {
   height: 30px;
   padding: 5px;
   border-radius: 5px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
-
+.boxChat .wrapper button p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.boxChat .wrapper button p:hover, .boxChat .wrapper button p:focus {
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.boxChat .wrapper button:hover, .boxChat .wrapper button:focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
 .wrapper {
   height: 100%;
 }

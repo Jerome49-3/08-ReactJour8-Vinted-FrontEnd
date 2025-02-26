@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
-import { useLocation, Navigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Cookies from "cookies-js";
+// import Cookies from "cookies-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";

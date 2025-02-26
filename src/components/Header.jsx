@@ -19,11 +19,10 @@ const Header = ({
   faFilter,
   setShowFilter,
   showFilter,
-  showSearch,
 }) => {
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
-  const { token, user, imgBoxUser } = useUser();
+  const { token, user, imgBoxUser, showSearch } = useUser();
   // console.log("token in header:", token);
   // console.log("user: in header:", user);
   // console.log("imgBoxUser in header:", imgBoxUser);

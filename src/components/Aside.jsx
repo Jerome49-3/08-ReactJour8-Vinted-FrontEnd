@@ -72,16 +72,19 @@ const Aside = ({
             <Links path={`/profile/${userId}`} linkText="Mon Profil" />
           )}
           {token && (
-            <button
-              onClick={() => {
+            <Button
+              buttonText="Logout"
+              handleClick={() => {
                 logout();
                 setShowToggleNav(false);
                 navigate("/");
               }}
-            >
-              Se deconnecter
-            </button>
+            />
           )}
+          <div className="boxTitleAside">
+            <h3>Contact</h3>
+          </div>
+          {token && <Links path="/contact" linkText="Contact" />}
         </div>
       </div>
     </div>

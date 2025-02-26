@@ -8,13 +8,7 @@ import LastUsers from "../components/LastUsers";
 import LastSales from "../components/LastSales";
 import TitleSearch from "../components/TitleSearch";
 
-const Dashboard = ({
-  faNewspaper,
-  faXmark,
-  faUserTie,
-  faUser,
-  setShowSearch,
-}) => {
+const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
   const { token, isAdmin } = useUser();
   const [searchUsers, setSearchUsers] = useState("");
   const [searchTransactions, setSearchTransactions] = useState("");
@@ -26,9 +20,6 @@ const Dashboard = ({
 
   // console.log("isAdmin in Dashboard:", isAdmin);
   // console.log("token in Dashboard:", token);
-  useEffect(() => {
-    setShowSearch(false);
-  }, []);
 
   return token && isAdmin ? (
     <div className="boxDashboard">

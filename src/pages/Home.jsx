@@ -25,7 +25,6 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
   const [errorMessage, setErrorMessage] = useState("");
   // const [imgsNbr, setImgsNbr] = useState(0);
   const { axios, fav, setFav } = useUser();
-
   useEffect(() => {
     const fetchData = async () => {
       try {

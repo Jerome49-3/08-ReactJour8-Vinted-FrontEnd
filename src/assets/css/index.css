@@ -219,7 +219,7 @@ table {
   }
 
   .dark button p {
-    color: var(--lightMode) !important;
+    color: var(--lightMode);
   }
 
   /* LIGHT MODE */

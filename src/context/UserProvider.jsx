@@ -7,11 +7,16 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import axiosRetry from "axios-retry";
 import saveToken from "../assets/lib/saveToken";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+  const [showSearch, setShowSearch] = useState(false);
+  // console.log("showSearch in userProvider:", showSearch);
+  let location = useLocation();
+  // console.log("location.pathname in userProvider:", location.pathname);
+
   const [token, setToken] = useState(Cookies.get("accessTokenV") || null);
   // console.log("token in UserProvider:", token);
   const [user, setUser] = useState(
@@ -65,6 +70,14 @@ export const UserProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    if (location.pathname === "/") {
+      setShowSearch(true);
+    } else {
+      setShowSearch(false);
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
     if (token) {
       // console.log("token in useEffect on UserProvider:", token);
       const verifyToken = async () => {
@@ -73,11 +86,11 @@ export const UserProvider = ({ children }) => {
             `http://localhost:3000/user/verifyToken`,
             {}
           );
-          console.log("response in /user/verifyToken:", response);
-          console.log(
-            "typeof response in /user/verifyToken:",
-            typeof response.status
-          );
+          // console.log("response in /user/verifyToken:", response);
+          // console.log(
+          //   "typeof response in /user/verifyToken:",
+          //   typeof response.status
+          // );
           if (
             response.status ===
               Number(import.meta.env.VITE_REACT_APP_RESPONSEVALID) &&
@@ -112,7 +125,7 @@ export const UserProvider = ({ children }) => {
                 );
                 setIsLoading(false);
               } else {
-                console.log("response?.status:", response?.status);
+                // console.log("response?.status:", response?.status);
               }
             } catch (error) {
               console.log("error in /refreshToken:", error);
@@ -210,6 +223,7 @@ export const UserProvider = ({ children }) => {
         setAvatar,
         imgBoxUser,
         setImgBoxUser,
+        showSearch,
       }}
     >
       {children}

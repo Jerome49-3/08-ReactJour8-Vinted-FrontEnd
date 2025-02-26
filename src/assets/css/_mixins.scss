@@ -100,7 +100,26 @@
   height: 30px;
   padding: 5px;
   border-radius: 5px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+
+  & p {
+    text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+
+    &:hover,
+    &:focus {
+      color: $black;
+      text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px $white, 0.75px 0.75px 1px $white, 1px 1px 1px #000000;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $vertVintedHovFoc;
+    color: $black;
+    text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px $white, 0.75px 0.75px 1px $white, 1px 1px 1px #000000;
+  }
+
+  &:active {}
 }
 
 @mixin textShadow {

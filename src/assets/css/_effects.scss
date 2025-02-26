@@ -190,6 +190,68 @@
   }
 }
 
+//appearBlur
+@keyframes appearBlur {
+  0% {
+    filter: blur(0px);
+  }
+
+  50% {
+    filter: blur(1px);
+  }
+
+  85% {
+    filter: blur(0.75px);
+  }
+
+  100% {
+    filter: blur(0px);
+  }
+}
+
+@-webkit-keyframes appearBlur {
+  0% {
+    filter: blur(0px);
+  }
+
+  50% {
+    filter: blur(1px);
+  }
+
+  85% {
+    filter: blur(0.75px);
+  }
+
+  100% {
+    filter: blur(0px);
+  }
+}
+
+//rotate
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 //rotation pictures
 .rotate {
   transform: rotate(var(--rotation, 0deg));

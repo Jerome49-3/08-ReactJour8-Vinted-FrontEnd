@@ -62,6 +62,7 @@ import Profile from "./components/Profile";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 import UserId from "./pages/UserId";
+import Contact from "./pages/Contact";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -74,7 +75,6 @@ function App() {
   const [srcImgsModal, setSrcImgsModal] = useState(null);
   // console.log("srcImgsModal in app:", srcImgsModal);
   const [showNoOffer, setShowNoOffer] = useState(false);
-  const [showSearch, setShowSearch] = useState(true);
   const [priceMin, setPriceMin] = useState("0");
   // console.log("priceMin in app:", priceMin);
   // console.log("typeof priceMin in app:", typeof priceMin);
@@ -106,7 +106,6 @@ function App() {
             faFilter={faFilter}
             showFilter={showFilter}
             setShowFilter={setShowFilter}
-            showSearch={showSearch}
           />
           <Routes>
             <Route
@@ -121,6 +120,7 @@ function App() {
               }
             />
             <Route element={<PrivateRoute />}>
+              <Route path="/contact" element={<Contact />} />
               <Route
                 path="/dashboard"
                 element={
@@ -130,7 +130,6 @@ function App() {
                     faUserTie={faUserTie}
                     faUser={faUser}
                     search={search}
-                    setShowSearch={setShowSearch}
                   />
                 }
               />

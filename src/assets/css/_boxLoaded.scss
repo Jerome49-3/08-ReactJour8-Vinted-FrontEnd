@@ -1,0 +1,15 @@
+.boxLoaded {
+  @include btn;
+
+  .loaded {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border-right: 2px solid transparent;
+    border-top: 2px solid $black;
+    border-left: 2px solid transparent;
+    border-bottom: 2px solid $black;
+    -webkit-animation: rotate 0.8s ease-in-out infinite both;
+    animation: rotate 0.8s ease-in-out infinite both;
+  }
+}

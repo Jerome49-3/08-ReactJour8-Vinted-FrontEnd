@@ -10,8 +10,8 @@ const TitleSearch = ({
   valueNum,
   setStateNum,
 }) => {
-  console.log("value in TitleSearch:", valueStr);
-  console.log("valueNum in TitleSearch:", valueNum);
+  // console.log("value in TitleSearch:", valueStr);
+  // console.log("valueNum in TitleSearch:", valueNum);
   return (
     <div className="boxTitleSearch">
       <h2>{title}</h2>

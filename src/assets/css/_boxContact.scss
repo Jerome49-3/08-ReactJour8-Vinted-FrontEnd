@@ -1,0 +1,71 @@
+.boxContact {
+  @include flexColCenter;
+  width: 50%;
+
+  .boxMenuSelect {
+    padding: 5px 0 5px 0;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+
+    .boxSubject {
+      @include flexBetween;
+      width: 100%;
+
+      & select {
+        outline: none;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        @include textShadow;
+        color: $white;
+        padding: 2px 0px 2px 5px;
+        filter: none;
+
+        &::-ms-expand {
+          display: none;
+        }
+
+        & option {
+          border-radius: none;
+          background-color: $vertVinted;
+        }
+
+        &:focus {
+          padding: 2px 0px 2px 5px;
+          width: 100%;
+          animation: appearBlur 3s ease-in-out 1 normal forwards;
+        }
+      }
+
+      .wrapperSelect {
+        overflow: hidden;
+        position: relative;
+        width: 200px;
+        background-color: $vertVinted;
+        border-radius: 5px;
+        padding: 2px 0px 2px 5px;
+      }
+
+      .wrapperSelect:after {
+        content: "▼";
+        font-size: 0.8rem;
+        pointer-events: none;
+        position: absolute;
+        right: 0.2rem;
+        top: 0.3rem;
+        z-index: 1;
+        border-radius: 5px;
+        @include textShadow;
+      }
+    }
+  }
+
+  & textarea {
+    min-width: 100%;
+    margin-bottom: 10px;
+  }
+}

@@ -7,15 +7,15 @@ import Loading from "./Loading";
 import { Link } from "react-router-dom";
 
 const LastSales = ({ searchTransactions, searchPrice }) => {
-  console.log(
-    "searchPrice in LastSales:",
-    searchPrice,
-    "\n",
-    "searchTransactions in LastSales:",
-    searchTransactions
-  );
+  // console.log(
+  //   "searchPrice in LastSales:",
+  //   searchPrice,
+  //   "\n",
+  //   "searchTransactions in LastSales:",
+  //   searchTransactions
+  // );
   const [data, setData] = useState();
-  console.log("data in LastSales:", data);
+  // console.log("data in LastSales:", data);
   const [isLoading, setIsLoading] = useState(true);
   const { axios } = useUser();
 
@@ -28,9 +28,9 @@ const LastSales = ({ searchTransactions, searchPrice }) => {
           `http://localhost:3000/transactions?title=${searchTransactions}&num=${searchPrice}`
         );
         if (response) {
-          console.log("response in /transactions:", response);
+          // console.log("response in /transactions:", response);
           setData(response.data);
-          console.log("response.data in /transactions:", response.data);
+          // console.log("response.data in /transactions:", response.data);
           setIsLoading(false);
         }
       } catch (error) {

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../assets/lib/userFunc";
-import axios from "axios";
 
 //components
 import Loading from "../components/Loading";
@@ -9,27 +8,20 @@ import Links from "../components/Links";
 
 const MyPurchases = ({ faHeart, farHeart }) => {
   const [data, setData] = useState(null);
-  console.log("data in /mypurchases:", data);
+  // console.log("data in /mypurchases:", data);
   const [isloading, setIsLoading] = useState(true);
-  const { token, fav, setFav } = useUser();
+  const { fav, setFav, axios } = useUser();
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          import.meta.env.VITE_REACT_APP_URL_MYPURCHASES,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
-            withCredentials: true,
-          }
+          import.meta.env.VITE_REACT_APP_URL_MYPURCHASES
         );
         if (response) {
-          console.log("response on /mypurchases:", response);
-          console.log("response.data on /mypurchases:", response.data);
+          // console.log("response on /mypurchases:", response);
+          // console.log("response.data on /mypurchases:", response.data);
           setData(response.data);
           setIsLoading(false);
         }
