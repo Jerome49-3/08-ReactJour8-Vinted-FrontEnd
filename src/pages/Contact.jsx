@@ -4,6 +4,7 @@ import TextArea from "../components/TextArea";
 import Input from "../components/Input";
 import SelectOptions from "../components/SelectOptions";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const [optionValue, setOptionValue] = useState("");
@@ -13,7 +14,8 @@ const Contact = () => {
   const [numberOffer, setNumberOffer] = useState(null);
   const [messageContact, setMessageContact] = useState(null);
   console.log("messageContact in contact:", messageContact);
-  const { axios, isSended, setIsSended } = useUser();
+  const { axios, isSended, setIsSended, infoUser, setInfoUser } = useUser();
+  const navigate = useNavigate();
 
   const handleData = async (e) => {
     e.preventDefault();
@@ -31,8 +33,11 @@ const Contact = () => {
       // console.log("response:", response);
       if (response.data) {
         console.log("response.data:", response.data);
-        alert(response.data.message);
+        setInfoUser(response.data.message);
         setIsSended(false);
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       }
     } catch (error) {
       console.log("error", error);
@@ -84,9 +89,11 @@ const Contact = () => {
         type="text"
         placeholder="message"
         setState={setMessageContact}
+        classLabel="labelTxtContact"
       />
-      <LoadedInputSubmit isSended={isSended} />
+      <LoadedInputSubmit isSended={isSended} setIsSended={setIsSended} />
       {errorMessage && <p className="red">{errorMessage}</p>}
+      {infoUser && <p className="green">{infoUser}</p>}
     </form>
   );
 };

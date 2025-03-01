@@ -4,6 +4,9 @@ header {
   display: block;
   @include flexCenter;
   height: 200px;
+  position: fixed;
+  z-index: 600;
+  @include boxShadow;
 
 
   .wrapper {

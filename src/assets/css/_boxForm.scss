@@ -123,12 +123,6 @@
       border-radius: 10px;
     }
 
-    & textarea {
-      margin-bottom: 10px;
-    }
-
-    & input,
-    & textarea,
     & div.boxPsswd {
       width: 100%;
       @include boxShadow;
@@ -151,7 +145,6 @@
     }
 
     .boxPsswd {
-      border-bottom: 1px solid $borderInput;
       @include flexCenter;
       background-color: $backgroundInput;
 
@@ -180,10 +173,9 @@ form input:not(form input:last-child),
 
 form input:last-child:not(.boxFormSignUp form div input) {
   background-color: $vertVinted;
-  box-shadow: 0px 0px 2px $black;
   color: $white;
   height: 30px;
-  width: 100.25%;
+  width: 100%;
 }
 
 @media all and (min-width: 768px) {

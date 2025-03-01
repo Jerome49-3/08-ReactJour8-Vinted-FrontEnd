@@ -14,6 +14,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [isSended, setIsSended] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [infoUser, setInfoUser] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   // console.log("showSearch in userProvider:", showSearch);
   let location = useLocation();
@@ -254,6 +255,8 @@ export const UserProvider = ({ children }) => {
         showSearch,
         tokenFgtP,
         setTokenFgtP,
+        infoUser,
+        setInfoUser,
       }}
     >
       {children}

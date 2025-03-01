@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+
   max-width: 60%;
   z-index: 600;
   background-color: $backgAside;
@@ -10,7 +11,7 @@
   gap: 20px;
   padding: 10px 20px;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 70%;
   transform: translate(-50%, -50%);
@@ -99,7 +100,7 @@
     }
 
     .bodyAside {
-      @include flexColStart;
+      @include flexColCenter;
       width: 100%;
       gap: 5px;
 
@@ -118,7 +119,7 @@
 
       & a,
       & button {
-        letter-spacing: 20%;
+        letter-spacing: 4px;
         font-weight: 500;
         font-size: 1.25rem;
         @include textShadow;
@@ -147,13 +148,15 @@
       }
 
       & button {
+        @include btn;
+        width: 50%;
+
         & p {
           text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 
           &:hover {
             color: red !important;
             text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
-
           }
         }
       }

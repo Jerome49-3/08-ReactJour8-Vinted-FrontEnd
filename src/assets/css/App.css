@@ -149,11 +149,138 @@ div#root {
   height: 100vh;
 }
 
+.boxForm {
+  margin-top: 10vh;
+}
+
 .wrapper {
   max-width: 300px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+}
+.wrapper button {
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+}
+.wrapper .classLabelInput {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper .classLabelInput input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #2DB0BA;
+  height: 30px;
+  box-shadow: 0px 0px 1px #000000, 0.1px 0.1px 1px #2DB0BA, 0.2px 0.2px 1px #000000, 0.3px 0.3px 1px #2DB0BA, 0.4px 0.4px 1px #000000, 0.5px 0.5px 1px #2DB0BA, 1px 1px 1px #2DB0BA;
+}
+.wrapper .classLabelInput input::-moz-placeholder {
+  color: white;
+  padding-left: 10px;
+  font-size: 16px;
+}
+.wrapper .classLabelInput input::placeholder {
+  color: white;
+  padding-left: 10px;
+  font-size: 16px;
+}
+.wrapper .classLabelInput input[type=submit] {
+  color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+  height: 30px;
+}
+.wrapper .classLabelInput input[type=submit] p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.wrapper .classLabelInput input[type=submit] p:hover, .wrapper .classLabelInput input[type=submit] p:focus {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.wrapper .classLabelInput input[type=submit]:hover, .wrapper .classLabelInput input[type=submit]:focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.wrapper .classLabelInput input:not([type=submit], [type=search]) {
+  border-bottom: 2px solid rgba(255, 0, 0, 0.197);
+}
+.wrapper .classLabelInput input:focus-visible {
+  outline: transparent;
+}
+.wrapper .classLabelInput input:focus-visible::-moz-placeholder {
+  color: transparent;
+}
+.wrapper .classLabelInput input:focus-visible::placeholder {
+  color: transparent;
+}
+.wrapper .labelTxtContact {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper .labelTxtContact textarea {
+  resize: none;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0px 0px 1px #000000, 0.1px 0.1px 1px #2DB0BA, 0.2px 0.2px 1px #000000, 0.3px 0.3px 1px #2DB0BA, 0.4px 0.4px 1px #000000, 0.5px 0.5px 1px #2DB0BA, 1px 1px 1px #2DB0BA;
+  border: none;
+  border-bottom: 2px solid #2DB0BA;
+}
+.wrapper .labelTxtContact textarea::-moz-placeholder {
+  color: white;
+  padding-left: 10px;
+  font-size: 16px;
+}
+.wrapper .labelTxtContact textarea::placeholder {
+  color: white;
+  padding-left: 10px;
+  font-size: 16px;
+}
+.wrapper .hide {
+  display: none;
+}
+.wrapper .show {
+  display: flex !important;
+  color: #2DB0BA;
+}
+.wrapper * .red {
+  color: red;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  padding: 0px 0px 10px 0px;
+}
+.wrapper .redInput {
+  font-size: 12px;
+  color: red;
+  height: 10px;
+}
+.wrapper .infoTestPayment {
+  font-size: 14px;
+  color: purple;
+  font-weight: 600;
+}
+.wrapper .green {
+  color: #2DB0BA;
 }
 @media all and (min-device-width: 576px) {
   .wrapper {
@@ -179,105 +306,6 @@ div#root {
   .wrapper {
     max-width: 1300px;
   }
-}
-
-button {
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  background-color: transparent;
-}
-
-input {
-  padding-left: 5px;
-  outline: none;
-  border: none;
-  width: 100%;
-  height: 20px;
-}
-input::-moz-placeholder {
-  padding-left: 10px;
-  font-size: 16px;
-  font-weight: 600;
-}
-input::placeholder {
-  padding-left: 10px;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-input[type=submit] {
-  color: #ffffff;
-  background-color: #2DB0BA;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  padding: 5px;
-  border-radius: 5px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
-  height: 30px;
-}
-input[type=submit] p {
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
-}
-input[type=submit] p:hover, input[type=submit] p:focus {
-  color: #000000;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
-}
-input[type=submit]:hover, input[type=submit]:focus {
-  background-color: #33c6d0;
-  color: #000000;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
-}
-input:not([type=submit], [type=search]) {
-  border-bottom: 2px solid rgba(255, 0, 0, 0.197);
-}
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: flex !important;
-  color: #2DB0BA;
-}
-
-textarea {
-  border: transparent;
-}
-
-* .red {
-  color: red;
-  font-size: 1.15rem;
-  font-weight: 700;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
-  padding: 0px 0px 10px 0px;
-}
-
-.redInput {
-  font-size: 12px;
-  color: red;
-  height: 10px;
-}
-
-input:focus-visible,
-textarea:focus-visible {
-  outline: transparent;
-}
-input:focus-visible::-moz-placeholder, textarea:focus-visible::-moz-placeholder {
-  color: transparent;
-}
-input:focus-visible::placeholder,
-textarea:focus-visible::placeholder {
-  color: transparent;
-}
-
-.infoTestPayment {
-  font-size: 14px;
-  color: purple;
-  font-weight: 600;
 }
 
 .buttonTheme {
@@ -407,7 +435,6 @@ textarea:focus-visible::placeholder {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 .boxLoaded p:hover, .boxLoaded p:focus {
-  color: #000000;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .boxLoaded:hover, .boxLoaded:focus {
@@ -619,12 +646,9 @@ textarea:focus-visible::placeholder {
      object-fit: cover;
   border-radius: 10px;
 }
-.boxForm form textarea {
-  margin-bottom: 10px;
-}
-.boxForm form input, .boxForm form textarea, .boxForm form div.boxPsswd {
+.boxForm form div.boxPsswd {
   width: 100%;
-  box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 1px #000000, 0px 0px 1px #2DB0BA, 1px 1px 1px #000000;
 }
 .boxForm form .boxCheckBox {
   display: flex;
@@ -640,7 +664,6 @@ textarea:focus-visible::placeholder {
   width: 85%;
 }
 .boxForm form .boxPsswd {
-  border-bottom: 1px solid rgba(255, 0, 0, 0.197);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -666,10 +689,9 @@ form input:not(form input:last-child),
 
 form input:last-child:not(.boxFormSignUp form div input) {
   background-color: #2DB0BA;
-  box-shadow: 0px 0px 2px #000000;
   color: #ffffff;
   height: 30px;
-  width: 100.25%;
+  width: 100%;
 }
 
 @media all and (min-width: 768px) {
@@ -707,6 +729,9 @@ header {
   justify-content: center;
   align-items: center;
   height: 200px;
+  position: fixed;
+  z-index: 600;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 1px #000000, 0px 0px 1px #2DB0BA, 1px 1px 1px #000000;
 }
 header .wrapper .topHeader {
   display: flex;
@@ -740,7 +765,7 @@ header .wrapper .topHeader .containerBoxSearch .boxSearch {
   padding: 2px 2px 2px 10px;
   width: 100%;
   height: 30px;
-  box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 1px #000000, 0px 0px 1px #2DB0BA, 1px 1px 1px #000000;
 }
 header .wrapper .topHeader nav {
   display: flex;
@@ -780,7 +805,6 @@ header .wrapper .topHeader nav ul li:nth-child(2) p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 header .wrapper .topHeader nav ul li:nth-child(2) p:hover, header .wrapper .topHeader nav ul li:nth-child(2) p:focus {
-  color: #000000;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 header .wrapper .topHeader nav ul li:nth-child(2):hover, header .wrapper .topHeader nav ul li:nth-child(2):focus {
@@ -832,7 +856,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 1px #000000, 0px 0px 1px #2DB0BA, 1px 1px 1px #000000;
 }
 
 .searchIcons,
@@ -1320,7 +1344,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 70%;
   border-radius: 5px;
   border: 2px solid #2DB0BA;
-  box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 1px #000000, 0px 0px 1px #2DB0BA, 1px 1px 1px #000000;
 }
 .boxOffer .wrapper .top .right .boxDetails {
   width: 100%;
@@ -1402,7 +1426,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 .boxOffer .wrapper .top .right .rightBottom .down .boxLinks a p:hover, .boxOffer .wrapper .top .right .rightBottom .down .boxLinks a p:focus {
-  color: #000000;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .boxOffer .wrapper .top .right .rightBottom .down .boxLinks a:hover, .boxOffer .wrapper .top .right .rightBottom .down .boxLinks a:focus {
@@ -1870,7 +1893,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 .boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode p:hover, .boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode p:focus {
-  color: #000000;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode:hover, .boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode:focus {
@@ -1961,7 +1983,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   gap: 20px;
   padding: 10px 20px;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 70%;
   transform: translate(-50%, -50%);
@@ -1986,13 +2008,12 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
   width: 20%;
-  box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 1px #000000, 0px 0px 1px #2DB0BA, 1px 1px 1px #000000;
 }
 .toggleNav .headAside .btnCloseAside p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 .toggleNav .headAside .btnCloseAside p:hover, .toggleNav .headAside .btnCloseAside p:focus {
-  color: #000000;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .toggleNav .headAside .btnCloseAside:hover, .toggleNav .headAside .btnCloseAside:focus {
@@ -2011,7 +2032,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 10px;
   border-radius: 10px;
   height: 90%;
-  box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 1px #000000, 0px 0px 1px #2DB0BA, 1px 1px 1px #000000;
 }
 .toggleNav .boxAside .boxFilterSearch {
   width: 100%;
@@ -2076,7 +2097,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 .toggleNav .boxAside .bodyAside {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   width: 100%;
   gap: 5px;
@@ -2096,7 +2117,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding-bottom: 2px;
 }
 .toggleNav .boxAside .bodyAside a, .toggleNav .boxAside .bodyAside button {
-  letter-spacing: 20%;
+  letter-spacing: 4px;
   font-weight: 500;
   font-size: 1.25rem;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
@@ -2118,6 +2139,30 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 .toggleNav .boxAside .bodyAside a p {
   font-size: 1.15rem;
   text-shadow: 0.25px 0.25px 1px #000000;
+}
+.toggleNav .boxAside .bodyAside button {
+  color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+  width: 50%;
+}
+.toggleNav .boxAside .bodyAside button p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.toggleNav .boxAside .bodyAside button p:hover, .toggleNav .boxAside .bodyAside button p:focus {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.toggleNav .boxAside .bodyAside button:hover, .toggleNav .boxAside .bodyAside button:focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .toggleNav .boxAside .bodyAside button p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
@@ -2227,10 +2272,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
 }
-.boxContact textarea {
-  min-width: 100%;
-  margin-bottom: 10px;
-}
 
 .boxLogin {
   width: 30%;
@@ -2259,7 +2300,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 .boxLogin .boxForgot .btnSubmitCode p:hover, .boxLogin .boxForgot .btnSubmitCode p:focus {
-  color: #000000;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .boxLogin .boxForgot .btnSubmitCode:hover, .boxLogin .boxForgot .btnSubmitCode:focus {
@@ -2474,7 +2514,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 .boxFormInputCode .submitInputCode p:hover, .boxFormInputCode .submitInputCode p:focus {
-  color: #000000;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .boxFormInputCode .submitInputCode:hover, .boxFormInputCode .submitInputCode:focus {
@@ -2542,7 +2581,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 20px;
 }
 .boxChat .wrapper .boxMessages li {
-  box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 1px #000000, 0px 0px 1px #2DB0BA, 1px 1px 1px #000000;
   padding: 5px;
 }
 .boxChat .wrapper .boxMessages .top .sellerAvatar {
@@ -2581,7 +2620,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 .boxChat .wrapper button p:hover, .boxChat .wrapper button p:focus {
-  color: #000000;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
 }
 .boxChat .wrapper button:hover, .boxChat .wrapper button:focus {

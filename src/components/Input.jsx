@@ -31,23 +31,21 @@ const Input = ({
 
   return (
     <>
-      {label !== undefined ? (
-        <label htmlFor={id} className={classLabel}>
-          {label}
-        </label>
-      ) : null}
-      <input
-        id={id}
-        type={type}
-        name={id}
-        min={min}
-        max={max}
-        placeholder={placeholder}
-        onChange={handleChange}
-        value={value}
-        className={classInput}
-        required={isRequired || false}
-      />
+      <label htmlFor={id} className="classLabelInput">
+        {label}
+        <input
+          id={id}
+          type={type}
+          name={id}
+          min={min}
+          max={max}
+          placeholder={placeholder}
+          onChange={handleChange}
+          value={value}
+          className={classInput}
+          required={isRequired || false}
+        />
+      </label>
       {errorValidInput && <small className="redInput">{errorValidInput}</small>}
     </>
   );

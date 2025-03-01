@@ -9,11 +9,126 @@ div#root {
   height: 100vh;
 }
 
+.boxForm {
+  margin-top: 10vh;
+}
+
 .wrapper {
   max-width: 300px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+
+  //button
+  button {
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  //INPUT
+  .classLabelInput {
+    width: 100%;
+    max-width: 100%;
+    @include flexCenter;
+
+    & input {
+      @include flexCenter;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid $vertVinted;
+      height: 30px;
+      box-shadow: 0px 0px 1px $black, 0.10px 0.10px 1px $vertVinted, 0.20px 0.20px 1px $black, 0.30px 0.30px 1px $vertVinted, 0.40px 0.40px 1px $black, 0.50px 0.50px 1px $vertVinted, 1px 1px 1px $vertVinted;
+
+      &::placeholder {
+        color: white;
+        padding-left: 10px;
+        font-size: 16px;
+      }
+    }
+
+    & input[type="submit"] {
+      @include btn;
+      height: 30px;
+    }
+
+    & input:not([type="submit"], [type="search"]) {
+      border-bottom: 2px solid $borderInput;
+    }
+
+    & input:focus-visible {
+      outline: transparent;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
+
+  //TXTAREA
+
+  .labelTxtContact {
+    width: 100%;
+    max-width: 100%;
+    @include flexCenter;
+
+
+    & textarea {
+      resize: none;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 100%;
+      box-shadow: 0px 0px 1px $black, 0.10px 0.10px 1px $vertVinted, 0.20px 0.20px 1px $black, 0.30px 0.30px 1px $vertVinted, 0.40px 0.40px 1px $black, 0.50px 0.50px 1px $vertVinted, 1px 1px 1px $vertVinted;
+      border: none;
+      border-bottom: 2px solid $vertVinted;
+
+      &::placeholder {
+        color: white;
+        padding-left: 10px;
+        font-size: 16px;
+      }
+    }
+  }
+
+
+
+
+
+  .hide {
+    display: none;
+  }
+
+  .show {
+    display: flex !important;
+    color: $vertVinted;
+  }
+
+
+  * .red {
+    color: red;
+    font-size: 1.15rem;
+    font-weight: 700;
+    @include textShadow;
+    padding: 0px 0px 10px 0px;
+  }
+
+  .redInput {
+    font-size: 12px;
+    color: red;
+    height: 10px;
+  }
+
+  .infoTestPayment {
+    font-size: 14px;
+    color: purple;
+    font-weight: 600;
+  }
+
+  .green {
+    color: $vertVinted;
+  }
 
   @media all and (min-device-width : 576px) {
     max-width: 560px;
@@ -34,68 +149,6 @@ div#root {
   @media all and (min-device-width : 1400px) {
     max-width: 1300px;
   }
-}
-
-button {
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  background-color: transparent;
-}
-
-input {
-  @include inputText;
-}
-
-input[type="submit"] {
-  @include btn;
-  height: 30px;
-}
-
-input:not([type="submit"], [type="search"]) {
-  border-bottom: 2px solid $borderInput;
-}
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: flex !important;
-  color: $vertVinted;
-}
-
-textarea {
-  border: transparent;
-}
-
-* .red {
-  color: red;
-  font-size: 1.15rem;
-  font-weight: 700;
-  @include textShadow;
-  padding: 0px 0px 10px 0px;
-}
-
-.redInput {
-  font-size: 12px;
-  color: red;
-  height: 10px;
-}
-
-input:focus-visible,
-textarea:focus-visible {
-  outline: transparent;
-
-  &::placeholder {
-    color: transparent;
-  }
-}
-
-.infoTestPayment {
-  font-size: 14px;
-  color: purple;
-  font-weight: 600;
 }
 
 // BREAKPOINTS
