@@ -12,7 +12,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+  const [isSended, setIsSended] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   // console.log("showSearch in userProvider:", showSearch);
   let location = useLocation();
   // console.log("location.pathname in userProvider:", location.pathname);
@@ -23,10 +25,18 @@ export const UserProvider = ({ children }) => {
     sessionStorage.getItem("vintaidUser") || null
   );
   const [avatar, setAvatar] = useState(null);
-  const [imgBoxUser, setImgBoxUser] = useState(
-    sessionStorage.getItem("vintaidImgBoxUser") || null
-  );
-  // console.log("imgBoxUser: in userProvider:", imgBoxUser);
+
+  const [imgBoxUser, setImgBoxUser] = useState(() => {
+    const imgSessStorage = sessionStorage.getItem("vintaidImgBoxUser");
+    if (imgSessStorage) {
+      return imgSessStorage;
+    } else {
+      const imgDefault =
+        "https://res.cloudinary.com/djk45mwhr/image/upload/fl_preserve_transparency/v1718626269/tjognak2go4rnl4dl1xl.jpg?_s=public-apps";
+      return imgDefault;
+    }
+  });
+  console.log("imgBoxUser: in userProvider:", imgBoxUser);
   // console.log("typeof imgBoxUser: in userProvider:", typeof imgBoxUser);
   // const avatarSecureUrl = user?.account?.avatar?.secure_url;
   // const avatarUrl = user?.account?.avatar;
@@ -68,6 +78,14 @@ export const UserProvider = ({ children }) => {
     }
     return [];
   });
+  const [tokenFgtP, setTokenFgtP] = useState(
+    sessionStorage.getItem("tokenFgtP") || null
+  );
+  // console.log("tokenFgtP in userProvider:", tokenFgtP);
+
+  useEffect(() => {
+    setErrorMessage("");
+  }, [axios]);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -87,10 +105,10 @@ export const UserProvider = ({ children }) => {
             {}
           );
           // console.log("response in /user/verifyToken:", response);
-          // console.log(
-          //   "typeof response in /user/verifyToken:",
-          //   typeof response.status
-          // );
+          console.log(
+            "typeof response in /user/verifyToken:",
+            typeof response.status
+          );
           if (
             response.status ===
               Number(import.meta.env.VITE_REACT_APP_RESPONSEVALID) &&
@@ -170,7 +188,13 @@ export const UserProvider = ({ children }) => {
       (config) => {
         // console.log("config in userProvider:", config);
         config.withCredentials = true;
-        config.headers.Authorization = token ? `Bearer ${token}` : null;
+        config.headers.Authorization = token
+          ? `Bearer ${token}`
+          : `Bearer ${tokenFgtP}`;
+        // console.log("tokenFgtP in axios.interceptors.request:", tokenFgtP);
+
+        config.headers["Content-Type"] =
+          "multipart/form-data" || "application/json";
         return config;
       },
       (error) => {
@@ -214,16 +238,22 @@ export const UserProvider = ({ children }) => {
         logout,
         isAdmin,
         setIsAdmin,
+        isSended,
+        setIsSended,
         axios,
         fav,
         setFav,
         isLoading,
         setIsLoading,
+        errorMessage,
+        setErrorMessage,
         avatar,
         setAvatar,
         imgBoxUser,
         setImgBoxUser,
         showSearch,
+        tokenFgtP,
+        setTokenFgtP,
       }}
     >
       {children}

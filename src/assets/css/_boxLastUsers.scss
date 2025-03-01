@@ -16,6 +16,7 @@
       gap: 5px;
       background-color: $backLightUser;
       border-radius: 5px;
+      padding: 2px 5px 2px 5px;
 
       .avatar {
         & img {
@@ -50,7 +51,9 @@
       }
 
       .date {
-        flex: 1 40px;
+        display: block;
+        width: 80px;
+        @include ellipsis;
       }
 
       .isAdmin,

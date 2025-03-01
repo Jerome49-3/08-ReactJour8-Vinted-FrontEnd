@@ -94,10 +94,7 @@ const Chat = () => {
           `http://localhost:3000/messages/${OfferID}`,
           // const response = await axios.post(
           //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/${OfferID}`,
-          formData,
-          {
-            withCredentials: true,
-          }
+          formData
         );
         if (response) {
           console.log("response in handleMesssage on Chat:", response);

@@ -6,7 +6,7 @@ import { useUser } from "../assets/lib/userFunc";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
 
-const LastSales = ({ searchTransactions, searchPrice }) => {
+const LastSales = ({ searchTransactions, numberCommand }) => {
   // console.log(
   //   "searchPrice in LastSales:",
   //   searchPrice,
@@ -25,7 +25,7 @@ const LastSales = ({ searchTransactions, searchPrice }) => {
         // const response = await axios.get(
         //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/transactions`,
         const response = await axios.get(
-          `http://localhost:3000/transactions?title=${searchTransactions}&num=${searchPrice}`
+          `http://localhost:3000/transactions?title=${searchTransactions}&numberCommand=${numberCommand}`
         );
         if (response) {
           // console.log("response in /transactions:", response);
@@ -34,11 +34,16 @@ const LastSales = ({ searchTransactions, searchPrice }) => {
           setIsLoading(false);
         }
       } catch (error) {
-        console.log(error.response.data.message);
+        console.log("error:", error);
+        console.log("error.response:", error.response);
+        console.log(
+          "error.response.data.message:",
+          error.response.data.message
+        );
       }
     };
     fetchData();
-  }, [searchTransactions, searchPrice]);
+  }, [searchTransactions, numberCommand]);
 
   return isLoading ? (
     <Loading />
@@ -47,10 +52,10 @@ const LastSales = ({ searchTransactions, searchPrice }) => {
       <table className="boxLastSales">
         <thead>
           <tr>
-            <th>Nom du produit</th>
+            <th>Nom produit:</th>
             <th>Prix:</th>
             <th>Vendeur:</th>
-            <th>Date d'achat:</th>
+            <th>N° commande:</th>
             <th>Acheteur:</th>
           </tr>
         </thead>
@@ -63,7 +68,7 @@ const LastSales = ({ searchTransactions, searchPrice }) => {
                   <td>{transactions.product_name}</td>
                   <td>{transactions.product_price}</td>
                   <td>{transactions.seller.account.username}</td>
-                  <td>{transactions.date}</td>
+                  <td className="numCmd">{transactions.number_command}</td>
                   <td>{transactions.buyer.account.username}</td>
                 </tr>
               </Link>

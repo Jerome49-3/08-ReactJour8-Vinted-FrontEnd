@@ -22,6 +22,7 @@
     "axios-retry": "^4.5.0",
     "cookies-js": "^1.2.3",
     "crypto-js": "^4.2.0",
+    "crypto-random-string": "^5.0.0",
     "dotenv": "^16.4.5",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
@@ -32,8 +33,7 @@
     "react-dropzone": "^14.2.3",
     "react-range": "^1.10.0",
     "react-router-dom": "^6.23.1",
-    "typescript": "^5.5.4",
-    "uuidv4": "^6.2.13"
+    "typescript": "^5.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.5",

@@ -20,6 +20,7 @@ const Button = ({
   path,
   classLink,
   rotation,
+  linkText,
 }) => {
   return (
     <>
@@ -35,7 +36,9 @@ const Button = ({
           </div>
         ) : null}
         {showEl ? (txtShow1 = { txtShow1 }) : txtShow2}
-        {path ? <Links path={path} classLink={classLink} /> : null}
+        {path ? (
+          <Links path={path} classLink={classLink} linkText={linkText} />
+        ) : null}
       </button>
     </>
   );

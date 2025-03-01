@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 // import Cookies from "cookies-js";
@@ -6,6 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
 import { useUser } from "../assets/lib/userFunc";
+import cryptoRandomString from "crypto-random-string";
 
 //connection Stripe
 const stripeConnect = loadStripe(
@@ -42,7 +42,10 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
     product_pictures
   );
   useEffect(() => {
-    const numberCommand = uuidv4();
+    const numberCommand = cryptoRandomString({ length: 16 });
+    console.log("numberCommand in /payment:", numberCommand);
+    console.log();
+
     setNumCmd(numberCommand);
   }, []);
 

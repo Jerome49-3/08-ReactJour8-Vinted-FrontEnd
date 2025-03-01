@@ -4,12 +4,12 @@ import { useUser } from "../assets/lib/userFunc";
 import { useNavigate } from "react-router-dom";
 
 //components
-import Links from "../components/Links";
 import Input from "../components/Input";
 import Loading from "../components/Loading";
 
 //lib
 import saveToken from "../assets/lib/saveToken";
+import Links from "../components/Links";
 
 const Login = ({ type, setType, icon1, icon2 }) => {
   const boxForm = "boxForm";
@@ -23,7 +23,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
     imgBoxUser,
     setImgBoxUser,
   } = useUser();
-  console.log("imgBoxUser in Login:", imgBoxUser);
+  // console.log("imgBoxUser in Login:", imgBoxUser);
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [password, setPassword] = useState("");
@@ -33,11 +33,29 @@ const Login = ({ type, setType, icon1, icon2 }) => {
   const handleType = () => {
     setType(type === "password" ? "text" : "password");
   };
+  const handleSendCode = async (e) => {
+    setIsLoading(true);
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/sendMail/sendCode`,
+        {}
+      );
+      if (response.data) {
+        console.log("response.data:", response.data);
+        alert(response.data);
+        setIsLoading(false);
+        navigate("/confirmEmail");
+      }
+    } catch (error) {
+      console.log(error.message);
+      setErrorMessage(error.message);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-    // axios.defaults.withCredentials = true;
     try {
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_LOGIN,
@@ -74,7 +92,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
     } catch (error) {
       console.log("error in handleSubmit on Login:", error);
       const errRespData = error?.response?.data;
-      // console.log("errRespData in handleSubmit on Login:", errRespData);
+      console.log("errRespData in handleSubmit on Login:", errRespData);
       // console.log("typeof errRespData:", typeof errRespData);
       const errorMessage = error?.message;
       // console.log("errorMessage in handleSubmit on Login:", errorMessage);
@@ -91,6 +109,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
         typeof errRespDataMssg === "string" &&
         errRespDataMssg === messageNotConfirmEmail
       ) {
+        setErrorMessage(errRespDataMssg.message);
         alert(errRespDataMssg);
         setTimeout(() => {
           navigate("/confirmemail");
@@ -139,16 +158,17 @@ const Login = ({ type, setType, icon1, icon2 }) => {
           </div>
           <Input type="submit" value="Se connecter" />
           <div className="boxForgot">
-            <small>
-              <Links />
-            </small>
+            <div className="btnSubmitCode" onClick={handleSendCode}>
+              <Links path="/resendEmail" linkText="Mot de passe oublié ?" />
+            </div>
           </div>
           {errorMessage && (
             <p
               style={{
                 color: "red",
-                fontSize: "1.05rem",
-                fontWeight: "700",
+                fontSize: "12px",
+                height: "20px",
+                fontWeight: "500",
                 textShadow:
                   "0px 0px 1px orangered, 0.15px 0.15px 1.25px black, 0.35px 0.35px 1.5px green",
               }}
@@ -157,7 +177,6 @@ const Login = ({ type, setType, icon1, icon2 }) => {
             </p>
           )}
         </form>
-        <Links path="/forgotPassword" />
       </div>
     </div>
   );

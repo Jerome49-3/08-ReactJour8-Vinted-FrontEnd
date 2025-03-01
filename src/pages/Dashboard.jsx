@@ -13,8 +13,10 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
   const [searchUsers, setSearchUsers] = useState("");
   const [searchTransactions, setSearchTransactions] = useState("");
   console.log("searchTransactions in Dashboard:", searchTransactions);
-  const [searchPrice, setSearchPrice] = useState("");
-  console.log("searchPrice in Dashboard:", searchPrice);
+  // const [searchPrice, setSearchPrice] = useState("");
+  // console.log("searchPrice in Dashboard:", searchPrice);
+  const [numberCommand, setNumberCommand] = useState("");
+  console.log("numberCommand in Dashboard:", numberCommand);
   const [searchOffer, setSearchOffer] = useState("");
   const [searchMessage, setSearchMessage] = useState("");
 
@@ -59,15 +61,15 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
               valueStr={searchTransactions}
               setStateStr={setSearchTransactions}
               txtPlaceholder="search by name"
-              txtNumber="by number"
-              setStateNum={setSearchPrice}
-              valueNum={searchPrice}
+              txtNumber="by n° command"
+              valueNum={numberCommand}
+              setStateNum={setNumberCommand}
             />
 
             <div className="boxDetails">
               <LastSales
                 searchTransactions={searchTransactions}
-                searchPrice={searchPrice}
+                numberCommand={numberCommand}
               />
             </div>
           </div>

@@ -3,17 +3,17 @@ import { useUser } from "../assets/lib/userFunc";
 import TextArea from "../components/TextArea";
 import Input from "../components/Input";
 import SelectOptions from "../components/SelectOptions";
+import LoadedInputSubmit from "../components/LoadedInputSubmit";
 
 const Contact = () => {
   const [optionValue, setOptionValue] = useState("");
   console.log("optionValue in contact:", optionValue);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isSended, setIsSended] = useState(false);
   const [numberCommand, setNumberCommand] = useState(null);
   const [numberOffer, setNumberOffer] = useState(null);
   const [messageContact, setMessageContact] = useState(null);
   console.log("messageContact in contact:", messageContact);
-  const { axios } = useUser();
+  const { axios, isSended, setIsSended } = useUser();
 
   const handleData = async (e) => {
     e.preventDefault();
@@ -85,13 +85,7 @@ const Contact = () => {
         placeholder="message"
         setState={setMessageContact}
       />
-      {isSended !== true ? (
-        <Input type="submit" value="Envoyer" />
-      ) : (
-        <div className="boxLoaded">
-          <div className="loaded"></div>
-        </div>
-      )}
+      <LoadedInputSubmit isSended={isSended} />
       {errorMessage && <p className="red">{errorMessage}</p>}
     </form>
   );

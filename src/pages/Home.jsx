@@ -10,6 +10,7 @@ import CookieConsent from "react-cookie-consent";
 import Hero from "../components/Hero";
 import Loading from "../components/Loading";
 import OfferCard from "../components/OfferCard";
+import Links from "../components/Links";
 
 //images
 // import noImg from '../assets/images/no-image.jpg';
@@ -34,7 +35,7 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
           }?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}`
         );
         if (response.data) {
-          // console.log("response.data on /Home (Offer):", response.data);
+          console.log("response.data on /Home (Offer):", response.data);
           setData(response.data);
           setIsLoading(false);
         }
@@ -50,7 +51,7 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
     <>
       <Loading />
     </>
-  ) : (
+  ) : data.length > 0 ? (
     <div className="boxHome">
       <Hero />
       <div className="wrapper">
@@ -73,6 +74,18 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>
     </div>
+  ) : (
+    <>
+      <div className="boxHome">
+        <Hero />
+        <div className="wrapper">
+          <div className="noOffers">
+            <div> Il n'y aucune offres actullement:&ensp;</div>
+            <Links path="/publish" linkText="Publier la votre" />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

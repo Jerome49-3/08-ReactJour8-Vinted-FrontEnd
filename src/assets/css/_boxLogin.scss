@@ -1,7 +1,26 @@
 .boxLogin {
   width: 30%;
+  height: 100%;
 
   & input[type="submit"] {
     height: 30px;
+  }
+
+  .boxForgot {
+    .btnSubmitCode {
+      @include btn;
+      background-color: transparent;
+      width: 100%;
+      @include textShadow;
+      font-weight: 600;
+
+      &:hover {
+        background-color: transparent;
+        color: $vertVintedHovFoc;
+        @include textShadow;
+        font-weight: 600;
+
+      }
+    }
   }
 }

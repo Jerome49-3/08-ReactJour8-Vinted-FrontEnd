@@ -42,13 +42,18 @@
       color: $white;
 
       & tr {
-        width: 100%;
+        width: calc(100%);
         @include flexStart;
 
         & td {
-          @include flexCenter;
+          text-align: center;
           width: calc(100%/5);
           @include ellipsis;
+          border-color: 2px solid white !important;
+        }
+
+        .numCmd {
+          padding-left: 6px;
         }
       }
     }

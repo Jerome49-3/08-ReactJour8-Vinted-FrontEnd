@@ -53,6 +53,10 @@ import ConfirmEmail from "./pages/ConfirmEmail";
 import PrivateRoute from "./pages/PrivateRoute";
 import Favorites from "./pages/Favorites";
 import Chat from "./pages/Chat";
+import UserId from "./pages/UserId";
+import Contact from "./pages/Contact";
+import ForgotPsswd from "./pages/ForgotPsswd";
+import ResendEmail from "./pages/ResendEmail";
 
 //components
 import Header from "./components/Header";
@@ -61,8 +65,6 @@ import ImgsModal from "./components/ImgsModal";
 import Profile from "./components/Profile";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
-import UserId from "./pages/UserId";
-import Contact from "./pages/Contact";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -73,6 +75,8 @@ function App() {
   const [showImgsModal, setShowImgsModal] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [srcImgsModal, setSrcImgsModal] = useState(null);
+  const [emailSended, setEmailSended] = useState(false);
+  const [emailIsConfirmed, setEmailIsConfirmed] = useState(false);
   // console.log("srcImgsModal in app:", srcImgsModal);
   const [showNoOffer, setShowNoOffer] = useState(false);
   const [priceMin, setPriceMin] = useState("0");
@@ -118,6 +122,23 @@ function App() {
                   icon2="eye-slash"
                 />
               }
+            />
+            <Route
+              path="/confirmemail"
+              element={
+                <ConfirmEmail
+                  emailSended={emailSended}
+                  setEmailIsConfirmed={setEmailIsConfirmed}
+                />
+              }
+            />
+            <Route
+              path="/resendEmail"
+              element={<ResendEmail setEmailSended={setEmailSended} />}
+            />
+            <Route
+              path="/forgotPassword"
+              element={<ForgotPsswd emailIsConfirmed={emailIsConfirmed} />}
             />
             <Route element={<PrivateRoute />}>
               <Route path="/contact" element={<Contact />} />
@@ -183,7 +204,6 @@ function App() {
                 }
               />
             </Route>
-            <Route path="/confirmemail" element={<ConfirmEmail />} />
             <Route
               path="/publish"
               element={<Publish faRotateRight={faRotateRight} />}

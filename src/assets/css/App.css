@@ -496,6 +496,209 @@ textarea:focus-visible::placeholder {
     width: 105%;
   } */
 }
+/* FORM */
+.boxForm {
+  width: 100%;
+  display: flex;
+}
+.boxForm .wrapper {
+  height: 100%;
+  padding-bottom: 20px;
+}
+.boxForm #pictures {
+  display: none;
+}
+.boxForm .boxPicTop {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 2px solid #ededed;
+  margin-bottom: 2.5%;
+}
+.boxForm .boxPicTop .boxPicBottom {
+  padding: 5px 0px 5px 5px;
+}
+.boxForm .boxPicTop .boxPicBottomEmpty {
+  padding: 110px;
+}
+.boxForm .boxPicTop .boxPicBottom,
+.boxForm .boxPicTop .boxPicBottomEmpty {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  border: 2px dashed rgba(237, 237, 237, 0.7);
+  gap: 5px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.boxForm .boxPicTop .boxPicBottom #labelPic,
+.boxForm .boxPicTop .boxPicBottomEmpty #labelPic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #2DB0BA;
+  font-size: 1.5rem;
+  font-weight: 900;
+  border: 2px solid #2DB0BA;
+  background-color: #ffffff;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 500;
+  box-shadow: 0px 0px 2px #000000, 1px 1px 2px #000000;
+  transition: all 1s ease-in-out;
+}
+.boxForm .boxPicTop .boxPicBottom #labelPic:active,
+.boxForm .boxPicTop .boxPicBottomEmpty #labelPic:active {
+  box-shadow: inset 0px 0px 2px #000000, inset 0px 0px 5px #000000;
+}
+.boxForm .boxPicTop .boxPicBottom .viewPics {
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+}
+.boxForm .boxPicTop .boxPicBottom .viewPics img {
+  width: 200px;
+  height: 200px;
+  max-height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles,
+.boxForm .boxPicTop .boxPicBottom .viewPics .rotateFiles {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 2px solid #2DB0BA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
+}
+.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles {
+  position: absolute;
+  top: 15%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+}
+.boxForm .boxPicTop .boxPicBottom .viewPics .rotateFiles {
+  position: absolute;
+  top: 85%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+}
+.boxForm .boxPicTop .boxPicBottomEmpty {
+  border: none;
+}
+.boxForm div label {
+  padding: 5px 0 5px 0;
+}
+.boxForm form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+}
+.boxForm form img {
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.boxForm form textarea {
+  margin-bottom: 10px;
+}
+.boxForm form input, .boxForm form textarea, .boxForm form div.boxPsswd {
+  width: 100%;
+  box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
+}
+.boxForm form .boxCheckBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.boxForm form .boxCheckBox input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+}
+.boxForm form .boxCheckBox span {
+  width: 85%;
+}
+.boxForm form .boxPsswd {
+  border-bottom: 1px solid rgba(255, 0, 0, 0.197);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F5F6F7;
+}
+.boxForm form .boxPsswd #password {
+  border-bottom: none;
+  background-color: transparent;
+}
+
+.boxFormCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+form input:not(form input:last-child),
+.boxFormSignUp form div input {
+  padding: 2px;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.197) !important;
+}
+
+form input:last-child:not(.boxFormSignUp form div input) {
+  background-color: #2DB0BA;
+  box-shadow: 0px 0px 2px #000000;
+  color: #ffffff;
+  height: 30px;
+  width: 100.25%;
+}
+
+@media all and (min-width: 768px) {
+  /* FORM */
+  .boxForm form {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .boxForm form .wrapper {
+    height: 100%;
+  }
+}
+.boxIcons {
+  width: 5% !important;
+  justify-content: center !important;
+}
+
+.boxForgotPsswd {
+  width: 30%;
+}
+.boxForgotPsswd .formForgotPsswd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
 /* HEADER */
 header {
   width: 100%;
@@ -829,6 +1032,12 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-direction: column;
   width: 100%;
+  height: 100%;
+}
+.boxHome .noOffers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ARTICLE */
@@ -1517,6 +1726,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   gap: 5px;
   background-color: #FAF9F6;
   border-radius: 5px;
+  padding: 2px 5px 2px 5px;
 }
 .boxLastUsers .boxUsers a .avatar img {
   width: 25px;
@@ -1546,7 +1756,11 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
 }
 .boxLastUsers .boxUsers a .date {
-  flex: 1 40px;
+  display: block;
+  width: 80px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .boxLastUsers .boxUsers a .isAdmin,
 .boxLastUsers .boxUsers a .news {
@@ -1949,199 +2163,13 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     left: 87.45%;
   }
 }
-/* FORM */
-.boxForm {
-  width: 100%;
-  display: flex;
-}
-.boxForm .wrapper {
-  height: 100%;
-  padding-bottom: 20px;
-}
-.boxForm #pictures {
-  display: none;
-}
-.boxForm .boxPicTop {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  border: 2px solid #ededed;
-  margin-bottom: 2.5%;
-}
-.boxForm .boxPicTop .boxPicBottom {
-  padding: 5px 0px 5px 5px;
-}
-.boxForm .boxPicTop .boxPicBottomEmpty {
-  padding: 110px;
-}
-.boxForm .boxPicTop .boxPicBottom,
-.boxForm .boxPicTop .boxPicBottomEmpty {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  border: 2px dashed rgba(237, 237, 237, 0.7);
-  gap: 5px;
-  flex-wrap: wrap;
-  position: relative;
-}
-.boxForm .boxPicTop .boxPicBottom #labelPic,
-.boxForm .boxPicTop .boxPicBottomEmpty #labelPic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: -moz-fit-content;
-  width: fit-content;
-  color: #2DB0BA;
-  font-size: 1.5rem;
-  font-weight: 900;
-  border: 2px solid #2DB0BA;
-  background-color: #ffffff;
-  padding: 5px 10px 5px 10px;
-  border-radius: 5px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 500;
-  box-shadow: 0px 0px 2px #000000, 1px 1px 2px #000000;
-  transition: all 1s ease-in-out;
-}
-.boxForm .boxPicTop .boxPicBottom #labelPic:active,
-.boxForm .boxPicTop .boxPicBottomEmpty #labelPic:active {
-  box-shadow: inset 0px 0px 2px #000000, inset 0px 0px 5px #000000;
-}
-.boxForm .boxPicTop .boxPicBottom .viewPics {
-  width: -moz-fit-content;
-  width: fit-content;
-  position: relative;
-}
-.boxForm .boxPicTop .boxPicBottom .viewPics img {
-  width: 200px;
-  height: 200px;
-  max-height: 200px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles,
-.boxForm .boxPicTop .boxPicBottom .viewPics .rotateFiles {
-  width: 20px;
-  height: 20px;
-  background-color: #ffffff;
-  border: 2px solid #2DB0BA;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  padding: 5px;
-}
-.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles {
-  position: absolute;
-  top: 15%;
-  left: 90%;
-  transform: translate(-50%, -50%);
-}
-.boxForm .boxPicTop .boxPicBottom .viewPics .rotateFiles {
-  position: absolute;
-  top: 85%;
-  left: 90%;
-  transform: translate(-50%, -50%);
-}
-.boxForm .boxPicTop .boxPicBottomEmpty {
-  border: none;
-}
-.boxForm div label {
-  padding: 5px 0 5px 0;
-}
-.boxForm form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 10px;
-  width: 100%;
-  height: 100%;
-}
-.boxForm form img {
-  width: 100px;
-  height: 100px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 10px;
-}
-.boxForm form textarea {
-  margin-bottom: 10px;
-}
-.boxForm form input, .boxForm form textarea, .boxForm form div.boxPsswd {
-  width: 100%;
-  box-shadow: 0px 0px 4px #000000, 0px 0px 2px #000000;
-}
-.boxForm form .boxCheckBox {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-}
-.boxForm form .boxCheckBox input[type=checkbox] {
-  width: 15px;
-  height: 15px;
-}
-.boxForm form .boxCheckBox span {
-  width: 85%;
-}
-.boxForm form .boxPsswd {
-  border-bottom: 1px solid rgba(255, 0, 0, 0.197);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #F5F6F7;
-}
-.boxForm form .boxPsswd #password {
-  border-bottom: none;
-  background-color: transparent;
-}
-
-.boxFormCenter {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-form input:not(form input:last-child),
-.boxFormSignUp form div input {
-  padding: 2px;
-  border-bottom: 1px solid rgba(255, 0, 0, 0.197) !important;
-}
-
-form input:last-child:not(.boxFormSignUp form div input) {
-  background-color: #2DB0BA;
-  box-shadow: 0px 0px 2px #000000;
-  color: #ffffff;
-  height: 30px;
-  width: 100.25%;
-}
-
-@media all and (min-width: 768px) {
-  /* FORM */
-  .boxForm form {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .boxForm form .wrapper {
-    height: 100%;
-  }
-}
 .boxContact {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 50%;
+  gap: 10px;
 }
 .boxContact .boxMenuSelect {
   padding: 5px 0 5px 0;
@@ -2206,9 +2234,44 @@ form input:last-child:not(.boxFormSignUp form div input) {
 
 .boxLogin {
   width: 30%;
+  height: 100%;
 }
 .boxLogin input[type=submit] {
   height: 30px;
+}
+.boxLogin .boxForgot .btnSubmitCode {
+  color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+  background-color: transparent;
+  width: 100%;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  font-weight: 600;
+}
+.boxLogin .boxForgot .btnSubmitCode p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.boxLogin .boxForgot .btnSubmitCode p:hover, .boxLogin .boxForgot .btnSubmitCode p:focus {
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.boxLogin .boxForgot .btnSubmitCode:hover, .boxLogin .boxForgot .btnSubmitCode:focus {
+  background-color: #33c6d0;
+  color: #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #ffffff, 0.75px 0.75px 1px #ffffff, 1px 1px 1px #000000;
+}
+.boxLogin .boxForgot .btnSubmitCode:hover {
+  background-color: transparent;
+  color: #33c6d0;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
+  font-weight: 600;
 }
 
 .boxLastSales {
@@ -2265,13 +2328,15 @@ form input:last-child:not(.boxFormSignUp form div input) {
   align-items: center;
 }
 .boxLastSales .boxTansactions a tr td {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   width: 20%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  border-color: 2px solid white !important;
+}
+.boxLastSales .boxTansactions a tr .numCmd {
+  padding-left: 6px;
 }
 
 .boxTransactionId {
