@@ -180,7 +180,6 @@ table {
   .dark .boxOffer .wrapper article .left {
     background-color: var(--darkModeHeader);
   }
-
   .dark .boxUsers a,
   .dark * input:not(input[type="submit"]),
   .dark .boxSearch,
@@ -199,6 +198,7 @@ table {
   .dark header nav ul li button,
   .dark header nav ul li a,
   .light header button,
+  .dark header .buttonSignIn button p,
   .dark * a:link {
     color: var(--headerLibackgd);
   }
@@ -256,6 +256,7 @@ table {
   .light .topHeader .boxSearch input,
   .light .boxForm .wrapper form label input:not(input[type="submit"]),
   .light .boxLogin .wrapper form label input:not(input[type="submit"]),
+  .light .boxLogin .wrapper form .boxPsswd,
   .light .boxForm .wrapper form label textarea {
     background-color: var(--backLightInput);
   }
@@ -276,12 +277,4 @@ body {
 
 input[type="file"] {
   display: none;
-}
-a {
-  color: #2db0ba;
-  text-shadow: 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000,
-    0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
-}
-a:visited {
-  color: #2db0ba;
 }

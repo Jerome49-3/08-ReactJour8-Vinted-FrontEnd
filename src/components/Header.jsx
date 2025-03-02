@@ -79,13 +79,15 @@ const Header = ({
                 <li>
                   <div className="buttonSignIn">
                     <button onClick={() => setShow(!show)}>
-                      <p>s'inscrire</p>
+                      <p>S'inscrire</p>
                     </button>
                   </div>
                   <div>
-                    <Link to="/login" className="linkConnect">
-                      connexion
-                    </Link>
+                    <Links
+                      path="/login"
+                      // classLink="linkConnect"
+                      linkText="Connexion"
+                    />
                   </div>
                 </li>
               )}

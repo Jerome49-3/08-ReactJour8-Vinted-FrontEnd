@@ -194,6 +194,13 @@ div#root {
 .wrapper .green {
   color: #2DB0BA;
 }
+.wrapper a {
+  color: #2DB0BA;
+  text-shadow: 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+.wrapper a:visited {
+  color: #2DB0BA;
+}
 @media all and (min-device-width: 576px) {
   .wrapper {
     max-width: 560px;
@@ -789,15 +796,22 @@ div#root {
   font-weight: 600;
 }
 
-.boxFormSignup {
+.boxFormSignUp {
   height: 100%;
 }
-.boxFormSignup .wrapper {
+.boxFormSignUp .wrapper {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+}
+.boxFormSignUp .wrapper form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .boxForgotPsswd {
@@ -937,19 +951,18 @@ header .wrapper .topHeader nav ul li .buttonSignIn {
   justify-content: center;
   align-items: center;
 }
-header .wrapper .topHeader nav ul li .buttonSignIn p, header .wrapper .topHeader nav ul li .buttonSignIn div a {
+header .wrapper .topHeader nav ul li .buttonSignIn button {
+  border-right: 2px solid #2DB0BA;
+}
+header .wrapper .topHeader nav ul li .buttonSignIn button p, header .wrapper .topHeader nav ul li .buttonSignIn button div a {
   height: 100%;
   width: 100%;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #2DB0BA, 1px 1px 1px #000000;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
-  font-weight: 600;
-}
-header .wrapper .topHeader nav ul, header .wrapper .topHeader nav ul li, header .wrapper .topHeader nav ul li div, header .wrapper .topHeader nav ul li:nth-child(1), header .wrapper .topHeader nav ul li:nth-child(2), header .wrapper .topHeader nav ul li div button, header .wrapper .topHeader nav ul li div a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 header .wrapper .bottomHeader {
   display: flex;

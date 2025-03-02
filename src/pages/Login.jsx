@@ -130,7 +130,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
           <Input
             id="email"
             type="email"
-            placeholder="jerome@test.com"
+            placeholder="email"
             value={email}
             setState={setEmail}
             autocomplete="on"
@@ -140,7 +140,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
               value={password}
               id="password"
               type={type}
-              placeholder="Mot de passe"
+              placeholder="password"
               setState={setPassword}
               autocomplete="on"
             />

@@ -23,7 +23,7 @@ const Links = ({
       <Link to={path} className={classLink} state={state}>
         {src ? <Image src={src} alt={alt} classImg={classImg} /> : null}
         {icon ? <FontAwesomeIcon icon={icon} className={classIcon} /> : null}
-        {linkText ? <>{linkText}</> : null}
+        {linkText ? <p>{linkText}</p> : null}
         {classInfo ? (
           <div className={classInfo}>
             <h3 className={classInfoText}>{infoText}</h3>

@@ -88,7 +88,6 @@ header {
               @include btn;
               @include flexAround;
 
-
               &:active {
                 box-shadow: inset 0px 0px 4px $black, inset 0.5px 0.5px 2px $black;
               }
@@ -109,26 +108,21 @@ header {
               width: 100%;
               @include flexCenter;
 
-              & p,
-              & div a {
-                height: 100%;
-                width: 100%;
-                @include flexCenter;
-                font-size: 16px;
-                font-weight: 600;
+              & button {
+                border-right: 2px solid $vertVinted;
+
+                & p,
+                & div a {
+                  height: 100%;
+                  width: 100%;
+                  @include textShadow;
+                  @include flexCenter;
+                  font-family: Helvetica, Arial, sans-serif;
+                  font-size: 16px;
+                }
               }
             }
           }
-        }
-
-        & ul,
-        & ul li,
-        & ul li div,
-        & ul li:nth-child(1),
-        & ul li:nth-child(2),
-        & ul li div button,
-        & ul li div a {
-          @include flexCenter;
         }
       }
 
