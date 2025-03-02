@@ -3,12 +3,11 @@
   align-items: center;
   flex-direction: column;
   height: 100%;
-  gap: 5px;
   width: 100%;
   padding: 5px 0 5px 0;
 
   .wrapper {
-    gap: 2.5px;
+    gap: 5px;
     display: grid;
   }
 
@@ -17,7 +16,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 2.5px;
+    gap: 5px;
   }
 
   .top .left,
@@ -27,7 +26,8 @@
     min-height: 100%;
 
     .boxDetails {
-      min-height: calc(100% - 25px);
+      height: calc(100% - 25px);
+      max-height: calc(100% - 25px);
     }
 
     .boxDetails,

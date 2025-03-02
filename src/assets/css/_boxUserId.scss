@@ -124,16 +124,20 @@
 @media screen and (min-width: 1224px) {
   .boxUserId {
     .wrapper {
-      .top {
-        .bottom {
-          flex-direction: row;
+      .top {}
 
-          .left {
-            & img {
-              width: 400px;
-              height: 400px;
-            }
+      .bottom {
+        flex-direction: row;
+
+        .left {
+          & img {
+            width: 400px;
+            height: 400px;
           }
+        }
+
+        .right div label {
+          @include flexColStart;
         }
       }
     }

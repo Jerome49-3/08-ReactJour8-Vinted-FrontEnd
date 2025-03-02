@@ -11,7 +11,8 @@ div#root {
 
 .boxForm,
 .boxHome,
-.boxDashboard {
+.boxDashboard,
+.boxUserId {
   margin-top: 10vh;
 }
 
@@ -60,17 +61,6 @@ div#root {
   }
 
   .green {
-    color: $vertVinted;
-  }
-
-  //LINK
-  a {
-    color: $vertVinted;
-    text-shadow: 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000,
-      0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
-  }
-
-  a:visited {
     color: $vertVinted;
   }
 

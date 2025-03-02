@@ -151,7 +151,8 @@ div#root {
 
 .boxForm,
 .boxHome,
-.boxDashboard {
+.boxDashboard,
+.boxUserId {
   margin-top: 10vh;
 }
 
@@ -192,13 +193,6 @@ div#root {
   font-weight: 600;
 }
 .wrapper .green {
-  color: #2DB0BA;
-}
-.wrapper a {
-  color: #2DB0BA;
-  text-shadow: 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
-}
-.wrapper a:visited {
   color: #2DB0BA;
 }
 @media all and (min-device-width: 576px) {
@@ -1808,12 +1802,11 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-direction: column;
   height: 100%;
-  gap: 5px;
   width: 100%;
   padding: 5px 0 5px 0;
 }
 .boxDashboard .wrapper {
-  gap: 2.5px;
+  gap: 5px;
   display: grid;
 }
 .boxDashboard .top,
@@ -1821,7 +1814,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 2.5px;
+  gap: 5px;
 }
 .boxDashboard .top .left,
 .boxDashboard .top .right,
@@ -1833,7 +1826,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 .boxDashboard .top .right .boxDetails,
 .boxDashboard .bottom .left .boxDetails,
 .boxDashboard .bottom .right .boxDetails {
-  min-height: calc(100% - 25px);
+  height: calc(100% - 25px);
+  max-height: calc(100% - 25px);
 }
 .boxDashboard .top .left .boxDetails,
 .boxDashboard .top .left .boxTitleSearch,
@@ -2097,12 +2091,18 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 
 @media screen and (min-width: 1224px) {
-  .boxUserId .wrapper .top .bottom {
+  .boxUserId .wrapper .bottom {
     flex-direction: row;
   }
-  .boxUserId .wrapper .top .bottom .left img {
+  .boxUserId .wrapper .bottom .left img {
     width: 400px;
     height: 400px;
+  }
+  .boxUserId .wrapper .bottom .right div label {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 .toggleNav {

@@ -144,6 +144,7 @@ table {
   --lightMode: #ffffff;
   --black: #000000;
   --backDarkLink: #343434;
+  --backDarkLastUsersBoxUser: #505050;
   --backLightInput: #c2c2c2;
   --headerLibackgd: #2db0ba;
   --borderInput: rgba(255, 0, 0, 0.197);
@@ -186,11 +187,22 @@ table {
   .dark .boxPsswd,
   .dark .boxPsswd .boxIcons svg,
   .dark textarea,
+  .dark .boxDashboard .top .left .boxDetails,
+  .dark .boxDashboard .top .right .boxDetails,
+  .dark .boxDashboard .bottom .left .boxDetails,
+  .dark .boxDashboard .bottom .right .boxDetails,
+  .dark .boxDashboard .top .left .boxTitleSearch,
+  .dark .boxDashboard .top .right .boxTitleSearch,
+  .dark .boxDashboard .bottom .left .boxTitleSearch,
+  .dark .boxDashboard .bottom .right .boxTitleSearch,
   .dark * form * input:not(input[type="submit"]),
   .dark .boxModalContent .boxFormSignUp label input:not(input[type="submit"]),
   .dark .boxLogin .wrapper form label input:not(input[type="submit"]) {
     background-color: var(--backDarkLink) !important;
     color: var(--lightMode) !important;
+  }
+  .dark .boxDashboard .top .left .boxDetails .boxLastUsers .boxUsers a {
+    background-color: var(--backDarkLastUsersBoxUser) !important;
   }
   .dark header * button {
     color: var(--vertVintaidBtn);
@@ -277,4 +289,15 @@ body {
 
 input[type="file"] {
   display: none;
+}
+
+/* LINK */
+a {
+  color: #2db0ba;
+  text-shadow: 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000,
+    0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+}
+
+a:visited {
+  color: #2db0ba;
 }
