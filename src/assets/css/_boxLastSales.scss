@@ -1,17 +1,18 @@
 .boxLastSales {
   @include flexColTopStart;
   gap: 5px;
-  padding: 0 5px 0 5px;
+  padding: 0 2.5px 0 2.5px;
   width: 100%;
-  height: 100%;
 
   & thead {
     @include flexStart;
     width: 100%;
     border: 2px solid $vertVinted;
+    border-radius: 5px;
     padding: 2px;
     position: relative;
     z-index: 10;
+    margin-top: 2.5px;
 
     & tr {
       width: 100%;

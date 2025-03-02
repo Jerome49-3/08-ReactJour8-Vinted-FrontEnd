@@ -52,73 +52,75 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
   return (
     <div className="boxModal">
       <div className="boxModalContent">
-        <div>
-          <Image src={SmallLogo} alt="logo Vinted" />
-          <button
-            onClick={() => {
-              {
-                show === true ? setShow(false) : null;
-              }
-            }}
-          >
-            X
-          </button>
-        </div>
-        <div className="boxForm boxFormSignUp">
-          <form onSubmit={handleSignup}>
-            <Input
-              value={username}
-              id="username"
-              type="text"
-              placeholder="Nom d'utilisateur(ice)"
-              setState={setUsername}
-              autocomplete="on"
-            />
-            <Input
-              value={email}
-              id="email"
-              type="email"
-              placeholder="Email"
-              setState={setEmail}
-              autocomplete="on"
-            />
-            <div className="boxPsswd">
+        <div className="boxFormSignUp">
+          <div className="wrapper">
+            <div className="boxTitleClose">
+              <Image src={SmallLogo} alt="logo Vinted" />
+              <button
+                onClick={() => {
+                  {
+                    show === true ? setShow(false) : null;
+                  }
+                }}
+              >
+                X
+              </button>
+            </div>
+            <form onSubmit={handleSignup}>
               <Input
-                value={password}
-                id="password"
-                type={type}
-                placeholder="Mot de passe"
-                setState={setPassword}
+                value={username}
+                id="username"
+                type="text"
+                placeholder="Nom d'utilisateur(ice)"
+                setState={setUsername}
                 autocomplete="on"
               />
-              <div className="boxIcons">
-                <EyePassword
-                  icon1={icon1}
-                  icon2={icon2}
-                  state={type}
-                  setState={setType}
-                />
-              </div>
-            </div>
-            <div className="boxCheckBox">
-              <input
-                type="checkbox"
-                name="checkbox"
-                id="checkbox"
-                onChange={() => {
-                  setNewsletter(!newsletter);
-                }}
-                checked={newsletter}
+              <Input
+                value={email}
+                id="email"
+                type="email"
+                placeholder="Email"
+                setState={setEmail}
+                autocomplete="on"
               />
-              <span>S'inscrire à la newsletter</span>
-            </div>
-            <p>
-              En m'inscrivant, je confirme avoir lu et accepté les termes,
-              conditions et politique de confidentialité de Vinted. Je confirme
-              avoir au moins 18ans
-            </p>
-            <Input type="submit" value="S'inscrire" />
-          </form>
+              <div className="boxPsswd">
+                <Input
+                  value={password}
+                  id="password"
+                  type={type}
+                  placeholder="Mot de passe"
+                  setState={setPassword}
+                  autocomplete="on"
+                />
+                <div className="boxIcons">
+                  <EyePassword
+                    icon1={icon1}
+                    icon2={icon2}
+                    state={type}
+                    setState={setType}
+                  />
+                </div>
+              </div>
+              <div className="boxCheckBox">
+                <input
+                  type="checkbox"
+                  name="checkbox"
+                  id="checkbox"
+                  onChange={() => {
+                    setNewsletter(!newsletter);
+                  }}
+                  checked={newsletter}
+                />
+                <span>S'inscrire à la newsletter</span>
+              </div>
+              <p>
+                En m'inscrivant, je confirme avoir lu et accepté les termes,
+                conditions et politique de confidentialité de Vinted. Je
+                confirme avoir au moins 18ans
+              </p>
+              <Input type="submit" value="S'inscrire" />
+            </form>
+          </div>
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </div>
       </div>

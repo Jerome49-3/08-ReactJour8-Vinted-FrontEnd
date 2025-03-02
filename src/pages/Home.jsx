@@ -80,7 +80,7 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
         <Hero />
         <div className="wrapper">
           <div className="noOffers">
-            <div> Il n'y aucune offres actullement:&ensp;</div>
+            <div> Il n'y aucune offre actuellement:&ensp;</div>
             <Links path="/publish" linkText="Publier la votre" />
           </div>
         </div>

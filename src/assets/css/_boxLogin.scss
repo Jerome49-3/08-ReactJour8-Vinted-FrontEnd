@@ -1,26 +1,36 @@
 .boxLogin {
-  width: 30%;
+  width: 100%;
   height: 100%;
+  @include flexCenter;
+  margin-top: 10vh;
 
-  & input[type="submit"] {
-    height: 30px;
-  }
+  .wrapper {
+    @include flexCenter;
 
-  .boxForgot {
-    .btnSubmitCode {
-      @include btn;
-      background-color: transparent;
-      width: 100%;
-      @include textShadow;
-      font-weight: 600;
+    form {
+      @include flexColCenter;
+      gap: 10px;
+      width: 30%;
+      height: 100%;
 
-      &:hover {
-        background-color: transparent;
-        color: $vertVintedHovFoc;
-        @include textShadow;
-        font-weight: 600;
+      .boxForgot {
+        .btnSubmitCode {
+          @include btn;
+          background-color: transparent;
+          width: 100%;
+          @include textShadow;
+          font-weight: 600;
 
+          &:hover {
+            background-color: transparent;
+            color: $vertVintedHovFoc;
+            @include textShadow;
+            font-weight: 600;
+
+          }
+        }
       }
     }
   }
+
 }

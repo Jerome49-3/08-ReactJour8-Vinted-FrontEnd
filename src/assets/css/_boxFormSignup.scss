@@ -1,4 +1,8 @@
-.boxIcons {
-  width: 5% !important;
-  justify-content: center !important;
+.boxFormSignup {
+  height: calc(100%);
+
+  .wrapper {
+    @include flexColTop;
+    gap: 20px;
+  }
 }

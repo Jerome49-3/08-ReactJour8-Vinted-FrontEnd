@@ -114,11 +114,7 @@
   &:hover,
   &:focus {
     background-color: $vertVintedHovFoc;
-    color: $black;
-    text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px $white, 0.75px 0.75px 1px $white, 1px 1px 1px #000000;
   }
-
-  &:active {}
 }
 
 @mixin textShadow {

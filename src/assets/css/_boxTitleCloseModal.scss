@@ -1,0 +1,26 @@
+.boxTitleClose {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  & img {
+    object-fit: cover;
+  }
+
+  & button {
+    @include btn;
+
+    &:active {
+      box-shadow: inset 0px 0px 2px #000000, inset 1px 1px 2px $black;
+    }
+  }
+
+  & img,
+  & button {
+    width: 25px;
+    height: 25px;
+    border-radius: 7.5px;
+    @include boxShadow;
+  }
+}

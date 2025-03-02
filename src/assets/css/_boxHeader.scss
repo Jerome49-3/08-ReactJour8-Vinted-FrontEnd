@@ -24,6 +24,10 @@ header {
       .boxLogoTheme {
         @include flexStart;
 
+        &:hover {
+          background-color: transparent;
+        }
+
         & a {
           display: flex;
           justify-content: flex-start;
@@ -39,12 +43,26 @@ header {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 5%;
+          gap: 2%;
           border-radius: 5px;
-          padding: 2px 2px 2px 10px;
+          padding: 2px 2px 2px 5px;
           width: 100%;
           height: 30px;
           @include boxShadow;
+        }
+
+        & button {
+          width: 10%;
+        }
+
+        & input {
+          box-shadow: none;
+          border-bottom: none;
+          width: 100%;
+
+          &::placeholder {
+            text-align: center;
+          }
         }
       }
 
@@ -84,6 +102,21 @@ header {
               box-shadow: 0px 0px 4px $black, 0.5px 0.5px 2px $black;
               cursor: pointer;
               height: 35px;
+            }
+
+            .buttonSignIn {
+              height: 100%;
+              width: 100%;
+              @include flexCenter;
+
+              & p,
+              & div a {
+                height: 100%;
+                width: 100%;
+                @include flexCenter;
+                font-size: 16px;
+                font-weight: 600;
+              }
             }
           }
         }
@@ -190,49 +223,18 @@ header {
                 width: 30%;
               }
             }
-
-            & li {
-              min-height: 30px;
-
-              &:nth-child(1),
-              &:nth-child(2) {
-                width: 50%;
-              }
-
-              & div {
-                @include flexCenter;
-                height: 30px;
-
-                & a,
-                & button {
-                  @include flexCenter;
-                }
-
-                & a {
-                  padding: 2px;
-                }
-
-                & button {
-                  border-right: 2px solid $vertVinted;
-                }
-              }
-
-              &:nth-child(2) {
-                background-color: $vertVinted;
-              }
-            }
           }
         }
-      }
 
-      .bottomHeader {
-        align-items: flex-start;
+        .bottomHeader {
+          align-items: flex-start;
 
-        & div:first-child {
-          margin-left: 5%;
+          & div:first-child {
+            margin-left: 5%;
+          }
         }
-      }
 
+      }
     }
   }
 }
@@ -308,6 +310,10 @@ header {
 
               &:nth-child(2) {
                 background-color: $vertVinted;
+
+                & a {
+                  color: $white;
+                }
               }
             }
           }

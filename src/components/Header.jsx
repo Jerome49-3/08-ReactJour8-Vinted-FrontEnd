@@ -50,10 +50,12 @@ const Header = ({
           {showSearch ? (
             <div className="containerBoxSearch">
               <div className="boxSearch">
-                <FontAwesomeIcon
-                  icon="magnifying-glass"
-                  className="searchIcons"
-                />
+                <div className="boxIconSearch">
+                  <FontAwesomeIcon
+                    icon="magnifying-glass"
+                    className="searchIcons"
+                  />
+                </div>
                 <Input
                   id="search"
                   type="search"
@@ -76,7 +78,9 @@ const Header = ({
               {(!token || !user) && (
                 <li>
                   <div className="buttonSignIn">
-                    <button onClick={() => setShow(!show)}>s'inscrire</button>
+                    <button onClick={() => setShow(!show)}>
+                      <p>s'inscrire</p>
+                    </button>
                   </div>
                   <div>
                     <Link to="/login" className="linkConnect">

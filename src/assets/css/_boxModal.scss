@@ -21,34 +21,7 @@
     border-radius: 15px;
     box-shadow: inset 0px 0px 10px #000000, 0px 0px 10px #000000;
     max-width: 90%;
-
-    & div {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-
-      & img {
-        object-fit: cover;
-      }
-    }
-
-    & button {
-      @include textShadow;
-      background-color: #f1f1f1f1;
-
-      &:active {
-        box-shadow: inset 0px 0px 2px #000000, inset 1px 1px 2px $black;
-      }
-    }
-  }
-
-  .boxModalContent div img,
-  .boxModalContent button {
-    width: 25px;
-    height: 25px;
-    border-radius: 7.5px;
-    box-shadow: 0px 0px 4px #000000;
+    width: 50%;
   }
 }
 

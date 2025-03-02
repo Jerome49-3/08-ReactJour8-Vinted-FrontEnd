@@ -1,0 +1,15 @@
+.boxCheckBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+
+  & input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+  }
+
+  & span {
+    width: 85%;
+  }
+}

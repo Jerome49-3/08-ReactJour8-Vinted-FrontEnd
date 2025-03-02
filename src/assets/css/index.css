@@ -184,17 +184,14 @@ table {
   .dark .boxUsers a,
   .dark * input:not(input[type="submit"]),
   .dark .boxSearch,
+  .dark .boxPsswd,
+  .dark .boxPsswd .boxIcons svg,
   .dark textarea,
-  .dark form * input:not(input[type="submit"]),
-  .dark .boxModalContent .boxFormSignUp input:not(input[type="submit"]),
-  .dark .boxPsswd {
-    background-color: var(--backDarkLink);
-    color: var(--lightMode);
-  }
-
-  .dark input[type="submit"] {
-    font-weight: 700;
-    font-size: 1.15rem;
+  .dark * form * input:not(input[type="submit"]),
+  .dark .boxModalContent .boxFormSignUp label input:not(input[type="submit"]),
+  .dark .boxLogin .wrapper form label input:not(input[type="submit"]) {
+    background-color: var(--backDarkLink) !important;
+    color: var(--lightMode) !important;
   }
   .dark header * button {
     color: var(--vertVintaidBtn);
@@ -247,10 +244,6 @@ table {
       background-color: var(--backgHeader);
     }
   }
-  .light .boxForm input::placeholder,
-  .light .boxForm textarea::placeholder {
-    padding-left: 5px;
-  }
   .light #root {
     background-color: var(--lightMode);
   }
@@ -261,15 +254,17 @@ table {
   .light .boxForm textarea,
   .light .topHeader .boxSearch,
   .light .topHeader .boxSearch input,
-  .light .boxForm input:not(input[type="submit"]) {
+  .light .boxForm .wrapper form label input:not(input[type="submit"]),
+  .light .boxLogin .wrapper form label input:not(input[type="submit"]),
+  .light .boxForm .wrapper form label textarea {
     background-color: var(--backLightInput);
   }
 
-  .light .boxForm textarea::placeholder,
-  .light .boxForm input::placeholder,
-  .light .topHeader .boxSearch input::placeholder {
-    font-size: 14px;
-    font-weight: 500;
+  .light .boxForm textarea,
+  .light .boxForm input:not([type="submit"]),
+  .light .topHeader .boxSearch input,
+  .light .boxFormSignUp * input:not([type="submit"]) {
+    color: var(--black);
   }
 }
 
@@ -284,6 +279,8 @@ input[type="file"] {
 }
 a {
   color: #2db0ba;
+  text-shadow: 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000,
+    0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 a:visited {
   color: #2db0ba;

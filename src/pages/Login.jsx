@@ -12,8 +12,8 @@ import saveToken from "../assets/lib/saveToken";
 import Links from "../components/Links";
 
 const Login = ({ type, setType, icon1, icon2 }) => {
-  const boxForm = "boxForm";
-  const boxLogin = "boxLogin";
+  // const boxForm = "boxForm";
+  // const boxLogin = "boxLogin";
   const {
     token,
     setToken,
@@ -123,7 +123,8 @@ const Login = ({ type, setType, icon1, icon2 }) => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className={`${boxForm} ${boxLogin}`}>
+    // <div className={`${boxForm} ${boxLogin}`}>
+    <div className="boxLogin">
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
           <Input

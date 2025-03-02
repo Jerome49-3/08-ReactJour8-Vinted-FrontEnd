@@ -3,11 +3,17 @@
 @import './mixins';
 @import './root';
 @import './theme';
+@import './buttonTheme';
 @import './loading';
 @import './boxLoaded';
 @import './errorMessage';
-@import './modal';
+@import './boxTitleCloseModal';
+@import './classLabelInputTxtArea';
+@import './boxPsswd';
+@import './boxCheckBox';
+@import './boxModal';
 @import './boxForm';
+@import './boxLogin';
 @import './boxFormSignup';
 @import './boxForgotPsswd';
 @import './boxHeader';
@@ -23,7 +29,6 @@
 @import './boxUserId';
 @import './boxAside';
 @import './boxContact';
-@import './boxLogin';
 @import './boxLastSales';
 @import './boxTransactionId';
 @import './boxFormInputCode';

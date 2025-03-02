@@ -1,7 +1,7 @@
 .boxTitleSearch {
   @include flexBetween;
-  padding: 5px;
-  height: 14%;
+  padding: 0 5px 0 5px;
+  height: 25px;
 
   .containerBoxSearch {
     width: 50%;
@@ -22,12 +22,26 @@
           @include flexCenter;
           animation: appearInputSearch 1s ease-in-out 0.5s 1 normal both;
           width: 100%;
+          box-shadow: none;
+          border-bottom: none;
+          background-color: transparent;
 
           &::placeholder {
             width: 100%;
             text-align: start;
+            color: $black;
           }
 
+
+
+        }
+
+        & input:focus-visible {
+          outline: transparent;
+
+          &::placeholder {
+            color: transparent;
+          }
         }
       }
 

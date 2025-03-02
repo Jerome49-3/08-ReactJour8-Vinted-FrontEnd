@@ -5,54 +5,36 @@
   height: 100%;
   gap: 5px;
   width: 100%;
+  padding: 5px 0 5px 0;
 
-  .top {
-    min-height: calc(100% /2);
-    // border: 2px solid red;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-
-    .left {
-      // border: 2px solid $black;
-      padding-bottom: 10px;
-
-      .boxDetails {}
-    }
-
-    .right {
-      // border: 2px solid green;
-    }
+  .wrapper {
+    gap: 2.5px;
+    display: grid;
   }
 
+  .top,
   .bottom {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    min-height: calc(100% /2);
-    // border: 2px solid yellow;
-    gap: 5px;
-
-    .left {
-
-      // border: 2px solid peru;
-      .boxDetails {}
-    }
-
-    .right {
-      // border: 2px solid purple;
-    }
+    gap: 2.5px;
   }
 
-  .bottom,
-  .top {
+  .top .left,
+  .top .right,
+  .bottom .left,
+  .bottom .right {
+    min-height: 100%;
 
-    .left,
-    .right {
-      .boxDetails {
-        height: 86%;
-      }
+    .boxDetails {
+      min-height: calc(100% - 25px);
+    }
+
+    .boxDetails,
+    .boxTitleSearch {
+      background-color: $backgWhite;
+      border-radius: 5px;
+      border: 1px solid $vertVinted;
     }
   }
 }

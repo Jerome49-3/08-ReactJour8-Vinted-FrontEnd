@@ -1,0 +1,69 @@
+  //INPUT
+  .classLabelInput {
+    width: 100%;
+    max-width: 100%;
+    @include flexCenter;
+
+    & input {
+      appearance: none;
+      -webkit-appearance: none;
+      @include flexCenter;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid $vertVinted;
+      height: 30px;
+      width: 100%;
+      box-shadow: 0px 0px 1px $black, 0.10px 0.10px 1px $vertVinted, 0.20px 0.20px 1px $black, 0.30px 0.30px 1px $vertVinted, 0.40px 0.40px 1px $black, 0.50px 0.50px 1px $vertVinted, 1px 1px 1px $vertVinted;
+
+      &::placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
+    }
+
+    & input:focus-visible {
+      outline: transparent;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+
+    & input[type="submit"] {
+      @include btn;
+      height: 30px;
+    }
+  }
+
+  //TXTAREA
+
+  .labelTxtContact {
+    width: 100%;
+    max-width: 100%;
+    @include flexCenter;
+
+    & textarea {
+      resize: none;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 100%;
+      box-shadow: 0px 0px 1px $black, 0.10px 0.10px 1px $vertVinted, 0.20px 0.20px 1px $black, 0.30px 0.30px 1px $vertVinted, 0.40px 0.40px 1px $black, 0.50px 0.50px 1px $vertVinted, 1px 1px 1px $vertVinted;
+      border: none;
+      border-bottom: 2px solid $vertVinted;
+
+      &::placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
+
+    }
+
+    & textarea:focus-visible {
+      outline: transparent;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
