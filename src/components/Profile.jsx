@@ -196,11 +196,11 @@ const Profile = () => {
     <>
       <div className="boxUserId">
         <div className="wrapper">
-          <div className="top">
+          {/* <div className="top">
             <div className="title">
               Voici le profil de <strong>{data?.account?.username}</strong>
             </div>
-          </div>
+          </div> */}
           <form className="bottom">
             <div className="left">
               <Image src={avatar} alt="avatar" />

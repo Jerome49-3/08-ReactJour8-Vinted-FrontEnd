@@ -1945,14 +1945,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   flex-direction: column;
   gap: 20px;
   width: 100%;
-}
-.boxUserId .top {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.boxUserId .top .title {
-  padding: 20px;
+  height: 100%;
 }
 .boxUserId .bottom {
   display: flex;
@@ -1961,17 +1954,18 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   flex-direction: column;
   gap: 20px;
   padding-bottom: 10px;
+  height: 100%;
 }
 .boxUserId .bottom .left {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 .boxUserId .bottom .left img {
-  width: 400px;
-  height: 400px;
+  width: 380px !important;
+  height: 380px !important;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
@@ -2046,14 +2040,25 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 .boxUserId .bottom .right .deleteButton {
   width: 100%;
 }
-.boxUserId .bottom .right .boxUsername input,
-.boxUserId .bottom .right .boxEmail input,
-.boxUserId .bottom .right .boxIsAdmin input,
-.boxUserId .bottom .right .boxNewsletter input,
-.boxUserId .bottom .right .boxDate input,
-.boxUserId .bottom .right .boxId input,
-.boxUserId .bottom .right .updateButton input,
-.boxUserId .bottom .right .deleteButton input {
+.boxUserId .bottom .right .boxUsername label,
+.boxUserId .bottom .right .boxEmail label,
+.boxUserId .bottom .right .boxIsAdmin label,
+.boxUserId .bottom .right .boxNewsletter label,
+.boxUserId .bottom .right .boxDate label,
+.boxUserId .bottom .right .boxId label,
+.boxUserId .bottom .right .updateButton label,
+.boxUserId .bottom .right .deleteButton label {
+  display: flex;
+  gap: 10px;
+}
+.boxUserId .bottom .right .boxUsername label input,
+.boxUserId .bottom .right .boxEmail label input,
+.boxUserId .bottom .right .boxIsAdmin label input,
+.boxUserId .bottom .right .boxNewsletter label input,
+.boxUserId .bottom .right .boxDate label input,
+.boxUserId .bottom .right .boxId label input,
+.boxUserId .bottom .right .updateButton label input,
+.boxUserId .bottom .right .deleteButton label input {
   width: 100% !important;
 }
 .boxUserId .bottom .right .boxButton {
