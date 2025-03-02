@@ -152,7 +152,8 @@ div#root {
 .boxForm,
 .boxHome,
 .boxDashboard,
-.boxUserId {
+.boxUserId,
+.boxContact {
   margin-top: 10vh;
 }
 
@@ -2345,6 +2346,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   flex-direction: column;
   width: 50%;
   gap: 10px;
+  height: 100%;
 }
 .boxContact .boxMenuSelect {
   padding: 5px 0 5px 0;
