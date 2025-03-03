@@ -292,10 +292,14 @@ input[type="file"] {
 }
 
 /* LINK */
-a {
+a,
+a p {
+  color: #ffffff;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+  font-size: 14px;
+}
+.linkPublish p {
   color: #2db0ba;
-  text-shadow: 0.25px 0.25px 1px #ffffff, 0.5px 0.5px 1px #000000,
-    0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 
 a:visited {

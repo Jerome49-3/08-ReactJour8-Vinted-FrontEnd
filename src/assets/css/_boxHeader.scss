@@ -3,16 +3,17 @@ header {
   width: 100%;
   display: block;
   @include flexCenter;
-  height: 200px;
+  height: 55px;
   position: fixed;
   z-index: 600;
   @include boxShadow;
+  background-color: var(--backgHeader);
 
 
   .wrapper {
 
     .topHeader {
-
+      height: 55px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -49,6 +50,7 @@ header {
           width: 100%;
           height: 30px;
           @include boxShadow;
+          background-color: $backgroundInput;
         }
 
         & button {
@@ -59,6 +61,7 @@ header {
           box-shadow: none;
           border-bottom: none;
           width: 100%;
+          background-color: transparent !important;
 
           &::placeholder {
             text-align: center;
@@ -68,7 +71,6 @@ header {
 
       & nav {
         @include flexBetween;
-        padding: 0 0 5px 0;
         min-width: 100%;
 
         & ul {
@@ -76,6 +78,7 @@ header {
           width: 100%;
 
           & li {
+            @include flexCenter;
             border-radius: 5px;
             border: 2px solid $vertVinted;
 
@@ -84,42 +87,54 @@ header {
               text-wrap: nowrap;
             }
 
-            &:nth-child(2) {
-              @include btn;
-              @include flexAround;
+            &:nth-child(1) {
+              height: 30px;
+              @include boxShadow;
 
-              &:active {
-                box-shadow: inset 0px 0px 4px $black, inset 0.5px 0.5px 2px $black;
+              .buttonSignIn {
+
+                & button {
+                  @include btn;
+                  background-color: transparent;
+                  color: $vertVinted;
+                  text-shadow: none;
+                  border-right: 2px solid $vertVinted;
+                  border-top-right-radius: 0px;
+                  border-bottom-right-radius: 0px;
+                  font-size: 14px;
+
+                  &:hover p {
+                    color: $white;
+                  }
+                }
+              }
+
+              & div a p {
+                @include btn;
+                background-color: transparent;
+                color: $vertVinted;
+                border-right: 2px solid $vertVinted;
+                font-size: 14px;
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+
+                &:hover {
+                  color: $white;
+                }
               }
             }
 
-            &:nth-child(1),
             &:nth-child(2) {
-              @include flexCenter;
-              width: 50%;
-              border: 2px solid $vertVinted;
-              box-shadow: 0px 0px 4px $black, 0.5px 0.5px 2px $black;
-              cursor: pointer;
-              height: 35px;
-            }
+              @include btn;
+              @include flexAround;
+              @include boxShadow;
 
-            .buttonSignIn {
-              height: 100%;
-              width: 100%;
-              @include flexCenter;
+              & a p {
+                color: $white;
+              }
 
-              & button {
-                border-right: 2px solid $vertVinted;
-
-                & p,
-                & div a {
-                  height: 100%;
-                  width: 100%;
-                  @include textShadow;
-                  @include flexCenter;
-                  font-family: Helvetica, Arial, sans-serif;
-                  font-size: 16px;
-                }
+              &:active {
+                @include boxShadowInset;
               }
             }
           }
@@ -163,8 +178,7 @@ header {
 .searchIcons,
 .filterIcons {
   color: $vertVinted;
-  font-size: 1.25rem;
-  filter: drop-shadow(0px 0px 0.25px $black) drop-shadow(0.15px 0.15px 0.5px $black) drop-shadow(0.25px 0.25px 1px $black);
+  filter: drop-shadow(0px 0px 0.25px $black) drop-shadow(0.15px 0.15px 0.5px $black);
 }
 
 .btnFilter {
@@ -299,14 +313,6 @@ header {
                   justify-content: center;
                   align-items: center;
                   height: 30px;
-                }
-              }
-
-              &:nth-child(2) {
-                background-color: $vertVinted;
-
-                & a {
-                  color: $white;
                 }
               }
             }

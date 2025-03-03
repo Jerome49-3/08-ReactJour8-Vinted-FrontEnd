@@ -1,11 +1,12 @@
 .boxTitleSearch {
   @include flexBetween;
   padding: 0 5px 0 5px;
-  height: 25px;
+  height: 30px;
 
   .containerBoxSearch {
     width: 50%;
     @include flexEnd;
+    height: 100%;
 
     .boxSearch {
       border-top-right-radius: 5px;
@@ -26,14 +27,12 @@
           border-bottom: none;
           background-color: transparent;
 
+
           &::placeholder {
             width: 100%;
             text-align: start;
             color: $black;
           }
-
-
-
         }
 
         & input:focus-visible {
@@ -46,7 +45,6 @@
       }
 
       .searchIcons {
-        font-size: 14px;
         padding: 2px 3px 2px 0px;
       }
 

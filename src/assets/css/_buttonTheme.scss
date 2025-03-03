@@ -4,7 +4,7 @@
   border-radius: 5px;
   @include flexCenter;
   font-size: 16px;
-  filter: drop-shadow(0.5px 0.5px 1px $black) drop-shadow(1px 1px 1px $black);
+  filter: drop-shadow(0.5px 0.5px 1px $black);
 
   &:hover {
     background-color: transparent;

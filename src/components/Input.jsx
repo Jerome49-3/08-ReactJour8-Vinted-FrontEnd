@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import transformStr from "../assets/lib/transformStr";
 const Input = ({
   value,
   id,
@@ -18,7 +18,8 @@ const Input = ({
   const handleChange = (e) => {
     // console.log("e.target.value:", e.target.value);
     // console.log("e on input:", e);
-    setState(e.target.value);
+    const finalTarget = transformStr(e);
+    setState(finalTarget);
     if (e.target.value < e.target.min || e.target.value > e.target.min) {
       setErrorValidInput(e.target.validationMessage);
     }

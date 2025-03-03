@@ -100,14 +100,14 @@
   height: 30px;
   padding: 5px;
   border-radius: 5px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 
   & p {
-    text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+    text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 
     &:hover,
     &:focus {
-      text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px $white, 0.75px 0.75px 1px $white, 1px 1px 1px #000000;
+      text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
     }
   }
 
@@ -118,11 +118,15 @@
 }
 
 @mixin textShadow {
-  text-shadow: 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black, 0.75px 0.75px 1px $vertVinted, 1px 1px 1px $black;
+  text-shadow: 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black;
 }
 
 @mixin boxShadow {
-  box-shadow: 0px 0px 1px $black, 0px 0px 1px $black, 0px 0px 1px $vertVinted, 1px 1px 1px $black;
+  box-shadow: 0px 0px 1px $black, 0.5px 0.5px 1px $black;
+}
+
+@mixin boxShadowInset {
+  box-shadow: inset 0px 0px 1px $black, inset 0.5px 0.5px 1px $black;
 }
 
 @mixin boxShadowVinted {

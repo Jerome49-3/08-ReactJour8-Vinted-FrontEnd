@@ -2,6 +2,7 @@ footer {
   width: 100%;
   min-height: 10vh;
   @include flexCenter;
+  background-color: $backgHeaderFooter;
 
   ul {
     @include flexCenter;

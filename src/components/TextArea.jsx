@@ -1,3 +1,5 @@
+import transformStr from "../assets/lib/transformStr";
+
 const TextArea = ({
   setState,
   value,
@@ -26,7 +28,8 @@ const TextArea = ({
         onKeyDown={onKeyDown}
         className={classTextArea}
         onChange={(e) => {
-          setState(e.target.value);
+          const finalTarget = transformStr(e);
+          setState(finalTarget);
         }}
         wrap={wrap}
         rows={rows}
@@ -34,7 +37,6 @@ const TextArea = ({
         required={required}
         minLength={minLength}
         maxLength={maxLength}
-        style={{ textTransform: "capitalize" }}
       ></textarea>
     </label>
   );
