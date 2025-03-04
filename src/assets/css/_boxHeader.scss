@@ -3,9 +3,6 @@ header {
   width: 100%;
   display: block;
   @include flexCenter;
-  height: 55px;
-  position: fixed;
-  z-index: 600;
   @include boxShadow;
   background-color: var(--backgHeader);
 
@@ -13,11 +10,7 @@ header {
   .wrapper {
 
     .topHeader {
-      height: 55px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      @include flexColCenter;
       gap: 20px;
       padding: 5px 0px 5px 0px;
       width: 100%;
@@ -37,13 +30,10 @@ header {
 
       .containerBoxSearch {
         width: 100%;
-        display: flex;
-        justify-content: flex-end;
+        @include flexEnd;
 
         .boxSearch {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          @include flexCenter;
           gap: 2%;
           border-radius: 5px;
           padding: 2px 2px 2px 5px;
@@ -71,9 +61,11 @@ header {
 
       & nav {
         @include flexBetween;
-        min-width: 100%;
+        width: 100%;
 
         & ul {
+          @include flexCenter;
+          flex-direction: column;
           gap: 10px;
           width: 100%;
 
@@ -81,10 +73,11 @@ header {
             @include flexCenter;
             border-radius: 5px;
             border: 2px solid $vertVinted;
+            width: 100%;
 
-            & div {
+            &:nth-child(1),
+            &:nth-child(2) {
               width: 100%;
-              text-wrap: nowrap;
             }
 
             &:nth-child(1) {
@@ -109,25 +102,41 @@ header {
                 }
               }
 
-              & div a p {
-                @include btn;
-                background-color: transparent;
-                color: $vertVinted;
-                border-right: 2px solid $vertVinted;
-                font-size: 14px;
-                border-top-left-radius: 0px;
-                border-bottom-left-radius: 0px;
+              & div {
+                width: 100%;
 
-                &:hover {
-                  color: $white;
+                & a {
+                  width: 100%;
+
+                  p {
+                    @include btn;
+                    background-color: transparent;
+                    color: $vertVinted;
+                    font-size: 14px;
+                    border-top-left-radius: 0px;
+                    border-bottom-left-radius: 0px;
+
+                    &:hover {
+                      color: $white;
+                    }
+                  }
                 }
               }
             }
 
             &:nth-child(2) {
               @include btn;
-              @include flexAround;
+              @include flexBetween;
               @include boxShadow;
+
+              & div:nth-child(1) {
+                @include flexStart;
+                width: 85%;
+              }
+
+              & div:nth-child(2) {
+                @include flexCenter;
+              }
 
               & a p {
                 color: $white;
@@ -189,151 +198,56 @@ header {
   padding-right: 10px;
 }
 
-@media all and (min-device-width : 576px) {
-  header {
-    height: 10vh;
-
-    .wrapper {
-      .topHeader {
-        flex-direction: row !important;
-        justify-content: center;
-
-        .boxLogoTheme {
-          width: calc(100%/3);
-          display: flex;
-          align-items: center;
-        }
-
-        .containerBoxSearch {
-          width: 50%;
-          display: flex;
-          justify-content: center;
-        }
-
-        & nav {
-          min-width: calc(100%/3);
-
-          & ul {
-            width: 100%;
-            @include flexEnd;
-            position: relative;
-
-            .boxUser {
-              @include flexAround;
-              padding: 15px;
-
-
-              .hello {
-                @include flexStart;
-              }
-
-              .boxAvatar {
-                width: 30%;
-              }
-            }
-          }
-        }
-
-        .bottomHeader {
-          align-items: flex-start;
-
-          & div:first-child {
-            margin-left: 5%;
-          }
-        }
-
-      }
-    }
-  }
-}
+@media all and (min-width : 576px) {}
 
 @media all and (min-width: 768px) {
-
-  /* HEADER */
-  header {
-
-    .wrapper {
-      .topHeader {
-        flex-direction: row !important;
-        justify-content: space-between;
-
-        .boxLogoTheme {
-          width: calc(100%/3);
-          display: flex;
-          align-items: center;
-        }
-
-        .containerBoxSearch {
-          width: 50%;
-          display: flex;
-          justify-content: flex-end;
-
-          .boxSearch {
-            width: 400px;
-          }
-        }
-
-        & nav {
-          min-width: calc(100%/3);
-
-          & ul {
-            width: 100%;
-            @include flexEnd;
-
-            .boxUser {
-              @include flexAround;
-              padding: 15px;
-
-              .hello {
-                @include flexStart;
-              }
-
-              .boxAvatar {
-                width: 30%;
-              }
-            }
-
-            & li {
-              min-height: 30px;
-
-              &:nth-child(1),
-              &:nth-child(2) {
-                width: 40%;
-              }
-
-              & div {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 30px;
-
-                & a,
-                & button {
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  height: 30px;
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .bottomHeader {
-        align-items: flex-start;
-
-        & div:first-child {
-          margin-left: 5%;
-        }
-      }
-
+  nav {
+    ul {
+      display: flex;
+      flex-direction: row !important;
     }
   }
 }
 
-@media all and (min-device-width : 992px) {}
+@media all and (min-width : 992px) {}
 
-@media all and (min-device-width : 1200px) {}
+@media all and (min-width : 1200px) {
+  header {
+    position: fixed;
+    z-index: 600;
 
-@media all and (min-device-width : 1400px) {}
+    .wrapper {
+      .topHeader {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+
+        .boxLogoTheme,
+        .containerBoxSearch,
+        & nav {
+          width: calc(100% /3) !important;
+        }
+
+        & nav {
+
+
+          & ul {
+            width: 100%;
+
+            & li {
+              &:nth-child(1) {
+                width: calc(60%);
+              }
+
+              &:nth-child(2) {
+                width: calc(40%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// @media all and (min-device-width : 1400px) {}

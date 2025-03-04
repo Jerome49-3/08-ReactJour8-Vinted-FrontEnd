@@ -6,14 +6,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //components
 import TextArea from "../components/TextArea";
 import Input from "../components/Input";
+import InputFile from "../components/InputFile";
 
-const Publish = ({ faRotateRight }) => {
+const Publish = () => {
   const viewFile = useRef(null);
   const { token, axios } = useUser();
   // console.log("token in in /publish:", token);
   const [errorMessage, setErrorMessage] = useState("");
   const [pictures, setPictures] = useState([]);
-  // console.log("pictures in in /publish:", pictures);
+  console.log("pictures in in /publish:", pictures);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   let [price, setPrice] = useState(0);
@@ -28,26 +29,16 @@ const Publish = ({ faRotateRight }) => {
   }, []);
 
   const handleSubmit = async (e) => {
-    setErrorMessage("");
-    console.log("token inside handleSubmit in /publish:", token);
-    // console.log('e:', e);
     e.preventDefault();
+    setErrorMessage("");
+    console.log("e:", e);
     const formData = new FormData();
     price = Number(price).toFixed(2);
-    let arrRotate = [];
     for (let i = 0; i < pictures.length; i++) {
-      console.log(
-        "pictures.length in for on handleSubmit in /publish:",
-        pictures.length
-      );
       const el = pictures[i];
-      console.log("el in for on handleSubmit in /publish:", el);
-      formData.append("pictures", el.file);
-      arrRotate.push(el.rotation);
-      console.log("el.rotate in for on handleSubmit in /publish:", el.rotation);
+      console.log("el in picures for:", el);
+      formData.append("pictures", el);
     }
-    const strArrRotate = JSON.stringify(arrRotate);
-    formData.append("rotations", strArrRotate);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("price", price);
@@ -87,23 +78,9 @@ const Publish = ({ faRotateRight }) => {
     //   city
     // );
     try {
-      // console.log("token inside try to handleSubmit in publish:", token);
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_PUBLISH,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "content-type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //     "content-type": "multipart/form-data",
-        //   },
-        // }
+        formData
       );
       // console.log(response);
       if (response) {
@@ -116,7 +93,12 @@ const Publish = ({ faRotateRight }) => {
         navigate(`/offers/${response.data.newOffer._id}`);
       }
     } catch (error) {
-      // console.log("error", error, "error.response", error.response.data.message);
+      console.log(
+        "error",
+        error,
+        "error.response",
+        error.response.data.message
+      );
       setErrorMessage(error.response.data.message);
     }
   };
@@ -140,34 +122,31 @@ const Publish = ({ faRotateRight }) => {
                   +
                 </label>
               )}
+              {/* <InputFile /> */}
               <input
                 type="file"
                 id="pictures"
                 name="pictures"
                 multiple={true}
                 onChange={(e) => {
+                  console.log("e.target:", e.target);
                   let newPic = [...pictures];
-                  const filesArray = Array.from(e.target.files);
                   console.log(
-                    "e.target.files on onChange/inputFile in /publish:",
-                    e.target.files
+                    "newPic on onChange/inputFile in /publish:",
+                    newPic
                   );
+                  const filesArray = Array.from(e.target.files);
                   console.log(
                     "filesArray on onChange/inputFile in /publish:",
                     filesArray
                   );
-                  // console.log(
-                  //   "newPic in onChange/inputFile on publish:",
-                  //   newPic
-                  // );
+                  console.log(
+                    "e.target.files on onChange/inputFile in /publish:",
+                    e.target.files
+                  );
                   filesArray.forEach((file) => {
                     console.log("file on forEach in /publish:", file);
-                    const picAndRotate = {
-                      file: file,
-                      rotation: 0,
-                    };
-                    console.log("picAndRotate in /publish::", picAndRotate);
-                    newPic.push(picAndRotate);
+                    newPic.push(file);
                   });
                   setPictures(newPic);
                 }}
@@ -177,54 +156,21 @@ const Publish = ({ faRotateRight }) => {
                 return (
                   <div className="viewPics" key={index}>
                     <img
-                      src={URL.createObjectURL(files.file)}
+                      src={URL.createObjectURL(files)}
                       alt="Image"
                       ref={viewFile}
-                      style={{
-                        transform: `rotate(${
-                          pictures.find(
-                            (item) => item.file.name === files.file.name
-                          )?.rotation || 0
-                        }deg)`,
-                      }}
                     />
                     <button
                       type="button"
                       className="suppFiles"
                       onClick={() => {
                         const newPictures = pictures.filter(
-                          (picture) => picture.file !== files.file
+                          (picture) => picture.name !== files.name
                         );
                         setPictures(newPictures);
                       }}
                     >
                       X
-                    </button>
-                    <button
-                      type="button"
-                      className="rotateFiles"
-                      onClick={() => {
-                        const updatedRotations = pictures.map((item) => {
-                          console.log("item in /publish:", item);
-                          if (item.file.name === files.file.name) {
-                            return {
-                              ...item,
-                              rotation: (item.rotation + 90) % 360,
-                            };
-                          }
-                          return item;
-                        });
-                        console.log(
-                          "updatedRotations in /publish:",
-                          updatedRotations
-                        );
-                        setPictures(updatedRotations);
-                      }}
-                    >
-                      <FontAwesomeIcon
-                        icon={faRotateRight}
-                        className="search-icons"
-                      />
                     </button>
                   </div>
                 );

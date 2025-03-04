@@ -10,25 +10,36 @@ const Input = ({
   min,
   max,
   classInput,
-  classLabel,
   isRequired,
 }) => {
   // console.log("value on input:", value);
+  // console.log("type on input:", type);
   const [errorValidInput, setErrorValidInput] = useState("");
-  const handleChange = (e) => {
-    // console.log("e.target.value:", e.target.value);
-    // console.log("e on input:", e);
-    const finalTarget = transformStr(e);
-    setState(finalTarget);
-    if (e.target.value < e.target.min || e.target.value > e.target.min) {
-      setErrorValidInput(e.target.validationMessage);
-    }
-  };
   useEffect(() => {
     if (!value) {
       setErrorValidInput("");
     }
   }, [value]);
+  const handleChange = (e) => {
+    // console.log("e.target.value in handleChange:", e.target.value);
+    // console.log("e.target.type in handleChange:", e.target.type);
+    // console.log("typeofe.target.type in handleChange:", typeof e.target.type);
+    if (
+      e.target.type === "email" ||
+      e.target.type === "password" ||
+      e.target.type === "number"
+    ) {
+      setState(e.target.value);
+    } else {
+      const finalTarget = transformStr(e);
+      setState(finalTarget);
+    }
+    if (e.target.type === "number") {
+      if (e.target.value < e.target.min || e.target.value > e.target.min) {
+        setErrorValidInput(e.target.validationMessage);
+      }
+    }
+  };
 
   return (
     <>

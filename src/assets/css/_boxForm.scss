@@ -132,3 +132,24 @@
     }
   }
 }
+
+@media all and (min-width: 992px) {
+
+  /* FORM */
+  .boxForm form {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .wrapper {
+      height: 100%;
+    }
+  }
+}
+
+@media all and (min-width: 1200px) {
+
+  .boxForm {
+    margin-top: 10vh;
+  }
+}

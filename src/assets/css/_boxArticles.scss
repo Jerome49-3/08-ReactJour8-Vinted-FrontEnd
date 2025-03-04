@@ -7,7 +7,7 @@
   gap: 20px;
 
   & a {
-    width: 100%;
+    width: calc(100%/4);
 
     & article {
       display: flex;
@@ -148,6 +148,7 @@
     gap: 19px;
     padding: 20px 0 20px 0;
 
+
     & a {
       width: calc(100% / 4.20);
 
@@ -159,7 +160,14 @@
   }
 }
 
-// @media all and (min-width : 992px) {}
+@media all and (min-width : 992px) {
+  .boxArticles {
+
+    & a {
+      width: calc(100% / 4.25);
+    }
+  }
+}
 
 // @media all and (min-width : 1200px) {}
 

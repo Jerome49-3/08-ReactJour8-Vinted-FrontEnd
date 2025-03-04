@@ -139,7 +139,7 @@ const Login = ({ type, setType, icon1, icon2 }) => {
             <Input
               value={password}
               id="password"
-              type={type}
+              type="password"
               placeholder="password"
               setState={setPassword}
               autocomplete="on"
