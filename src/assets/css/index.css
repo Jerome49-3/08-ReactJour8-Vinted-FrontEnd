@@ -211,7 +211,7 @@ table {
   .dark header nav ul li a,
   .light header button,
   .dark header .buttonSignIn button p,
-  .dark * a:link {
+  .dark * a:link p {
     color: var(--headerLibackgd);
   }
   .dark header .linkPublish,
@@ -272,7 +272,9 @@ table {
   .light .boxForm .wrapper form label textarea {
     background-color: var(--backLightInput);
   }
-
+  .light .boxLastUsers .boxUsers a {
+    background-color: var(--backgHeader);
+  }
   .light .boxForm textarea,
   .light .boxForm input:not([type="submit"]),
   .light .topHeader .boxSearch input,
