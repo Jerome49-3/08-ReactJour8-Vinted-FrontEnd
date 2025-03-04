@@ -36,18 +36,16 @@ const MySales = ({ faHeart, farHeart, showNoOffer, setShowNoOffer }) => {
     <Loading />
   ) : (
     <>
-      <div className="wrapper">
-        {data ? (
-          <OfferCard data={data} faHeart={faHeart} farHeart={farHeart} />
-        ) : (
-          showNoOffer && (
-            <div className="boxNoOffers">
-              <p> Vous n'avez pas d'annonces publiés:</p>
-              <Link path="/publish">Mettez en vente un produit</Link>
-            </div>
-          )
-        )}
-      </div>
+      {data ? (
+        <OfferCard data={data} faHeart={faHeart} farHeart={farHeart} />
+      ) : (
+        showNoOffer && (
+          <div className="boxNoOffers">
+            <p> Vous n'avez pas d'annonces publiés:</p>
+            <Link path="/publish">Mettez en vente un produit</Link>
+          </div>
+        )
+      )}
     </>
   );
 };

@@ -1317,6 +1317,17 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     width: 23.5294117647%;
   }
 }
+@media all and (min-width: 1200px) {
+  .boxArticles {
+    margin-top: 10vh;
+  }
+  .boxArticles .wrapper a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 23.8095238095% !important;
+  }
+}
 .boxOffer {
   padding: 10px;
   width: 100%;

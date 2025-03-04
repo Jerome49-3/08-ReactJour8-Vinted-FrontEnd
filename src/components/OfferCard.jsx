@@ -28,120 +28,122 @@ const OfferCard = ({ data, faHeart, farHeart, errorMessage }) => {
 
   return (
     <div className="boxArticles">
-      {(location.pathname === "/favorites" ? fav : data).map((article) => {
-        // const isFavorite = fav.some((favArticle) => favArticle?._id);
-        // console.log("article ds .boxOffer:", article);
-        return (
-          <React.Fragment key={article._id}>
-            <Link
-              to={`/offers/${article._id}`}
-              className={
-                location.pathname === "/my-purchases" ||
-                location.pathname === "/myOffers"
-                  ? ""
-                  : article?.offer_solded === true
-                  ? "hide"
-                  : ""
-              }
-            >
-              <article>
-                <div className="boxUser">
-                  {article?.owner?.account?.avatar?.secure_url ? (
-                    <Image
-                      src={article?.owner?.account?.avatar.secure_url}
-                      alt="avatar"
-                      classImg="imgAvatar"
-                    />
+      <div className="wrapper">
+        {(location.pathname === "/favorites" ? fav : data).map((article) => {
+          // const isFavorite = fav.some((favArticle) => favArticle?._id);
+          // console.log("article ds .boxOffer:", article);
+          return (
+            <React.Fragment key={article._id}>
+              <Link
+                to={`/offers/${article._id}`}
+                className={
+                  location.pathname === "/my-purchases" ||
+                  location.pathname === "/myOffers"
+                    ? ""
+                    : article?.offer_solded === true
+                    ? "hide"
+                    : ""
+                }
+              >
+                <article>
+                  <div className="boxUser">
+                    {article?.owner?.account?.avatar?.secure_url ? (
+                      <Image
+                        src={article?.owner?.account?.avatar.secure_url}
+                        alt="avatar"
+                        classImg="imgAvatar"
+                      />
+                    ) : (
+                      <Image
+                        src={article?.owner?.account?.avatar}
+                        alt="avatar"
+                        classImg="imgAvatar"
+                      />
+                    )}
+                    <h5>{article?.owner?.account?.username}</h5>
+                  </div>
+                  {location.pathname === "/myOffers" &&
+                  article?.offer_solded === true ? (
+                    <div className="boxImgArticle">
+                      {article?.product_image ? (
+                        <>
+                          <Image
+                            src={article?.product_image?.secure_url}
+                            classImg="imgArticle"
+                          />
+                          <Image
+                            src={bannerSold}
+                            classImg={`${classImgArticle} ${classBannerSold}`}
+                          />
+                        </>
+                      ) : article?.product_pictures ? (
+                        article?.product_pictures.map((images, index) => {
+                          return (
+                            index === 0 && (
+                              <React.Fragment key={index}>
+                                <Image
+                                  src={images?.secure_url}
+                                  classImg="imgArticle"
+                                />
+                                <Image
+                                  src={bannerSold}
+                                  classImg={`${classImgArticle} ${classBannerSold}`}
+                                />
+                              </React.Fragment>
+                            )
+                          );
+                        })
+                      ) : (
+                        <Image src={noImg} alt="no image" />
+                      )}
+                    </div>
                   ) : (
-                    <Image
-                      src={article?.owner?.account?.avatar}
-                      alt="avatar"
-                      classImg="imgAvatar"
-                    />
-                  )}
-                  <h5>{article?.owner?.account?.username}</h5>
-                </div>
-                {location.pathname === "/myOffers" &&
-                article?.offer_solded === true ? (
-                  <div className="boxImgArticle">
-                    {article?.product_image ? (
-                      <>
+                    <div className="boxImgArticle">
+                      {article?.product_image ? (
                         <Image
                           src={article?.product_image?.secure_url}
                           classImg="imgArticle"
                         />
-                        <Image
-                          src={bannerSold}
-                          classImg={`${classImgArticle} ${classBannerSold}`}
-                        />
-                      </>
-                    ) : article?.product_pictures ? (
-                      article?.product_pictures.map((images, index) => {
-                        return (
-                          index === 0 && (
-                            <React.Fragment key={index}>
-                              <Image
-                                src={images?.secure_url}
-                                classImg="imgArticle"
-                              />
-                              <Image
-                                src={bannerSold}
-                                classImg={`${classImgArticle} ${classBannerSold}`}
-                              />
-                            </React.Fragment>
-                          )
-                        );
-                      })
-                    ) : (
-                      <Image src={noImg} alt="no image" />
-                    )}
-                  </div>
-                ) : (
-                  <div className="boxImgArticle">
-                    {article?.product_image ? (
-                      <Image
-                        src={article?.product_image?.secure_url}
-                        classImg="imgArticle"
-                      />
-                    ) : article?.product_pictures ? (
-                      article?.product_pictures.map((images, index) => {
-                        return (
-                          index === 0 && (
-                            <React.Fragment key={index}>
-                              <Image
-                                src={images?.secure_url}
-                                classImg="imgArticle"
-                              />
-                            </React.Fragment>
-                          )
-                        );
-                      })
-                    ) : (
-                      <Image src={noImg} alt="no image" />
-                    )}
-                  </div>
-                )}
+                      ) : article?.product_pictures ? (
+                        article?.product_pictures.map((images, index) => {
+                          return (
+                            index === 0 && (
+                              <React.Fragment key={index}>
+                                <Image
+                                  src={images?.secure_url}
+                                  classImg="imgArticle"
+                                />
+                              </React.Fragment>
+                            )
+                          );
+                        })
+                      ) : (
+                        <Image src={noImg} alt="no image" />
+                      )}
+                    </div>
+                  )}
 
-                <Hearths
-                  article={article}
-                  faHeart={faHeart}
-                  farHeart={farHeart}
-                />
-                <div className="footerArticle">
-                  <div className="boxNameMarque">
-                    <div>{article?.product_name}</div>
-                    <div>{article?.product_details[0]?.MARQUE}</div>
+                  <Hearths
+                    article={article}
+                    faHeart={faHeart}
+                    farHeart={farHeart}
+                  />
+                  <div className="footerArticle">
+                    <div className="boxNameMarque">
+                      <div>{article?.product_name}</div>
+                      <div>{article?.product_details[0]?.MARQUE}</div>
+                    </div>
+                    <div className="price">
+                      {(article?.product_price).toFixed(2)} €
+                    </div>
                   </div>
-                  <div className="price">
-                    {(article?.product_price).toFixed(2)} €
-                  </div>
-                </div>
-              </article>
-            </Link>
-          </React.Fragment>
-        );
-      })}
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                </article>
+              </Link>
+            </React.Fragment>
+          );
+        })}
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      </div>
     </div>
   );
 };
