@@ -1,8 +1,10 @@
 footer {
   width: 100%;
   min-height: 10vh;
+  max-height: 10vh;
   position: sticky;
   bottom: 0;
+  z-index: 600;
   @include flexCenter;
   background-color: $backgHeaderFooter;
 

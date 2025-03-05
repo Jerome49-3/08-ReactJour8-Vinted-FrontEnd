@@ -47,7 +47,7 @@ const Header = ({
               <ThemeButton />
             </div>
           </div>
-          {showSearch ? (
+          {showSearch && (
             <div className="containerBoxSearch">
               <div className="boxSearch">
                 <div className="boxIconSearch">
@@ -70,8 +70,6 @@ const Header = ({
                 />
               </div>
             </div>
-          ) : (
-            <div className="boxContainerSearch"></div>
           )}
           <nav>
             <ul>
