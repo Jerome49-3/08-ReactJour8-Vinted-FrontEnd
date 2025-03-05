@@ -1,0 +1,87 @@
+.boxMessagesContactId {
+  width: 100%;
+  height: 100%;
+  padding: 10px 0 10px 0;
+
+  .wrapper {
+    @include flexColCenter;
+    gap: 20px;
+
+    .leftMessageId,
+    .rightMessageRespondId {
+      height: 100%;
+      width: 100%;
+    }
+
+    .leftMessageId {
+      position: relative;
+
+      .boxMssgContactId {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        gap: 20px;
+        @include flexColTopStart;
+        width: 100%;
+        padding: 50px;
+        height: 100%;
+      }
+    }
+
+    .rightMessageRespondId {
+      // border: 2px solid green;
+      padding: 5px 10px 5px 10px;
+
+      .TitleResponseContactId {
+        height: 10%;
+        padding: 5px;
+      }
+
+      .boxFormContactId {
+        @include flexColTopStart;
+        height: 90%;
+
+        .labelTxtContact {
+          @include flexStart;
+          height: 85%;
+
+          & textArea {
+            @include flexStart;
+            height: 100%;
+            padding: 5px 5px 5px 8px;
+          }
+        }
+
+        .classLabelInput {
+          height: 15%;
+        }
+      }
+    }
+  }
+}
+
+// @media all and (min-width : 576px) {}
+
+// @media all and (min-width : 768px) {}
+
+// @media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {
+  .boxMessagesContactId {
+
+    .wrapper {
+      flex-direction: row;
+
+      .leftMessageId,
+      .rightMessageRespondId {
+        height: 100%;
+        width: 50%;
+      }
+
+      .boxMessagesContactId {}
+    }
+  }
+}
+
+// @media all and (min-width : 1400px) {}

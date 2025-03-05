@@ -45,7 +45,7 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
       }
     };
     fetchData();
-  }, [search, priceMin, priceMax]);
+  }, [search, priceMin, priceMax, axios]);
 
   return isLoading ? (
     <>

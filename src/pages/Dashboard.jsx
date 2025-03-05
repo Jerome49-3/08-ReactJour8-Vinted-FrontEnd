@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Navigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 //context
 import { useUser } from "../assets/lib/userFunc";
 //components
-import LastUsers from "../components/LastUsers";
-import LastSales from "../components/LastSales";
+import DashboardUsers from "../components/DashboardUsers";
+import DashboardSales from "../components/DashboardSales";
 import TitleSearch from "../components/TitleSearch";
+import DashboardMessages from "../components/DashboardMessages";
 
 const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
   const { token, isAdmin } = useUser();
@@ -35,7 +36,7 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
               txtPlaceholder="search by name or email"
             />
             <div className="boxDetails">
-              <LastUsers
+              <DashboardUsers
                 faNewspaper={faNewspaper}
                 faXmark={faXmark}
                 faUserTie={faUserTie}
@@ -67,7 +68,7 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
             />
 
             <div className="boxDetails">
-              <LastSales
+              <DashboardSales
                 searchTransactions={searchTransactions}
                 numberCommand={numberCommand}
               />
@@ -81,7 +82,9 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
               txtPlaceholder="search by name or id"
             />
 
-            <div className="boxDetails"></div>
+            <div className="boxDetails">
+              <DashboardMessages />
+            </div>
           </div>
         </div>
       </div>

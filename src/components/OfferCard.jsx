@@ -24,10 +24,18 @@ const OfferCard = ({ data, faHeart, farHeart, errorMessage }) => {
   }, [fav, location]);
   const classImgArticle = "imgArticle";
   const classBannerSold = "classBannerSold";
+  const boxArticleHome = "boxArticles";
+  const adjustBoxArticle = "adjBoxArticle";
   // console.log("fav after useEffect in OfferCard:", fav);
 
   return (
-    <div className="boxArticles">
+    <div
+      className={
+        location.pathname === "/"
+          ? `${boxArticleHome} ${adjustBoxArticle}`
+          : "boxArticles"
+      }
+    >
       <div className="wrapper">
         {(location.pathname === "/favorites" ? fav : data).map((article) => {
           // const isFavorite = fav.some((favArticle) => favArticle?._id);

@@ -1,14 +1,12 @@
 // Avec solution ws
 import { useEffect, useState } from "react";
 import { useBeforeUnload } from "react-router-dom";
-import axios from "axios";
 import { useUser } from "../assets/lib/userFunc";
 import { useLocation } from "react-router-dom";
 
 //components
 import TextArea from "../components/TextArea";
 import GetMessages from "../components/GetMessages";
-import Loading from "../components/Loading";
 
 const Chat = () => {
   const { state } = useLocation();
@@ -17,7 +15,7 @@ const Chat = () => {
   const OfferID = product_id;
   const [loadMessages, setLoadMessages] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const { token, errorMessage, setErrorMessage, user } = useUser();
+  const { token, errorMessage, setErrorMessage, user, axios } = useUser();
   // const [viewKey, setViewKey] = useState(null);
   // console.log("token on chat:", token);
   const [messages, setMessages] = useState([]); // Liste des messages

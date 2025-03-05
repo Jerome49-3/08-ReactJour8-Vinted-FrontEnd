@@ -1,7 +1,6 @@
 /* HEADER */
 header {
   width: 100%;
-  display: block;
   @include flexCenter;
   @include boxShadow;
   background-color: var(--backgHeader);
@@ -213,7 +212,8 @@ header {
 
 @media all and (min-width : 1200px) {
   header {
-    position: fixed;
+    position: sticky;
+    top: 0;
     z-index: 600;
 
     .wrapper {

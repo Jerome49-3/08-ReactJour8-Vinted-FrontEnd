@@ -29,6 +29,7 @@ const TextArea = ({
         className={classTextArea}
         onChange={(e) => {
           const finalTarget = transformStr(e);
+          console.log("finalTarget on textArea component:", finalTarget);
           setState(finalTarget);
         }}
         wrap={wrap}

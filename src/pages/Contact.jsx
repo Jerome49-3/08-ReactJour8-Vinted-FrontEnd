@@ -36,6 +36,7 @@ const Contact = () => {
         setInfoUser(response.data.message);
         setIsSended(false);
         setTimeout(() => {
+          setInfoUser("");
           navigate("/");
         }, 3000);
       }
@@ -48,6 +49,10 @@ const Contact = () => {
         error.response.data
       );
       setErrorMessage(error.response.data);
+      setTimeout(() => {
+        setIsSended(false);
+        setErrorMessage("");
+      }, 3000);
     }
   };
 
@@ -57,8 +62,8 @@ const Contact = () => {
         <div className="boxSubject">
           <h3>Subject:</h3>
           <SelectOptions
-            values={["compte", "transactions", "offres", "other", "thank u"]}
-            selected="thank u"
+            values={["compte", "transactions", "offres", "other", "subject"]}
+            selected="subject"
             selectName="catégories"
             OptionValue={optionValue}
             setOptionValue={setOptionValue}

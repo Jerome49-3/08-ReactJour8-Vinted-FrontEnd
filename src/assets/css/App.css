@@ -151,13 +151,6 @@ div#root {
   height: 100vh;
 }
 
-.boxHome,
-.boxDashboard,
-.boxUserId,
-.boxContact {
-  margin-top: 10vh;
-}
-
 .wrapper {
   max-width: 300px;
   margin-left: auto;
@@ -752,11 +745,6 @@ div#root {
     height: 100%;
   }
 }
-@media all and (min-width: 1200px) {
-  .boxForm {
-    margin-top: 10vh;
-  }
-}
 .boxLogin {
   width: 100%;
   height: 100%;
@@ -844,7 +832,6 @@ div#root {
 /* HEADER */
 header {
   width: 100%;
-  display: block;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1096,7 +1083,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 @media all and (min-width: 1200px) {
   header {
-    position: fixed;
+    position: sticky;
+    top: 0;
     z-index: 600;
   }
   header .wrapper .topHeader {
@@ -1319,9 +1307,14 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 @media all and (min-width: 1200px) {
   .boxArticles {
-    margin-top: 10vh;
+    padding-top: 0;
   }
-  .boxArticles .wrapper a {
+  .boxArticles .wrapper {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  .boxArticles a {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -1559,7 +1552,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 @media all and (min-width: 1200px) {
   .boxOffer {
-    margin-top: 10vh;
     height: 100%;
   }
   .boxOffer .wrapper .top {
@@ -2743,6 +2735,114 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   gap: 10px;
 }
 
+.boxMessagesContacts {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: auto;
+  padding: 5px;
+}
+.boxMessagesContacts .boxDetailsMessages {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 98%;
+  border-radius: 5px;
+}
+.boxMessagesContacts .boxDetailsMessages div {
+  width: 25%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2px 5px 2px 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.boxMessagesContacts .boxDetailsMessages div:nth-child(3) {
+  width: 30%;
+}
+.boxMessagesContacts .boxDetailsMessages div:nth-child(4) {
+  width: 15%;
+}
+
+.boxMessagesContactId {
+  width: 100%;
+  height: 100%;
+  padding: 10px 0 10px 0;
+}
+.boxMessagesContactId .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.boxMessagesContactId .wrapper .leftMessageId,
+.boxMessagesContactId .wrapper .rightMessageRespondId {
+  height: 100%;
+  width: 100%;
+}
+.boxMessagesContactId .wrapper .leftMessageId {
+  position: relative;
+}
+.boxMessagesContactId .wrapper .leftMessageId .boxMssgContactId {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  padding: 50px;
+  height: 100%;
+}
+.boxMessagesContactId .wrapper .rightMessageRespondId {
+  padding: 5px 10px 5px 10px;
+}
+.boxMessagesContactId .wrapper .rightMessageRespondId .TitleResponseContactId {
+  height: 10%;
+  padding: 5px;
+}
+.boxMessagesContactId .wrapper .rightMessageRespondId .boxFormContactId {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 90%;
+}
+.boxMessagesContactId .wrapper .rightMessageRespondId .boxFormContactId .labelTxtContact {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 85%;
+}
+.boxMessagesContactId .wrapper .rightMessageRespondId .boxFormContactId .labelTxtContact textArea {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding: 5px 5px 5px 8px;
+}
+.boxMessagesContactId .wrapper .rightMessageRespondId .boxFormContactId .classLabelInput {
+  height: 15%;
+}
+
+@media all and (min-width: 1200px) {
+  .boxMessagesContactId .wrapper {
+    flex-direction: row;
+  }
+  .boxMessagesContactId .wrapper .leftMessageId,
+  .boxMessagesContactId .wrapper .rightMessageRespondId {
+    height: 100%;
+    width: 50%;
+  }
+}
 footer {
   width: 100%;
   min-height: 10vh;

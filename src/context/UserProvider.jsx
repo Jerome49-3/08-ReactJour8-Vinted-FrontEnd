@@ -37,7 +37,7 @@ export const UserProvider = ({ children }) => {
       return imgDefault;
     }
   });
-  console.log("imgBoxUser: in userProvider:", imgBoxUser);
+  // console.log("imgBoxUser: in userProvider:", imgBoxUser);
   // console.log("typeof imgBoxUser: in userProvider:", typeof imgBoxUser);
   // const avatarSecureUrl = user?.account?.avatar?.secure_url;
   // const avatarUrl = user?.account?.avatar;
@@ -143,8 +143,6 @@ export const UserProvider = ({ children }) => {
                   setImgBoxUser
                 );
                 setIsLoading(false);
-              } else {
-                // console.log("response?.status:", response?.status);
               }
             } catch (error) {
               console.log("error in /refreshToken:", error);

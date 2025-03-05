@@ -16,6 +16,7 @@ import {
   faRotateRight,
   faHeart,
   faFilter,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 library.add(
@@ -31,7 +32,8 @@ library.add(
   faUser,
   faRotateRight,
   farHeart,
-  faFilter
+  faFilter,
+  faTrash
 );
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -57,7 +59,7 @@ import UserId from "./pages/UserId";
 import Contact from "./pages/Contact";
 import ForgotPsswd from "./pages/ForgotPsswd";
 import ResendEmail from "./pages/ResendEmail";
-
+import MessagesContactId from "./pages/MessagesContactId";
 //components
 import Header from "./components/Header";
 import SignUp from "./components/SignUp";
@@ -156,6 +158,10 @@ function App() {
               />
               <Route path="/chat" element={<Chat />} />
               <Route path="/profile/:id" element={<Profile />} />
+              <Route
+                path="/messagesContactId/:id"
+                element={<MessagesContactId />}
+              />
               <Route
                 path="/payment"
                 element={
