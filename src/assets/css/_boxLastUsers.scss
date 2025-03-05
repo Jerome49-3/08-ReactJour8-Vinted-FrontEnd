@@ -18,6 +18,10 @@
       border-radius: 5px;
       padding: 2px 5px 2px 5px;
 
+      & * {
+        width: calc(100%/6);
+      }
+
       .avatar {
         & img {
           width: 25px;
@@ -31,9 +35,7 @@
       .username {
         padding-left: 4px;
         flex: 2;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        @include ellipsis;
 
         &:hover {
           overflow: visible;
@@ -47,6 +49,7 @@
       .email {
         flex: 6;
         @include flexStart;
+        @include ellipsis;
       }
 
       .date {

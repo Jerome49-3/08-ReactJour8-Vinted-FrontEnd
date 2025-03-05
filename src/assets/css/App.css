@@ -1794,28 +1794,27 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 
 .boxDashboard {
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  height: 100%;
   width: 100%;
-  padding: 5px 0 5px 0;
+  flex: 1;
 }
 .boxDashboard .wrapper {
   gap: 5px;
-  display: grid;
 }
 .boxDashboard .top,
 .boxDashboard .bottom {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  width: 100%;
   gap: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
 }
 .boxDashboard .top .left,
 .boxDashboard .top .right,
 .boxDashboard .bottom .left,
 .boxDashboard .bottom .right {
-  min-height: 100%;
+  flex: auto;
 }
 .boxDashboard .top .left .boxDetails,
 .boxDashboard .top .right .boxDetails,
@@ -1848,6 +1847,25 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   .boxDashboard .bottom .right {
     width: 50%;
   }
+  .boxDashboard .top .left .boxDetails,
+  .boxDashboard .top .right .boxDetails,
+  .boxDashboard .bottom .left .boxDetails,
+  .boxDashboard .bottom .right .boxDetails {
+    height: calc(100% - 25px);
+    max-height: calc(100% - 25px);
+  }
+  .boxDashboard .top .left .boxDetails,
+  .boxDashboard .top .left .boxTitleSearch,
+  .boxDashboard .top .right .boxDetails,
+  .boxDashboard .top .right .boxTitleSearch,
+  .boxDashboard .bottom .left .boxDetails,
+  .boxDashboard .bottom .left .boxTitleSearch,
+  .boxDashboard .bottom .right .boxDetails,
+  .boxDashboard .bottom .right .boxTitleSearch {
+    background-color: rgba(241, 241, 241, 0.9450980392);
+    border-radius: 5px;
+    border: 1px solid #2DB0BA;
+  }
 }
 .boxLastUsers {
   display: flex;
@@ -1876,6 +1894,9 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   border-radius: 5px;
   padding: 2px 5px 2px 5px;
 }
+.boxLastUsers .boxUsers a * {
+  width: 16.6666666667%;
+}
 .boxLastUsers .boxUsers a .avatar img {
   width: 25px;
   height: 25px;
@@ -1902,6 +1923,9 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .boxLastUsers .boxUsers a .date {
   display: block;
@@ -2846,6 +2870,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 footer {
   width: 100%;
   min-height: 10vh;
+  position: sticky;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;

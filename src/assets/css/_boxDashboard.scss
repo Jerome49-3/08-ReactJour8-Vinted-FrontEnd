@@ -1,29 +1,26 @@
 .boxDashboard {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
+  @include flexCenter;
   width: 100%;
-  padding: 5px 0 5px 0;
+  flex: 1;
 
   .wrapper {
     gap: 5px;
-    display: grid;
   }
 
   .top,
   .bottom {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    width: 100%;
     gap: 5px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100%/2);
   }
 
   .top .left,
   .top .right,
   .bottom .left,
   .bottom .right {
-    min-height: 100%;
+    flex: auto;
 
     .boxDetails {
       height: calc(100% - 25px);
@@ -49,6 +46,24 @@
       .left,
       .right {
         width: calc(100% /2);
+      }
+    }
+
+    .top .left,
+    .top .right,
+    .bottom .left,
+    .bottom .right {
+
+      .boxDetails {
+        height: calc(100% - 25px);
+        max-height: calc(100% - 25px);
+      }
+
+      .boxDetails,
+      .boxTitleSearch {
+        background-color: $backgWhite;
+        border-radius: 5px;
+        border: 1px solid $vertVinted;
       }
     }
   }
