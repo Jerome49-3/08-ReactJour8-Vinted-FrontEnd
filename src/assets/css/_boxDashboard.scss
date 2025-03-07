@@ -4,7 +4,8 @@
   flex: 1;
 
   .wrapper {
-    gap: 5px;
+    @include flexColCenter;
+    gap: 10px;
   }
 
   .top,
@@ -14,6 +15,14 @@
     display: flex;
     flex-direction: column;
     height: calc(100%/2);
+  }
+
+  .top {
+    margin-top: 5px;
+  }
+
+  .bottom {
+    margin-bottom: 10px;
   }
 
   .top .left,

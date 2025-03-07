@@ -48,35 +48,33 @@ const LastSales = ({ searchTransactions, numberCommand }) => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="wrapper">
-      <table className="boxLastSales">
-        <thead>
-          <tr>
-            <th>Nom produit:</th>
-            <th>Prix:</th>
-            <th>Vendeur:</th>
-            <th>N° commande:</th>
-            <th>Acheteur:</th>
-          </tr>
-        </thead>
-        {data.map((transactions) => {
-          return (
-            // console.log("transactions in map on /transactions:", transactions);
-            <tbody className="boxTansactions" key={transactions._id}>
-              <Link to={`/transactions/${transactions._id}`}>
-                <tr>
-                  <td>{transactions.product_name}</td>
-                  <td>{transactions.product_price}</td>
-                  <td>{transactions.seller.account.username}</td>
-                  <td className="numCmd">{transactions.number_command}</td>
-                  <td>{transactions.buyer.account.username}</td>
-                </tr>
-              </Link>
-            </tbody>
-          );
-        })}
-      </table>
-    </div>
+    <table className="boxLastSales">
+      <thead>
+        <tr>
+          <th>Nom produit:</th>
+          <th>Prix:</th>
+          <th>Vendeur:</th>
+          <th>N° commande:</th>
+          <th>Acheteur:</th>
+        </tr>
+      </thead>
+      {data.map((transactions) => {
+        return (
+          // console.log("transactions in map on /transactions:", transactions);
+          <tbody className="boxTansactions" key={transactions._id}>
+            <Link to={`/transactions/${transactions._id}`}>
+              <tr>
+                <td>{transactions.product_name}</td>
+                <td>{transactions.product_price}</td>
+                <td>{transactions.seller.account.username}</td>
+                <td className="numCmd">{transactions.number_command}</td>
+                <td>{transactions.buyer.account.username}</td>
+              </tr>
+            </Link>
+          </tbody>
+        );
+      })}
+    </table>
   );
 };
 

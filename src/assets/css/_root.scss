@@ -6,10 +6,16 @@
   }
 }
 
-div#root {
-  @include flexColBetween;
-  height: 100vh;
+@media all and (min-width : 1200px) {
+
+  .boxDashboard,
+  .wrapper:not(.boxHome>.wrapper, .boxForm>.wrapper),
+  .boxNoPurchases,
+  .boxOffer {
+    height: 80vh;
+  }
 }
+
 
 .wrapper {
   max-width: 300px;
@@ -59,23 +65,23 @@ div#root {
     color: $vertVinted;
   }
 
-  @media all and (min-device-width : 576px) {
+  @media all and (min-width : 576px) {
     max-width: 476px;
   }
 
-  @media all and (min-device-width : 768px) {
+  @media all and (min-width : 768px) {
     max-width: 668px;
   }
 
-  @media all and (min-device-width : 992px) {
+  @media all and (min-width : 992px) {
     max-width: 892px;
   }
 
-  @media all and (min-device-width : 1200px) {
+  @media all and (min-width : 1200px) {
     max-width: 1100px;
   }
 
-  @media all and (min-device-width : 1400px) {
+  @media all and (min-width : 1400px) {
     max-width: 1200px;
   }
 }

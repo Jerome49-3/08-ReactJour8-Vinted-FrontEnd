@@ -15,7 +15,9 @@ export const UserProvider = ({ children }) => {
   const [isSended, setIsSended] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [infoUser, setInfoUser] = useState("");
+  const [showTrash, setShowTrash] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [data, setData] = useState(null);
   // console.log("showSearch in userProvider:", showSearch);
   let location = useLocation();
   // console.log("location.pathname in userProvider:", location.pathname);
@@ -47,7 +49,7 @@ export const UserProvider = ({ children }) => {
   //   typeof avatarSecureUrl
   // );
   // console.log("typeof avatarUrl: in userProvider:", typeof avatarUrl);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   // console.log("user in UserProvider:", user);
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(() => {
@@ -126,39 +128,44 @@ export const UserProvider = ({ children }) => {
             // );
             // console.log("token in /verifyToken:", token);
             saveToken(token, setUser, setIsAdmin, setImgBoxUser);
+          } else {
+            const getToken = async () => {
+              try {
+                const response = await axios.get(
+                  `http://localhost:3000/user/refreshToken`
+                );
+                console.log("response in /user/refreshToken:", response);
+                if (response?.data?.token) {
+                  setToken(response?.data?.token);
+                  saveToken(
+                    response?.data?.token,
+                    setUser,
+                    setIsAdmin,
+                    setImgBoxUser
+                  );
+                  setIsLoading(false);
+                }
+              } catch (error) {
+                console.log("error in /refreshToken:", error);
+
+                console.log(error?.response?.data?.message || error?.message);
+                console.log(
+                  "error?.response?.status:",
+                  error?.response?.status
+                );
+                // console.log(
+                //   "typeof error?.response?.status:",
+                //   typeof error?.response?.status
+                // );
+                if (error?.response?.status === 401) {
+                  navigate("/");
+                }
+              }
+            };
+            getToken();
           }
         } catch (error) {
-          const getToken = async () => {
-            try {
-              const response = await axios.get(
-                `http://localhost:3000/user/refreshToken`
-              );
-              console.log("response in /user/refreshToken:", response);
-              if (response?.data?.token) {
-                setToken(response?.data?.token);
-                saveToken(
-                  response?.data?.token,
-                  setUser,
-                  setIsAdmin,
-                  setImgBoxUser
-                );
-                setIsLoading(false);
-              }
-            } catch (error) {
-              console.log("error in /refreshToken:", error);
-
-              console.log(error?.response?.data?.message || error?.message);
-              console.log("error?.response?.status:", error?.response?.status);
-              // console.log(
-              //   "typeof error?.response?.status:",
-              //   typeof error?.response?.status
-              // );
-              if (error?.response?.status === 401) {
-                navigate("/");
-              }
-            }
-          };
-          getToken();
+          console.log("error:", error.response);
         }
       };
       verifyToken();
@@ -255,6 +262,11 @@ export const UserProvider = ({ children }) => {
         setTokenFgtP,
         infoUser,
         setInfoUser,
+        showTrash,
+        setShowTrash,
+        location,
+        data,
+        setData,
       }}
     >
       {children}

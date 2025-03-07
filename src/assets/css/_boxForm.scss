@@ -17,10 +17,6 @@
     border: 2px solid #ededed;
     margin-bottom: 10px;
 
-    .boxPicBottom {
-      padding: 5px 0px 5px 5px;
-    }
-
     .boxPicBottomEmpty {
       padding: 110px;
     }
@@ -59,40 +55,36 @@
     }
 
     .boxPicBottom {
+
       .viewPics {
-        width: fit-content;
+        width: calc(100%/4.1);
         position: relative;
 
         & img {
-          width: 200px;
+          width: 100%;
           height: 200px;
           max-height: 200px;
           object-fit: cover;
         }
 
-        .suppFiles,
-        .rotateFiles {
+        .suppFiles {
+          @include btn;
           width: 20px;
           height: 20px;
+          color: $vertVinted;
           background-color: $white;
           border: 2px solid $vertVinted;
           @include flexCenter;
           border-radius: 5px;
-          padding: 5px;
-        }
-
-        .suppFiles {
           position: absolute;
-          top: 15%;
+          top: 8%;
           left: 90%;
           transform: translate(-50%, -50%);
-        }
 
-        .rotateFiles {
-          position: absolute;
-          top: 85%;
-          left: 90%;
-          transform: translate(-50%, -50%);
+          &:hover {
+            background-color: $white;
+            color: red;
+          }
         }
       }
     }
@@ -107,13 +99,11 @@
     gap: 8px;
     margin-top: 10px;
     width: 100%;
-    height: 100%;
 
     & img {
       width: 100px;
       height: 100px;
       object-fit: cover;
-      border-radius: 10px;
     }
 
   }
@@ -126,10 +116,6 @@
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-
-    .wrapper {
-      height: 100%;
-    }
   }
 }
 
@@ -140,10 +126,6 @@
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-
-    .wrapper {
-      height: 100%;
-    }
   }
 }
 

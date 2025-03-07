@@ -2,18 +2,18 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  width: 50%;
   max-width: 60%;
   z-index: 600;
   background-color: $backgAside;
   animation: appearPanel 0.5s linear 0.25s 1 normal both;
   box-shadow: 0px 0px 1px $vertVinted;
   gap: 20px;
-  padding: 10px 20px;
+  padding: 10px;
   height: 100%;
   position: fixed;
   top: 50%;
-  left: 70%;
+  left: 75%;
   transform: translate(-50%, -50%);
   border: 1px solid $vertVinted;
   box-shadow: 0px 0px 1px $black, 0px 0px 1.5px $black, 0px 0px 3px $black;
@@ -46,52 +46,6 @@
       width: 100%;
       @include flexColStart;
       animation: appearFilter 1s linear 0.45s 1 normal both;
-
-      .boxPriceMinMax {
-        @include flexColStart;
-        gap: 10px;
-        padding: 0px 10px 0px 10px;
-        width: 100%;
-
-        & h3 {
-          color: $vertVinted;
-          width: 100%;
-          border-bottom: 2px solid $vertVinted;
-          padding-bottom: 2px;
-        }
-
-        .boxInputFilter {
-          @include flexBetween;
-          gap: 40px;
-          width: 100%;
-
-          .priceMin,
-          .priceMax {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            width: 50%;
-
-
-            & label {
-              color: $vertVinted;
-              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            }
-          }
-
-          & input {
-            border-bottom: transparent;
-            outline: 2px solid $vertVinted;
-            border-radius: 5px;
-            filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
-
-            &::placeholder {
-              text-align: center;
-              filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
-            }
-          }
-        }
-      }
 
       .filterTwoThumbs {
         width: 100%;
@@ -147,7 +101,7 @@
 
       & button {
         @include btn;
-        width: 50%;
+        width: 80%;
 
         & p {
           text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;

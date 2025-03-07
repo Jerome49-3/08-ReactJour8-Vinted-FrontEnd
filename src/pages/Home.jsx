@@ -20,12 +20,19 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
   // console.log("priceMax in Home:", priceMax);
   // console.log("isFavorite in Home:", isFavorite);
   // console.log('search in Home:', search);
-  const [data, setData] = useState();
-  // console.log('data in /Home:', data);
-  const [isLoading, setIsLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
   // const [imgsNbr, setImgsNbr] = useState(0);
-  const { axios, fav, setFav } = useUser();
+  const {
+    axios,
+    fav,
+    setFav,
+    data,
+    setData,
+    isLoading,
+    setIsLoading,
+    errorMessage,
+    setErrorMessage,
+  } = useUser();
+  console.log("data in /Home:", data);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -51,7 +58,7 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
     <>
       <Loading />
     </>
-  ) : data.length > 0 ? (
+  ) : data?.length >= 1 ? (
     <div className="boxHome">
       <Hero />
       <div className="wrapper">

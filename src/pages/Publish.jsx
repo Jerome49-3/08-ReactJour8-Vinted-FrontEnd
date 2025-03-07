@@ -1,20 +1,26 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useUser } from "../assets/lib/userFunc";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //components
 import TextArea from "../components/TextArea";
 import Input from "../components/Input";
-import InputFile from "../components/InputFile";
+// import InputFile from "../components/InputFile";
+import Button from "../components/Button";
+import LoadedInputSubmit from "../components/LoadedInputSubmit";
 
-const Publish = () => {
+const Publish = ({ faTrash }) => {
   const viewFile = useRef(null);
-  const { token, axios } = useUser();
-  // console.log("token in in /publish:", token);
+  const { token, axios, isSended, setIsSended } = useUser();
+  console.log("token in in /publish:", token);
   const [errorMessage, setErrorMessage] = useState("");
   const [pictures, setPictures] = useState([]);
   console.log("pictures in in /publish:", pictures);
+  console.log(
+    "Array.isArray(pictures) in in /publish:",
+    Array.isArray(pictures)
+  );
+  console.log("pictures.length in in /publish:", pictures.length);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   let [price, setPrice] = useState(0);
@@ -31,7 +37,7 @@ const Publish = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-    console.log("e:", e);
+    setIsSended(true);
     const formData = new FormData();
     price = Number(price).toFixed(2);
     for (let i = 0; i < pictures.length; i++) {
@@ -90,7 +96,12 @@ const Publish = () => {
         //   "response.data.newOffer._id in publish:",
         //   response.data.newOffer._id
         // );
+        setIsSended(false);
         navigate(`/offers/${response.data.newOffer._id}`);
+      } else {
+        setTimeout(() => {
+          setIsSended(false);
+        }, 3000);
       }
     } catch (error) {
       console.log(
@@ -100,6 +111,9 @@ const Publish = () => {
         error.response.data.message
       );
       setErrorMessage(error.response.data.message);
+      setTimeout(() => {
+        setIsSended(false);
+      }, 3000);
     }
   };
 
@@ -130,6 +144,7 @@ const Publish = () => {
                 multiple={true}
                 onChange={(e) => {
                   console.log("e.target:", e.target);
+                  console.log("e.target.files:", e.target.files);
                   let newPic = [...pictures];
                   console.log(
                     "newPic on onChange/inputFile in /publish:",
@@ -160,18 +175,16 @@ const Publish = () => {
                       alt="Image"
                       ref={viewFile}
                     />
-                    <button
-                      type="button"
-                      className="suppFiles"
-                      onClick={() => {
+                    <Button
+                      classButton="suppFiles"
+                      handleClick={() => {
                         const newPictures = pictures.filter(
                           (picture) => picture.name !== files.name
                         );
                         setPictures(newPictures);
                       }}
-                    >
-                      X
-                    </button>
+                      icon={faTrash}
+                    />
                   </div>
                 );
               })}
@@ -236,7 +249,7 @@ const Publish = () => {
             placeholder="Emplacement"
             setState={setCity}
           />
-          <Input type="submit" value="poster votre annonce" />
+          <LoadedInputSubmit isSended={isSended} setIsSended={setIsSended} />
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </form>
       </div>

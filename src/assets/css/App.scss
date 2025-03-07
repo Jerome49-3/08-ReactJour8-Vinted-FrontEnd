@@ -4,6 +4,7 @@
 @import './root';
 @import './theme';
 @import './buttonTheme';
+@import './cookieConsent';
 @import './loading';
 @import './boxLoaded';
 @import './errorMessage';
@@ -19,14 +20,15 @@
 @import './boxHeader';
 @import './boxImgs';
 @import './boxHome';
-@import './boxArticles';
+@import './boxTrash';
+@import './boxOfferCard';
 @import './boxOffer';
 @import './boxShopppingCart';
-@import './cookieConsent';
 @import './boxTitleSearch';
 @import './boxDashboard';
 @import './boxLastUsers';
 @import './boxUserId';
+@import './boxPriceMinMax';
 @import './boxAside';
 @import './boxContact';
 @import './boxLastSales';

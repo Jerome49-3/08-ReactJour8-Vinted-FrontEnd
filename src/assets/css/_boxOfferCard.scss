@@ -1,13 +1,15 @@
 /* ARTICLE */
-.boxArticles {
+.boxOfferCard {
   @include flexCenter;
   flex-wrap: wrap;
   width: 100%;
   padding: 5px;
   gap: 20px;
 
+  // .wrapper {}
+
   & a {
-    width: calc(100%/4);
+    width: 100%;
 
     & article {
       display: flex;
@@ -78,20 +80,39 @@
         }
       }
 
-      .boxHearth {
+      .boxTrashHearth {
         position: absolute;
-        top: 75%;
-        left: 90%;
+        top: 80%;
+        left: 50%;
         transform: translate(-50%, -50%);
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        z-index: 200;
-        @include flexCenter;
-        font-size: 1.25rem;
+        // border: 2px solid yellow;
+        width: 100%;
+        @include flexBetween;
+        padding: 0 10px 0 10px;
 
-        .svg-inline--fa {
-          filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black) drop-shadow(1px 1px 1px $black);
+        .btnTrash,
+        .boxHearth {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          z-index: 200;
+          @include flexCenter;
+          font-size: 1.25rem;
+
+          .svg-inline--fa {
+            filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
+          }
+        }
+
+        .btnTrash {
+          @include btn;
+          width: fit-content;
+          background-color: transparent;
+          color: $vertVinted;
+
+          &:hover {
+            background-color: transparent;
+          }
         }
       }
 
@@ -130,7 +151,7 @@
 }
 
 @media all and (min-width : 576px) {
-  .boxArticles {
+  .boxOfferCard {
     justify-content: flex-start;
 
     & a {
@@ -144,7 +165,7 @@
 }
 
 @media all and (min-width: 768px) {
-  .boxArticles {
+  .boxOfferCard {
     gap: 19px;
     padding: 20px 0 20px 0;
 
@@ -161,7 +182,7 @@
 }
 
 @media all and (min-width : 992px) {
-  .boxArticles {
+  .boxOfferCard {
 
     & a {
       width: calc(100% / 4.25);
@@ -170,18 +191,22 @@
 }
 
 @media all and (min-width : 1200px) {
-  .boxArticles {
-    padding-top: 0;
+  .boxOfferCard {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 
     .wrapper {
       display: flex;
       justify-content: flex-start;
       gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
     }
 
     a {
       @include flexStart;
-      width: calc(100% / 4.20) !important;
+      width: calc(100% / 4.22) !important;
     }
   }
 }

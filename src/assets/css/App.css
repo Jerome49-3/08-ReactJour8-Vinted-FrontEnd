@@ -142,15 +142,14 @@
   font-size: 14px;
 }
 
-div#root {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
-  height: 100vh;
+@media all and (min-width: 1200px) {
+  .boxDashboard,
+  .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper),
+  .boxNoPurchases,
+  .boxOffer {
+    height: 80vh;
+  }
 }
-
 .wrapper {
   max-width: 300px;
   margin-left: auto;
@@ -190,27 +189,27 @@ div#root {
 .wrapper .green {
   color: #2DB0BA;
 }
-@media all and (min-device-width: 576px) {
+@media all and (min-width: 576px) {
   .wrapper {
     max-width: 476px;
   }
 }
-@media all and (min-device-width: 768px) {
+@media all and (min-width: 768px) {
   .wrapper {
     max-width: 668px;
   }
 }
-@media all and (min-device-width: 992px) {
+@media all and (min-width: 992px) {
   .wrapper {
     max-width: 892px;
   }
 }
-@media all and (min-device-width: 1200px) {
+@media all and (min-width: 1200px) {
   .wrapper {
     max-width: 1100px;
   }
 }
-@media all and (min-device-width: 1400px) {
+@media all and (min-width: 1400px) {
   .wrapper {
     max-width: 1200px;
   }
@@ -234,6 +233,39 @@ div#root {
 }
 .buttonTheme:hover {
   background-color: transparent;
+}
+
+.CookieConsent {
+  background: rgb(45, 176, 186) !important;
+  background: linear-gradient(90deg, rgb(45, 176, 186) 50%, rgb(255, 255, 255) 100%) !important;
+  color: #000000 !important;
+  text-shadow: 1px 1px 1px white, 1.25px 1.25px 1px #2DB0BA, 0px 0px 1px #000000;
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  padding: 10px 40px 10px 20px;
+}
+.CookieConsent div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+}
+.CookieConsent div:nth-child(2) button {
+  font-weight: 500 !important;
+  font-size: 1.1rem !important;
+  background-color: #2DB0BA !important;
+  color: #ffffff !important;
+  text-shadow: 1px 1px 2px #000000, 1.5px 1.5px 2px #2DB0BA, 2px 2px 2px #000000;
+  width: 200px;
+  border-radius: 5px !important;
+  box-shadow: 0px 0px 5px 3.5px #000000 !important;
+  -moz-box-shadow: 0px 0px 5px 3.5px #000000 !important;
+  -webkit-box-shadow: 0px 0px 5px 3.5px #000000 !important;
+}
+.CookieConsent div:nth-child(2) button:active {
+  box-shadow: inset 0px 0px 5px 3.5px #000000 !important;
+  -moz-box-shadow: inset 0px 0px 5px 3.5px #000000 !important;
+  -webkit-box-shadow: inset 0px 0px 5px 3.5px #000000 !important;
 }
 
 /* LOADING */
@@ -623,9 +655,6 @@ div#root {
   border: 2px solid #ededed;
   margin-bottom: 10px;
 }
-.boxForm .boxPicTop .boxPicBottom {
-  padding: 5px 0px 5px 5px;
-}
 .boxForm .boxPicTop .boxPicBottomEmpty {
   padding: 110px;
 }
@@ -667,40 +696,54 @@ div#root {
   box-shadow: inset 0px 0px 2px #000000, inset 0px 0px 5px #000000;
 }
 .boxForm .boxPicTop .boxPicBottom .viewPics {
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 24.3902439024%;
   position: relative;
 }
 .boxForm .boxPicTop .boxPicBottom .viewPics img {
-  width: 200px;
+  width: 100%;
   height: 200px;
   max-height: 200px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles,
-.boxForm .boxPicTop .boxPicBottom .viewPics .rotateFiles {
+.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles {
+  color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+  cursor: pointer;
   width: 20px;
   height: 20px;
+  color: #2DB0BA;
   background-color: #ffffff;
   border: 2px solid #2DB0BA;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  padding: 5px;
-}
-.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles {
   position: absolute;
-  top: 15%;
+  top: 8%;
   left: 90%;
   transform: translate(-50%, -50%);
 }
-.boxForm .boxPicTop .boxPicBottom .viewPics .rotateFiles {
-  position: absolute;
-  top: 85%;
-  left: 90%;
-  transform: translate(-50%, -50%);
+.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+}
+.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles p:hover, .boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles p:focus {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+}
+.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles:hover, .boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles:focus {
+  background-color: #33c6d0;
+}
+.boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles:hover {
+  background-color: #ffffff;
+  color: red;
 }
 .boxForm .boxPicTop .boxPicBottomEmpty {
   border: none;
@@ -713,14 +756,12 @@ div#root {
   gap: 8px;
   margin-top: 10px;
   width: 100%;
-  height: 100%;
 }
 .boxForm form img {
   width: 100px;
   height: 100px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 10px;
 }
 
 @media all and (min-width: 768px) {
@@ -730,9 +771,6 @@ div#root {
     margin-left: auto;
     margin-right: auto;
   }
-  .boxForm form .wrapper {
-    height: 100%;
-  }
 }
 @media all and (min-width: 992px) {
   /* FORM */
@@ -740,9 +778,6 @@ div#root {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-  }
-  .boxForm form .wrapper {
-    height: 100%;
   }
 }
 .boxLogin {
@@ -856,9 +891,10 @@ header .wrapper .topHeader .boxLogoTheme {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  height: 30px;
 }
-header .wrapper .topHeader .boxLogoTheme .logo {
-  height: 40px;
+header .wrapper .topHeader .boxLogoTheme svg {
+  font-size: 14px;
 }
 header .wrapper .topHeader .boxLogoTheme:hover {
   background-color: transparent;
@@ -866,6 +902,16 @@ header .wrapper .topHeader .boxLogoTheme:hover {
 header .wrapper .topHeader .boxLogoTheme a {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+  height: 30px;
+}
+header .wrapper .topHeader .boxLogoTheme a .logo {
+  height: 30px;
+}
+header .wrapper .topHeader .boxLogoTheme .buttonTheme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 header .wrapper .topHeader .containerBoxSearch {
   width: 100%;
@@ -1101,19 +1147,22 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     width: 100%;
     justify-content: space-between;
   }
-  header .wrapper .topHeader .boxLogoTheme .logo {
+  header .wrapper .topHeader .boxLogoTheme a {
+    height: 35px;
+  }
+  header .wrapper .topHeader .boxLogoTheme a .logo {
     height: 100%;
   }
   header .wrapper .topHeader .boxLogoTheme .boxTheme {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 30px;
   }
   header .wrapper .topHeader .boxLogoTheme .boxTheme .buttonTheme {
     width: 100%;
     height: 100%;
   }
   header .wrapper .topHeader .boxLogoTheme .boxTheme .buttonTheme svg {
-    font-size: 18px;
+    font-size: 15px;
   }
   header .wrapper .topHeader .boxLogoTheme,
   header .wrapper .topHeader .containerBoxSearch, header .wrapper .topHeader nav {
@@ -1123,7 +1172,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     width: 100%;
   }
   header .wrapper .topHeader nav ul li:nth-child(1), header .wrapper .topHeader nav ul li:nth-child(2) {
-    height: 40px;
+    height: 30px;
   }
   header .wrapper .topHeader nav ul li:nth-child(1) {
     width: 60%;
@@ -1177,7 +1226,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 
 /* ARTICLE */
-.boxArticles {
+.boxOfferCard {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1186,10 +1235,10 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
   gap: 20px;
 }
-.boxArticles a {
-  width: 25%;
+.boxOfferCard a {
+  width: 100%;
 }
-.boxArticles a article {
+.boxOfferCard a article {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1201,24 +1250,24 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   position: relative;
   font-size: 1.15rem;
 }
-.boxArticles a article:hover {
+.boxOfferCard a article:hover {
   animation: scaleArticle 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 }
-.boxArticles a article .boxImgArticle {
+.boxOfferCard a article .boxImgArticle {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.boxArticles a article .boxImgArticle .imgArticle {
+.boxOfferCard a article .boxImgArticle .imgArticle {
   display: block;
   width: 100%;
   height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.boxArticles a article .boxImgArticle .classBannerSold {
+.boxOfferCard a article .boxImgArticle .classBannerSold {
   width: 100px;
   height: 100px;
   -o-object-fit: cover;
@@ -1228,11 +1277,11 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   left: 81%;
   transform: translate(-50%, -50%);
 }
-.boxArticles a article .boxImgArticle .imgsArticle {
+.boxOfferCard a article .boxImgArticle .imgsArticle {
   width: calc(100% / var(--imgsLength));
   height: 100%;
 }
-.boxArticles a article .boxUser {
+.boxOfferCard a article .boxUser {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1241,20 +1290,28 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   height: 50px;
   padding: 5px 10px 5px 10px;
 }
-.boxArticles a article .boxUser h5 {
+.boxOfferCard a article .boxUser h5 {
   font-weight: 700;
   font-size: 20px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 1px 1px 1px #000000, 0px 0px 5px #000000;
 }
-.boxArticles a article .boxUser .imgAvatar {
+.boxOfferCard a article .boxUser .imgAvatar {
   height: 30px;
   width: 30px;
 }
-.boxArticles a article .boxHearth {
+.boxOfferCard a article .boxTrashHearth {
   position: absolute;
-  top: 75%;
-  left: 90%;
+  top: 80%;
+  left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 0 10px;
+}
+.boxOfferCard a article .boxTrashHearth .btnTrash,
+.boxOfferCard a article .boxTrashHearth .boxHearth {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -1264,10 +1321,40 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   font-size: 1.25rem;
 }
-.boxArticles a article .boxHearth .svg-inline--fa {
-  filter: drop-shadow(0.25px 0.25px 1px #000000) drop-shadow(0.5px 0.5px 1px #000000) drop-shadow(1px 1px 1px #000000);
+.boxOfferCard a article .boxTrashHearth .btnTrash .svg-inline--fa,
+.boxOfferCard a article .boxTrashHearth .boxHearth .svg-inline--fa {
+  filter: drop-shadow(0.25px 0.25px 1px #000000) drop-shadow(0.5px 0.5px 1px #000000);
 }
-.boxArticles a article .footerArticle {
+.boxOfferCard a article .boxTrashHearth .btnTrash {
+  color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: transparent;
+  color: #2DB0BA;
+}
+.boxOfferCard a article .boxTrashHearth .btnTrash p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+}
+.boxOfferCard a article .boxTrashHearth .btnTrash p:hover, .boxOfferCard a article .boxTrashHearth .btnTrash p:focus {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+}
+.boxOfferCard a article .boxTrashHearth .btnTrash:hover, .boxOfferCard a article .boxTrashHearth .btnTrash:focus {
+  background-color: #33c6d0;
+}
+.boxOfferCard a article .boxTrashHearth .btnTrash:hover {
+  background-color: transparent;
+}
+.boxOfferCard a article .footerArticle {
   padding: 5px 10px 5px 10px;
   gap: 5px;
   width: 100%;
@@ -1276,20 +1363,20 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   justify-content: space-between;
   align-items: center;
 }
-.boxArticles a article .footerArticle .boxNameMarque,
-.boxArticles a article .footerArticle .price {
+.boxOfferCard a article .footerArticle .boxNameMarque,
+.boxOfferCard a article .footerArticle .price {
   font-weight: 700;
   font-size: 16px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 1px 1px 1px #000000, 0px 0px 5px #000000;
 }
-.boxArticles a article .footerArticle .boxNameMarque {
+.boxOfferCard a article .footerArticle .boxNameMarque {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   width: 50%;
 }
-.boxArticles a article .footerArticle .boxNameMarque div {
+.boxOfferCard a article .footerArticle .boxNameMarque div {
   display: inline-block;
   width: 100%;
   overflow: hidden;
@@ -1297,54 +1384,58 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   text-overflow: ellipsis;
   padding-bottom: 5px;
 }
-.boxArticles a article .footerArticle .price {
+.boxOfferCard a article .footerArticle .price {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
 @media all and (min-width: 576px) {
-  .boxArticles {
+  .boxOfferCard {
     justify-content: flex-start;
   }
-  .boxArticles a {
+  .boxOfferCard a {
     width: 50%;
   }
-  .boxArticles a article {
+  .boxOfferCard a article {
     width: 95%;
   }
 }
 @media all and (min-width: 768px) {
-  .boxArticles {
+  .boxOfferCard {
     gap: 19px;
     padding: 20px 0 20px 0;
   }
-  .boxArticles a {
+  .boxOfferCard a {
     width: 23.8095238095%;
   }
-  .boxArticles a article {
+  .boxOfferCard a article {
     width: 100%;
   }
 }
 @media all and (min-width: 992px) {
-  .boxArticles a {
+  .boxOfferCard a {
     width: 23.5294117647%;
   }
 }
 @media all and (min-width: 1200px) {
-  .boxArticles {
-    padding-top: 0;
-  }
-  .boxArticles .wrapper {
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
-  }
-  .boxArticles a {
+  .boxOfferCard {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 23.8095238095% !important;
+  }
+  .boxOfferCard .wrapper {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .boxOfferCard a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 23.6966824645% !important;
   }
 }
 .boxOffer {
@@ -1405,6 +1496,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 .boxOffer .wrapper .top .left .imgLeft article {
   display: flex;
+  width: 100%;
 }
 .boxOffer .wrapper .top .left .imgLeft {
   width: 100%;
@@ -1427,7 +1519,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   height: 100%;
 }
 .boxOffer .wrapper .top .left .imgsRight article {
-  height: 100%;
+  height: calc(100% / (var(--imgsLength)));
+  width: 100%;
 }
 .boxOffer .wrapper .top .left .imgsRight article .boxImgOffer {
   display: flex;
@@ -1435,7 +1528,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 .boxOffer .wrapper .top .left .imgsRight article .boxImgOffer .prodPict {
   width: 100%;
-  height: calc(100% / (var(--imgsLength)));
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
@@ -1577,9 +1670,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   }
 }
 @media all and (min-width: 1200px) {
-  .boxOffer {
-    height: 100%;
-  }
   .boxOffer .wrapper .top {
     height: 100%;
   }
@@ -1591,9 +1681,23 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   .boxOffer .wrapper .top .left .imgLeft * {
     height: 100%;
   }
+  .boxOffer .wrapper .top .left .imgsRight .noImg {
+    height: 100%;
+  }
   .boxOffer .wrapper .top .right {
     width: 33.3333333333%;
     height: 100%;
+  }
+  .boxOffer .infoUserCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 500;
+    font-size: large;
+    --text-shadow1w: #f8f6f6;
+    --text-shadow2: rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 4px var(--text-shadow1w), 1px 1px 1px var(--text-shadow1w), 2px 2px 4px var(--text-shadow1w), 2px 2px 2px var(--text-shadow2), 2px 2px 2px var(--text-shadow2), 2px 2px 4px var(--text-shadow2);
   }
 }
 .boxShoppingCart {
@@ -1720,39 +1824,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
 }
 
-.CookieConsent {
-  background: rgb(45, 176, 186) !important;
-  background: linear-gradient(90deg, rgb(45, 176, 186) 50%, rgb(255, 255, 255) 100%) !important;
-  color: #000000 !important;
-  text-shadow: 1px 1px 1px white, 1.25px 1.25px 1px #2DB0BA, 0px 0px 1px #000000;
-  font-weight: 700 !important;
-  font-size: 1.2rem !important;
-  padding: 10px 40px 10px 20px;
-}
-.CookieConsent div:nth-child(2) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 50px;
-}
-.CookieConsent div:nth-child(2) button {
-  font-weight: 500 !important;
-  font-size: 1.1rem !important;
-  background-color: #2DB0BA !important;
-  color: #ffffff !important;
-  text-shadow: 1px 1px 2px #000000, 1.5px 1.5px 2px #2DB0BA, 2px 2px 2px #000000;
-  width: 200px;
-  border-radius: 5px !important;
-  box-shadow: 0px 0px 5px 3.5px #000000 !important;
-  -moz-box-shadow: 0px 0px 5px 3.5px #000000 !important;
-  -webkit-box-shadow: 0px 0px 5px 3.5px #000000 !important;
-}
-.CookieConsent div:nth-child(2) button:active {
-  box-shadow: inset 0px 0px 5px 3.5px #000000 !important;
-  -moz-box-shadow: inset 0px 0px 5px 3.5px #000000 !important;
-  -webkit-box-shadow: inset 0px 0px 5px 3.5px #000000 !important;
-}
-
 .boxTitleSearch {
   display: flex;
   justify-content: space-between;
@@ -1826,7 +1897,11 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   flex: 1;
 }
 .boxDashboard .wrapper {
-  gap: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }
 .boxDashboard .top,
 .boxDashboard .bottom {
@@ -1835,6 +1910,12 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: flex;
   flex-direction: column;
   height: 50%;
+}
+.boxDashboard .top {
+  margin-top: 5px;
+}
+.boxDashboard .bottom {
+  margin-bottom: 10px;
 }
 .boxDashboard .top .left,
 .boxDashboard .top .right,
@@ -2156,21 +2237,76 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     flex-direction: column;
   }
 }
+.boxPriceMinMax {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.boxPriceMinMax h3 {
+  color: #2DB0BA;
+  width: 100%;
+  border-bottom: 2px solid #2DB0BA;
+  padding-bottom: 2px;
+}
+.boxPriceMinMax .boxInputFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.boxPriceMinMax .boxInputFilter .priceMin,
+.boxPriceMinMax .boxInputFilter .priceMax {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+.boxPriceMinMax .boxInputFilter .priceMin label,
+.boxPriceMinMax .boxInputFilter .priceMax label {
+  color: #2DB0BA;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.boxPriceMinMax .boxInputFilter input {
+  border-bottom: transparent;
+  outline: 2px solid #2DB0BA;
+  border-radius: 5px;
+  filter: drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 1px #000000);
+}
+.boxPriceMinMax .boxInputFilter input::-moz-placeholder {
+  text-align: center;
+  filter: drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 1px #000000);
+}
+.boxPriceMinMax .boxInputFilter input::placeholder {
+  text-align: center;
+  filter: drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 1px #000000);
+}
+
+@media all and (min-width: 1200px) {
+  .boxInputFilter {
+    flex-direction: row !important;
+  }
+}
 .toggleNav {
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 50%;
   max-width: 60%;
   z-index: 600;
   background-color: rgba(52, 52, 52, 0.8);
   animation: appearPanel 0.5s linear 0.25s 1 normal both;
   box-shadow: 0px 0px 1px #2DB0BA;
   gap: 20px;
-  padding: 10px 20px;
+  padding: 10px;
   height: 100%;
   position: fixed;
   top: 50%;
-  left: 70%;
+  left: 75%;
   transform: translate(-50%, -50%);
   border: 1px solid #2DB0BA;
   box-shadow: 0px 0px 1px #000000, 0px 0px 1.5px #000000, 0px 0px 3px #000000;
@@ -2225,54 +2361,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: flex-start;
   flex-direction: column;
   animation: appearFilter 1s linear 0.45s 1 normal both;
-}
-.toggleNav .boxAside .boxFilterSearch .boxPriceMinMax {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 10px;
-  padding: 0px 10px 0px 10px;
-  width: 100%;
-}
-.toggleNav .boxAside .boxFilterSearch .boxPriceMinMax h3 {
-  color: #2DB0BA;
-  width: 100%;
-  border-bottom: 2px solid #2DB0BA;
-  padding-bottom: 2px;
-}
-.toggleNav .boxAside .boxFilterSearch .boxPriceMinMax .boxInputFilter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-  width: 100%;
-}
-.toggleNav .boxAside .boxFilterSearch .boxPriceMinMax .boxInputFilter .priceMin,
-.toggleNav .boxAside .boxFilterSearch .boxPriceMinMax .boxInputFilter .priceMax {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 50%;
-}
-.toggleNav .boxAside .boxFilterSearch .boxPriceMinMax .boxInputFilter .priceMin label,
-.toggleNav .boxAside .boxFilterSearch .boxPriceMinMax .boxInputFilter .priceMax label {
-  color: #2DB0BA;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-.toggleNav .boxAside .boxFilterSearch .boxPriceMinMax .boxInputFilter input {
-  border-bottom: transparent;
-  outline: 2px solid #2DB0BA;
-  border-radius: 5px;
-  filter: drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 1px #000000);
-}
-.toggleNav .boxAside .boxFilterSearch .boxPriceMinMax .boxInputFilter input::-moz-placeholder {
-  text-align: center;
-  filter: drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 1px #000000);
-}
-.toggleNav .boxAside .boxFilterSearch .boxPriceMinMax .boxInputFilter input::placeholder {
-  text-align: center;
-  filter: drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 1px #000000);
 }
 .toggleNav .boxAside .boxFilterSearch .filterTwoThumbs {
   width: 100%;
@@ -2334,7 +2422,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
   cursor: pointer;
-  width: 50%;
+  width: 80%;
 }
 .toggleNav .boxAside .bodyAside button p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
@@ -2526,13 +2614,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 
 .boxTransactionId {
   width: 100%;
-  height: 100%;
-}
-.boxTransactionId .wrapper {
-  height: 100%;
 }
 .boxTransactionId .wrapper .transactionId {
-  height: 100%;
   gap: 20px;
   display: flex;
   justify-content: space-around;
@@ -2781,7 +2864,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   gap: 10px;
 }
 

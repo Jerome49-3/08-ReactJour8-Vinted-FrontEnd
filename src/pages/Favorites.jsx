@@ -5,7 +5,7 @@ import Links from "../components/Links";
 const Favorites = ({ faHeart, farHeart }) => {
   const { fav, setFav } = useUser();
   return (
-    <div className="wrapper">
+    <>
       {fav.length > 0 ? (
         <OfferCard
           fav={fav}
@@ -19,7 +19,7 @@ const Favorites = ({ faHeart, farHeart }) => {
           <Links path="/" linkText="Consultez nos offres disponibles" />
         </div>
       )}
-    </div>
+    </>
   );
 };
 

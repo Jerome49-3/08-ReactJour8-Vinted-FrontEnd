@@ -57,6 +57,7 @@
 
         .imgLeft article {
           display: flex;
+          width: 100%;
         }
 
         .imgLeft {
@@ -80,7 +81,8 @@
           height: 100%;
 
           & article {
-            height: 100%;
+            height: calc(100% / (var(--imgsLength)));
+            width: 100%;
 
             .boxImgOffer {
               display: flex;
@@ -88,7 +90,7 @@
 
               .prodPict {
                 width: 100%;
-                height: calc(100% / (var(--imgsLength)));
+                height: 100%;
                 object-fit: cover;
                 display: block;
               }
@@ -221,7 +223,6 @@
 
 @media all and (min-width : 1200px) {
   .boxOffer {
-    height: 100%;
 
     .wrapper {
 
@@ -236,6 +237,12 @@
           .imgLeft * {
             height: 100%;
           }
+
+          .imgsRight {
+            .noImg {
+              height: 100%;
+            }
+          }
         }
 
         .right {
@@ -243,6 +250,20 @@
           height: 100%;
         }
       }
+    }
+
+    .infoUserCenter {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 500;
+      font-size: large;
+      --text-shadow1w: #f8f6f6;
+      --text-shadow2: rgba(0, 0, 0, 0.7);
+      text-shadow: 2px 2px 4px var(--text-shadow1w), 1px 1px 1px var(--text-shadow1w),
+        2px 2px 4px var(--text-shadow1w),
+        2px 2px 2px var(--text-shadow2), 2px 2px 2px var(--text-shadow2), 2px 2px 4px var(--text-shadow2);
     }
   }
 }

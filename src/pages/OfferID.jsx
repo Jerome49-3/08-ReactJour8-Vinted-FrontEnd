@@ -3,7 +3,7 @@
 import React from "react";
 import Loading from "../components/Loading";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useUser } from "../assets/lib/userFunc";
 // import { ReactFragment } from "react";
 
@@ -18,6 +18,7 @@ import Button from "../components/Button";
 
 //lib
 import classRotation from "../assets/lib/classRotation";
+import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 const OfferID = ({
   showHero,
@@ -25,7 +26,9 @@ const OfferID = ({
   setShowImgsModal,
   setSrcImgsModal,
 }) => {
-  const { axios } = useUser();
+  const { axios, infoUser, setInfoUser } = useUser();
+  console.log("infoUser on OfferID:", infoUser);
+
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
   const { id } = useParams();
   // console.log("id1 in /offers/${id}:", id);
@@ -35,10 +38,10 @@ const OfferID = ({
   let [price, setPrice] = useState(0);
   const prices = Number(price).toFixed(2);
   // console.log("prices in OfferId:", prices);
-  const [errorMessage, setErrorMessage] = useState("");
   // console.log('prices in /offers/${id}:', prices);
   const [isLoading, setIsLoading] = useState(true);
   const rotation = classRotation(data);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // console.log("id inside useEffect in /offers/${id}:", id);
@@ -49,10 +52,19 @@ const OfferID = ({
         if (response?.data) {
           setData(response.data);
           setIsLoading(false);
+        } else {
+          navigate("/");
         }
       } catch (error) {
-        console.log(error?.response?.data?.message);
-        setErrorMessage(error?.response?.data?.message);
+        console.log("error?.response:", error?.response);
+        console.log(
+          "error?.response?.data?.message:",
+          error?.response?.data?.infoUser
+        );
+        setInfoUser(error?.response?.data?.infoUser);
+        if (infoUser) {
+          navigate("/");
+        }
       }
     };
     fetchData();
@@ -72,7 +84,7 @@ const OfferID = ({
     const setImgsLength = () => {
       const imgsLength = data?.product_pictures.length - 1;
       // console.log('imgsLength in useEffect in /offer/:id:', imgsLength);
-      if (data.product_pictures.length > 3) {
+      if (data?.product_pictures.length > 3) {
         setImgsNbr(
           document.documentElement.style.setProperty("--imgsLength", imgsLength)
         );
@@ -110,9 +122,9 @@ const OfferID = ({
                     }}
                     rotation={rotation}
                   />
-                ) : data.product_pictures ? (
+                ) : data?.product_pictures ? (
                   <>
-                    {data.product_pictures.map((images, index) => {
+                    {data?.product_pictures.map((images, index) => {
                       console.log("images:", images);
                       const rotation = classRotation(images);
                       return (
@@ -143,7 +155,7 @@ const OfferID = ({
                     })}
                   </>
                 ) : (
-                  <Image src={noImg} classImg="prodImg" />
+                  <Image src={noImg} classImg="noImg" />
                 )}
               </div>
               <div
@@ -181,7 +193,7 @@ const OfferID = ({
                     })}
                   </>
                 ) : (
-                  <Image src={noImg} classImg="prodImg" />
+                  <Image src={noImg} classImg="noImg" />
                 )}
               </div>
             </div>
@@ -305,7 +317,7 @@ const OfferID = ({
             </div>
           </article>
         </div>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        <InfoUserErrorMessage />
       </div>
     </>
   );

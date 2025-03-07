@@ -195,6 +195,7 @@ function App() {
                     farHeart={farHeart}
                     showNoOffer={showNoOffer}
                     setShowNoOffer={setShowNoOffer}
+                    faTrash={faTrash}
                   />
                 }
               />
@@ -212,7 +213,9 @@ function App() {
             </Route>
             <Route
               path="/publish"
-              element={<Publish faRotateRight={faRotateRight} />}
+              element={
+                <Publish faRotateRight={faRotateRight} faTrash={faTrash} />
+              }
             />
             <Route
               path="/offers/:id"

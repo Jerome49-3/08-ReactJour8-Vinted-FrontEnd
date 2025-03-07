@@ -24,7 +24,7 @@ const Button = ({
 }) => {
   return (
     <>
-      <button className={classButton} onClick={handleClick}>
+      <button className={classButton} onClick={handleClick} type="button">
         {buttonText ? <p>{buttonText}</p> : null}
         {icon ? <FontAwesomeIcon icon={icon} className={classIcon} /> : null}
         {src ? (
