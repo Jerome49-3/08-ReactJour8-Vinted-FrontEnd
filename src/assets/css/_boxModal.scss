@@ -20,8 +20,20 @@
     flex-direction: column;
     border-radius: 15px;
     box-shadow: inset 0px 0px 10px #000000, 0px 0px 10px #000000;
-    max-width: 90%;
-    width: 50%;
+    width: 50vw;
+    height: 60vh;
+
+    // .boxFormSignUp {
+    //   .wrapper {
+    //     .boxTitleClose {
+    //       & img {}
+
+    //       & button {
+    //         cursor: pointer;
+    //       }
+    //     }
+    //   }
+    // }
   }
 }
 

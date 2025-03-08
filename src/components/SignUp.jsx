@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import EyePassword from "./EyePassword";
 import Input from "./Input";
 import Image from "./Image";
+import Button from "./Button";
+import ErrorBoundary from "./ErrorBoundary";
+import InfoUserErrorMessage from "./InfoUserErrorMessage";
 
 //images
 import SmallLogo from "../assets/images/favicon.png";
@@ -13,17 +16,25 @@ import SmallLogo from "../assets/images/favicon.png";
 //lib
 import saveToken from "../assets/lib/saveToken";
 
-const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
+const SignUp = ({
+  showSignUp,
+  setShowSignUp,
+  icon1,
+  icon2,
+  type,
+  setType,
+  faCircleXmark,
+}) => {
+  console.log("showSignUp on SignUp:", showSignUp);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const { token, setToken, setUser, setIsAdmin, axios } = useUser();
+  const { token, setToken, setUser, setIsAdmin, axios, setErrorMessage } =
+    useUser();
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
-    // console.log("e.target.file", e.target.file);
     e.preventDefault();
     setErrorMessage("");
     try {
@@ -36,7 +47,7 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
       console.log("response in /signup:", response);
       if (response) {
         alert(response?.data?.message);
-        setShow(false);
+        setShowSignUp(false);
         navigate("/confirmemail");
         saveToken(token, setToken, setUser, setIsAdmin);
       }
@@ -56,19 +67,30 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
           <div className="wrapper">
             <div className="boxTitleClose">
               <Image src={SmallLogo} alt="logo Vinted" />
-              <button
-                onClick={() => {
-                  {
-                    show === true ? setShow(false) : null;
-                  }
-                }}
+              <ErrorBoundary
+                fallback={<div>Something went wrong with the button!</div>}
               >
-                X
-              </button>
+                <Button
+                  icon={faCircleXmark}
+                  handleClick={() => {
+                    console.log(
+                      "showSignUp in handleClick on SignUp:",
+                      showSignUp
+                    );
+                    if (showSignUp === true) {
+                      setShowSignUp(false);
+                    } else {
+                      throw new Error(
+                        "Oops! Something went wrong while clicking the button."
+                      );
+                    }
+                  }}
+                />
+              </ErrorBoundary>
             </div>
             <form onSubmit={handleSignup}>
               <Input
-                value={username}
+                value={username || ""}
                 id="username"
                 type="text"
                 placeholder="Nom d'utilisateur(ice)"
@@ -76,7 +98,7 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
                 autocomplete="on"
               />
               <Input
-                value={email}
+                value={email || ""}
                 id="email"
                 type="email"
                 placeholder="Email"
@@ -85,7 +107,7 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
               />
               <div className="boxPsswd">
                 <Input
-                  value={password}
+                  value={password || ""}
                   id="password"
                   type={type}
                   placeholder="Mot de passe"
@@ -96,8 +118,8 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
                   <EyePassword
                     icon1={icon1}
                     icon2={icon2}
-                    state={type}
-                    setState={setType}
+                    type={type}
+                    setType={setType}
                   />
                 </div>
               </div>
@@ -121,7 +143,7 @@ const SignUp = ({ show, setShow, icon1, icon2, type, setType }) => {
               <Input type="submit" value="S'inscrire" />
             </form>
           </div>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          <InfoUserErrorMessage />
         </div>
       </div>
     </div>

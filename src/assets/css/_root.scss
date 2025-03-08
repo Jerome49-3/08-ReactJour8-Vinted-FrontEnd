@@ -9,7 +9,7 @@
 @media all and (min-width : 1200px) {
 
   .boxDashboard,
-  .wrapper:not(.boxHome>.wrapper, .boxForm>.wrapper),
+  .wrapper:not(.boxHome>.wrapper, .boxForm>.wrapper, .boxFormSignUp>.wrapper),
   .boxNoPurchases,
   .boxOffer {
     height: 80vh;
@@ -18,10 +18,12 @@
 
 
 .wrapper {
-  max-width: 300px;
+  max-width: 350px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  padding: 0 0 10px 0;
+  @include flexCenter;
 
   //button
   button {

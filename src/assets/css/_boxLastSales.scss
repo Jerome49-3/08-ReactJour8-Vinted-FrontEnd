@@ -21,6 +21,7 @@
 
       & th {
         width: calc(100%/5);
+        @include ellipsis;
       }
 
       & th:not(:last-child) {

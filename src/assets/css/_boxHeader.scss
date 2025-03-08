@@ -4,6 +4,9 @@ header {
   @include flexCenter;
   @include boxShadow;
   background-color: var(--backgHeader);
+  position: sticky;
+  top: 0;
+  z-index: 600;
 
 
   .wrapper {
@@ -109,6 +112,7 @@ header {
                   border-top-right-radius: 0px;
                   border-bottom-right-radius: 0px;
                   font-size: 14px;
+                  cursor: pointer;
 
                   &:hover p {
                     color: $white;
@@ -227,9 +231,6 @@ header {
 
 @media all and (min-width : 1200px) {
   header {
-    position: sticky;
-    top: 0;
-    z-index: 600;
     min-height: 10vh;
     max-height: 10vh;
 

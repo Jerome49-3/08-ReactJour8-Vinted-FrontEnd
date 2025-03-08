@@ -1,28 +1,21 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useUser } from "../assets/lib/userFunc";
 import { useNavigate } from "react-router-dom";
 
 //components
 import Input from "../components/Input";
 import Loading from "../components/Loading";
+import EyePassword from "../components/EyePassword";
 
 //lib
 import saveToken from "../assets/lib/saveToken";
 import Links from "../components/Links";
 
-const Login = ({ type, setType, icon1, icon2 }) => {
+const Login = ({ icon1, icon2, type, setType }) => {
   // const boxForm = "boxForm";
   // const boxLogin = "boxLogin";
-  const {
-    token,
-    setToken,
-    setUser,
-    setIsAdmin,
-    axios,
-    imgBoxUser,
-    setImgBoxUser,
-  } = useUser();
+  const { token, setToken, setUser, setIsAdmin, axios, setImgBoxUser } =
+    useUser();
   // console.log("imgBoxUser in Login:", imgBoxUser);
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -30,9 +23,6 @@ const Login = ({ type, setType, icon1, icon2 }) => {
   const [isLoading, setIsLoading] = useState(null);
   const navigate = useNavigate();
 
-  const handleType = () => {
-    setType(type === "password" ? "text" : "password");
-  };
   const handleSendCode = async (e) => {
     setIsLoading(true);
     e.preventDefault();
@@ -131,29 +121,25 @@ const Login = ({ type, setType, icon1, icon2 }) => {
             id="email"
             type="email"
             placeholder="email"
-            value={email}
+            value={email || ""}
             setState={setEmail}
             autocomplete="on"
           />
           <div className="boxPsswd">
             <Input
-              value={password}
+              value={password || ""}
               id="password"
-              type="password"
-              placeholder="password"
+              type={type}
+              placeholder="Mot de passe"
               setState={setPassword}
               autocomplete="on"
             />
             <div className="boxIcons">
-              <FontAwesomeIcon
-                icon={icon1}
-                onClick={handleType}
-                className={type !== "password" ? "hide" : null}
-              />
-              <FontAwesomeIcon
-                icon={icon2}
-                onClick={handleType}
-                className={type !== "text" ? "hide" : null}
+              <EyePassword
+                icon1={icon1}
+                icon2={icon2}
+                type={type}
+                setType={setType}
               />
             </div>
           </div>

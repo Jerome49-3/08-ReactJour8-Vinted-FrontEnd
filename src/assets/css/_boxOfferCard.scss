@@ -3,7 +3,6 @@
   @include flexCenter;
   flex-wrap: wrap;
   width: 100%;
-  padding: 5px;
   gap: 20px;
 
   // .wrapper {}
@@ -167,7 +166,6 @@
 @media all and (min-width: 768px) {
   .boxOfferCard {
     gap: 19px;
-    padding: 20px 0 20px 0;
 
 
     & a {

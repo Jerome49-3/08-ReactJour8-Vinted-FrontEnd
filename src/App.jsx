@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import * as dotenv from "dotenv";
 import "./assets/css/App.css";
@@ -17,6 +18,7 @@ import {
   faHeart,
   faFilter,
   faTrash,
+  faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 library.add(
@@ -33,7 +35,8 @@ library.add(
   faRotateRight,
   farHeart,
   faFilter,
-  faTrash
+  faTrash,
+  faCircleXmark
 );
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -69,8 +72,8 @@ import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 
 function App() {
-  const [show, setShow] = useState(false);
-  // eslint-disable-next-line no-unused-vars
+  const [showSignUp, setShowSignUp] = useState(false);
+  console.log("showSignUp in app:", showSignUp);
   const [showHero, setShowHero] = useState(false);
   const [showToggleNav, setShowToggleNav] = useState(false);
   // console.log('showToggleNav in app:', showToggleNav);
@@ -103,8 +106,8 @@ function App() {
       <Router>
         <UserProvider>
           <Header
-            show={show}
-            setShow={setShow}
+            showSignUp={showSignUp}
+            setShowSignUp={setShowSignUp}
             search={search}
             setSearch={setSearch}
             showToggleNav={showToggleNav}
@@ -118,10 +121,10 @@ function App() {
               path="/login"
               element={
                 <Login
-                  type={type}
-                  setType={setType}
                   icon1="eye"
                   icon2="eye-slash"
+                  type={type}
+                  setType={setType}
                 />
               }
             />
@@ -260,14 +263,15 @@ function App() {
               setShowFilter={setShowFilter}
             />
           )}
-          {show && (
+          {showSignUp && (
             <SignUp
-              show={show}
-              setShow={setShow}
+              showSignUp={showSignUp}
+              setShowSignUp={setShowSignUp}
               icon1="eye"
               icon2="eye-slash"
               type={type}
               setType={setType}
+              faCircleXmark={faCircleXmark}
             />
           )}
           {showImgsModal && (

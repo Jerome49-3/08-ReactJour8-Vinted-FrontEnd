@@ -27,7 +27,9 @@ const Input = ({
     if (
       e.target.type === "email" ||
       e.target.type === "password" ||
-      e.target.type === "number"
+      e.target.type === "number" ||
+      e.target.type === "checkbox" ||
+      e.target.type === "radio"
     ) {
       setState(e.target.value);
     } else {
@@ -56,6 +58,7 @@ const Input = ({
           value={value}
           className={classInput}
           required={isRequired || false}
+          autoComplete={true}
         />
       </label>
       {errorValidInput && <small className="redInput">{errorValidInput}</small>}

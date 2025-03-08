@@ -10,8 +10,8 @@ import Links from "./Links";
 import Button from "./Button";
 
 const Header = ({
-  show,
-  setShow,
+  showSignUp,
+  setShowSignUp,
   search,
   setSearch,
   showToggleNav,
@@ -20,6 +20,7 @@ const Header = ({
   setShowFilter,
   showFilter,
 }) => {
+  console.log("showSignUp in header:", showSignUp);
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user, imgBoxUser, showSearch } = useUser();
@@ -76,9 +77,10 @@ const Header = ({
               {(!token || !user) && (
                 <li>
                   <div className="buttonSignIn">
-                    <button onClick={() => setShow(!show)}>
-                      <p>S'inscrire</p>
-                    </button>
+                    <Button
+                      buttonText="S'inscrire"
+                      handleClick={() => setShowSignUp(!showSignUp)}
+                    />
                   </div>
                   <div>
                     <Links

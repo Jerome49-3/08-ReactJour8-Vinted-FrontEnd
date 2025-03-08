@@ -1,7 +1,6 @@
 .boxDashboard {
   @include flexCenter;
   width: 100%;
-  flex: 1;
 
   .wrapper {
     @include flexColCenter;
@@ -14,7 +13,7 @@
     gap: 5px;
     display: flex;
     flex-direction: column;
-    height: calc(100%/2);
+    height: 40vh;
   }
 
   .top {
@@ -29,7 +28,7 @@
   .top .right,
   .bottom .left,
   .bottom .right {
-    flex: auto;
+    height: 20vh;
 
     .boxDetails {
       height: calc(100% - 25px);
@@ -62,11 +61,6 @@
     .top .right,
     .bottom .left,
     .bottom .right {
-
-      .boxDetails {
-        height: calc(100% - 25px);
-        max-height: calc(100% - 25px);
-      }
 
       .boxDetails,
       .boxTitleSearch {

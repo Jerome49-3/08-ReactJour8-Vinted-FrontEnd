@@ -56,20 +56,19 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
             >
               <article>
                 <div className="boxUser">
-                  {article?.owner?.account?.avatar?.secure_url ? (
-                    <Image
-                      src={article?.owner?.account?.avatar.secure_url}
-                      alt="avatar"
-                      classImg="imgAvatar"
-                    />
-                  ) : (
-                    <Image
-                      src={article?.owner?.account?.avatar}
-                      alt="avatar"
-                      classImg="imgAvatar"
-                    />
-                  )}
-                  <h5>{article?.owner?.account?.username}</h5>
+                  <Image
+                    src={
+                      article?.owner?.account?.avatar.secure_url ||
+                      article?.owner?.account?.avatar ||
+                      article?.owner?.avatar
+                    }
+                    alt="avatar"
+                    classImg="imgAvatar"
+                  />
+                  <h5>
+                    {article?.owner?.account?.username ||
+                      article?.owner?.username}
+                  </h5>
                 </div>
                 {location.pathname === "/myOffers" &&
                 article?.offer_solded === true ? (

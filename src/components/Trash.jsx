@@ -7,7 +7,7 @@ const Trash = ({ faTrash, handleClick }) => {
   // console.log("location on Trash:", location);
 
   useEffect(() => {
-    console.log("location in Trash:", location);
+    // console.log("location in Trash:", location);
     if (location.pathname === "/myOffers") {
       setShowTrash(true);
     }

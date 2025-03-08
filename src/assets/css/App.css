@@ -144,17 +144,21 @@
 
 @media all and (min-width: 1200px) {
   .boxDashboard,
-  .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper),
+  .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper, .boxFormSignUp > .wrapper),
   .boxNoPurchases,
   .boxOffer {
     height: 80vh;
   }
 }
 .wrapper {
-  max-width: 300px;
+  max-width: 350px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  padding: 0 0 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .wrapper button {
   border: none;
@@ -384,7 +388,6 @@
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
 }
 .boxLoaded p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
@@ -503,7 +506,6 @@
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   height: 30px;
 }
 .classLabelInput input[type=submit] p {
@@ -615,8 +617,8 @@
   flex-direction: column;
   border-radius: 15px;
   box-shadow: inset 0px 0px 10px #000000, 0px 0px 10px #000000;
-  max-width: 90%;
-  width: 50%;
+  width: 50vw;
+  height: 60vh;
 }
 
 @media (min-width: 300px) {
@@ -717,7 +719,6 @@
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   width: 20px;
   height: 20px;
   color: #2DB0BA;
@@ -813,7 +814,6 @@
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   background-color: transparent;
   width: 100%;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
@@ -872,6 +872,9 @@ header {
   align-items: center;
   box-shadow: 0px 0px 1px #000000, 0.5px 0.5px 1px #000000;
   background-color: var(--backgHeader);
+  position: sticky;
+  top: 0;
+  z-index: 600;
 }
 header .wrapper {
   display: flex;
@@ -985,7 +988,6 @@ header .wrapper .topHeader nav ul li:nth-child(1) .buttonSignIn button {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   background-color: transparent;
   color: #2DB0BA;
   text-shadow: none;
@@ -993,6 +995,7 @@ header .wrapper .topHeader nav ul li:nth-child(1) .buttonSignIn button {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   font-size: 14px;
+  cursor: pointer;
 }
 header .wrapper .topHeader nav ul li:nth-child(1) .buttonSignIn button p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
@@ -1023,7 +1026,6 @@ header .wrapper .topHeader nav ul li:nth-child(1) div a p {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   background-color: transparent;
   color: #2DB0BA;
   font-size: 14px;
@@ -1053,7 +1055,6 @@ header .wrapper .topHeader nav ul li:nth-child(2) {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1136,9 +1137,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 @media all and (min-width: 1200px) {
   header {
-    position: sticky;
-    top: 0;
-    z-index: 600;
     min-height: 10vh;
     max-height: 10vh;
   }
@@ -1232,7 +1230,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  padding: 5px;
   gap: 20px;
 }
 .boxOfferCard a {
@@ -1336,7 +1333,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   width: -moz-fit-content;
   width: fit-content;
   background-color: transparent;
@@ -1404,7 +1400,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 @media all and (min-width: 768px) {
   .boxOfferCard {
     gap: 19px;
-    padding: 20px 0 20px 0;
   }
   .boxOfferCard a {
     width: 23.8095238095%;
@@ -1438,6 +1433,12 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     width: 23.6966824645% !important;
   }
 }
+.boxFavorites .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .boxOffer {
   padding: 10px;
   width: 100%;
@@ -1648,7 +1649,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
 }
 .boxOffer .wrapper .top .right .rightBottom .down .boxLinks a p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
@@ -1894,7 +1894,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   justify-content: center;
   align-items: center;
   width: 100%;
-  flex: 1;
 }
 .boxDashboard .wrapper {
   display: flex;
@@ -1909,7 +1908,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   gap: 5px;
   display: flex;
   flex-direction: column;
-  height: 50%;
+  height: 40vh;
 }
 .boxDashboard .top {
   margin-top: 5px;
@@ -1921,7 +1920,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 .boxDashboard .top .right,
 .boxDashboard .bottom .left,
 .boxDashboard .bottom .right {
-  flex: auto;
+  height: 20vh;
 }
 .boxDashboard .top .left .boxDetails,
 .boxDashboard .top .right .boxDetails,
@@ -1953,13 +1952,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   .boxDashboard .bottom .left,
   .boxDashboard .bottom .right {
     width: 50%;
-  }
-  .boxDashboard .top .left .boxDetails,
-  .boxDashboard .top .right .boxDetails,
-  .boxDashboard .bottom .left .boxDetails,
-  .boxDashboard .bottom .right .boxDetails {
-    height: calc(100% - 25px);
-    max-height: calc(100% - 25px);
   }
   .boxDashboard .top .left .boxDetails,
   .boxDashboard .top .left .boxTitleSearch,
@@ -2137,7 +2129,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   width: 33.3333333333%;
 }
 .boxUserId .bottom .right .boxEmailIsConfirmed .btnSendMailCode p {
@@ -2328,7 +2319,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   width: 20%;
   box-shadow: 0px 0px 1px #000000, 0.5px 0.5px 1px #000000;
 }
@@ -2421,7 +2411,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   width: 80%;
 }
 .toggleNav .boxAside .bodyAside button p {
@@ -2575,6 +2564,9 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 .boxLastSales thead tr th {
   width: 20%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .boxLastSales thead tr th:not(:last-child) {
   border-right: 2px solid #2DB0BA;
@@ -2736,7 +2728,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
   width: 50%;
 }
 .boxFormInputCode .submitInputCode p {
@@ -2843,7 +2834,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
 }
 .boxChat .wrapper button p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
