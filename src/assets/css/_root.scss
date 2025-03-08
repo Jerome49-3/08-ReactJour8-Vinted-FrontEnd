@@ -9,7 +9,7 @@
 @media all and (min-width : 1200px) {
 
   .boxDashboard,
-  .wrapper:not(.boxHome>.wrapper, .boxForm>.wrapper, .boxFormSignUp>.wrapper),
+  .wrapper:not(.boxHome>.wrapper, .boxForm>.wrapper, .boxFormSignUp>.wrapper, header>.wrapper),
   .boxNoPurchases,
   .boxOffer {
     height: 80vh;

@@ -121,10 +121,10 @@ function App() {
               path="/login"
               element={
                 <Login
-                  icon1="eye"
-                  icon2="eye-slash"
                   type={type}
                   setType={setType}
+                  icon1="eye"
+                  icon2="eye-slash"
                 />
               }
             />

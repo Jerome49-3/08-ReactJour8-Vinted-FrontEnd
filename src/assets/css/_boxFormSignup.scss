@@ -8,6 +8,10 @@
     & form {
       @include flexColStart;
       gap: 10px;
+
+      & input {
+        background-color: none;
+      }
     }
   }
 }

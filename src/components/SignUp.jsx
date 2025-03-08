@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "../assets/lib/userFunc";
 import { useNavigate } from "react-router-dom";
 
 //components
-import EyePassword from "./EyePassword";
-import Input from "./Input";
-import Image from "./Image";
-import Button from "./Button";
-import ErrorBoundary from "./ErrorBoundary";
-import InfoUserErrorMessage from "./InfoUserErrorMessage";
+import EyePassword from "../components/EyePassword";
+import Input from "../components/Input";
+import Image from "../components/Image";
+import Button from "../components/Button";
+import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 //images
 import SmallLogo from "../assets/images/favicon.png";
@@ -33,7 +32,9 @@ const SignUp = ({
   const { token, setToken, setUser, setIsAdmin, axios, setErrorMessage } =
     useUser();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    console.log("showSignUp updated in SignUp:", showSignUp);
+  }, [showSignUp]);
   const handleSignup = async (e) => {
     e.preventDefault();
     setErrorMessage("");
@@ -63,31 +64,17 @@ const SignUp = ({
   return (
     <div className="boxModal">
       <div className="boxModalContent">
+        <div className="boxTitleClose">
+          <Image src={SmallLogo} alt="logo Vinted" />
+          <Button
+            icon={faCircleXmark}
+            handleClick={() => {
+              setShowSignUp(false);
+            }}
+          />
+        </div>
         <div className="boxFormSignUp">
           <div className="wrapper">
-            <div className="boxTitleClose">
-              <Image src={SmallLogo} alt="logo Vinted" />
-              <ErrorBoundary
-                fallback={<div>Something went wrong with the button!</div>}
-              >
-                <Button
-                  icon={faCircleXmark}
-                  handleClick={() => {
-                    console.log(
-                      "showSignUp in handleClick on SignUp:",
-                      showSignUp
-                    );
-                    if (showSignUp === true) {
-                      setShowSignUp(false);
-                    } else {
-                      throw new Error(
-                        "Oops! Something went wrong while clicking the button."
-                      );
-                    }
-                  }}
-                />
-              </ErrorBoundary>
-            </div>
             <form onSubmit={handleSignup}>
               <Input
                 value={username || ""}
@@ -98,8 +85,8 @@ const SignUp = ({
                 autocomplete="on"
               />
               <Input
-                value={email || ""}
                 id="email"
+                value={email || ""}
                 type="email"
                 placeholder="Email"
                 setState={setEmail}
@@ -107,8 +94,8 @@ const SignUp = ({
               />
               <div className="boxPsswd">
                 <Input
-                  value={password || ""}
                   id="password"
+                  value={password || ""}
                   type={type}
                   placeholder="Mot de passe"
                   setState={setPassword}

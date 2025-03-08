@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const EyePassword = ({ icon1, icon2, type, setType }) => {
-  console.log("state in EyePassword:", type);
+  console.log("type in EyePassword:", type);
 
   const handleType = () => {
     setType(type === "password" ? "text" : "password");
@@ -12,12 +12,12 @@ const EyePassword = ({ icon1, icon2, type, setType }) => {
       <FontAwesomeIcon
         icon={icon1}
         onClick={handleType}
-        className={type !== "password" && "hide"}
+        className={type !== "password" ? "hide" : "show"}
       />
       <FontAwesomeIcon
         icon={icon2}
         onClick={handleType}
-        className={type !== "text" && "hide"}
+        className={type !== "text" ? "hide" : "show"}
       />
     </>
   );

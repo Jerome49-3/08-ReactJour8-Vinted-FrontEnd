@@ -144,7 +144,7 @@
 
 @media all and (min-width: 1200px) {
   .boxDashboard,
-  .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper, .boxFormSignUp > .wrapper),
+  .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper, .boxFormSignUp > .wrapper, header > .wrapper),
   .boxNoPurchases,
   .boxOffer {
     height: 80vh;
@@ -419,6 +419,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-bottom: 20px;
 }
 .boxTitleClose img {
   -o-object-fit: cover;
@@ -435,7 +436,8 @@
   padding: 5px;
   border-radius: 5px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  cursor: pointer;
+  box-shadow: none;
+  border: none;
 }
 .boxTitleClose button p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
@@ -610,7 +612,7 @@
 }
 .boxModal .boxModalContent {
   background-color: white;
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -618,24 +620,23 @@
   border-radius: 15px;
   box-shadow: inset 0px 0px 10px #000000, 0px 0px 10px #000000;
   width: 50vw;
-  height: 60vh;
+  height: 58vh;
 }
 
 @media (min-width: 300px) {
   /* MODAL */
-  /* .boxModalContent {
+  .boxModalContent {
     max-width: 90%;
-  } */
+  }
 }
 @media (min-width: 576px) {
   /* MODAL */
-  /* .boxModalContent {
+  .boxModalContent {
     max-width: 60%;
   }
-
-  .boxModalContent>div {
+  .boxModalContent > div {
     width: 105%;
-  } */
+  }
 }
 /* FORM */
 .boxForm {
@@ -851,6 +852,9 @@
   align-items: flex-start;
   flex-direction: column;
   gap: 10px;
+}
+.boxFormSignUp .wrapper form input {
+  background-color: none;
 }
 
 .boxForgotPsswd {

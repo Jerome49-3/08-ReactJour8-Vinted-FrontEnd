@@ -19,16 +19,20 @@ const Button = ({
   classImg,
   path,
   classLink,
-  rotation,
   linkText,
 }) => {
   return (
     <>
-      <button className={classButton} onClick={handleClick} type="button">
+      <button className={classButton} onClick={handleClick}>
         {buttonText ? <p>{buttonText}</p> : null}
-        {icon ? <FontAwesomeIcon icon={icon} className={classIcon} /> : null}
+        {icon && <FontAwesomeIcon icon={icon} className={classIcon} />}
         {src ? (
-          <Image src={src} alt={alt} classImg={classImg} rotation={rotation} />
+          <Image
+            src={src}
+            alt={alt}
+            classImg={classImg}
+            // rotation={rotation}
+          />
         ) : null}
         {classInfo ? (
           <div className={classInfo}>

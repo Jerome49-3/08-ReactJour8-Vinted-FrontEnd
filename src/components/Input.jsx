@@ -58,7 +58,6 @@ const Input = ({
           value={value}
           className={classInput}
           required={isRequired || false}
-          autoComplete={true}
         />
       </label>
       {errorValidInput && <small className="redInput">{errorValidInput}</small>}
