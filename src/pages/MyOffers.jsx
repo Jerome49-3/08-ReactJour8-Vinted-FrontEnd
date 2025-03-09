@@ -14,8 +14,8 @@ const MyOffers = ({
   setShowNoOffer,
   faTrash,
 }) => {
-  const { axios, data, setData } = useUser();
-
+  const { axios } = useUser();
+  const [data, setData] = useState(null);
   // console.log("data on /mySales:", data);
   const [isLoading, setIsLoading] = useState(null);
 

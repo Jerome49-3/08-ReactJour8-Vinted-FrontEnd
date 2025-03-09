@@ -93,7 +93,8 @@ video {
   box-sizing: border-box;
 }
 html,
-body {
+body,
+div#root {
   width: 100%;
   height: 100%;
 }
@@ -158,7 +159,6 @@ table {
   a {
     text-decoration: none;
   }
-
   /* DARK MODE */
   .dark {
     background-color: var(--darkMode);
@@ -272,20 +272,20 @@ table {
   }
   .light .boxPicTop,
   .light .boxForm textarea,
-  .light .topHeader .boxSearch,
-  .light .topHeader .boxSearch input,
   .light .boxForm .wrapper form label input:not(input[type="submit"]),
   .light .boxLogin .wrapper form label input:not(input[type="submit"]),
   .light .boxLogin .wrapper form .boxPsswd,
+  .light .topHeader .containerBoxSearch .boxSearch,
+  .light .topHeader .containerBoxSearch .boxSearch .classLabelInput input,
   .light .boxForm .wrapper form label textarea {
-    background-color: var(--backLightInput);
+    background-color: var(--backLightInput) !important;
   }
   .light .boxLastUsers .boxUsers a {
     background-color: var(--backgHeader);
   }
   .light .boxForm textarea,
   .light .boxForm input:not([type="submit"]),
-  .light .topHeader .boxSearch input,
+  .light .topHeader .containerBoxSearch input,
   .light .boxFormSignUp * input:not([type="submit"]) {
     color: var(--black);
   }

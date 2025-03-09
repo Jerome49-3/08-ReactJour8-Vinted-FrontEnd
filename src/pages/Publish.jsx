@@ -8,6 +8,7 @@ import Input from "../components/Input";
 // import InputFile from "../components/InputFile";
 import Button from "../components/Button";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
+import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 const Publish = ({ faTrash }) => {
   const viewFile = useRef(null);
@@ -196,6 +197,7 @@ const Publish = ({ faTrash }) => {
             type="text"
             placeholder="Titre"
             setState={setTitle}
+            required={true}
           />
           <TextArea
             name="description"
@@ -204,6 +206,7 @@ const Publish = ({ faTrash }) => {
             type="text"
             placeholder="Description"
             setState={setDescription}
+            required={true}
           />
           <Input
             value={price || ""}
@@ -211,6 +214,7 @@ const Publish = ({ faTrash }) => {
             type="number"
             placeholder="Prix"
             setState={setPrice}
+            required={true}
             min="0"
             max="100000"
           />
@@ -250,7 +254,7 @@ const Publish = ({ faTrash }) => {
             setState={setCity}
           />
           <LoadedInputSubmit isSended={isSended} setIsSended={setIsSended} />
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          <InfoUserErrorMessage />
         </form>
       </div>
     </div>

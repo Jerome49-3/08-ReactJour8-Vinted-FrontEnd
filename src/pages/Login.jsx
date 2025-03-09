@@ -6,19 +6,28 @@ import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import Loading from "../components/Loading";
 import EyePassword from "../components/EyePassword";
+import Links from "../components/Links";
+import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 //lib
 import saveToken from "../assets/lib/saveToken";
-import Links from "../components/Links";
 
 const Login = ({ icon1, icon2, type, setType }) => {
   // const boxForm = "boxForm";
   // const boxLogin = "boxLogin";
-  const { token, setToken, setUser, setIsAdmin, axios, setImgBoxUser } =
-    useUser();
+  const {
+    token,
+    setToken,
+    errorMessage,
+    setErrorMessage,
+    setUser,
+    setIsAdmin,
+    axios,
+    setImgBoxUser,
+  } = useUser();
   // console.log("imgBoxUser in Login:", imgBoxUser);
+  console.log("errorMessage in Login:", errorMessage);
   const [email, setEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(null);
   const navigate = useNavigate();
@@ -39,13 +48,17 @@ const Login = ({ icon1, icon2, type, setType }) => {
       }
     } catch (error) {
       console.log(error.message);
-      setErrorMessage(error.message);
+      console.log(error?.response?.data);
+      setErrorMessage(error?.response?.data?.message);
     }
   };
+  // console.log(
+  //   "import.meta.env.VITE_REACT_APP_URL_LOGIN:",
+  //   import.meta.env.VITE_REACT_APP_URL_LOGIN
+  // );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage("");
     try {
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_LOGIN,
@@ -55,57 +68,41 @@ const Login = ({ icon1, icon2, type, setType }) => {
         }
       );
       console.log("response in handlesubmit in /login:", response);
-      if (response.data) {
-        try {
-          if (response.data.token) {
-            console.log(
-              "response.data.token in handlesubmit in /login:",
-              response.data.token
-            );
-            setToken(response?.data?.token);
-            console.log("token in handlesubmit in /login:", token);
-            saveToken(
-              response?.data?.token,
-              setUser,
-              setIsAdmin,
-              setImgBoxUser
-            );
-            setIsLoading(false);
-          }
-          if (isLoading !== true) {
-            navigate("/publish");
-          }
-        } catch (error) {
-          console.log("error in try/catch after response in /login:", error);
+      try {
+        if (response?.data?.token) {
+          console.log(
+            "response.data.token in handlesubmit in /login:",
+            response.data.token
+          );
+          setToken(response?.data?.token);
+          console.log("token in handlesubmit in /login:", token);
+          saveToken(response?.data?.token, setUser, setIsAdmin, setImgBoxUser);
+          setIsLoading(false);
         }
+        if (isLoading !== true) {
+          navigate("/publish");
+        }
+      } catch (error) {
+        console.log("error in try/catch after response in /login:", error);
+        setErrorMessage(error?.response?.data?.message);
       }
     } catch (error) {
       console.log("error in handleSubmit on Login:", error);
-      const errRespData = error?.response?.data;
-      console.log("errRespData in handleSubmit on Login:", errRespData);
-      // console.log("typeof errRespData:", typeof errRespData);
-      const errorMessage = error?.message;
-      // console.log("errorMessage in handleSubmit on Login:", errorMessage);
-      // console.log("typeof errorMessage:", typeof errorMessage);
       const errRespDataMssg = error?.response?.data?.message;
-      // console.log("errRespDataMssg in handleSubmit on Login:", errRespDataMssg);
-      // console.log("typeof errRespDataMssg:", typeof errRespDataMssg);
-      const mssgErrConcat = errRespData.message.concat(": ", errorMessage);
-      // console.log("mssgErrConcat in handleSubmit on Login:", mssgErrConcat);
-      // console.log("typeof mssgErrConcat:", typeof mssgErrConcat);
+      console.log("errRespDataMssg in handleSubmit on Login:", errRespDataMssg);
       const messageNotConfirmEmail = import.meta.env
         .VITE_REACT_APP_MSSG_NOT_CONFIRMEMAIL;
       if (
         typeof errRespDataMssg === "string" &&
         errRespDataMssg === messageNotConfirmEmail
       ) {
-        setErrorMessage(errRespDataMssg.message);
+        setErrorMessage(errRespDataMssg);
         alert(errRespDataMssg);
         setTimeout(() => {
           navigate("/confirmemail");
         }, 3500);
-      } else if (typeof errRespDataMssg === "object") {
-        setErrorMessage(mssgErrConcat);
+      } else {
+        setErrorMessage(errRespDataMssg);
       }
     }
   };
@@ -149,20 +146,7 @@ const Login = ({ icon1, icon2, type, setType }) => {
               <Links path="/resendEmail" linkText="Mot de passe oublié ?" />
             </div>
           </div>
-          {errorMessage && (
-            <p
-              style={{
-                color: "red",
-                fontSize: "12px",
-                height: "20px",
-                fontWeight: "500",
-                textShadow:
-                  "0px 0px 1px orangered, 0.15px 0.15px 1.25px black, 0.35px 0.35px 1.5px green",
-              }}
-            >
-              {errorMessage}
-            </p>
-          )}
+          <InfoUserErrorMessage />
         </form>
       </div>
     </div>

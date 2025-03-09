@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const EyePassword = ({ icon1, icon2, type, setType }) => {
-  console.log("type in EyePassword:", type);
+  // console.log("type in EyePassword:", type);
 
   const handleType = () => {
     setType(type === "password" ? "text" : "password");

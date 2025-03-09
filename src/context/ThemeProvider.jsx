@@ -6,18 +6,19 @@ export const ThemeContext = createContext();
 
 export default function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
+  console.log("darkMode in ThemeProvider:", darkMode);
 
   useEffect(() => {
-    const cookieTheme = Cookies.get("vintaidAppTheme");
+    const cookieDarkLight = Cookies.get("vintaidAppTheme");
     // console.log(
-    //   "cookieTheme",
-    //   cookieTheme,
+    //   "cookieDarkLight",
+    //   cookieDarkLight,
     //   "\n",
-    //   "typeof cookieTheme",
-    //   typeof cookieTheme
+    //   "typeof cookieDarkLight",
+    //   typeof cookieDarkLight
     // );
 
-    if (cookieTheme === "dark") {
+    if (cookieDarkLight === "dark") {
       setDarkMode(true);
     } else {
       setDarkMode(false);
@@ -29,16 +30,17 @@ export default function ThemeProvider({ children }) {
       document.body.classList.add("dark");
       document.body.classList.remove("light");
     } else {
-      document.body.classList.remove("dark");
       document.body.classList.add("light");
+      document.body.classList.remove("dark");
     }
   }, [darkMode]);
 
-  function toggleTheme() {
-    const theme = !darkMode;
-    setDarkMode(theme);
-    Cookies.set("vintaidAppTheme", theme ? "dark" : "light", { expires: 15 });
-  }
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+    Cookies.set("vintaidAppTheme", darkMode ? "dark" : "light", {
+      expires: 15,
+    });
+  };
 
   return (
     <ThemeContext.Provider value={{ toggleTheme, darkMode }}>

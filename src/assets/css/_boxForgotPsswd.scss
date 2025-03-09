@@ -1,8 +1,9 @@
 .boxForgotPsswd {
-  width: 30%;
+  width: 100%;
 
   .formForgotPsswd {
     @include flexColCenter;
     gap: 10px;
+    width: 30%;
   }
 }

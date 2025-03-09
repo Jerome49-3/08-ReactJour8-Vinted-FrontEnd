@@ -20,7 +20,7 @@ const Header = ({
   setShowFilter,
   showFilter,
 }) => {
-  console.log("showSignUp in header:", showSignUp);
+  // console.log("showSignUp in header:", showSignUp);
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
   const { token, user, imgBoxUser, showSearch } = useUser();

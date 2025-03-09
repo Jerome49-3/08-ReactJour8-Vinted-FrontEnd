@@ -1,0 +1,28 @@
+.boxTheme {
+  height: 30px;
+  width: 30px;
+  @include flexCenter;
+}
+
+.btnTheme {
+  width: 30px;
+  height: 30px;
+  @include btn;
+  background-color: transparent;
+  @include flexCenter;
+
+  & svg {
+    filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: transparent;
+  }
+
+  &:focus-visible,
+  &:-moz-focusring {
+    outline: none;
+  }
+}

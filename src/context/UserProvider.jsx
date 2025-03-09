@@ -49,7 +49,7 @@ export const UserProvider = ({ children }) => {
   //   typeof avatarSecureUrl
   // );
   // console.log("typeof avatarUrl: in userProvider:", typeof avatarUrl);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   // console.log("user in UserProvider:", user);
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(() => {
@@ -88,6 +88,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     setErrorMessage("");
+    setInfoUser("");
   }, [axios]);
 
   useEffect(() => {
@@ -228,6 +229,8 @@ export const UserProvider = ({ children }) => {
         setIsAdmin(false);
         setImgBoxUser(null);
         sessionStorage.clear();
+        Cookies.remove("accessTokenV");
+        Cookies.remove("refreshTokenV");
       }
     } catch (error) {
       console.log("Error in logout:", error || "error in logout");

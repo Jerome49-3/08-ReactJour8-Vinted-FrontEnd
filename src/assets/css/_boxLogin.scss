@@ -1,11 +1,9 @@
 .boxLogin {
   width: 100%;
-  height: 100%;
+  height: 80%;
   @include flexCenter;
-  margin-top: 10vh;
 
   .wrapper {
-    @include flexCenter;
 
     form {
       @include flexColCenter;

@@ -152,7 +152,9 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                 <div className="footerArticle">
                   <div className="boxNameMarque">
                     <div>{article?.product_name}</div>
-                    <div>{article?.product_details[0]?.MARQUE}</div>
+                    {article?.product_details[0]?.MARQUE && (
+                      <div>{article?.product_details[0]?.MARQUE}</div>
+                    )}
                   </div>
                   <div className="price">
                     {(article?.product_price).toFixed(2)} €

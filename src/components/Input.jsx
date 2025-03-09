@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
 import transformStr from "../assets/lib/transformStr";
+import { useUser } from "../assets/lib/userFunc";
 const Input = ({
   value,
   id,
@@ -10,24 +12,28 @@ const Input = ({
   min,
   max,
   classInput,
-  isRequired,
+  required,
 }) => {
   // console.log("value on input:", value);
   // console.log("type on input:", type);
-  const [errorValidInput, setErrorValidInput] = useState("");
+  const { setErrorMessage } = useUser();
   useEffect(() => {
     if (!value) {
-      setErrorValidInput("");
+      setErrorMessage("");
     }
   }, [value]);
   const handleChange = (e) => {
     // console.log("e.target.value in handleChange:", e.target.value);
-    // console.log("e.target.type in handleChange:", e.target.type);
-    // console.log("typeofe.target.type in handleChange:", typeof e.target.type);
+    // console.log(
+    //   "typeofe.target.type in handleChange:",
+    //   typeof e.target.type,
+    //   "\n",
+    //   "e.target.type in handleChange:",
+    //   e.target.type
+    // );
     if (
       e.target.type === "email" ||
       e.target.type === "password" ||
-      e.target.type === "number" ||
       e.target.type === "checkbox" ||
       e.target.type === "radio"
     ) {
@@ -37,8 +43,10 @@ const Input = ({
       setState(finalTarget);
     }
     if (e.target.type === "number") {
-      if (e.target.value < e.target.min || e.target.value > e.target.min) {
-        setErrorValidInput(e.target.validationMessage);
+      if (e.target.value < e.target.min || e.target.value > e.target.max) {
+        setErrorMessage(e.target.validationMessage);
+      } else {
+        setState(e.target.value);
       }
     }
   };
@@ -57,10 +65,9 @@ const Input = ({
           onChange={handleChange}
           value={value}
           className={classInput}
-          required={isRequired || false}
+          required={required || false}
         />
       </label>
-      {errorValidInput && <small className="redInput">{errorValidInput}</small>}
     </>
   );
 };

@@ -11,6 +11,7 @@ import Hero from "../components/Hero";
 import Loading from "../components/Loading";
 import OfferCard from "../components/OfferCard";
 import Links from "../components/Links";
+import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 //images
 // import noImg from '../assets/images/no-image.jpg';
@@ -29,10 +30,11 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
     setData,
     isLoading,
     setIsLoading,
-    errorMessage,
     setErrorMessage,
   } = useUser();
+
   console.log("data in /Home:", data);
+  console.log("data.length in /Home:", data?.length);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,9 +43,9 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
             import.meta.env.VITE_REACT_APP_URL_HOME
           }?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}`
         );
-        if (response.data) {
+        if (response?.data) {
           console.log("response.data on /Home (Offer):", response.data);
-          setData(response.data);
+          setData(response?.data);
           setIsLoading(false);
         }
       } catch (error) {
@@ -58,7 +60,7 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
     <>
       <Loading />
     </>
-  ) : data?.length >= 1 ? (
+  ) : data ? (
     <div className="boxHome">
       <Hero />
       <div className="wrapper">
@@ -78,21 +80,23 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
           This website uses cookies only to enhance the user experience and not
           for advertising purposes.{" "}
         </CookieConsent>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        <InfoUserErrorMessage />
       </div>
     </div>
   ) : (
-    <>
-      <div className="boxHome">
-        <Hero />
-        <div className="wrapper">
-          <div className="noOffers">
-            <div> Il n'y aucune offre actuellement:&ensp;</div>
-            <Links path="/publish" linkText="Publier la votre" />
+    !isLoading && (
+      <>
+        <div className="boxHomeNoOffer">
+          {/* <Hero /> */}
+          <div className="wrapperNoOffer">
+            <div className="boxNoOffers">
+              <div> Il n'y aucune offre actuellement:&ensp;</div>
+              <Links path="/publish" linkText="Publier la votre" />
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
+    )
   );
 };
 

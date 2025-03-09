@@ -1,0 +1,26 @@
+.boxDashboardOffers {
+  @include flexColStart;
+
+  .boxOfferDashbord {
+    @include flexBetween;
+    width: 90%;
+
+    .userName,
+    .offerName,
+    .offerPrice,
+    .offerId {
+      @include flexStart;
+      @include ellipsis;
+    }
+
+    .offerPrice,
+    .userName {
+      width: calc(12.5%);
+    }
+
+    .offerName,
+    .offerId {
+      width: calc(25%);
+    }
+  }
+}

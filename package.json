@@ -33,6 +33,7 @@
     "react-dropzone": "^14.2.3",
     "react-range": "^1.10.0",
     "react-router-dom": "^6.23.1",
+    "react-toastify": "^11.0.5",
     "typescript": "^5.5.4"
   },
   "devDependencies": {

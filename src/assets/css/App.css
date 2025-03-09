@@ -144,9 +144,10 @@
 
 @media all and (min-width: 1200px) {
   .boxDashboard,
-  .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper, .boxFormSignUp > .wrapper, header > .wrapper),
+  .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper, .boxFormSignUp > .wrapper, header > .wrapper, .boxLogin > .wrapper),
   .boxNoPurchases,
-  .boxOffer {
+  .boxHomeNoOffer,
+  .wrapperNoOffer {
     height: 80vh;
   }
 }
@@ -155,7 +156,6 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  padding: 0 0 10px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -173,12 +173,15 @@
   display: flex !important;
   color: #2DB0BA;
 }
+.wrapper .boxInfoErrorMessage,
+.wrapper .boxForgot {
+  height: 20px;
+}
 .wrapper * .red {
   color: red;
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 500;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-  padding: 0px 0px 10px 0px;
 }
 .wrapper .redInput {
   font-size: 12px;
@@ -219,24 +222,49 @@
   }
 }
 
-.buttonTheme {
-  width: 40px;
-  height: 40px;
-  border-radius: 5px;
-}
-
-.buttonTheme {
-  width: 40px !important;
+.boxTheme {
   height: 30px;
-  border-radius: 5px;
+  width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
-  filter: drop-shadow(0.5px 0.5px 1px #000000);
 }
-.buttonTheme:hover {
+
+.btnTheme {
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  background-color: #2DB0BA;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
   background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnTheme p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+}
+.btnTheme p:hover, .btnTheme p:focus {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+}
+.btnTheme:hover, .btnTheme:focus {
+  background-color: #33c6d0;
+}
+.btnTheme svg {
+  filter: drop-shadow(0.25px 0.25px 1px #000000) drop-shadow(0.5px 0.5px 1px #000000);
+}
+.btnTheme:hover, .btnTheme:active, .btnTheme:focus {
+  background-color: transparent;
+}
+.btnTheme:focus-visible, .btnTheme:-moz-focusring {
+  outline: none;
 }
 
 .CookieConsent {
@@ -464,6 +492,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
 }
 .classLabelInput input {
   -moz-appearance: none;
@@ -475,6 +504,8 @@
   border-radius: 5px;
   outline: none;
   border: none;
+  background-color: transparent;
+  caret-color: hsla(228, 4%, 24%, 0.8);
   border-bottom: 2px solid #2DB0BA;
   height: 30px;
   width: 100%;
@@ -784,13 +815,7 @@
 }
 .boxLogin {
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10vh;
-}
-.boxLogin .wrapper {
+  height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -858,7 +883,7 @@
 }
 
 .boxForgotPsswd {
-  width: 30%;
+  width: 100%;
 }
 .boxForgotPsswd .formForgotPsswd {
   display: flex;
@@ -866,6 +891,7 @@
   align-items: center;
   flex-direction: column;
   gap: 10px;
+  width: 30%;
 }
 
 /* HEADER */
@@ -900,12 +926,6 @@ header .wrapper .topHeader .boxLogoTheme {
   align-items: center;
   height: 30px;
 }
-header .wrapper .topHeader .boxLogoTheme svg {
-  font-size: 14px;
-}
-header .wrapper .topHeader .boxLogoTheme:hover {
-  background-color: transparent;
-}
 header .wrapper .topHeader .boxLogoTheme a {
   display: flex;
   justify-content: flex-start;
@@ -914,11 +934,6 @@ header .wrapper .topHeader .boxLogoTheme a {
 }
 header .wrapper .topHeader .boxLogoTheme a .logo {
   height: 30px;
-}
-header .wrapper .topHeader .boxLogoTheme .buttonTheme {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 header .wrapper .topHeader .containerBoxSearch {
   width: 100%;
@@ -945,7 +960,6 @@ header .wrapper .topHeader .containerBoxSearch input {
   box-shadow: none;
   border-bottom: none;
   width: 100%;
-  background-color: transparent !important;
 }
 header .wrapper .topHeader .containerBoxSearch input::-moz-placeholder {
   text-align: center;
@@ -1156,7 +1170,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
     height: 100%;
   }
   header .wrapper .topHeader .boxLogoTheme .boxTheme {
-    height: 35px;
+    height: 30px;
     width: 30px;
   }
   header .wrapper .topHeader .boxLogoTheme .boxTheme .buttonTheme {
@@ -1220,6 +1234,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-direction: column;
   width: 100%;
+  padding-bottom: 10px;
 }
 .boxHome .noOffers {
   display: flex;
@@ -1365,8 +1380,11 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 .boxOfferCard a article .footerArticle .boxNameMarque,
 .boxOfferCard a article .footerArticle .price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 1px 1px 1px #000000, 0px 0px 5px #000000;
 }
 .boxOfferCard a article .footerArticle .boxNameMarque {
@@ -1893,6 +1911,38 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: none;
 }
 
+.boxDashboardOffers {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.boxDashboardOffers .boxOfferDashbord {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+.boxDashboardOffers .boxOfferDashbord .userName,
+.boxDashboardOffers .boxOfferDashbord .offerName,
+.boxDashboardOffers .boxOfferDashbord .offerPrice,
+.boxDashboardOffers .boxOfferDashbord .offerId {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.boxDashboardOffers .boxOfferDashbord .offerPrice,
+.boxDashboardOffers .boxOfferDashbord .userName {
+  width: 12.5%;
+}
+.boxDashboardOffers .boxOfferDashbord .offerName,
+.boxDashboardOffers .boxOfferDashbord .offerId {
+  width: 25%;
+}
+
 .boxDashboard {
   display: flex;
   justify-content: center;
@@ -1956,6 +2006,12 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   .boxDashboard .bottom .left,
   .boxDashboard .bottom .right {
     width: 50%;
+  }
+  .boxDashboard .top .left,
+  .boxDashboard .top .right,
+  .boxDashboard .bottom .left,
+  .boxDashboard .bottom .right {
+    height: 38vh;
   }
   .boxDashboard .top .left .boxDetails,
   .boxDashboard .top .left .boxTitleSearch,

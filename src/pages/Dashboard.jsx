@@ -8,6 +8,7 @@ import DashboardUsers from "../components/DashboardUsers";
 import DashboardSales from "../components/DashboardSales";
 import TitleSearch from "../components/TitleSearch";
 import DashboardMessages from "../components/DashboardMessages";
+import DashboardOffers from "../components/DashboardOffers";
 
 const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
   const { token, isAdmin } = useUser();
@@ -47,18 +48,20 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
           </div>
           <div className="right">
             <TitleSearch
-              title="Annonces"
+              title="Offers"
               valueStr={searchOffer}
               setStateStr={setSearchOffer}
               txtPlaceholder="search by name or id"
             />
-            <div className="boxDetails"></div>
+            <div className="boxDetails">
+              <DashboardOffers />
+            </div>
           </div>
         </div>
         <div className="bottom">
           <div className="left">
             <TitleSearch
-              title="Ventes"
+              title="Transactions"
               valueStr={searchTransactions}
               setStateStr={setSearchTransactions}
               txtPlaceholder="search by name"
@@ -76,7 +79,7 @@ const Dashboard = ({ faNewspaper, faXmark, faUserTie, faUser }) => {
           </div>
           <div className="right">
             <TitleSearch
-              title="Messages"
+              title="Contact messages"
               value={searchMessage}
               setState={setSearchMessage}
               txtPlaceholder="search by name or id"

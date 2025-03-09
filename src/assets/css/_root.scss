@@ -9,9 +9,10 @@
 @media all and (min-width : 1200px) {
 
   .boxDashboard,
-  .wrapper:not(.boxHome>.wrapper, .boxForm>.wrapper, .boxFormSignUp>.wrapper, header>.wrapper),
+  .wrapper:not(.boxHome>.wrapper, .boxForm>.wrapper, .boxFormSignUp>.wrapper, header>.wrapper, .boxLogin>.wrapper),
   .boxNoPurchases,
-  .boxOffer {
+  .boxHomeNoOffer,
+  .wrapperNoOffer {
     height: 80vh;
   }
 }
@@ -22,7 +23,6 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  padding: 0 0 10px 0;
   @include flexCenter;
 
   //button
@@ -42,13 +42,16 @@
     color: $vertVinted;
   }
 
+  .boxInfoErrorMessage,
+  .boxForgot {
+    height: 20px;
+  }
 
   * .red {
     color: red;
-    font-size: 1.15rem;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 500;
     @include textShadow;
-    padding: 0px 0px 10px 0px;
   }
 
   .redInput {
