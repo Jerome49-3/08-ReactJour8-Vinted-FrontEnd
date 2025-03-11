@@ -14,14 +14,17 @@
   }
 
   .circleTyping1 {
+    -webkit-animation: appearLoaderTyping 1s ease-in-out 0.3s infinite both;
     animation: appearLoaderTyping 1s ease-in-out 0.3s infinite both;
   }
 
   .circleTyping2 {
+    -webkit-animation: appearLoaderTyping 1s ease-in-out 0.6s infinite both;
     animation: appearLoaderTyping 1s ease-in-out 0.6s infinite both;
   }
 
   .circleTyping3 {
+    -webkit-animation: appearLoaderTyping 1s ease-in-out 0.9s infinite both;
     animation: appearLoaderTyping 1s ease-in-out 0.9s infinite both;
   }
 }

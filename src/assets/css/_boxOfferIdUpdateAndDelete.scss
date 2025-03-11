@@ -34,6 +34,8 @@
 
 @media all and (min-width : 1200px) {
   .boxOfferIdUpdateAndDelete {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
 
     .wrapper {

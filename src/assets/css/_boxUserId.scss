@@ -25,6 +25,7 @@
       & img {
         width: 380px !important;
         height: 380px !important;
+        -o-object-fit: cover;
         object-fit: cover;
         border-radius: 5px;
       }
@@ -105,6 +106,7 @@
           & img {
             width: 20px;
             height: 20px;
+            -o-object-fit: cover;
             object-fit: cover;
             border-radius: 5px;
           }

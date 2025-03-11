@@ -17,15 +17,45 @@
 
       &:hover {
         width: 100%;
+        -webkit-animation: appearBoxSearch 1s ease-in-out 0.5s 1 normal both;
         animation: appearBoxSearch 1s ease-in-out 0.5s 1 normal both;
 
         & input {
           @include flexCenter;
+          -webkit-animation: appearInputSearch 1s ease-in-out 0.5s 1 normal both;
           animation: appearInputSearch 1s ease-in-out 0.5s 1 normal both;
           width: 100%;
           box-shadow: none;
           border-bottom: none;
           background-color: transparent;
+
+
+          &::-webkit-input-placeholder {
+            width: 100%;
+            text-align: start;
+            color: $black;
+          }
+
+
+          &::-moz-placeholder {
+            width: 100%;
+            text-align: start;
+            color: $black;
+          }
+
+
+          &:-ms-input-placeholder {
+            width: 100%;
+            text-align: start;
+            color: $black;
+          }
+
+
+          &::-ms-input-placeholder {
+            width: 100%;
+            text-align: start;
+            color: $black;
+          }
 
 
           &::placeholder {
@@ -37,6 +67,22 @@
 
         & input:focus-visible {
           outline: transparent;
+
+          &::-webkit-input-placeholder {
+            color: transparent;
+          }
+
+          &::-moz-placeholder {
+            color: transparent;
+          }
+
+          &:-ms-input-placeholder {
+            color: transparent;
+          }
+
+          &::-ms-input-placeholder {
+            color: transparent;
+          }
 
           &::placeholder {
             color: transparent;

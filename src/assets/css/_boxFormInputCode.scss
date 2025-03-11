@@ -22,6 +22,34 @@
       padding: 0;
       text-align: center;
 
+      &::-webkit-input-placeholder {
+        font-size: 2rem;
+        // padding-right: 5px;
+        text-align: center;
+        margin-left: 10px;
+      }
+
+      &::-moz-placeholder {
+        font-size: 2rem;
+        // padding-right: 5px;
+        text-align: center;
+        margin-left: 10px;
+      }
+
+      &:-ms-input-placeholder {
+        font-size: 2rem;
+        // padding-right: 5px;
+        text-align: center;
+        margin-left: 10px;
+      }
+
+      &::-ms-input-placeholder {
+        font-size: 2rem;
+        // padding-right: 5px;
+        text-align: center;
+        margin-left: 10px;
+      }
+
       &::placeholder {
         font-size: 2rem;
         // padding-right: 5px;

@@ -25,6 +25,7 @@
         @include textShadow;
         color: $white;
         padding: 2px 0px 2px 5px;
+        -webkit-filter: none;
         filter: none;
 
         &::-ms-expand {
@@ -39,6 +40,7 @@
         &:focus {
           padding: 2px 0px 2px 5px;
           width: 100%;
+          -webkit-animation: appearBlur 3s ease-in-out 1 normal forwards;
           animation: appearBlur 3s ease-in-out 1 normal forwards;
         }
       }

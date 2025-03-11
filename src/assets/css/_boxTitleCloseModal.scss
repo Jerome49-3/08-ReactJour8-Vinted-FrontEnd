@@ -6,6 +6,7 @@
   margin-bottom: 20px;
 
   & img {
+    -o-object-fit: cover;
     object-fit: cover;
   }
 

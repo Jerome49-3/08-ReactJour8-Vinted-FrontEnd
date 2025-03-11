@@ -48,8 +48,10 @@
               width: 100%;
               height: 100%;
               display: block;
+              -o-object-fit: cover;
               object-fit: cover;
               max-height: 78vh;
+              -o-object-position: top;
               object-position: top;
             }
           }
@@ -68,6 +70,7 @@
 
             .prodPict0 {
               display: block;
+              -o-object-fit: cover;
               object-fit: cover;
               width: 100%;
             }
@@ -91,6 +94,7 @@
               .prodPict {
                 width: 100%;
                 height: 100%;
+                -o-object-fit: cover;
                 object-fit: cover;
                 display: block;
               }
@@ -98,6 +102,7 @@
               .prodPict100 {
                 width: 100%;
                 height: 100%;
+                -o-object-fit: cover;
                 object-fit: cover;
                 display: block;
               }
@@ -155,6 +160,7 @@
             .imgOfferSold {
               width: 100%;
               height: 100%;
+              -o-object-fit: contain;
               object-fit: contain;
             }
           }

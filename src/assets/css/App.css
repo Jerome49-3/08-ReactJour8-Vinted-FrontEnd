@@ -288,12 +288,12 @@
   background: rgb(133, 132, 132);
   background: linear-gradient(0deg, rgb(31, 31, 31) 20%, rgb(255, 255, 255) 50%, rgb(31, 31, 31) 80%);
   text-transform: uppercase;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0;
   animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1.5s both;
 }
-
 @keyframes bounce-in-top {
   0% {
     transform: translateY(-500px);
@@ -579,7 +579,7 @@
 }
 .boxTitleClose img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .boxTitleClose button {
   color: #ffffff;
@@ -624,7 +624,7 @@
 }
 .classLabelInput input {
   -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   -webkit-appearance: none;
   display: flex;
   justify-content: center;
@@ -866,7 +866,7 @@
   height: 200px;
   max-height: 200px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .boxForm .boxPicTop .boxPicBottom .viewPics .suppFiles {
   color: #ffffff;
@@ -922,7 +922,7 @@
   width: 100px;
   height: 100px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 @media all and (min-width: 768px) {
@@ -1332,10 +1332,10 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   max-width: 100%;
   max-height: 300px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-top: -6px;
   -o-object-position: center 28%;
-     object-position: center 28%;
+  object-position: center 28%;
 }
 .boxImgs .imgBannerBottom {
   max-width: 100%;
@@ -1409,13 +1409,13 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 100%;
   height: 250px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .boxOfferCard a article .boxImgArticle .classBannerSold {
   width: 100px;
   height: 100px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   position: absolute;
   top: 90%;
   left: 81%;
@@ -1640,10 +1640,10 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   height: 100%;
   display: block;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   max-height: 78vh;
   -o-object-position: top;
-     object-position: top;
+  object-position: top;
 }
 .boxOffer .wrapper .top .left .imgLeft article {
   display: flex;
@@ -1658,7 +1658,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 .boxOffer .wrapper .top .left .imgLeft .boxImgOffer .prodPict0 {
   display: block;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
 }
 .boxOffer .wrapper .top .left .imgsRight {
@@ -1681,14 +1681,14 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   display: block;
 }
 .boxOffer .wrapper .top .left .imgsRight article .boxImgOffer .prodPict100 {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   display: block;
 }
 .boxOffer .wrapper .top .right {
@@ -1748,7 +1748,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .boxOffer .wrapper .top .right .rightBottom {
   display: flex;
@@ -1944,7 +1944,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   box-shadow: 0px 0px 5px 3.5px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 0px 0px 5px 3.5px rgba(0, 0, 0, 0.7);
   -webkit-box-shadow: 0px 0px 5px 3.5px rgba(0, 0, 0, 0.7);
@@ -2210,7 +2210,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 25px;
   height: 25px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 5px;
   margin-right: 10px;
 }
@@ -2294,7 +2294,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 380px !important;
   height: 380px !important;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 5px;
 }
 .boxUserId .bottom .right {
@@ -2409,7 +2409,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 20px;
   height: 20px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 5px;
 }
 .boxUserId .bottom .right .boxButton .updateButton {
@@ -2869,7 +2869,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .boxTransactionId .wrapper .transactionId .middle .boxInfos .top .name,
 .boxTransactionId .wrapper .transactionId .middle .boxInfos .middle .price,
@@ -3014,7 +3014,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   height: 30px;
   border-radius: 50%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-left: 10px;
 }
 .boxChat .wrapper p {

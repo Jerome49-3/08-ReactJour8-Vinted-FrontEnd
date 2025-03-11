@@ -34,10 +34,33 @@
       border-bottom: transparent;
       outline: 2px solid $vertVinted;
       border-radius: 5px;
+      -webkit-filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
       filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
+
+      &::-webkit-input-placeholder {
+        text-align: center;
+        -webkit-filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
+        filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
+      }
+
+      &::-moz-placeholder {
+        text-align: center;
+        filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
+      }
+
+      &:-ms-input-placeholder {
+        text-align: center;
+        filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
+      }
+
+      &::-ms-input-placeholder {
+        text-align: center;
+        filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
+      }
 
       &::placeholder {
         text-align: center;
+        -webkit-filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
         filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
       }
     }

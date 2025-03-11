@@ -6,6 +6,7 @@
     background-color: transparent;
 
     & input {
+      -moz-appearance: none;
       appearance: none;
       -webkit-appearance: none;
       @include flexCenter;
@@ -19,6 +20,26 @@
       width: 100%;
       box-shadow: 0px 0px 1px $black, 0.10px 0.10px 1px $vertVinted, 0.20px 0.20px 1px $black, 0.30px 0.30px 1px $vertVinted, 0.40px 0.40px 1px $black, 0.50px 0.50px 1px $vertVinted, 1px 1px 1px $vertVinted;
 
+      &::-webkit-input-placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
+
+      &::-moz-placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
+
+      &:-ms-input-placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
+
+      &::-ms-input-placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
+
       &::placeholder {
         padding-left: 10px;
         font-size: 16px;
@@ -27,6 +48,22 @@
 
     & input:focus-visible {
       outline: transparent;
+
+      &::-webkit-input-placeholder {
+        color: transparent;
+      }
+
+      &::-moz-placeholder {
+        color: transparent;
+      }
+
+      &:-ms-input-placeholder {
+        color: transparent;
+      }
+
+      &::-ms-input-placeholder {
+        color: transparent;
+      }
 
       &::placeholder {
         color: transparent;
@@ -55,6 +92,26 @@
       border: none;
       border-bottom: 2px solid $vertVinted;
 
+      &::-webkit-input-placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
+
+      &::-moz-placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
+
+      &:-ms-input-placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
+
+      &::-ms-input-placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
+
       &::placeholder {
         padding-left: 10px;
         font-size: 16px;
@@ -64,6 +121,22 @@
 
     & textarea:focus-visible {
       outline: transparent;
+
+      &::-webkit-input-placeholder {
+        color: transparent;
+      }
+
+      &::-moz-placeholder {
+        color: transparent;
+      }
+
+      &:-ms-input-placeholder {
+        color: transparent;
+      }
+
+      &::-ms-input-placeholder {
+        color: transparent;
+      }
 
       &::placeholder {
         color: transparent;
