@@ -1,0 +1,156 @@
+#boxErrorPage {
+  font-family: "Slugs Racer", sans-serif;
+  color: gainsboro;
+  -webkit-text-stroke: purple 0.8pt;
+  font-size: 36px;
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.oops {
+  -webkit-animation: bounce-in-top 1.1s ease-out both;
+  animation: bounce-in-top 1.1s ease-out both;
+  background: linear-gradient(90deg, rgba(128, 0, 128, 1) 10%, rgba(253, 29, 29, 1) 60%, rgba(253, 255, 105, 1) 95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 1;
+}
+
+.oops2 {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-text-stroke: 0;
+
+}
+
+.oops2,
+.sorry {
+  text-shadow: 1px 1px 1px #000, 1px 1px 1px #000, 1px 1px 1px #000,
+    1px 1px 3px #000, 1.5px 1.5px 1px rgb(31, 31, 31),
+    1.5px 1.5px 1px rgb(31, 31, 31), 1.5px 1.5px 1px rgb(31, 31, 31),
+    1.5px 1.5px 1px rgb(31, 31, 31), 2px 2px 1px rgb(80, 80, 80),
+    2px 2px 1px rgb(80, 80, 80), 2px 2px 1px rgb(80, 80, 80),
+    2px 2px 1px rgb(80, 80, 80), 3px 3px 1px rgb(120, 120, 120),
+    3px 3px 1px rgb(120, 120, 120), 3px 3px 1px rgb(120, 120, 120),
+    3px 3px 1px rgb(120, 120, 120), 4px 4px 1px rgb(200, 200, 200),
+    4px 4px 1px rgb(200, 200, 200), 4px 4px 1px rgb(200, 200, 200),
+    4px 4px 1px rgb(200, 200, 200), 5px 5px 2px rgb(128, 0, 128),
+    5px 5px 2px rgb(128, 0, 128), 5px 5px 2px rgb(128, 0, 128),
+    5px 5px 50px rgb(128, 0, 128);
+}
+
+.sorry {
+  -webkit-animation: swing-in-top-bck 0.6s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0.8s both;
+  animation: swing-in-top-bck 0.6s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0.8s both;
+}
+
+.codeerror {
+  text-shadow: none;
+  font-family: "Zebulon", sans-serif;
+  background: rgb(133, 132, 132);
+  background: linear-gradient(0deg,
+      rgba(31, 31, 31) 20%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(31, 31, 31) 80%);
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0;
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1.5s both;
+  animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1.5s both;
+}
+
+@keyframes bounce-in-top {
+  0% {
+    -webkit-transform: translateY(-500px);
+    transform: translateY(-500px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  38% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+
+  55% {
+    -webkit-transform: translateY(-65px);
+    transform: translateY(-65px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  72% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  81% {
+    -webkit-transform: translateY(-28px);
+    transform: translateY(-28px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  90% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  95% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes swing-in-top-bck {
+  0% {
+    -webkit-transform: rotateX(70deg);
+    transform: rotateX(70deg);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

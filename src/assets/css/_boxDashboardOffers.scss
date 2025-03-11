@@ -1,9 +1,14 @@
 .boxDashboardOffers {
-  @include flexColStart;
+  @include flexColTopStart;
+  gap: 5px;
+  overflow-y: auto;
+  height: 100%;
+  padding: 5px 0px 5px 5px;
 
   .boxOfferDashbord {
     @include flexBetween;
     width: 90%;
+
 
     .userName,
     .offerName,
@@ -11,6 +16,29 @@
     .offerId {
       @include flexStart;
       @include ellipsis;
+    }
+
+    .btnTrash,
+    .boxLoaded {
+      height: 20px;
+      width: 20px;
+      color: $vertVinted;
+
+      &:hover {
+        color: red;
+      }
+
+      &:active {
+        color: purple;
+      }
+    }
+
+    .boxLoaded {
+
+      .loaded {
+        width: 15px;
+        height: 15px;
+      }
     }
 
     .offerPrice,

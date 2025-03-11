@@ -8,7 +8,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import Image from "./Image";
 import Input from "./Input";
-import InputFile from "./InputFile";
+import InputFileAvatar from "./InputFileAvatar";
 import Button from "./Button";
 
 //lib
@@ -205,7 +205,7 @@ const Profile = () => {
             <div className="left">
               <Image src={avatar} alt="avatar" />
               <label htmlFor="pictures"></label>
-              <InputFile
+              <InputFileAvatar
                 labelTxt="Choose your avatar"
                 id="file"
                 setPictures={setPictures}

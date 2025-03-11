@@ -12,7 +12,7 @@ import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 //lib
 import saveToken from "../assets/lib/saveToken";
 
-const Login = ({ icon1, icon2, type, setType }) => {
+const Login = ({ faEye, faEyeSlash, type, setType }) => {
   // const boxForm = "boxForm";
   // const boxLogin = "boxLogin";
   const {
@@ -30,6 +30,7 @@ const Login = ({ icon1, icon2, type, setType }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(null);
+  const [isLocked, setIsLocked] = useState(false);
   const navigate = useNavigate();
 
   const handleSendCode = async (e) => {
@@ -90,6 +91,15 @@ const Login = ({ icon1, icon2, type, setType }) => {
       console.log("error in handleSubmit on Login:", error);
       const errRespDataMssg = error?.response?.data?.message;
       console.log("errRespDataMssg in handleSubmit on Login:", errRespDataMssg);
+      const errAccLocked = error?.response?.data?.accountLocked;
+      if (errAccLocked) {
+        setIsLocked(true);
+      }
+      console.log("errAccLocked in handleSubmit on Login:", errAccLocked);
+      console.log(
+        "typeof errAccLocked in handleSubmit on Login:",
+        typeof errAccLocked
+      );
       const messageNotConfirmEmail = import.meta.env
         .VITE_REACT_APP_MSSG_NOT_CONFIRMEMAIL;
       if (
@@ -133,20 +143,27 @@ const Login = ({ icon1, icon2, type, setType }) => {
             />
             <div className="boxIcons">
               <EyePassword
-                icon1={icon1}
-                icon2={icon2}
+                faEye={faEye}
+                faEyeSlash={faEyeSlash}
                 type={type}
                 setType={setType}
               />
             </div>
           </div>
           <Input type="submit" value="Se connecter" />
-          <div className="boxForgot">
-            <div className="btnSubmitCode" onClick={handleSendCode}>
-              <Links path="/resendEmail" linkText="Mot de passe oublié ?" />
-            </div>
+          <div className="boxForgotErrorMessage">
+            {isLocked ? (
+              <div className="boxForgot">
+                <div className="btnSubmitCode" onClick={handleSendCode}>
+                  <Links path="/resendEmail" linkText="Mot de passe oublié ?" />
+                </div>
+              </div>
+            ) : (
+              <div className="boxForgot"></div>
+            )}
+
+            <InfoUserErrorMessage />
           </div>
-          <InfoUserErrorMessage />
         </form>
       </div>
     </div>

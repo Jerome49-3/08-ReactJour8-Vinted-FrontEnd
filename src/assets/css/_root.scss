@@ -11,12 +11,19 @@
   .boxDashboard,
   .wrapper:not(.boxHome>.wrapper, .boxForm>.wrapper, .boxFormSignUp>.wrapper, header>.wrapper, .boxLogin>.wrapper),
   .boxNoPurchases,
+  .boxOfferIdUpdateAndDelete,
   .boxHomeNoOffer,
   .wrapperNoOffer {
     height: 80vh;
   }
 }
 
+.LayoutApp {
+  @include flexCenter;
+  border: 2px solid red;
+  width: 100%;
+  height: 100%;
+}
 
 .wrapper {
   max-width: 350px;
@@ -44,7 +51,15 @@
 
   .boxInfoErrorMessage,
   .boxForgot {
-    height: 20px;
+    @include flexCenter;
+
+  }
+
+  .boxForgotErrorMessage {
+    @include flexColCenter;
+    gap: 2.5px;
+    height: 25px;
+    transition: all 1s ease-out;
   }
 
   * .red {

@@ -146,11 +146,21 @@
   .boxDashboard,
   .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper, .boxFormSignUp > .wrapper, header > .wrapper, .boxLogin > .wrapper),
   .boxNoPurchases,
+  .boxOfferIdUpdateAndDelete,
   .boxHomeNoOffer,
   .wrapperNoOffer {
     height: 80vh;
   }
 }
+.LayoutApp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid red;
+  width: 100%;
+  height: 100%;
+}
+
 .wrapper {
   max-width: 350px;
   margin-left: auto;
@@ -175,7 +185,18 @@
 }
 .wrapper .boxInfoErrorMessage,
 .wrapper .boxForgot {
-  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper .boxForgotErrorMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2.5px;
+  height: 25px;
+  transition: all 1s ease-out;
 }
 .wrapper * .red {
   color: red;
@@ -222,6 +243,113 @@
   }
 }
 
+#boxErrorPage {
+  font-family: "Slugs Racer", sans-serif;
+  color: gainsboro;
+  -webkit-text-stroke: purple 0.8pt;
+  font-size: 36px;
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.oops {
+  animation: bounce-in-top 1.1s ease-out both;
+  background: linear-gradient(90deg, rgb(128, 0, 128) 10%, rgb(253, 29, 29) 60%, rgb(253, 255, 105) 95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 1;
+}
+
+.oops2 {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-text-stroke: 0;
+}
+
+.oops2,
+.sorry {
+  text-shadow: 1px 1px 1px #000, 1px 1px 1px #000, 1px 1px 1px #000, 1px 1px 3px #000, 1.5px 1.5px 1px rgb(31, 31, 31), 1.5px 1.5px 1px rgb(31, 31, 31), 1.5px 1.5px 1px rgb(31, 31, 31), 1.5px 1.5px 1px rgb(31, 31, 31), 2px 2px 1px rgb(80, 80, 80), 2px 2px 1px rgb(80, 80, 80), 2px 2px 1px rgb(80, 80, 80), 2px 2px 1px rgb(80, 80, 80), 3px 3px 1px rgb(120, 120, 120), 3px 3px 1px rgb(120, 120, 120), 3px 3px 1px rgb(120, 120, 120), 3px 3px 1px rgb(120, 120, 120), 4px 4px 1px rgb(200, 200, 200), 4px 4px 1px rgb(200, 200, 200), 4px 4px 1px rgb(200, 200, 200), 4px 4px 1px rgb(200, 200, 200), 5px 5px 2px rgb(128, 0, 128), 5px 5px 2px rgb(128, 0, 128), 5px 5px 2px rgb(128, 0, 128), 5px 5px 50px rgb(128, 0, 128);
+}
+
+.sorry {
+  animation: swing-in-top-bck 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s both;
+}
+
+.codeerror {
+  text-shadow: none;
+  font-family: "Zebulon", sans-serif;
+  background: rgb(133, 132, 132);
+  background: linear-gradient(0deg, rgb(31, 31, 31) 20%, rgb(255, 255, 255) 50%, rgb(31, 31, 31) 80%);
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1.5s both;
+}
+
+@keyframes bounce-in-top {
+  0% {
+    transform: translateY(-500px);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  38% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  55% {
+    transform: translateY(-65px);
+    animation-timing-function: ease-in;
+  }
+  72% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  81% {
+    transform: translateY(-28px);
+    animation-timing-function: ease-in;
+  }
+  90% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  95% {
+    transform: translateY(-8px);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes swing-in-top-bck {
+  0% {
+    transform: rotateX(70deg);
+    transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    transform-origin: top;
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .boxTheme {
   height: 30px;
   width: 30px;
@@ -1913,9 +2041,13 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 
 .boxDashboardOffers {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+  gap: 5px;
+  overflow-y: auto;
+  height: 100%;
+  padding: 5px 0px 5px 5px;
 }
 .boxDashboardOffers .boxOfferDashbord {
   display: flex;
@@ -1933,6 +2065,24 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.boxDashboardOffers .boxOfferDashbord .btnTrash,
+.boxDashboardOffers .boxOfferDashbord .boxLoaded {
+  height: 20px;
+  width: 20px;
+  color: #2DB0BA;
+}
+.boxDashboardOffers .boxOfferDashbord .btnTrash:hover,
+.boxDashboardOffers .boxOfferDashbord .boxLoaded:hover {
+  color: red;
+}
+.boxDashboardOffers .boxOfferDashbord .btnTrash:active,
+.boxDashboardOffers .boxOfferDashbord .boxLoaded:active {
+  color: purple;
+}
+.boxDashboardOffers .boxOfferDashbord .boxLoaded .loaded {
+  width: 15px;
+  height: 15px;
 }
 .boxDashboardOffers .boxOfferDashbord .offerPrice,
 .boxDashboardOffers .boxOfferDashbord .userName {
@@ -2356,9 +2506,9 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   padding: 10px;
   height: 100%;
   position: fixed;
-  top: 50%;
-  left: 75%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  bottom: 0;
+  right: 0vw;
   border: 1px solid #2DB0BA;
   box-shadow: 0px 0px 1px #000000, 0px 0px 1.5px #000000, 0px 0px 3px #000000;
 }
@@ -2508,25 +2658,21 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 @media all and (min-width: 768px) {
   .toggleNav {
     width: 40%;
-    left: 75%;
   }
 }
 @media all and (min-width: 992px) {
   .toggleNav {
     width: 30%;
-    left: 84.75%;
   }
 }
 @media all and (min-width: 12OOpx) {
   .toggleNav {
     width: 50%;
-    left: 75%;
   }
 }
 @media all and (min-device-width: 1400px) {
   .toggleNav {
     width: 25%;
-    left: 87.45%;
   }
 }
 .boxContact {
@@ -3023,6 +3169,48 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   .boxMessagesContactId .wrapper .rightMessageRespondId {
     height: 100%;
     width: 50%;
+  }
+}
+.boxOfferIdUpdateAndDelete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.boxOfferIdUpdateAndDelete .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.boxOfferIdUpdateAndDelete .wrapper .left,
+.boxOfferIdUpdateAndDelete .wrapper .right {
+  width: 100%;
+  height: 50%;
+}
+.boxOfferIdUpdateAndDelete .wrapper .left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 2px solid red;
+}
+.boxOfferIdUpdateAndDelete .wrapper .right {
+  border: 2px solid green;
+}
+
+@media all and (min-width: 1200px) {
+  .boxOfferIdUpdateAndDelete {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .boxOfferIdUpdateAndDelete .wrapper {
+    flex-direction: row;
+  }
+  .boxOfferIdUpdateAndDelete .wrapper .left,
+  .boxOfferIdUpdateAndDelete .wrapper .right {
+    width: 50%;
+    height: 100%;
   }
 }
 footer {

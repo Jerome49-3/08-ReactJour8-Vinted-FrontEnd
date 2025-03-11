@@ -1,0 +1,51 @@
+.boxOfferIdUpdateAndDelete {
+  @include flexCenter;
+  height: 100%;
+
+  .wrapper {
+    @include flexColCenter;
+
+    .left,
+    .right {
+      width: 100%;
+      height: calc(100%/2);
+    }
+
+    .left {
+      @include flexCenter;
+      flex-wrap: wrap;
+      border: 2px solid red;
+
+    }
+
+    .right {
+      border: 2px solid green;
+
+    }
+  }
+}
+
+// BREAKPOINTS
+// @media all and (min-width : 576px) {}
+
+// @media all and (min-width : 768px) {}
+
+// @media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {
+  .boxOfferIdUpdateAndDelete {
+    height: fit-content;
+
+    .wrapper {
+      flex-direction: row;
+
+      .left,
+      .right {
+        width: calc(100%/2);
+        height: 100%;
+      }
+    }
+  }
+}
+
+// @media all and (min-width : 1400px) {}

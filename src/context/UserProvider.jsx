@@ -12,6 +12,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+  const [showHero, setShowHero] = useState(false);
   const [isSended, setIsSended] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [infoUser, setInfoUser] = useState("");
@@ -28,7 +29,7 @@ export const UserProvider = ({ children }) => {
     sessionStorage.getItem("vintaidUser") || null
   );
   const [avatar, setAvatar] = useState(null);
-
+  const [avatarOffer, setAvatarOffer] = useState(null);
   const [imgBoxUser, setImgBoxUser] = useState(() => {
     const imgSessStorage = sessionStorage.getItem("vintaidImgBoxUser");
     if (imgSessStorage) {
@@ -87,15 +88,12 @@ export const UserProvider = ({ children }) => {
   // console.log("tokenFgtP in userProvider:", tokenFgtP);
 
   useEffect(() => {
-    setErrorMessage("");
-    setInfoUser("");
-  }, [axios]);
-
-  useEffect(() => {
     if (location.pathname === "/") {
       setShowSearch(true);
+      setShowHero(true);
     } else {
       setShowSearch(false);
+      setShowHero(false);
     }
   }, [location.pathname]);
 
@@ -109,10 +107,10 @@ export const UserProvider = ({ children }) => {
             {}
           );
           // console.log("response in /user/verifyToken:", response);
-          console.log(
-            "typeof response in /user/verifyToken:",
-            typeof response.status
-          );
+          // console.log(
+          //   "typeof response in /user/verifyToken:",
+          //   typeof response.status
+          // );
           if (
             response.status ===
               Number(import.meta.env.VITE_REACT_APP_RESPONSEVALID) &&
@@ -135,7 +133,7 @@ export const UserProvider = ({ children }) => {
                 const response = await axios.get(
                   `http://localhost:3000/user/refreshToken`
                 );
-                console.log("response in /user/refreshToken:", response);
+                // console.log("response in /user/refreshToken:", response);
                 if (response?.data?.token) {
                   setToken(response?.data?.token);
                   saveToken(
@@ -147,13 +145,13 @@ export const UserProvider = ({ children }) => {
                   setIsLoading(false);
                 }
               } catch (error) {
-                console.log("error in /refreshToken:", error);
+                // console.log("error in /refreshToken:", error);
 
-                console.log(error?.response?.data?.message || error?.message);
-                console.log(
-                  "error?.response?.status:",
-                  error?.response?.status
-                );
+                // console.log(error?.response?.data?.message || error?.message);
+                // console.log(
+                //   "error?.response?.status:",
+                //   error?.response?.status
+                // );
                 // console.log(
                 //   "typeof error?.response?.status:",
                 //   typeof error?.response?.status
@@ -270,6 +268,9 @@ export const UserProvider = ({ children }) => {
         location,
         data,
         setData,
+        showHero,
+        avatarOffer,
+        setAvatarOffer,
       }}
     >
       {children}

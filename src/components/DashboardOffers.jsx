@@ -4,9 +4,17 @@ import { useUser } from "../assets/lib/userFunc";
 import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
+import Trash from "./Trash";
 
-const DashboardOffers = () => {
-  const { axios, isLoading, setIsLoading, setErrorMessage } = useUser();
+const DashboardOffers = ({ faTrash }) => {
+  const {
+    axios,
+    isLoading,
+    setIsLoading,
+    setErrorMessage,
+    setIsSended,
+    isSended,
+  } = useUser();
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -24,8 +32,10 @@ const DashboardOffers = () => {
         setErrorMessage(error?.response?.data?.message);
       }
     };
-    fetchData();
-  }, [axios]);
+    if (!isSended) {
+      fetchData();
+    }
+  }, [axios, isSended]);
 
   return isLoading ? (
     <Loading />
@@ -37,12 +47,13 @@ const DashboardOffers = () => {
           <Link
             className="boxOfferDashbord"
             key={key}
-            to={`/offers/${offer._id}`}
+            to={`/offerUpdate/${offer._id}`}
           >
             <div className="userName">{offer?.owner?.account?.username}</div>
             <div className="offerPrice">{offer?.product_price} €</div>
             <div className="offerId">{offer?._id}</div>
             <div className="offerName">{offer?.product_name}</div>
+            {/* <Trash handleClick={handleSuppOffers} faTrash={faTrash} /> */}
           </Link>
         );
       })}

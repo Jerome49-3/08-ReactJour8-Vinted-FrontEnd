@@ -1,4 +1,9 @@
-const InputFile = ({ labelTxt, pictures, setPictures, setAvatar }) => {
+const InputFileOffer = ({
+  labelTxt,
+  pictures,
+  setPictures,
+  setAvatarOffer,
+}) => {
   return (
     <div className="boxPictures">
       <label htmlFor="pictures">
@@ -11,8 +16,8 @@ const InputFile = ({ labelTxt, pictures, setPictures, setAvatar }) => {
           onChange={(e) => {
             console.log("e.target on inputFile:", e.target);
             console.log("e.target.files[0] on inputFile:", e.target.files[0]);
-            setPictures(e.target.files[0]);
-            setAvatar(URL.createObjectURL(e.target.files[0]));
+            // setPictures(e.target.files[0]);
+            // setAvatarOffer(URL.createObjectURL(e.target.files[0]));
           }}
         />
       </label>
@@ -21,4 +26,4 @@ const InputFile = ({ labelTxt, pictures, setPictures, setAvatar }) => {
   );
 };
 
-export default InputFile;
+export default InputFileOffer;

@@ -20,13 +20,8 @@ import Button from "../components/Button";
 import classRotation from "../assets/lib/classRotation";
 import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
-const OfferID = ({
-  showHero,
-  showImgsModal,
-  setShowImgsModal,
-  setSrcImgsModal,
-}) => {
-  const { axios, infoUser, setInfoUser } = useUser();
+const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
+  const { axios, infoUser, setInfoUser, showHero } = useUser();
   console.log("infoUser on OfferID:", infoUser);
 
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);

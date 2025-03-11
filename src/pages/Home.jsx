@@ -87,7 +87,6 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
     !isLoading && (
       <>
         <div className="boxHomeNoOffer">
-          {/* <Hero /> */}
           <div className="wrapperNoOffer">
             <div className="boxNoOffers">
               <div> Il n'y aucune offre actuellement:&ensp;</div>

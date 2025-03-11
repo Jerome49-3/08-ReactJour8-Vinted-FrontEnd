@@ -12,9 +12,9 @@
   padding: 10px;
   height: 100%;
   position: fixed;
-  top: 50%;
-  left: 75%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  bottom: 0;
+  right: 0vw;
   border: 1px solid $vertVinted;
   box-shadow: 0px 0px 1px $black, 0px 0px 1.5px $black, 0px 0px 3px $black;
 
@@ -137,14 +137,12 @@
 @media all and (min-width : 768px) {
   .toggleNav {
     width: 40%;
-    left: 75%;
   }
 }
 
 @media all and (min-width : 992px) {
   .toggleNav {
     width: 30%;
-    left: 84.75%;
   }
 }
 
@@ -152,13 +150,11 @@
 @media all and (min-width: 12OOpx) {
   .toggleNav {
     width: 50%;
-    left: 75%;
   }
 }
 
 @media all and (min-device-width : 1400px) {
   .toggleNav {
     width: 25%;
-    left: 87.45%;
   }
 }

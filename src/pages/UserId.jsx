@@ -10,7 +10,7 @@ import decryptUser from "../assets/lib/decryptUser";
 import Image from "../components/Image";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import InputFile from "../components/InputFile";
+import InputFileAvatar from "../components/InputFileAvatar";
 import Loading from "../components/Loading";
 
 //images
@@ -200,7 +200,7 @@ const UserId = () => {
           <div className="left">
             <Image src={avatar} alt="avatar" />
             <label htmlFor="pictures"></label>
-            <InputFile
+            <InputFileAvatar
               labelTxt="Choose your avatar"
               id="file"
               setPictures={setPictures}
