@@ -1,16 +1,16 @@
-.boxDashboardOffers {
+.boxMessagesContacts {
   @include flexColTopStart;
-  gap: 5px;
-  overflow-y: auto;
   height: 100%;
-  padding: 5px 0px 5px 5px;
+  overflow-x: auto;
+  padding: 5px;
+  gap: 5px;
 
   & thead {
     @include flexStart;
     width: 100%;
     border: 2px solid $vertVinted;
     padding: 2px;
-    border-radius: 5px;
+    z-index: 10;
 
     & tr {
       width: 100%;
@@ -29,36 +29,28 @@
     }
   }
 
-  .boxOfferDashbord {
+  .boxDetailsMessages {
     @include flexStart;
     width: 100%;
     border-radius: 5px;
-    padding: 5px;
     border: 2px solid $vertVinted;
-    background-color: $backgWhite;
 
-    .userName,
-    .offerName,
-    .offerPrice,
-    .offerId {
-      @include flexBetween;
-      @include ellipsis;
+    & div {
       width: calc(100%/4);
-      padding-left: 5px;
+      @include flexStart;
+      padding: 5px 5px 5px 10px;
+      @include ellipsis;
+      background-color: $backgWhite;
     }
 
-    .boxLoaded {
-      height: 20px;
-      width: 20px;
-      color: $vertVinted;
+    & div:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
 
-      &:hover {
-        color: red;
-      }
-
-      &:active {
-        color: purple;
-      }
+    & div:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
     }
   }
 }

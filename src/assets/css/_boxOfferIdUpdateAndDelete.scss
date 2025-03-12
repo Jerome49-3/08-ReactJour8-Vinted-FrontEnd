@@ -15,7 +15,28 @@
       @include flexCenter;
       flex-wrap: wrap;
       border: 2px solid red;
+      gap: 1px;
+      padding-bottom: 20px;
 
+      .boxPictures {
+        width: 100%;
+        @include flexColTopStart;
+        height: calc(100% / (var(--imgsLength)));
+
+        & img {
+          height: 95%;
+          width: 100%;
+          -o-object-fit: cover;
+          object-fit: cover;
+        }
+
+      }
+
+      .boxInputPictures {
+        @include flexCenter;
+        height: 5%;
+        width: 100%;
+      }
     }
 
     .right {

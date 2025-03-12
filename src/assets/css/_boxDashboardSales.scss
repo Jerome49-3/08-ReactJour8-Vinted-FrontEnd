@@ -22,6 +22,8 @@
       & th {
         width: calc(100%/5);
         @include ellipsis;
+        @include flexStart;
+        padding-left: 5px;
       }
 
       & th:not(:last-child) {
@@ -32,12 +34,12 @@
 
   .boxTansactions {
     @include flexColTopStart;
-    width: 98%;
-    // border: 2px solid $vertVinted;
+    width: 100%;
     border-radius: 5px;
-    padding: 2px;
-    background-color: $backDarkLink;
+    padding: 5px;
+    background-color: $backgWhite;
     overflow-y: auto;
+    border: 2px solid $vertVinted;
 
     & a {
       width: 100%;
@@ -48,10 +50,10 @@
         @include flexStart;
 
         & td {
-          text-align: center;
+          @include flexStart;
           width: calc(100%/5);
+          padding-left: 5px;
           @include ellipsis;
-          border-color: 2px solid white !important;
         }
 
         .numCmd {

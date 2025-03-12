@@ -204,7 +204,6 @@ const Profile = () => {
           <form className="bottom">
             <div className="left">
               <Image src={avatar} alt="avatar" />
-              <label htmlFor="pictures"></label>
               <InputFileAvatar
                 labelTxt="Choose your avatar"
                 id="file"

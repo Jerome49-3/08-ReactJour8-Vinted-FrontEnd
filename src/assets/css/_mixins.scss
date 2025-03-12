@@ -141,6 +141,12 @@
   box-shadow: inset 0px 0px 4px $black, inset 0.5px 0.5px 2px $black;
 }
 
+@mixin dropShadowIcons {
+  color: $vertVinted;
+  -webkit-filter: drop-shadow(0px 0px 0.25px $black) drop-shadow(0.15px 0.15px 0.5px $black);
+  filter: drop-shadow(0px 0px 0.25px $black) drop-shadow(0.15px 0.15px 0.5px $black);
+}
+
 @mixin ellipsis {
   overflow: hidden;
   white-space: nowrap;

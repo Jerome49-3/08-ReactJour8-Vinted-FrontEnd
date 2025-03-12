@@ -115,13 +115,11 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
                         setShowImgsModal(true);
                       }
                     }}
-                    rotation={rotation}
                   />
                 ) : data?.product_pictures ? (
                   <>
                     {data?.product_pictures.map((images, index) => {
                       console.log("images:", images);
-                      const rotation = classRotation(images);
                       return (
                         <React.Fragment key={index}>
                           {index === 0 ? (
@@ -141,7 +139,6 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
                                     setShowImgsModal(true);
                                   }
                                 }}
-                                rotation={rotation}
                               />
                             </article>
                           ) : null}
@@ -179,7 +176,6 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
                                     setShowImgsModal(true);
                                   }
                                 }}
-                                rotation={rotation}
                               />
                             </article>
                           )}

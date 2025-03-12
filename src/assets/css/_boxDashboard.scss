@@ -1,74 +1,124 @@
 .boxDashboard {
-  @include flexCenter;
+  @include flexColTopStart;
+  width: 100%;
+  height: 100vh;
   width: 100%;
 
   .wrapper {
-    @include flexColCenter;
+    @include flexStart;
     gap: 10px;
-  }
-
-  .top,
-  .bottom {
     width: 100%;
-    gap: 5px;
-    display: flex;
-    flex-direction: column;
-    height: 40vh;
-  }
+    height: 100vh;
+    padding: 0px !important;
 
-  .top {
-    margin-top: 5px;
-  }
-
-  .bottom {
-    margin-bottom: 10px;
-  }
-
-  .top .left,
-  .top .right,
-  .bottom .left,
-  .bottom .right {
-    height: 20vh;
-
-    .boxDetails {
-      height: calc(100% - 25px);
-      max-height: calc(100% - 25px);
-    }
-
-    .boxDetails,
-    .boxTitleSearch {
+    .leftPannel {
+      width: 30%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: column;
+      height: 100%;
       background-color: $backgWhite;
       border-radius: 5px;
-      border: 1px solid $vertVinted;
+      padding: 10px 5px 10px 5px;
+
+      & div {
+        width: 100%;
+
+        & a {
+          & p {
+            letter-spacing: 2.5px;
+            font-weight: 800;
+            color: $backgHeaderFooter;
+            font-size: 16px;
+
+            &:hover {
+              color: $backgVinted;
+            }
+          }
+        }
+      }
+    }
+
+    .rightOutlet {
+      width: 70%;
+      height: 100%;
     }
   }
 }
 
-@media all and (min-width: 768px) {
-  .boxDashboard {
+// BREAKPOINTS
+// @media all and (min-width : 576px) {}
 
-    .top,
-    .bottom {
-      flex-direction: row !important;
+// @media all and (min-width : 768px) {}
 
-      .left,
-      .right {
-        width: calc(100% /2);
-      }
-    }
+// @media all and (min-width : 992px) {}
 
-    .top .left,
-    .top .right,
-    .bottom .left,
-    .bottom .right {
-      height: 38vh;
+@media all and (min-width : 1200px) {}
 
-      .boxDetails,
-      .boxTitleSearch {
-        background-color: $backgWhite;
-        border-radius: 5px;
-        border: 1px solid $vertVinted;
-      }
-    }
-  }
-}
+// @media all and (min-width : 1400px) {}
+//   .top,
+//   .bottom {
+//     width: 100%;
+//     gap: 5px;
+//     display: flex;
+//     flex-direction: column;
+//     height: 40vh;
+//   }
+
+//   .top {
+//     margin-top: 5px;
+//   }
+
+//   .bottom {
+//     margin-bottom: 10px;
+//   }
+
+//   .top .left,
+//   .top .right,
+//   .bottom .left,
+//   .bottom .right {
+//     height: 20vh;
+
+//     .boxDetails {
+//       height: calc(100% - 25px);
+//       max-height: calc(100% - 25px);
+//     }
+
+//     .boxDetails,
+//     .boxTitleSearch {
+//       background-color: $backgWhite;
+//       border-radius: 5px;
+//       border: 1px solid $vertVinted;
+//     }
+//   }
+// }
+
+// @media all and (min-width: 768px) {
+//   .boxDashboard {
+
+//     .top,
+//     .bottom {
+//       flex-direction: row !important;
+
+//       .left,
+//       .right {
+//         width: calc(100% /2);
+//       }
+//     }
+
+//     .top .left,
+//     .top .right,
+//     .bottom .left,
+//     .bottom .right {
+//       height: 38vh;
+
+//       .boxDetails,
+//       .boxTitleSearch {
+//         background-color: $backgWhite;
+//         border-radius: 5px;
+//         border: 1px solid $vertVinted;
+//       }
+//     }
+//   }
+// }

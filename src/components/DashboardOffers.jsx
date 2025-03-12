@@ -40,7 +40,15 @@ const DashboardOffers = ({ faTrash }) => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="boxDashboardOffers">
+    <table className="boxDashboardOffers">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Offer price:</th>
+          <th>Offer Id:</th>
+          <th>Offer name:</th>
+        </tr>
+      </thead>
       {data?.map((offer, key = offer._id) => {
         console.log("offer in DashboardOffers:", offer);
         return (
@@ -58,7 +66,7 @@ const DashboardOffers = ({ faTrash }) => {
         );
       })}
       <InfoUserErrorMessage />
-    </div>
+    </table>
   );
 };
 

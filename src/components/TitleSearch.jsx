@@ -14,9 +14,10 @@ const TitleSearch = ({
   // console.log("valueNum in TitleSearch:", valueNum);
   return (
     <div className="boxTitleSearch">
-      <h2>{title}</h2>
+      {/* <h2>{title}</h2> */}
       <div className="containerBoxSearch">
         <div className="boxSearch">
+          <FontAwesomeIcon icon="magnifying-glass" className="searchIcons" />
           <Input
             id="search"
             type="search"
@@ -33,7 +34,6 @@ const TitleSearch = ({
               setState={setStateNum}
             />
           )}
-          <FontAwesomeIcon icon="magnifying-glass" className="searchIcons" />
         </div>
       </div>
     </div>

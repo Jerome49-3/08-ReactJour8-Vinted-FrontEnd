@@ -1,13 +1,12 @@
 footer {
   width: 100%;
-  min-height: 10vh;
-  max-height: 10vh;
+  height: 40px;
   position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   bottom: 0;
-  z-index: 600;
   @include flexCenter;
   background-color: $backgHeaderFooter;
+  box-shadow: 0px 0px 1px $black, 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black;
 
   ul {
     @include flexCenter;

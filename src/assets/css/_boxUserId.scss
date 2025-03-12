@@ -3,7 +3,7 @@
   gap: 20px;
   width: 100%;
   height: 100%;
-
+  padding: 90px 0px 50px 0px;
   // .top {
   //   @include flexCenter;
 
@@ -17,14 +17,15 @@
     gap: 20px;
     padding-bottom: 10px;
     height: 100%;
+    width: 100%;
 
     .left {
-      @include flexColCenter;
+      @include flexColStart;
       gap: 5px;
 
       & img {
-        width: 380px !important;
-        height: 380px !important;
+        width: 100%;
+        height: 100%;
         -o-object-fit: cover;
         object-fit: cover;
         border-radius: 5px;
@@ -69,6 +70,17 @@
       .boxEmailIsConfirmed {
         @include flexBetween;
         width: 100%;
+      }
+
+      .boxUsername,
+      .boxEmail,
+      .boxIsAdmin,
+      .boxNewsletter,
+      .boxDate,
+      .boxId {
+        & label {
+          @include flexColStart;
+        }
       }
 
       .boxUsername,
@@ -130,24 +142,26 @@
   }
 }
 
-@media screen and (min-width: 1224px) {
+// BREAKPOINTS
+// @media all and (min-width : 576px) {}
+
+// @media all and (min-width : 768px) {}
+
+// @media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {
   .boxUserId {
     .wrapper {
-
       .bottom {
         flex-direction: row;
 
-        .left {
-          & img {
-            width: 400px;
-            height: 400px;
-          }
-        }
-
-        .right div label {
-          @include flexColStart;
+        .left,
+        .right {
+          height: 95%;
         }
       }
     }
   }
 }
+
+// @media all and (min-width : 1400px) {}

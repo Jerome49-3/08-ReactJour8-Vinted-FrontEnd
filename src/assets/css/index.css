@@ -93,8 +93,7 @@ video {
   box-sizing: border-box;
 }
 html,
-body,
-div#root {
+body {
   width: 100%;
   height: 100%;
 }
@@ -306,6 +305,14 @@ a p {
   color: #2db0ba;
 }
 
-a:visited {
-  color: #2db0ba;
+div#root {
+  @media all and (min-width: 1200px) {
+    height: 100vh;
+  }
+}
+.mainLayout {
+  @media all and (min-width: 1200px) {
+    height: 100vh;
+    width: 100%;
+  }
 }

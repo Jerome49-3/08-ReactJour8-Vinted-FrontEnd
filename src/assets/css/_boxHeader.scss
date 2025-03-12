@@ -4,8 +4,7 @@ header {
   @include flexCenter;
   @include boxShadow;
   background-color: var(--backgHeader);
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 600;
 
@@ -235,8 +234,7 @@ header {
 
 @media all and (min-width : 1200px) {
   header {
-    min-height: 10vh;
-    max-height: 10vh;
+    height: 40px;
 
     .wrapper {
       .topHeader {

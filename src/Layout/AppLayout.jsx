@@ -27,9 +27,9 @@ const AppLayout = ({
         showFilter={showFilter}
         setShowFilter={setShowFilter}
       />
-      <>
+      <main className="mainLayout">
         <Outlet />
-      </>
+      </main>
       <Footer />
     </>
   );

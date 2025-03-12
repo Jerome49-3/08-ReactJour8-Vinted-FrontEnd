@@ -6,7 +6,7 @@ import { useUser } from "../assets/lib/userFunc";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
 
-const LastSales = ({ searchTransactions, numberCommand }) => {
+const DashboardSales = ({ searchTransactions, numberCommand }) => {
   // console.log(
   //   "searchPrice in LastSales:",
   //   searchPrice,
@@ -78,4 +78,4 @@ const LastSales = ({ searchTransactions, numberCommand }) => {
   );
 };
 
-export default LastSales;
+export default DashboardSales;

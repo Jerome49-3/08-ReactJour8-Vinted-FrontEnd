@@ -45,7 +45,15 @@ const DashboardMessages = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="boxMessagesContacts">
+    <table className="boxMessagesContacts">
+      <thead>
+        <tr>
+          <th>Username:</th>
+          <th>Contact's message:</th>
+          <th>Email:</th>
+          <th>Date:</th>
+        </tr>
+      </thead>
       {data.map((messg, index) => {
         const id = messg._id;
         return (
@@ -61,7 +69,7 @@ const DashboardMessages = () => {
           </Link>
         );
       })}
-    </div>
+    </table>
   );
 };
 

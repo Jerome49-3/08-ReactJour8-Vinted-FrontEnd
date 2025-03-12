@@ -7,7 +7,7 @@ import { useUser } from "../assets/lib/userFunc";
 import Image from "./Image";
 import Loading from "./Loading";
 
-const LastUsers = ({
+const DashboardUsers = ({
   faNewspaper,
   faXmark,
   faUserTie,
@@ -54,42 +54,50 @@ const LastUsers = ({
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="boxLastUsers">
+    <table className="boxLastUsers">
+      <thead>
+        <tr>
+          <th className="username">Username:</th>
+          <th className="avatar">Avatar:</th>
+          <th className="email">Email:</th>
+          <th className="news">Newsletter:</th>
+          <th className="date">Date:</th>
+          <th className="isAdmin">Admin:</th>
+        </tr>
+      </thead>
       {data.map((user, key = user.id) => {
         // console.log("user in LastUsers:", user);
         return (
-          <div className="boxUsers" key={key}>
-            <Link to={`/userId/${user.id}`}>
-              <div className="username">{user?.account?.username}</div>
-              <div className="avatar">
-                {user?.account?.avatar?.secure_url ? (
-                  <Image src={user?.account?.avatar?.secure_url} alt="avatar" />
-                ) : (
-                  <Image src={user?.account?.avatar} alt="avatar" />
-                )}
-              </div>
-              <div className="email">{user?.email}</div>
-              {user.newsletter === true ? (
-                <FontAwesomeIcon icon={faNewspaper} className="news" />
+          <Link to={`/userId/${user.id}`} className="boxUsers" key={key}>
+            <div className="username">{user?.account?.username}</div>
+            <div className="avatar">
+              {user?.account?.avatar?.secure_url ? (
+                <Image src={user?.account?.avatar?.secure_url} alt="avatar" />
               ) : (
-                <FontAwesomeIcon icon={faXmark} className="news" />
+                <Image src={user?.account?.avatar} alt="avatar" />
               )}
-              {user.date ? (
-                <div className="date">{user?.date}</div>
-              ) : (
-                <div className="date">no date</div>
-              )}
-              {user.isAdmin === true ? (
-                <FontAwesomeIcon icon={faUserTie} className="isAdmin" />
-              ) : (
-                <FontAwesomeIcon icon={faUser} className="isAdmin" />
-              )}
-            </Link>
-          </div>
+            </div>
+            <div className="email">{user?.email}</div>
+            {user.newsletter === true ? (
+              <FontAwesomeIcon icon={faNewspaper} className="news" />
+            ) : (
+              <FontAwesomeIcon icon={faXmark} className="news" />
+            )}
+            {user.date ? (
+              <div className="date">{user?.date}</div>
+            ) : (
+              <div className="date">no date</div>
+            )}
+            {user.isAdmin === true ? (
+              <FontAwesomeIcon icon={faUserTie} className="isAdmin" />
+            ) : (
+              <FontAwesomeIcon icon={faUser} className="isAdmin" />
+            )}
+          </Link>
         );
       })}
-    </div>
+    </table>
   );
 };
 
-export default LastUsers;
+export default DashboardUsers;

@@ -3,7 +3,6 @@
   // border: 2px solid red;
   width: 100%;
   background-color: $backgdPage;
-  padding: 20px;
 
   .wrapper {
     // border: 2px solid blue;
@@ -12,7 +11,8 @@
       @include flexColCenter;
       // border: 2px solid green;
       background-color: $white;
-      padding: 20px;
+      width: 100%;
+      padding: 40px 20px 40px 20px;
 
       & h1 {
         padding: 0 0 10px 0;

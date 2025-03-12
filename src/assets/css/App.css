@@ -141,27 +141,7 @@
   font-weight: 600;
   font-size: 14px;
 }
-
-@media all and (min-width: 1200px) {
-  .boxDashboard,
-  .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper, .boxFormSignUp > .wrapper, header > .wrapper, .boxLogin > .wrapper),
-  .boxNoPurchases,
-  .boxOfferIdUpdateAndDelete,
-  .boxHomeNoOffer,
-  .wrapperNoOffer {
-    height: 80vh;
-  }
-}
-.LayoutApp {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid red;
-  width: 100%;
-  height: 100%;
-}
-
-.wrapper {
+:root .wrapper {
   max-width: 350px;
   margin-left: auto;
   margin-right: auto;
@@ -170,26 +150,26 @@
   justify-content: center;
   align-items: center;
 }
-.wrapper button {
+:root .wrapper button {
   border: none;
   width: 100%;
   cursor: pointer;
   background-color: transparent;
 }
-.wrapper .hide {
+:root .wrapper .hide {
   display: none;
 }
-.wrapper .show {
+:root .wrapper .show {
   display: flex !important;
   color: #2DB0BA;
 }
-.wrapper .boxInfoErrorMessage,
-.wrapper .boxForgot {
+:root .wrapper .boxInfoErrorMessage,
+:root .wrapper .boxForgot {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.wrapper .boxForgotErrorMessage {
+:root .wrapper .boxForgotErrorMessage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -198,48 +178,60 @@
   height: 25px;
   transition: all 1s ease-out;
 }
-.wrapper * .red {
+:root .wrapper * .red {
   color: red;
   font-size: 12px;
   font-weight: 500;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 }
-.wrapper .redInput {
+:root .wrapper .redInput {
   font-size: 12px;
   color: red;
   height: 10px;
 }
-.wrapper .infoTestPayment {
+:root .wrapper .infoTestPayment {
   font-size: 14px;
   color: purple;
   font-weight: 600;
 }
-.wrapper .green {
+:root .wrapper .green {
   color: #2DB0BA;
 }
 @media all and (min-width: 576px) {
-  .wrapper {
+  :root .wrapper {
     max-width: 476px;
   }
 }
 @media all and (min-width: 768px) {
-  .wrapper {
+  :root .wrapper {
     max-width: 668px;
   }
 }
 @media all and (min-width: 992px) {
-  .wrapper {
+  :root .wrapper {
     max-width: 892px;
   }
 }
 @media all and (min-width: 1200px) {
-  .wrapper {
+  :root .wrapper {
     max-width: 1100px;
   }
 }
 @media all and (min-width: 1400px) {
-  .wrapper {
+  :root .wrapper {
     max-width: 1200px;
+  }
+}
+@media all and (min-width: 1200px) {
+  :root .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper, .boxFormSignUp > .wrapper, header > .wrapper, .boxLogin > .wrapper),
+  :root .boxNoPurchases,
+  :root .boxOfferIdUpdateAndDelete,
+  :root .boxHomeNoOffer,
+  :root .boxDashboard,
+  :root .boxShoppingCart,
+  :root .wrapperNoOffer {
+    height: 100vh;
+    padding: 50px 0 60px 0;
   }
 }
 
@@ -801,6 +793,7 @@
 .boxForm {
   width: 100%;
   display: flex;
+  padding: 10px 0 60px 0;
 }
 .boxForm .wrapper {
   padding-bottom: 20px;
@@ -1030,7 +1023,7 @@ header {
   align-items: center;
   box-shadow: 0px 0px 1px #000000, 0.5px 0.5px 1px #000000;
   background-color: var(--backgHeader);
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 600;
 }
@@ -1283,8 +1276,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 @media all and (min-width: 1200px) {
   header {
-    min-height: 10vh;
-    max-height: 10vh;
+    height: 40px;
   }
   header .wrapper .topHeader {
     flex-direction: row;
@@ -1362,7 +1354,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 10px;
+  padding: 55px 0 60px 0;
 }
 .boxHome .noOffers {
   display: flex;
@@ -1590,7 +1582,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 
 .boxOffer {
-  padding: 10px;
   width: 100%;
 }
 .boxOffer .wrapper {
@@ -1856,7 +1847,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   width: 100%;
   background-color: rgba(110, 107, 96, 0.3);
-  padding: 20px;
 }
 .boxShoppingCart .wrapper .shoppingCart {
   display: flex;
@@ -1864,7 +1854,8 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-direction: column;
   background-color: #ffffff;
-  padding: 20px;
+  width: 100%;
+  padding: 40px 20px 40px 20px;
 }
 .boxShoppingCart .wrapper .shoppingCart h1 {
   padding: 0 0 10px 0;
@@ -1978,15 +1969,16 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5px 0 5px;
   height: 30px;
 }
 .boxTitleSearch .containerBoxSearch {
   width: 50%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
+  z-index: 600;
+  position: relative;
 }
 .boxTitleSearch .containerBoxSearch .boxSearch {
   border-top-right-radius: 5px;
@@ -1994,7 +1986,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   width: 20px;
   height: 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 }
 .boxTitleSearch .containerBoxSearch .boxSearch:hover {
@@ -2031,7 +2023,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   color: transparent;
 }
 .boxTitleSearch .containerBoxSearch .boxSearch .searchIcons {
-  padding: 2px 3px 2px 0px;
+  padding: 2px 3px 2px 3px;
 }
 .boxTitleSearch .containerBoxSearch .boxSearch input {
   padding-right: 5px;
@@ -2049,133 +2041,135 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   height: 100%;
   padding: 5px 0px 5px 5px;
 }
+.boxDashboardOffers thead {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  border: 2px solid #2DB0BA;
+  padding: 2px;
+  border-radius: 5px;
+}
+.boxDashboardOffers thead tr {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxDashboardOffers thead tr th {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 25%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+}
+.boxDashboardOffers thead tr th:not(:last-child) {
+  border-right: 2px solid #2DB0BA;
+}
 .boxDashboardOffers .boxOfferDashbord {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  width: 90%;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  border: 2px solid #2DB0BA;
+  background-color: rgba(241, 241, 241, 0.9450980392);
 }
 .boxDashboardOffers .boxOfferDashbord .userName,
 .boxDashboardOffers .boxOfferDashbord .offerName,
 .boxDashboardOffers .boxOfferDashbord .offerPrice,
 .boxDashboardOffers .boxOfferDashbord .offerId {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  width: 25%;
+  padding-left: 5px;
 }
-.boxDashboardOffers .boxOfferDashbord .btnTrash,
 .boxDashboardOffers .boxOfferDashbord .boxLoaded {
   height: 20px;
   width: 20px;
   color: #2DB0BA;
 }
-.boxDashboardOffers .boxOfferDashbord .btnTrash:hover,
 .boxDashboardOffers .boxOfferDashbord .boxLoaded:hover {
   color: red;
 }
-.boxDashboardOffers .boxOfferDashbord .btnTrash:active,
 .boxDashboardOffers .boxOfferDashbord .boxLoaded:active {
   color: purple;
 }
-.boxDashboardOffers .boxOfferDashbord .boxLoaded .loaded {
-  width: 15px;
-  height: 15px;
-}
-.boxDashboardOffers .boxOfferDashbord .offerPrice,
-.boxDashboardOffers .boxOfferDashbord .userName {
-  width: 12.5%;
-}
-.boxDashboardOffers .boxOfferDashbord .offerName,
-.boxDashboardOffers .boxOfferDashbord .offerId {
-  width: 25%;
-}
 
-.boxDashboard {
+.boxMessagesContacts {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.boxDashboard .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
-  gap: 10px;
-}
-.boxDashboard .top,
-.boxDashboard .bottom {
-  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  padding: 5px;
   gap: 5px;
+}
+.boxMessagesContacts thead {
   display: flex;
-  flex-direction: column;
-  height: 40vh;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  border: 2px solid #2DB0BA;
+  padding: 2px;
+  z-index: 10;
 }
-.boxDashboard .top {
-  margin-top: 5px;
+.boxMessagesContacts thead tr {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.boxDashboard .bottom {
-  margin-bottom: 10px;
+.boxMessagesContacts thead tr th {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 25%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 5px;
 }
-.boxDashboard .top .left,
-.boxDashboard .top .right,
-.boxDashboard .bottom .left,
-.boxDashboard .bottom .right {
-  height: 20vh;
+.boxMessagesContacts thead tr th:not(:last-child) {
+  border-right: 2px solid #2DB0BA;
 }
-.boxDashboard .top .left .boxDetails,
-.boxDashboard .top .right .boxDetails,
-.boxDashboard .bottom .left .boxDetails,
-.boxDashboard .bottom .right .boxDetails {
-  height: calc(100% - 25px);
-  max-height: calc(100% - 25px);
-}
-.boxDashboard .top .left .boxDetails,
-.boxDashboard .top .left .boxTitleSearch,
-.boxDashboard .top .right .boxDetails,
-.boxDashboard .top .right .boxTitleSearch,
-.boxDashboard .bottom .left .boxDetails,
-.boxDashboard .bottom .left .boxTitleSearch,
-.boxDashboard .bottom .right .boxDetails,
-.boxDashboard .bottom .right .boxTitleSearch {
-  background-color: rgba(241, 241, 241, 0.9450980392);
+.boxMessagesContacts .boxDetailsMessages {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
   border-radius: 5px;
-  border: 1px solid #2DB0BA;
+  border: 2px solid #2DB0BA;
+}
+.boxMessagesContacts .boxDetailsMessages div {
+  width: 25%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px 5px 5px 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: rgba(241, 241, 241, 0.9450980392);
+}
+.boxMessagesContacts .boxDetailsMessages div:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.boxMessagesContacts .boxDetailsMessages div:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
-@media all and (min-width: 768px) {
-  .boxDashboard .top,
-  .boxDashboard .bottom {
-    flex-direction: row !important;
-  }
-  .boxDashboard .top .left,
-  .boxDashboard .top .right,
-  .boxDashboard .bottom .left,
-  .boxDashboard .bottom .right {
-    width: 50%;
-  }
-  .boxDashboard .top .left,
-  .boxDashboard .top .right,
-  .boxDashboard .bottom .left,
-  .boxDashboard .bottom .right {
-    height: 38vh;
-  }
-  .boxDashboard .top .left .boxDetails,
-  .boxDashboard .top .left .boxTitleSearch,
-  .boxDashboard .top .right .boxDetails,
-  .boxDashboard .top .right .boxTitleSearch,
-  .boxDashboard .bottom .left .boxDetails,
-  .boxDashboard .bottom .left .boxTitleSearch,
-  .boxDashboard .bottom .right .boxDetails,
-  .boxDashboard .bottom .right .boxTitleSearch {
-    background-color: rgba(241, 241, 241, 0.9450980392);
-    border-radius: 5px;
-    border: 1px solid #2DB0BA;
-  }
-}
 .boxLastUsers {
   display: flex;
   justify-content: flex-start;
@@ -2186,14 +2180,45 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   overflow-y: auto;
   height: 100%;
 }
-.boxLastUsers .boxUsers {
+.boxLastUsers thead {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  border: 2px solid #2DB0BA;
+  padding: 2px;
   border-radius: 5px;
 }
-.boxLastUsers .boxUsers a {
+.boxLastUsers thead tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.boxLastUsers thead tr .username,
+.boxLastUsers thead tr .email {
+  width: 30%;
+}
+.boxLastUsers thead tr .news,
+.boxLastUsers thead tr .avatar,
+.boxLastUsers thead tr .date,
+.boxLastUsers thead tr .isAdmin {
+  width: 10%;
+}
+.boxLastUsers thead tr th {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+  height: 100%;
+}
+.boxLastUsers thead tr th:not(:last-child) {
+  border-right: 2px solid #2DB0BA;
+}
+.boxLastUsers a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -2202,69 +2227,185 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   background-color: #FAF9F6;
   border-radius: 5px;
   padding: 2px 5px 2px 5px;
+  border: 2px solid #2DB0BA;
 }
-.boxLastUsers .boxUsers a * {
-  width: 16.6666666667%;
+.boxLastUsers a .username,
+.boxLastUsers a .avatar,
+.boxLastUsers a .email,
+.boxLastUsers a .news,
+.boxLastUsers a .date,
+.boxLastUsers a .isAdmin {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 20px;
 }
-.boxLastUsers .boxUsers a .avatar img {
-  width: 25px;
+.boxLastUsers a .email,
+.boxLastUsers a .username {
+  width: 35%;
+}
+.boxLastUsers a .news,
+.boxLastUsers a .avatar,
+.boxLastUsers a .isAdmin {
+  width: 10%;
+}
+.boxLastUsers a .news,
+.boxLastUsers a .isAdmin {
+  color: #2DB0BA;
+  filter: drop-shadow(0px 0px 0.25px #000000) drop-shadow(0.15px 0.15px 0.5px #000000);
+}
+.boxLastUsers a .avatar img {
+  width: 100%;
   height: 25px;
   -o-object-fit: cover;
   object-fit: cover;
   border-radius: 5px;
-  margin-right: 10px;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 1.5px #000000, 0px 0px 3px #000000;
+  margin-left: -5px;
 }
-.boxLastUsers .boxUsers a .username {
-  padding-left: 4px;
-  flex: 2;
+.boxLastUsers a .username {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.boxLastUsers .boxUsers a .username:hover {
+.boxLastUsers a .username:hover {
   overflow: visible;
 }
-.boxLastUsers .boxUsers a .avatar {
-  width: 40px;
-}
-.boxLastUsers .boxUsers a .email {
-  flex: 6;
+.boxLastUsers a .email {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-.boxLastUsers .boxUsers a .date {
-  display: block;
-  width: 80px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.boxLastUsers .boxUsers a .isAdmin,
-.boxLastUsers .boxUsers a .news {
-  width: 20px;
-}
-.boxLastUsers .boxUsers a .isAdmin {
-  padding-right: 4px;
-}
-.boxLastUsers .boxUsers a div {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  padding: 0px;
 }
 
-@media all and (min-width: 768px) {
-  .boxUsers div {
-    display: flex;
-    justify-content: space-around;
-  }
-  .boxUsers .email {
-    flex: 1;
-  }
+.boxLastSales {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 2.5px 0 2.5px;
+  width: 100%;
 }
+.boxLastSales thead {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  border: 2px solid #2DB0BA;
+  border-radius: 5px;
+  padding: 2px;
+  position: relative;
+  z-index: 10;
+  margin-top: 2.5px;
+}
+.boxLastSales thead tr {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxLastSales thead tr th {
+  width: 20%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 5px;
+}
+.boxLastSales thead tr th:not(:last-child) {
+  border-right: 2px solid #2DB0BA;
+}
+.boxLastSales .boxTansactions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgba(241, 241, 241, 0.9450980392);
+  overflow-y: auto;
+  border: 2px solid #2DB0BA;
+}
+.boxLastSales .boxTansactions a {
+  width: 100%;
+  color: #ffffff;
+}
+.boxLastSales .boxTansactions a tr {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.boxLastSales .boxTansactions a tr td {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 20%;
+  padding-left: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.boxLastSales .boxTansactions a tr .numCmd {
+  padding-left: 6px;
+}
+
+.boxDashboard {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  width: 100%;
+}
+.boxDashboard .wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 100vh;
+  padding: 0px !important;
+}
+.boxDashboard .wrapper .leftPannel {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100%;
+  background-color: rgba(241, 241, 241, 0.9450980392);
+  border-radius: 5px;
+  padding: 10px 5px 10px 5px;
+}
+.boxDashboard .wrapper .leftPannel div {
+  width: 100%;
+}
+.boxDashboard .wrapper .leftPannel div a p {
+  letter-spacing: 2.5px;
+  font-weight: 800;
+  color: #c9c9c9;
+  font-size: 16px;
+}
+.boxDashboard .wrapper .leftPannel div a p:hover {
+  color: #b0faff;
+}
+.boxDashboard .wrapper .rightOutlet {
+  width: 70%;
+  height: 100%;
+}
+
 .boxUserId {
   display: flex;
   justify-content: center;
@@ -2273,6 +2414,7 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   gap: 20px;
   width: 100%;
   height: 100%;
+  padding: 90px 0px 50px 0px;
 }
 .boxUserId .bottom {
   display: flex;
@@ -2282,17 +2424,18 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   gap: 20px;
   padding-bottom: 10px;
   height: 100%;
+  width: 100%;
 }
 .boxUserId .bottom .left {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   gap: 5px;
 }
 .boxUserId .bottom .left img {
-  width: 380px !important;
-  height: 380px !important;
+  width: 100%;
+  height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
   border-radius: 5px;
@@ -2356,6 +2499,17 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+.boxUserId .bottom .right .boxUsername label,
+.boxUserId .bottom .right .boxEmail label,
+.boxUserId .bottom .right .boxIsAdmin label,
+.boxUserId .bottom .right .boxNewsletter label,
+.boxUserId .bottom .right .boxDate label,
+.boxUserId .bottom .right .boxId label {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .boxUserId .bottom .right .boxUsername,
 .boxUserId .bottom .right .boxEmail,
@@ -2423,19 +2577,13 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   min-width: 50%;
 }
 
-@media screen and (min-width: 1224px) {
+@media all and (min-width: 1200px) {
   .boxUserId .wrapper .bottom {
     flex-direction: row;
   }
-  .boxUserId .wrapper .bottom .left img {
-    width: 400px;
-    height: 400px;
-  }
-  .boxUserId .wrapper .bottom .right div label {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
+  .boxUserId .wrapper .bottom .left,
+  .boxUserId .wrapper .bottom .right {
+    height: 95%;
   }
 }
 .boxPriceMinMax {
@@ -2741,75 +2889,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 }
 
-.boxLastSales {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 5px;
-  padding: 0 2.5px 0 2.5px;
-  width: 100%;
-}
-.boxLastSales thead {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  border: 2px solid #2DB0BA;
-  border-radius: 5px;
-  padding: 2px;
-  position: relative;
-  z-index: 10;
-  margin-top: 2.5px;
-}
-.boxLastSales thead tr {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.boxLastSales thead tr th {
-  width: 20%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.boxLastSales thead tr th:not(:last-child) {
-  border-right: 2px solid #2DB0BA;
-}
-.boxLastSales .boxTansactions {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  width: 98%;
-  border-radius: 5px;
-  padding: 2px;
-  background-color: #343434;
-  overflow-y: auto;
-}
-.boxLastSales .boxTansactions a {
-  width: 100%;
-  color: #ffffff;
-}
-.boxLastSales .boxTansactions a tr {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.boxLastSales .boxTansactions a tr td {
-  text-align: center;
-  width: 20%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  border-color: 2px solid white !important;
-}
-.boxLastSales .boxTansactions a tr .numCmd {
-  padding-left: 6px;
-}
-
 .boxTransactionId {
   width: 100%;
 }
@@ -3063,39 +3142,6 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   gap: 10px;
 }
 
-.boxMessagesContacts {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  height: 100%;
-  overflow-x: auto;
-  padding: 5px;
-}
-.boxMessagesContacts .boxDetailsMessages {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 98%;
-  border-radius: 5px;
-}
-.boxMessagesContacts .boxDetailsMessages div {
-  width: 25%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 2px 5px 2px 5px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.boxMessagesContacts .boxDetailsMessages div:nth-child(3) {
-  width: 30%;
-}
-.boxMessagesContacts .boxDetailsMessages div:nth-child(4) {
-  width: 15%;
-}
-
 .boxMessagesContactId {
   width: 100%;
   height: 100%;
@@ -3194,6 +3240,29 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
   align-items: center;
   flex-wrap: wrap;
   border: 2px solid red;
+  gap: 1px;
+  padding-bottom: 20px;
+}
+.boxOfferIdUpdateAndDelete .wrapper .left .boxPictures {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: calc(100% / (var(--imgsLength)));
+}
+.boxOfferIdUpdateAndDelete .wrapper .left .boxPictures img {
+  height: 95%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.boxOfferIdUpdateAndDelete .wrapper .left .boxInputPictures {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5%;
+  width: 100%;
 }
 .boxOfferIdUpdateAndDelete .wrapper .right {
   border: 2px solid green;
@@ -3215,15 +3284,15 @@ header .wrapper .bottomHeader .dotBarPrice:hover .dotBarLabel {
 }
 footer {
   width: 100%;
-  min-height: 10vh;
-  max-height: 10vh;
-  position: sticky;
+  height: 40px;
+  position: -webkit-sticky;
+  position: fixed;
   bottom: 0;
-  z-index: 600;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #c9c9c9;
+  box-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 }
 footer ul {
   display: flex;

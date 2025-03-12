@@ -48,6 +48,10 @@ import Aside from "./components/Aside";
 import AppLayout from "./Layout/AppLayout";
 import ErrorPage from "./errorPage/ErrorPage";
 import Profile from "./components/Profile";
+import DashboardUsers from "./components/DashboardUsers";
+import DashboardMessages from "./components/DashboardMessages";
+import DashboardOffers from "./components/DashboardOffers";
+import DashboardSales from "./components/DashboardSales";
 //Layout
 import PrivateLayout from "./Layout/PrivateLayout";
 
@@ -91,6 +95,13 @@ function App() {
   const [search, setSearch] = useState("");
   // console.log("search in app:", search);
   const [type, setType] = useState("password");
+  const [searchUsers, setSearchUsers] = useState("");
+  const [numberCommand, setNumberCommand] = useState("");
+  console.log("numberCommand in app:", numberCommand);
+  const [searchOffer, setSearchOffer] = useState("");
+  const [searchMessage, setSearchMessage] = useState("");
+  const [searchTransactions, setSearchTransactions] = useState("");
+  console.log("searchTransactions in app:", searchTransactions);
   const [dataShoppingCart, setDataShoppingCart] = useState(() => {
     const savedShop = Cookies.get("vintedShoppingCart");
     try {
@@ -170,7 +181,7 @@ function App() {
           <Route element={<PrivateLayout />}>
             <Route path="contact" element={<Contact />} />
             <Route
-              path="dashboard"
+              path="dashboard/*"
               element={
                 <Dashboard
                   faNewspaper={faNewspaper}
@@ -178,9 +189,41 @@ function App() {
                   faUserTie={faUserTie}
                   faUser={faUser}
                   search={search}
+                  searchUsers={searchUsers}
+                  numberCommand={numberCommand}
+                  setNumberCommand={setNumberCommand}
+                  searchTransactions={searchTransactions}
+                  setSearchTransactions={setSearchTransactions}
+                  setSearchUsers={setSearchUsers}
                 />
               }
-            />
+            >
+              <Route
+                path="dashUsers/"
+                element={
+                  <DashboardUsers
+                    faNewspaper={faNewspaper}
+                    faXmark={faXmark}
+                    faUserTie={faUserTie}
+                    faUser={faUser}
+                    searchUsers={searchUsers}
+                  />
+                }
+              />
+              <Route path="dashMessages/" element={<DashboardMessages />} />
+              <Route path="dashOffers/" element={<DashboardOffers />} />
+              <Route
+                path="dashSales/"
+                element={
+                  <DashboardSales
+                    numberCommand={numberCommand}
+                    setNumberCommand={setNumberCommand}
+                    searchTransactions={searchTransactions}
+                    setSearchTransactions={setSearchTransactions}
+                  />
+                }
+              />
+            </Route>
             <Route path="chat" element={<Chat />} />
             <Route path="profile/:id" element={<Profile />} />
             <Route
