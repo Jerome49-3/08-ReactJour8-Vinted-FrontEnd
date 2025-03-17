@@ -28,6 +28,7 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
   const [pictures, setPictures] = useState([]);
   console.log("pictures in OfferIdUpdateAndDelete:", pictures);
   const [productDetails, setProductDetails] = useState([]);
+  console.log("productDetails in OfferIdUpdateAndDelete:", productDetails);
   // console.log("productDetails in OfferIdUpdateAndDelete:", productDetails);
   const [imgsNbr, setImgsNbr] = useState(null);
 
@@ -42,8 +43,6 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
     setErrorMessage,
     setAvatarOffer,
     avatarOffer,
-    showTrash,
-    setShowTrash,
   } = useUser();
   console.log("avatarOffer in OfferIdUpdateAndDelete:", avatarOffer);
   useEffect(() => {
@@ -87,20 +86,21 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
   }, [data?.product_pictures]);
 
   const handleUpdateOffer = async (e) => {
-    setIsLoading(true);
     e.preventDefault();
     const formData = new FormData();
     pictures.forEach(function (file) {
+      console.log("file instanceof Blob:", file instanceof Blob);
       if (file instanceof Blob) {
         formData.append("pictures", file);
       }
     });
-
     formData.append("productName", productName);
     formData.append("productPrice", productPrice);
     formData.append("productDescription", productDescription);
+    formData.append("productDetails", productDetails);
 
     try {
+      setIsSended(true);
       const response = await axios.put(
         `http://localhost:3000/offer/${id}`,
         formData
@@ -108,12 +108,16 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
       if (response.data) {
         console.log("response.data:", response.data);
         setData(response.data);
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsSended(false);
+        }, 3000);
       }
     } catch (error) {
       console.log(error.message);
       setErrorMessage(error.message);
-      setIsSended(false);
+      setTimeout(() => {
+        setIsSended(false);
+      }, 3000);
     }
   };
 
@@ -134,7 +138,9 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
     } catch (error) {
       console.log(error.response.data);
       setErrorMessage(error.message);
-      setIsSended(false);
+      setTimeout(() => {
+        setIsSended(false);
+      }, 3000);
     }
   };
 

@@ -1,14 +1,12 @@
-import { Fragment } from "react";
-
 const InputArrayObject = ({ id, arrayObject, setArrayObject }) => {
   const handleChangeArrObject = (e, index, detail) => {
-    // console.log(
-    //   "index in handleChangeArrObject:",
-    //   index,
-    //   "\n:",
-    //   "detail in handleChangeArrObject:",
-    //   detail
-    // );
+    console.log(
+      "index in handleChangeArrObject:",
+      index,
+      "\n",
+      "detail in handleChangeArrObject:",
+      detail
+    );
     const key = Object.keys(detail)[0];
     const newArrayObject = [...arrayObject];
     newArrayObject.splice(index, 1, {
@@ -26,25 +24,22 @@ const InputArrayObject = ({ id, arrayObject, setArrayObject }) => {
         //   Object.keys(detail)[0]
         // );
         return (
-          <Fragment key={index}>
-            <label htmlFor={id} className="classLabelInput">
-              {Object.keys(detail) + ":"}
-              <input
-                type="text"
-                id={id}
-                name={id}
-                placeholder={Object.values(detail)}
-                value={Object.values(arrayObject[index]) || ""}
-                onChange={(e) => handleChangeArrObject(e, index, detail)}
-              />
-            </label>
+          <label
+            htmlFor={`labelObject_${index}`}
+            className="classLabelInput"
+            key={index}
+          >
+            {Object.keys(detail) + ":"}
             <input
-              id={`arrayObject_${index}`}
-              type="hidden"
-              name={`arrayObject_${index}`}
-              value={index}
+              type="text"
+              id={`inputObject_${index}`}
+              name={`inputObject_${index}`}
+              placeholder={Object.values(detail)}
+              value={Object.values(detail) || ""}
+              onChange={(e) => handleChangeArrObject(e, index, detail)}
+              autoComplete="on"
             />
-          </Fragment>
+          </label>
         );
       })}
     </>

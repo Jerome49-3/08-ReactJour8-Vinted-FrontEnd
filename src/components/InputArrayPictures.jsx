@@ -10,16 +10,15 @@ const InputArrayPictures = ({
 }) => {
   const handleChangeInputPictures = (e, index) => {
     // console.log("index on handleChangeInputPictures:", index);
-    const endIndex = index + 1;
     console.log(e.target.files);
     const file = e.target.files[0];
     if (file) {
       const newPictures = [...pictures];
-      newPictures.splice(index, endIndex, file);
+      newPictures.splice(index, 1, file);
       setPictures(newPictures);
 
       const newAvatars = [...avatarOffer];
-      newAvatars.splice(index, endIndex, URL.createObjectURL(file));
+      newAvatars.splice(index, 1, URL.createObjectURL(file));
       setAvatarOffer(newAvatars);
     }
   };

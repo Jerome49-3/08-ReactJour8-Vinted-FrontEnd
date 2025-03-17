@@ -3,7 +3,7 @@ import transformStr from "../assets/lib/transformStr";
 const TextArea = ({
   setState,
   value,
-  name,
+  id,
   placeholder,
   onKeyPress,
   onKeyDown,
@@ -17,12 +17,12 @@ const TextArea = ({
   labelTxt,
 }) => {
   return (
-    <label htmlFor={name} className="labelTxtContact">
+    <label htmlFor={id} className="labelTxtContact">
       {labelTxt}
       <textarea
         value={value}
-        name={name}
-        id={name}
+        name={id}
+        id={id}
         placeholder={placeholder}
         onKeyPress={onKeyPress}
         onKeyDown={onKeyDown}

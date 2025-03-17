@@ -5,17 +5,17 @@ import { useUser } from "../assets/lib/userFunc";
 const Trash = ({ faTrash, handleClick, id }) => {
   const { showTrash, setShowTrash, isSended, setIsSended, location } =
     useUser();
-  console.log(
-    "showTrash on Trash:",
-    showTrash,
-    "\n",
-    "isSended on Trash:",
-    isSended
-  );
-  console.log("id on Trash:", id);
-  console.log("`/offerUpdate/${id}` on Trash:", `/offerUpdate/${id}`);
+  // console.log(
+  //   "showTrash on Trash:",
+  //   showTrash,
+  //   "\n",
+  //   "isSended on Trash:",
+  //   isSended
+  // );
+  // console.log("id on Trash:", id);
+  // console.log("`/offerUpdate/${id}` on Trash:", `/offerUpdate/${id}`);
   useEffect(() => {
-    console.log("location in Trash:", location);
+    // console.log("location in Trash:", location);
     if (
       location.pathname === "/myOffers" ||
       location.pathname === "/dashboard" ||
