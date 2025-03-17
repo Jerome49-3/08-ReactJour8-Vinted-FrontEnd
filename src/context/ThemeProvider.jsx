@@ -6,40 +6,32 @@ export const ThemeContext = createContext();
 
 export default function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
-  console.log("darkMode in ThemeProvider:", darkMode);
 
   useEffect(() => {
-    const cookieDarkLight = Cookies.get("vintaidAppTheme");
+    const cookieTheme = Cookies.get("vintaidTheme");
     // console.log(
-    //   "cookieDarkLight",
-    //   cookieDarkLight,
+    //   "cookieTheme",
+    //   cookieTheme,
     //   "\n",
-    //   "typeof cookieDarkLight",
-    //   typeof cookieDarkLight
+    //   "typeof cookieTheme",
+    //   typeof cookieTheme
     // );
-
-    if (cookieDarkLight === "dark") {
+    if (cookieTheme === "true") {
       setDarkMode(true);
-    } else {
-      setDarkMode(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (darkMode) {
       document.body.classList.add("dark");
       document.body.classList.remove("light");
     } else {
-      document.body.classList.add("light");
+      setDarkMode(false);
       document.body.classList.remove("dark");
+      document.body.classList.add("light");
     }
   }, [darkMode]);
 
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    Cookies.set("vintaidAppTheme", darkMode ? "dark" : "light", {
-      expires: 15,
-    });
+    const theme = !darkMode;
+    // console.log("theme in themeProvider:", theme);
+    setDarkMode(theme);
+    Cookies.set("vintaidTheme", theme ? "true" : "false", { expires: 15 });
   };
 
   return (

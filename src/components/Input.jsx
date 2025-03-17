@@ -8,7 +8,7 @@ const Input = ({
   type,
   placeholder,
   setState,
-  label,
+  labelTxt,
   min,
   max,
   classInput,
@@ -54,7 +54,7 @@ const Input = ({
   return (
     <>
       <label htmlFor={id} className="classLabelInput">
-        {label}
+        {labelTxt}
         <input
           id={id}
           type={type}

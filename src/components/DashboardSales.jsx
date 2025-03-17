@@ -14,7 +14,7 @@ const DashboardSales = ({ searchTransactions, numberCommand }) => {
   //   "searchTransactions in LastSales:",
   //   searchTransactions
   // );
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   // console.log("data in LastSales:", data);
   const [isLoading, setIsLoading] = useState(true);
   const { axios } = useUser();

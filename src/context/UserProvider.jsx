@@ -18,7 +18,6 @@ export const UserProvider = ({ children }) => {
   const [infoUser, setInfoUser] = useState("");
   const [showTrash, setShowTrash] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [data, setData] = useState(null);
   // console.log("showSearch in userProvider:", showSearch);
   let location = useLocation();
   // console.log("location.pathname in userProvider:", location.pathname);
@@ -266,8 +265,6 @@ export const UserProvider = ({ children }) => {
         showTrash,
         setShowTrash,
         location,
-        data,
-        setData,
         showHero,
         avatarOffer,
         setAvatarOffer,

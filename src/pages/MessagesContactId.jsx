@@ -10,7 +10,7 @@ import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 const MessagesContactId = () => {
   const { id } = useParams();
   console.log("id on MessagesContactId:", id);
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   console.log("data on MessagesContactId:", data);
   const [reply, setReply] = useState("");
   console.log("reply on MessagesContactId:", reply);

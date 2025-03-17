@@ -14,7 +14,7 @@ const DashboardUsers = ({
   faUser,
   searchUsers,
 }) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   // console.log("data in LastUsers:", data);
   // console.log("searchUsers in LastUsers:", searchUsers);
   const [isLoading, setIsLoading] = useState(true);

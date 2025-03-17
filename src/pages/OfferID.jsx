@@ -27,7 +27,7 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
   const { id } = useParams();
   // console.log("id1 in /offers/${id}:", id);
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const [imgsNbr, setImgsNbr] = useState(0);
   // console.log("data in OfferId:", data);
   let [price, setPrice] = useState(0);
@@ -42,7 +42,9 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
     // console.log("id inside useEffect in /offers/${id}:", id);
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/offers/${id}`);
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_URL_OFFERID}${id}`
+        );
         console.log("response in /offers/${id}:", response);
         if (response?.data) {
           setData(response.data);

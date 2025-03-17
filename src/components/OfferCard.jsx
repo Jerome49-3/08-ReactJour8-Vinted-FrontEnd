@@ -1,6 +1,6 @@
 /* eslint-disable no-unsafe-optional-chaining */
 import { Link, useLocation } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useUser } from "../assets/lib/userFunc";
 import bannerSold from "../assets/images/bannerSolded.png";
 import fetchDeleteOffer from "../assets/fetchDataLib/DELETE/fetchDeleteOffer";
@@ -13,8 +13,9 @@ import Trash from "./Trash";
 import noImg from "../assets/images/no-image.jpg";
 
 const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
-  const { fav, axios, setInfoUser, setIsSended, data, setData } = useUser();
-  console.log("data ds OfferCard:", data);
+  const { fav, axios, setInfoUser, setIsSended } = useUser();
+  const [data, setData] = useState(null);
+  // console.log("data ds OfferCard:", data);
   // console.log("fav ds OfferCard:", fav);
   let location = useLocation();
   // console.log("location ds OfferCard:", location);
@@ -37,7 +38,7 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
           : "boxOfferCard"
       }
     >
-      {(location.pathname === "/favorites" ? fav : data).map((article) => {
+      {(location.pathname === "/favorites" ? fav : data)?.map((article) => {
         // const isFavorite = fav.some((favArticle) => favArticle?._id);
         // console.log("article ds .boxOffer:", article);
         const offerId = article._id;

@@ -4,11 +4,15 @@
   flex-wrap: wrap;
   width: 100%;
   gap: 20px;
-
   // .wrapper {}
 
   & a {
     width: 100%;
+
+    &:hover {
+      -webkit-animation: scaleArticle 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+      animation: scaleArticle 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+    }
 
     & article {
       display: flex;
@@ -22,11 +26,6 @@
       // border: 2px solid crimson;
       position: relative;
       font-size: 1.15rem;
-
-      &:hover {
-        -webkit-animation: scaleArticle 01s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
-        animation: scaleArticle 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
-      }
 
       .boxImgArticle {
         width: 100%;

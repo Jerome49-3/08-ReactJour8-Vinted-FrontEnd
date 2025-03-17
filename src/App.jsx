@@ -2,7 +2,9 @@
 // eslint-disable-next-line no-unused-vars
 import * as dotenv from "dotenv";
 import "./assets/css/App.css";
-import { Routes, Route } from "react-router-dom";
+//Provider
+import { UserProvider } from "./context/UserProvider";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faMagnifyingGlass,
@@ -97,11 +99,11 @@ function App() {
   const [type, setType] = useState("password");
   const [searchUsers, setSearchUsers] = useState("");
   const [numberCommand, setNumberCommand] = useState("");
-  console.log("numberCommand in app:", numberCommand);
+  // console.log("numberCommand in app:", numberCommand);
   const [searchOffer, setSearchOffer] = useState("");
   const [searchMessage, setSearchMessage] = useState("");
   const [searchTransactions, setSearchTransactions] = useState("");
-  console.log("searchTransactions in app:", searchTransactions);
+  // console.log("searchTransactions in app:", searchTransactions);
   const [dataShoppingCart, setDataShoppingCart] = useState(() => {
     const savedShop = Cookies.get("vintedShoppingCart");
     try {
@@ -112,217 +114,219 @@ function App() {
   });
 
   return (
-    <>
-      <Routes>
-        <Route
-          path="/*"
-          element={
-            <AppLayout
-              showSignUp={showSignUp}
-              setShowSignUp={setShowSignUp}
-              search={search}
-              setSearch={setSearch}
-              showToggleNav={showToggleNav}
-              setShowToggleNav={setShowToggleNav}
-              faFilter={faFilter}
-              showFilter={showFilter}
-              setShowFilter={setShowFilter}
-            />
-          }
-        >
-          <Route path="*" errorElement={<ErrorPage />} />
+    <Router>
+      <UserProvider>
+        <Routes>
           <Route
-            path="login"
+            path="/*"
             element={
-              <Login
-                type={type}
-                setType={setType}
-                faEye={faEye}
-                faEyeSlash={faEyeSlash}
-              />
-            }
-          />
-          <Route path="confirmEmail" element={<ConfirmEmail />} />
-          <Route
-            path="resendEmail"
-            element={<ResendEmail setEmailSended={setEmailSended} />}
-          />
-          <Route
-            path="forgotPassword"
-            element={<ForgotPsswd emailIsConfirmed={emailIsConfirmed} />}
-          />
-          <Route
-            index
-            element={
-              <Home
+              <AppLayout
+                showSignUp={showSignUp}
+                setShowSignUp={setShowSignUp}
                 search={search}
-                faHeart={faHeart}
-                farHeart={farHeart}
+                setSearch={setSearch}
                 showToggleNav={showToggleNav}
                 setShowToggleNav={setShowToggleNav}
-                priceMin={priceMin}
-                priceMax={priceMax}
+                faFilter={faFilter}
                 showFilter={showFilter}
                 setShowFilter={setShowFilter}
               />
             }
-          />
-          <Route
-            path="offers/:id"
-            element={
-              <OfferID
-                setDataShoppingCart={setDataShoppingCart}
-                showImgsModal={showImgsModal}
-                setShowImgsModal={setShowImgsModal}
-                setSrcImgsModal={setSrcImgsModal}
-              />
-            }
-          />
-          <Route element={<PrivateLayout />}>
-            <Route path="contact" element={<Contact />} />
+          >
+            <Route path="*" errorElement={<ErrorPage />} />
             <Route
-              path="dashboard/*"
+              path="login"
               element={
-                <Dashboard
-                  faNewspaper={faNewspaper}
-                  faXmark={faXmark}
-                  faUserTie={faUserTie}
-                  faUser={faUser}
-                  search={search}
-                  searchUsers={searchUsers}
-                  numberCommand={numberCommand}
-                  setNumberCommand={setNumberCommand}
-                  searchTransactions={searchTransactions}
-                  setSearchTransactions={setSearchTransactions}
-                  setSearchUsers={setSearchUsers}
+                <Login
+                  type={type}
+                  setType={setType}
+                  faEye={faEye}
+                  faEyeSlash={faEyeSlash}
                 />
               }
-            >
+            />
+            <Route path="confirmEmail" element={<ConfirmEmail />} />
+            <Route
+              path="resendEmail"
+              element={<ResendEmail setEmailSended={setEmailSended} />}
+            />
+            <Route
+              path="forgotPassword"
+              element={<ForgotPsswd emailIsConfirmed={emailIsConfirmed} />}
+            />
+            <Route
+              index
+              element={
+                <Home
+                  search={search}
+                  faHeart={faHeart}
+                  farHeart={farHeart}
+                  showToggleNav={showToggleNav}
+                  setShowToggleNav={setShowToggleNav}
+                  priceMin={priceMin}
+                  priceMax={priceMax}
+                  showFilter={showFilter}
+                  setShowFilter={setShowFilter}
+                />
+              }
+            />
+            <Route
+              path="offers/:id"
+              element={
+                <OfferID
+                  setDataShoppingCart={setDataShoppingCart}
+                  showImgsModal={showImgsModal}
+                  setShowImgsModal={setShowImgsModal}
+                  setSrcImgsModal={setSrcImgsModal}
+                />
+              }
+            />
+            <Route element={<PrivateLayout />}>
+              <Route path="contact" element={<Contact />} />
               <Route
-                path="dashUsers/"
+                path="dashboard/*"
                 element={
-                  <DashboardUsers
+                  <Dashboard
                     faNewspaper={faNewspaper}
                     faXmark={faXmark}
                     faUserTie={faUserTie}
                     faUser={faUser}
+                    search={search}
                     searchUsers={searchUsers}
-                  />
-                }
-              />
-              <Route path="dashMessages/" element={<DashboardMessages />} />
-              <Route path="dashOffers/" element={<DashboardOffers />} />
-              <Route
-                path="dashSales/"
-                element={
-                  <DashboardSales
                     numberCommand={numberCommand}
                     setNumberCommand={setNumberCommand}
                     searchTransactions={searchTransactions}
                     setSearchTransactions={setSearchTransactions}
+                    setSearchUsers={setSearchUsers}
+                  />
+                }
+              >
+                <Route
+                  path="dashUsers/"
+                  element={
+                    <DashboardUsers
+                      faNewspaper={faNewspaper}
+                      faXmark={faXmark}
+                      faUserTie={faUserTie}
+                      faUser={faUser}
+                      searchUsers={searchUsers}
+                    />
+                  }
+                />
+                <Route path="dashMessages/" element={<DashboardMessages />} />
+                <Route path="dashOffers/" element={<DashboardOffers />} />
+                <Route
+                  path="dashSales/"
+                  element={
+                    <DashboardSales
+                      numberCommand={numberCommand}
+                      setNumberCommand={setNumberCommand}
+                      searchTransactions={searchTransactions}
+                      setSearchTransactions={setSearchTransactions}
+                    />
+                  }
+                />
+              </Route>
+              <Route path="chat" element={<Chat />} />
+              <Route path="profile/:id" element={<Profile />} />
+              <Route
+                path="messagesContactId/:id"
+                element={<MessagesContactId />}
+              />
+              <Route
+                path="payment"
+                element={
+                  <Payment
+                    dataShoppingCart={dataShoppingCart}
+                    setDataShoppingCart={setDataShoppingCart}
                   />
                 }
               />
+              <Route
+                path="favorites"
+                element={<Favorites faHeart={faHeart} farHeart={farHeart} />}
+              />
+              <Route
+                path="userId/:id"
+                element={
+                  <UserId
+                    faUserTie={faUserTie}
+                    faNewspaper={faNewspaper}
+                    faXmark={faXmark}
+                    faUser={faUser}
+                  />
+                }
+              />
+              <Route path="transactions/:id" element={<Transactions />} />
+              <Route
+                path="myOffers"
+                element={
+                  <MyOffers
+                    faHeart={faHeart}
+                    farHeart={farHeart}
+                    showNoOffer={showNoOffer}
+                    setShowNoOffer={setShowNoOffer}
+                    faTrash={faTrash}
+                  />
+                }
+              />
+              <Route
+                path="my-purchases"
+                element={
+                  <MyPurchases
+                    faHeart={faHeart}
+                    farHeart={farHeart}
+                    // showNoOffer={showNoOffer}
+                    // setShowNoOffer={setShowNoOffer}
+                  />
+                }
+              />
+              <Route
+                path="publish"
+                element={
+                  <Publish faRotateRight={faRotateRight} faTrash={faTrash} />
+                }
+              />
+              <Route
+                path="offerUpdate/:id"
+                element={<OfferIdUpdateAndDelete faTrash={faTrash} />}
+              />
             </Route>
-            <Route path="chat" element={<Chat />} />
-            <Route path="profile/:id" element={<Profile />} />
-            <Route
-              path="messagesContactId/:id"
-              element={<MessagesContactId />}
-            />
-            <Route
-              path="payment"
-              element={
-                <Payment
-                  dataShoppingCart={dataShoppingCart}
-                  setDataShoppingCart={setDataShoppingCart}
-                />
-              }
-            />
-            <Route
-              path="favorites"
-              element={<Favorites faHeart={faHeart} farHeart={farHeart} />}
-            />
-            <Route
-              path="userId/:id"
-              element={
-                <UserId
-                  faUserTie={faUserTie}
-                  faNewspaper={faNewspaper}
-                  faXmark={faXmark}
-                  faUser={faUser}
-                />
-              }
-            />
-            <Route path="transactions/:id" element={<Transactions />} />
-            <Route
-              path="myOffers"
-              element={
-                <MyOffers
-                  faHeart={faHeart}
-                  farHeart={farHeart}
-                  showNoOffer={showNoOffer}
-                  setShowNoOffer={setShowNoOffer}
-                  faTrash={faTrash}
-                />
-              }
-            />
-            <Route
-              path="my-purchases"
-              element={
-                <MyPurchases
-                  faHeart={faHeart}
-                  farHeart={farHeart}
-                  // showNoOffer={showNoOffer}
-                  // setShowNoOffer={setShowNoOffer}
-                />
-              }
-            />
-            <Route
-              path="publish"
-              element={
-                <Publish faRotateRight={faRotateRight} faTrash={faTrash} />
-              }
-            />
-            <Route
-              path="offerUpdate/:id"
-              element={<OfferIdUpdateAndDelete />}
-            />
           </Route>
-        </Route>
-      </Routes>
-      {showToggleNav && (
-        <Aside
-          search={search}
-          showToggleNav={showToggleNav}
-          setShowToggleNav={setShowToggleNav}
-          priceMin={priceMin}
-          setPriceMin={setPriceMin}
-          priceMax={priceMax}
-          setPriceMax={setPriceMax}
-          showFilter={showFilter}
-          setShowFilter={setShowFilter}
-        />
-      )}
-      {showSignUp && (
-        <SignUp
-          showSignUp={showSignUp}
-          setShowSignUp={setShowSignUp}
-          icon1="eye"
-          icon2="eye-slash"
-          type={type}
-          setType={setType}
-          faCircleXmark={faCircleXmark}
-        />
-      )}
-      {showImgsModal && (
-        <ImgsModal
-          showImgsModal={showImgsModal}
-          setShowImgsModal={setShowImgsModal}
-          srcImgsModal={srcImgsModal}
-        />
-      )}
-    </>
+        </Routes>
+        {showToggleNav && (
+          <Aside
+            search={search}
+            showToggleNav={showToggleNav}
+            setShowToggleNav={setShowToggleNav}
+            priceMin={priceMin}
+            setPriceMin={setPriceMin}
+            priceMax={priceMax}
+            setPriceMax={setPriceMax}
+            showFilter={showFilter}
+            setShowFilter={setShowFilter}
+          />
+        )}
+        {showSignUp && (
+          <SignUp
+            showSignUp={showSignUp}
+            setShowSignUp={setShowSignUp}
+            icon1="eye"
+            icon2="eye-slash"
+            type={type}
+            setType={setType}
+            faCircleXmark={faCircleXmark}
+          />
+        )}
+        {showImgsModal && (
+          <ImgsModal
+            showImgsModal={showImgsModal}
+            setShowImgsModal={setShowImgsModal}
+            srcImgsModal={srcImgsModal}
+          />
+        )}
+      </UserProvider>
+    </Router>
   );
 }
 

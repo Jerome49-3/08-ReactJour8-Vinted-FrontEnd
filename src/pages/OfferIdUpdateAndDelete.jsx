@@ -1,34 +1,40 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useNavigate, useParams } from "react-router-dom";
 import { useUser } from "../assets/lib/userFunc";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
-import { Fragment } from "react";
 //components
 import Image from "../components/Image";
 import Loading from "../components/Loading";
-import InputFileOffer from "../components/InputFileOffer";
+import InputFileOffer from "../components/InputArrayPictures";
 import Input from "../components/Input";
 import TextArea from "../components/TextArea";
+import LoadedInputSubmit from "../components/LoadedInputSubmit";
+//lib
+import InputArrayObject from "../components/InputArrayObject";
+import InputArrayPictures from "../components/InputArrayPictures";
+import Trash from "../components/Trash";
 
-const OfferIdUpdateAndDelete = () => {
+const OfferIdUpdateAndDelete = ({ faTrash }) => {
   const { id } = useParams();
-  // console.log("id in OfferIdUpdateAndDelete:", id);
+  console.log("id in OfferIdUpdateAndDelete:", id);
   const navigate = useNavigate();
   const [productName, setProductName] = useState(null);
+  const [data, setData] = useState(null);
   const [productDescription, setProductDescription] = useState(null);
   const [productPrice, setProductPrice] = useState(null);
+  const [offerSolded, setOfferSolded] = useState(null);
   const [pictures, setPictures] = useState([]);
-  let newPic = [...pictures];
-  const [imgsNbr, setImgsNbr] = useState(null);
   console.log("pictures in OfferIdUpdateAndDelete:", pictures);
+  const [productDetails, setProductDetails] = useState([]);
+  // console.log("productDetails in OfferIdUpdateAndDelete:", productDetails);
+  const [imgsNbr, setImgsNbr] = useState(null);
 
   const {
     setIsSended,
     isSended,
     axios,
-    data,
-    setData,
     setIsLoading,
     isLoading,
     setInfoUser,
@@ -36,29 +42,21 @@ const OfferIdUpdateAndDelete = () => {
     setErrorMessage,
     setAvatarOffer,
     avatarOffer,
+    showTrash,
+    setShowTrash,
   } = useUser();
   console.log("avatarOffer in OfferIdUpdateAndDelete:", avatarOffer);
   useEffect(() => {
     // console.log("id inside useEffect in /offers/${id}:", id);
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/offers/${id}`);
-        console.log("response in /offers/${id}:", response);
-        if (response?.data) {
+        const response = await axios.get(`http://localhost:3000/offer/${id}`);
+        console.log("response in /offer/${id}:", response);
+        if (response) {
           setData(response?.data);
-          if (response?.data?.product_image) {
-            newPic.push(response?.data?.product_image);
-            setPictures(newPic);
-          } else if (response?.data?.product_pictures) {
-            const dataPictures = response?.data?.product_pictures;
-            dataPictures.forEach(function (item) {
-              console.log("item:", item);
-              newPic.push(item);
-              setPictures(newPic);
-              setAvatarOffer(newPic);
-            });
-          }
-          console.log("pictures in axios.get on /offers/${id}:", pictures);
+          setPictures(response?.data?.product_pictures);
+          setAvatarOffer(response?.data?.product_pictures);
+          setProductDetails(response?.data?.product_details);
           setIsLoading(false);
         } else {
           navigate("/");
@@ -81,23 +79,52 @@ const OfferIdUpdateAndDelete = () => {
   useEffect(() => {
     if (data?.product_pictures) {
       const nbrPics = data?.product_pictures.length;
-      console.log("nbrPics:", nbrPics);
+      // console.log("nbrPics in OfferIdUpdateAndDelete:", nbrPics);
       setImgsNbr(
         document.documentElement.style.setProperty("--imgsLength", nbrPics)
       );
     }
   }, [data?.product_pictures]);
 
+  const handleUpdateOffer = async (e) => {
+    setIsLoading(true);
+    e.preventDefault();
+    const formData = new FormData();
+    pictures.forEach(function (file) {
+      if (file instanceof Blob) {
+        formData.append("pictures", file);
+      }
+    });
+
+    formData.append("productName", productName);
+    formData.append("productPrice", productPrice);
+    formData.append("productDescription", productDescription);
+
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/offer/${id}`,
+        formData
+      );
+      if (response.data) {
+        console.log("response.data:", response.data);
+        setData(response.data);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.log(error.message);
+      setErrorMessage(error.message);
+      setIsSended(false);
+    }
+  };
+
   const handleSuppOffers = async (e, data) => {
-    console.log("data?._id in DashboardOffers:", data?._id);
+    // console.log("data?._id in OfferIdUpdateAndDelete:", data?._id);
     const id = data?._id;
     // setIsSended(true);
     e.preventDefault();
     try {
       setIsSended(true);
-      const response = await axios.delete(
-        `http://localhost:3000/offerDelete/${id}`
-      );
+      const response = await axios.delete(`http://localhost:3000/offer/${id}`);
       if (response.data) {
         console.log("response.data:", response.data);
         setData(response.data);
@@ -114,87 +141,75 @@ const OfferIdUpdateAndDelete = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="boxOfferIdUpdateAndDelete">
+    <form
+      className="boxOfferIdUpdateAndDelete"
+      action="POST"
+      onSubmit={handleUpdateOffer}
+    >
       <div className="wrapper">
         <div className="left">
-          {pictures.map((pic, index) => {
-            console.log("pic in OfferIdUpdateAndDelete:", pic);
-            return (
-              <div className="boxPictures" key={index}>
-                <Image
-                  alt="avatarOffer"
-                  src={avatarOffer[index]?.secure_url || avatarOffer[index]}
-                />
-                <label htmlFor="pictures">
-                  Choose your new offer
-                  <input
-                    id="pictures"
-                    name="pictures"
-                    type="file"
-                    onChange={(e, index) => {
-                      console.log("e.target.files:", e.target.files);
-                      console.log(
-                        "e.target.files[0] on inputFile:",
-                        e.target.files[0]
-                      );
-                      console.log("index:", index);
-
-                      const files = e.target.files[0];
-                      const newPictures = newPic.map((pic, i) =>
-                        i === index
-                          ? { ...pic, url: URL.createObjectURL(files) }
-                          : pic
-                      );
-                      console.log("newPictures:", newPictures);
-                      setPictures(newPictures);
-                      setAvatarOffer(newPictures);
-                      // setPictures(e.target.files[0]);
-                      // setAvatarOffer(URL.createObjectURL(e.target.files[0]));
-                    }}
-                  />
-                </label>
-                {/* <InputFileOffer
-                  labelTxt="Change picture"
-                  id="file"
-                  setPictures={setPictures}
-                  setAvatarOffer={setAvatarOffer}
-                  index={index}
-                /> */}
-              </div>
-            );
-          })}
+          <InputArrayPictures
+            labelTxt="Choose your new picture"
+            pictures={pictures}
+            setPictures={setPictures}
+            avatarOffer={avatarOffer}
+            setAvatarOffer={setAvatarOffer}
+          />
         </div>
         <div className="right">
-          <form action="">
+          <div className="boxOfferIdUpdateInput">
             <Input
               type="text"
               id="productName"
-              placeholder="Product name"
-              value={productName}
+              placeholder={data?.product_name}
+              value={productName || ""}
               setState={setProductName}
+              labelTxt="product_name:"
             />
             <Input
               type="number"
               id="productPrice"
-              placeholder="Product price"
-              value={productPrice}
+              placeholder={data?.product_price}
+              value={productPrice || ""}
               setState={setProductPrice}
               min="0"
               max="100000"
+              labelTxt="product_price:"
             />
             <TextArea
               type="text"
               id="productDescription"
-              placeholder="product description"
-              value={productDescription}
+              placeholder={data?.product_description}
+              value={productDescription || ""}
               setState={setProductDescription}
+              labelTxt="product_description:"
             />
-            <div>{data?.offer_solded?.toString()}</div>
-          </form>
+            <Input
+              type="text"
+              id="offerSolded"
+              placeholder={data?.offer_solded?.toString()}
+              value={offerSolded || ""}
+              setState={setOfferSolded}
+              labelTxt="Offer Solded:"
+            />
+            <InputArrayObject
+              id="offerDetails"
+              arrayObject={productDetails}
+              setArrayObject={setProductDetails}
+            />
+            <div className="boxSubmitTrash">
+              <LoadedInputSubmit
+                isSended={isSended}
+                setIsSended={setIsSended}
+                value="Update"
+              />
+              <Trash id={id} faTrash={faTrash} handleClick={handleSuppOffers} />
+            </div>
+          </div>
         </div>
         <InfoUserErrorMessage />
       </div>
-    </div>
+    </form>
   );
 };
 

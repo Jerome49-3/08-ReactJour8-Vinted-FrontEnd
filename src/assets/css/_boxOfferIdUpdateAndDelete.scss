@@ -14,17 +14,29 @@
     .left {
       @include flexCenter;
       flex-wrap: wrap;
-      border: 2px solid red;
+      // border: 2px solid red;
       gap: 1px;
-      padding-bottom: 20px;
 
       .boxPictures {
         width: 100%;
         @include flexColTopStart;
         height: calc(100% / (var(--imgsLength)));
+        position: relative;
+
+        & label {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border: 2px solid $vertVinted;
+          background-color: whitesmoke;
+          color: black;
+          border-radius: 5px;
+          padding: 10px;
+        }
 
         & img {
-          height: 95%;
+          height: 100%;
           width: 100%;
           -o-object-fit: cover;
           object-fit: cover;
@@ -40,8 +52,51 @@
     }
 
     .right {
-      border: 2px solid green;
+      // border: 2px solid green;
+      @include flexCenter;
+      width: 100%;
+      overflow-y: auto;
 
+      .boxOfferIdUpdateInput {
+        width: 100%;
+        gap: 10px;
+        @include flexColCenter;
+        padding: 5px 5px 50px 5px;
+
+        & label {
+          gap: 5px;
+          width: 100%;
+          @include flexColStart;
+
+          & input,
+          & textarea {
+            width: 98%;
+            @include flexColStart;
+          }
+
+          & input[type="submit"] {
+            width: 99%;
+          }
+        }
+      }
+
+      .boxSubmitTrash {
+        width: 100%;
+        @include flexStart;
+
+        .btnTrash {
+          @include btn;
+
+          &:hover svg {
+            color: red;
+          }
+        }
+
+        .btnTrash,
+        .classLabelInput {
+          width: 49.5%;
+        }
+      }
     }
   }
 }
@@ -58,6 +113,7 @@
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
+    padding-top: 5px;
 
     .wrapper {
       flex-direction: row;
@@ -66,6 +122,12 @@
       .right {
         width: calc(100%/2);
         height: 100%;
+      }
+
+      .right {
+        .boxOfferIdUpdateInput {
+          padding: 160px 0px 5px 5px;
+        }
       }
     }
   }

@@ -14,11 +14,11 @@ const TextArea = ({
   required,
   minLength,
   maxLength,
-  labelTitle,
+  labelTxt,
 }) => {
   return (
     <label htmlFor={name} className="labelTxtContact">
-      {labelTitle}
+      {labelTxt}
       <textarea
         value={value}
         name={name}

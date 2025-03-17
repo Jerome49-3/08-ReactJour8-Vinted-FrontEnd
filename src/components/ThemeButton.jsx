@@ -7,7 +7,7 @@ library.add(faMoon, faSun);
 
 const ThemeButton = () => {
   const { toggleTheme, darkMode } = useContext(ThemeContext);
-  // console.log('darkMode in themeButton:', darkMode);
+  // console.log("darkMode in themeButton:", darkMode);
 
   return (
     <>
