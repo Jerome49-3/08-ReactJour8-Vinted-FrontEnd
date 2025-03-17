@@ -1,4 +1,4 @@
-const InputArrayObject = ({ id, arrayObject, setArrayObject }) => {
+const InputArrayObject = ({ arrayObject, setArrayObject }) => {
   const handleChangeArrObject = (e, index, detail) => {
     console.log(
       "index in handleChangeArrObject:",
@@ -9,6 +9,10 @@ const InputArrayObject = ({ id, arrayObject, setArrayObject }) => {
     );
     const key = Object.keys(detail)[0];
     const newArrayObject = [...arrayObject];
+    console.log(
+      "newArrayObject in handleChangeArrObject before .splice():",
+      newArrayObject
+    );
     newArrayObject.splice(index, 1, {
       [key]: e.target.value,
     });
@@ -25,7 +29,7 @@ const InputArrayObject = ({ id, arrayObject, setArrayObject }) => {
         // );
         return (
           <label
-            htmlFor={`labelObject_${index}`}
+            htmlFor={`inputObject_${index}`}
             className="classLabelInput"
             key={index}
           >
