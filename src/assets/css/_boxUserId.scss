@@ -2,7 +2,6 @@
   @include flexColCenter;
   gap: 20px;
   width: 100%;
-  height: 100%;
   padding: 90px 0px 50px 0px;
   // .top {
   //   @include flexCenter;
@@ -15,129 +14,144 @@
   .bottom {
     @include flexColCenter;
     gap: 20px;
-    padding-bottom: 10px;
     height: 100%;
     width: 100%;
 
-    .left {
-      @include flexColStart;
-      gap: 5px;
-
-      & img {
-        width: 100%;
-        height: 100%;
-        -o-object-fit: cover;
-        object-fit: cover;
-        border-radius: 5px;
-      }
-    }
-
-    .right {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      padding: 0 10px 0 10px;
-      gap: 1.25em;
-
-      .boxEmailIsConfirmed {
-        @include flexBetween;
-        width: 100%;
-
-        .infosEmailIsConfirmed {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: 100%;
-
-          & h3 {
-            width: calc(100%/3);
-            @include flexStart;
-          }
-
-          & div {
-            width: calc(100%/3);
-            @include flexStart;
-          }
-        }
-
-        .btnSendMailCode {
-          @include btn;
-          width: calc(100%/3);
-        }
-      }
-
-      .boxDate,
-      .boxEmailIsConfirmed {
-        @include flexBetween;
-        width: 100%;
-      }
-
-      .boxUsername,
-      .boxEmail,
-      .boxIsAdmin,
-      .boxNewsletter,
-      .boxDate,
-      .boxId {
-        & label {
-          @include flexColStart;
-        }
-      }
-
-      .boxUsername,
-      .boxEmail,
-      .boxIsAdmin,
-      .boxNewsletter,
-      .boxDate,
-      .boxId,
-      .updateButton,
-      .deleteButton {
-        width: 100%;
-
-        & label {
-          display: flex;
-          gap: 10px;
-
-          & input {
-            width: 100% !important;
-          }
-        }
-      }
-
-      .boxButton {
-        @include flexCenter;
+    .wrapper {
+      .left {
+        @include flexColStart;
+        position: relative;
         gap: 5px;
 
-        .updateButton,
-        .deleteButton {
-          height: 20px;
-          @include flexCenter;
-          padding: 15px;
-          gap: 10px;
-          width: 50%;
-
-          & img {
-            width: 20px;
-            height: 20px;
-            -o-object-fit: cover;
-            object-fit: cover;
-            border-radius: 5px;
-          }
+        & img {
+          width: 100%;
+          height: 100%;
+          -o-object-fit: cover;
+          object-fit: cover;
+          border-radius: 5px;
         }
 
-        .updateButton {
-          background-color: green;
-        }
-
-        .deleteButton {
-          background-color: crimson;
+        & label {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: rgb(255, 255, 255, 0.5);
+          color: $black;
+          padding: 10px;
+          border-radius: 5px;
+          border: 2px solid $vertVinted;
         }
       }
 
-    }
+      .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0 10px 0 10px;
+        gap: 1.25em;
 
-    .left,
-    .right {
-      min-width: calc(100% /2);
+        .boxEmailIsConfirmed {
+          @include flexBetween;
+          width: 100%;
+
+          .infosEmailIsConfirmed {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            & h3 {
+              width: calc(100%/3);
+              @include flexStart;
+            }
+
+            & div {
+              width: calc(100%/3);
+              @include flexStart;
+            }
+          }
+
+          .btnSendMailCode {
+            @include btn;
+            width: calc(100%/3);
+          }
+        }
+
+        .boxDate,
+        .boxEmailIsConfirmed {
+          @include flexBetween;
+          width: 100%;
+        }
+
+        .boxUsername,
+        .boxEmail,
+        .boxIsAdmin,
+        .boxNewsletter,
+        .boxDate,
+        .boxId {
+          & label {
+            @include flexColStart;
+          }
+        }
+
+        .boxUsername,
+        .boxEmail,
+        .boxIsAdmin,
+        .boxNewsletter,
+        .boxDate,
+        .boxId,
+        .updateButton,
+        .deleteButton {
+          width: 100%;
+
+          & label {
+            display: flex;
+            gap: 10px;
+
+            & input {
+              width: 100% !important;
+            }
+          }
+        }
+
+        .boxButton {
+          @include flexCenter;
+          gap: 5px;
+
+          .updateButton,
+          .deleteButton {
+            height: 20px;
+            @include flexCenter;
+            padding: 15px;
+            gap: 10px;
+            width: 50%;
+
+            & img {
+              width: 20px;
+              height: 20px;
+              -o-object-fit: cover;
+              object-fit: cover;
+              border-radius: 5px;
+            }
+          }
+
+          .updateButton {
+            background-color: green;
+          }
+
+          .deleteButton {
+            background-color: crimson;
+          }
+        }
+
+      }
+
+      .left,
+      .right {
+        min-width: calc(100% /2);
+        height: 100%;
+      }
     }
   }
 }
@@ -151,6 +165,8 @@
 
 @media all and (min-width : 1200px) {
   .boxUserId {
+    padding: 0;
+
     .wrapper {
       .bottom {
         flex-direction: row;

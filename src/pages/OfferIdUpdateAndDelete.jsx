@@ -3,22 +3,21 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useUser } from "../assets/lib/userFunc";
 import { useEffect, useState, Fragment } from "react";
-import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 //components
 import Image from "../components/Image";
 import Loading from "../components/Loading";
-import InputFileOffer from "../components/InputArrayPictures";
 import Input from "../components/Input";
 import TextArea from "../components/TextArea";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
-//lib
+import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 import InputArrayObject from "../components/InputArrayObject";
 import InputArrayPictures from "../components/InputArrayPictures";
+import InputFileAvatar from "../components/InputFileAvatar";
 import Trash from "../components/Trash";
 
 const OfferIdUpdateAndDelete = ({ faTrash }) => {
   const { id } = useParams();
-  console.log("id in OfferIdUpdateAndDelete:", id);
+  // console.log("id in OfferIdUpdateAndDelete:", id);
   const navigate = useNavigate();
   const [productName, setProductName] = useState(null);
   const [data, setData] = useState(null);
@@ -26,12 +25,13 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
   const [productPrice, setProductPrice] = useState(null);
   const [offerSolded, setOfferSolded] = useState(null);
   const [pictures, setPictures] = useState([]);
-  console.log("pictures in OfferIdUpdateAndDelete:", pictures);
+  // console.log("pictures in OfferIdUpdateAndDelete:", pictures);
   const [productDetails, setProductDetails] = useState([]);
-  console.log("productDetails in OfferIdUpdateAndDelete:", productDetails);
+  // console.log("productDetails in OfferIdUpdateAndDelete:", productDetails);
   // console.log("productDetails in OfferIdUpdateAndDelete:", productDetails);
   const [imgsNbr, setImgsNbr] = useState(null);
-
+  const [imgSupp, setImgSupp] = useState([]);
+  console.log("imgSupp in OfferIdUpdateAndDelete:", imgSupp);
   const {
     setIsSended,
     isSended,
@@ -44,17 +44,21 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
     setAvatarOffer,
     avatarOffer,
   } = useUser();
-  console.log("avatarOffer in OfferIdUpdateAndDelete:", avatarOffer);
+  // console.log("avatarOffer in OfferIdUpdateAndDelete:", avatarOffer);
   useEffect(() => {
     // console.log("id inside useEffect in /offers/${id}:", id);
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/offer/${id}`);
-        console.log("response in /offer/${id}:", response);
+        // console.log("response in /offer/${id}:", response);
         if (response) {
           setData(response?.data);
-          setPictures(response?.data?.product_pictures);
-          setAvatarOffer(response?.data?.product_pictures);
+          setPictures(
+            response?.data?.product_pictures || response?.data?.product_image
+          );
+          setAvatarOffer(
+            response?.data?.product_pictures || response?.data?.product_image
+          );
           setProductDetails(response?.data?.product_details);
           setIsLoading(false);
         } else {
@@ -90,14 +94,21 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
     const formData = new FormData();
     pictures.forEach(function (file) {
       console.log("file instanceof Blob:", file instanceof Blob);
-      if (file instanceof Blob) {
-        formData.append("pictures", file);
-      }
+      console.log("file in forEach in OfferIdUpdateAndDelete :", file);
     });
+    for (let i = 0; i < pictures.length; i++) {
+      const el = pictures[i];
+      if (el instanceof Blob) {
+        formData.append("pictures", el);
+      }
+    }
+    formData.append("infoImgSupp", JSON.stringify(imgSupp));
+    // formData.append("pictures", JSON.stringify(pictures));
     formData.append("productName", productName);
     formData.append("productPrice", productPrice);
     formData.append("productDescription", productDescription);
-    formData.append("productDetails", productDetails);
+    formData.append("offerSolded", offerSolded);
+    formData.append("productDetails", JSON.stringify(productDetails));
 
     try {
       setIsSended(true);
@@ -106,8 +117,8 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
         formData
       );
       if (response.data) {
-        console.log("response.data:", response.data);
-        setData(response.data);
+        // console.log("response.data:", response?.data);
+        setInfoUser(response?.data?.infoUser);
         setTimeout(() => {
           setIsSended(false);
         }, 3000);
@@ -160,6 +171,8 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
             setPictures={setPictures}
             avatarOffer={avatarOffer}
             setAvatarOffer={setAvatarOffer}
+            imgSupp={imgSupp}
+            setImgSupp={setImgSupp}
           />
         </div>
         <div className="right">

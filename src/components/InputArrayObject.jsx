@@ -1,21 +1,25 @@
 const InputArrayObject = ({ arrayObject, setArrayObject }) => {
   const handleChangeArrObject = (e, index, detail) => {
-    console.log(
-      "index in handleChangeArrObject:",
-      index,
-      "\n",
-      "detail in handleChangeArrObject:",
-      detail
-    );
+    // console.log(
+    //   "index in handleChangeArrObject:",
+    //   index,
+    //   "\n",
+    //   "detail in handleChangeArrObject:",
+    //   detail
+    // );
     const key = Object.keys(detail)[0];
     const newArrayObject = [...arrayObject];
-    console.log(
-      "newArrayObject in handleChangeArrObject before .splice():",
-      newArrayObject
-    );
+    // console.log(
+    //   "newArrayObject in handleChangeArrObject before .splice():",
+    //   newArrayObject
+    // );
     newArrayObject.splice(index, 1, {
       [key]: e.target.value,
     });
+    // console.log(
+    //   "newArrayObject in handleChangeArrObject after .splice():",
+    //   newArrayObject
+    // );
     setArrayObject(newArrayObject);
   };
 

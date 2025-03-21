@@ -190,29 +190,16 @@ const UserId = () => {
     <Loading />
   ) : (
     <div className="boxUserId">
-      <div className="wrapper">
-        <div className="top">
-          <div className="title">
-            Voici la page de <strong>{data?.account?.username}</strong>
-          </div>
-        </div>
-        <form className="bottom">
+      <form className="bottom">
+        <div className="wrapper">
           <div className="left">
             <Image src={avatar} alt="avatar" />
-            <label htmlFor="pictures"></label>
             <InputFileAvatar
-              labelTxt="Choose your avatar"
+              labelTxt="Choose your new avatar"
               id="file"
               setPictures={setPictures}
               setAvatar={setAvatar}
             />
-            {/* {pictures && (
-              <img
-                src={URL.createObjectURL(pictures)}
-                alt="Image"
-                className="viewPictures"
-              />
-            )} */}
           </div>
           <div className="right">
             <div className="boxUsername">
@@ -307,8 +294,8 @@ const UserId = () => {
               />
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
       {errorMessage && <div className="red">{errorMessage}</div>}
     </div>
   );

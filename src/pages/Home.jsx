@@ -22,9 +22,16 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
   // console.log("isFavorite in Home:", isFavorite);
   // console.log('search in Home:', search);
   // const [imgsNbr, setImgsNbr] = useState(0);
-  const { axios, fav, setFav, isLoading, setIsLoading, setErrorMessage } =
-    useUser();
-  const [data, setData] = useState(null);
+  const {
+    axios,
+    fav,
+    setFav,
+    data,
+    setData,
+    isLoading,
+    setIsLoading,
+    setErrorMessage,
+  } = useUser();
   console.log("data in /Home:", data);
   console.log("data.length in /Home:", data?.length);
   useEffect(() => {

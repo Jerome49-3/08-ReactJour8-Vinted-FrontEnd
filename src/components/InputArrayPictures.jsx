@@ -7,14 +7,37 @@ const InputArrayPictures = ({
   setPictures,
   avatarOffer,
   setAvatarOffer,
+  imgSupp,
+  setImgSupp,
 }) => {
   const handleChangeInputPictures = (e, index) => {
-    // console.log("index on handleChangeInputPictures:", index);
-    console.log(e.target.files);
     const file = e.target.files[0];
+    // console.log(
+    //   "file in handleChangeInputPictures OfferIdUpdateAndDelete:",
+    //   file
+    // );
     if (file) {
+      const newImgSupp = [...imgSupp];
       const newPictures = [...pictures];
-      newPictures.splice(index, 1, file);
+      let pictSupp = newPictures.splice(index, 1, file);
+      console.log(
+        "pictSupp in handleChangeInputPictures on InputArrayPictures:",
+        pictSupp
+      );
+      // console.log(
+      //   "pictSupp[0].public_id in handleChangeInputPictures on InputArrayPictures:",
+      //   pictSupp[0].public_id
+      // );
+      const infoSuppImg = {
+        indexImgSupp: index,
+        imgSuppPublicId: pictSupp[0].public_id,
+      };
+      console.log(
+        "infoSuppImg in handleChangeInputPictures on InputArrayPictures:",
+        infoSuppImg
+      );
+      newImgSupp.push(infoSuppImg);
+      setImgSupp(newImgSupp);
       setPictures(newPictures);
 
       const newAvatars = [...avatarOffer];
@@ -34,12 +57,7 @@ const InputArrayPictures = ({
               alt="avatarOffer"
               src={avatarOffer[index]?.secure_url || avatarOffer[index]}
             />
-            <input
-              id={`pictureIndexhidden_${index}`}
-              type="hidden"
-              name={`pictureIndexhidden_${index}`}
-              value={index}
-            />
+
             <label htmlFor={`pictureIndex_${index}`}>
               {labelTxt}
               <input

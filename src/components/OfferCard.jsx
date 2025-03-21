@@ -13,10 +13,9 @@ import Trash from "./Trash";
 import noImg from "../assets/images/no-image.jpg";
 
 const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
-  const { fav, axios, setInfoUser, setIsSended } = useUser();
-  const [data, setData] = useState(null);
-  // console.log("data ds OfferCard:", data);
-  // console.log("fav ds OfferCard:", fav);
+  const { fav, data, axios, setInfoUser, setIsSended } = useUser();
+  console.log("data ds OfferCard:", data);
+  console.log("fav ds OfferCard:", fav);
   let location = useLocation();
   // console.log("location ds OfferCard:", location);
   useEffect(() => {

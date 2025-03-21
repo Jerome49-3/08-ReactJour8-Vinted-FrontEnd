@@ -27,6 +27,7 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(
     sessionStorage.getItem("vintaidUser") || null
   );
+  const [data, setData] = useState(null);
   const [avatar, setAvatar] = useState(null);
   const [avatarOffer, setAvatarOffer] = useState(null);
   const [imgBoxUser, setImgBoxUser] = useState(() => {
@@ -98,7 +99,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      // console.log("token in useEffect on UserProvider:", token);
+      console.log("token in useEffect on UserProvider:", token);
       const verifyToken = async () => {
         try {
           const response = await axios.post(
@@ -247,6 +248,8 @@ export const UserProvider = ({ children }) => {
         isSended,
         setIsSended,
         axios,
+        data,
+        setData,
         fav,
         setFav,
         isLoading,
