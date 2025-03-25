@@ -98,7 +98,7 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
   ) : (
     <>
       {showHero && <Hero />}
-      <div className="boxOffer">
+      <div className="boxOfferId">
         <div className="wrapper">
           <article className="top">
             <div className="left">

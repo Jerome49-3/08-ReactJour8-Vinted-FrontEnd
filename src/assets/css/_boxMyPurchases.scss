@@ -1,0 +1,29 @@
+.boxMyPurchases {
+  padding: 90px 0 50px 0;
+
+  .wrapper {
+    height: 100%;
+
+    .boxNoPurchases {
+      @include flexColCenter;
+      width: 100%;
+      // border: 2px solid green;
+      gap: 10px;
+    }
+  }
+}
+
+//BREAKPOINTS
+@media all and (min-width : 576px) {}
+
+@media all and (min-width : 768px) {}
+
+@media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {
+  .boxMyPurchases {
+    padding: 0;
+  }
+}
+
+@media all and (min-width : 1400px) {}

@@ -35,7 +35,7 @@ const MyPurchases = ({ faHeart, farHeart }) => {
   return isloading ? (
     <Loading />
   ) : (
-    <>
+    <div className="boxMyPurchases">
       <div className="wrapper">
         {data?.length > 0 ? (
           <OfferCard
@@ -54,7 +54,7 @@ const MyPurchases = ({ faHeart, farHeart }) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

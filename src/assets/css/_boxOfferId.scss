@@ -1,4 +1,4 @@
-.boxOffer {
+.boxOfferId {
   width: 100%;
   padding: 90px 0 50px 0;
 
@@ -225,12 +225,14 @@
 }
 
 @media all and (min-width : 1200px) {
-  .boxOffer {
+  .boxOfferId {
+    padding: 0;
 
     .wrapper {
 
       .top {
         height: 100%;
+        flex-direction: row !important;
 
         .left {
           flex-direction: row !important;

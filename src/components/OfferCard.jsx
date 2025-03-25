@@ -68,7 +68,7 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                   />
                   <h5>
                     {article?.offer?.owner?.account?.username ||
-                      article?.owner?.username}
+                      article?.owner?.account?.username}
                   </h5>
                 </div>
                 {location.pathname === "/myOffers" &&

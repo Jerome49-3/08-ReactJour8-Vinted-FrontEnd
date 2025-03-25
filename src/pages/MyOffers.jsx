@@ -49,29 +49,27 @@ const MyOffers = ({
   return isLoading ? (
     <Loading />
   ) : (
-    <>
-      <div className="boxMyOffers">
-        <div className="wrapper">
-          {data?.length > 0 ? (
-            <OfferCard
-              data={data}
-              faHeart={faHeart}
-              farHeart={farHeart}
-              faTrash={faTrash}
-              setData={setData}
-            />
-          ) : (
-            showNoOffer && (
-              <div className="boxNoOffers">
-                <p> Vous n'avez pas d'annonces publiés:</p>
-                <Links path="/publish" linkText="Mettez en vente un produit" />
-              </div>
-            )
-          )}
-          <InfoUserErrorMessage />
-        </div>
+    <div className="boxMyOffers">
+      <div className="wrapper">
+        {data?.length > 0 ? (
+          <OfferCard
+            data={data}
+            faHeart={faHeart}
+            farHeart={farHeart}
+            faTrash={faTrash}
+            setData={setData}
+          />
+        ) : (
+          showNoOffer && (
+            <div className="boxNoOffers">
+              <p> Vous n'avez pas d'annonces publiés:</p>
+              <Links path="/publish" linkText="Mettez en vente un produit" />
+            </div>
+          )
+        )}
+        <InfoUserErrorMessage />
       </div>
-    </>
+    </div>
   );
 };
 
