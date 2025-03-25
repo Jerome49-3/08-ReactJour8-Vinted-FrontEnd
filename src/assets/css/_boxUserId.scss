@@ -10,6 +10,7 @@
     .left {
       @include flexColStart;
       position: relative;
+      width: 100%;
 
       & img {
         width: 100%;

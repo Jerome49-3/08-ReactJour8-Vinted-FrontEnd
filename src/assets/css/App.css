@@ -2468,6 +2468,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: flex-start;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 .boxUserId .wrapper .left img {
   width: 100%;
