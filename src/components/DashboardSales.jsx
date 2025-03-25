@@ -14,10 +14,9 @@ const DashboardSales = ({ searchTransactions, numberCommand }) => {
   //   "searchTransactions in LastSales:",
   //   searchTransactions
   // );
-  const [data, setData] = useState(null);
-  // console.log("data in LastSales:", data);
   const [isLoading, setIsLoading] = useState(true);
-  const { axios } = useUser();
+  const { axios, data, setData } = useUser();
+  console.log("data in LastSales:", data);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,10 +34,10 @@ const DashboardSales = ({ searchTransactions, numberCommand }) => {
         }
       } catch (error) {
         console.log("error:", error);
-        console.log("error.response:", error.response);
+        console.log("error.response:", error?.response);
         console.log(
           "error.response.data.message:",
-          error.response.data.message
+          error?.response?.data?.message
         );
       }
     };
@@ -61,14 +60,14 @@ const DashboardSales = ({ searchTransactions, numberCommand }) => {
       {data.map((transactions) => {
         return (
           // console.log("transactions in map on /transactions:", transactions);
-          <tbody className="boxTansactions" key={transactions._id}>
-            <Link to={`/transactions/${transactions._id}`}>
+          <tbody className="boxTansactions" key={transactions?._id}>
+            <Link to={`/transactions/${transactions?._id}`}>
               <tr>
-                <td>{transactions.product_name}</td>
-                <td>{transactions.product_price}</td>
-                <td>{transactions.seller.account.username}</td>
-                <td className="numCmd">{transactions.number_command}</td>
-                <td>{transactions.buyer.account.username}</td>
+                <td>{transactions?.product_name}</td>
+                <td>{transactions?.product_price}</td>
+                <td>{transactions?.offer?.owner?.account?.username}</td>
+                <td className="numCmd">{transactions?.number_command}</td>
+                <td>{transactions?.buyer?.account?.username}</td>
               </tr>
             </Link>
           </tbody>

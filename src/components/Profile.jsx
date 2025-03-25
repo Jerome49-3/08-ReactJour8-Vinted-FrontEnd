@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useUser } from "../assets/lib/userFunc";
 import { useState, useEffect } from "react";
@@ -17,8 +18,10 @@ import saveToken from "../assets/lib/saveToken";
 
 //images
 import updateIcon from "../assets/images/updateIcon.png";
+import LoadedInputSubmit from "./LoadedInputSubmit";
+import Trash from "./Trash";
 
-const Profile = () => {
+const Profile = ({ faTrash }) => {
   const {
     token,
     setToken,
@@ -28,6 +31,8 @@ const Profile = () => {
     avatar,
     setAvatar,
     setImgBoxUser,
+    setIsSended,
+    isSended,
   } = useUser();
   console.log("user in /profile/${id}:", user);
   // console.log("token in /profile/${id}:", token);
@@ -194,87 +199,85 @@ const Profile = () => {
     <Loading />
   ) : (
     <>
-      <div className="boxUserId">
+      <form className="boxUserId" onSubmit={handleUpdateData}>
         <div className="wrapper">
-          {/* <div className="top">
-            <div className="title">
-              Voici le profil de <strong>{data?.account?.username}</strong>
-            </div>
-          </div> */}
-          <form className="bottom">
-            <div className="left">
-              <Image src={avatar} alt="avatar" />
-              <InputFileAvatar
-                labelTxt="Choose your avatar"
-                id="file"
-                setPictures={setPictures}
-                setAvatar={setAvatar}
+          <div className="left">
+            <Image src={avatar} alt="avatar" />
+            <InputFileAvatar
+              labelTxt="Choose your avatar"
+              id="file"
+              setPictures={setPictures}
+              setAvatar={setAvatar}
+            />
+          </div>
+          <div className="right">
+            <div className="boxUsername">
+              <Input
+                label="username:"
+                type="text"
+                id="username"
+                placeholder={data?.account?.username}
+                value={username || ""}
+                setState={setUsername}
               />
             </div>
-            <div className="right">
-              <div className="boxUsername">
-                <Input
-                  label="username:"
-                  type="text"
-                  id="username"
-                  placeholder={data?.account?.username}
-                  value={username || ""}
-                  setState={setUsername}
-                />
-              </div>
-              <div className="boxEmail">
-                <Input
-                  label="email:"
-                  type="email"
-                  id="email"
-                  placeholder={data?.email}
-                  value={email || ""}
-                  setState={setEmail}
-                />
-              </div>
-              <div className="boxNewsletter">
-                {data?.newsletter === true ? (
-                  <Input
-                    label="newsletter:"
-                    type="text"
-                    placeholder="true"
-                    id="newsletter"
-                    value={newsletter || ""}
-                    classInput="newsletter"
-                    setState={setNewsletter}
-                  />
-                ) : (
-                  <Input
-                    label="newsletter:"
-                    type="text"
-                    id="newsletter"
-                    placeholder="false"
-                    value={newsletter || ""}
-                    classInput="newsletter"
-                    setState={setNewsletter}
-                  />
-                )}
-              </div>
-              <div className="boxDate">Date de création: {data?.date}</div>
-              <div className="boxButton">
-                <Button
-                  buttonText="Update profile"
-                  handleClick={handleUpdateData}
-                  src={updateIcon}
-                  classButton="updateButton"
-                />
-                <Button
-                  buttonText="Delete profile"
-                  // handleClick={handleDeleteData}
-                  src={updateIcon}
-                  classButton="deleteButton"
-                />
-              </div>
+            <div className="boxEmail">
+              <Input
+                label="email:"
+                type="email"
+                id="email"
+                placeholder={data?.email}
+                value={email || ""}
+                setState={setEmail}
+              />
             </div>
-          </form>
+            <div className="boxNewsletter">
+              {data?.newsletter === true ? (
+                <Input
+                  label="newsletter:"
+                  type="text"
+                  placeholder="true"
+                  id="newsletter"
+                  value={newsletter || ""}
+                  classInput="newsletter"
+                  setState={setNewsletter}
+                />
+              ) : (
+                <Input
+                  label="newsletter:"
+                  type="text"
+                  id="newsletter"
+                  placeholder="false"
+                  value={newsletter || ""}
+                  classInput="newsletter"
+                  setState={setNewsletter}
+                />
+              )}
+            </div>
+            <div className="boxDate">Date de création: {data?.date}</div>
+            <div className="boxSubmitTrash">
+              <LoadedInputSubmit
+                setIsSended={setIsSended}
+                isSended={isSended}
+                value="Update profil"
+                src={updateIcon}
+                alt="update icon"
+                classImg="imgInputSubmit"
+                type="submit"
+                id="inputSubmit"
+              />
+              <Trash
+                setIsSended={setIsSended}
+                isSended={isSended}
+                faTrash={faTrash}
+                id={id}
+                // handleClick={handleDeleteData}
+              />
+            </div>
+          </div>
         </div>
         {errorMessage && <div className="red">{errorMessage}</div>}
-      </div>
+      </form>
     </>
   );
 };

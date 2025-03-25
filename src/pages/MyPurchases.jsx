@@ -7,10 +7,9 @@ import OfferCard from "../components/OfferCard";
 import Links from "../components/Links";
 
 const MyPurchases = ({ faHeart, farHeart }) => {
-  const [data, setData] = useState(null);
-  // console.log("data in /mypurchases:", data);
+  const { fav, setFav, axios, data, setData } = useUser();
   const [isloading, setIsLoading] = useState(true);
-  const { fav, setFav, axios } = useUser();
+  console.log("data in /mypurchases:", data);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -21,7 +20,7 @@ const MyPurchases = ({ faHeart, farHeart }) => {
         );
         if (response) {
           // console.log("response on /mypurchases:", response);
-          // console.log("response.data on /mypurchases:", response.data);
+          console.log("response.data on /mypurchases:", response.data);
           setData(response.data);
           setIsLoading(false);
         }
@@ -38,7 +37,7 @@ const MyPurchases = ({ faHeart, farHeart }) => {
   ) : (
     <>
       <div className="wrapper">
-        {data.length > 0 ? (
+        {data?.length > 0 ? (
           <OfferCard
             data={data}
             faHeart={faHeart}

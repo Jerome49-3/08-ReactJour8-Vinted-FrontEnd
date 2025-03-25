@@ -27,8 +27,15 @@ header {
           align-items: center;
           height: 30px;
 
+          .logoTxt {
+            font-weight: 900 !important;
+            font-size: 28px;
+            font-style: italic;
+            color: $vertVinted;
+          }
+
           .logo {
-            height: 30px;
+            height: 20px !important;
           }
         }
       }
@@ -84,110 +91,96 @@ header {
         width: 100%;
 
         & ul {
-          @include flexCenter;
+          @include flexBetween;
           gap: 10px;
           width: 100%;
 
-          & li {
+          .liPublish,
+          .boxUser {
+            width: 40%;
+          }
+
+          .liPublish {
+            @include flexCenter;
+
+            & a,
+            & p {
+              width: 100%;
+              height: 30px;
+              @include flexCenter;
+            }
+          }
+
+          .liSignInSignUp {
+            @include boxShadow;
             @include flexCenter;
             border-radius: 5px;
-            border: 2px solid $vertVinted;
-            width: 100%;
+            width: 50%;
 
-            &:nth-child(1),
-            &:nth-child(2) {
-              width: 100%;
-            }
-
-            &:nth-child(1) {
-              height: 30px;
-              @include boxShadow;
-
-              .buttonSignIn {
-
-                & button {
-                  @include btn;
-                  background-color: transparent;
-                  color: $vertVinted;
-                  text-shadow: none;
-                  border-right: 2px solid $vertVinted;
-                  border-top-right-radius: 0px;
-                  border-bottom-right-radius: 0px;
-                  font-size: 14px;
-                  cursor: pointer;
-
-                  &:hover p {
-                    color: $white;
-                  }
-                }
-              }
-
-              & div {
-                width: 100%;
-
-                & a {
-                  width: 100%;
-
-                  p {
-                    @include btn;
-                    background-color: transparent;
-                    color: $vertVinted;
-                    font-size: 14px;
-                    border-top-left-radius: 0px;
-                    border-bottom-left-radius: 0px;
-
-                    &:hover {
-                      color: $white;
-                    }
-                  }
-                }
-              }
-            }
-
-            &:nth-child(2) {
+            .buttonSignUp,
+            .linkSignIn {
               @include btn;
-              @include flexBetween;
-              @include boxShadow;
+              box-shadow: none;
+              width: 50%;
+              background-color: transparent;
+            }
 
-              & div:nth-child(1) {
-                @include flexStart;
-                width: 85%;
-              }
+            .buttonSignUp {
+              border: 1.5px solid $vertVinted;
+              border-top-right-radius: 0px;
+              border-bottom-right-radius: 0px;
+              border-top-left-radius: 5px;
+              border-bottom-left-radius: 5px;
+              color: $vertVinted;
 
-              & div:nth-child(2) {
-                @include flexCenter;
-              }
-
-              & a p {
+              &:hover {
                 color: $white;
               }
+            }
 
-              &:active {
-                @include boxShadowInset;
+            .linkSignIn {
+              border: 1.5px solid $vertVinted;
+              border-top-left-radius: 0px;
+              border-bottom-left-radius: 0px;
+              border-top-right-radius: 5px;
+              border-bottom-right-radius: 5px;
+
+              & p {
+                @include flexCenter;
+                height: 30px;
+                color: $vertVinted;
+                width: 100%;
               }
+
+              &:hover p {
+                color: $white;
+              }
+            }
+          }
+
+          .liPublish {
+            @include btn;
+            @include boxShadow;
+            border: 1.5px solid $vertVinted;
+
+            & a p {
+              color: $white;
+            }
+          }
+
+          .boxUser {
+            @include btn;
+            @include flexBetween;
+            @include boxShadow;
+            padding: 1.5px 5px 1.5px 5px;
+
+            .boxAvatar {
+              @include flexCenter;
             }
           }
         }
       }
 
-    }
-
-    //filters visible if input#search not undefined
-    .bottomHeader {
-      @include flexColCenter;
-      width: 100%;
-
-      & div {
-        width: 50%;
-      }
-
-      .dotBarLabel {
-        display: none;
-      }
-
-      .dotBarPrice:hover .dotBarLabel {
-        display: flex;
-      }
     }
   }
 }
@@ -274,26 +267,14 @@ header {
         }
 
         & nav {
-
-
           & ul {
+            justify-content: flex-end !important;
             width: 100%;
+          }
 
-            & li {
-
-              &:nth-child(1),
-              &:nth-child(2) {
-                height: 30px;
-              }
-
-              &:nth-child(1) {
-                width: calc(60%);
-              }
-
-              &:nth-child(2) {
-                width: calc(40%);
-              }
-            }
+          .liPublish,
+          .boxUser {
+            width: 40%;
           }
         }
       }

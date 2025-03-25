@@ -1,8 +1,8 @@
 .boxShoppingCart {
   @include flexCenter;
   // border: 2px solid red;
+  height: 100%;
   width: 100%;
-  background-color: $backgdPage;
 
   .wrapper {
     // border: 2px solid blue;
@@ -12,7 +12,9 @@
       // border: 2px solid green;
       background-color: $white;
       width: 100%;
-      padding: 40px 20px 40px 20px;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding: 90px 0px 50px 0px;
 
       & h1 {
         padding: 0 0 10px 0;
@@ -123,3 +125,18 @@
     }
   }
 }
+
+// BREAKPOINTS
+// @media all and (min-width : 576px) {}
+
+// @media all and (min-width : 768px) {}
+
+// @media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {
+  .shoppingCart {
+    padding: 0px 0px 50px 0px !important;
+  }
+}
+
+// @media all and (min-width : 1400px) {}

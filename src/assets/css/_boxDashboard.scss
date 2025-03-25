@@ -2,28 +2,31 @@
   @include flexColTopStart;
   width: 100%;
   height: 100vh;
-  width: 100%;
+  padding: 90px 0 50px 0;
 
   .wrapper {
-    @include flexStart;
+    @include flexColTopStart;
     gap: 10px;
     width: 100%;
     height: 100vh;
     padding: 0px !important;
 
     .leftPannel {
-      width: 30%;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-direction: column;
-      height: 100%;
+      width: 100%;
+      @include flexColTopStart;
       background-color: $backgWhite;
       border-radius: 5px;
-      padding: 10px 5px 10px 5px;
+      padding: 0px 5px 0px 5px;
 
-      & div {
+      .boxTitleLinksDashboard {
         width: 100%;
+        padding-bottom: 10px;
+        border-bottom: 2px solid $vertVinted;
+
+        .boxTitleSearch,
+        .containerBoxSearch {
+          width: 100%;
+        }
 
         & a {
           & p {
@@ -41,8 +44,8 @@
     }
 
     .rightOutlet {
-      width: 70%;
-      height: 100%;
+      width: 100%;
+      overflow-x: auto;
     }
   }
 }
@@ -54,7 +57,30 @@
 
 // @media all and (min-width : 992px) {}
 
-@media all and (min-width : 1200px) {}
+@media all and (min-width : 1200px) {
+  .boxDashboard {
+    .wrapper {
+      flex-direction: row !important;
+
+      .leftPannel {
+        width: 30%;
+        @include flexColBetween;
+        height: 100%;
+
+        .boxTitleLinksDashboard {
+          height: calc(100%/4);
+          @include flexColStart;
+          width: 100%;
+        }
+      }
+
+      .rightOutlet {
+        width: 70%;
+        height: 100%;
+      }
+    }
+  }
+}
 
 // @media all and (min-width : 1400px) {}
 //   .top,

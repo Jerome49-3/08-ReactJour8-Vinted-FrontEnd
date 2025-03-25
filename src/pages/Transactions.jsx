@@ -9,9 +9,8 @@ import Image from "../components/Image";
 
 const Transactions = () => {
   const { id } = useParams();
-  const { axios } = useUser();
-  const [data, setData] = useState(null);
-  // console.log("data in /transactions/:id:", data);
+  const { axios, data, setData } = useUser();
+  console.log("data in /transactions/:id:", data);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -43,11 +42,23 @@ const Transactions = () => {
     <div className="boxTransactionId">
       <div className="wrapper">
         <div className="transactionId">
-          <Link to={`/users/${data?.buyerId}`} className="left">
-            <h3>Acheteur:</h3>
+          <Link to={`/users/${data?.buyer?._id}`} className="left">
+            <h3>Buyer:</h3>
             <div className="boxInfos">
-              <div className="top">{data?.buyer?.account?.username}</div>
-              <div className="middle">{data?.buyer?.email}</div>
+              <div className="top">
+                <div className="name">
+                  <div>Username:</div>
+                  <div>{data?.buyer?.account?.username}</div>
+                </div>
+                <div className="email">
+                  <div>Email:</div>
+                  <div> {data?.buyer?.email}</div>
+                </div>
+                <div className="date">
+                  <div>Creation date:</div>
+                  <div>{data?.buyer?.date}</div>
+                </div>
+              </div>
               <div className="bottom">
                 <Image
                   src={data?.buyer?.account?.avatar?.secure_url}
@@ -56,38 +67,53 @@ const Transactions = () => {
               </div>
             </div>
           </Link>
-          <Link to={`/offers/${data?.product_id}`} className="middle">
-            <h3>Offre:</h3>
+          <Link to={`/offers/${data?.offer?._id}`} className="middle">
+            <h3>Offer:</h3>
             <div className="boxInfos">
               <div className="top">
                 <div className="name">
-                  <div>Nom du produit:</div>
+                  <div>Product name:</div>
                   <div>{data?.product_name}</div>
                 </div>
-              </div>
-              <div className="middle">
                 <div className="price">
-                  <div>Prix:</div>
+                  <div>Price:</div>
                   <div>{data?.product_price} €</div>
                 </div>
-              </div>
-              <div className="bottom">
                 <div className="date">
-                  <div>Date d'achat:</div>
+                  <div>Purchase date:</div>
                   <div>{data?.date}</div>
                 </div>
               </div>
+              <div className="bottom">
+                {data?.offer?.product_pictures ? (
+                  <Image src={data?.offer?.product_pictures[0]?.secure_url} />
+                ) : (
+                  <Image src={data?.offer?.product_image?.secure_url} />
+                )}
+              </div>
             </div>
           </Link>
-          <Link to={`/users/${data?.seller._id}`} className="right">
-            <h3>Vendeur:</h3>
+          <Link to={`/users/${data?.offer?.owner._id}`} className="right">
+            <h3>Seller:</h3>
             <div className="boxInfos">
-              <div className="top">{data?.seller?.account?.username}</div>
-              <div className="middle">{data?.seller?.email}</div>
+              <div className="top">
+                <div className="name">
+                  <div>Username:</div>
+                  <div>{data?.offer?.owner?.account?.username}</div>
+                </div>
+                <div className="email">
+                  <div>Email:</div>
+                  <div> {data?.offer?.owner?.email}</div>
+                </div>
+                <div className="date">
+                  <div>Creation date:</div>
+                  <div>{data?.offer?.owner?.date}</div>
+                </div>
+              </div>
               <div className="bottom">
-                {data?.seller?.account?.avatar ? (
+                {data?.offer?.owner?.account?.avatar ? (
                   <Image
-                    src={data?.seller?.account?.avatar?.secure_url}
+                    src={data?.offer?.owner?.account?.avatar?.secure_url}
                     alt="avatar"
                   />
                 ) : null}

@@ -42,7 +42,10 @@ const Header = ({
         <div className="topHeader">
           <div className="boxLogoTheme">
             <Link to="/">
-              <Image src={Logo} alt="Vinted" classImg="logo" />
+              <p className="logoTxt">Vintaid</p>
+              {/* <span>
+                a replica of <Image src={Logo} alt="Vinted" classImg="logo" />
+              </span> */}
             </Link>
             <div className="boxTheme">
               <ThemeButton />
@@ -75,23 +78,21 @@ const Header = ({
           <nav>
             <ul>
               {(!token || !user) && (
-                <li>
-                  <div className="buttonSignIn">
-                    <Button
-                      buttonText="S'inscrire"
-                      handleClick={() => setShowSignUp(!showSignUp)}
-                    />
-                  </div>
-                  <div>
-                    <Links
-                      path="/login"
-                      // classLink="linkConnect"
-                      linkText="Connexion"
-                    />
-                  </div>
+                <li className="liSignInSignUp">
+                  <Button
+                    buttonText="S'inscrire"
+                    handleClick={() => setShowSignUp(!showSignUp)}
+                    classButton="buttonSignUp"
+                  />
+                  <Links
+                    path="/login"
+                    // classLink="linkConnect"
+                    linkText="Connexion"
+                    classLink="linkSignIn"
+                  />
                 </li>
               )}
-              <li>
+              <li className="liPublish">
                 <Links
                   path={token ? "/publish" : "/login"}
                   linkText="vendre tes articles"

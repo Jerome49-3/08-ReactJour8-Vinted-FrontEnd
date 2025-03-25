@@ -1,0 +1,36 @@
+.classLabelInputSubmit {
+  @include btn;
+
+  .imgInputSubmit {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  & input[type="submit"] {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    text-shadow: 0.25px 0.25px 1px rgba(0, 0, 0), 0.5px 0.5px 1px rgba(0, 0, 0), 0px 0px 4px rgba(0, 0, 0);
+    height: 30px;
+  }
+}
+
+.boxLoaded {
+  @include btn;
+
+  .loaded {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border-right: 2px solid transparent;
+    border-top: 2px solid $black;
+    border-left: 2px solid transparent;
+    border-bottom: 2px solid $black;
+    -webkit-animation: rotate 0.8s ease-in-out infinite both;
+    animation: rotate 0.8s ease-in-out infinite both;
+  }
+}

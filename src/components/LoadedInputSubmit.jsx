@@ -1,16 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 //components
-import Input from "./Input";
+import Image from "./Image";
 
-const LoadedInputSubmit = ({ isSended, setIsSended, value }) => {
+const LoadedInputSubmit = ({
+  isSended,
+  setIsSended,
+  value,
+  src,
+  alt,
+  classImg,
+  id,
+  type,
+  classInput,
+}) => {
   useEffect(() => {
     setIsSended(false);
   }, []);
   return (
     <>
       {isSended !== true ? (
-        <Input type="submit" value={value} />
+        <label htmlFor={id} className="classLabelInputSubmit">
+          <input
+            id={id}
+            type={type}
+            name={id}
+            value={value}
+            className={classInput}
+          />
+          {src ? <Image src={src} alt={alt} classImg={classImg} /> : null}
+        </label>
       ) : (
         <div className="boxLoaded">
           <div className="loaded"></div>

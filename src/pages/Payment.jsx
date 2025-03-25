@@ -95,43 +95,6 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
     mode: "payment",
     amount: Number((product_price * 100).toFixed(0)),
     currency: "eur",
-    appearance: {
-      theme: "stripe",
-      variables: {
-        colorPrimary: "#0570de",
-        colorBackground: "#ffffff",
-        colorText: "#30313d",
-        colorDanger: "#df1b41",
-        fontFamily: "Arial, sans-serif",
-        spacingUnit: "4px",
-        borderRadius: "4px",
-      },
-      rules: {
-        ".Input": {
-          fontSize: "16px",
-          color: "#424770",
-          padding: "12px",
-        },
-        ".Label": {
-          fontSize: "14px",
-          fontWeight: "500",
-          color: "#6b7c93",
-        },
-        ".Tab": {
-          padding: "10px 12px",
-          border: "none",
-        },
-        ".Input--invalid": {
-          color: "#df1b41",
-        },
-        ".Block": {
-          flexDirection: "row",
-          alignItems: "center",
-          gap: "10px",
-        },
-      },
-    },
-    loader: "auto",
   };
   let price = Number(product_price).toFixed(2);
   console.log("price in /payment:", price);
@@ -210,7 +173,6 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
                   product_image: state.product_image,
                   product_pictures: state.product_pictures,
                   product_id: state.product_id,
-                  buyer_token: token,
                   numberOfCommand: numCmd,
                 }}
                 succes={succes}

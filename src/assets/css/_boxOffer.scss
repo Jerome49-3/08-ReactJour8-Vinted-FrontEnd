@@ -1,6 +1,6 @@
 .boxOffer {
   width: 100%;
-
+  padding: 90px 0 50px 0;
 
   .wrapper {
     @include flexColCenter;
@@ -49,7 +49,6 @@
               display: block;
               -o-object-fit: cover;
               object-fit: cover;
-              max-height: 78vh;
               -o-object-position: top;
               object-position: top;
             }
@@ -59,6 +58,7 @@
         .imgLeft article {
           display: flex;
           width: 100%;
+          max-height: calc(100%/var(--imgsLength));
         }
 
         .imgLeft {
@@ -85,9 +85,10 @@
           & article {
             height: calc(100% / (var(--imgsLength)));
             width: 100%;
+            max-height: 100%;
 
             .boxImgOffer {
-              display: flex;
+              @include flexCenter;
               height: 100%;
 
               .prodPict {
@@ -143,13 +144,8 @@
           @include flexColAroundStart;
 
           & div {
-            display: flex;
-            justify-content: space-between;
+            @include flexBetween;
             width: 100%;
-
-            & div {
-              width: 100%;
-            }
           }
 
           & div:last-child {
@@ -158,7 +154,7 @@
 
             .imgOfferSold {
               width: 100%;
-              height: 100%;
+              height: 100px;
               -o-object-fit: contain;
               object-fit: contain;
             }
@@ -189,11 +185,11 @@
 
             .boxLinks {
               width: 100%;
-              @include flexColStart;
+              @include flexStart;
               gap: 10px;
 
               & a {
-
+                width: 50%;
                 @include btn;
               }
             }
@@ -218,6 +214,8 @@
 
 @media all and (min-width : 992px) {
   .boxOffer {
+    padding: 0;
+
     .wrapper {
       .top {
         flex-direction: row !important;
@@ -253,6 +251,27 @@
         .right {
           width: calc(100%/3);
           height: 100%;
+          @include flexColTopStart;
+
+          .boxDetails {
+            @include flexColTopStart;
+            height: 70%;
+
+            & div:not(div:last-child) {
+              height: calc(100%/9) !important;
+            }
+
+            & div:last-child {
+
+              .imgOfferSold {
+                height: 100%;
+              }
+            }
+          }
+
+          .boxLinks {
+            flex-direction: row !important;
+          }
         }
       }
     }
@@ -272,47 +291,3 @@
     }
   }
 }
-
-// @media all and (min-width : 1400px) {}
-// @media screen and (min-width: 1224px) {
-//   .boxOffer {
-//     height: 100%;
-
-//     .wrapper {
-//       height: 100%;
-
-//       .top {
-//         flex-direction: row;
-//         gap: 2.5%;
-//         min-width: 100%;
-
-//         .left {
-//           height: 100%;
-//           flex-direction: row;
-
-//           .imgLeft {
-//             height: 100%;
-
-//             article {
-//               height: 100%;
-
-//               .boxImgOffer {
-//                 height: 100%;
-
-//                 .prodPict0 {
-//                   height: 100%;
-//                   max-height: 78vh;
-//                   width: calc(1200px /2);
-//                 }
-//               }
-//             }
-//           }
-//         }
-
-//         .right {
-//           width: calc(1200px /4);
-//         }
-//       }
-//     }
-//   }
-// }

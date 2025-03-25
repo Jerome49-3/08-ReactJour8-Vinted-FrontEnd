@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const EyePassword = ({ icon1, icon2, type, setType }) => {
+const EyePassword = ({ faEye, faEyeSlash, type, setType }) => {
   // console.log("type in EyePassword:", type);
 
   const handleType = () => {
@@ -10,12 +10,12 @@ const EyePassword = ({ icon1, icon2, type, setType }) => {
   return (
     <>
       <FontAwesomeIcon
-        icon={icon1}
+        icon={faEye}
         onClick={handleType}
         className={type !== "password" ? "hide" : "show"}
       />
       <FontAwesomeIcon
-        icon={icon2}
+        icon={faEyeSlash}
         onClick={handleType}
         className={type !== "text" ? "hide" : "show"}
       />

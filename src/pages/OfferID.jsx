@@ -21,15 +21,14 @@ import classRotation from "../assets/lib/classRotation";
 import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
-  const { axios, infoUser, setInfoUser, showHero } = useUser();
+  const { axios, infoUser, setInfoUser, showHero, data, setData } = useUser();
   console.log("infoUser on OfferID:", infoUser);
 
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
   const { id } = useParams();
   // console.log("id1 in /offers/${id}:", id);
-  const [data, setData] = useState(null);
   const [imgsNbr, setImgsNbr] = useState(0);
-  // console.log("data in OfferId:", data);
+  console.log("data in OfferId:", data);
   let [price, setPrice] = useState(0);
   const prices = Number(price).toFixed(2);
   // console.log("prices in OfferId:", prices);
@@ -257,10 +256,10 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
                 </div>
                 <div className="down">
                   <div className="boxUser">
-                    {data?.owner?.account?.avatar?.secure_url ? (
+                    {data?.owner?.avatar?.secure_url ? (
                       <>
                         <Image
-                          src={data?.owner?.account?.avatar?.secure_url}
+                          src={data?.owner?.avatar?.secure_url}
                           alt="avatar"
                           classImg="imgAvatar"
                         />
@@ -272,7 +271,7 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
                         classImg="imgAvatar"
                       />
                     )}
-                    <div>{data?.owner?.account?.username}</div>
+                    <div>{data?.owner?.username}</div>
                   </div>
                   <div className="boxLinks">
                     <Link to="/chat" state={{ product_id: data?.product_id }}>

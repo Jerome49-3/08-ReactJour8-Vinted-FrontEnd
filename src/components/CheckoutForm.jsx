@@ -3,7 +3,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import axios from "axios";
 import AddressForm from "../components/AdressForm";
 import Image from "../components/Image";
@@ -100,14 +100,7 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
             product_id: data.product_id,
             offer_solded: true,
             buyer_address: address,
-            buyer_token: data.buyer_token,
             numberOfCommand: data.numberOfCommand,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${data.buyer_token}`,
-            },
-            withCredentials: true,
           }
         );
         if (sendSuccess) {
@@ -135,11 +128,11 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
             {data.product_pictures.map((images, index) => {
               // console.log('images:', images);
               return (
-                <>
+                <Fragment key={index}>
                   {index > 0 && index < 2 && (
                     <Image src={images.secure_url} alt={data.product_name} />
                   )}
-                </>
+                </Fragment>
               );
             })}
           </>

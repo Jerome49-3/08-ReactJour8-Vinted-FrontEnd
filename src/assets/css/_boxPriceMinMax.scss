@@ -22,46 +22,21 @@
       flex-direction: column;
       gap: 5px;
       width: 100%;
-
-
-      & label {
-        color: $vertVinted;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-      }
     }
 
     & input {
       border-bottom: transparent;
       outline: 2px solid $vertVinted;
       border-radius: 5px;
-      -webkit-filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
-      filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
 
-      &::-webkit-input-placeholder {
-        text-align: center;
-        -webkit-filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
-        filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
-      }
-
-      &::-moz-placeholder {
-        text-align: center;
-        filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
-      }
-
-      &:-ms-input-placeholder {
-        text-align: center;
-        filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
-      }
-
-      &::-ms-input-placeholder {
-        text-align: center;
-        filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
-      }
-
+      &::-webkit-input-placeholder,
+      &::-moz-placeholder,
+      &:-ms-input-placeholder,
+      &::-ms-input-placeholder,
       &::placeholder {
         text-align: center;
-        -webkit-filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
-        filter: drop-shadow(0px 0px 1px $black) drop-shadow(0px 0px 1px $black);
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
       }
     }
   }

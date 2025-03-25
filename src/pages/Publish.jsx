@@ -253,7 +253,12 @@ const Publish = ({ faTrash }) => {
             placeholder="Emplacement"
             setState={setCity}
           />
-          <LoadedInputSubmit isSended={isSended} setIsSended={setIsSended} />
+          <LoadedInputSubmit
+            isSended={isSended}
+            setIsSended={setIsSended}
+            type="submit"
+            value="Poster l'article"
+          />
           <InfoUserErrorMessage />
         </form>
       </div>

@@ -15,6 +15,7 @@ import Loading from "../components/Loading";
 
 //images
 import updateIcon from "../assets/images/updateIcon.png";
+import LoadedInputSubmit from "../components/LoadedInputSubmit";
 
 const UserId = () => {
   const { id } = useParams();
@@ -46,7 +47,8 @@ const UserId = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const { token, isAdmin, avatar, setAvatar } = useUser();
+  const { token, isAdmin, avatar, setAvatar, setIsSended, isSended } =
+    useUser();
   // console.log("token /users/${userId}:", token);
   // console.log("user /users/${userId}:", user);
   useEffect(() => {
@@ -279,6 +281,7 @@ const UserId = () => {
               <div>Date de création:</div>
               <div>{data?.date}</div>
             </div>
+            <LoadedInputSubmit setIsSended={setIsSended} isSended={isSended} />
             <div className="boxButton">
               <Button
                 buttonText="Update profile"

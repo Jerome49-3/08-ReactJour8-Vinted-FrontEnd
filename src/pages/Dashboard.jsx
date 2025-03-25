@@ -30,7 +30,7 @@ const Dashboard = ({
     <div className="boxDashboard">
       <div className="wrapper">
         <div className="leftPannel">
-          <div>
+          <div className="boxTitleLinksDashboard">
             <TitleSearch
               title="Users"
               valueStr={searchUsers}
@@ -39,7 +39,7 @@ const Dashboard = ({
             />
             <Links path="/dashboard/dashUsers" linkText="Dashboard Users" />
           </div>
-          <div>
+          <div className="boxTitleLinksDashboard">
             <TitleSearch
               title="Offers"
               valueStr={searchOffer}
@@ -48,7 +48,7 @@ const Dashboard = ({
             />
             <Links path="/dashboard/dashOffers" linkText="Dashboard Offers" />
           </div>
-          <div>
+          <div className="boxTitleLinksDashboard">
             <TitleSearch
               title="Sales"
               valueStr={searchTransactions}
@@ -60,7 +60,7 @@ const Dashboard = ({
             />
             <Links path="/dashboard/dashSales" linkText="Dashboard Sales" />
           </div>
-          <div>
+          <div className="boxTitleLinksDashboard">
             <TitleSearch
               title="Contact messages"
               value={searchMessage}

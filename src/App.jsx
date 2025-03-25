@@ -228,7 +228,10 @@ function App() {
                 />
               </Route>
               <Route path="chat" element={<Chat />} />
-              <Route path="profile/:id" element={<Profile />} />
+              <Route
+                path="profile/:id"
+                element={<Profile faTrash={faTrash} />}
+              />
               <Route
                 path="messagesContactId/:id"
                 element={<MessagesContactId />}

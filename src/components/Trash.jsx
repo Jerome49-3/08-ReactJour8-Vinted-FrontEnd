@@ -19,7 +19,8 @@ const Trash = ({ faTrash, handleClick, id }) => {
     if (
       location.pathname === "/myOffers" ||
       location.pathname === "/dashboard" ||
-      location.pathname === `/offerUpdate/${id}`
+      location.pathname === `/offerUpdate/${id}` ||
+      location.pathname === `/profile/${id}`
     ) {
       setShowTrash(true);
     } else {

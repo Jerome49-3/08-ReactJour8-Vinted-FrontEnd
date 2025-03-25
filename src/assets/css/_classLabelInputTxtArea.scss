@@ -4,6 +4,7 @@
     max-width: 100%;
     @include flexCenter;
     background-color: transparent;
+    height: 30px;
 
     & input {
       -moz-appearance: none;
@@ -13,12 +14,11 @@
       border-radius: 5px;
       outline: none;
       border: none;
+      height: 100%;
       background-color: transparent;
-      caret-color: hsla(228, 4%, 24%, 0.8);
       border-bottom: 2px solid $vertVinted;
-      height: 30px;
       width: 100%;
-      box-shadow: 0px 0px 1px $black, 0.10px 0.10px 1px $vertVinted, 0.20px 0.20px 1px $black, 0.30px 0.30px 1px $vertVinted, 0.40px 0.40px 1px $black, 0.50px 0.50px 1px $vertVinted, 1px 1px 1px $vertVinted;
+      box-shadow: 0px 0px 1px $black, 0.10px 0.10px 1px $vertVinted, 0.20px 0.20px 1px $vertVinted, 0.30px 0.30px 1px $vertVinted;
 
       &::-webkit-input-placeholder {
         padding-left: 10px;
@@ -69,11 +69,6 @@
         color: transparent;
       }
     }
-
-    & input[type="submit"] {
-      @include btn;
-      height: 30px;
-    }
   }
 
   //TXTAREA
@@ -88,7 +83,7 @@
       border-radius: 5px;
       width: 100%;
       max-width: 100%;
-      box-shadow: 0px 0px 1px $black, 0.10px 0.10px 1px $vertVinted, 0.20px 0.20px 1px $black, 0.30px 0.30px 1px $vertVinted, 0.40px 0.40px 1px $black, 0.50px 0.50px 1px $vertVinted, 1px 1px 1px $vertVinted;
+      box-shadow: 0px 0px 1px $black, 0.10px 0.10px 1px $vertVinted, 0.20px 0.20px 1px $vertVinted, 0.30px 0.30px 1px $vertVinted;
       border: none;
       border-bottom: 2px solid $vertVinted;
 

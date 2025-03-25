@@ -2,143 +2,145 @@
 .boxForm {
   width: 100%;
   display: flex;
-  padding: 10px 0 60px 0;
+  padding: 80px 0 20px 0;
 
   .wrapper {
     padding-bottom: 20px;
-  }
 
-  #pictures {
-    display: none;
-  }
-
-  .boxPicTop {
-    width: 100%;
-    @include flexColStart;
-    border: 2px solid #ededed;
-    margin-bottom: 10px;
-
-    .boxPicBottomEmpty {
-      padding: 110px;
-    }
-
-    .boxPicBottom,
-    .boxPicBottomEmpty {
-      @include flexStart;
+    & form {
+      @include flexColCenter;
+      gap: 8px;
+      margin-top: 10px;
       width: 100%;
-      border: 2px dashed rgb(237, 237, 237, 0.7);
-      gap: 5px;
-      flex-wrap: wrap;
-      position: relative;
 
-      #labelPic {
-        @include flexCenter;
-        width: -webkit-fit-content;
-        width: -moz-fit-content;
-        width: fit-content;
-        color: $vertVinted;
-        font-size: 1.5rem;
-        font-weight: 800;
-        border: 2px solid $vertVinted;
-        background-color: $white;
-        padding: 5px 10px 5px 10px;
-        border-radius: 5px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 500;
-        box-shadow: 0px 0px 2px $black, 1px 1px 2px $black;
-        transition: all 1s ease-in-out;
-
-        &:active {
-          box-shadow: inset 0px 0px 2px $black, inset 0px 0px 5px $black;
-        }
+      & img {
+        width: 100px;
+        height: 100px;
+        -o-object-fit: cover;
+        object-fit: cover;
       }
-    }
 
-    .boxPicBottom {
+      #pictures {
+        display: none;
+      }
 
-      .viewPics {
-        width: calc(100%/4.1);
-        position: relative;
+      .boxPicTop {
+        width: 100%;
+        @include flexColStart;
+        border: 2px solid #ededed;
+        margin-bottom: 10px;
 
-        & img {
-          width: 100%;
-          height: 200px;
-          max-height: 200px;
-          -o-object-fit: cover;
-          object-fit: cover;
+        .boxPicBottomEmpty {
+          padding: 110px;
         }
 
-        .suppFiles {
-          @include btn;
-          width: 20px;
-          height: 20px;
-          color: $vertVinted;
-          background-color: $white;
-          border: 2px solid $vertVinted;
-          @include flexCenter;
-          border-radius: 5px;
-          position: absolute;
-          top: 8%;
-          left: 90%;
-          transform: translate(-50%, -50%);
+        .boxPicBottom,
+        .boxPicBottomEmpty {
+          @include flexStart;
+          width: 100%;
+          border: 2px dashed $vertVinted;
+          gap: 5px;
+          flex-wrap: wrap;
+          position: relative;
 
-          &:hover {
+          #labelPic {
+            @include flexCenter;
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            width: fit-content;
+            color: $vertVinted;
+            font-size: 1.5rem;
+            font-weight: 800;
+            border: 2px solid $vertVinted;
             background-color: $white;
-            color: red;
+            padding: 5px 10px 5px 10px;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 500;
+            box-shadow: 0px 0px 2px $black, 1px 1px 2px $black;
+            transition: all 1s ease-in-out;
+
+            &:active {
+              box-shadow: inset 0px 0px 2px $black, inset 0px 0px 5px $black;
+            }
           }
         }
+
+        .boxPicBottom {
+
+          .viewPics {
+            width: 100%;
+            position: relative;
+
+            & img {
+              width: 100%;
+              height: 200px;
+              max-height: 200px;
+              -o-object-fit: cover;
+              object-fit: cover;
+            }
+
+            .suppFiles {
+              @include btn;
+              width: 20px;
+              height: 20px;
+              color: $vertVinted;
+              background-color: $white;
+              border: 2px solid $vertVinted;
+              @include flexCenter;
+              border-radius: 5px;
+              position: absolute;
+              top: 8%;
+              left: 90%;
+              transform: translate(-50%, -50%);
+
+              &:hover {
+                background-color: $white;
+                color: red;
+              }
+            }
+          }
+        }
+
+        .boxPicBottomEmpty {
+          border: none;
+        }
+      }
+
+      .classLabelInputSubmit {
+        width: 100%;
       }
     }
-
-    .boxPicBottomEmpty {
-      border: none;
-    }
-  }
-
-  & form {
-    @include flexColCenter;
-    gap: 8px;
-    margin-top: 10px;
-    width: 100%;
-
-    & img {
-      width: 100px;
-      height: 100px;
-      -o-object-fit: cover;
-      object-fit: cover;
-    }
-
   }
 }
 
-@media all and (min-width: 768px) {
+@media all and (min-width: 768px) {}
 
-  /* FORM */
-  .boxForm form {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media all and (min-width: 992px) {
-
-  /* FORM */
-  .boxForm form {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
+@media all and (min-width: 992px) {}
 
 @media all and (min-width: 1200px) {
   .boxForm {
+    padding: 40px 0px 30px 0px;
+
     .wrapper {
-      padding-bottom: 0px;
-      padding-top: 40px;
+      & form {
+        .boxPicTop {
+          .boxPicBottom {
+            padding: 2px;
+
+            .viewPics {
+              width: calc(100%/4.06);
+            }
+          }
+        }
+
+        & label {
+          width: 99.8%;
+        }
+      }
     }
   }
 }

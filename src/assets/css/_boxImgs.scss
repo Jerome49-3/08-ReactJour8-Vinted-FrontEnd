@@ -1,5 +1,5 @@
 .boxImgs {
-  margin-top: 6px;
+  margin-top: 40px;
 
   .imgBanner {
     max-width: 100%;
@@ -17,9 +17,12 @@
   }
 }
 
-@media all and (min-device-width : 576px) {
+// BREAKPOINTS
+
+@media all and (min-width : 576px) {
   .boxImgs {
     width: 100%;
+    margin-top: 6px;
 
     .imgBanner {
       width: 100%;
@@ -27,7 +30,17 @@
   }
 }
 
-@media all and (min-device-width : 1400px) {
+// @media all and (min-width : 768px) {}
+
+// @media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {
+  .boxImgs {
+    margin-top: 6px;
+  }
+}
+
+@media all and (min-width : 1400px) {
   .boxImgs {
     .imgBanner {
       max-height: 400px;
