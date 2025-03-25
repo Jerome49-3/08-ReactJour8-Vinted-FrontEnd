@@ -2,12 +2,14 @@
   @include flexColCenter;
   gap: 20px;
   width: 100%;
+  padding: 90px 0 50px 0;
 
   .wrapper {
+    @include flexColCenter;
+
     .left {
       @include flexColStart;
       position: relative;
-      padding-right: 10px;
 
       & img {
         width: 100%;
@@ -32,11 +34,10 @@
     }
 
     .right {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-left: 10px;
+      @include flexColBetween;
+
       gap: 1.25em;
+      width: 100%;
 
       .boxEmailIsConfirmed {
         @include flexBetween;
@@ -111,6 +112,7 @@
       .boxSubmitTrash {
         @include flexCenter;
         gap: 20px;
+        width: 100%;
 
         .btnTrash {
           @include btn;
@@ -151,6 +153,14 @@
 
     .wrapper {
       flex-direction: row;
+
+      .left {
+        padding-right: 10px;
+      }
+
+      .right {
+        padding-left: 10px;
+      }
     }
   }
 }

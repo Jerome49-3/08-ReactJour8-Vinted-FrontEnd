@@ -2454,6 +2454,13 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  padding: 90px 0 50px 0;
+}
+.boxUserId .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .boxUserId .wrapper .left {
   display: flex;
@@ -2461,7 +2468,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: flex-start;
   flex-direction: column;
   position: relative;
-  padding-right: 10px;
 }
 .boxUserId .wrapper .left img {
   width: 100%;
@@ -2484,10 +2490,12 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 .boxUserId .wrapper .right {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  padding-left: 10px;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
   gap: 1.25em;
+  width: 100%;
 }
 .boxUserId .wrapper .right .boxEmailIsConfirmed {
   display: flex;
@@ -2583,6 +2591,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: center;
   align-items: center;
   gap: 20px;
+  width: 100%;
 }
 .boxUserId .wrapper .right .boxSubmitTrash .btnTrash {
   color: #ffffff;
@@ -2618,6 +2627,12 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   }
   .boxUserId .wrapper {
     flex-direction: row;
+  }
+  .boxUserId .wrapper .left {
+    padding-right: 10px;
+  }
+  .boxUserId .wrapper .right {
+    padding-left: 10px;
   }
 }
 .boxPriceMinMax {
