@@ -1,9 +1,40 @@
 .boxForgotPsswd {
   width: 100%;
 
-  .formForgotPsswd {
-    @include flexColCenter;
-    gap: 10px;
-    width: 30%;
+  .wrapper {
+    height: 100vh;
+
+    .boxFormForgot {
+      @include flexColCenter;
+      gap: 10px;
+      width: 100%;
+
+      .classLabelInput input {
+        text-align: center;
+      }
+
+      .classLabelInputSubmit {
+        width: 100%;
+      }
+    }
   }
 }
+
+// BREAKPOINTS
+// @media all and (min-width : 576px) {}
+
+// @media all and (min-width : 768px) {}
+
+@media all and (min-width : 992px) {
+  .formForgotPsswd {
+    width: 30%;
+
+    .classLabelInputSubmit {
+      width: 30%;
+    }
+  }
+}
+
+// @media all and (min-width : 1200px) {}
+
+// @media all and (min-width : 1400px) {}

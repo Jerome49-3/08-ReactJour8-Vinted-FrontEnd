@@ -1,12 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import Input from "../components/Input";
 import { useUser } from "../assets/lib/userFunc";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import saveToken from "../assets/lib/saveToken";
+//components
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
+import EyePassword from "../components/EyePassword";
+import Input from "../components/Input";
 
-const ForgotPsswd = ({ emailIsConfirmed }) => {
+const ForgotPsswd = ({
+  emailIsConfirmed,
+  faEye,
+  faEyeSlash,
+  type,
+  setType,
+}) => {
   const [password, setPassword] = useState(null);
   // console.log("password in ForgotPsswd:", password);
   const [confirmPassword, setConfirmPassword] = useState(null);
@@ -74,22 +82,47 @@ const ForgotPsswd = ({ emailIsConfirmed }) => {
     <div className="boxForgotPsswd">
       <div className="wrapper">
         <form className="boxFormForgot" onSubmit={handleFormForgot}>
-          <Input
-            type="password"
-            setState={setPassword}
-            value={password}
-            placeholder="Password"
-          />
-          <Input
-            type="password"
-            setState={setConfirmPassword}
-            value={confirmPassword}
-            placeholder="Confirm password"
-          />
+          <div className="boxPsswd">
+            <Input
+              value={password || ""}
+              id="password"
+              type={type}
+              placeholder="Password"
+              setState={setPassword}
+              autocomplete="on"
+            />
+            <div className="boxIcons">
+              <EyePassword
+                faEye={faEye}
+                faEyeSlash={faEyeSlash}
+                type={type}
+                setType={setType}
+              />
+            </div>
+          </div>
+          <div className="boxPsswd">
+            <Input
+              value={confirmPassword || ""}
+              id="password"
+              type={type}
+              placeholder="Confirm password"
+              setState={setConfirmPassword}
+              autocomplete="on"
+            />
+            <div className="boxIcons">
+              <EyePassword
+                faEye={faEye}
+                faEyeSlash={faEyeSlash}
+                type={type}
+                setType={setType}
+              />
+            </div>
+          </div>
           <LoadedInputSubmit
             isSended={isSended}
             setIsSended={setIsSended}
             value="Send new password"
+            type="submit"
           />
           {errorMessage && <p className="red">{errorMessage}</p>}
         </form>

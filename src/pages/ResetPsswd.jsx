@@ -4,10 +4,10 @@ import { useUser } from "../assets/lib/userFunc";
 import { Navigate, useNavigate } from "react-router-dom";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
 
-const ResendEmail = ({ setEmailSended }) => {
+const ResetPsswd = ({ setEmailSended }) => {
   const [email, setEmail] = useState("");
-
   const { axios, token, isSended, setIsSended } = useUser();
+  console.log("token: in /resendEmailPsswd:", token);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   //handleSendEmail
@@ -19,7 +19,7 @@ const ResendEmail = ({ setEmailSended }) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/resendEmail`,
+        `http://localhost:3000/resendEmailPsswd`,
         formData
       );
       if (response?.data?.success) {
@@ -34,34 +34,29 @@ const ResendEmail = ({ setEmailSended }) => {
     }
   };
   return !token ? (
-    <>
-      <div className="boxForgotPsswd">
-        <div className="wrapper">
-          <form
-            action=""
-            onSubmit={handleSendEmail}
-            className="formForgotPsswd"
-          >
-            <Input
-              type="email"
-              id="email"
-              setState={setEmail}
-              value={email}
-              placeholder="Veuillez confirmer votre email"
-            />
-            <LoadedInputSubmit
-              isSended={isSended}
-              setIsSended={setIsSended}
-              value="Send your email"
-            />
-          </form>
-          {errorMessage && <p className="red">{errorMessage}</p>}
-        </div>
+    <div className="boxForgotPsswd">
+      <div className="wrapper">
+        <form onSubmit={handleSendEmail} className="formForgotPsswd">
+          <Input
+            type="email"
+            id="email"
+            setState={setEmail}
+            value={email}
+            placeholder="Veuillez confirmer votre email"
+          />
+          <LoadedInputSubmit
+            isSended={isSended}
+            setIsSended={setIsSended}
+            value="Send your email"
+            type="submit"
+          />
+        </form>
+        {errorMessage && <p className="red">{errorMessage}</p>}
       </div>
-    </>
+    </div>
   ) : (
     <Navigate to="/" />
   );
 };
 
-export default ResendEmail;
+export default ResetPsswd;

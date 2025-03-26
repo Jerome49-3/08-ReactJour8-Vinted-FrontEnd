@@ -14,12 +14,13 @@ import SmallLogo from "../assets/images/favicon.png";
 
 //lib
 import saveToken from "../assets/lib/saveToken";
+import LoadedInputSubmit from "./LoadedInputSubmit";
 
 const SignUp = ({
   showSignUp,
   setShowSignUp,
-  icon1,
-  icon2,
+  faEye,
+  faEyeSlash,
   type,
   setType,
   faCircleXmark,
@@ -29,8 +30,16 @@ const SignUp = ({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
-  const { token, setToken, setUser, setIsAdmin, axios, setErrorMessage } =
-    useUser();
+  const {
+    token,
+    setToken,
+    setUser,
+    setIsAdmin,
+    axios,
+    setErrorMessage,
+    setIsSended,
+    isSended,
+  } = useUser();
   const navigate = useNavigate();
   useEffect(() => {
     console.log("showSignUp updated in SignUp:", showSignUp);
@@ -103,8 +112,8 @@ const SignUp = ({
                 />
                 <div className="boxIcons">
                   <EyePassword
-                    icon1={icon1}
-                    icon2={icon2}
+                    faEye={faEye}
+                    faEyeSlash={faEyeSlash}
                     type={type}
                     setType={setType}
                   />
@@ -127,7 +136,12 @@ const SignUp = ({
                 conditions et politique de confidentialité de Vinted. Je
                 confirme avoir au moins 18ans
               </p>
-              <Input type="submit" value="S'inscrire" />
+              <LoadedInputSubmit
+                type="submit"
+                value="S'inscrire"
+                setIsSended={setIsSended}
+                isSended={isSended}
+              />
             </form>
           </div>
           <InfoUserErrorMessage />

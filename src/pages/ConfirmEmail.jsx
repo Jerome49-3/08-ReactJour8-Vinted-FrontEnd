@@ -11,6 +11,14 @@ import InputCode from "../components/InputCode";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
 
 const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
+  // console.log(
+  //   "emailSended in /confirmEmail::",
+  //   "\n",
+  //   emailSended,
+  //   "setEmailIsConfirmed in /confirmEmail:",
+  //   setEmailIsConfirmed
+  // );
+
   const [code, setCode] = useState([null, null, null, null, null, null]);
   const {
     axios,
@@ -48,11 +56,11 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
         }
         if (response?.data?.token) {
           setToken(response?.data?.token);
-          setIsSended(false);
           if (token) {
             saveToken(token, setUser, setIsAdmin);
           }
           alert(response?.data?.message);
+          setIsSended(false);
           navigate(`/publish`);
         }
       }
@@ -60,50 +68,33 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
       console.log("error:", error);
       console.log("Array.isArray(error):", Array.isArray(error));
       setErrorMessage(error?.message);
+      setTimeout(() => {
+        setIsSended(false);
+      }, 3000);
     }
   };
 
   return (
-    <>
-      <form
-        onSubmit={handleConfirmEmail}
-        className="boxFormCenter boxFormInputCode"
-      >
-        {/* <div className="boxContainerInputCode">
-          {code.map((inputCode, index) => {
-            console.log("inputCode in ConfirmEmail:", inputCode);
-            return (
-              <label htmlFor="code" className="boxInputCode" key={index}>
-                <input
-                  id={`code-${index}`}
-                  type="text"
-                  value={code[index]}
-                  onChange={(e) => handleChangeInputCode(e, index)}
-                  className="classInputCode"
-                  placeholder="0"
-                  required
-                  maxLength={1}
-                  ref={(el) => (inputRefs.current[index] = el)}
-                />
-              </label>
-            );
-          })}
-        </div> */}
-        <InputCode code={code} setCode={setCode} />
-        {emailSended === true ? (
-          <Input type="hidden" value="true" />
-        ) : (
-          <Input type="hidden" value="false" />
-        )}
-        <LoadedInputSubmit
-          value="Send the code"
-          classInput="submitInputCode"
-          isSended={isSended}
-          setIsSended={setIsSended}
-        />
-      </form>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-    </>
+    <div className="boxFormInputCode">
+      <div className="wrapper">
+        <form onSubmit={handleConfirmEmail}>
+          <InputCode code={code} setCode={setCode} />
+          {emailSended === true ? (
+            <Input type="hidden" value="true" />
+          ) : (
+            <Input type="hidden" value="false" />
+          )}
+          <LoadedInputSubmit
+            value="Send the code"
+            classInput="submitInputCode"
+            isSended={isSended}
+            setIsSended={setIsSended}
+            type="submit"
+          />
+        </form>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      </div>
+    </div>
   );
 };
 

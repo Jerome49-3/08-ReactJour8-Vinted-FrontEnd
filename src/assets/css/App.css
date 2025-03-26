@@ -922,10 +922,11 @@
 }
 .boxLogin {
   width: 100%;
-  height: 80%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 90px 0 50px 0;
 }
 .boxLogin .wrapper form {
   display: flex;
@@ -933,7 +934,7 @@
   align-items: center;
   flex-direction: column;
   gap: 10px;
-  width: 30%;
+  width: 100%;
   height: 100%;
 }
 .boxLogin .wrapper form .boxForgot .btnSubmitCode {
@@ -962,39 +963,84 @@
   font-weight: 600;
 }
 
-.boxFormSignUp {
-  height: 100%;
+@media all and (min-width: 1200px) {
+  .boxLogin {
+    padding: 0;
+  }
+  .boxLogin .wrapper form {
+    width: 30%;
+  }
 }
-.boxFormSignUp .wrapper {
+.boxModal {
+  width: 100%;
+}
+.boxModal .boxModalContent {
+  width: 90%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.boxModal .boxModalContent .boxTitleClose {
+  width: 90%;
+}
+.boxModal .boxModalContent .boxFormSignUp {
+  height: 100%;
+  width: 90%;
+}
+.boxModal .boxModalContent .boxFormSignUp .wrapper {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   gap: 10px;
 }
-.boxFormSignUp .wrapper form {
+.boxModal .boxModalContent .boxFormSignUp .wrapper form {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   gap: 10px;
 }
-.boxFormSignUp .wrapper form input {
+.boxModal .boxModalContent .boxFormSignUp .wrapper form input:not(input[type=submit]) {
   background-color: none;
 }
+.boxModal .boxModalContent .boxFormSignUp .wrapper form .classLabelInputSubmit {
+  width: 100%;
+}
 
+@media all and (min-width: 1200px) {
+  .boxModalContent {
+    width: 50% !important;
+  }
+}
 .boxForgotPsswd {
   width: 100%;
 }
-.boxForgotPsswd .formForgotPsswd {
+.boxForgotPsswd .wrapper {
+  height: 100vh;
+}
+.boxForgotPsswd .wrapper .boxFormForgot {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 10px;
-  width: 30%;
+  width: 100%;
+}
+.boxForgotPsswd .wrapper .boxFormForgot .classLabelInput input {
+  text-align: center;
+}
+.boxForgotPsswd .wrapper .boxFormForgot .classLabelInputSubmit {
+  width: 100%;
 }
 
+@media all and (min-width: 992px) {
+  .formForgotPsswd {
+    width: 30%;
+  }
+  .formForgotPsswd .classLabelInputSubmit {
+    width: 30%;
+  }
+}
 /* HEADER */
 header {
   width: 100%;
@@ -3067,9 +3113,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 50%;
-  gap: 25%;
-  height: 50%;
+  width: 100%;
+  height: 100vh;
+  padding: 90px 0 50px 0;
 }
 .boxFormInputCode .boxContainerInputCode {
   display: flex;
@@ -3100,6 +3146,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   font-size: 2rem;
   text-align: center;
   margin-left: 10px;
+}
+.boxFormInputCode .boxLoaded {
+  width: 100%;
 }
 .boxFormInputCode .submitInputCode {
   color: #ffffff;

@@ -102,7 +102,7 @@ const Profile = ({ faTrash }) => {
   }, [id]);
 
   const handleUpdateData = async (e) => {
-    setIsLoading(true);
+    setIsSended(true);
     e.preventDefault();
     const userId = data.id;
     const formData = new FormData();
@@ -114,14 +114,7 @@ const Profile = ({ faTrash }) => {
     try {
       const response = await axios.put(
         `http://localhost:3000/profile/${id}`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "content-type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
+        formData
       );
       // console.log('response in /profile/${id}::', response);
       console.log(
@@ -186,12 +179,21 @@ const Profile = ({ faTrash }) => {
       }
       setTimeout(() => {
         alert(response?.data?.message);
-        setIsLoading(false);
+        setIsSended(false);
         navigate(`/`);
       }, 1000);
     } catch (error) {
       console.log(error?.message);
       setErrorMessage(error?.response?.data?.message || "update failed");
+    }
+  };
+
+  const handleDeleteData = async (e) => {
+    e.preventDefault();
+    setIsSended(true);
+    const response = await axios.delete(`http://localhost:300/userId/${id}`);
+    if (response) {
+      navigate("/dashboard");
     }
   };
 
@@ -271,7 +273,7 @@ const Profile = ({ faTrash }) => {
                 isSended={isSended}
                 faTrash={faTrash}
                 id={id}
-                // handleClick={handleDeleteData}
+                handleClick={handleDeleteData}
               />
             </div>
           </div>

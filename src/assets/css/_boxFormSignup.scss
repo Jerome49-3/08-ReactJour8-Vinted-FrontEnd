@@ -1,17 +1,50 @@
-.boxFormSignUp {
-  height: calc(100%);
+.boxModal {
+  width: 100%;
 
-  .wrapper {
-    @include flexColTop;
-    gap: 10px;
+  .boxModalContent {
+    width: 90%;
+    height: fit-content;
 
-    & form {
-      @include flexColStart;
-      gap: 10px;
+    .boxTitleClose {
+      width: 90%;
+    }
 
-      & input {
-        background-color: none;
+    .boxFormSignUp {
+      height: calc(100%);
+      width: 90%;
+
+      .wrapper {
+        @include flexColTop;
+        gap: 10px;
+
+        & form {
+          @include flexColStart;
+          gap: 10px;
+
+          & input:not(input[type="submit"]) {
+            background-color: none;
+          }
+
+          .classLabelInputSubmit {
+            width: 100%;
+          }
+        }
       }
     }
   }
 }
+
+// BREAKPOINTS
+// @media all and (min-width : 576px) {}
+
+// @media all and (min-width : 768px) {}
+
+// @media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {
+  .boxModalContent {
+    width: 50% !important;
+  }
+}
+
+// @media all and (min-width : 1400px) {}

@@ -72,7 +72,7 @@ import Contact from "./pages/Contact";
 import OfferIdUpdateAndDelete from "./pages/OfferIdUpdateAndDelete";
 import Login from "./pages/Login";
 import ConfirmEmail from "./pages/ConfirmEmail";
-import ResendEmail from "./pages/ResendEmail";
+import ResetPsswd from "./pages/ResetPsswd";
 import ForgotPsswd from "./pages/ForgotPsswd";
 import Home from "./pages/Home";
 import OfferID from "./pages/OfferID";
@@ -145,14 +145,30 @@ function App() {
                 />
               }
             />
-            <Route path="confirmEmail" element={<ConfirmEmail />} />
             <Route
-              path="resendEmail"
-              element={<ResendEmail setEmailSended={setEmailSended} />}
+              path="confirmEmail"
+              element={
+                <ConfirmEmail
+                  emailSended={emailSended}
+                  setEmailIsConfirmed={setEmailIsConfirmed}
+                />
+              }
+            />
+            <Route
+              path="resendEmailPsswd"
+              element={<ResetPsswd setEmailSended={setEmailSended} />}
             />
             <Route
               path="forgotPassword"
-              element={<ForgotPsswd emailIsConfirmed={emailIsConfirmed} />}
+              element={
+                <ForgotPsswd
+                  emailIsConfirmed={emailIsConfirmed}
+                  type={type}
+                  setType={setType}
+                  faEye={faEye}
+                  faEyeSlash={faEyeSlash}
+                />
+              }
             />
             <Route
               index
@@ -314,10 +330,10 @@ function App() {
           <SignUp
             showSignUp={showSignUp}
             setShowSignUp={setShowSignUp}
-            icon1="eye"
-            icon2="eye-slash"
             type={type}
             setType={setType}
+            faEye={faEye}
+            faEyeSlash={faEyeSlash}
             faCircleXmark={faCircleXmark}
           />
         )}

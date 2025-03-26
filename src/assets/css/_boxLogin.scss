@@ -1,14 +1,15 @@
 .boxLogin {
   width: 100%;
-  height: 80%;
+  height: 100vh;
   @include flexCenter;
+  padding: 90px 0 50px 0;
 
   .wrapper {
 
     form {
       @include flexColCenter;
       gap: 10px;
-      width: 30%;
+      width: 100%;
       height: 100%;
 
       .boxForgot {
@@ -30,5 +31,25 @@
       }
     }
   }
-
 }
+
+// BREAKPOINTS
+// @media all and (min-width : 576px) {}
+
+// @media all and (min-width : 768px) {}
+
+// @media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {
+  .boxLogin {
+    padding: 0;
+
+    .wrapper {
+      & form {
+        width: 30%;
+      }
+    }
+  }
+}
+
+// @media all and (min-width : 1400px) {}

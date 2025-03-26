@@ -24,35 +24,37 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
     setIsAdmin,
     axios,
     setImgBoxUser,
+    isSended,
+    setIsSended,
   } = useUser();
   // console.log("imgBoxUser in Login:", imgBoxUser);
   console.log("errorMessage in Login:", errorMessage);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(null);
-  const [isLocked, setIsLocked] = useState(false);
   const navigate = useNavigate();
 
-  const handleSendCode = async (e) => {
-    setIsLoading(true);
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        `http://localhost:3000/sendMail/sendCode`,
-        {}
-      );
-      if (response.data) {
-        console.log("response.data:", response.data);
-        alert(response.data);
-        setIsLoading(false);
-        navigate("/confirmEmail");
-      }
-    } catch (error) {
-      console.log(error.message);
-      console.log(error?.response?.data);
-      setErrorMessage(error?.response?.data?.message);
-    }
-  };
+  // const handleSendCode = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       `http://localhost:3000/sendMail/sendCode`,
+  //       {
+  //         email,
+  //       }
+  //     );
+  //     if (response.data) {
+  //       console.log("response.data:", response.data);
+  //       alert(response.data);
+  //       setIsLoading(false);
+  //       navigate("/confirmEmail");
+  //     }
+  //   } catch (error) {
+  //     console.log(error.message);
+  //     console.log(error?.response?.data);
+  //     setErrorMessage(error?.response?.data?.message);
+  //   }
+  // };
   // console.log(
   //   "import.meta.env.VITE_REACT_APP_URL_LOGIN:",
   //   import.meta.env.VITE_REACT_APP_URL_LOGIN
@@ -91,15 +93,6 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
       console.log("error in handleSubmit on Login:", error);
       const errRespDataMssg = error?.response?.data?.message;
       console.log("errRespDataMssg in handleSubmit on Login:", errRespDataMssg);
-      const errAccLocked = error?.response?.data?.accountLocked;
-      if (errAccLocked) {
-        setIsLocked(true);
-      }
-      console.log("errAccLocked in handleSubmit on Login:", errAccLocked);
-      console.log(
-        "typeof errAccLocked in handleSubmit on Login:",
-        typeof errAccLocked
-      );
       const messageNotConfirmEmail = import.meta.env
         .VITE_REACT_APP_MSSG_NOT_CONFIRMEMAIL;
       if (
@@ -152,16 +145,14 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
           </div>
           <Input type="submit" value="Se connecter" />
           <div className="boxForgotErrorMessage">
-            {isLocked ? (
-              <div className="boxForgot">
-                <div className="btnSubmitCode" onClick={handleSendCode}>
-                  <Links path="/resendEmail" linkText="Mot de passe oublié ?" />
-                </div>
+            <div className="boxForgot">
+              <div className="btnSubmitCode">
+                <Links
+                  path="/resendEmailPsswd"
+                  linkText="Mot de passe oublié ?"
+                />
               </div>
-            ) : (
-              <div className="boxForgot"></div>
-            )}
-
+            </div>
             <InfoUserErrorMessage />
           </div>
         </form>

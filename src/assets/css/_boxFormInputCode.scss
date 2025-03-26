@@ -1,9 +1,9 @@
 .boxFormInputCode {
   // border: 2px solid red;
   @include flexColCenter;
-  width: 50%;
-  gap: 25%;
-  height: 50%;
+  width: 100%;
+  height: 100vh;
+  padding: 90px 0 50px 0;
 
   .boxContainerInputCode {
     @include flexCenter;
@@ -57,6 +57,11 @@
         margin-left: 10px;
       }
     }
+
+  }
+
+  .boxLoaded {
+    width: 100%;
   }
 
   .submitInputCode {
