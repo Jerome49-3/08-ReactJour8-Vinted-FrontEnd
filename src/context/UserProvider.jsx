@@ -196,7 +196,7 @@ export const UserProvider = ({ children }) => {
         config.headers.Authorization = token
           ? `Bearer ${token}`
           : `Bearer ${tokenFgtP}`;
-        // console.log("tokenFgtP in axios.interceptors.request:", tokenFgtP);
+        console.log("tokenFgtP in axios.interceptors.request:", tokenFgtP);
 
         config.headers["Content-Type"] =
           "multipart/form-data" || "application/json";

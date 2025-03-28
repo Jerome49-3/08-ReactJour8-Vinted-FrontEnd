@@ -19,5 +19,6 @@ module.exports = {
     ],
     "react/no-unescaped-entities": 0, // <=== ICI
     "react/prop-types": "off", // <=== ET LÀ
+    "react-hooks/exhaustive-deps": "off",
   },
 };

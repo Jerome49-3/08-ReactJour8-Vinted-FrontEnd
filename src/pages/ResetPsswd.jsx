@@ -25,7 +25,9 @@ const ResetPsswd = ({ setEmailSended }) => {
       if (response?.data?.success) {
         setIsSended(false);
         console.log("response.data:", response.data);
-        navigate(response?.data?.success);
+        navigate(response?.data?.success, {
+          state: { tokenId: response?.data?.stateTk },
+        });
         setEmailSended(true);
       }
     } catch (error) {

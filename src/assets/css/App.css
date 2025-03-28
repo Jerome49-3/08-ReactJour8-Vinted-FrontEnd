@@ -1019,6 +1019,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
 }
 .boxResetPsswd .wrapper .formResetPsswd {
@@ -1042,6 +1043,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 87%;
+}
+.boxResetPsswd .wrapper .formResetPsswd .classLabelInputSubmit input {
+  width: 100%;
+}
+.boxResetPsswd .wrapper .formResetPsswd .boxLoaded {
   width: 87%;
 }
 
@@ -3229,6 +3236,10 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 .boxFormInputCode .submitInputCode:hover, .boxFormInputCode .submitInputCode:focus {
   background-color: #33c6d0;
+}
+
+.boxFormInputCode .wrapper {
+  flex-direction: column;
 }
 
 .boxLoaderTyping {

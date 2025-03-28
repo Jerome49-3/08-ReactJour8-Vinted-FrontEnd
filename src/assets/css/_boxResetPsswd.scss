@@ -1,9 +1,7 @@
 .boxResetPsswd {
-
-
   .wrapper {
     height: 100vh;
-    @include flexCenter;
+    @include flexColCenter;
     width: 100%;
 
     .formResetPsswd {
@@ -22,6 +20,14 @@
 
       .classLabelInputSubmit {
         @include flexCenter;
+        width: 87%;
+
+        & input {
+          width: 100%;
+        }
+      }
+
+      .boxLoaded {
         width: 87%;
       }
     }

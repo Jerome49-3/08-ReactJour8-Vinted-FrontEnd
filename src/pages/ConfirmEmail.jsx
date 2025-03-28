@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "../assets/lib/userFunc";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 //components
 import Input from "../components/Input";
@@ -19,7 +19,7 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
   //   setEmailIsConfirmed
   // );
 
-  const [code, setCode] = useState([null, null, null, null, null, null]);
+  const [code, setCode] = useState(["", "", "", "", "", ""]);
   const {
     axios,
     token,
@@ -30,8 +30,21 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
     setErrorMessage,
     isSended,
     setIsSended,
+    tokenFgtP,
+    setTokenFgtP,
   } = useUser();
   const navigate = useNavigate();
+  const { state } = useLocation();
+  // console.log("state in ConfirmEmail:", state);
+  const { tokenId } = state;
+  console.log("tokenId in ConfirmEmail:", tokenId);
+  useEffect(() => {
+    if (tokenId) {
+      setTokenFgtP(tokenId);
+      console.log("tokenFgtP in ForgotPsswd:", tokenFgtP);
+      sessionStorage.setItem("tokenFgtP", tokenFgtP);
+    }
+  }, [tokenId, tokenFgtP]);
   // Submit le code
   const handleConfirmEmail = async (e) => {
     e.preventDefault();
@@ -42,7 +55,14 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
     try {
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_CONFIRMEMAIL,
-        formData
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${tokenFgtP}`,
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
       );
       console.log("response in /confirmEmail:", response);
       if (response?.data) {
@@ -67,7 +87,7 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
     } catch (error) {
       console.log("error:", error);
       console.log("Array.isArray(error):", Array.isArray(error));
-      setErrorMessage(error?.message);
+      setErrorMessage(error?.response?.data?.message);
       setTimeout(() => {
         setIsSended(false);
       }, 3000);
