@@ -162,20 +162,6 @@ table {
   .dark {
     background-color: var(--darkMode);
     color: var(--lightMode);
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      box-shadow: 0.15px 0.15px 1px #f1f1f1;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #888;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
   }
 
   .dark header,
@@ -293,7 +279,7 @@ input[type="file"] {
 /* LINK */
 a,
 a p {
-  color: #ffffff;
+  color: #a0f7ff;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
   font-size: 14px;
 }

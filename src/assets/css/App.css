@@ -142,6 +142,9 @@
   font-size: 14px;
   font-style: normal;
 }
+:root ::-webkit-scrollbar {
+  display: none;
+}
 :root .wrapper {
   max-width: 350px;
   margin-left: auto;
@@ -226,7 +229,6 @@
 @media all and (min-width: 1200px) {
   :root .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper, .boxFormSignUp > .wrapper, header > .wrapper, .boxLogin > .wrapper),
   :root .boxNoPurchases,
-  :root .boxHomeNoOffer,
   :root .boxDashboard,
   :root .boxShoppingCart,
   :root .wrapperNoOffer {
@@ -1012,6 +1014,42 @@
     width: 50% !important;
   }
 }
+.boxResetPsswd .wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.boxResetPsswd .wrapper .formResetPsswd {
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.boxResetPsswd .wrapper .formResetPsswd .classLabelInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+.boxResetPsswd .wrapper .formResetPsswd .classLabelInput input {
+  width: 95%;
+}
+.boxResetPsswd .wrapper .formResetPsswd .classLabelInputSubmit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 87%;
+}
+
+@media all and (min-width: 1200px) {
+  .formResetPsswd {
+    width: 50% !important;
+  }
+}
 .boxForgotPsswd {
   width: 100%;
 }
@@ -1033,12 +1071,13 @@
   width: 100%;
 }
 
-@media all and (min-width: 992px) {
-  .formForgotPsswd {
-    width: 30%;
+@media all and (min-width: 1200px) {
+  .boxForgotPsswd .wrapper .boxFormForgot {
+    width: 30% !important;
   }
-  .formForgotPsswd .classLabelInputSubmit {
-    width: 30%;
+  .boxForgotPsswd .wrapper .boxFormForgot .boxPsswd .classLabelInput input {
+    text-align: start;
+    padding-left: 5px;
   }
 }
 /* HEADER */
@@ -1368,14 +1407,39 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  padding: 40px 0 60px 0;
+  padding: 80px 0 50px 0;
 }
-.boxHome .noOffers {
+
+@media all and (min-width: 1200px) {
+  .boxHome {
+    padding: 40px 0 0 0;
+  }
+}
+.boxHomeNoOffer {
+  position: relative;
+  width: 100%;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.boxHomeNoOffer .boxNoOffers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
 
+@media all and (min-width: 1200px) {
+  .boxHomeNoOffer {
+    height: 15vh;
+  }
+}
 .btnTrash {
   color: #ffffff;
   background-color: #007882;
@@ -2754,7 +2818,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   width: 50%;
   max-width: 60%;
   z-index: 600;
-  background-color: rgba(52, 52, 52, 0.8);
+  background-color: #c9c9c9;
   animation: appearPanel 0.5s linear 0.25s 1 normal both;
   box-shadow: 0px 0px 1px #007882;
   gap: 20px;

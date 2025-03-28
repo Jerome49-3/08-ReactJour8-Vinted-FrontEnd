@@ -14,6 +14,8 @@ const ForgotPsswd = ({
   faEyeSlash,
   type,
   setType,
+  type2,
+  setType2,
 }) => {
   const [password, setPassword] = useState(null);
   // console.log("password in ForgotPsswd:", password);
@@ -103,8 +105,8 @@ const ForgotPsswd = ({
           <div className="boxPsswd">
             <Input
               value={confirmPassword || ""}
-              id="password"
-              type={type}
+              id="confirmPassword"
+              type={type2}
               placeholder="Confirm password"
               setState={setConfirmPassword}
               autocomplete="on"
@@ -113,8 +115,8 @@ const ForgotPsswd = ({
               <EyePassword
                 faEye={faEye}
                 faEyeSlash={faEyeSlash}
-                type={type}
-                setType={setType}
+                type={type2}
+                setType={setType2}
               />
             </div>
           </div>

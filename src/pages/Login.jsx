@@ -150,6 +150,7 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
                 <Links
                   path="/resendEmailPsswd"
                   linkText="Mot de passe oublié ?"
+                  state={{ tokenId: token }}
                 />
               </div>
             </div>

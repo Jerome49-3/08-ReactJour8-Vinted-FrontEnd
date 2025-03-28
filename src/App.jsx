@@ -97,6 +97,7 @@ function App() {
   const [search, setSearch] = useState("");
   // console.log("search in app:", search);
   const [type, setType] = useState("password");
+  const [type2, setType2] = useState("password");
   const [searchUsers, setSearchUsers] = useState("");
   const [numberCommand, setNumberCommand] = useState("");
   // console.log("numberCommand in app:", numberCommand);
@@ -167,6 +168,8 @@ function App() {
                   setType={setType}
                   faEye={faEye}
                   faEyeSlash={faEyeSlash}
+                  type2={type2}
+                  setType2={setType2}
                 />
               }
             />

@@ -31,16 +31,11 @@ const Input = ({
     //   "e.target.type in handleChange:",
     //   e.target.type
     // );
-    if (
-      e.target.type === "email" ||
-      e.target.type === "password" ||
-      e.target.type === "checkbox" ||
-      e.target.type === "radio"
-    ) {
-      setState(e.target.value);
-    } else {
+    if (e.target.type === "text") {
       const finalTarget = transformStr(e);
       setState(finalTarget);
+    } else {
+      setState(e.target.value);
     }
     if (e.target.type === "number") {
       if (e.target.value < e.target.min || e.target.value > e.target.max) {

@@ -6,6 +6,10 @@
     font-style: normal;
   }
 
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   .wrapper {
     max-width: 350px;
     margin-left: auto;
@@ -65,24 +69,34 @@
     .green {
       color: $vertVinted;
     }
+  }
 
-    @media all and (min-width : 576px) {
+  @media all and (min-width : 576px) {
+    .wrapper {
       max-width: 476px;
     }
+  }
 
-    @media all and (min-width : 768px) {
+  @media all and (min-width : 768px) {
+    .wrapper {
       max-width: 668px;
     }
+  }
 
-    @media all and (min-width : 992px) {
+  @media all and (min-width : 992px) {
+    .wrapper {
       max-width: 892px;
     }
+  }
 
-    @media all and (min-width : 1200px) {
+  @media all and (min-width : 1200px) {
+    .wrapper {
       max-width: 1100px;
     }
+  }
 
-    @media all and (min-width : 1400px) {
+  @media all and (min-width : 1400px) {
+    .wrapper {
       max-width: 1200px;
     }
   }
@@ -91,7 +105,6 @@
 
     .wrapper:not(.boxHome>.wrapper, .boxForm>.wrapper, .boxFormSignUp>.wrapper, header>.wrapper, .boxLogin>.wrapper),
     .boxNoPurchases,
-    .boxHomeNoOffer,
     .boxDashboard,
     .boxShoppingCart,
     .wrapperNoOffer {

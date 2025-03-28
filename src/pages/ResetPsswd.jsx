@@ -34,15 +34,15 @@ const ResetPsswd = ({ setEmailSended }) => {
     }
   };
   return !token ? (
-    <div className="boxForgotPsswd">
+    <div className="boxResetPsswd">
       <div className="wrapper">
-        <form onSubmit={handleSendEmail} className="formForgotPsswd">
+        <form onSubmit={handleSendEmail} className="formResetPsswd">
           <Input
             type="email"
             id="email"
             setState={setEmail}
             value={email}
-            placeholder="Veuillez confirmer votre email"
+            placeholder="Please, confirm your email"
           />
           <LoadedInputSubmit
             isSended={isSended}

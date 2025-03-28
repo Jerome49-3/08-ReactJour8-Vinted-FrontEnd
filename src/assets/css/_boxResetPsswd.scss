@@ -1,0 +1,44 @@
+.boxResetPsswd {
+
+
+  .wrapper {
+    height: 100vh;
+    @include flexCenter;
+    width: 100%;
+
+    .formResetPsswd {
+      gap: 10px;
+      @include flexColCenter;
+      width: 100%;
+
+      .classLabelInput {
+        @include flexCenter;
+        width: 90%;
+
+        & input {
+          width: 95%;
+        }
+      }
+
+      .classLabelInputSubmit {
+        @include flexCenter;
+        width: 87%;
+      }
+    }
+  }
+}
+
+// BREAKPOINTS
+// @media all and (min-width : 576px) {}
+
+// @media all and (min-width : 768px) {}
+
+// @media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {
+  .formResetPsswd {
+    width: 50% !important;
+  }
+}
+
+// @media all and (min-width : 1400px) {}

@@ -25,16 +25,21 @@
 
 // @media all and (min-width : 768px) {}
 
-@media all and (min-width : 992px) {
-  .formForgotPsswd {
-    width: 30%;
+@media all and (min-width : 992px) {}
 
-    .classLabelInputSubmit {
-      width: 30%;
+@media all and (min-width : 1200px) {
+  .boxForgotPsswd {
+    .wrapper .boxFormForgot {
+      width: 30% !important;
+
+      .boxPsswd .classLabelInput {
+        & input {
+          text-align: start;
+          padding-left: 5px;
+        }
+      }
     }
   }
 }
-
-// @media all and (min-width : 1200px) {}
 
 // @media all and (min-width : 1400px) {}

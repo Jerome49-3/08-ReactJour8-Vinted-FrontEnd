@@ -59,7 +59,7 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
     <>
       <Loading />
     </>
-  ) : data ? (
+  ) : data?.length > 0 ? (
     <div className="boxHome">
       <Hero />
       <div className="wrapper">
@@ -83,18 +83,27 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
       </div>
     </div>
   ) : (
-    !isLoading && (
-      <>
+    <div className="boxHome">
+      <Hero />
+      <div className="wrapper">
         <div className="boxHomeNoOffer">
-          <div className="wrapperNoOffer">
-            <div className="boxNoOffers">
-              <div> Il n'y aucune offre actuellement:&ensp;</div>
-              <Links path="/publish" linkText="Publier la votre" />
-            </div>
+          <div className="boxNoOffers">
+            <div> Il n'y aucune offre actuellement:&ensp;</div>
+            <Links path="/publish" linkText="Publier la votre" />
           </div>
         </div>
-      </>
-    )
+        <CookieConsent
+          location="bottom"
+          buttonText="Sure !"
+          cookieName="VintaidAppCookiesAccept"
+          expires={150}
+        >
+          This website uses cookies only to enhance the user experience and not
+          for advertising purposes.{" "}
+        </CookieConsent>
+        <InfoUserErrorMessage />
+      </div>
+    </div>
   );
 };
 
