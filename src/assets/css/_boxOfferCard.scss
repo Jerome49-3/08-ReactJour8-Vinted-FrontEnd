@@ -197,6 +197,7 @@
   .boxOfferCard {
     @include flexStart;
     flex-wrap: wrap;
+    padding-bottom: 40px;
 
     .wrapper {
       display: flex;
@@ -204,11 +205,32 @@
       gap: 20px;
       align-items: flex-start;
       flex-wrap: wrap;
+      margin-top: -5px;
     }
 
     a {
       @include flexStart;
-      width: calc(100% / 4.22) !important;
+      width: calc(100% / 5.5) !important;
+
+      & article {
+        min-height: fit-content !important;
+
+        .boxUser,
+        .footerArticle {
+          height: fit-content !important;
+        }
+
+        .boxImgArticle {
+
+          & img {
+            height: 150px !important;
+          }
+        }
+
+        .boxTrashHearth {
+          top: 70% !important;
+        }
+      }
     }
   }
 }

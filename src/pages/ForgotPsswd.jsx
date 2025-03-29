@@ -37,7 +37,7 @@ const ForgotPsswd = ({
     tokenFgtP,
     setTokenFgtP,
   } = useUser();
-  console.log("tokenFgtP in ForgotPsswd before useEffect:", tokenFgtP);
+  // console.log("tokenFgtP in ForgotPsswd before useEffect:", tokenFgtP);
   useEffect(() => {
     if (tokenId) {
       setTokenFgtP(tokenId);
@@ -45,7 +45,7 @@ const ForgotPsswd = ({
       sessionStorage.setItem("tokenFgtP", tokenFgtP);
     }
   }, [tokenId, tokenFgtP]);
-  console.log("tokenFgtP in ForgotPsswd after useEffect:", tokenFgtP);
+  // console.log("tokenFgtP in ForgotPsswd after useEffect:", tokenFgtP);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -55,16 +55,12 @@ const ForgotPsswd = ({
     const formData = new FormData();
     formData.append("password", password);
     formData.append("confirmPassword", confirmPassword);
-    console.log("tokenFgtP in ForgotPsswd in handleFormForgot:", tokenFgtP);
+    formData.append("tokenFgtP", tokenFgtP);
+    // console.log("tokenFgtP in ForgotPsswd in handleFormForgot:", tokenFgtP);
     try {
       const response = await axios.post(
         `http://localhost:3000/user/forgotPsswd`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${tokenFgtP}`,
-          },
-        }
+        formData
       );
       setIsSended(true);
       // console.log("response in /forgotPsswd:", response);
@@ -93,6 +89,12 @@ const ForgotPsswd = ({
               placeholder="Password"
               setState={setPassword}
               autocomplete="on"
+            />
+            <Input
+              value={tokenFgtP || ""}
+              id="tokenId"
+              type="hidden"
+              setState={setTokenFgtP}
             />
             <div className="boxIcons">
               <EyePassword

@@ -62,7 +62,7 @@ const MyOffers = ({
         ) : (
           showNoOffer && (
             <div className="boxNoOffers">
-              <p> Vous n'avez pas d'annonces publiés:</p>
+              <p> Vous n'avez pas d'annonces publiés:&ensp;</p>
               <Links path="/publish" linkText="Mettez en vente un produit" />
             </div>
           )

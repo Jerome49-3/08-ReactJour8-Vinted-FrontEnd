@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useUser } from "../assets/lib/userFunc";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -30,21 +30,19 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
     setErrorMessage,
     isSended,
     setIsSended,
-    tokenFgtP,
-    setTokenFgtP,
   } = useUser();
   const navigate = useNavigate();
   const { state } = useLocation();
-  // console.log("state in ConfirmEmail:", state);
+  // // console.log("state in ConfirmEmail:", state);
   const { tokenId } = state;
   console.log("tokenId in ConfirmEmail:", tokenId);
-  useEffect(() => {
-    if (tokenId) {
-      setTokenFgtP(tokenId);
-      console.log("tokenFgtP in ForgotPsswd:", tokenFgtP);
-      sessionStorage.setItem("tokenFgtP", tokenFgtP);
-    }
-  }, [tokenId, tokenFgtP]);
+  // useEffect(() => {
+  //   if (tokenId) {
+  //     setTokenFgtP(tokenId);
+  //     console.log("tokenFgtP in ForgotPsswd:", tokenFgtP);
+  //     sessionStorage.setItem("tokenFgtP", tokenFgtP);
+  //   }
+  // }, [tokenId, tokenFgtP]);
   // Submit le code
   const handleConfirmEmail = async (e) => {
     e.preventDefault();
@@ -55,14 +53,7 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
     try {
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_CONFIRMEMAIL,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${tokenFgtP}`,
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
+        formData
       );
       console.log("response in /confirmEmail:", response);
       if (response?.data) {
@@ -71,7 +62,7 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
           setIsSended(false);
           alert(response?.data?.message);
           navigate("/forgotPassword", {
-            state: { tokenId: response?.data?.stateTk },
+            state: { tokenId: tokenId },
           });
         }
         if (response?.data?.token) {

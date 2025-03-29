@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Input from "../components/Input";
 import { useUser } from "../assets/lib/userFunc";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
 
 const ResetPsswd = ({ setEmailSended }) => {
   const [email, setEmail] = useState("");
-  const { axios, token, isSended, setIsSended } = useUser();
-  console.log("token: in /resendEmailPsswd:", token);
+  const { axios, isSended, setIsSended } = useUser();
+  // console.log("token: in /resendEmailPsswd:", token);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   //handleSendEmail
@@ -26,7 +26,7 @@ const ResetPsswd = ({ setEmailSended }) => {
         setIsSended(false);
         console.log("response.data:", response.data);
         navigate(response?.data?.success, {
-          state: { tokenId: response?.data?.stateTk },
+          state: { tokenId: response?.data?.tokenId },
         });
         setEmailSended(true);
       }
@@ -35,7 +35,7 @@ const ResetPsswd = ({ setEmailSended }) => {
       setErrorMessage(error.message);
     }
   };
-  return !token ? (
+  return (
     <div className="boxResetPsswd">
       <div className="wrapper">
         <form onSubmit={handleSendEmail} className="formResetPsswd">
@@ -56,9 +56,10 @@ const ResetPsswd = ({ setEmailSended }) => {
         {errorMessage && <p className="red">{errorMessage}</p>}
       </div>
     </div>
-  ) : (
-    <Navigate to="/" />
   );
+  // : (
+  //   <Navigate to="/" />
+  // );
 };
 
 export default ResetPsswd;

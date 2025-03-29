@@ -37,6 +37,10 @@
 @media all and (min-width : 1200px) {
   .boxImgs {
     margin-top: 6px;
+
+    .imgBanner {
+      max-height: 200px;
+    }
   }
 }
 

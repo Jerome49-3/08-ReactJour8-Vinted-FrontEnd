@@ -3,7 +3,7 @@ import Button from "./Button";
 import { useEffect } from "react";
 import { useUser } from "../assets/lib/userFunc";
 const Trash = ({ faTrash, handleClick, id }) => {
-  const { showTrash, setShowTrash, isSended, setIsSended, location } =
+  const { showTrash, setShowTrash, isSendedTrash, setIsSendedTrash, location } =
     useUser();
   // console.log(
   //   "showTrash on Trash:",
@@ -29,13 +29,13 @@ const Trash = ({ faTrash, handleClick, id }) => {
   }, [location.pathname, showTrash]);
 
   useEffect(() => {
-    setIsSended(false);
+    setIsSendedTrash(false);
   }, []);
 
   return (
     <>
       {showTrash === true &&
-        (isSended !== true ? (
+        (isSendedTrash !== true ? (
           <Button
             icon={faTrash}
             classButton="btnTrash"

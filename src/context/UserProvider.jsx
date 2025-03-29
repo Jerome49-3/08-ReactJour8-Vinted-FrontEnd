@@ -14,6 +14,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [showHero, setShowHero] = useState(false);
   const [isSended, setIsSended] = useState(false);
+  const [isSendedTrash, setIsSendedTrash] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [infoUser, setInfoUser] = useState("");
   const [showTrash, setShowTrash] = useState(false);
@@ -189,27 +190,29 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   useLayoutEffect(() => {
-    const configRequestGlobal = axios.interceptors.request.use(
-      (config) => {
-        // console.log("config in userProvider:", config);
-        config.withCredentials = true;
-        config.headers.Authorization = token
-          ? `Bearer ${token}`
-          : `Bearer ${tokenFgtP}`;
-        console.log("tokenFgtP in axios.interceptors.request:", tokenFgtP);
-
-        config.headers["Content-Type"] =
-          "multipart/form-data" || "application/json";
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-    return () => {
-      axios.interceptors.request.eject(configRequestGlobal);
-    };
-  }, [token, axios]);
+    if (
+      location.pathname !== "/confirmEmail" ||
+      location.pathname !== "/resendEmailPsswd" ||
+      location.pathname !== "/forgotPassword"
+    ) {
+      const configRequestGlobal = axios.interceptors.request.use(
+        (config) => {
+          // console.log("config in userProvider:", config);
+          config.withCredentials = true;
+          config.headers.Authorization = `Bearer ${token}`;
+          config.headers["Content-Type"] =
+            "multipart/form-data" || "application/json";
+          return config;
+        },
+        (error) => {
+          return Promise.reject(error);
+        }
+      );
+      return () => {
+        axios.interceptors.request.eject(configRequestGlobal);
+      };
+    }
+  }, [token, tokenFgtP, axios, location.pathname]);
 
   const logout = async () => {
     try {
@@ -271,6 +274,8 @@ export const UserProvider = ({ children }) => {
         showHero,
         avatarOffer,
         setAvatarOffer,
+        isSendedTrash,
+        setIsSendedTrash,
       }}
     >
       {children}

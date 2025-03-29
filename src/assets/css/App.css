@@ -907,6 +907,9 @@
 .boxForm .wrapper form .classLabelInputSubmit {
   width: 100%;
 }
+.boxForm .wrapper form .boxLoaded {
+  width: 100%;
+}
 
 @media all and (min-width: 1200px) {
   .boxForm {
@@ -1400,6 +1403,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 @media all and (min-width: 1200px) {
   .boxImgs {
     margin-top: 6px;
+  }
+  .boxImgs .imgBanner {
+    max-height: 200px;
   }
 }
 @media all and (min-width: 1400px) {
@@ -1939,6 +1945,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
+    padding-bottom: 40px;
   }
   .boxOfferCard .wrapper {
     display: flex;
@@ -1946,12 +1953,28 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     gap: 20px;
     align-items: flex-start;
     flex-wrap: wrap;
+    margin-top: -5px;
   }
   .boxOfferCard a {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 23.6966824645% !important;
+    width: 18.1818181818% !important;
+  }
+  .boxOfferCard a article {
+    min-height: -moz-fit-content !important;
+    min-height: fit-content !important;
+  }
+  .boxOfferCard a article .boxUser,
+  .boxOfferCard a article .footerArticle {
+    height: -moz-fit-content !important;
+    height: fit-content !important;
+  }
+  .boxOfferCard a article .boxImgArticle img {
+    height: 150px !important;
+  }
+  .boxOfferCard a article .boxTrashHearth {
+    top: 70% !important;
   }
 }
 .boxFavorites {
@@ -2962,11 +2985,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   animation: disappearPanel 1s linear 0.25s 1 normal both;
 }
 
-@media all and (min-width: 576px) and (max-width: 767px) {
+@media all and (min-width: 576px) {
   .toggleNav {
     width: 50%;
-    top: 50%;
-    left: 75%;
   }
 }
 @media all and (min-width: 768px) {
@@ -2976,17 +2997,22 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 @media all and (min-width: 992px) {
   .toggleNav {
-    width: 30%;
+    width: 33.3333333333%;
   }
 }
-@media all and (min-width: 12OOpx) {
-  .toggleNav {
+@media all and (min-width: 1200px) {
+  .toggleNav .boxAside .bodyAside a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .toggleNav .boxAside .bodyAside a p {
     width: 50%;
-  }
-}
-@media all and (min-device-width: 1400px) {
-  .toggleNav {
-    width: 25%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 18px !important;
+    letter-spacing: 8px !important;
   }
 }
 .boxContact {
@@ -3363,6 +3389,18 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 .boxMyOffers {
   padding: 90px 0 50px 0;
+  position: relative;
+  height: 100vh;
+}
+.boxMyOffers .boxNoOffers {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media all and (min-width: 1200px) {

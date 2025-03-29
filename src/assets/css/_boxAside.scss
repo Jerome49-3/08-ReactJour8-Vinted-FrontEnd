@@ -129,11 +129,9 @@
 }
 
 // BREAKPOINTS
-@media all and (min-width : 576px) and (max-width: 767px) {
+@media all and (min-width : 576px) {
   .toggleNav {
     width: 50%;
-    top: 50%;
-    left: 75%;
   }
 }
 
@@ -145,19 +143,28 @@
 
 @media all and (min-width : 992px) {
   .toggleNav {
-    width: 30%;
+    width: calc(100%/3);
   }
 }
 
 
-@media all and (min-width: 12OOpx) {
+@media all and (min-width : 1200px) {
   .toggleNav {
-    width: 50%;
+    .boxAside {
+      .bodyAside {
+        & a {
+          @include flexCenter;
+
+          & p {
+            width: 50%;
+            @include flexStart;
+            font-size: 18px !important;
+            letter-spacing: 8px !important;
+          }
+        }
+      }
+    }
   }
 }
 
-@media all and (min-device-width : 1400px) {
-  .toggleNav {
-    width: 25%;
-  }
-}
+// @media all and (min-width : 1400px) {}
