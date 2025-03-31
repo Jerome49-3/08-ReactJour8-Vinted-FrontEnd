@@ -34,7 +34,7 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
   // console.log("prices in OfferId:", prices);
   // console.log('prices in /offers/${id}:', prices);
   const [isLoading, setIsLoading] = useState(true);
-  const rotation = classRotation(data);
+  // const rotation = classRotation(data);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
     const setImgsLength = () => {
       const imgsLength = data?.product_pictures.length - 1;
       // console.log('imgsLength in useEffect in /offer/:id:', imgsLength);
-      if (data?.product_pictures.length > 3) {
+      if (data?.product_pictures.length > 2) {
         setImgsNbr(
           document.documentElement.style.setProperty("--imgsLength", imgsLength)
         );

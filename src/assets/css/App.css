@@ -753,33 +753,120 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 90px 0 50px 0;
 }
 .boxModal .boxModalContent {
   background-color: white;
-  padding: 2rem;
+  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   border-radius: 15px;
   box-shadow: inset 0px 0px 10px #000000, 0px 0px 10px #000000;
-  width: 50vw;
-  height: 58vh;
+  width: 90vw;
+  height: 80vh;
+}
+.boxModal .boxModalContent button {
+  color: #ffffff;
+  background-color: #007882;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  border-radius: 5px;
+  width: 90%;
+  margin-bottom: 10px;
+}
+.boxModal .boxModalContent button p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+}
+.boxModal .boxModalContent button:hover, .boxModal .boxModalContent button:focus {
+  background-color: #33c6d0;
+}
+.boxModal .boxModalContent img {
+  width: 90%;
+  height: 90%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 25% top;
+     object-position: 25% top;
 }
 
-@media (min-width: 300px) {
-  /* MODAL */
-  .boxModalContent {
-    max-width: 90%;
-  }
+/* MODAL */
+.boxModalSignUp {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 119, 130, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-@media (min-width: 576px) {
-  /* MODAL */
-  .boxModalContent {
-    max-width: 60%;
-  }
-  .boxModalContent > div {
-    width: 105%;
+.boxModalSignUp .boxModalContentSignUp {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  padding: 10px 15px 10px 15px;
+  box-shadow: inset 0px 0px 10px #000000, 0px 0px 10px #000000;
+  width: 90vw;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.boxModalSignUp .boxModalContentSignUp .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+  padding: 0 !important;
+}
+.boxModalSignUp .boxModalContentSignUp .wrapper .boxTitleClose {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.boxModalSignUp .boxModalContentSignUp .wrapper .boxTitleClose button {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: rgba(0, 119, 130, 0.8);
+}
+.boxModalSignUp .boxModalContentSignUp .wrapper .boxFormSignUp form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  gap: 10px;
+}
+.boxModalSignUp .boxModalContentSignUp .wrapper .boxFormSignUp .classLabelInputSubmit {
+  width: 100%;
+}
+.boxModalSignUp .boxModalContentSignUp .wrapper .boxFormSignUp .boxCheckBoxInfoAcceptUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.boxModalSignUp .boxModalContentSignUp .wrapper .boxFormSignUp .boxCheckBoxInfoAcceptUser .boxCheckBox {
+  width: 30%;
+  text-align: justify;
+}
+.boxModalSignUp .boxModalContentSignUp .wrapper .boxFormSignUp .boxCheckBoxInfoAcceptUser p {
+  width: 70%;
+  text-align: justify;
+}
+
+@media all and (min-width: 1200px) {
+  .boxModalSignUp .boxModalContentSignUp {
+    padding: 20px 25px 20px 25px;
+    width: 50vw;
   }
 }
 /* FORM */
@@ -974,47 +1061,6 @@
   }
   .boxLogin .wrapper form {
     width: 30%;
-  }
-}
-.boxModal {
-  width: 100%;
-}
-.boxModal .boxModalContent {
-  width: 90%;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-.boxModal .boxModalContent .boxTitleClose {
-  width: 90%;
-}
-.boxModal .boxModalContent .boxFormSignUp {
-  height: 100%;
-  width: 90%;
-}
-.boxModal .boxModalContent .boxFormSignUp .wrapper {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-}
-.boxModal .boxModalContent .boxFormSignUp .wrapper form {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 10px;
-}
-.boxModal .boxModalContent .boxFormSignUp .wrapper form input:not(input[type=submit]) {
-  background-color: none;
-}
-.boxModal .boxModalContent .boxFormSignUp .wrapper form .classLabelInputSubmit {
-  width: 100%;
-}
-
-@media all and (min-width: 1200px) {
-  .boxModalContent {
-    width: 50% !important;
   }
 }
 .boxResetPsswd .wrapper {
@@ -1471,13 +1517,15 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 
 .boxOfferId {
   width: 100%;
-  padding: 90px 0 50px 0;
+  height: 100vh;
+  padding-top: 15px;
 }
 .boxOfferId .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
 }
 .boxOfferId .wrapper .top {
   display: flex;
@@ -1486,6 +1534,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   gap: 10px;
   width: 100%;
+  height: 82vh;
 }
 .boxOfferId .wrapper .top * {
   margin: 0;
@@ -1502,6 +1551,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   flex-direction: column;
   flex-direction: column;
+  height: 50%;
 }
 .boxOfferId .wrapper .top .left .imgLeftAlone {
   width: 100%;
@@ -1527,19 +1577,28 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 .boxOfferId .wrapper .top .left .imgLeft article {
   display: flex;
   width: 100%;
-  max-height: calc(100% / var(--imgsLength));
+  max-height: 82vh;
 }
 .boxOfferId .wrapper .top .left .imgLeft {
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.boxOfferId .wrapper .top .left .imgLeft .boxImgOffer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 .boxOfferId .wrapper .top .left .imgLeft .boxImgOffer .prodPict0 {
   display: block;
   -o-object-fit: cover;
   object-fit: cover;
   width: 100%;
+  height: 100%;
 }
 .boxOfferId .wrapper .top .left .imgsRight {
   width: 100%;
@@ -1550,6 +1609,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   height: 100%;
 }
 .boxOfferId .wrapper .top .left .imgsRight article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: calc(100% / (var(--imgsLength)));
   width: 100%;
   max-height: 100%;
@@ -1559,6 +1621,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
 }
 .boxOfferId .wrapper .top .left .imgsRight article .boxImgOffer .prodPict {
   width: 100%;
@@ -1585,6 +1648,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   flex-direction: column;
   height: 100%;
+  height: 50%;
 }
 .boxOfferId .wrapper .top .right .title {
   width: 100%;
@@ -1708,6 +1772,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .boxOfferId .wrapper .top .left {
     flex-direction: row !important;
     height: 100%;
+  }
+  .boxOfferId .wrapper .top .left .imgLeftAlone .boxImgOffer .prodImg {
+    max-height: 82vh;
   }
   .boxOfferId .wrapper .top .left .imgLeft,
   .boxOfferId .wrapper .top .left .imgLeft * {
@@ -1987,6 +2054,14 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: flex-start;
   flex-direction: column;
   height: 100%;
+}
+.boxFavorites .wrapper .boxNoPurchases {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
 }
 
 @media all and (min-width: 1200px) {
@@ -2621,6 +2696,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
 }
 .boxUserId .wrapper .left {
   display: flex;
@@ -2629,6 +2705,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   position: relative;
   width: 100%;
+  height: 50vh;
 }
 .boxUserId .wrapper .left img {
   width: 100%;
@@ -2651,12 +2728,12 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 .boxUserId .wrapper .right {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
-  height: 100%;
-  gap: 1.25em;
+  height: 50vh;
   width: 100%;
+  gap: 2.75rem;
 }
 .boxUserId .wrapper .right .boxEmailIsConfirmed {
   display: flex;
@@ -2794,6 +2871,11 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   }
   .boxUserId .wrapper .right {
     padding-left: 10px;
+    justify-content: space-between !important;
+  }
+  .boxUserId .wrapper .left,
+  .boxUserId .wrapper .right {
+    height: 82vh;
   }
 }
 .boxPriceMinMax {

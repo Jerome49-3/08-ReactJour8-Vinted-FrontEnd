@@ -71,19 +71,19 @@ const SignUp = ({
   };
 
   return (
-    <div className="boxModal">
-      <div className="boxModalContent">
-        <div className="boxTitleClose">
-          <Image src={SmallLogo} alt="logo Vinted" />
-          <Button
-            icon={faCircleXmark}
-            handleClick={() => {
-              setShowSignUp(false);
-            }}
-          />
-        </div>
-        <div className="boxFormSignUp">
-          <div className="wrapper">
+    <div className="boxModalSignUp">
+      <div className="boxModalContentSignUp">
+        <div className="wrapper">
+          <div className="boxTitleClose">
+            <Image src={SmallLogo} alt="logo Vinted" />
+            <Button
+              icon={faCircleXmark}
+              handleClick={() => {
+                setShowSignUp(false);
+              }}
+            />
+          </div>
+          <div className="boxFormSignUp">
             <form onSubmit={handleSignup}>
               <Input
                 value={username || ""}
@@ -119,23 +119,25 @@ const SignUp = ({
                   />
                 </div>
               </div>
-              <div className="boxCheckBox">
-                <input
-                  type="checkbox"
-                  name="checkbox"
-                  id="checkbox"
-                  onChange={() => {
-                    setNewsletter(!newsletter);
-                  }}
-                  checked={newsletter}
-                />
-                <span>S'inscrire à la newsletter</span>
+              <div className="boxCheckBoxInfoAcceptUser">
+                <div className="boxCheckBox">
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    id="checkbox"
+                    onChange={() => {
+                      setNewsletter(!newsletter);
+                    }}
+                    checked={newsletter}
+                  />
+                  <span>S'inscrire à la newsletter</span>
+                </div>
+                <p>
+                  En m'inscrivant, je confirme avoir lu et accepté les termes,
+                  conditions et politique de confidentialité de Vintaid. Je
+                  confirme avoir au moins 18ans
+                </p>
               </div>
-              <p>
-                En m'inscrivant, je confirme avoir lu et accepté les termes,
-                conditions et politique de confidentialité de Vinted. Je
-                confirme avoir au moins 18ans
-              </p>
               <LoadedInputSubmit
                 type="submit"
                 value="S'inscrire"
@@ -143,8 +145,8 @@ const SignUp = ({
                 isSended={isSended}
               />
             </form>
+            <InfoUserErrorMessage />
           </div>
-          <InfoUserErrorMessage />
         </div>
       </div>
     </div>

@@ -11,7 +11,6 @@ import Hero from "../components/Hero";
 import Loading from "../components/Loading";
 import OfferCard from "../components/OfferCard";
 import Links from "../components/Links";
-import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 //images
 // import noImg from '../assets/images/no-image.jpg';
@@ -79,7 +78,6 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
           This website uses cookies only to enhance the user experience and not
           for advertising purposes.{" "}
         </CookieConsent>
-        <InfoUserErrorMessage />
       </div>
     </div>
   ) : (
@@ -101,7 +99,6 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
           This website uses cookies only to enhance the user experience and not
           for advertising purposes.{" "}
         </CookieConsent>
-        <InfoUserErrorMessage />
       </div>
     </div>
   );

@@ -1,0 +1,85 @@
+/* MODAL */
+.boxModalSignUp {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 119, 130, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .boxModalContentSignUp {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 10px 15px 10px 15px;
+    box-shadow: inset 0px 0px 10px #000000, 0px 0px 10px #000000;
+    width: 90vw;
+    height: fit-content;
+
+    .wrapper {
+      @include flexColCenter;
+      height: fit-content !important;
+      padding: 0 !important;
+
+      .boxTitleClose {
+        @include flexBetween;
+
+        & button {
+          width: fit-content;
+          background-color: rgba(0, 119, 130, 0.8);
+        }
+      }
+
+      .boxFormSignUp {
+        & form {
+          @include flexColCenter;
+          display: flex;
+          gap: 10px;
+        }
+
+        .classLabelInputSubmit {
+          width: 100%;
+        }
+
+        .boxCheckBoxInfoAcceptUser {
+          @include flexCenter;
+          gap: 10px;
+
+          .boxCheckBox {
+
+            width: 30%;
+            text-align: justify;
+          }
+
+          & p {
+            width: 70%;
+            text-align: justify;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+// BREAKPOINTS
+// @media all and (min-width : 576px) {}
+
+// @media all and (min-width : 768px) {}
+
+// @media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {
+  .boxModalSignUp .boxModalContentSignUp {
+    padding: 20px 25px 20px 25px;
+    width: 50vw;
+  }
+}
+
+// @media all and (min-width : 1400px) {}

@@ -6,6 +6,12 @@
   .wrapper {
     @include flexColTopStart;
     height: 100%;
+
+    .boxNoPurchases {
+      @include flexColCenter;
+      height: 100vh;
+      width: 100%;
+    }
   }
 }
 
