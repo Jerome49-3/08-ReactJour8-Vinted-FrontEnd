@@ -5,71 +5,63 @@
   height: 100vh;
   padding: 90px 0 50px 0;
 
-  .boxContainerInputCode {
-    @include flexCenter;
-    // border: 2px solid green;
-    gap: 8px;
+  .wrapper {
+    & form {
+      @include flexColCenter;
+      gap: 10px;
 
-    .classInputCode {
-      @include flexCenter;
-      width: 45px;
-      height: 45px;
-      background-color: transparent;
-      font-size: 2rem;
-      border: 1px solid green;
-      box-shadow: 0px 0px 1px $vertVinted, 0.10px 0.10px 1px $vertVinted, inset 0.15px 0.15px 5px $vertVinted, inset 0.20px 0.20px 10px $black;
-      border-radius: 5px;
-      padding: 0;
-      text-align: center;
+      .boxContainerInputCode {
+        @include flexCenter;
+        gap: 8px;
 
-      &::-webkit-input-placeholder {
-        font-size: 2rem;
-        // padding-right: 5px;
-        text-align: center;
-        margin-left: 10px;
+        .boxInputCode {
+          @include flexCenter;
+
+          .classInputCode {
+            @include flexCenter;
+            width: 45px;
+            height: 45px;
+            background-color: transparent;
+            font-size: 2rem;
+            border: 1px solid $vertVinted;
+            box-shadow: 0px 0px 1px $vertVinted, 0.10px 0.10px 1px $vertVinted, inset 0.15px 0.15px 5px $vertVinted;
+            border-radius: 5px;
+
+            &::-webkit-input-placeholder {
+              font-size: 2rem;
+              text-align: center;
+            }
+
+            &::-moz-placeholder {
+              font-size: 2rem;
+              text-align: center;
+            }
+
+            &:-ms-input-placeholder {
+              font-size: 2rem;
+              text-align: center;
+            }
+
+            &::-ms-input-placeholder {
+              font-size: 2rem;
+              text-align: center;
+            }
+
+            &::placeholder {
+              font-size: 2rem;
+              text-align: center;
+            }
+          }
+        }
       }
 
-      &::-moz-placeholder {
-        font-size: 2rem;
-        // padding-right: 5px;
-        text-align: center;
-        margin-left: 10px;
+      .boxLoaded {
+        width: 100%;
       }
 
-      &:-ms-input-placeholder {
-        font-size: 2rem;
-        // padding-right: 5px;
-        text-align: center;
-        margin-left: 10px;
-      }
-
-      &::-ms-input-placeholder {
-        font-size: 2rem;
-        // padding-right: 5px;
-        text-align: center;
-        margin-left: 10px;
-      }
-
-      &::placeholder {
-        font-size: 2rem;
-        // padding-right: 5px;
-        text-align: center;
-        margin-left: 10px;
+      .classLabelInputSubmit {
+        width: 100%;
       }
     }
-
   }
-
-  .boxLoaded {
-    width: 100%;
-  }
-
-  .submitInputCode {
-    @include btn;
-    width: 50%;
-  }
-}
-
-.boxFormInputCode .wrapper {
-  flex-direction: column;
 }

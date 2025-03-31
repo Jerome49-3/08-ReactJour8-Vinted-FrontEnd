@@ -14,8 +14,8 @@ import noImg from "../assets/images/no-image.jpg";
 
 const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
   const { fav, data, setData, axios, setInfoUser, setIsSended } = useUser();
-  console.log("data ds OfferCard:", data);
-  console.log("fav ds OfferCard:", fav);
+  // console.log("data ds OfferCard:", data);
+  // console.log("fav ds OfferCard:", fav);
   let location = useLocation();
   // console.log("location ds OfferCard:", location);
   useEffect(() => {
@@ -39,7 +39,7 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
     >
       {(location.pathname === "/favorites" ? fav : data)?.map((article) => {
         // const isFavorite = fav.some((favArticle) => favArticle?._id);
-        console.log("article ds .boxOffer:", article);
+        // console.log("article ds .boxOffer:", article);
         const offerId = article._id;
         return (
           <React.Fragment key={offerId}>

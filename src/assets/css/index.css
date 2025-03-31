@@ -250,17 +250,14 @@ table {
   .light .boxPicTop,
   .light .boxForm textarea,
   .light .boxForm .wrapper form label input:not(input[type="submit"]),
-  .light .boxLogin .wrapper form label input:not(input[type="submit"]),
-  .light .boxLogin .wrapper form .boxPsswd,
   .light .topHeader .containerBoxSearch .boxSearch,
   .light .topHeader .containerBoxSearch .boxSearch .classLabelInput input,
   .light .boxForm .wrapper form label textarea {
     background-color: var(--backLightInput) !important;
   }
-  .light .boxLogin .wrapper form label,
-  input::selection {
+  /* .light .boxLogin .wrapper form label {
     background-color: white;
-  }
+  } */
   .light .boxLastUsers .boxUsers a {
     background-color: var(--backgHeader);
   }

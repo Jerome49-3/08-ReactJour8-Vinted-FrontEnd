@@ -621,6 +621,10 @@
   box-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 }
 
+.classLabelInputHidden {
+  display: none;
+}
+
 .classLabelInput {
   width: 100%;
   max-width: 100%;
@@ -1053,6 +1057,22 @@
   color: #33c6d0;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
   font-weight: 600;
+}
+.boxLogin .wrapper form .classLabelInputSubmit {
+  color: #ffffff;
+  background-color: #007882;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  border-radius: 5px;
+  width: 100%;
+}
+.boxLogin .wrapper form .classLabelInputSubmit p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+}
+.boxLogin .wrapper form .classLabelInputSubmit:hover, .boxLogin .wrapper form .classLabelInputSubmit:focus {
+  background-color: #33c6d0;
 }
 
 @media all and (min-width: 1200px) {
@@ -3296,13 +3316,25 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   height: 100vh;
   padding: 90px 0 50px 0;
 }
-.boxFormInputCode .boxContainerInputCode {
+.boxFormInputCode .wrapper form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.boxFormInputCode .wrapper form .boxContainerInputCode {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
 }
-.boxFormInputCode .boxContainerInputCode .classInputCode {
+.boxFormInputCode .wrapper form .boxContainerInputCode .boxInputCode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxFormInputCode .wrapper form .boxContainerInputCode .boxInputCode .classInputCode {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3310,44 +3342,23 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   height: 45px;
   background-color: transparent;
   font-size: 2rem;
-  border: 1px solid green;
-  box-shadow: 0px 0px 1px #007882, 0.1px 0.1px 1px #007882, inset 0.15px 0.15px 5px #007882, inset 0.2px 0.2px 10px #000000;
+  border: 1px solid #007882;
+  box-shadow: 0px 0px 1px #007882, 0.1px 0.1px 1px #007882, inset 0.15px 0.15px 5px #007882;
   border-radius: 5px;
-  padding: 0;
-  text-align: center;
 }
-.boxFormInputCode .boxContainerInputCode .classInputCode::-moz-placeholder {
+.boxFormInputCode .wrapper form .boxContainerInputCode .boxInputCode .classInputCode::-moz-placeholder {
   font-size: 2rem;
   text-align: center;
-  margin-left: 10px;
 }
-.boxFormInputCode .boxContainerInputCode .classInputCode::placeholder {
+.boxFormInputCode .wrapper form .boxContainerInputCode .boxInputCode .classInputCode::placeholder {
   font-size: 2rem;
   text-align: center;
-  margin-left: 10px;
 }
-.boxFormInputCode .boxLoaded {
+.boxFormInputCode .wrapper form .boxLoaded {
   width: 100%;
 }
-.boxFormInputCode .submitInputCode {
-  color: #ffffff;
-  background-color: #007882;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  border-radius: 5px;
-  width: 50%;
-}
-.boxFormInputCode .submitInputCode p {
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
-}
-.boxFormInputCode .submitInputCode:hover, .boxFormInputCode .submitInputCode:focus {
-  background-color: #33c6d0;
-}
-
-.boxFormInputCode .wrapper {
-  flex-direction: column;
+.boxFormInputCode .wrapper form .classLabelInputSubmit {
+  width: 100%;
 }
 
 .boxLoaderTyping {

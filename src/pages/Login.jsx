@@ -11,8 +11,10 @@ import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 //lib
 import saveToken from "../assets/lib/saveToken";
+import LoadedInputSubmit from "../components/LoadedInputSubmit";
 
 const Login = ({ faEye, faEyeSlash, type, setType }) => {
+  console.log("type in login:", type);
   // const boxForm = "boxForm";
   // const boxLogin = "boxLogin";
   const {
@@ -33,32 +35,6 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(null);
   const navigate = useNavigate();
-
-  // const handleSendCode = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       `http://localhost:3000/sendMail/sendCode`,
-  //       {
-  //         email,
-  //       }
-  //     );
-  //     if (response.data) {
-  //       console.log("response.data:", response.data);
-  //       alert(response.data);
-  //       setIsLoading(false);
-  //       navigate("/confirmEmail");
-  //     }
-  //   } catch (error) {
-  //     console.log(error.message);
-  //     console.log(error?.response?.data);
-  //     setErrorMessage(error?.response?.data?.message);
-  //   }
-  // };
-  // console.log(
-  //   "import.meta.env.VITE_REACT_APP_URL_LOGIN:",
-  //   import.meta.env.VITE_REACT_APP_URL_LOGIN
-  // );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -143,7 +119,12 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
               />
             </div>
           </div>
-          <Input type="submit" value="Se connecter" />
+          <LoadedInputSubmit
+            type="submit"
+            value="Se connecter"
+            isSended={isSended}
+            setIsSended={setIsSended}
+          />
           <div className="boxForgotErrorMessage">
             <div className="boxForgot">
               <div className="btnSubmitCode">

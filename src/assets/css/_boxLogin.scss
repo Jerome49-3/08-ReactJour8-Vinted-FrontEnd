@@ -29,6 +29,11 @@
           }
         }
       }
+
+      .classLabelInputSubmit {
+        @include btn;
+        width: 100%;
+      }
     }
   }
 }

@@ -14,6 +14,7 @@ const Input = ({
   classInput,
   required,
 }) => {
+  //classLabel by default =
   // console.log("value on input:", value);
   // console.log("type on input:", type);
   const { setErrorMessage } = useUser();
@@ -48,7 +49,12 @@ const Input = ({
 
   return (
     <>
-      <label htmlFor={id} className="classLabelInput">
+      <label
+        htmlFor={id}
+        className={
+          type === "hidden" ? "classLabelInputHidden" : "classLabelInput"
+        }
+      >
         {labelTxt}
         <input
           id={id}

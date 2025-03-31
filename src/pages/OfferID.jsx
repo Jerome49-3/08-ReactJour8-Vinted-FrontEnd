@@ -17,7 +17,7 @@ import Image from "../components/Image";
 import Button from "../components/Button";
 
 //lib
-import classRotation from "../assets/lib/classRotation";
+// import classRotation from "../assets/lib/classRotation";
 import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
@@ -120,7 +120,7 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
                 ) : data?.product_pictures ? (
                   <>
                     {data?.product_pictures.map((images, index) => {
-                      console.log("images:", images);
+                      // console.log("images:", images);
                       return (
                         <React.Fragment key={index}>
                           {index === 0 ? (
@@ -256,14 +256,12 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
                 </div>
                 <div className="down">
                   <div className="boxUser">
-                    {data?.owner?.avatar?.secure_url ? (
-                      <>
-                        <Image
-                          src={data?.owner?.avatar?.secure_url}
-                          alt="avatar"
-                          classImg="imgAvatar"
-                        />
-                      </>
+                    {data?.owner?.account?.avatar?.secure_url ? (
+                      <Image
+                        src={data?.owner?.account?.avatar?.secure_url}
+                        alt="avatar"
+                        classImg="imgAvatar"
+                      />
                     ) : (
                       <Image
                         src={data?.owner?.account?.avatar}
@@ -271,7 +269,7 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
                         classImg="imgAvatar"
                       />
                     )}
-                    <div>{data?.owner?.username}</div>
+                    <div>{data?.owner?.account?.username}</div>
                   </div>
                   <div className="boxLinks">
                     <Link to="/chat" state={{ product_id: data?.product_id }}>

@@ -31,8 +31,8 @@ const Home = ({ search, faHeart, farHeart, priceMin, priceMax }) => {
     setIsLoading,
     setErrorMessage,
   } = useUser();
-  console.log("data in /Home:", data);
-  console.log("data.length in /Home:", data?.length);
+  // console.log("data in /Home:", data);
+  // console.log("data.length in /Home:", data?.length);
   useEffect(() => {
     const fetchData = async () => {
       try {
