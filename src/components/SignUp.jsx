@@ -25,7 +25,7 @@ const SignUp = ({
   setType,
   faCircleXmark,
 }) => {
-  console.log("showSignUp on SignUp:", showSignUp);
+  // console.log("showSignUp on SignUp:", showSignUp);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,7 +58,9 @@ const SignUp = ({
       if (response) {
         alert(response?.data?.message);
         setShowSignUp(false);
-        navigate("/confirmemail");
+        navigate("/confirmemail", {
+          state: { tokenId: response?.data?.tokenId },
+        });
         saveToken(token, setToken, setUser, setIsAdmin);
       }
     } catch (error) {

@@ -16,6 +16,7 @@ const ForgotPsswd = ({
   setType,
   type2,
   setType2,
+  setEmailSended,
 }) => {
   const [password, setPassword] = useState(null);
   // console.log("password in ForgotPsswd:", password);
@@ -68,6 +69,7 @@ const ForgotPsswd = ({
         setToken(response?.data?.token);
         saveToken(response?.data?.token, setUser, setIsAdmin, setImgBoxUser);
         alert(response?.data?.success);
+        setEmailSended(false);
         setIsSended(false);
         navigate("/");
       }

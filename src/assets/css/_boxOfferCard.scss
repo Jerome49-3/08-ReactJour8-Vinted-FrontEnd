@@ -197,7 +197,8 @@
   .boxOfferCard {
     @include flexStart;
     flex-wrap: wrap;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
+    gap: 25px;
 
     .wrapper {
       display: flex;

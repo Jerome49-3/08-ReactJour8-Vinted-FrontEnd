@@ -10,7 +10,12 @@ import saveToken from "../assets/lib/saveToken";
 import InputCode from "../components/InputCode";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
 
-const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
+const ConfirmEmail = ({
+  emailSended,
+  setEmailSended,
+  setEmailIsConfirmed,
+  userCreated,
+}) => {
   // console.log(
   //   "emailSended in /confirmEmail::",
   //   "\n",
@@ -18,6 +23,7 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
   //   "setEmailIsConfirmed in /confirmEmail:",
   //   setEmailIsConfirmed
   // );
+  console.log("userCreated in /confirmEmail:", userCreated);
 
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const {
@@ -56,24 +62,23 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
         formData
       );
       console.log("response in /confirmEmail:", response);
-      if (response?.data) {
-        if (response?.data?.success) {
-          setEmailIsConfirmed(true);
-          setIsSended(false);
-          alert(response?.data?.message);
-          navigate("/forgotPassword", {
-            state: { tokenId: tokenId },
-          });
+      if (response?.data?.success) {
+        setEmailIsConfirmed(true);
+        setEmailSended(false);
+        setIsSended(false);
+        alert(response?.data?.message);
+        navigate("/forgotPassword", {
+          state: { tokenId: tokenId },
+        });
+      }
+      if (response?.data?.token) {
+        setToken(response?.data?.token);
+        if (token) {
+          saveToken(token, setUser, setIsAdmin);
         }
-        if (response?.data?.token) {
-          setToken(response?.data?.token);
-          if (token) {
-            saveToken(token, setUser, setIsAdmin);
-          }
-          alert(response?.data?.message);
-          setIsSended(false);
-          navigate(`/publish`);
-        }
+        alert(response?.data?.message);
+        setIsSended(false);
+        navigate(`/publish`);
       }
     } catch (error) {
       console.log("error:", error);
@@ -90,11 +95,6 @@ const ConfirmEmail = ({ emailSended, setEmailIsConfirmed }) => {
       <div className="wrapper">
         <form onSubmit={handleConfirmEmail}>
           <InputCode code={code} setCode={setCode} />
-          {emailSended === true ? (
-            <Input type="hidden" value="true" />
-          ) : (
-            <Input type="hidden" value="false" />
-          )}
           <LoadedInputSubmit
             value="Send the code"
             classInput="submitInputCode"

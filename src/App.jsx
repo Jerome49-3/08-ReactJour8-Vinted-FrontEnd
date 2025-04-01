@@ -152,6 +152,7 @@ function App() {
                 <ConfirmEmail
                   emailSended={emailSended}
                   setEmailIsConfirmed={setEmailIsConfirmed}
+                  setEmailSended={setEmailSended}
                 />
               }
             />
