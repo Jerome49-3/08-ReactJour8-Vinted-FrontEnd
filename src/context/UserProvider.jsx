@@ -1,36 +1,65 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-dupe-else-if */
 /* eslint-disable react-hooks/exhaustive-deps */
+
+//******** env ******** //
 import * as dotenv from "dotenv";
+
+//******** react && react-dom ******** //
 import { createContext, useEffect, useState, useLayoutEffect } from "react";
-import Cookies from "js-cookie";
-import axios from "axios";
-import axiosRetry from "axios-retry";
-import saveToken from "../assets/lib/saveToken";
 import { useNavigate, useLocation } from "react-router-dom";
 
+//******** Cookies ******** //
+import Cookies from "js-cookie";
+
+//******** axios && axiosRetry ******** //
+import axios from "axios";
+import axiosRetry from "axios-retry";
+
+//******** lib ******** //
+import saveToken from "../assets/lib/saveToken";
+import setDimensions from "../assets/lib/setDimensions";
+
+//******** context ******** //
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+  //******** showHero >img Banner on Home ******** //
   const [showHero, setShowHero] = useState(false);
+  //******** isSended > state for input submit ******** //
   const [isSended, setIsSended] = useState(false);
+  //******** isSendedTrash > state for btn trash ******** //
   const [isSendedTrash, setIsSendedTrash] = useState(false);
+  //******** showSearch > state for input search ******** //
   const [showSearch, setShowSearch] = useState(false);
-  const [infoUser, setInfoUser] = useState("");
-  const [showTrash, setShowTrash] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   // console.log("showSearch in userProvider:", showSearch);
+  //******** infoUser > state for info user after update/delete ******** //
+  const [infoUser, setInfoUser] = useState("");
+  //******** showTrash > state for appear btn Trash ******** //
+  const [showTrash, setShowTrash] = useState(false);
+  //******** errorMessage > state for appear error's message ******** //
+  const [errorMessage, setErrorMessage] = useState("");
+  //******** dimWindows > state for set dimensions windows ******** //
+  let [dimWindows, setDimWindows] = useState({});
+  //******** useLocation > useLocation ******** //
   let location = useLocation();
+  //******** items > items per page ******** //
+  const items = 5;
   // console.log("location.pathname in userProvider:", location.pathname);
-
+  //******** token > token ******** //
   const [token, setToken] = useState(Cookies.get("accessTokenV") || null);
   // console.log("token in UserProvider:", token);
+  //******** user > user ******** //
   const [user, setUser] = useState(
     sessionStorage.getItem("vintaidUser") || null
   );
+  //******** data > data ******** //
   const [data, setData] = useState(null);
+  //******** avatar > state for set picture's user before update ******** //
   const [avatar, setAvatar] = useState(null);
+  //******** avatarOffer > state for set picture's offer before update ******** //
   const [avatarOffer, setAvatarOffer] = useState(null);
+  //******** imgBoxUser > state for set picture's user in header ******** //
   const [imgBoxUser, setImgBoxUser] = useState(() => {
     const imgSessStorage = sessionStorage.getItem("vintaidImgBoxUser");
     if (imgSessStorage) {
@@ -51,9 +80,11 @@ export const UserProvider = ({ children }) => {
   //   typeof avatarSecureUrl
   // );
   // console.log("typeof avatarUrl: in userProvider:", typeof avatarUrl);
+  //******** isLoading > state for appear loader before data is loaded ******** //
   const [isLoading, setIsLoading] = useState(true);
   // console.log("user in UserProvider:", user);
   const navigate = useNavigate();
+  //******** isAdmin >isAdmin ******** //
   const [isAdmin, setIsAdmin] = useState(() => {
     const newAdmin = sessionStorage.getItem("vintaidTeam");
     if (newAdmin) {
@@ -67,6 +98,7 @@ export const UserProvider = ({ children }) => {
       }
     }
   });
+  //******** fav > state for save favorites ******** //
   const [fav, setFav] = useState(() => {
     const savedFav = localStorage.getItem("favCard");
     // console.log("savedFav in app:", savedFav);
@@ -83,11 +115,15 @@ export const UserProvider = ({ children }) => {
     }
     return [];
   });
+  //******** tokenFgtP > state for reset password ******** //
   const [tokenFgtP, setTokenFgtP] = useState(
     sessionStorage.getItem("tokenFgtP") || null
   );
   // console.log("tokenFgtP in userProvider:", tokenFgtP);
 
+  //****************************************** //
+  //******* set showSearch && showHero ******* //
+  //****************************************** //
   useEffect(() => {
     if (location.pathname === "/") {
       setShowSearch(true);
@@ -98,6 +134,9 @@ export const UserProvider = ({ children }) => {
     }
   }, [location.pathname]);
 
+  //****************************************** //
+  //******** token verify and refresh ******** //
+  //****************************************** //
   useEffect(() => {
     if (token) {
       console.log("token in useEffect on UserProvider:", token);
@@ -174,6 +213,18 @@ export const UserProvider = ({ children }) => {
     }
   }, [token, axios]);
 
+  //****************************************** //
+  //********** listen event resize *********** //
+  //****************************************** //
+  useEffect(() => {
+    window.addEventListener("resize", setDimensions(setDimWindows));
+    return () =>
+      window.removeEventListener("resize", setDimensions(setDimWindows));
+  }, [location]);
+
+  //****************************************** //
+  //*************** axiosRetry *************** //
+  //****************************************** //
   useLayoutEffect(() => {
     axiosRetry(axios, {
       retries: 3,
@@ -189,6 +240,9 @@ export const UserProvider = ({ children }) => {
     });
   }, []);
 
+  //****************************************** //
+  //************ axios.interceptors ********** //
+  //****************************************** //
   useLayoutEffect(() => {
     if (
       location.pathname !== "/confirmEmail" ||
@@ -214,6 +268,9 @@ export const UserProvider = ({ children }) => {
     }
   }, [token, tokenFgtP, axios, location.pathname]);
 
+  //****************************************** //
+  //***************** logout ***************** //
+  //****************************************** //
   const logout = async () => {
     try {
       const response = await axios.post(
@@ -276,6 +333,7 @@ export const UserProvider = ({ children }) => {
         setAvatarOffer,
         isSendedTrash,
         setIsSendedTrash,
+        items,
       }}
     >
       {children}

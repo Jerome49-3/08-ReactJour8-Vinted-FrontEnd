@@ -21,6 +21,8 @@ import {
   faFilter,
   faTrash,
   faCircleXmark,
+  faChevronCircleLeft,
+  faChevronCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 library.add(
@@ -38,7 +40,9 @@ library.add(
   farHeart,
   faFilter,
   faTrash,
-  faCircleXmark
+  faCircleXmark,
+  faChevronCircleLeft,
+  faChevronCircleRight
 );
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -90,6 +94,8 @@ function App() {
   // console.log("srcImgsModal in app:", srcImgsModal);
   const [showNoOffer, setShowNoOffer] = useState(false);
   const [priceMin, setPriceMin] = useState("0");
+  const [page, setPage] = useState(1);
+  const [countDoc, setCountDoc] = useState(0);
   // console.log("priceMin in app:", priceMin);
   // console.log("typeof priceMin in app:", typeof priceMin);
   const [priceMax, setPriceMax] = useState("100000");
@@ -101,8 +107,8 @@ function App() {
   const [searchUsers, setSearchUsers] = useState("");
   const [numberCommand, setNumberCommand] = useState("");
   // console.log("numberCommand in app:", numberCommand);
-  const [searchOffer, setSearchOffer] = useState("");
-  const [searchMessage, setSearchMessage] = useState("");
+  // const [searchOffer, setSearchOffer] = useState("");
+  // const [searchMessage, setSearchMessage] = useState("");
   const [searchTransactions, setSearchTransactions] = useState("");
   // console.log("searchTransactions in app:", searchTransactions);
   const [dataShoppingCart, setDataShoppingCart] = useState(() => {
@@ -187,6 +193,12 @@ function App() {
                   priceMax={priceMax}
                   showFilter={showFilter}
                   setShowFilter={setShowFilter}
+                  page={page}
+                  setPage={setPage}
+                  faChevronCircleLeft={faChevronCircleLeft}
+                  faChevronCircleRight={faChevronCircleRight}
+                  countDoc={countDoc}
+                  setCountDoc={setCountDoc}
                 />
               }
             />

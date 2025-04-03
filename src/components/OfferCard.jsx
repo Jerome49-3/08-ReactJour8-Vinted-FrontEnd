@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useUser } from "../assets/lib/userFunc";
 import bannerSold from "../assets/images/bannerSolded.png";
-import fetchDeleteOffer from "../assets/fetchDataLib/DELETE/fetchDeleteOffer";
+// import fetchDeleteOffer from "../assets/fetchDataLib/DELETE/fetchDeleteOffer";
 //components
 import Image from "./Image";
 import Hearths from "./Hearths";
@@ -29,6 +29,29 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
   const adjustBoxArticle = "adjBoxArticle";
   // console.log("fav after useEffect in OfferCard:", fav);
 
+  const fetchDeleteOffer = async (offerId) => {
+    console.log("offerId in fetchDeleteOffer:", offerId);
+    const id = offerId;
+    console.log("id in fetchDeleteOffer:", id);
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/offer/${offerId}`
+      );
+      if (response?.data) {
+        console.log("response.data in /messagesContact:", response?.data);
+        setInfoUser(response?.data?.infoUser);
+        setData(response?.data?.offers);
+        setIsSended(false);
+        setTimeout(() => {
+          setInfoUser("");
+        }, 3000);
+      }
+    } catch (error) {
+      console.log("error in /messagesContact:", error);
+      console.log("error.response in /messagesContact:", error?.response);
+    }
+  };
+
   return (
     <div
       className={
@@ -41,6 +64,7 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
         // const isFavorite = fav.some((favArticle) => favArticle?._id);
         // console.log("article ds .boxOffer:", article);
         const offerId = article._id;
+        // console.log("offerId ds data.map:", offerId);
         return (
           <React.Fragment key={offerId}>
             <Link
@@ -150,14 +174,10 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                 <div className="boxTrashHearth">
                   <Trash
                     faTrash={faTrash}
-                    handleClick={() => {
-                      fetchDeleteOffer(
-                        axios,
-                        offerId,
-                        setInfoUser,
-                        setIsSended,
-                        setData
-                      );
+                    handleClick={async (e) => {
+                      console.log("offerId in handleClick:", offerId);
+                      e.preventDefault();
+                      await fetchDeleteOffer(offerId);
                     }}
                   />
                   <Hearths
@@ -183,10 +203,10 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                 </div>
               </article>
             </Link>
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
           </React.Fragment>
         );
       })}
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   );
 };

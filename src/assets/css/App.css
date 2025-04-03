@@ -158,7 +158,6 @@
   border: none;
   width: 100%;
   cursor: pointer;
-  background-color: transparent;
 }
 :root .wrapper .hide {
   display: none;
@@ -1389,6 +1388,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 
 .btnFilter {
   width: 10%;
+  background-color: transparent;
 }
 
 .filterIcons {
@@ -1482,16 +1482,74 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 /* HOME */
 .boxHome {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
   padding: 80px 0 50px 0;
 }
+.boxHome .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.boxHome .wrapper .btnChevronLeftOff {
+  width: 100px;
+  height: 30px;
+}
+.boxHome .wrapper .btnChevronLeft,
+.boxHome .wrapper .btnChevronRight {
+  color: #ffffff;
+  background-color: #007882;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  border-radius: 5px;
+}
+.boxHome .wrapper .btnChevronLeft p,
+.boxHome .wrapper .btnChevronRight p {
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+}
+.boxHome .wrapper .btnChevronLeft:hover, .boxHome .wrapper .btnChevronLeft:focus,
+.boxHome .wrapper .btnChevronRight:hover,
+.boxHome .wrapper .btnChevronRight:focus {
+  background-color: #33c6d0;
+}
 
 @media all and (min-width: 1200px) {
   .boxHome {
     padding: 40px 0 0 0;
+  }
+  .boxHome .wrapper {
+    flex-direction: row !important;
+  }
+  .boxHome .wrapper .btnChevronLeftOff {
+    width: 32.5px;
+  }
+  .boxHome .wrapper .btnChevronLeft,
+  .boxHome .wrapper .btnChevronRight {
+    color: #ffffff;
+    background-color: #007882;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 5px;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50%;
+  }
+  .boxHome .wrapper .btnChevronLeft p,
+  .boxHome .wrapper .btnChevronRight p {
+    text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+  }
+  .boxHome .wrapper .btnChevronLeft:hover, .boxHome .wrapper .btnChevronLeft:focus,
+  .boxHome .wrapper .btnChevronRight:hover,
+  .boxHome .wrapper .btnChevronRight:focus {
+    background-color: #33c6d0;
   }
 }
 .boxHomeNoOffer {
@@ -1844,15 +1902,12 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 100%;
-  gap: 20px;
+  gap: 10px;
 }
 .boxOfferCard a {
-  width: 100%;
-}
-.boxOfferCard a:hover {
-  animation: scaleArticle 2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+  min-width: 100%;
 }
 .boxOfferCard a article {
   display: flex;
@@ -1933,6 +1988,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: center;
   align-items: center;
   font-size: 1.25rem;
+  background-color: transparent;
 }
 .boxOfferCard a article .boxTrashHearth .btnTrash .svg-inline--fa,
 .boxOfferCard a article .boxTrashHearth .boxHearth .svg-inline--fa {
@@ -2011,9 +2067,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   }
 }
 @media all and (min-width: 768px) {
-  .boxOfferCard {
-    gap: 19px;
-  }
   .boxOfferCard a {
     width: 23.8095238095%;
   }
@@ -2031,23 +2084,18 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    flex-wrap: wrap;
-    padding-bottom: 50px;
     gap: 25px;
-  }
-  .boxOfferCard .wrapper {
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-top: -5px;
+    padding: 30px 0 50px 0;
+    height: 50vh;
+    overflow-x: hidden;
+    flex-direction: row;
   }
   .boxOfferCard a {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 18.1818181818% !important;
+    min-width: 18.1818181818% !important;
+    max-width: 18.1818181818% !important;
   }
   .boxOfferCard a article {
     min-height: -moz-fit-content !important;

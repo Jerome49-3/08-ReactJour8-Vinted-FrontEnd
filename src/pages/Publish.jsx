@@ -13,15 +13,15 @@ import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 const Publish = ({ faTrash }) => {
   const viewFile = useRef(null);
   const { token, axios, isSended, setIsSended } = useUser();
-  console.log("token in in /publish:", token);
+  // console.log("token in in /publish:", token);
   const [errorMessage, setErrorMessage] = useState("");
   const [pictures, setPictures] = useState([]);
-  console.log("pictures in in /publish:", pictures);
-  console.log(
-    "Array.isArray(pictures) in in /publish:",
-    Array.isArray(pictures)
-  );
-  console.log("pictures.length in in /publish:", pictures.length);
+  // console.log("pictures in in /publish:", pictures);
+  // console.log(
+  //   "Array.isArray(pictures) in in /publish:",
+  //   Array.isArray(pictures)
+  // );
+  // console.log("pictures.length in in /publish:", pictures.length);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   let [price, setPrice] = useState(0);
@@ -43,7 +43,7 @@ const Publish = ({ faTrash }) => {
     price = Number(price).toFixed(2);
     for (let i = 0; i < pictures.length; i++) {
       const el = pictures[i];
-      console.log("el in picures for:", el);
+      // console.log("el in picures for:", el);
       formData.append("pictures", el);
     }
     formData.append("title", title);

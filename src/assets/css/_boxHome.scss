@@ -1,11 +1,23 @@
 /* HOME */
 .boxHome {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
+  @include flexColCenter;
   width: 100%;
   padding: 80px 0 50px 0;
+
+  .wrapper {
+    @include flexColCenter;
+    gap: 10px;
+
+    .btnChevronLeftOff {
+      width: 100px;
+      height: 30px;
+    }
+
+    .btnChevronLeft,
+    .btnChevronRight {
+      @include btn;
+    }
+  }
 }
 
 @media all and (min-width : 576px) {}
@@ -17,6 +29,22 @@
 @media all and (min-width : 1200px) {
   .boxHome {
     padding: 40px 0 0 0;
+
+    .wrapper {
+      flex-direction: row !important;
+
+      .btnChevronLeftOff {
+        width: 32.5px;
+      }
+
+      .btnChevronLeft,
+      .btnChevronRight {
+        @include btn;
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+      }
+    }
   }
 }
 
