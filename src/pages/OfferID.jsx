@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import Loading from "../components/Loading";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useUser } from "../assets/lib/userFunc";
@@ -15,15 +14,25 @@ import bannerSold from "../assets/images/bannerSolded.png";
 import Hero from "../components/Hero";
 import Image from "../components/Image";
 import Button from "../components/Button";
+import Loading from "../components/Loading";
+import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
+import Links from "../components/Links";
+import Trash from "../components/Trash";
 
 //lib
+import fetchDeleteOffer from "../assets/fetchDataLib/DELETE/fetchDeleteOffer";
 // import classRotation from "../assets/lib/classRotation";
-import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
-const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
-  const { axios, infoUser, setInfoUser, showHero, data, setData } = useUser();
+const OfferID = ({
+  showImgsModal,
+  setShowImgsModal,
+  setSrcImgsModal,
+  faTrash,
+}) => {
+  const { axios, user, infoUser, setInfoUser, showHero, data, setData } =
+    useUser();
   console.log("infoUser on OfferID:", infoUser);
-
+  console.log("user on OfferID:", user);
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
   const { id } = useParams();
   // console.log("id1 in /offers/${id}:", id);
@@ -271,37 +280,66 @@ const OfferID = ({ showImgsModal, setShowImgsModal, setSrcImgsModal }) => {
                     )}
                     <div>{data?.owner?.account?.username}</div>
                   </div>
-                  <div className="boxLinks">
-                    <Link to="/chat" state={{ product_id: data?.product_id }}>
-                      Contacter le vendeur
-                    </Link>
-                    {data?.product_image !== undefined ? (
-                      <Link
-                        to="/payment"
-                        state={{
-                          product_id: data?.product_id,
-                          product_name: data?.product_name,
-                          product_price: Number(data?.product_price).toFixed(2),
-                          product_image: data?.product_image?.secure_url,
-                        }}
-                        className="btnPay"
-                      >
-                        Acheter
+                  {data?.owner?._id !== user?._id ? (
+                    <div className="boxLinks">
+                      <Link to="/chat" state={{ product_id: data?.product_id }}>
+                        Contacter le vendeur
                       </Link>
-                    ) : (
-                      <Link
-                        to="/payment"
-                        state={{
-                          product_id: data?.product_id,
-                          product_name: data?.product_name,
-                          product_price: Number(data?.product_price).toFixed(2),
-                          product_pictures: data?.product_pictures,
+                      {data?.product_image !== undefined ? (
+                        <Link
+                          to="/payment"
+                          state={{
+                            product_id: data?.product_id,
+                            product_name: data?.product_name,
+                            product_price: Number(data?.product_price).toFixed(
+                              2
+                            ),
+                            product_image: data?.product_image?.secure_url,
+                          }}
+                          className="btnPay"
+                        >
+                          Acheter
+                        </Link>
+                      ) : (
+                        <Link
+                          to="/payment"
+                          state={{
+                            product_id: data?.product_id,
+                            product_name: data?.product_name,
+                            product_price: Number(data?.product_price).toFixed(
+                              2
+                            ),
+                            product_pictures: data?.product_pictures,
+                          }}
+                        >
+                          Acheter
+                        </Link>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="boxLinks">
+                      <Links
+                        path={`/offerUpdate/${id}`}
+                        classLink="linkUpdateOffer"
+                        linkText="Update offer"
+                      />
+                      <Trash
+                        id={id}
+                        handleClick={(e) => {
+                          // console.log("id in handleClick:", id);
+                          e.preventDefault();
+                          fetchDeleteOffer(
+                            axios,
+                            id,
+                            setInfoUser,
+                            setIsSended,
+                            setData
+                          );
                         }}
-                      >
-                        Acheter
-                      </Link>
-                    )}
-                  </div>
+                        faTrash={faTrash}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

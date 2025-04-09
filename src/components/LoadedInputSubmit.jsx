@@ -11,7 +11,6 @@ const LoadedInputSubmit = ({
   alt,
   classImg,
   id,
-  type,
   classInput,
 }) => {
   useEffect(() => {
@@ -23,7 +22,7 @@ const LoadedInputSubmit = ({
         <label htmlFor={id} className="classLabelInputSubmit">
           <input
             id={id}
-            type={type}
+            type="submit"
             name={id}
             value={value}
             className={classInput}

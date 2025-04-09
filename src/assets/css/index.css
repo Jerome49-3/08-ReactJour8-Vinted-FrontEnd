@@ -283,15 +283,9 @@ a p {
 .linkPublish p {
   color: #2db0ba;
 }
-
-div#root {
-  @media all and (min-width: 1200px) {
-    height: 100vh;
-  }
-}
-.mainLayout {
-  @media all and (min-width: 1200px) {
-    height: 100vh;
-    width: 100%;
-  }
+/* div#root && main.mainLayout */
+div#root,
+main.mainLayout {
+  height: 100vh;
+  width: 100%;
 }

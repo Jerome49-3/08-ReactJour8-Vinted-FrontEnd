@@ -1,6 +1,6 @@
 /* eslint-disable no-unsafe-optional-chaining */
 import { Link, useLocation } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useUser } from "../assets/lib/userFunc";
 import bannerSold from "../assets/images/bannerSolded.png";
 // import fetchDeleteOffer from "../assets/fetchDataLib/DELETE/fetchDeleteOffer";
@@ -8,12 +8,14 @@ import bannerSold from "../assets/images/bannerSolded.png";
 import Image from "./Image";
 import Hearths from "./Hearths";
 import Trash from "./Trash";
+import AppearCardComponent from "./AppearCardComponent";
 
 //images
 import noImg from "../assets/images/no-image.jpg";
 
 const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
   const { fav, data, setData, axios, setInfoUser, setIsSended } = useUser();
+  const [showCardsOffers, setShowCardsOffers] = useState(false);
   // console.log("data ds OfferCard:", data);
   // console.log("fav ds OfferCard:", fav);
   let location = useLocation();
@@ -25,8 +27,6 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
 
   const classImgArticle = "imgArticle";
   const classBannerSold = "classBannerSold";
-  const boxArticleHome = "boxOfferCard";
-  const adjustBoxArticle = "adjBoxArticle";
   // console.log("fav after useEffect in OfferCard:", fav);
 
   const fetchDeleteOffer = async (offerId) => {
@@ -53,13 +53,7 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
   };
 
   return (
-    <div
-      className={
-        location.pathname === "/"
-          ? `${boxArticleHome} ${adjustBoxArticle}`
-          : "boxOfferCard"
-      }
-    >
+    <div className="boxOfferCard">
       {(location.pathname === "/favorites" ? fav : data)?.map((article) => {
         // const isFavorite = fav.some((favArticle) => favArticle?._id);
         // console.log("article ds .boxOffer:", article);
@@ -78,7 +72,11 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                   : ""
               }
             >
-              <article>
+              <AppearCardComponent
+                article={article}
+                showCardsOffers={showCardsOffers}
+                setShowCardsOffers={setShowCardsOffers}
+              >
                 <div className="boxUser">
                   <Image
                     src={
@@ -174,10 +172,10 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                 <div className="boxTrashHearth">
                   <Trash
                     faTrash={faTrash}
-                    handleClick={async (e) => {
-                      console.log("offerId in handleClick:", offerId);
+                    handleClick={(e) => {
+                      // console.log("offerId in handleClick:", offerId);
                       e.preventDefault();
-                      await fetchDeleteOffer(offerId);
+                      fetchDeleteOffer(offerId);
                     }}
                   />
                   <Hearths
@@ -201,9 +199,9 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                     {(article?.product_price).toFixed(2)} €
                   </div>
                 </div>
-              </article>
+              </AppearCardComponent>
+              {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
             </Link>
-            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
           </React.Fragment>
         );
       })}

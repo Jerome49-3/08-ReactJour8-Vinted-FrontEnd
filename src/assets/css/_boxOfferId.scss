@@ -158,6 +158,8 @@
           & div {
             @include flexBetween;
             width: 100%;
+            align-items: flex-start;
+            gap: 5px;
           }
 
           & div:last-child {
@@ -200,7 +202,8 @@
               @include flexStart;
               gap: 10px;
 
-              & a {
+              & a,
+              .btnTrash {
                 width: 50%;
                 @include btn;
               }
@@ -293,6 +296,10 @@
 
           .boxLinks {
             flex-direction: row !important;
+          }
+
+          .linkUpdateOffer {
+            @include btn;
           }
         }
       }

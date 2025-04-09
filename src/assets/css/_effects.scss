@@ -120,6 +120,30 @@
   }
 }
 
+@-webkit-keyframes appearCard {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    display: flex;
+  }
+}
+
+@keyframes appearCard {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    display: flex;
+  }
+}
+
 @-webkit-keyframes appearLine {
   0% {
     opacity: 0;

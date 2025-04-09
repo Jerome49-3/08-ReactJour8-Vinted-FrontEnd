@@ -191,74 +191,76 @@ const Publish = ({ faTrash }) => {
               })}
             </div>
           </div>
-          <Input
-            value={title || ""}
-            id="title"
-            type="text"
-            placeholder="Titre"
-            setState={setTitle}
-            required={true}
-          />
-          <TextArea
-            name="description"
-            value={description || ""}
-            id="description"
-            type="text"
-            placeholder="Description"
-            setState={setDescription}
-            required={true}
-          />
-          <Input
-            value={price || ""}
-            id="price"
-            type="number"
-            placeholder="Prix"
-            setState={setPrice}
-            required={true}
-            min="0"
-            max="100000"
-          />
-          <Input
-            value={brand || ""}
-            id="brand"
-            type="text"
-            placeholder="Marque"
-            setState={setBrand}
-          />
-          <Input
-            value={size || ""}
-            id="size"
-            type="text"
-            placeholder="Taille"
-            setState={setSize}
-          />
-          <Input
-            value={condition || ""}
-            id="condition"
-            type="text"
-            placeholder="Condition"
-            setState={setCondition}
-          />
-          <Input
-            value={color || ""}
-            id="color"
-            type="text"
-            placeholder="Couleur"
-            setState={setColor}
-          />
-          <Input
-            value={city || ""}
-            id="city"
-            type="text"
-            placeholder="Emplacement"
-            setState={setCity}
-          />
-          <LoadedInputSubmit
-            isSended={isSended}
-            setIsSended={setIsSended}
-            type="submit"
-            value="Poster l'article"
-          />
+          <div className="boxInputFormPublish">
+            <Input
+              value={title || ""}
+              id="title"
+              type="text"
+              placeholder="Titre"
+              setState={setTitle}
+              required={true}
+            />
+            <TextArea
+              name="description"
+              value={description || ""}
+              id="description"
+              type="text"
+              placeholder="Description"
+              setState={setDescription}
+              required={true}
+            />
+            <Input
+              value={price || ""}
+              id="price"
+              type="number"
+              placeholder="Prix"
+              setState={setPrice}
+              required={true}
+              min="0"
+              max="100000"
+            />
+            <Input
+              value={brand || ""}
+              id="brand"
+              type="text"
+              placeholder="Marque"
+              setState={setBrand}
+            />
+            <Input
+              value={size || ""}
+              id="size"
+              type="text"
+              placeholder="Taille"
+              setState={setSize}
+            />
+            <Input
+              value={condition || ""}
+              id="condition"
+              type="text"
+              placeholder="Condition"
+              setState={setCondition}
+            />
+            <Input
+              value={color || ""}
+              id="color"
+              type="text"
+              placeholder="Couleur"
+              setState={setColor}
+            />
+            <Input
+              value={city || ""}
+              id="city"
+              type="text"
+              placeholder="Emplacement"
+              setState={setCity}
+            />
+            <LoadedInputSubmit
+              isSended={isSended}
+              setIsSended={setIsSended}
+              type="submit"
+              value="Poster l'article"
+            />
+          </div>
           <InfoUserErrorMessage />
         </form>
       </div>

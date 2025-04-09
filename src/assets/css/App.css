@@ -45,6 +45,16 @@
     opacity: 0;
   }
 }
+@keyframes appearCard {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    opacity: 1;
+    display: flex;
+  }
+}
 @keyframes appearLine {
   0% {
     opacity: 0;
@@ -948,6 +958,9 @@
 .boxForm .wrapper form .boxPicTop .boxPicBottomEmpty #labelPic:active {
   box-shadow: inset 0px 0px 2px #000000, inset 0px 0px 5px #000000;
 }
+.boxForm .wrapper form .boxPicTop .boxPicBottom {
+  padding: 2px;
+}
 .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics {
   width: 100%;
   position: relative;
@@ -958,6 +971,7 @@
   max-height: 200px;
   -o-object-fit: cover;
   object-fit: cover;
+  display: block;
 }
 .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics .suppFiles {
   color: #ffffff;
@@ -991,8 +1005,13 @@
   background-color: #ffffff;
   color: red;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottomEmpty {
-  border: none;
+.boxForm .wrapper form .boxInputFormPublish {
+  max-height: 55vh;
+  width: 100%;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .boxForm .wrapper form .classLabelInputSubmit {
   width: 100%;
@@ -1001,18 +1020,33 @@
   width: 100%;
 }
 
+@media all and (min-width: 992px) {
+  .boxPicBottom {
+    padding: 2px 0px 2px 2px;
+  }
+}
 @media all and (min-width: 1200px) {
   .boxForm {
     padding: 40px 0px 30px 0px;
-  }
-  .boxForm .wrapper form .boxPicTop .boxPicBottom {
-    padding: 2px;
   }
   .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics {
     width: 24.6305418719%;
   }
   .boxForm .wrapper form label {
     width: 99.8%;
+  }
+}
+@media all and (min-width: 1400px) {
+  .boxForm {
+    padding: 0;
+    height: 100vh;
+  }
+  .boxForm .wrapper {
+    padding: 0;
+  }
+  .boxForm .wrapper form {
+    justify-content: space-between;
+    height: 80vh;
   }
 }
 .boxLogin {
@@ -1441,37 +1475,39 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   }
 }
 .boxImgs {
-  margin-top: 40px;
+  position: relative;
 }
 .boxImgs .imgBanner {
   max-width: 100%;
   max-height: 300px;
   -o-object-fit: cover;
   object-fit: cover;
-  margin-top: -6px;
   -o-object-position: center 28%;
   object-position: center 28%;
 }
 .boxImgs .imgBannerBottom {
+  min-width: 100%;
   max-width: 100%;
-  margin-top: -80px;
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media all and (min-width: 576px) {
   .boxImgs {
     width: 100%;
-    margin-top: 6px;
   }
   .boxImgs .imgBanner {
     width: 100%;
   }
 }
 @media all and (min-width: 1200px) {
-  .boxImgs {
-    margin-top: 6px;
-  }
   .boxImgs .imgBanner {
     max-height: 200px;
+  }
+  .boxImgs .imgBannerBottom {
+    top: 80%;
   }
 }
 @media all and (min-width: 1400px) {
@@ -1493,7 +1529,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 .boxHome .wrapper .btnChevronLeftOff {
   width: 100px;
@@ -1762,6 +1798,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  align-items: flex-start;
+  gap: 5px;
 }
 .boxOfferId .wrapper .top .right .boxDetails div:last-child {
   width: 100%;
@@ -1810,7 +1848,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   gap: 10px;
 }
-.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks a {
+.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks a,
+.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks .btnTrash {
   width: 50%;
   color: #ffffff;
   background-color: #007882;
@@ -1820,10 +1859,13 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   height: 30px;
   border-radius: 5px;
 }
-.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks a p {
+.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks a p,
+.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks .btnTrash p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 }
-.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks a:hover, .boxOfferId .wrapper .top .right .rightBottom .down .boxLinks a:focus {
+.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks a:hover, .boxOfferId .wrapper .top .right .rightBottom .down .boxLinks a:focus,
+.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks .btnTrash:hover,
+.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks .btnTrash:focus {
   background-color: #33c6d0;
 }
 .boxOfferId .wrapper .bottom {
@@ -1885,6 +1927,21 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .boxOfferId .wrapper .top .right .boxLinks {
     flex-direction: row !important;
   }
+  .boxOfferId .wrapper .top .right .linkUpdateOffer {
+    color: #ffffff;
+    background-color: #007882;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 5px;
+  }
+  .boxOfferId .wrapper .top .right .linkUpdateOffer p {
+    text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+  }
+  .boxOfferId .wrapper .top .right .linkUpdateOffer:hover, .boxOfferId .wrapper .top .right .linkUpdateOffer:focus {
+    background-color: #33c6d0;
+  }
   .boxOfferId .infoUserCenter {
     position: absolute;
     top: 50%;
@@ -1906,20 +1963,28 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   width: 100%;
   gap: 10px;
 }
+.boxOfferCard a:first-child {
+  margin-left: 5px;
+}
 .boxOfferCard a {
   min-width: 100%;
 }
 .boxOfferCard a article {
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
   gap: 5px;
   min-height: 350px;
-  background-color: rgb(189, 189, 189);
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 1.5px #000000, 0.15px 0.15px 1px #000000;
   position: relative;
   font-size: 1.15rem;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.boxOfferCard a article:hover {
+  box-shadow: 0px 0px 10px #000000, 0.15px 0.15px 1px #000000;
 }
 .boxOfferCard a article .boxImgArticle {
   width: 100%;
@@ -1927,6 +1992,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
 }
 .boxOfferCard a article .boxImgArticle .imgArticle {
   display: block;
@@ -2084,10 +2152,11 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
     padding: 30px 0 50px 0;
     height: 50vh;
     overflow-x: hidden;
+    overflow-y: hidden;
     flex-direction: row;
   }
   .boxOfferCard a {
@@ -3533,6 +3602,12 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   position: relative;
   height: 100vh;
 }
+.boxMyOffers .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .boxMyOffers .boxNoOffers {
   width: 100%;
   display: flex;
@@ -3629,12 +3704,14 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding-top: 90px;
 }
 .boxOfferIdUpdateAndDelete .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 5px;
 }
 .boxOfferIdUpdateAndDelete .wrapper .left,
 .boxOfferIdUpdateAndDelete .wrapper .right {
@@ -3647,6 +3724,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   flex-wrap: wrap;
   gap: 1px;
+  position: relative;
 }
 .boxOfferIdUpdateAndDelete .wrapper .left .boxPictures {
   width: 100%;
@@ -3655,7 +3733,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: flex-start;
   flex-direction: column;
   height: calc(100% / (var(--imgsLength)));
-  position: relative;
 }
 .boxOfferIdUpdateAndDelete .wrapper .left .boxPictures label {
   position: absolute;
@@ -3693,9 +3770,10 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   width: 100%;
   gap: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  height: 100%;
   padding: 5px 5px 50px 5px;
 }
 .boxOfferIdUpdateAndDelete .wrapper .right .boxOfferIdUpdateInput label {
@@ -3722,6 +3800,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: flex-start;
   align-items: center;
   gap: 5px;
+}
+.boxOfferIdUpdateAndDelete .wrapper .right .boxSubmitTrash .classLabelInputSubmit {
+  width: 50%;
 }
 .boxOfferIdUpdateAndDelete .wrapper .right .boxSubmitTrash .btnTrash {
   color: #ffffff;
@@ -3750,10 +3831,13 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .boxOfferIdUpdateAndDelete {
     height: -moz-fit-content;
     height: fit-content;
-    padding-top: 5px;
+    padding-top: 0 !important;
   }
   .boxOfferIdUpdateAndDelete .wrapper {
     flex-direction: row;
+  }
+  .boxOfferIdUpdateAndDelete .wrapper .left .boxPictures {
+    max-height: 82vh;
   }
   .boxOfferIdUpdateAndDelete .wrapper .left,
   .boxOfferIdUpdateAndDelete .wrapper .right {
@@ -3761,7 +3845,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     height: 100%;
   }
   .boxOfferIdUpdateAndDelete .wrapper .right .boxOfferIdUpdateInput {
-    padding: 160px 0px 5px 5px;
+    padding: 5px 2.5px 0px 2.5px;
   }
 }
 footer {

@@ -1,9 +1,11 @@
 .boxOfferIdUpdateAndDelete {
   @include flexCenter;
   height: 100%;
+  padding-top: 90px;
 
   .wrapper {
     @include flexColCenter;
+    gap: 5px;
 
     .left,
     .right {
@@ -16,12 +18,12 @@
       flex-wrap: wrap;
       // border: 2px solid red;
       gap: 1px;
+      position: relative;
 
       .boxPictures {
         width: 100%;
         @include flexColTopStart;
         height: calc(100% / (var(--imgsLength)));
-        position: relative;
 
         & label {
           position: absolute;
@@ -60,7 +62,7 @@
       .boxOfferIdUpdateInput {
         width: 100%;
         gap: 10px;
-        @include flexColCenter;
+        @include flexColBetween;
         padding: 5px 5px 50px 5px;
 
         & label {
@@ -84,6 +86,10 @@
         width: 100%;
         @include flexStart;
         gap: 5px;
+
+        .classLabelInputSubmit {
+          width: 50%;
+        }
 
         .btnTrash {
           @include btn;
@@ -114,10 +120,16 @@
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
-    padding-top: 5px;
+    padding-top: 0 !important;
 
     .wrapper {
       flex-direction: row;
+
+      .left {
+        .boxPictures {
+          max-height: 82vh;
+        }
+      }
 
       .left,
       .right {
@@ -127,7 +139,7 @@
 
       .right {
         .boxOfferIdUpdateInput {
-          padding: 160px 0px 5px 5px;
+          padding: 5px 2.5px 0px 2.5px;
         }
       }
     }

@@ -210,6 +210,7 @@ function App() {
                   showImgsModal={showImgsModal}
                   setShowImgsModal={setShowImgsModal}
                   setSrcImgsModal={setSrcImgsModal}
+                  faTrash={faTrash}
                 />
               }
             />

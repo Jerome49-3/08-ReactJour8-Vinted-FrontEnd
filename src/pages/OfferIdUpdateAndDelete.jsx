@@ -50,15 +50,19 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/offer/${id}`);
-        // console.log("response in /offer/${id}:", response);
+        console.log("response in OfferIdUpdateAndDelete:", response);
         if (response) {
           setData(response?.data);
-          setPictures(
-            response?.data?.product_pictures || response?.data?.product_image
-          );
-          setAvatarOffer(
-            response?.data?.product_pictures || response?.data?.product_image
-          );
+          if (response?.data?.product_image) {
+            let arrayPic = [...pictures];
+            arrayPic.push(response?.data?.product_image);
+            console.log("arrayPic in OfferIdUpdateAndDelete:", arrayPic);
+            setPictures(arrayPic);
+            setAvatarOffer(arrayPic);
+          } else if (response?.data?.product_pictures) {
+            setPictures(response?.data?.product_pictures);
+            setAvatarOffer(response?.data?.product_pictures);
+          }
           setProductDetails(response?.data?.product_details);
           setIsLoading(false);
         } else {

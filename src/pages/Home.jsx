@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 // import { Link } from 'react-router-dom';
 import { useUser } from "../assets/lib/userFunc";
 import CookieConsent from "react-cookie-consent";
@@ -44,7 +44,10 @@ const Home = ({
     setIsLoading,
     setErrorMessage,
     items,
+    nbrCards,
+    setNbrCards,
   } = useUser();
+  console.log("nbrCards in /Home:", nbrCards);
   // console.log("data in /Home:", data);
   // console.log("data.length in /Home:", data?.length);
   useEffect(() => {
@@ -68,6 +71,17 @@ const Home = ({
     };
     fetchData();
   }, [search, priceMin, priceMax, axios, page]);
+
+  useLayoutEffect(() => {
+    const setNumberOfCards = () => {
+      const cardsLength = data?.length;
+      console.log("cardsLength:", cardsLength);
+      setNbrCards(
+        document.documentElement.style.setProperty("--cardsLength", cardsLength)
+      );
+    };
+    setNumberOfCards();
+  }, [data?.length]);
 
   return isLoading ? (
     <>
@@ -98,7 +112,7 @@ const Home = ({
           faChevronCircleRight={faChevronCircleRight}
           page={page}
         />
-        {countDoc > items && (
+        {data?.length >= items && items < data?.length ? (
           <Button
             icon={faChevronCircleRight}
             classButton="btnChevronRight"
@@ -106,6 +120,8 @@ const Home = ({
               setPage(page + 1);
             }}
           />
+        ) : (
+          data?.length < items && <div className="btnChevronLeftOff"></div>
         )}
 
         <CookieConsent

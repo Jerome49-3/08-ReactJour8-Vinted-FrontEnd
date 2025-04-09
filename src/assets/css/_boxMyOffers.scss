@@ -3,6 +3,10 @@
   position: relative;
   height: 100vh;
 
+  .wrapper {
+    @include flexColCenter;
+  }
+
   .boxNoOffers {
     width: 100%;
     @include flexCenter;

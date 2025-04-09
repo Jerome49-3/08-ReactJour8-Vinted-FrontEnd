@@ -53,6 +53,8 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(
     sessionStorage.getItem("vintaidUser") || null
   );
+  //******** nbrCards > set Number of cards ******** //
+  const [nbrCards, setNbrCards] = useState(0);
   //******** data > data ******** //
   const [data, setData] = useState(null);
   //******** avatar > state for set picture's user before update ******** //
@@ -334,6 +336,8 @@ export const UserProvider = ({ children }) => {
         isSendedTrash,
         setIsSendedTrash,
         items,
+        nbrCards,
+        setNbrCards,
       }}
     >
       {children}

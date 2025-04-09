@@ -1,5 +1,5 @@
 import { useUser } from "../assets/lib/userFunc";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 
 //components
 import Loading from "../components/Loading";
@@ -52,13 +52,16 @@ const MyOffers = ({
     <div className="boxMyOffers">
       <div className="wrapper">
         {data?.length > 0 ? (
-          <OfferCard
-            data={data}
-            faHeart={faHeart}
-            farHeart={farHeart}
-            faTrash={faTrash}
-            setData={setData}
-          />
+          <Fragment>
+            <OfferCard
+              data={data}
+              faHeart={faHeart}
+              farHeart={farHeart}
+              faTrash={faTrash}
+              setData={setData}
+            />
+            <InfoUserErrorMessage />
+          </Fragment>
         ) : (
           showNoOffer && (
             <div className="boxNoOffers">
@@ -67,7 +70,6 @@ const MyOffers = ({
             </div>
           )
         )}
-        <InfoUserErrorMessage />
       </div>
     </div>
   );

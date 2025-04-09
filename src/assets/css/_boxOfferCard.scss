@@ -5,25 +5,39 @@
   width: 100%;
   gap: 10px;
 
+  & a:first-child {
+    margin-left: 5px;
+  }
+
   & a {
     min-width: 100%;
+    // -webkit-animation: appearCard 1s linear forwards;
+    // animation: appearCard 1s linear forwards;
+    // display: none;
 
-    // &:hover {
-    //   -webkit-animation: scaleArticle 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
-    //   animation: scaleArticle 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+    // @for $i from 1 through 100 {
+    //   &:nth-child(#{$i}) {
+    //     animation-delay: 500ms * $i;
+    //   }
     // }
 
     & article {
-      display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       width: 100%;
       gap: 5px;
       min-height: 350px;
-      background-color: rgb(189, 189, 189);
+      background-color: #f1f1f1;
+      box-shadow: 0px 0px 1.5px $black, 0.15px 0.15px 1px $black;
       position: relative;
       font-size: 1.15rem;
+      border-radius: 5px;
+      transition: all 0.5s;
+
+      &:hover {
+        box-shadow: 0px 0px 10px $black, 0.15px 0.15px 1px $black;
+      }
 
       .boxImgArticle {
         width: 100%;
@@ -31,6 +45,9 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
+        -webkit-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
 
         // border: 2px solid blue;
 
@@ -194,10 +211,11 @@
 @media all and (min-width : 1200px) {
   .boxOfferCard {
     @include flexStart;
-    gap: 25px;
+    gap: 20px;
     padding: 30px 0 50px 0;
     height: 50vh;
     overflow-x: hidden;
+    overflow-y: hidden;
     flex-direction: row;
 
     a {
@@ -229,4 +247,4 @@
 }
 
 
-// @media all and (min-width : 1400px) {}
+@media all and (min-width : 1400px) {}

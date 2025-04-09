@@ -1,19 +1,22 @@
 .boxImgs {
-  margin-top: 40px;
+  position: relative;
 
   .imgBanner {
     max-width: 100%;
     max-height: 300px;
     -o-object-fit: cover;
     object-fit: cover;
-    margin-top: -6px;
     -o-object-position: center 28%;
     object-position: center 28%;
   }
 
   .imgBannerBottom {
+    min-width: 100%;
     max-width: 100%;
-    margin-top: -80px;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -22,7 +25,6 @@
 @media all and (min-width : 576px) {
   .boxImgs {
     width: 100%;
-    margin-top: 6px;
 
     .imgBanner {
       width: 100%;
@@ -36,10 +38,13 @@
 
 @media all and (min-width : 1200px) {
   .boxImgs {
-    margin-top: 6px;
 
     .imgBanner {
       max-height: 200px;
+    }
+
+    .imgBannerBottom {
+      top: 80%;
     }
   }
 }
