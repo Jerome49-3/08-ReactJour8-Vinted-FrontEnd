@@ -1,23 +1,35 @@
 .boxPsswd {
-  @include flexCenter;
+  display: flex;
+  justify-content: center;
   width: 100%;
   border-radius: 5px;
-  box-shadow: 0px 0px 1px $black, 0.10px 0.10px 1px $vertVinted, 0.20px 0.20px 1px $black, 0.30px 0.30px 1px $vertVinted, 0.40px 0.40px 1px $black, 0.50px 0.50px 1px $vertVinted, 1px 1px 1px $vertVinted;
+  box-shadow: 0px 0px 1px #000000, 0.1px 0.1px 1px #007882, 0.2px 0.2px 1px #007882, 0.3px 0.3px 1px #007882;
   border-bottom: 2px solid $vertVinted;
 
   .classLabelInput {
     @include flexStart;
-    width: 90% !important;
+    width: 90%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    height: 30px;
 
     & input {
-      box-shadow: none !important;
+      @include flexStart;
+      box-shadow: none;
       border-bottom: none;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      height: 30px;
+      padding: 0;
     }
   }
 
   .boxIcons {
-    width: 10% !important;
+    width: 10%;
     @include flexCenter;
+    height: 30px;
 
     & svg {
       color: $black;

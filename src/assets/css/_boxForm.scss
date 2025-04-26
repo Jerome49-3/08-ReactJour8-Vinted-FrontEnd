@@ -2,33 +2,25 @@
 .boxForm {
   width: 100%;
   display: flex;
-  padding: 80px 0 20px 0;
+  padding: 10px 0 50px 0;
 
   .wrapper {
-    padding-bottom: 20px;
 
     & form {
       @include flexColCenter;
       gap: 8px;
-      margin-top: 10px;
       width: 100%;
+      padding-top: 90px;
 
-      & img {
-        width: 100px;
-        height: 100px;
-        -o-object-fit: cover;
-        object-fit: cover;
-      }
-
-      #pictures {
-        display: none;
-      }
+      // #pictures {
+      //   display: none;
+      // }
 
       .boxPicTop {
         width: 100%;
         @include flexColStart;
-        border: 2px solid #ededed;
         margin-bottom: 10px;
+        background-color: #ededed;
 
         .boxPicBottomEmpty {
           padding: 110px;
@@ -78,11 +70,11 @@
 
             & img {
               width: 100%;
-              height: 200px;
-              max-height: 200px;
+              height: 100%;
               -o-object-fit: cover;
               object-fit: cover;
               display: block;
+              object-position: top;
             }
 
             .suppFiles {
@@ -109,12 +101,35 @@
       }
 
       .boxInputFormPublish {
-        max-height: 55vh;
         width: 100%;
-        height: 55vh;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: center;
+        height: auto;
+        gap: 15px;
+
+        .productPriceAndQuantity,
+        .brandAndSize,
+        .conditionAndColor {
+          width: 100%;
+          @include flexBetween;
+          gap: 10px;
+
+          .classLabelInput {
+            width: calc(50% - 5px);
+          }
+        }
+
+        .labelTxtContact {
+          margin-top: 2.5px;
+          margin-bottom: 2.5px;
+        }
+
+        .classLabelInput,
+        .labelTxtContact {
+          min-height: 30px;
+        }
       }
 
       .classLabelInputSubmit {
@@ -139,21 +154,24 @@
 
 @media all and (min-width: 1200px) {
   .boxForm {
-    padding: 40px 0px 30px 0px;
+    padding: 0 !important;
 
     .wrapper {
       & form {
+        padding-top: 50px;
+        padding-bottom: 50px;
+
         .boxPicTop {
           .boxPicBottom {
 
             .viewPics {
               width: calc(100%/4.06);
+
+              & img {
+                height: 220px;
+              }
             }
           }
-        }
-
-        & label {
-          width: 99.8%;
         }
       }
     }
@@ -161,17 +179,12 @@
 }
 
 @media all and (min-width: 1400px) {
-  .boxForm {
-    padding: 0;
-    height: 100vh;
+  // .boxForm {
+  //   padding: 0;
+  //   height: 100vh;
 
-    .wrapper {
-      padding: 0;
-
-      & form {
-        justify-content: space-between;
-        height: 80vh;
-      }
-    }
-  }
+  //   .wrapper {
+  //     padding: 0;
+  //   }
+  // }
 }

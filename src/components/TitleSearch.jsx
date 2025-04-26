@@ -4,7 +4,6 @@ import Input from "../components/Input";
 const TitleSearch = ({
   valueStr,
   setStateStr,
-  title,
   txtPlaceholder,
   txtNumber,
   valueNum,
@@ -20,15 +19,15 @@ const TitleSearch = ({
           <FontAwesomeIcon icon="magnifying-glass" className="searchIcons" />
           <Input
             id="search"
-            type="search"
+            type="text"
             placeholder={txtPlaceholder}
             value={valueStr || ""}
             setState={setStateStr}
           />
           {setStateNum && txtNumber && (
             <Input
-              id="search"
-              type="search"
+              id="searchNum"
+              type="number"
               placeholder={txtNumber}
               value={valueNum || ""}
               setState={setStateNum}

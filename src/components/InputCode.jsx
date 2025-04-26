@@ -20,7 +20,7 @@ const InputCode = ({ code, setCode }) => {
     //   "newArrayInputCode on handleChangeInputCode:",
     //   newArrayInputCode
     // );
-    // if nbrInput that"s mean: e.target.value and index is down of code.length -1
+    // if nbrInput and index is down of newArrayInputCode.length -1
     if (nbrInput && index < newArrayInputCode.length - 1) {
       //i move
       inputRefs.current[index + 1].focus();

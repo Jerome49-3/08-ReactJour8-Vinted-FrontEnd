@@ -19,6 +19,7 @@ import axiosRetry from "axios-retry";
 //******** lib ******** //
 import saveToken from "../assets/lib/saveToken";
 import setDimensions from "../assets/lib/setDimensions";
+import addRemoveListener from "../assets/lib/addRemoveListener";
 
 //******** context ******** //
 export const UserContext = createContext();
@@ -61,6 +62,8 @@ export const UserProvider = ({ children }) => {
   const [avatar, setAvatar] = useState(null);
   //******** avatarOffer > state for set picture's offer before update ******** //
   const [avatarOffer, setAvatarOffer] = useState(null);
+  //******** connexion online or offline ******** //
+  const [connexionNet, setConnexionNet] = useState({});
   //******** imgBoxUser > state for set picture's user in header ******** //
   const [imgBoxUser, setImgBoxUser] = useState(() => {
     const imgSessStorage = sessionStorage.getItem("vintaidImgBoxUser");
@@ -135,6 +138,16 @@ export const UserProvider = ({ children }) => {
       setShowHero(false);
     }
   }, [location.pathname]);
+  //****************************************** //
+  //******** Listen connection ******** //
+  //****************************************** //
+  // useEffect(() => {
+  //   window.addEventListener("offline", (event) => {
+  //     console.log("The network connection has been lost:", event);
+  //   });
+  //   return () =>
+  //     window.removeEventListener("resize", setDimensions(setDimWindows));
+  // }, []);
 
   //****************************************** //
   //******** token verify and refresh ******** //
@@ -219,10 +232,8 @@ export const UserProvider = ({ children }) => {
   //********** listen event resize *********** //
   //****************************************** //
   useEffect(() => {
-    window.addEventListener("resize", setDimensions(setDimWindows));
-    return () =>
-      window.removeEventListener("resize", setDimensions(setDimWindows));
-  }, [location]);
+    return addRemoveListener("resize", setDimensions, setDimWindows);
+  }, [location.pathname]);
 
   //****************************************** //
   //*************** axiosRetry *************** //
@@ -253,11 +264,19 @@ export const UserProvider = ({ children }) => {
     ) {
       const configRequestGlobal = axios.interceptors.request.use(
         (config) => {
-          // console.log("config in userProvider:", config);
           config.withCredentials = true;
           config.headers.Authorization = `Bearer ${token}`;
           config.headers["Content-Type"] =
-            "multipart/form-data" || "application/json";
+            config.method === "post" || config.method === "put"
+              ? "multipart/form-data"
+              : "application/json";
+          console.group("log axios.interceptor:");
+          console.log("config in userProvider:", config);
+          console.log(
+            "config.headersContent-Type in userProvider:",
+            config.headers["Content-Type"]
+          );
+          console.groupEnd();
           return config;
         },
         (error) => {

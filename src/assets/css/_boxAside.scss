@@ -25,7 +25,7 @@
 
     .btnCloseAside {
       @include btn;
-      width: 20%;
+      width: fit-content;
       @include boxShadow;
     }
   }
@@ -75,20 +75,28 @@
 
       & a,
       & button {
+        -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
         letter-spacing: 4px;
         font-weight: none;
         @include textShadow;
+        width: 100%;
+        @include flexCenter;
+        border: 2px solid transparent;
+
+        @for $i from 1 through $number-of-receipe {
+          &:nth-child(#{$i}) {
+            -webkit-animation-delay: 300ms * $i;
+            animation-delay: 300ms * $i;
+          }
+        }
       }
 
       & a {
-        color: #f1f1f1;
-        width: 100%;
-        text-align: center;
         padding: 5px;
         border-radius: 5px;
 
         &:hover {
-          color: $vertVinted;
           text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
         }
 
@@ -97,27 +105,42 @@
         }
 
         & p {
-          font-weight: normal;
+          font-weight: 700;
+          color: $vertVinted;
         }
       }
 
-      & button {
-        @include btn;
-        width: 80%;
+      & a:hover p {
+        color: $vertVintedHovFoc;
+      }
+    }
 
-        & p {
+    & button {
+      @include btn;
+      background-color: transparent !important;
+      border: none;
+      width: 100%;
+
+      & p {
+        text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+        width: 100%;
+
+        &:hover {
+          color: red !important;
           text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 
-          &:hover {
-            color: red !important;
-            text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
-
-            &:active {
-              box-shadow: inset 0px 0px 5px $black, inset 0px 0px 5px $vertVinted;
-            }
+          &:active {
+            box-shadow: inset 0px 0px 5px $black, inset 0px 0px 5px $vertVinted;
           }
         }
       }
+    }
+
+    & a p,
+    & button p {
+      font-weight: 900;
+      color: $vertVinted;
+      padding-bottom: 2px;
     }
   }
 }
@@ -138,6 +161,17 @@
 @media all and (min-width : 768px) {
   .toggleNav {
     width: 40%;
+
+    .boxAside {
+      .bodyAside {
+
+        & a p,
+        & button p {
+          font-size: 18px !important;
+          letter-spacing: 8px !important;
+        }
+      }
+    }
   }
 }
 
@@ -154,17 +188,26 @@
       .bodyAside {
         & a {
           @include flexCenter;
-
-          & p {
-            width: 50%;
-            @include flexStart;
-            font-size: 18px !important;
-            letter-spacing: 8px !important;
-          }
         }
       }
     }
   }
 }
 
-// @media all and (min-width : 1400px) {}
+@media all and (min-width : 1400px) {
+  .toggleNav .boxAside {
+    .boxTitleAside h3 {
+      font-size: 24px;
+    }
+
+    .bodyAside {
+      justify-content: space-between;
+      height: 50%;
+
+      & a p,
+      & button p {
+        font-size: 22px !important;
+      }
+    }
+  }
+}

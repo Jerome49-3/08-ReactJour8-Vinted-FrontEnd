@@ -95,7 +95,7 @@ video {
 html,
 body {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -165,12 +165,25 @@ table {
   }
 
   .dark header,
-  .dark footer,
-  .dark .boxOffer .wrapper article .right,
-  .dark .boxOffer .wrapper article .left {
+  .dark footer {
     background-color: var(--darkModeHeader);
   }
-  .dark .boxUsers a,
+  .dark .containerBoxSearch .boxSearch,
+  .dark .classLabelInput,
+  .dark .classLabelInput input,
+  .dark .labelTxtContact textarea,
+  .dark .boxPsswd,
+  .dark .boxModalContentSignUp,
+  .dark .classInputCode,
+  .dark .boxForm .wrapper form .boxPicTop .boxPicBottomEmpty {
+    background-color: var(--backDarkLink) !important;
+    color: var(--lightMode);
+  }
+  /* .dark .boxOffer .wrapper article .right,
+  .dark .boxOffer .wrapper article .left {
+    background-color: var(--darkModeHeader);
+  } */
+  /* .dark .boxUsers a,
   .dark * input:not(input[type="submit"]),
   .dark .boxSearch,
   .dark .boxPsswd,
@@ -181,39 +194,39 @@ table {
   .dark .boxLogin .wrapper form label input:not(input[type="submit"]) {
     background-color: var(--backDarkLink) !important;
     color: var(--lightMode) !important;
-  }
-  .dark .boxDashboard .top .left .boxDetails .boxLastUsers .boxUsers a {
+  } */
+  /* .dark .boxDashboard .top .left .boxDetails .boxLastUsers .boxUsers a {
     background-color: var(--backDarkLastUsersBoxUser) !important;
-  }
-  .dark header * button {
+  } */
+  /* .dark header * button {
     color: var(--vertVintaidBtn);
-  }
-  .dark header nav ul li button,
+  } */
+  /* .dark header nav ul li button,
   .dark header nav ul li a,
   .light header button,
   .dark header .buttonSignIn button p,
   .dark * a:link p {
     color: var(--headerLibackgd);
-  }
-  .dark header .linkPublish,
+  } */
+  /* .dark header .linkPublish,
   .dark .labelContent {
     color: var(--lightMode);
-  }
-  .dark .boxShoppingCart .shoppingCart,
+  } */
+  /* .dark .boxShoppingCart .shoppingCart,
   .dark .boxShoppingCart .shoppingCart .top,
   .dark .boxShoppingCart .shoppingCart .bottom,
   .dark .boxModalContent,
   .dark .boxShoppingCart .shoppingCart .bottom > * > span {
     background-color: #28282b;
     color: var(--lightMode);
-  }
+  } */
 
-  .dark button p {
+  /* .dark button p {
     color: var(--lightMode);
-  }
+  } */
 
   /* LIGHT MODE */
-  .light {
+  /* .light {
     background-color: var(--lightMode);
     color: var(--black);
 
@@ -232,12 +245,11 @@ table {
       background: #555;
     }
     /* Footer Header*/
-    footer,
-    header {
-      background-color: var(--backgHeader);
-    }
-  }
-  .light #root {
+  /* footer,
+  header {
+    background-color: var(--backgHeader);
+  } */
+  /* .light #root {
     background-color: var(--lightMode);
   }
   .light .boxPicTop {
@@ -254,21 +266,22 @@ table {
   .light .topHeader .containerBoxSearch .boxSearch .classLabelInput input,
   .light .boxForm .wrapper form label textarea {
     background-color: var(--backLightInput) !important;
-  }
-  /* .light .boxLogin .wrapper form label {
-    background-color: white;
   } */
-  .light .boxLastUsers .boxUsers a {
-    background-color: var(--backgHeader);
-  }
-  .light .boxForm textarea,
-  .light .boxForm input:not([type="submit"]),
-  .light .topHeader .containerBoxSearch input,
-  .light .boxFormSignUp * input:not([type="submit"]) {
-    color: var(--black);
-  }
+  /* .light .boxLogin .wrapper form label {
+      background-color: white;
+    } */
+  /* .light .boxLastUsers .boxUsers a {
+      background-color: var(--backgHeader);
+    }
+    .light .boxForm textarea,
+    .light .boxForm input:not([type="submit"]),
+    .light .topHeader .containerBoxSearch input,
+    .light .boxFormSignUp * input:not([type="submit"]) {
+      color: var(--black);
+    } */
 }
 
+/* input[type="file"] */
 input[type="file"] {
   display: none;
 }

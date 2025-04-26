@@ -119,7 +119,12 @@ function App() {
       return [];
     }
   });
-
+  //********** State price for publish, offerId and payment ***********/
+  let [price, setPrice] = useState(0);
+  console.log("price in app:", price);
+  //********** State quantity for publish, offerId and payment ***********/
+  let [quantity, setQuantity] = useState(0);
+  console.log("quantity in app:", quantity);
   return (
     <Router>
       <UserProvider>
@@ -211,6 +216,10 @@ function App() {
                   setShowImgsModal={setShowImgsModal}
                   setSrcImgsModal={setSrcImgsModal}
                   faTrash={faTrash}
+                  price={price}
+                  setPrice={setPrice}
+                  quantity={quantity}
+                  setQuantity={setQuantity}
                 />
               }
             />
@@ -320,7 +329,14 @@ function App() {
               <Route
                 path="publish"
                 element={
-                  <Publish faRotateRight={faRotateRight} faTrash={faTrash} />
+                  <Publish
+                    faRotateRight={faRotateRight}
+                    faTrash={faTrash}
+                    price={price}
+                    setPrice={setPrice}
+                    quantity={quantity}
+                    setQuantity={setQuantity}
+                  />
                 }
               />
               <Route
@@ -341,6 +357,7 @@ function App() {
             setPriceMax={setPriceMax}
             showFilter={showFilter}
             setShowFilter={setShowFilter}
+            faCircleXmark={faCircleXmark}
           />
         )}
         {showSignUp && (

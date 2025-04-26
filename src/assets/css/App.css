@@ -714,27 +714,39 @@
 .boxPsswd {
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100%;
   border-radius: 5px;
-  box-shadow: 0px 0px 1px #000000, 0.1px 0.1px 1px #007882, 0.2px 0.2px 1px #000000, 0.3px 0.3px 1px #007882, 0.4px 0.4px 1px #000000, 0.5px 0.5px 1px #007882, 1px 1px 1px #007882;
+  box-shadow: 0px 0px 1px #000000, 0.1px 0.1px 1px #007882, 0.2px 0.2px 1px #007882, 0.3px 0.3px 1px #007882;
   border-bottom: 2px solid #007882;
 }
 .boxPsswd .classLabelInput {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 90% !important;
+  width: 90%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  height: 30px;
 }
 .boxPsswd .classLabelInput input {
-  box-shadow: none !important;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: none;
   border-bottom: none;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  height: 30px;
+  padding: 0;
 }
 .boxPsswd .boxIcons {
-  width: 10% !important;
+  width: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 30px;
 }
 .boxPsswd .boxIcons svg {
   color: #000000;
@@ -886,10 +898,7 @@
 .boxForm {
   width: 100%;
   display: flex;
-  padding: 80px 0 20px 0;
-}
-.boxForm .wrapper {
-  padding-bottom: 20px;
+  padding: 10px 0 50px 0;
 }
 .boxForm .wrapper form {
   display: flex;
@@ -897,17 +906,8 @@
   align-items: center;
   flex-direction: column;
   gap: 8px;
-  margin-top: 10px;
   width: 100%;
-}
-.boxForm .wrapper form img {
-  width: 100px;
-  height: 100px;
-  -o-object-fit: cover;
-  object-fit: cover;
-}
-.boxForm .wrapper form #pictures {
-  display: none;
+  padding-top: 90px;
 }
 .boxForm .wrapper form .boxPicTop {
   width: 100%;
@@ -915,8 +915,8 @@
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  border: 2px solid #ededed;
   margin-bottom: 10px;
+  background-color: #ededed;
 }
 .boxForm .wrapper form .boxPicTop .boxPicBottomEmpty {
   padding: 110px;
@@ -967,8 +967,7 @@
 }
 .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics img {
   width: 100%;
-  height: 200px;
-  max-height: 200px;
+  height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
   display: block;
@@ -1006,12 +1005,35 @@
   color: red;
 }
 .boxForm .wrapper form .boxInputFormPublish {
-  max-height: 55vh;
   width: 100%;
-  height: 55vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  height: auto;
+  gap: 15px;
+}
+.boxForm .wrapper form .boxInputFormPublish .productPriceAndQuantity,
+.boxForm .wrapper form .boxInputFormPublish .brandAndSize,
+.boxForm .wrapper form .boxInputFormPublish .conditionAndColor {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.boxForm .wrapper form .boxInputFormPublish .productPriceAndQuantity .classLabelInput,
+.boxForm .wrapper form .boxInputFormPublish .brandAndSize .classLabelInput,
+.boxForm .wrapper form .boxInputFormPublish .conditionAndColor .classLabelInput {
+  width: calc(50% - 5px);
+}
+.boxForm .wrapper form .boxInputFormPublish .labelTxtContact {
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+}
+.boxForm .wrapper form .boxInputFormPublish .classLabelInput,
+.boxForm .wrapper form .boxInputFormPublish .labelTxtContact {
+  min-height: 30px;
 }
 .boxForm .wrapper form .classLabelInputSubmit {
   width: 100%;
@@ -1027,26 +1049,17 @@
 }
 @media all and (min-width: 1200px) {
   .boxForm {
-    padding: 40px 0px 30px 0px;
+    padding: 0 !important;
+  }
+  .boxForm .wrapper form {
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
   .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics {
     width: 24.6305418719%;
   }
-  .boxForm .wrapper form label {
-    width: 99.8%;
-  }
-}
-@media all and (min-width: 1400px) {
-  .boxForm {
-    padding: 0;
-    height: 100vh;
-  }
-  .boxForm .wrapper {
-    padding: 0;
-  }
-  .boxForm .wrapper form {
-    justify-content: space-between;
-    height: 80vh;
+  .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics img {
+    height: 220px;
   }
 }
 .boxLogin {
@@ -1514,6 +1527,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .boxImgs .imgBanner {
     max-height: 400px;
   }
+  .boxImgs .imgBannerBottom {
+    top: 90%;
+  }
 }
 /* HOME */
 .boxHome {
@@ -1962,12 +1978,10 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   width: 100%;
   gap: 10px;
-}
-.boxOfferCard a:first-child {
-  margin-left: 5px;
+  padding: 0 5px 0 5px;
 }
 .boxOfferCard a {
-  min-width: 100%;
+  width: 100%;
 }
 .boxOfferCard a article {
   justify-content: center;
@@ -1984,9 +1998,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   transition: all 0.5s;
 }
 .boxOfferCard a article:hover {
-  box-shadow: 0px 0px 10px #000000, 0.15px 0.15px 1px #000000;
+  box-shadow: 0px 0px 5px #000000, 0.15px 0.15px 1px #000000;
 }
-.boxOfferCard a article .boxImgArticle {
+.boxOfferCard a .boxImgArticle {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1996,14 +2010,14 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   -moz-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
   -webkit-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
 }
-.boxOfferCard a article .boxImgArticle .imgArticle {
+.boxOfferCard a .boxImgArticle .imgArticle {
   display: block;
   width: 100%;
   height: 250px;
   -o-object-fit: cover;
   object-fit: cover;
 }
-.boxOfferCard a article .boxImgArticle .classBannerSold {
+.boxOfferCard a .boxImgArticle .classBannerSold {
   width: 100px;
   height: 100px;
   -o-object-fit: cover;
@@ -2013,11 +2027,11 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   left: 81.5%;
   transform: translate(-50%, -50%);
 }
-.boxOfferCard a article .boxImgArticle .imgsArticle {
+.boxOfferCard a .boxImgArticle .imgsArticle {
   width: calc(100% / var(--imgsLength));
   height: 100%;
 }
-.boxOfferCard a article .boxUser {
+.boxOfferCard a .boxUser {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -2026,16 +2040,16 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   height: 50px;
   padding: 5px 10px 5px 10px;
 }
-.boxOfferCard a article .boxUser h5 {
+.boxOfferCard a .boxUser h5 {
   font-weight: 700;
   font-size: 20px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 1px 1px 1px #000000, 0px 0px 5px #000000;
 }
-.boxOfferCard a article .boxUser .imgAvatar {
+.boxOfferCard a .boxUser .imgAvatar {
   height: 30px;
   width: 30px;
 }
-.boxOfferCard a article .boxTrashHearth {
+.boxOfferCard a .boxTrashHearth {
   position: absolute;
   top: 80%;
   left: 50%;
@@ -2046,8 +2060,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   padding: 0 10px 0 10px;
 }
-.boxOfferCard a article .boxTrashHearth .btnTrash,
-.boxOfferCard a article .boxTrashHearth .boxHearth {
+.boxOfferCard a .boxTrashHearth .btnTrash,
+.boxOfferCard a .boxTrashHearth .boxHearth {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -2058,11 +2072,11 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   font-size: 1.25rem;
   background-color: transparent;
 }
-.boxOfferCard a article .boxTrashHearth .btnTrash .svg-inline--fa,
-.boxOfferCard a article .boxTrashHearth .boxHearth .svg-inline--fa {
+.boxOfferCard a .boxTrashHearth .btnTrash .svg-inline--fa,
+.boxOfferCard a .boxTrashHearth .boxHearth .svg-inline--fa {
   filter: drop-shadow(0.25px 0.25px 1px #000000) drop-shadow(0.5px 0.5px 1px #000000);
 }
-.boxOfferCard a article .boxTrashHearth .btnTrash {
+.boxOfferCard a .boxTrashHearth .btnTrash {
   color: #ffffff;
   background-color: #007882;
   display: flex;
@@ -2075,16 +2089,16 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   background-color: transparent;
   color: #007882;
 }
-.boxOfferCard a article .boxTrashHearth .btnTrash p {
+.boxOfferCard a .boxTrashHearth .btnTrash p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 }
-.boxOfferCard a article .boxTrashHearth .btnTrash:hover, .boxOfferCard a article .boxTrashHearth .btnTrash:focus {
+.boxOfferCard a .boxTrashHearth .btnTrash:hover, .boxOfferCard a .boxTrashHearth .btnTrash:focus {
   background-color: #33c6d0;
 }
-.boxOfferCard a article .boxTrashHearth .btnTrash:hover {
+.boxOfferCard a .boxTrashHearth .btnTrash:hover {
   background-color: transparent;
 }
-.boxOfferCard a article .footerArticle {
+.boxOfferCard a .footerArticle {
   padding: 5px 10px 5px 10px;
   gap: 5px;
   width: 100%;
@@ -2093,8 +2107,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: space-between;
   align-items: center;
 }
-.boxOfferCard a article .footerArticle .boxNameMarque,
-.boxOfferCard a article .footerArticle .price {
+.boxOfferCard a .footerArticle .boxNameMarque,
+.boxOfferCard a .footerArticle .price {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2102,14 +2116,14 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   font-size: 14px;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 1px 1px 1px #000000, 0px 0px 5px #000000;
 }
-.boxOfferCard a article .footerArticle .boxNameMarque {
+.boxOfferCard a .footerArticle .boxNameMarque {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   width: 50%;
 }
-.boxOfferCard a article .footerArticle .boxNameMarque div {
+.boxOfferCard a .footerArticle .boxNameMarque div {
   display: inline-block;
   width: 100%;
   overflow: hidden;
@@ -2117,7 +2131,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   text-overflow: ellipsis;
   padding-bottom: 5px;
 }
-.boxOfferCard a article .footerArticle .price {
+.boxOfferCard a .footerArticle .price {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -2125,18 +2139,25 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 
 @media all and (min-width: 576px) {
   .boxOfferCard {
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
   .boxOfferCard a {
-    width: 50%;
+    width: 47.619047619%;
   }
   .boxOfferCard a article {
     width: 95%;
   }
 }
 @media all and (min-width: 768px) {
+  .boxOfferCard {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
   .boxOfferCard a {
-    width: 23.8095238095%;
+    width: 47.619047619% !important;
   }
   .boxOfferCard a article {
     width: 100%;
@@ -2153,11 +2174,11 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
-    padding: 30px 0 50px 0;
     height: 50vh;
     overflow-x: hidden;
     overflow-y: hidden;
     flex-direction: row;
+    flex-wrap: nowrap;
   }
   .boxOfferCard a {
     display: flex;
@@ -2169,11 +2190,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .boxOfferCard a article {
     min-height: -moz-fit-content !important;
     min-height: fit-content !important;
-  }
-  .boxOfferCard a article .boxUser,
-  .boxOfferCard a article .footerArticle {
-    height: -moz-fit-content !important;
-    height: fit-content !important;
   }
   .boxOfferCard a article .boxImgArticle img {
     height: 150px !important;
@@ -2581,11 +2597,16 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 .boxLastUsers thead tr .email {
   width: 30%;
 }
-.boxLastUsers thead tr .news,
-.boxLastUsers thead tr .avatar,
-.boxLastUsers thead tr .date,
-.boxLastUsers thead tr .isAdmin {
+.boxLastUsers thead tr .date {
   width: 10%;
+}
+.boxLastUsers thead tr .avatar {
+  width: 12%;
+}
+.boxLastUsers thead tr .news,
+.boxLastUsers thead tr .isAdmin,
+.boxLastUsers thead tr .isOnline {
+  width: 6%;
 }
 .boxLastUsers thead tr th {
   display: flex;
@@ -2594,13 +2615,12 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-left: 5px;
   height: 100%;
 }
 .boxLastUsers thead tr th:not(:last-child) {
   border-right: 2px solid #007882;
 }
-.boxLastUsers a {
+.boxLastUsers a.boxUsers {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -2608,15 +2628,15 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   gap: 5px;
   background-color: #FAF9F6;
   border-radius: 5px;
-  padding: 2px 5px 2px 5px;
   border: 2px solid #007882;
+  height: 30px;
 }
-.boxLastUsers a .username,
-.boxLastUsers a .avatar,
-.boxLastUsers a .email,
-.boxLastUsers a .news,
-.boxLastUsers a .date,
-.boxLastUsers a .isAdmin {
+.boxLastUsers a.boxUsers .username,
+.boxLastUsers a.boxUsers .avatar,
+.boxLastUsers a.boxUsers .email,
+.boxLastUsers a.boxUsers .news,
+.boxLastUsers a.boxUsers .date,
+.boxLastUsers a.boxUsers .isAdmin {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -2625,45 +2645,59 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   text-overflow: ellipsis;
   height: 20px;
 }
-.boxLastUsers a .email,
-.boxLastUsers a .username {
-  width: 35%;
+.boxLastUsers a.boxUsers .username,
+.boxLastUsers a.boxUsers .email {
+  width: 30%;
 }
-.boxLastUsers a .news,
-.boxLastUsers a .avatar,
-.boxLastUsers a .isAdmin {
+.boxLastUsers a.boxUsers .date {
   width: 10%;
 }
-.boxLastUsers a .news,
-.boxLastUsers a .isAdmin {
+.boxLastUsers a.boxUsers .avatar {
+  width: 12%;
+}
+.boxLastUsers a.boxUsers .news,
+.boxLastUsers a.boxUsers .isAdmin,
+.boxLastUsers a.boxUsers .isOnline {
+  width: 6%;
+}
+.boxLastUsers a.boxUsers .news,
+.boxLastUsers a.boxUsers .isAdmin {
   filter: drop-shadow(0.1px 0.1px 1px black);
   color: #007882;
 }
-.boxLastUsers a .avatar img {
+.boxLastUsers a.boxUsers .avatar img {
   width: 100%;
-  height: 25px;
+  height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
   border-radius: 5px;
-  box-shadow: 0px 0px 1px #000000, 0px 0px 1.5px #000000, 0px 0px 3px #000000;
   margin-left: -5px;
 }
-.boxLastUsers a .username {
+.boxLastUsers a.boxUsers .username {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding-left: 5px;
 }
-.boxLastUsers a .username:hover {
+.boxLastUsers a.boxUsers .username:hover {
   overflow: visible;
 }
-.boxLastUsers a .email {
+.boxLastUsers a.boxUsers .date {
+  width: 10%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding: 0px;
+}
+.boxLastUsers a.boxUsers .email {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .boxLastSales {
@@ -2771,6 +2805,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   border-radius: 5px;
   padding: 0px 5px 0px 5px;
 }
+.boxDashboard .wrapper .leftPannel .boxTitleLinksDashboard:hover a p {
+  color: #b0faff;
+}
 .boxDashboard .wrapper .leftPannel .boxTitleLinksDashboard {
   width: 100%;
   padding-bottom: 10px;
@@ -2785,9 +2822,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   font-weight: 800;
   color: #c9c9c9;
   font-size: 16px;
-}
-.boxDashboard .wrapper .leftPannel .boxTitleLinksDashboard a p:hover {
-  color: #b0faff;
 }
 .boxDashboard .wrapper .rightOutlet {
   width: 100%;
@@ -2991,6 +3025,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 .boxUserId .wrapper .right .boxSubmitTrash .btnTrash:hover svg {
   color: red;
 }
+.boxUserId .wrapper .right .boxSubmitTrash .boxLoaded {
+  width: 50%;
+}
 .boxUserId .left,
 .boxUserId .right {
   min-width: 50%;
@@ -3095,7 +3132,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   height: 30px;
   border-radius: 5px;
-  width: 20%;
+  width: -moz-fit-content;
+  width: fit-content;
   box-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 }
 .toggleNav .headAside .btnCloseAside p {
@@ -3152,28 +3190,61 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   padding-bottom: 2px;
 }
 .toggleNav .boxAside .bodyAside a, .toggleNav .boxAside .bodyAside button {
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   letter-spacing: 4px;
   font-weight: none;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid transparent;
+}
+.toggleNav .boxAside .bodyAside a:nth-child(1), .toggleNav .boxAside .bodyAside button:nth-child(1) {
+  animation-delay: 300ms;
+}
+.toggleNav .boxAside .bodyAside a:nth-child(2), .toggleNav .boxAside .bodyAside button:nth-child(2) {
+  animation-delay: 600ms;
+}
+.toggleNav .boxAside .bodyAside a:nth-child(3), .toggleNav .boxAside .bodyAside button:nth-child(3) {
+  animation-delay: 900ms;
+}
+.toggleNav .boxAside .bodyAside a:nth-child(4), .toggleNav .boxAside .bodyAside button:nth-child(4) {
+  animation-delay: 1200ms;
+}
+.toggleNav .boxAside .bodyAside a:nth-child(5), .toggleNav .boxAside .bodyAside button:nth-child(5) {
+  animation-delay: 1500ms;
+}
+.toggleNav .boxAside .bodyAside a:nth-child(6), .toggleNav .boxAside .bodyAside button:nth-child(6) {
+  animation-delay: 1800ms;
+}
+.toggleNav .boxAside .bodyAside a:nth-child(7), .toggleNav .boxAside .bodyAside button:nth-child(7) {
+  animation-delay: 2100ms;
+}
+.toggleNav .boxAside .bodyAside a:nth-child(8), .toggleNav .boxAside .bodyAside button:nth-child(8) {
+  animation-delay: 2400ms;
+}
+.toggleNav .boxAside .bodyAside a:nth-child(9), .toggleNav .boxAside .bodyAside button:nth-child(9) {
+  animation-delay: 2700ms;
 }
 .toggleNav .boxAside .bodyAside a {
-  color: #f1f1f1;
-  width: 100%;
-  text-align: center;
   padding: 5px;
   border-radius: 5px;
 }
 .toggleNav .boxAside .bodyAside a:hover {
-  color: #007882;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
 .toggleNav .boxAside .bodyAside a:active {
   box-shadow: inset 0px 0px 5px #000000, inset 0px 0px 5px #007882;
 }
 .toggleNav .boxAside .bodyAside a p {
-  font-weight: normal;
+  font-weight: 700;
+  color: #007882;
 }
-.toggleNav .boxAside .bodyAside button {
+.toggleNav .boxAside .bodyAside a:hover p {
+  color: #33c6d0;
+}
+.toggleNav .boxAside button {
   color: #ffffff;
   background-color: #007882;
   display: flex;
@@ -3181,23 +3252,31 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   height: 30px;
   border-radius: 5px;
-  width: 80%;
+  background-color: transparent !important;
+  border: none;
+  width: 100%;
 }
-.toggleNav .boxAside .bodyAside button p {
+.toggleNav .boxAside button p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 }
-.toggleNav .boxAside .bodyAside button:hover, .toggleNav .boxAside .bodyAside button:focus {
+.toggleNav .boxAside button:hover, .toggleNav .boxAside button:focus {
   background-color: #33c6d0;
 }
-.toggleNav .boxAside .bodyAside button p {
+.toggleNav .boxAside button p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
+  width: 100%;
 }
-.toggleNav .boxAside .bodyAside button p:hover {
+.toggleNav .boxAside button p:hover {
   color: red !important;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 0.75px 0.75px 1px #000000, 1px 1px 1px #000000;
 }
-.toggleNav .boxAside .bodyAside button p:hover:active {
+.toggleNav .boxAside button p:hover:active {
   box-shadow: inset 0px 0px 5px #000000, inset 0px 0px 5px #007882;
+}
+.toggleNav .boxAside a p, .toggleNav .boxAside button p {
+  font-weight: 900;
+  color: #007882;
+  padding-bottom: 2px;
 }
 
 .hideToggle {
@@ -3214,6 +3293,10 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .toggleNav {
     width: 40%;
   }
+  .toggleNav .boxAside .bodyAside a p, .toggleNav .boxAside .bodyAside button p {
+    font-size: 18px !important;
+    letter-spacing: 8px !important;
+  }
 }
 @media all and (min-width: 992px) {
   .toggleNav {
@@ -3226,13 +3309,17 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     justify-content: center;
     align-items: center;
   }
-  .toggleNav .boxAside .bodyAside a p {
-    width: 50%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 18px !important;
-    letter-spacing: 8px !important;
+}
+@media all and (min-width: 1400px) {
+  .toggleNav .boxAside .boxTitleAside h3 {
+    font-size: 24px;
+  }
+  .toggleNav .boxAside .bodyAside {
+    justify-content: space-between;
+    height: 50%;
+  }
+  .toggleNav .boxAside .bodyAside a p, .toggleNav .boxAside .bodyAside button p {
+    font-size: 22px !important;
   }
 }
 .boxContact {
@@ -3433,6 +3520,12 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   width: 100%;
   height: 100vh;
   padding: 90px 0 50px 0;
+}
+.boxFormInputCode .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .boxFormInputCode .wrapper form {
   display: flex;
@@ -3775,6 +3868,19 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   height: 100%;
   padding: 5px 5px 50px 5px;
+}
+.boxOfferIdUpdateAndDelete .wrapper .right .boxOfferIdUpdateInput .productPriceAndQuantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+.boxOfferIdUpdateAndDelete .wrapper .right .boxOfferIdUpdateInput .productPriceAndQuantity label {
+  width: 50%;
+}
+.boxOfferIdUpdateAndDelete .wrapper .right .boxOfferIdUpdateInput .productPriceAndQuantity label input {
+  width: calc(98% - 5px);
 }
 .boxOfferIdUpdateAndDelete .wrapper .right .boxOfferIdUpdateInput label {
   gap: 5px;

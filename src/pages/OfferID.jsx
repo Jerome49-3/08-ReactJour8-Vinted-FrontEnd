@@ -28,6 +28,10 @@ const OfferID = ({
   setShowImgsModal,
   setSrcImgsModal,
   faTrash,
+  price,
+  setPrice,
+  quantity,
+  setQuantity,
 }) => {
   const { axios, user, infoUser, setInfoUser, showHero, data, setData } =
     useUser();
@@ -38,8 +42,8 @@ const OfferID = ({
   // console.log("id1 in /offers/${id}:", id);
   const [imgsNbr, setImgsNbr] = useState(0);
   console.log("data in OfferId:", data);
-  let [price, setPrice] = useState(0);
   const prices = Number(price).toFixed(2);
+  const quantitys = Number(quantity);
   // console.log("prices in OfferId:", prices);
   // console.log('prices in /offers/${id}:', prices);
   const [isLoading, setIsLoading] = useState(true);
@@ -80,10 +84,18 @@ const OfferID = ({
       setPrice(data?.product_price);
       // console.log('data.product_price in second useEffect:', data.product_price);
     };
+    const setQuantitys = () => {
+      setQuantity(data?.product_quantity);
+      console.log(
+        "data?.product_quantity in second useEffect:",
+        data?.product_quantity
+      );
+    };
     if (isLoading === false) {
       setPrices();
+      setQuantitys();
     }
-  }, [isLoading]);
+  }, [isLoading, data]);
 
   useEffect(() => {
     const setImgsLength = () => {
@@ -219,6 +231,10 @@ const OfferID = ({
                   <span>{prices} €</span>
                 </div>
                 <div>
+                  <p>Quantity: </p>
+                  <span>{quantitys}</span>
+                </div>
+                <div>
                   <p>Marque: </p>
                   {data?.product_details && (
                     <span>{data?.product_details[0].MARQUE}</span>
@@ -309,6 +325,7 @@ const OfferID = ({
                             product_price: Number(data?.product_price).toFixed(
                               2
                             ),
+                            product_quantity: 1,
                             product_pictures: data?.product_pictures,
                           }}
                         >

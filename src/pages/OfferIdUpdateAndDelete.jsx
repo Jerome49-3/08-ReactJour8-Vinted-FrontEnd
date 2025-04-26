@@ -23,6 +23,7 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
   const [data, setData] = useState(null);
   const [productDescription, setProductDescription] = useState(null);
   const [productPrice, setProductPrice] = useState(null);
+  const [productQuantity, setProductQuantity] = useState(null);
   const [offerSolded, setOfferSolded] = useState(null);
   const [pictures, setPictures] = useState([]);
   // console.log("pictures in OfferIdUpdateAndDelete:", pictures);
@@ -189,16 +190,28 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
               setState={setProductName}
               labelTxt="product_name:"
             />
-            <Input
-              type="number"
-              id="productPrice"
-              placeholder={data?.product_price}
-              value={productPrice || ""}
-              setState={setProductPrice}
-              min="0"
-              max="100000"
-              labelTxt="product_price:"
-            />
+            <div className="productPriceAndQuantity">
+              <Input
+                type="number"
+                id="productPrice"
+                placeholder={data?.product_price}
+                value={productPrice || ""}
+                setState={setProductPrice}
+                min="0"
+                max="100000"
+                labelTxt="product_price:"
+              />
+              <Input
+                type="number"
+                id="productQuantity"
+                placeholder={data?.product_quantity}
+                value={productQuantity || ""}
+                setState={setProductQuantity}
+                min="1"
+                max="100"
+                labelTxt="product_quantity:"
+              />
+            </div>
             <TextArea
               type="text"
               id="productDescription"

@@ -6,6 +6,8 @@
   padding: 90px 0 50px 0;
 
   .wrapper {
+    @include flexColCenter;
+
     & form {
       @include flexColCenter;
       gap: 10px;

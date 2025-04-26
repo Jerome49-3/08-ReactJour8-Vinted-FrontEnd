@@ -2,11 +2,9 @@ import { useState } from "react";
 import { useUser } from "../assets/lib/userFunc";
 import { useNavigate, useLocation } from "react-router-dom";
 
-//components
-import Input from "../components/Input";
-
 //lib
 import saveToken from "../assets/lib/saveToken";
+//components
 import InputCode from "../components/InputCode";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
 

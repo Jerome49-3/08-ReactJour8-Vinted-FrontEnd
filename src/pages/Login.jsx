@@ -38,13 +38,13 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
     try {
       const response = await axios.post(
         import.meta.env.VITE_REACT_APP_URL_LOGIN,
-        {
-          email,
-          password,
-        }
+        formData
       );
       console.log("response in handlesubmit in /login:", response);
       try {

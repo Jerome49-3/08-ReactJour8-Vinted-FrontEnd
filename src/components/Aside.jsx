@@ -16,6 +16,7 @@ const Aside = ({
   setPriceMax,
   showFilter,
   setShowFilter,
+  faCircleXmark,
 }) => {
   // console.log('showToggleNav in aside:', showToggleNav);
   const { token, isAdmin, user, logout } = useUser();
@@ -29,7 +30,7 @@ const Aside = ({
     <div className={showToggleNav ? "toggleNav" : "hideToggle"}>
       <div className="headAside">
         <Button
-          buttonText="X"
+          icon={faCircleXmark}
           handleClick={() => {
             setShowToggleNav(false);
             setShowFilter(false);

@@ -10,7 +10,6 @@ import Loading from "./Loading";
 import Image from "./Image";
 import Input from "./Input";
 import InputFileAvatar from "./InputFileAvatar";
-import Button from "./Button";
 
 //lib
 import decryptUser from "../assets/lib/decryptUser";
@@ -20,12 +19,11 @@ import saveToken from "../assets/lib/saveToken";
 import updateIcon from "../assets/images/updateIcon.png";
 import LoadedInputSubmit from "./LoadedInputSubmit";
 import Trash from "./Trash";
+import InfoUserErrorMessage from "./InfoUserErrorMessage";
 
 const Profile = ({ faTrash }) => {
   const {
-    token,
     setToken,
-    user,
     setUser,
     setIsAdmin,
     avatar,
@@ -33,47 +31,43 @@ const Profile = ({ faTrash }) => {
     setImgBoxUser,
     setIsSended,
     isSended,
+    setIsSendedTrash,
+    isSendedTrash,
+    logout,
   } = useUser();
-  console.log("user in /profile/${id}:", user);
-  // console.log("token in /profile/${id}:", token);
   const { id } = useParams();
-  // console.log("id in /profile/${id}:", id);
   const [data, setData] = useState(null);
+  console.group("state on /profile:");
+  console.log("id in /profile/${id}:", id);
   console.log("data in /profile/${id}:", data);
+  console.groupEnd();
   const [isLoading, setIsLoading] = useState(true);
   const [pictures, setPictures] = useState(null);
-  // console.log("pictures in /profile/${id}::", pictures);
+  console.group("formData on /profile:");
+  console.log("pictures in /profile/${id}:", pictures);
+  console.log("avatar in /profile/${id}::", avatar);
+  console.groupEnd();
   const [errorMessage, setErrorMessage] = useState(null);
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [newsletter, setNewsletter] = useState(null);
-  console.log("avatar in /profile/${id}::", avatar);
   const [dataNews, setDataNews] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/profile/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
-            withCredentials: true,
-          }
-        );
+        const response = await axios.get(`http://localhost:3000/profile/${id}`);
         // console.log("response in /profile/${id}:", response);
         if (response?.data) {
-          console.log("response.data in /profile/${id}:", response?.data);
+          // console.log("response.data in /profile/${id}:", response?.data);
           // setData(response?.data);
           if (response?.data?.token) {
             try {
               const newToken = await response?.data?.token;
               if (newToken) {
                 const userUpdated = await decryptUser(newToken);
-                console.log("userUpdated in /users/${id} (GET):", userUpdated);
+                // console.log("userUpdated in /users/${id} (GET):", userUpdated);
                 if (userUpdated) {
                   setData(userUpdated);
                   setDataNews(userUpdated?.newsletter.toString());
@@ -96,6 +90,9 @@ const Profile = ({ faTrash }) => {
       } catch (error) {
         console.log(error?.message);
         setErrorMessage(error?.response?.data?.message || "update failed");
+        setTimeout(() => {
+          setIsSended(false);
+        }, 3000);
       }
     };
     fetchData();
@@ -117,10 +114,10 @@ const Profile = ({ faTrash }) => {
         formData
       );
       // console.log('response in /profile/${id}::', response);
-      console.log(
-        "response.data in handleUpdateData in /profile/${id}::",
-        response.data
-      );
+      // console.log(
+      //   "response.data in handleUpdateData in /profile/${id}::",
+      //   response.data
+      // );
       if (response?.data?.token) {
         try {
           const newToken = await response?.data?.token;
@@ -132,13 +129,13 @@ const Profile = ({ faTrash }) => {
               setDataNews(userUpdated?.newsletter.toString());
             }
             const avatarSecureUrl = userUpdated?.account?.avatar?.secure_url;
-            console.log("avatarSecureUrl: in userProvider:", avatarSecureUrl);
-            console.log(
-              "typeof avatarSecureUrl: in userProvider:",
-              typeof avatarSecureUrl
-            );
+            // console.log("avatarSecureUrl: in userProvider:", avatarSecureUrl);
+            // console.log(
+            //   "typeof avatarSecureUrl: in userProvider:",
+            //   typeof avatarSecureUrl
+            // );
             const avatarUrl = userUpdated?.account?.avatar;
-            console.log("typeof avatarUrl: in userProvider:", typeof avatarUrl);
+            // console.log("typeof avatarUrl: in userProvider:", typeof avatarUrl);
             if (typeof avatarUrl === "string") {
               setImgBoxUser(avatarUrl);
               setAvatar(avatarUrl);
@@ -149,18 +146,18 @@ const Profile = ({ faTrash }) => {
               setImgBoxUser(null);
             }
             if (id === userUpdated._id) {
-              console.log("userUpdated._id in profile:", userUpdated._id);
-              console.log("id in profile:", id);
-              console.log(
-                "typeof userUpdated._id in profile:",
-                typeof userUpdated._id
-              );
+              // console.log("userUpdated._id in profile:", userUpdated._id);
+              // console.log("id in profile:", id);
+              // console.log(
+              //   "typeof userUpdated._id in profile:",
+              //   typeof userUpdated._id
+              // );
               const avatarSecureUrl = await userUpdated?.account?.avatar
                 ?.secure_url;
               const avatarUrl = await userUpdated?.account?.avatar;
-              console.log("typeof id in profile:", typeof id);
-              console.log("avatarSecureUrl in profile:", avatarSecureUrl);
-              console.log("avatarUrl in profile:", avatarUrl);
+              // console.log("typeof id in profile:", typeof id);
+              // console.log("avatarSecureUrl in profile:", avatarSecureUrl);
+              // console.log("avatarUrl in profile:", avatarUrl);
               setToken(newToken);
               saveToken(newToken, setUser, setIsAdmin, setImgBoxUser);
               if (typeof avatarUrl !== "object") {
@@ -175,6 +172,9 @@ const Profile = ({ faTrash }) => {
           }
         } catch (error) {
           console.log("error after response?.data?.token:", error);
+          setTimeout(() => {
+            setIsSended(false);
+          }, 1000);
         }
       }
       setTimeout(() => {
@@ -189,11 +189,24 @@ const Profile = ({ faTrash }) => {
   };
 
   const handleDeleteData = async (e) => {
+    console.log("id in handleDeleteData on profile/:id:", id);
+
     e.preventDefault();
-    setIsSended(true);
-    const response = await axios.delete(`http://localhost:300/userId/${id}`);
-    if (response) {
-      navigate("/dashboard");
+    try {
+      setIsSendedTrash(true);
+      const response = await axios.delete(
+        `http://localhost:3000/profile/${id}`
+      );
+      console.log("response in handleDeleteData on profile/:id:", response);
+      if (response.data.infoUser) {
+        logout();
+        navigate("/");
+      }
+    } catch (error) {
+      console.log("error in handleDeleteData on profile/:id:", error);
+      setTimeout(() => {
+        setIsSendedTrash(false);
+      }, 1000);
     }
   };
 
@@ -269,16 +282,16 @@ const Profile = ({ faTrash }) => {
                 id="inputSubmit"
               />
               <Trash
-                setIsSended={setIsSended}
-                isSended={isSended}
+                setIsSendedTrash={setIsSendedTrash}
+                isSendedTrash={isSendedTrash}
                 faTrash={faTrash}
                 id={id}
                 handleClick={handleDeleteData}
               />
             </div>
           </div>
+          <InfoUserErrorMessage />
         </div>
-        {errorMessage && <div className="red">{errorMessage}</div>}
       </form>
     </>
   );

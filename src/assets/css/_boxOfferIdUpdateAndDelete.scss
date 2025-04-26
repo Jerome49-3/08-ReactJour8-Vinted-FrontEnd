@@ -65,6 +65,20 @@
         @include flexColBetween;
         padding: 5px 5px 50px 5px;
 
+        .productPriceAndQuantity {
+          @include flexBetween;
+          width: 100%;
+          gap: 10px;
+
+          & label {
+            width: 50%;
+
+            & input {
+              width: calc(98% - 5px);
+            }
+          }
+        }
+
         & label {
           gap: 5px;
           width: 100%;

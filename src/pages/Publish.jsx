@@ -10,11 +10,17 @@ import Button from "../components/Button";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
 import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
-const Publish = ({ faTrash }) => {
+const Publish = ({ faTrash, price, setPrice, quantity, setQuantity }) => {
+  console.log(
+    "price in Publish:",
+    price,
+    "\n:",
+    "quantity in Publish:",
+    quantity
+  );
   const viewFile = useRef(null);
-  const { token, axios, isSended, setIsSended } = useUser();
+  const { token, axios, isSended, setIsSended, setErrorMessage } = useUser();
   // console.log("token in in /publish:", token);
-  const [errorMessage, setErrorMessage] = useState("");
   const [pictures, setPictures] = useState([]);
   // console.log("pictures in in /publish:", pictures);
   // console.log(
@@ -24,7 +30,6 @@ const Publish = ({ faTrash }) => {
   // console.log("pictures.length in in /publish:", pictures.length);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  let [price, setPrice] = useState(0);
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [condition, setCondition] = useState("");
@@ -36,11 +41,24 @@ const Publish = ({ faTrash }) => {
   }, []);
 
   const handleSubmit = async (e) => {
+    console.log(
+      "price in handleSubmit:",
+      price,
+      "\n:",
+      "quantity in handleSubmit:",
+      quantity
+    );
     e.preventDefault();
     setErrorMessage("");
     setIsSended(true);
     const formData = new FormData();
     price = Number(price).toFixed(2);
+    quantity = Number(quantity).toFixed(2);
+    console.log("quantity in handleSubmit on /publish:", quantity);
+    console.log(
+      "typeof quantity in handleSubmit on /publish:",
+      typeof quantity
+    );
     for (let i = 0; i < pictures.length; i++) {
       const el = pictures[i];
       // console.log("el in picures for:", el);
@@ -49,6 +67,7 @@ const Publish = ({ faTrash }) => {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("price", price);
+    formData.append("quantity", quantity);
     formData.append("brand", brand);
     formData.append("size", size);
     formData.append("condition", condition);
@@ -114,7 +133,7 @@ const Publish = ({ faTrash }) => {
       setErrorMessage(error.response.data.message);
       setTimeout(() => {
         setIsSended(false);
-      }, 3000);
+      }, 1000);
     }
   };
 
@@ -196,7 +215,7 @@ const Publish = ({ faTrash }) => {
               value={title || ""}
               id="title"
               type="text"
-              placeholder="Titre"
+              placeholder="Title"
               setState={setTitle}
               required={true}
             />
@@ -209,44 +228,60 @@ const Publish = ({ faTrash }) => {
               setState={setDescription}
               required={true}
             />
-            <Input
-              value={price || ""}
-              id="price"
-              type="number"
-              placeholder="Prix"
-              setState={setPrice}
-              required={true}
-              min="0"
-              max="100000"
-            />
-            <Input
-              value={brand || ""}
-              id="brand"
-              type="text"
-              placeholder="Marque"
-              setState={setBrand}
-            />
-            <Input
-              value={size || ""}
-              id="size"
-              type="text"
-              placeholder="Taille"
-              setState={setSize}
-            />
-            <Input
-              value={condition || ""}
-              id="condition"
-              type="text"
-              placeholder="Condition"
-              setState={setCondition}
-            />
-            <Input
-              value={color || ""}
-              id="color"
-              type="text"
-              placeholder="Couleur"
-              setState={setColor}
-            />
+            <div className="productPriceAndQuantity">
+              <Input
+                value={price || ""}
+                id="price"
+                type="number"
+                placeholder="Price"
+                setState={setPrice}
+                required={true}
+                min="0"
+                max="100000"
+              />
+              <Input
+                value={quantity || ""}
+                id="quantity"
+                type="number"
+                placeholder="Quantity"
+                setState={setQuantity}
+                required={true}
+                min="1"
+                max="100"
+              />
+            </div>
+            <div className="brandAndSize">
+              <Input
+                value={brand || ""}
+                id="brand"
+                type="text"
+                placeholder="Marque"
+                setState={setBrand}
+              />
+              <Input
+                value={size || ""}
+                id="size"
+                type="text"
+                placeholder="Taille"
+                setState={setSize}
+              />
+            </div>
+            <div className="conditionAndColor">
+              <Input
+                value={condition || ""}
+                id="condition"
+                type="text"
+                placeholder="Condition"
+                setState={setCondition}
+              />
+              <Input
+                value={color || ""}
+                id="color"
+                type="text"
+                placeholder="Couleur"
+                setState={setColor}
+              />
+            </div>
             <Input
               value={city || ""}
               id="city"
@@ -258,7 +293,7 @@ const Publish = ({ faTrash }) => {
               isSended={isSended}
               setIsSended={setIsSended}
               type="submit"
-              value="Poster l'article"
+              value="Post your offer"
             />
           </div>
           <InfoUserErrorMessage />

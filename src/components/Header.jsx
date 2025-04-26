@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeButton from "./ThemeButton";
 import { useUser } from "../assets/lib/userFunc";

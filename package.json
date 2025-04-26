@@ -31,6 +31,7 @@
     "react-cookie-consent": "^9.0.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
+    "react-hot-toast": "^2.5.2",
     "react-range": "^1.10.0",
     "react-router-dom": "^6.23.1",
     "react-toastify": "^11.0.5",

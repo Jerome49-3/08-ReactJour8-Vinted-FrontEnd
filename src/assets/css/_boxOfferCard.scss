@@ -4,22 +4,14 @@
   // flex-wrap: wrap;
   width: 100%;
   gap: 10px;
+  padding: 0 5px 0 5px;
 
-  & a:first-child {
-    margin-left: 5px;
-  }
+  // & a:first-child {
+  //   margin-left: 5px;
+  // }
 
   & a {
-    min-width: 100%;
-    // -webkit-animation: appearCard 1s linear forwards;
-    // animation: appearCard 1s linear forwards;
-    // display: none;
-
-    // @for $i from 1 through 100 {
-    //   &:nth-child(#{$i}) {
-    //     animation-delay: 500ms * $i;
-    //   }
-    // }
+    width: 100%;
 
     & article {
       justify-content: center;
@@ -36,134 +28,134 @@
       transition: all 0.5s;
 
       &:hover {
-        box-shadow: 0px 0px 10px $black, 0.15px 0.15px 1px $black;
+        box-shadow: 0px 0px 5px $black, 0.15px 0.15px 1px $black;
       }
+    }
 
-      .boxImgArticle {
+    .boxImgArticle {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
+      -moz-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
+      -webkit-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
+
+      // border: 2px solid blue;
+
+      .imgArticle {
+        display: block;
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
-        -moz-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
-        -webkit-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
-
-        // border: 2px solid blue;
-
-        .imgArticle {
-          display: block;
-          width: 100%;
-          height: 250px;
-          -o-object-fit: cover;
-          object-fit: cover;
-        }
-
-        .classBannerSold {
-          width: 100px;
-          height: 100px;
-          -o-object-fit: cover;
-          object-fit: cover;
-          position: absolute;
-          top: 80%;
-          left: 81.5%;
-          transform: translate(-50%, -50%);
-        }
-
-        .imgsArticle {
-          width: calc(100% / var(--imgsLength));
-          height: 100%;
-        }
+        height: 250px;
+        -o-object-fit: cover;
+        object-fit: cover;
       }
 
-      .boxUser {
-        @include flexStart;
-        gap: 10px;
-        width: 100%;
-        height: 50px;
-        padding: 5px 10px 5px 10px;
-
-        & h5 {
-          font-weight: 700;
-          font-size: 20px;
-          text-shadow: 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black, 1px 1px 1px $black, 0px 0px 5px $black;
-        }
-
-        .imgAvatar {
-          height: 30px;
-          width: 30px;
-        }
-      }
-
-      .boxTrashHearth {
+      .classBannerSold {
+        width: 100px;
+        height: 100px;
+        -o-object-fit: cover;
+        object-fit: cover;
         position: absolute;
         top: 80%;
-        left: 50%;
+        left: 81.5%;
         transform: translate(-50%, -50%);
-        width: 100%;
-        @include flexBetween;
-        padding: 0 10px 0 10px;
+      }
 
-        .btnTrash,
-        .boxHearth {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          z-index: 200;
-          @include flexCenter;
-          font-size: 1.25rem;
-          background-color: transparent;
+      .imgsArticle {
+        width: calc(100% / var(--imgsLength));
+        height: 100%;
+      }
+    }
 
-          .svg-inline--fa {
-            -webkit-filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
-            filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
-          }
-        }
+    .boxUser {
+      @include flexStart;
+      gap: 10px;
+      width: 100%;
+      height: 50px;
+      padding: 5px 10px 5px 10px;
 
-        .btnTrash {
-          @include btn;
-          width: -webkit-fit-content;
-          width: -moz-fit-content;
-          width: fit-content;
-          background-color: transparent;
-          color: $vertVinted;
+      & h5 {
+        font-weight: 700;
+        font-size: 20px;
+        text-shadow: 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black, 1px 1px 1px $black, 0px 0px 5px $black;
+      }
 
-          &:hover {
-            background-color: transparent;
-          }
+      .imgAvatar {
+        height: 30px;
+        width: 30px;
+      }
+    }
+
+    .boxTrashHearth {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      @include flexBetween;
+      padding: 0 10px 0 10px;
+
+      .btnTrash,
+      .boxHearth {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        z-index: 200;
+        @include flexCenter;
+        font-size: 1.25rem;
+        background-color: transparent;
+
+        .svg-inline--fa {
+          -webkit-filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
+          filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
         }
       }
 
-      .footerArticle {
-        padding: 5px 10px 5px 10px;
-        gap: 5px;
-        width: 100%;
-        height: 50px;
-        @include flexBetween;
+      .btnTrash {
+        @include btn;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        background-color: transparent;
+        color: $vertVinted;
 
-        .boxNameMarque,
-        .price {
-          @include flexCenter;
-          font-weight: 700;
-          font-size: 14px;
-          text-shadow: 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black, 1px 1px 1px $black, 0px 0px 5px $black;
+        &:hover {
+          background-color: transparent;
         }
+      }
+    }
 
-        .boxNameMarque {
-          @include flexColStart;
-          width: calc(50%);
+    .footerArticle {
+      padding: 5px 10px 5px 10px;
+      gap: 5px;
+      width: 100%;
+      height: 50px;
+      @include flexBetween;
 
-          & div {
-            display: inline-block;
-            width: calc(100%);
-            @include ellipsis;
-            padding-bottom: 5px
-          }
+      .boxNameMarque,
+      .price {
+        @include flexCenter;
+        font-weight: 700;
+        font-size: 14px;
+        text-shadow: 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black, 1px 1px 1px $black, 0px 0px 5px $black;
+      }
+
+      .boxNameMarque {
+        @include flexColStart;
+        width: calc(50%);
+
+        & div {
+          display: inline-block;
+          width: calc(100%);
+          @include ellipsis;
+          padding-bottom: 5px
         }
+      }
 
-        .price {
-          @include flexEnd;
-        }
+      .price {
+        @include flexEnd;
       }
     }
   }
@@ -171,10 +163,12 @@
 
 @media all and (min-width : 576px) {
   .boxOfferCard {
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
 
     & a {
-      width: calc(100% / 2);
+      width: calc(100% / 2.1);
 
       & article {
         width: 95%;
@@ -185,10 +179,12 @@
 
 @media all and (min-width: 768px) {
   .boxOfferCard {
-
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
 
     & a {
-      width: calc(100% / 4.20);
+      width: calc(100% / 2.1) !important;
 
 
       & article {
@@ -212,11 +208,11 @@
   .boxOfferCard {
     @include flexStart;
     gap: 20px;
-    padding: 30px 0 50px 0;
     height: 50vh;
     overflow-x: hidden;
     overflow-y: hidden;
     flex-direction: row;
+    flex-wrap: nowrap;
 
     a {
       @include flexStart;
@@ -225,11 +221,6 @@
 
       & article {
         min-height: fit-content !important;
-
-        .boxUser,
-        .footerArticle {
-          height: fit-content !important;
-        }
 
         .boxImgArticle {
 

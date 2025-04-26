@@ -24,7 +24,7 @@ const Input = ({
     }
   }, [value]);
   const handleChange = (e) => {
-    // console.log("e.target.value in handleChange:", e.target.value);
+    console.log("e.target.value in handleChange:", e.target.value);
     // console.log(
     //   "typeofe.target.type in handleChange:",
     //   typeof e.target.type,
@@ -35,11 +35,20 @@ const Input = ({
     if (e.target.type === "text") {
       const finalTarget = transformStr(e);
       setState(finalTarget);
-    } else {
+    } else if (e.target.type === "password") {
       setState(e.target.value);
+    } else if (e.target.type === "email") {
+      setState(e.target.value.toLowerCase());
     }
     if (e.target.type === "number") {
-      if (e.target.value < e.target.min || e.target.value > e.target.max) {
+      // console.log(
+      //   "e.target.value in if e.target.type === number handleChange:",
+      //   e.target.value
+      // );
+      if (
+        Number(e.target.value) < Number(e.target.min) ||
+        Number(e.target.value) > Number(e.target.max)
+      ) {
         setErrorMessage(e.target.validationMessage);
       } else {
         setState(e.target.value);
