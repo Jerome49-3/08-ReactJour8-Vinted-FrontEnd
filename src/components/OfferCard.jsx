@@ -8,14 +8,12 @@ import bannerSold from "../assets/images/bannerSolded.png";
 import Image from "./Image";
 import Hearths from "./Hearths";
 import Trash from "./Trash";
-import AppearCardComponent from "./AppearCardComponent";
 
 //images
 import noImg from "../assets/images/no-image.jpg";
 
 const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
   const { fav, data, setData, axios, setInfoUser, setIsSended } = useUser();
-  const [showCardsOffers, setShowCardsOffers] = useState(false);
   // console.log("data ds OfferCard:", data);
   // console.log("fav ds OfferCard:", fav);
   let location = useLocation();

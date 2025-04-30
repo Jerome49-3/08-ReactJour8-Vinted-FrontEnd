@@ -19,7 +19,7 @@ const TitleSearch = ({
           <FontAwesomeIcon icon="magnifying-glass" className="searchIcons" />
           <Input
             id="search"
-            type="text"
+            type="search"
             placeholder={txtPlaceholder}
             value={valueStr || ""}
             setState={setStateStr}

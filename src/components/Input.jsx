@@ -32,7 +32,7 @@ const Input = ({
     //   "e.target.type in handleChange:",
     //   e.target.type
     // );
-    if (e.target.type === "text") {
+    if (e.target.type === "text" || e.target.type === "search") {
       const finalTarget = transformStr(e);
       setState(finalTarget);
     } else if (e.target.type === "password") {
