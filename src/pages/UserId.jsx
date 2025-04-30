@@ -12,12 +12,13 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import InputFileAvatar from "../components/InputFileAvatar";
 import Loading from "../components/Loading";
+import Trash from "../components/Trash";
 
 //images
-import updateIcon from "../assets/images/updateIcon.png";
+// import updateIcon from "../assets/images/updateIcon.png";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
 
-const UserId = () => {
+const UserId = ({ faTrash }) => {
   const { id } = useParams();
   // console.log("id /users/${userId}:", id);
   // const { state } = useLocation();
@@ -192,8 +193,8 @@ const UserId = () => {
     <Loading />
   ) : (
     <div className="boxUserId">
-      <form className="bottom">
-        <div className="wrapper">
+      <div className="wrapper">
+        <form className="bottom" onSubmit={handleUpdateData}>
           <div className="left">
             <Image src={avatar} alt="avatar" />
             <InputFileAvatar
@@ -206,7 +207,7 @@ const UserId = () => {
           <div className="right">
             <div className="boxUsername">
               <Input
-                label="username:"
+                labelTxt="username:"
                 type="text"
                 id="username"
                 placeholder={data?.account?.username}
@@ -216,7 +217,7 @@ const UserId = () => {
             </div>
             <div className="boxEmail">
               <Input
-                label="email:"
+                labelTxt="email:"
                 type="email"
                 id="email"
                 placeholder={data?.email}
@@ -227,7 +228,7 @@ const UserId = () => {
             <div className="boxIsAdmin">
               {isAdmin === true && (
                 <Input
-                  label="Admin:"
+                  labelTxt="Admin:"
                   id="admin"
                   type="text"
                   placeholder={dataAdmin}
@@ -239,7 +240,7 @@ const UserId = () => {
             </div>
             <div className="boxNewsletter">
               <Input
-                label="newsletter:"
+                labelTxt="newsletter:"
                 type="text"
                 placeholder={dataNews}
                 id="newsletter"
@@ -260,7 +261,7 @@ const UserId = () => {
                 state={{
                   data: {
                     usernameDest: data?.account?.username,
-                    admin: user?.account?.username,
+                    admin: data?.account?.username,
                     codeDest: null,
                   },
                 }}
@@ -281,24 +282,17 @@ const UserId = () => {
               <div>Date de création:</div>
               <div>{data?.date}</div>
             </div>
-            <LoadedInputSubmit setIsSended={setIsSended} isSended={isSended} />
-            <div className="boxButton">
-              <Button
-                buttonText="Update profile"
-                handleClick={handleUpdateData}
-                src={updateIcon}
-                classButton="updateButton"
+            <div className="boxSubmitTrash">
+              <LoadedInputSubmit
+                isSended={isSended}
+                setIsSended={setIsSended}
+                value="Update"
               />
-              <Button
-                buttonText="Delete account"
-                handleClick={handleDeleteData}
-                src={updateIcon}
-                classButton="deleteButton"
-              />
+              <Trash id={id} faTrash={faTrash} handleClick={handleDeleteData} />
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
       {errorMessage && <div className="red">{errorMessage}</div>}
     </div>
   );

@@ -105,15 +105,25 @@
       @include flexBetween;
       padding: 0 10px 0 10px;
 
+      .boxHearth {
+        width: 40px;
+        background-color: $white;
+        border-radius: 10px;
+        gap: 5px;
+      }
+
+      .btnTrash {
+        width: 30px;
+        border-radius: 50%;
+        background-color: transparent;
+      }
+
       .btnTrash,
       .boxHearth {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
+        height: 25px;
         z-index: 200;
         @include flexCenter;
         font-size: 1.25rem;
-        background-color: transparent;
 
         .svg-inline--fa {
           -webkit-filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);

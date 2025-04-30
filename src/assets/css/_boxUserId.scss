@@ -8,6 +8,11 @@
     @include flexColCenter;
     height: 100vh;
 
+    .bottom {
+      width: 100%;
+      @include flexCenter;
+    }
+
     .left {
       @include flexColStart;
       position: relative;
@@ -40,7 +45,7 @@
       @include flexColTopStart;
       height: 50vh;
       width: 100%;
-      gap: 2.75rem;
+      gap: 2.57rem;
 
       .boxEmailIsConfirmed {
         @include flexBetween;
@@ -52,13 +57,8 @@
           align-items: center;
           width: 100%;
 
-          & h3 {
-            width: calc(100%/3);
-            @include flexStart;
-          }
-
+          & h3,
           & div {
-            width: calc(100%/3);
             @include flexStart;
           }
         }

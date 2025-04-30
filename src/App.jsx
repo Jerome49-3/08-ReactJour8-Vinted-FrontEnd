@@ -299,6 +299,7 @@ function App() {
                     faNewspaper={faNewspaper}
                     faXmark={faXmark}
                     faUser={faUser}
+                    faTrash={faTrash}
                   />
                 }
               />

@@ -2077,17 +2077,25 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   padding: 0 10px 0 10px;
 }
+.boxOfferCard a .boxTrashHearth .boxHearth {
+  width: 40px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  gap: 5px;
+}
+.boxOfferCard a .boxTrashHearth .btnTrash {
+  width: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+}
 .boxOfferCard a .boxTrashHearth .btnTrash,
 .boxOfferCard a .boxTrashHearth .boxHearth {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  height: 25px;
   z-index: 200;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.25rem;
-  background-color: transparent;
 }
 .boxOfferCard a .boxTrashHearth .btnTrash .svg-inline--fa,
 .boxOfferCard a .boxTrashHearth .boxHearth .svg-inline--fa {
@@ -2886,6 +2894,12 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   height: 100vh;
 }
+.boxUserId .wrapper .bottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .boxUserId .wrapper .left {
   display: flex;
   justify-content: center;
@@ -2921,7 +2935,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   height: 50vh;
   width: 100%;
-  gap: 2.75rem;
+  gap: 2.57rem;
 }
 .boxUserId .wrapper .right .boxEmailIsConfirmed {
   display: flex;
@@ -2935,14 +2949,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   width: 100%;
 }
-.boxUserId .wrapper .right .boxEmailIsConfirmed .infosEmailIsConfirmed h3 {
-  width: 33.3333333333%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.boxUserId .wrapper .right .boxEmailIsConfirmed .infosEmailIsConfirmed div {
-  width: 33.3333333333%;
+.boxUserId .wrapper .right .boxEmailIsConfirmed .infosEmailIsConfirmed h3, .boxUserId .wrapper .right .boxEmailIsConfirmed .infosEmailIsConfirmed div {
   display: flex;
   justify-content: flex-start;
   align-items: center;

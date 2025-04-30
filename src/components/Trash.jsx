@@ -21,7 +21,8 @@ const Trash = ({ faTrash, handleClick, id }) => {
       location.pathname === "/dashboard" ||
       location.pathname === `/offerUpdate/${id}` ||
       location.pathname === `/profile/${id}` ||
-      location.pathname === `/offers/${id}`
+      location.pathname === `/offers/${id}` ||
+      location.pathname === `/userId/${id}`
     ) {
       setShowTrash(true);
     } else {
