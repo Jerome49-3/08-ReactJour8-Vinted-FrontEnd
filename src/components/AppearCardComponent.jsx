@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 const AppearCardComponent = ({
   children,
   article,
   showCardsOffers,
   setShowCardsOffers,
 }) => {
-  console.log("article in AppearCardComponent:", article);
+  // console.log("article in AppearCardComponent:", article);
   let classAppearCards = "dispNone";
   if (showCardsOffers) {
     classAppearCards += " out";

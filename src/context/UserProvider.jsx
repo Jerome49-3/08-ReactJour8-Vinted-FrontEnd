@@ -301,7 +301,7 @@ export const UserProvider = ({ children }) => {
           withCredentials: true,
         }
       );
-      console.log("response in logout", response);
+      // console.log("response in logout", response);
       if (response) {
         setToken(null);
         setUser(null);

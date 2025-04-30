@@ -72,27 +72,25 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                   : ""
               }
             >
-              <AppearCardComponent
-                article={article}
-                showCardsOffers={showCardsOffers}
-                setShowCardsOffers={setShowCardsOffers}
-              >
-                <div className="boxUser">
-                  <Image
-                    src={
-                      article?.owner?.account?.avatar?.secure_url ||
-                      article?.owner?.account?.avatar ||
-                      article?.owner?.avatar ||
-                      article?.offer?.owner?.account?.avatar?.secure_url
-                    }
-                    alt="avatar"
-                    classImg="imgAvatar"
-                  />
-                  <h5>
-                    {article?.offer?.owner?.account?.username ||
-                      article?.owner?.account?.username}
-                  </h5>
-                </div>
+              <article>
+                {/* {location.pathname !== "/" && (
+                  <div className="boxUser">
+                    <Image
+                      src={
+                        article?.owner?.account?.avatar?.secure_url ||
+                        article?.owner?.account?.avatar ||
+                        article?.owner?.avatar ||
+                        article?.offer?.owner?.account?.avatar?.secure_url
+                      }
+                      alt="avatar"
+                      classImg="imgAvatar"
+                    />
+                    <h5>
+                      {article?.offer?.owner?.account?.username ||
+                        article?.owner?.account?.username}
+                    </h5>
+                  </div>
+                )} */}
                 {location.pathname === "/myOffers" &&
                 article?.offer_solded === true ? (
                   <div className="boxImgArticle">
@@ -199,7 +197,7 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                     {(article?.product_price).toFixed(2)} €
                   </div>
                 </div>
-              </AppearCardComponent>
+              </article>
               {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
             </Link>
           </React.Fragment>

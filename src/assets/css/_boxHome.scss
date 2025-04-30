@@ -29,9 +29,13 @@
 @media all and (min-width : 1200px) {
   .boxHome {
     padding: 40px 0 0 0;
+    height: 100%;
 
     .wrapper {
       flex-direction: row !important;
+      height: calc(100% - 40px);
+      padding-top: 20px;
+      align-items: flex-start;
 
       .btnChevronLeftOff {
         width: 32.5px;

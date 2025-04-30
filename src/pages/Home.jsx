@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect } from "react";
 // import { Link } from 'react-router-dom';
@@ -47,7 +48,7 @@ const Home = ({
     nbrCards,
     setNbrCards,
   } = useUser();
-  console.log("nbrCards in /Home:", nbrCards);
+  // console.log("nbrCards in /Home:", nbrCards);
   // console.log("data in /Home:", data);
   // console.log("data.length in /Home:", data?.length);
   useEffect(() => {

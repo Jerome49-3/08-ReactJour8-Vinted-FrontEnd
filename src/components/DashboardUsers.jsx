@@ -75,10 +75,10 @@ const DashboardUsers = ({
           <th className="isOnline">Online</th>
         </tr>
       </thead>
-      {data.map((user, key = user.id) => {
+      {data?.map((user, key = user._id) => {
         // console.log("user in LastUsers:", user);
         return (
-          <Link to={`/userId/${user.id}`} className="boxUsers" key={key}>
+          <Link to={`/userId/${user._id}`} className="boxUsers" key={key}>
             <div className="username">{user?.account?.username}</div>
             <div className="avatar">
               {user?.account?.avatar?.secure_url ? (

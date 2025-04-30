@@ -4,17 +4,10 @@ import { useUser } from "../assets/lib/userFunc";
 import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
-import Trash from "./Trash";
 
-const DashboardOffers = ({ faTrash }) => {
-  const {
-    axios,
-    isLoading,
-    setIsLoading,
-    setErrorMessage,
-    setIsSended,
-    isSended,
-  } = useUser();
+const DashboardOffers = () => {
+  const { axios, isLoading, setIsLoading, setErrorMessage, isSended } =
+    useUser();
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -25,7 +18,7 @@ const DashboardOffers = ({ faTrash }) => {
         );
         if (response) {
           console.log("response in DashboardOffers:", response);
-          setData(response?.data);
+          setData(response?.data?.offers);
           setIsLoading(false);
         }
       } catch (error) {
@@ -61,7 +54,6 @@ const DashboardOffers = ({ faTrash }) => {
             <div className="offerPrice">{offer?.product_price} €</div>
             <div className="offerId">{offer?._id}</div>
             <div className="offerName">{offer?.product_name}</div>
-            {/* <Trash handleClick={handleSuppOffers} faTrash={faTrash} /> */}
           </Link>
         );
       })}

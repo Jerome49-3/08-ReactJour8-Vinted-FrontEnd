@@ -971,6 +971,8 @@
   -o-object-fit: cover;
   object-fit: cover;
   display: block;
+  -o-object-position: top;
+     object-position: top;
 }
 .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics .suppFiles {
   color: #ffffff;
@@ -1517,7 +1519,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 @media all and (min-width: 1200px) {
   .boxImgs .imgBanner {
-    max-height: 200px;
+    max-height: 150px;
   }
   .boxImgs .imgBannerBottom {
     top: 80%;
@@ -1574,9 +1576,13 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 @media all and (min-width: 1200px) {
   .boxHome {
     padding: 40px 0 0 0;
+    height: 100%;
   }
   .boxHome .wrapper {
     flex-direction: row !important;
+    height: calc(100% - 40px);
+    padding-top: 20px;
+    align-items: flex-start;
   }
   .boxHome .wrapper .btnChevronLeftOff {
     width: 32.5px;
@@ -1817,6 +1823,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: flex-start;
   gap: 5px;
 }
+.boxOfferId .wrapper .top .right .boxDetails div span {
+  text-align: end;
+}
 .boxOfferId .wrapper .top .right .boxDetails div:last-child {
   width: 100%;
   height: 15%;
@@ -1982,6 +1991,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 .boxOfferCard a {
   width: 100%;
+  display: flex;
 }
 .boxOfferCard a article {
   justify-content: center;
@@ -2009,13 +2019,20 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
   -webkit-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
+  height: 100%;
+  max-height: 300px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .boxOfferCard a .boxImgArticle .imgArticle {
   display: block;
   width: 100%;
-  height: 250px;
+  height: 100%;
+  max-height: 300px;
   -o-object-fit: cover;
   object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .boxOfferCard a .boxImgArticle .classBannerSold {
   width: 100px;
@@ -2186,16 +2203,15 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     align-items: center;
     min-width: 18.1818181818% !important;
     max-width: 18.1818181818% !important;
+    height: 100%;
   }
   .boxOfferCard a article {
     min-height: -moz-fit-content !important;
     min-height: fit-content !important;
-  }
-  .boxOfferCard a article .boxImgArticle img {
-    height: 150px !important;
+    height: 80%;
   }
   .boxOfferCard a article .boxTrashHearth {
-    top: 70% !important;
+    top: 75% !important;
   }
 }
 .boxFavorites {

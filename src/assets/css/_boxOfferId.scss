@@ -160,6 +160,10 @@
             width: 100%;
             align-items: flex-start;
             gap: 5px;
+
+            & span {
+              text-align: end;
+            }
           }
 
           & div:last-child {
