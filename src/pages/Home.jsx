@@ -1,21 +1,22 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect } from "react";
-// import { Link } from 'react-router-dom';
 import { useUser } from "../assets/lib/userFunc";
 import CookieConsent from "react-cookie-consent";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+//stream
+import io from "socket.io-client";
+const socket = io("http://localhost:3000");
 
 //components
-// import Image from '../components/Image';
 import Hero from "../components/Hero";
 import Loading from "../components/Loading";
 import OfferCard from "../components/OfferCard";
 import Links from "../components/Links";
 import Button from "../components/Button";
 
-//images
-// import noImg from '../assets/images/no-image.jpg';
+//lib
+import fetchDataOfferHome from "../assets/fetchDataLib/GET/fetchDataOfferHome";
 
 const Home = ({
   search,
@@ -52,26 +53,36 @@ const Home = ({
   // console.log("data in /Home:", data);
   // console.log("data.length in /Home:", data?.length);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `${
-            import.meta.env.VITE_REACT_APP_URL_HOME
-          }?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&page=${page}`
-        );
-        if (response?.data) {
-          console.log("response.data on /Home (Offer):", response.data);
-          setData(response?.data?.offers);
-          setCountDoc(response?.data?.count);
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.log(error?.response?.data?.message);
-        setErrorMessage(error?.response?.data?.message);
-      }
-    };
-    fetchData();
+    fetchDataOfferHome(
+      axios,
+      search,
+      priceMin,
+      priceMax,
+      page,
+      setData,
+      setCountDoc,
+      setIsLoading,
+      setErrorMessage
+    );
   }, [search, priceMin, priceMax, axios, page]);
+
+  useEffect(() => {
+    socket.on("offerUpdated", (change) => {
+      console.log("change:", change);
+      fetchDataOfferHome(
+        axios,
+        search,
+        priceMin,
+        priceMax,
+        page,
+        setData,
+        setCountDoc,
+        setIsLoading,
+        setErrorMessage
+      );
+    });
+    return () => socket.off("offerUpdated");
+  }, []);
 
   useLayoutEffect(() => {
     const setNumberOfCards = () => {

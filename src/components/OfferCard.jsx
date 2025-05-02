@@ -1,8 +1,9 @@
 /* eslint-disable no-unsafe-optional-chaining */
 import { Link, useLocation } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useUser } from "../assets/lib/userFunc";
 import bannerSold from "../assets/images/bannerSolded.png";
+
 // import fetchDeleteOffer from "../assets/fetchDataLib/DELETE/fetchDeleteOffer";
 //components
 import Image from "./Image";

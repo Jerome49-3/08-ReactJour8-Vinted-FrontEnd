@@ -125,10 +125,10 @@
         @include flexCenter;
         font-size: 1.25rem;
 
-        .svg-inline--fa {
-          -webkit-filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
-          filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
-        }
+        // .svg-inline--fa {
+        //   -webkit-filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
+        //   filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
+        // }
       }
 
       .btnTrash {

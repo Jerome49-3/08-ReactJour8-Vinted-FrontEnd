@@ -2097,10 +2097,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   font-size: 1.25rem;
 }
-.boxOfferCard a .boxTrashHearth .btnTrash .svg-inline--fa,
-.boxOfferCard a .boxTrashHearth .boxHearth .svg-inline--fa {
-  filter: drop-shadow(0.25px 0.25px 1px #000000) drop-shadow(0.5px 0.5px 1px #000000);
-}
 .boxOfferCard a .boxTrashHearth .btnTrash {
   color: #ffffff;
   background-color: #007882;
