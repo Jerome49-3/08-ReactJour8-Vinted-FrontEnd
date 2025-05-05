@@ -7,6 +7,14 @@ import { useUser } from "../assets/lib/userFunc";
 import Image from "./Image";
 import Loading from "./Loading";
 
+//stream
+import io from "socket.io-client";
+
+const socket = io("http://localhost:3000");
+
+//lib
+import fetchDataAllUsers from "../assets/fetchDataLib/GET/fetchDataAllUsers";
+
 //hookCustom
 // import useOnlineStatus from "../hookCustom/useOnlineStatus";
 
@@ -34,31 +42,31 @@ const DashboardUsers = ({
   // console.log("token in LastUsers:", token);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (isAdmin !== false) {
-          // console.log("isAdmin in LastUsers:", isAdmin);
-          // const response = await axios.get(
-          //   "https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/",
-          const response = await axios.get(
-            `http://localhost:3000/users?title=${searchUsers}`
-          );
-          // console.log("response in LastUsers:", response);
-          // console.log("response.data in LastUsers:", response.data);
-          if (response.data) {
-            setData(response.data);
-            setIsLoading(false);
-          }
-        } else {
-          navigate("/login");
-        }
-      } catch (error) {
-        console.log("error on catch in LastUsers:", error);
-      }
-    };
-    fetchData();
+    fetchDataAllUsers(
+      isAdmin,
+      axios,
+      searchUsers,
+      setData,
+      setIsLoading,
+      navigate
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAdmin, searchUsers]);
+
+  useEffect(() => {
+    socket.on("userUpdated", (change) => {
+      console.log("change:", change);
+      fetchDataAllUsers(
+        isAdmin,
+        axios,
+        searchUsers,
+        setData,
+        setIsLoading,
+        navigate
+      );
+    });
+    return () => socket.off("userUpdated");
+  }, []);
 
   return isLoading ? (
     <Loading />

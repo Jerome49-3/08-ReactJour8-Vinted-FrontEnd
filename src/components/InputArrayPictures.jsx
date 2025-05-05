@@ -20,10 +20,10 @@ const InputArrayPictures = ({
       const newImgSupp = [...imgSupp];
       const newPictures = [...pictures];
       let pictSupp = newPictures.splice(index, 1, file);
-      console.log(
-        "pictSupp in handleChangeInputPictures on InputArrayPictures:",
-        pictSupp
-      );
+      // console.log(
+      //   "pictSupp in handleChangeInputPictures on InputArrayPictures:",
+      //   pictSupp
+      // );
       // console.log(
       //   "pictSupp[0].public_id in handleChangeInputPictures on InputArrayPictures:",
       //   pictSupp[0].public_id
@@ -32,10 +32,10 @@ const InputArrayPictures = ({
         indexImgSupp: index,
         imgSuppPublicId: pictSupp[0].public_id,
       };
-      console.log(
-        "infoSuppImg in handleChangeInputPictures on InputArrayPictures:",
-        infoSuppImg
-      );
+      // console.log(
+      //   "infoSuppImg in handleChangeInputPictures on InputArrayPictures:",
+      //   infoSuppImg
+      // );
       newImgSupp.push(infoSuppImg);
       setImgSupp(newImgSupp);
       setPictures(newPictures);
@@ -50,7 +50,7 @@ const InputArrayPictures = ({
     <Fragment>
       {pictures?.map((pic, index) => {
         // console.log("pic in OfferIdUpdateAndDelete:", pic);
-        console.log("index in OfferIdUpdateAndDelete:", index);
+        // console.log("index in OfferIdUpdateAndDelete:", index);
         return (
           <div className="boxPictures" key={index}>
             <Image

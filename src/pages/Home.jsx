@@ -48,10 +48,12 @@ const Home = ({
     items,
     nbrCards,
     setNbrCards,
+    dimWindows,
   } = useUser();
   // console.log("nbrCards in /Home:", nbrCards);
   // console.log("data in /Home:", data);
   // console.log("data.length in /Home:", data?.length);
+  console.log("dimWindows in /Home:", dimWindows);
   useEffect(() => {
     fetchDataOfferHome(
       axios,
@@ -103,16 +105,20 @@ const Home = ({
     <div className="boxHome">
       <Hero />
       <div className="wrapper">
-        {page > 1 ? (
-          <Button
-            icon={faChevronCircleLeft}
-            classButton="btnChevronLeft"
-            handleClick={() => {
-              setPage(page - 1);
-            }}
-          />
-        ) : (
-          <div className="btnChevronLeftOff"></div>
+        {dimWindows.width > 592 && (
+          <div className="boxContainerBtnChevron">
+            {page > 1 ? (
+              <Button
+                icon={faChevronCircleLeft}
+                classButton="btnChevronLeft"
+                handleClick={() => {
+                  setPage(page - 1);
+                }}
+              />
+            ) : (
+              <div className="btnChevronLeftOff"></div>
+            )}
+          </div>
         )}
         <OfferCard
           data={data}
@@ -124,16 +130,20 @@ const Home = ({
           faChevronCircleRight={faChevronCircleRight}
           page={page}
         />
-        {data?.length >= items && items < data?.length ? (
-          <Button
-            icon={faChevronCircleRight}
-            classButton="btnChevronRight"
-            handleClick={() => {
-              setPage(page + 1);
-            }}
-          />
-        ) : (
-          data?.length < items && <div className="btnChevronLeftOff"></div>
+        {dimWindows.width > 592 && (
+          <div className="boxContainerBtnChevron">
+            {data?.length >= items && items < data?.length ? (
+              <Button
+                icon={faChevronCircleRight}
+                classButton="btnChevronRight"
+                handleClick={() => {
+                  setPage(page + 1);
+                }}
+              />
+            ) : (
+              data?.length < items && <div className="btnChevronLeftOff"></div>
+            )}
+          </div>
         )}
 
         <CookieConsent

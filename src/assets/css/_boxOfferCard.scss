@@ -251,4 +251,9 @@
 }
 
 
-@media all and (min-width : 1400px) {}
+@media all and (min-width : 1400px) {
+  .boxOfferCard {
+    gap: 21px;
+    height: 48vh;
+  }
+}

@@ -8,14 +8,19 @@
     @include flexColCenter;
     gap: 5px;
 
-    .btnChevronLeftOff {
-      width: 100px;
-      height: 30px;
-    }
+    .boxContainerBtnChevron {
+      @include flexColCenter;
+      height: 80%;
 
-    .btnChevronLeft,
-    .btnChevronRight {
-      @include btn;
+      .btnChevronLeftOff {
+        width: 100px;
+        height: 30px;
+      }
+
+      .btnChevronLeft,
+      .btnChevronRight {
+        @include btn;
+      }
     }
   }
 }
@@ -52,4 +57,8 @@
   }
 }
 
-@media all and (min-width : 1400px) {}
+@media all and (min-width : 1400px) {
+  .boxContainerBtnChevron {
+    height: 90% !important;
+  }
+}

@@ -24,7 +24,7 @@ const Input = ({
     }
   }, [value]);
   const handleChange = (e) => {
-    console.log("e.target.value in handleChange:", e.target.value);
+    // console.log("e.target.value in handleChange:", e.target.value);
     // console.log(
     //   "typeofe.target.type in handleChange:",
     //   typeof e.target.type,

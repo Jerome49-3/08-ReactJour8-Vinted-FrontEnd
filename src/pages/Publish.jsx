@@ -11,13 +11,13 @@ import LoadedInputSubmit from "../components/LoadedInputSubmit";
 import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 const Publish = ({ faTrash, price, setPrice, quantity, setQuantity }) => {
-  console.log(
-    "price in Publish:",
-    price,
-    "\n:",
-    "quantity in Publish:",
-    quantity
-  );
+  // console.log(
+  //   "price in Publish:",
+  //   price,
+  //   "\n:",
+  //   "quantity in Publish:",
+  //   quantity
+  // );
   const viewFile = useRef(null);
   const { token, axios, isSended, setIsSended, setErrorMessage } = useUser();
   // console.log("token in in /publish:", token);
@@ -41,24 +41,28 @@ const Publish = ({ faTrash, price, setPrice, quantity, setQuantity }) => {
   }, []);
 
   const handleSubmit = async (e) => {
-    console.log(
-      "price in handleSubmit:",
-      price,
-      "\n:",
-      "quantity in handleSubmit:",
-      quantity
-    );
+    // console.log(
+    //   "price in handleSubmit:",
+    //   price,
+    //   "\n:",
+    //   "quantity in handleSubmit:",
+    //   quantity
+    // );
     e.preventDefault();
     setErrorMessage("");
     setIsSended(true);
     const formData = new FormData();
+    // const form = e.currentTarget;
+    // console.log("form on /publish:", form);
+    // const values = Object.fromEntries(new FormData(form));
+    // console.log("values on /publish:", values);
     price = Number(price).toFixed(2);
     quantity = Number(quantity).toFixed(2);
-    console.log("quantity in handleSubmit on /publish:", quantity);
-    console.log(
-      "typeof quantity in handleSubmit on /publish:",
-      typeof quantity
-    );
+    // console.log("quantity in handleSubmit on /publish:", quantity);
+    // console.log(
+    //   "typeof quantity in handleSubmit on /publish:",
+    //   typeof quantity
+    // );
     for (let i = 0; i < pictures.length; i++) {
       const el = pictures[i];
       // console.log("el in picures for:", el);
@@ -163,31 +167,31 @@ const Publish = ({ faTrash, price, setPrice, quantity, setQuantity }) => {
                 name="pictures"
                 multiple={true}
                 onChange={(e) => {
-                  console.log("e.target:", e.target);
-                  console.log("e.target.files:", e.target.files);
+                  // console.log("e.target:", e.target);
+                  // console.log("e.target.files:", e.target.files);
                   let newPic = [...pictures];
-                  console.log(
-                    "newPic on onChange/inputFile in /publish:",
-                    newPic
-                  );
+                  // console.log(
+                  //   "newPic on onChange/inputFile in /publish:",
+                  //   newPic
+                  // );
                   const filesArray = Array.from(e.target.files);
-                  console.log(
-                    "filesArray on onChange/inputFile in /publish:",
-                    filesArray
-                  );
-                  console.log(
-                    "e.target.files on onChange/inputFile in /publish:",
-                    e.target.files
-                  );
+                  // console.log(
+                  //   "filesArray on onChange/inputFile in /publish:",
+                  //   filesArray
+                  // );
+                  // console.log(
+                  //   "e.target.files on onChange/inputFile in /publish:",
+                  //   e.target.files
+                  // );
                   filesArray.forEach((file) => {
-                    console.log("file on forEach in /publish:", file);
+                    // console.log("file on forEach in /publish:", file);
                     newPic.push(file);
                   });
                   setPictures(newPic);
                 }}
               />
               {pictures.map((files, index) => {
-                console.log("files on .map in /publish::", files);
+                // console.log("files on .map in /publish::", files);
                 return (
                   <div className="viewPics" key={index}>
                     <img

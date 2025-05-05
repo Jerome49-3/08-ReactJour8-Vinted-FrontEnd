@@ -357,6 +357,7 @@ export const UserProvider = ({ children }) => {
         items,
         nbrCards,
         setNbrCards,
+        dimWindows,
       }}
     >
       {children}
