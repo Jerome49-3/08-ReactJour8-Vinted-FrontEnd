@@ -1,8 +1,8 @@
 export const validatePassword = (password) => {
   const requirements = [
     {
-      regex: /.{16,}/,
-      message: "At least 16 characters long",
+      regex: /.{8,}/,
+      message: "At least 8 characters long",
     },
     {
       regex: /[A-Z]/,
@@ -17,7 +17,7 @@ export const validatePassword = (password) => {
       message: "At least one number",
     },
     {
-      regex: /[!@#$%^&*()_+\-=\[\]{};:'",.<>/?]/,
+      regex: /[!@#$%^&*()_+\-=[\]{};:'",.<>/?]/,
       message: "At least one special character",
     },
     {

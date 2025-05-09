@@ -34,19 +34,6 @@
       color: $vertVinted;
     }
 
-    .boxInfoErrorMessage,
-    .boxForgot {
-      @include flexCenter;
-
-    }
-
-    .boxForgotErrorMessage {
-      @include flexColCenter;
-      gap: 2.5px;
-      height: 25px;
-      transition: all 1s ease-out;
-    }
-
     * .red {
       color: red;
       font-size: 12px;

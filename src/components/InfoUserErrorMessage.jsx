@@ -1,21 +1,44 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useUser } from "../assets/lib/userFunc";
 const InfoUserErrorMessage = () => {
-  const { errorMessage, setErrorMessage, infoUser, setInfoUser } = useUser();
-  // console.log("errorMessage in InfoUserErrorMessage:", errorMessage);
-  // console.log("infoUser in InfoUserErrorMessage:", infoUser);
   const black = "black";
   const infoUserCenter = "infoUserCenter";
+  const { errorMessage, setErrorMessage, infoUser, setInfoUser, location } =
+    useUser();
+  // console.log("errorMessage in InfoUserErrorMessage:", errorMessage);
+  // console.log("infoUser in InfoUserErrorMessage:", infoUser);
+  console.log("location:", location);
+  let isFirstRender = useRef(true);
   useEffect(() => {
-    setTimeout(() => {
-      if (errorMessage) {
-        setErrorMessage("");
-      } else if (infoUser) {
-        setInfoUser("");
+    if (isFirstRender.current === true) {
+      isFirstRender.current = false;
+    } else {
+      if (location.pathname !== "/login") {
+        const suppMssgUser = setTimeout(() => {
+          if (errorMessage) {
+            setErrorMessage("");
+          } else if (infoUser) {
+            setInfoUser("");
+          }
+        }, 3000);
+        return () => {
+          clearTimeout(suppMssgUser);
+        };
+      } else {
+        const suppMssgUser = setTimeout(() => {
+          if (errorMessage) {
+            setErrorMessage("");
+          } else if (infoUser) {
+            setInfoUser("");
+          }
+        }, 10000);
+        return () => {
+          clearTimeout(suppMssgUser);
+        };
       }
-    }, 3000);
-  }, [errorMessage, infoUser]);
+    }
+  }, [location.pathname, errorMessage, infoUser]);
 
   return (
     <div className="boxInfoErrorMessage">

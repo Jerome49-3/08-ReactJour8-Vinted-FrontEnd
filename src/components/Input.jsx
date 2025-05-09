@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import transformStr from "../assets/lib/transformStr";
 import { useUser } from "../assets/lib/userFunc";
+import { validatePassword } from "../assets/lib/passwordValidator";
 const Input = ({
   value,
   id,
@@ -17,12 +18,7 @@ const Input = ({
   //classLabel by default =
   // console.log("value on input:", value);
   // console.log("type on input:", type);
-  const { setErrorMessage } = useUser();
-  useEffect(() => {
-    if (!value) {
-      setErrorMessage("");
-    }
-  }, [value]);
+  const { setErrorMessage, setInfoUser } = useUser();
   const handleChange = (e) => {
     // console.log("e.target.value in handleChange:", e.target.value);
     // console.log(
@@ -36,6 +32,15 @@ const Input = ({
       const finalTarget = transformStr(e);
       setState(finalTarget);
     } else if (e.target.type === "password") {
+      const pwd = validatePassword(e.target.value);
+      console.log("pwd on input:", pwd);
+      if (pwd.errors && pwd.isValid === false) {
+        const pwdNotValid = pwd.errors.join(" - ");
+        console.log("pwdNotValid:", pwdNotValid);
+        setInfoUser(pwdNotValid);
+      } else {
+        setInfoUser("");
+      }
       setState(e.target.value);
     } else if (e.target.type === "email") {
       setState(e.target.value.toLowerCase());
