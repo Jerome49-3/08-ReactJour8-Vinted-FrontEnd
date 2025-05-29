@@ -33,19 +33,19 @@ const Chat = () => {
         return;
       } else {
         const ws = new WebSocket(`ws://localhost:3000/messages/${OfferID}`);
-        console.log("ws on chat:", ws);
+        // console.log("ws on chat:", ws);
 
         ws.onopen = () => {
-          console.log("Connexion WebSocket établie.");
+          // console.log("Connexion WebSocket on.");
           setIsConnected(true);
         };
 
         ws.onmessage = (event) => {
-          console.log("event in ws.onmessage:", event);
+          // console.log("event in ws.onmessage:", event);
 
           try {
             const data = JSON.parse(event.data);
-            console.log("Message reçu in ws.onmessage:", data);
+            // console.log("Message reçu in ws.onmessage:", data);
 
             if (data.type === "message") {
               setMessages((prev) => [...prev, data]);
@@ -53,10 +53,10 @@ const Chat = () => {
               console.log(`${user} est en train d'écrire...`);
             }
           } catch (error) {
-            console.error(
-              "Erreur lors du traitement du message WebSocket:",
-              error
-            );
+            // console.error(
+            //   "Erreur lors du traitement du message WebSocket:",
+            //   error
+            // );
             setErrorMessage(error);
           }
         };
@@ -76,14 +76,14 @@ const Chat = () => {
     // setViewKey(e.key)
     if (e.key === "Enter") {
       e.preventDefault();
-      console.log("e.key in handleMesssage on Chat:", e.key);
-      console.log("token in handleMesssage on Chat:", token);
+      // console.log("e.key in handleMesssage on Chat:", e.key);
+      // console.log("token in handleMesssage on Chat:", token);
       const formData = new FormData();
       formData.append("newMessage", newMessage);
       console.log("${ObjectID} in handleMesssage on Chat:", `${OfferID}`);
 
       if (socket && socket.readyState === WebSocket.OPEN) {
-        console.log("socket.readyState:", socket.readyState);
+        // console.log("socket.readyState:", socket.readyState);
 
         socket.send(
           JSON.stringify({ type: "message", offer: OfferID, text: newMessage })
@@ -95,11 +95,11 @@ const Chat = () => {
           formData
         );
         if (response) {
-          console.log("response in handleMesssage on Chat:", response);
-          console.log(
-            "response.data  in handleMesssage on Chat:",
-            response.data
-          );
+          // console.log("response in handleMesssage on Chat:", response);
+          // console.log(
+          //   "response.data  in handleMesssage on Chat:",
+          //   response.data
+          // );
           setMessages(response.data);
         }
         setNewMessage("");

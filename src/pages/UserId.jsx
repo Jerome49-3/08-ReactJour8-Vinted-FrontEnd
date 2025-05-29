@@ -32,19 +32,19 @@ const UserId = ({ faTrash }) => {
   const [newAdmin, setNewAdmin] = useState(null);
   const [sendEmail, setSendMail] = useState(null);
   const [dataAdmin, setDataAdmin] = useState(null);
-  console.log("dataAdmin in /users/${id} (GET):", dataAdmin);
+  // console.log("dataAdmin in /users/${id} (GET):", dataAdmin);
   const [dataNews, setDataNews] = useState(null);
-  console.log("dataNews in /users/${id} (GET):", dataNews);
+  // console.log("dataNews in /users/${id} (GET):", dataNews);
 
   // console.log("pictures in /users/${id}:", pictures);
   // console.log("avatar in /users/${id}:", avatar);
   const [errorMessage, setErrorMessage] = useState("");
   const [data, setData] = useState(null);
-  console.log("data in /users/${userId}:", data);
-  console.log(
-    "data?.emailIsConfirmed in /users/${userId:",
-    data?.emailIsConfirmed
-  );
+  // console.log("data in /users/${userId}:", data);
+  // console.log(
+  //   "data?.emailIsConfirmed in /users/${userId:",
+  //   data?.emailIsConfirmed
+  // );
 
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -58,14 +58,14 @@ const UserId = ({ faTrash }) => {
         const response = await axios.get(
           `${import.meta.env.VITE_REACT_APP_URL_USERID}${id}`
         );
-        console.log("response in /user/${id} (GET):", response);
+        // console.log("response in /user/${id} (GET):", response);
         if (response?.data?.token) {
           try {
             const newToken = await response?.data?.token;
             // console.log("newToken in /users/${id} (GET):", newToken);
             if (newToken) {
               const userUpdated = await decryptUser(newToken);
-              console.log("userUpdated in /users/${id} (GET):", userUpdated);
+              // console.log("userUpdated in /users/${id} (GET):", userUpdated);
               if (userUpdated) {
                 setData(userUpdated);
                 setDataAdmin(userUpdated?.isAdmin.toString());

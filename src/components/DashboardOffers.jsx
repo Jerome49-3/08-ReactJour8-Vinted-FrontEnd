@@ -17,7 +17,7 @@ const DashboardOffers = () => {
           import.meta.env.VITE_REACT_APP_URL_HOME
         );
         if (response) {
-          console.log("response in DashboardOffers:", response);
+          // console.log("response in DashboardOffers:", response);
           setData(response?.data?.offers);
           setIsLoading(false);
         }

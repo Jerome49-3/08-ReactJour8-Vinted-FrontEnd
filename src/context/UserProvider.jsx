@@ -270,13 +270,13 @@ export const UserProvider = ({ children }) => {
             config.method === "post" || config.method === "put"
               ? "multipart/form-data"
               : "application/json";
-          console.group("log axios.interceptor:");
-          console.log("config in userProvider:", config);
-          console.log(
-            "config.headersContent-Type in userProvider:",
-            config.headers["Content-Type"]
-          );
-          console.groupEnd();
+          // console.group("log axios.interceptor:");
+          // console.log("config in userProvider:", config);
+          // console.log(
+          //   "config.headersContent-Type in userProvider:",
+          //   config.headers["Content-Type"]
+          // );
+          // console.groupEnd();
           return config;
         },
         (error) => {

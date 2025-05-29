@@ -14,7 +14,7 @@ import saveToken from "../assets/lib/saveToken";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
 
 const Login = ({ faEye, faEyeSlash, type, setType }) => {
-  console.log("type in login:", type);
+  // console.log("type in login:", type);
   // const boxForm = "boxForm";
   // const boxLogin = "boxLogin";
   const {
@@ -49,12 +49,12 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
       console.log("response in handlesubmit in /login:", response);
       try {
         if (response?.data?.token) {
-          console.log(
-            "response.data.token in handlesubmit in /login:",
-            response.data.token
-          );
+          // console.log(
+          //   "response.data.token in handlesubmit in /login:",
+          //   response.data.token
+          // );
           setToken(response?.data?.token);
-          console.log("token in handlesubmit in /login:", token);
+          // console.log("token in handlesubmit in /login:", token);
           saveToken(response?.data?.token, setUser, setIsAdmin, setImgBoxUser);
           setIsLoading(false);
         }

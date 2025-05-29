@@ -1556,7 +1556,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 @media all and (min-width: 1400px) {
   .boxImgs .imgBanner {
-    max-height: 400px;
+    max-height: 225px;
   }
   .boxImgs .imgBannerBottom {
     top: 90%;

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const DashboardMessages = () => {
   const [data, setData] = useState(null);
-  console.log("data in /messagesContact:", data);
+  // console.log("data in /messagesContact:", data);
   const [isLoading, setIsLoading] = useState(true);
   const { axios, setErrorMessage } = useUser();
 

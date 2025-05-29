@@ -9,29 +9,29 @@ import AddressForm from "../components/AdressForm";
 import Image from "../components/Image";
 
 const CheckoutForm = ({ data, succes, setSucces }) => {
-  console.log("data on checkOutForm:", data);
-  console.log(
-    "data.product_name in CheckoutForm:",
-    data.product_name,
-    "\n",
-    "data.total in CheckoutForm:",
-    data.total,
-    "\n",
-    "data.product_price in CheckoutForm:",
-    data.product_price,
-    "\n",
-    "data.product_id in CheckoutForm:",
-    data.product_id,
-    "\n",
-    "product_image in CheckoutForm:",
-    data.product_image,
-    "\n",
-    "buyer_token in CheckoutForm:",
-    data.buyer_token,
-    "\n",
-    "numberOfCommand in CheckoutForm:",
-    data.numberOfCommand
-  );
+  // console.log("data on checkOutForm:", data);
+  // console.log(
+  //   "data.product_name in CheckoutForm:",
+  //   data.product_name,
+  //   "\n",
+  //   "data.total in CheckoutForm:",
+  //   data.total,
+  //   "\n",
+  //   "data.product_price in CheckoutForm:",
+  //   data.product_price,
+  //   "\n",
+  //   "data.product_id in CheckoutForm:",
+  //   data.product_id,
+  //   "\n",
+  //   "product_image in CheckoutForm:",
+  //   data.product_image,
+  //   "\n",
+  //   "buyer_token in CheckoutForm:",
+  //   data.buyer_token,
+  //   "\n",
+  //   "numberOfCommand in CheckoutForm:",
+  //   data.numberOfCommand
+  // );
 
   const stripe = useStripe();
   const elements = useElements();
@@ -65,9 +65,9 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
           product_id: data.product_id,
         }
       );
-      console.log("response.data in checkOutForm:", response.data);
+      // console.log("response.data in checkOutForm:", response.data);
       const clientSecret = response.data.client_secret;
-      console.log("clientSecret in checkOutForm:", clientSecret);
+      // console.log("clientSecret in checkOutForm:", clientSecret);
       const { error, paymentIntent } = await stripe.confirmPayment({
         elements: elements,
         clientSecret: clientSecret,
@@ -84,11 +84,11 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         return;
       } else if (paymentIntent.status === "succeeded") {
         const address = JSON.stringify(paymentIntent.shipping.address);
-        console.log(
-          "paymentIntent.shipping.address in /payment:",
-          paymentIntent.shipping.address
-        );
-        console.log("address in /payment:", address);
+        // console.log(
+        //   "paymentIntent.shipping.address in /payment:",
+        //   paymentIntent.shipping.address
+        // );
+        // console.log("address in /payment:", address);
         const sendSuccess = await axios.post(
           `http://localhost:3000/confirmPayment`,
           // const sendSuccess = await axios.post(
@@ -104,13 +104,13 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
           }
         );
         if (sendSuccess) {
-          console.log("sendSuccess in /payment:", sendSuccess);
+          // console.log("sendSuccess in /payment:", sendSuccess);
           setSucces(true);
         }
       }
-      console.log("paymentIntent:", paymentIntent);
+      // console.log("paymentIntent:", paymentIntent);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setIspayed(false);
     }
     setIspayed(false);

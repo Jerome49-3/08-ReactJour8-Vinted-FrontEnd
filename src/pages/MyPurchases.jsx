@@ -9,7 +9,7 @@ import Links from "../components/Links";
 const MyPurchases = ({ faHeart, farHeart }) => {
   const { fav, setFav, axios, data, setData } = useUser();
   const [isloading, setIsLoading] = useState(true);
-  console.log("data in /mypurchases:", data);
+  // console.log("data in /mypurchases:", data);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const MyPurchases = ({ faHeart, farHeart }) => {
         );
         if (response) {
           // console.log("response on /mypurchases:", response);
-          console.log("response.data on /mypurchases:", response.data);
+          // console.log("response.data on /mypurchases:", response.data);
           setData(response.data);
           setIsLoading(false);
         }

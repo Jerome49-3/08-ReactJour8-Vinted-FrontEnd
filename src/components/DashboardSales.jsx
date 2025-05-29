@@ -16,7 +16,7 @@ const DashboardSales = ({ searchTransactions, numberCommand }) => {
   // );
   const [isLoading, setIsLoading] = useState(true);
   const { axios, data, setData } = useUser();
-  console.log("data in LastSales:", data);
+  // console.log("data in LastSales:", data);
 
   useEffect(() => {
     const fetchData = async () => {

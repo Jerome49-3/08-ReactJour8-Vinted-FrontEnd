@@ -8,12 +8,12 @@ import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const [optionValue, setOptionValue] = useState("");
-  console.log("optionValue in contact:", optionValue);
+  // console.log("optionValue in contact:", optionValue);
   const [errorMessage, setErrorMessage] = useState("");
   const [numberCommand, setNumberCommand] = useState(null);
   const [numberOffer, setNumberOffer] = useState(null);
   const [messageContact, setMessageContact] = useState(null);
-  console.log("messageContact in contact:", messageContact);
+  // console.log("messageContact in contact:", messageContact);
   const { axios, isSended, setIsSended, infoUser, setInfoUser } = useUser();
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const Contact = () => {
       );
       // console.log("response:", response);
       if (response.data) {
-        console.log("response.data:", response.data);
+        // console.log("response.data:", response.data);
         setInfoUser(response.data.message);
         setIsSended(false);
         setTimeout(() => {
@@ -41,8 +41,8 @@ const Contact = () => {
         }, 3000);
       }
     } catch (error) {
-      console.log("error", error);
-      console.log("error.response", error.response);
+      // console.log("error", error);
+      // console.log("error.response", error.response);
       console.log(
         "error.message",
         error.message || "error.response.data",

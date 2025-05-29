@@ -24,7 +24,7 @@ const ForgotPsswd = ({
   const { state } = useLocation();
   // console.log("state in ForgotPsswd:", state);
   const { tokenId } = state;
-  console.log("tokenId in ForgotPsswd:", tokenId);
+  // console.log("tokenId in ForgotPsswd:", tokenId);
 
   const {
     axios,

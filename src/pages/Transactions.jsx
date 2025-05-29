@@ -10,7 +10,7 @@ import Image from "../components/Image";
 const Transactions = () => {
   const { id } = useParams();
   const { axios, data, setData } = useUser();
-  console.log("data in /transactions/:id:", data);
+  // console.log("data in /transactions/:id:", data);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 

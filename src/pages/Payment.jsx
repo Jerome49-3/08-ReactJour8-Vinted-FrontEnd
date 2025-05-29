@@ -25,25 +25,25 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
     product_id,
     product_pictures,
   } = state;
-  console.log(
-    "product_name in /payment:",
-    product_name,
-    "\n",
-    "product_price in /payment:",
-    product_price,
-    "\n",
-    "product_image in /payment:",
-    product_image,
-    "\n",
-    "product_id in /payment:",
-    product_id,
-    "\n",
-    "product_pictures in /payment:",
-    product_pictures
-  );
+  // console.log(
+  //   "product_name in /payment:",
+  //   product_name,
+  //   "\n",
+  //   "product_price in /payment:",
+  //   product_price,
+  //   "\n",
+  //   "product_image in /payment:",
+  //   product_image,
+  //   "\n",
+  //   "product_id in /payment:",
+  //   product_id,
+  //   "\n",
+  //   "product_pictures in /payment:",
+  //   product_pictures
+  // );
   useEffect(() => {
     const numberCommand = cryptoRandomString({ length: 16 });
-    console.log("numberCommand in /payment:", numberCommand);
+    // console.log("numberCommand in /payment:", numberCommand);
     console.log();
 
     setNumCmd(numberCommand);
@@ -83,33 +83,33 @@ const Payment = ({ dataShoppingCart, setDataShoppingCart }) => {
   //   console.log("Cookie set:", Cookies.get("vintedShoppingCart"));
   // }, [dataShoppingCart]);
 
-  console.log(
-    "Number((product_price * 100).toFixed(0)):",
-    Number((product_price * 100).toFixed(0))
-  );
-  console.log(
-    "typeof Number((product_price * 100).toFixed(0)):",
-    typeof Number((product_price * 100).toFixed(0))
-  );
+  // console.log(
+  //   "Number((product_price * 100).toFixed(0)):",
+  //   Number((product_price * 100).toFixed(0))
+  // );
+  // console.log(
+  //   "typeof Number((product_price * 100).toFixed(0)):",
+  //   typeof Number((product_price * 100).toFixed(0))
+  // );
   const options = {
     mode: "payment",
     amount: Number((product_price * 100).toFixed(0)),
     currency: "eur",
   };
   let price = Number(product_price).toFixed(2);
-  console.log("price in /payment:", price);
+  // console.log("price in /payment:", price);
   const buyerProtectionCosts = Number(0.4).toFixed(2);
-  console.log("buyerProtectionCosts:", buyerProtectionCosts);
+  // console.log("buyerProtectionCosts:", buyerProtectionCosts);
   const shippingCosts = Number(0.8).toFixed(2);
-  console.log("shippingCosts:", shippingCosts);
+  // console.log("shippingCosts:", shippingCosts);
   const subTotal =
     Number((buyerProtectionCosts * 100).toFixed(0)) +
     Number((shippingCosts * 100).toFixed(0)) +
     Number((price * 100).toFixed(0));
-  console.log("subTotal:", subTotal);
+  // console.log("subTotal:", subTotal);
   const total = (subTotal / 100).toFixed(2);
-  console.log("total:", total);
-  console.log("dataShoppingCart in /payment:", dataShoppingCart);
+  // console.log("total:", total);
+  // console.log("dataShoppingCart in /payment:", dataShoppingCart);
 
   return (
     <div className="boxShoppingCart">

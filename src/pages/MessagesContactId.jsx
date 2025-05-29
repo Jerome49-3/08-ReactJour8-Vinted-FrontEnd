@@ -9,11 +9,11 @@ import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
 const MessagesContactId = () => {
   const { id } = useParams();
-  console.log("id on MessagesContactId:", id);
+  // console.log("id on MessagesContactId:", id);
   const [data, setData] = useState(null);
-  console.log("data on MessagesContactId:", data);
+  // console.log("data on MessagesContactId:", data);
   const [reply, setReply] = useState("");
-  console.log("reply on MessagesContactId:", reply);
+  // console.log("reply on MessagesContactId:", reply);
   const [isLoading, setIsLoading] = useState(true);
   const { axios, isSended, setIsSended, setErrorMessage, setInfoUser } =
     useUser();
@@ -34,7 +34,7 @@ const MessagesContactId = () => {
         formData
       );
       if (response.data) {
-        console.log("response.data:", response.data);
+        // console.log("response.data:", response.data);
         setInfoUser(response.data.message);
         setIsLoading(false);
         setIsSended(false);

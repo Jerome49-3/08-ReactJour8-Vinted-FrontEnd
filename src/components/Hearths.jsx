@@ -22,7 +22,7 @@ const Hearths = ({ faHeart, farHeart, article }) => {
   }, [fav]);
   // console.log("isFavorite after useEffect in BoxHearth:", isFavorite);
   const handleToggle = (e, article) => {
-    console.log("article in handleToggle:", article);
+    // console.log("article in handleToggle:", article);
     e.preventDefault();
 
     const heartEmpty = heartsRefs.current[`${article._id}-heartEmpty`];

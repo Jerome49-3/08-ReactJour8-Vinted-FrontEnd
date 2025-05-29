@@ -121,7 +121,7 @@ function App() {
   });
   //********** State price for publish, offerId and payment ***********/
   let [price, setPrice] = useState(0);
-  console.log("price in app:", price);
+  // console.log("price in app:", price);
   //********** State quantity for publish, offerId and payment ***********/
   let [quantity, setQuantity] = useState(0);
   console.log("quantity in app:", quantity);

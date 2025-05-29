@@ -8,7 +8,7 @@ const InfoUserErrorMessage = () => {
     useUser();
   // console.log("errorMessage in InfoUserErrorMessage:", errorMessage);
   // console.log("infoUser in InfoUserErrorMessage:", infoUser);
-  console.log("location:", location);
+  // console.log("location:", location);
   let isFirstRender = useRef(true);
   useEffect(() => {
     if (isFirstRender.current === true) {

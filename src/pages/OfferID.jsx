@@ -35,13 +35,13 @@ const OfferID = ({
 }) => {
   const { axios, user, infoUser, setInfoUser, showHero, data, setData } =
     useUser();
-  console.log("infoUser on OfferID:", infoUser);
-  console.log("user on OfferID:", user);
+  // console.log("infoUser on OfferID:", infoUser);
+  // console.log("user on OfferID:", user);
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
   const { id } = useParams();
   // console.log("id1 in /offers/${id}:", id);
   const [imgsNbr, setImgsNbr] = useState(0);
-  console.log("data in OfferId:", data);
+  // console.log("data in OfferId:", data);
   const prices = Number(price).toFixed(2);
   const quantitys = Number(quantity);
   // console.log("prices in OfferId:", prices);
@@ -57,7 +57,7 @@ const OfferID = ({
         const response = await axios.get(
           `${import.meta.env.VITE_REACT_APP_URL_OFFERID}${id}`
         );
-        console.log("response in /offers/${id}:", response);
+        // console.log("response in /offers/${id}:", response);
         if (response?.data) {
           setData(response.data);
           setIsLoading(false);
@@ -65,11 +65,11 @@ const OfferID = ({
           navigate("/");
         }
       } catch (error) {
-        console.log("error?.response:", error?.response);
-        console.log(
-          "error?.response?.data?.message:",
-          error?.response?.data?.infoUser
-        );
+        // console.log("error?.response:", error?.response);
+        // console.log(
+        //   "error?.response?.data?.message:",
+        //   error?.response?.data?.infoUser
+        // );
         setInfoUser(error?.response?.data?.infoUser);
         if (infoUser) {
           navigate("/");
@@ -86,10 +86,10 @@ const OfferID = ({
     };
     const setQuantitys = () => {
       setQuantity(data?.product_quantity);
-      console.log(
-        "data?.product_quantity in second useEffect:",
-        data?.product_quantity
-      );
+      // console.log(
+      //   "data?.product_quantity in second useEffect:",
+      //   data?.product_quantity
+      // );
     };
     if (isLoading === false) {
       setPrices();

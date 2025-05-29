@@ -32,7 +32,7 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
   // console.log("productDetails in OfferIdUpdateAndDelete:", productDetails);
   const [imgsNbr, setImgsNbr] = useState(null);
   const [imgSupp, setImgSupp] = useState([]);
-  console.log("imgSupp in OfferIdUpdateAndDelete:", imgSupp);
+  // console.log("imgSupp in OfferIdUpdateAndDelete:", imgSupp);
   const {
     setIsSended,
     isSended,

@@ -21,11 +21,6 @@ const Counter = ({ icon1, icon2, token, id, isEndloading, comment }) => {
       // const response = await axios.post(`http://localhost:3000/review/${id}`,
         {
           counter,
-        },
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
         }
       );
       if (response) {
@@ -42,15 +37,10 @@ const Counter = ({ icon1, icon2, token, id, isEndloading, comment }) => {
     // console.log('counter after -1:', counter);
 
     try {
-      // const response = await axios.post(`http://localhost:3000/review/${id}`,
+      const response = await axios.post(``,
         {
           counter,
         },
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        }
       );
       if (response) {
         // console.log('response in /review/${id}:', response);

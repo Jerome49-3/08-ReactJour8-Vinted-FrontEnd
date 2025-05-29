@@ -21,7 +21,7 @@ const ConfirmEmail = ({
   //   "setEmailIsConfirmed in /confirmEmail:",
   //   setEmailIsConfirmed
   // );
-  console.log("userCreated in /confirmEmail:", userCreated);
+  // console.log("userCreated in /confirmEmail:", userCreated);
 
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const {
@@ -59,7 +59,7 @@ const ConfirmEmail = ({
         import.meta.env.VITE_REACT_APP_URL_CONFIRMEMAIL,
         formData
       );
-      console.log("response in /confirmEmail:", response);
+      // console.log("response in /confirmEmail:", response);
       if (response?.data?.success) {
         setEmailIsConfirmed(true);
         setEmailSended(false);
@@ -80,7 +80,7 @@ const ConfirmEmail = ({
       }
     } catch (error) {
       console.log("error:", error);
-      console.log("Array.isArray(error):", Array.isArray(error));
+      // console.log("Array.isArray(error):", Array.isArray(error));
       setErrorMessage(error?.response?.data?.message);
       setTimeout(() => {
         setIsSended(false);

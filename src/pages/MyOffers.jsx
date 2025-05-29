@@ -25,7 +25,7 @@ const MyOffers = ({
           import.meta.env.VITE_REACT_APP_URL_MYOFFERS
         );
         if (response.data) {
-          console.log("response on /MyOffers:", response);
+          // console.log("response on /MyOffers:", response);
           // console.log("response.data on /mySales:", response.data);
           setData(response.data);
           if (response.data.length === 0) {
@@ -35,10 +35,10 @@ const MyOffers = ({
         }
       } catch (error) {
         console.log("error.response:", error.response);
-        console.log(
-          "error.response.data.message:",
-          error.response.data.message
-        );
+        // console.log(
+        //   "error.response.data.message:",
+        //   error.response.data.message
+        // );
         setShowNoOffer(true);
       }
     };

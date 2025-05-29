@@ -53,7 +53,7 @@ const Home = ({
   // console.log("nbrCards in /Home:", nbrCards);
   // console.log("data in /Home:", data);
   // console.log("data.length in /Home:", data?.length);
-  console.log("dimWindows in /Home:", dimWindows);
+  // console.log("dimWindows in /Home:", dimWindows);
   useEffect(() => {
     fetchDataOfferHome(
       axios,
@@ -89,7 +89,7 @@ const Home = ({
   useLayoutEffect(() => {
     const setNumberOfCards = () => {
       const cardsLength = data?.length;
-      console.log("cardsLength:", cardsLength);
+      // console.log("cardsLength:", cardsLength);
       setNbrCards(
         document.documentElement.style.setProperty("--cardsLength", cardsLength)
       );

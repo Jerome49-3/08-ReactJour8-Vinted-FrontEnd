@@ -32,7 +32,7 @@ const DashboardUsers = ({
   //   return <div>{isOnline ? "✅" : "❌"}</div>;
   // }
   const [data, setData] = useState(null);
-  console.log("data in LastUsers:", data);
+  // console.log("data in LastUsers:", data);
   // console.log("searchUsers in LastUsers:", searchUsers);
   const [isLoading, setIsLoading] = useState(true);
   // console.log("isLoading in LastUsers:", isLoading);
