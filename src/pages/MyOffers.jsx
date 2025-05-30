@@ -22,7 +22,7 @@ const MyOffers = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          import.meta.env.VITE_REACT_APP_URL_MYOFFERS
+          `${import.meta.env.VITE_REACT_APP_URL}myOffers`
         );
         if (response.data) {
           // console.log("response on /MyOffers:", response);

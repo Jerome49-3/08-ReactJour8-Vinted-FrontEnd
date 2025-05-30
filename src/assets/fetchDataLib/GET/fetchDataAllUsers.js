@@ -12,7 +12,7 @@ const fetchDataAllUsers = async (
       // const response = await axios.get(
       //   "https://site--vintaidbackend--s4qnmrl7fg46.code.run/users/",
       const response = await axios.get(
-        `http://localhost:3000/users?title=${searchUsers}`
+        `${import.meta.env.VITE_REACT_APP_URL}users?title=${searchUsers}`
       );
       // console.log("response in LastUsers:", response);
       // console.log("response.data in LastUsers:", response.data);

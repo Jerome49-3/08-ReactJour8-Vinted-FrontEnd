@@ -56,7 +56,7 @@ const ConfirmEmail = ({
     setIsSended(true);
     try {
       const response = await axios.post(
-        import.meta.env.VITE_REACT_APP_URL_CONFIRMEMAIL,
+        import.meta.env.VITE_REACT_APP_URL,
         formData
       );
       // console.log("response in /confirmEmail:", response);

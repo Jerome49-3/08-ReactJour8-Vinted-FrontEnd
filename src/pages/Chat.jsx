@@ -89,7 +89,7 @@ const Chat = () => {
           JSON.stringify({ type: "message", offer: OfferID, text: newMessage })
         );
         const response = await axios.post(
-          `http://localhost:3000/messages/${OfferID}`,
+          `${import.meta.env.VITE_REACT_APP_URL}messages/${OfferID}`,
           // const response = await axios.post(
           //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/${OfferID}`,
           formData

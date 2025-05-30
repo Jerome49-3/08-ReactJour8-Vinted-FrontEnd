@@ -12,8 +12,8 @@ const fetchDataOfferHome = async (
   try {
     const response = await axios.get(
       `${
-        import.meta.env.VITE_REACT_APP_URL_HOME
-      }?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&page=${page}`
+        import.meta.env.VITE_REACT_APP_URL
+      }offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&page=${page}`
     );
     if (response?.data) {
       console.log("response.data on /Home (Offer):", response.data);

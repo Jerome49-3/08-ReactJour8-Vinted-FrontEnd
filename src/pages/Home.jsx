@@ -6,7 +6,7 @@ import CookieConsent from "react-cookie-consent";
 
 //stream
 import io from "socket.io-client";
-const socket = io("https://site--vintaidbackend--s4qnmrl7fg46.code.run/");
+const socket = io(`${import.meta.env.VITE_REACT_APP_URL}`);
 
 //components
 import Hero from "../components/Hero";

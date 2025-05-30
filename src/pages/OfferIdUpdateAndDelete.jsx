@@ -50,7 +50,9 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
     // console.log("id inside useEffect in /offers/${id}:", id);
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/offer/${id}`);
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_URL}offer/${id}`
+        );
         console.log("response in OfferIdUpdateAndDelete:", response);
         if (response) {
           setData(response?.data);

@@ -59,7 +59,7 @@ const ForgotPsswd = ({
     // console.log("tokenFgtP in ForgotPsswd in handleFormForgot:", tokenFgtP);
     try {
       const response = await axios.post(
-        `http://localhost:3000/user/forgotPsswd`,
+        `${import.meta.env.VITE_REACT_APP_URL}user/forgotPsswd`,
         formData
       );
       setIsSended(true);

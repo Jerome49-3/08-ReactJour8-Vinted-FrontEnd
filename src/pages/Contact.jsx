@@ -27,7 +27,7 @@ const Contact = () => {
     setIsSended(true);
     try {
       const response = await axios.post(
-        `http://localhost:3000/sendMail/contact`,
+        `${import.meta.env.VITE_REACT_APP_URL}sendMail/contact`,
         formData
       );
       // console.log("response:", response);

@@ -19,7 +19,7 @@ const ResetPsswd = ({ setEmailSended }) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/resendEmailPsswd`,
+        `${import.meta.env.VITE_REACT_APP_URL}resendEmailPsswd`,
         formData
       );
       if (response?.data?.success) {
