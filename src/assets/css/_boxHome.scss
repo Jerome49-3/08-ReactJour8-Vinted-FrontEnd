@@ -27,7 +27,30 @@
 
 @media all and (min-width : 576px) {}
 
-@media all and (min-width : 768px) {}
+@media all and (min-width : 768px) {
+  .boxHome {
+    display: flex;
+    justify-content: space-between;
+
+    .wrapper {
+      flex-direction: row !important;
+      height: calc(100% - 40px);
+      gap: 0px;
+
+      .btnChevronLeftOff {
+        width: 32.5px;
+      }
+
+      .btnChevronLeft,
+      .btnChevronRight {
+        @include btn;
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+      }
+    }
+  }
+}
 
 @media all and (min-width : 992px) {}
 
@@ -39,8 +62,6 @@
     .wrapper {
       flex-direction: row !important;
       height: calc(100% - 40px);
-      padding-top: 20px;
-      align-items: flex-start;
 
       .btnChevronLeftOff {
         width: 32.5px;

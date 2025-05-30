@@ -1612,6 +1612,42 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   background-color: #33c6d0;
 }
 
+@media all and (min-width: 768px) {
+  .boxHome {
+    display: flex;
+    justify-content: space-between;
+  }
+  .boxHome .wrapper {
+    flex-direction: row !important;
+    height: calc(100% - 40px);
+    gap: 0px;
+  }
+  .boxHome .wrapper .btnChevronLeftOff {
+    width: 32.5px;
+  }
+  .boxHome .wrapper .btnChevronLeft,
+  .boxHome .wrapper .btnChevronRight {
+    color: #ffffff;
+    background-color: #007882;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 5px;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50%;
+  }
+  .boxHome .wrapper .btnChevronLeft p,
+  .boxHome .wrapper .btnChevronRight p {
+    text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+  }
+  .boxHome .wrapper .btnChevronLeft:hover, .boxHome .wrapper .btnChevronLeft:focus,
+  .boxHome .wrapper .btnChevronRight:hover,
+  .boxHome .wrapper .btnChevronRight:focus {
+    background-color: #33c6d0;
+  }
+}
 @media all and (min-width: 1200px) {
   .boxHome {
     padding: 40px 0 0 0;
@@ -1620,8 +1656,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .boxHome .wrapper {
     flex-direction: row !important;
     height: calc(100% - 40px);
-    padding-top: 20px;
-    align-items: flex-start;
   }
   .boxHome .wrapper .btnChevronLeftOff {
     width: 32.5px;
