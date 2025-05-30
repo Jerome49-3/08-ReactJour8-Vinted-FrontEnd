@@ -155,6 +155,9 @@
 :root ::-webkit-scrollbar {
   display: none;
 }
+:root .scrollHide {
+  overflow: hidden;
+}
 :root .wrapper {
   max-width: 350px;
   margin-left: auto;

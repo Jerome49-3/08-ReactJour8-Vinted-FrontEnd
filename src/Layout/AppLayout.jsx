@@ -14,6 +14,10 @@ const AppLayout = ({
   setShowFilter,
   showFilter,
 }) => {
+  const mainLayout = "mainLayout";
+  const scrollHide = "scrollHide";
+  console.log("%cshowSignUp in AppLayout:", "color: yellow", showSignUp);
+
   return (
     <>
       <Header
@@ -27,7 +31,9 @@ const AppLayout = ({
         showFilter={showFilter}
         setShowFilter={setShowFilter}
       />
-      <main className="mainLayout">
+      <main
+        className={showSignUp ? `${scrollHide} ${mainLayout}` : `${mainLayout}`}
+      >
         <Outlet />
       </main>
       <Footer />
