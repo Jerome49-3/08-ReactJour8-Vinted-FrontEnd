@@ -1620,7 +1620,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .boxHome .wrapper {
     flex-direction: row !important;
     height: calc(100% - 40px);
-    gap: 0px;
   }
   .boxHome .wrapper .boxContainerBtnChevron,
   .boxHome .wrapper .btnChevronLeftOff {
