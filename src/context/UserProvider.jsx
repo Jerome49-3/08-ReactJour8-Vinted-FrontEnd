@@ -235,6 +235,10 @@ export const UserProvider = ({ children }) => {
     return addRemoveListener("resize", setDimensions, setDimWindows);
   }, [location.pathname]);
 
+  useEffect(() => {
+    return addRemoveListener("load", setDimensions, setDimWindows);
+  }, [location.pathname]);
+
   //****************************************** //
   //*************** axiosRetry *************** //
   //****************************************** //
