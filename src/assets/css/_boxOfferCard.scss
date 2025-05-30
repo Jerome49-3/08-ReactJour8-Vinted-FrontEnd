@@ -200,6 +200,7 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding: 0;
 
     & a {
       width: calc(100% / 2.1) !important;
@@ -225,8 +226,9 @@
 @media all and (min-width : 1200px) {
   .boxOfferCard {
     @include flexStart;
-    gap: 20px;
-    height: 50vh;
+    gap: 22px;
+    height: 48vh;
+    width: calc(100% - 60px);
     overflow-x: hidden;
     overflow-y: hidden;
     flex-direction: row;
