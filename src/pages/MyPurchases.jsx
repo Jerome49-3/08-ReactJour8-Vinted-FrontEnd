@@ -16,7 +16,7 @@ const MyPurchases = ({ faHeart, farHeart }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_URL}mypurchases`
+          `${import.meta.env.VITE_REACT_APP_URL}/mypurchases`
         );
         if (response) {
           // console.log("response on /mypurchases:", response);

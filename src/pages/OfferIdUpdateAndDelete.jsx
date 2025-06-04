@@ -51,7 +51,7 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_URL}offer/${id}`
+          `${import.meta.env.VITE_REACT_APP_URL}/offer/${id}`
         );
         console.log("response in OfferIdUpdateAndDelete:", response);
         if (response) {
@@ -120,7 +120,7 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
     try {
       setIsSended(true);
       const response = await axios.put(
-        `http://localhost:3000/offer/${id}`,
+        `${import.meta.env.VITE_REACT_APP_URL}/offer/${id}`,
         formData
       );
       if (response.data) {

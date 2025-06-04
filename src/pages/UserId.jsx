@@ -56,7 +56,7 @@ const UserId = ({ faTrash }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_URL}${id}`
+          `${import.meta.env.VITE_REACT_APP_URL}/${id}`
         );
         // console.log("response in /user/${id} (GET):", response);
         if (response?.data?.token) {

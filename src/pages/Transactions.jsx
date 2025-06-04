@@ -18,7 +18,7 @@ const Transactions = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_URL}transactions/${id}`
+          `${import.meta.env.VITE_REACT_APP_URL}/transactions/${id}`
         );
         if (response.data) {
           setData(response.data);
