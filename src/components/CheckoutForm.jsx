@@ -55,9 +55,7 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         return;
       }
       const response = await axios.post(
-        `http://localhost:3000/payment`,
-        // const response = await axios.post(
-        //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/payment`,
+        `${import.meta.env.VITE_REACT_APP_URL}/payment`,
         {
           product_title: data.product_name,
           amount: data.total,
@@ -90,9 +88,7 @@ const CheckoutForm = ({ data, succes, setSucces }) => {
         // );
         // console.log("address in /payment:", address);
         const sendSuccess = await axios.post(
-          `http://localhost:3000/confirmPayment`,
-          // const sendSuccess = await axios.post(
-          //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/confirmPayment`,
+          `${import.meta.env.VITE_REACT_APP_URL}/confirmPayment`,
           {
             product_title: data.product_name,
             amount: data.total,

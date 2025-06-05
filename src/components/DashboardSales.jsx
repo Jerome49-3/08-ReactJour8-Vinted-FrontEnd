@@ -21,10 +21,10 @@ const DashboardSales = ({ searchTransactions, numberCommand }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(
-        //   `https://site--vintaidbackend--s4qnmrl7fg46.code.run/transactions`,
         const response = await axios.get(
-          `http://localhost:3000/transactions?title=${searchTransactions}&numberCommand=${numberCommand}`
+          `${
+            import.meta.env.VITE_REACT_APP_URL
+          }/transactions?title=${searchTransactions}&numberCommand=${numberCommand}`
         );
         if (response) {
           // console.log("response in /transactions:", response);

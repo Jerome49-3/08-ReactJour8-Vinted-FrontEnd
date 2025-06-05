@@ -20,7 +20,7 @@ const GetMessages = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/messages/${OfferID}`,
+          `${import.meta.env.VITE_REACT_APP_URL}/messages/${OfferID}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

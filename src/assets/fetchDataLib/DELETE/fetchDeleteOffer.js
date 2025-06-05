@@ -7,7 +7,7 @@ const fetchDeleteOffer = async (
 ) => {
   try {
     const response = await axios.delete(
-      `http://localhost:3000/offerDelete/${id}`
+      `${import.meta.env.VITE_REACT_APP_URL}/offerDelete/${id}`
     );
     if (response?.data) {
       console.log("response.data in /messagesContact:", response?.data);

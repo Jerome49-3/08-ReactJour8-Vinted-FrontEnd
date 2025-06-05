@@ -48,12 +48,15 @@ const SignUp = ({
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = await axios.post(`http://localhost:3000/user/signup`, {
-        username,
-        email,
-        password,
-        newsletter,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_URL}/user/signup`,
+        {
+          username,
+          email,
+          password,
+          newsletter,
+        }
+      );
       console.log("response in /signup:", response);
       if (response) {
         alert(response?.data?.message);

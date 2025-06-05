@@ -158,7 +158,7 @@ export const UserProvider = ({ children }) => {
       const verifyToken = async () => {
         try {
           const response = await axios.post(
-            `http://localhost:3000/user/verifyToken`,
+            `${import.meta.env.VITE_REACT_APP_URL}/user/verifyToken`,
             {}
           );
           // console.log("response in /user/verifyToken:", response);
@@ -186,7 +186,7 @@ export const UserProvider = ({ children }) => {
             const getToken = async () => {
               try {
                 const response = await axios.get(
-                  `http://localhost:3000/user/refreshToken`
+                  `${import.meta.env.VITE_REACT_APP_URL}/user/refreshToken`
                 );
                 // console.log("response in /user/refreshToken:", response);
                 if (response?.data?.token) {
@@ -299,7 +299,7 @@ export const UserProvider = ({ children }) => {
   const logout = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/logout",
+        `${import.meta.env.VITE_REACT_APP_URL}/user/logout`,
         {},
         {
           withCredentials: true,

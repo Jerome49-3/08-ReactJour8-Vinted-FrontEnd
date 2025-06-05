@@ -13,7 +13,7 @@ const fetchDataOfferHome = async (
     const response = await axios.get(
       `${
         import.meta.env.VITE_REACT_APP_URL
-      }offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&page=${page}`
+      }/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&page=${page}`
     );
     if (response?.data) {
       console.log("response.data on /Home (Offer):", response.data);
@@ -22,8 +22,10 @@ const fetchDataOfferHome = async (
       setIsLoading(false);
     }
   } catch (error) {
+    console.log("%cerror :", "color: red", error);
+    console.log("%cerror.response :", "color: red", error?.response);
     console.log(error?.response?.data?.message);
-    setErrorMessage(error?.response?.data?.message);
+    setErrorMessage(error?.response?.data?.message || error?.response || error);
   }
 };
 

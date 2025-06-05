@@ -32,7 +32,9 @@ const Chat = () => {
         );
         return;
       } else {
-        const ws = new WebSocket(`ws://localhost:3000/messages/${OfferID}`);
+        const ws = new WebSocket(
+          `${import.meta.env.VITE_REACT_APP_URL_WS}/messages/${OfferID}`
+        );
         // console.log("ws on chat:", ws);
 
         ws.onopen = () => {

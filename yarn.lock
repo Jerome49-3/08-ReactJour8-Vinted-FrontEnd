@@ -3794,6 +3794,11 @@ react-is@^18.0.0:
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
 
+react-microsoft-clarity@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-microsoft-clarity/-/react-microsoft-clarity-2.0.0.tgz#902d2a05139b9f42d0a1a6963d2c83ef085866ad"
+  integrity sha512-Hnbmiv+/vHSekS+Diho7SzvigNLNm+wayZMhxS4otaxPBlN3ccpY7k+PJd2Ytg3F6umU3JZzFtLzvK1WmfdhpA==
+
 react-range@^1.10.0:
   version "1.10.0"
   resolved "https://registry.npmjs.org/react-range/-/react-range-1.10.0.tgz"

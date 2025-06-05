@@ -55,7 +55,7 @@ const OfferID = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_URL}/${id}`
+          `${import.meta.env.VITE_REACT_APP_URL}/offer/${id}`
         );
         // console.log("response in /offers/${id}:", response);
         if (response?.data) {

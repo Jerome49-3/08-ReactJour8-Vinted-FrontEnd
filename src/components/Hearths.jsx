@@ -48,7 +48,7 @@ const Hearths = ({ faHeart, farHeart, article }) => {
         const id = article._id;
         try {
           const response = await axios.put(
-            `http://localhost:3000/suppFavOffer/${id}`
+            `${import.meta.env.VITE_REACT_APP_URL}/suppFavOffer/${id}`
           );
           console.log("response.data in /suppFavOffer/${id}:", response?.data);
           if (response?.data) {
@@ -71,7 +71,7 @@ const Hearths = ({ faHeart, farHeart, article }) => {
         const id = article._id;
         try {
           const response = await axios.put(
-            `http://localhost:3000/addFavOffer/${id}`
+            `${import.meta.env.VITE_REACT_APP_URL}/addFavOffer/${id}`
           );
           console.log("response.data in /suppFavOffer/${id}:", response?.data);
           if (response?.data) {

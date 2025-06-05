@@ -57,7 +57,9 @@ const Profile = ({ faTrash }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/profile/${id}`);
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_URL}/profile/${id}`
+        );
         // console.log("response in /profile/${id}:", response);
         if (response?.data) {
           // console.log("response.data in /profile/${id}:", response?.data);
@@ -110,7 +112,7 @@ const Profile = ({ faTrash }) => {
     formData.append("userId", userId);
     try {
       const response = await axios.put(
-        `http://localhost:3000/profile/${id}`,
+        `${import.meta.env.VITE_REACT_APP_URL}/profile/${id}`,
         formData
       );
       // console.log('response in /profile/${id}::', response);
@@ -195,7 +197,7 @@ const Profile = ({ faTrash }) => {
     try {
       setIsSendedTrash(true);
       const response = await axios.delete(
-        `http://localhost:3000/profile/${id}`
+        `${import.meta.env.VITE_REACT_APP_URL}/profile/${id}`
       );
       console.log("response in handleDeleteData on profile/:id:", response);
       if (response.data.infoUser) {

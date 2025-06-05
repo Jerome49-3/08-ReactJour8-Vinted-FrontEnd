@@ -34,7 +34,7 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
     console.log("id in fetchDeleteOffer:", id);
     try {
       const response = await axios.delete(
-        `http://localhost:3000/offer/${offerId}`
+        `${import.meta.env.VITE_REACT_APP_URL}/offer/${offerId}`
       );
       if (response?.data) {
         console.log("response.data in /messagesContact:", response?.data);
