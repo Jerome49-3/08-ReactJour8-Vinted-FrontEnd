@@ -41,7 +41,7 @@ export const UserProvider = ({ children }) => {
   //******** errorMessage > state for appear error's message ******** //
   const [errorMessage, setErrorMessage] = useState("");
   //******** dimWindows > state for set dimensions windows ******** //
-  let [dimWindows, setDimWindows] = useState(null);
+  let [dimWindows, setDimWindows] = useState({});
   //******** useLocation > useLocation ******** //
   let location = useLocation();
   //******** items > items per page ******** //

@@ -109,7 +109,7 @@ const Publish = ({ faTrash, price, setPrice, quantity, setQuantity }) => {
     // );
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_REACT_APP_URL}/publish`,
+        `${import.meta.env.VITE_REACT_APP_URL}/offer/publish`,
         formData
       );
       // console.log(response);
