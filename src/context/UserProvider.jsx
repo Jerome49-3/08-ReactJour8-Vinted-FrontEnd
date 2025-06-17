@@ -41,7 +41,7 @@ export const UserProvider = ({ children }) => {
   //******** errorMessage > state for appear error's message ******** //
   const [errorMessage, setErrorMessage] = useState("");
   //******** dimWindows > state for set dimensions windows ******** //
-  let [dimWindows, setDimWindows] = useState({});
+  let [dimWindows, setDimWindows] = useState(null);
   //******** useLocation > useLocation ******** //
   let location = useLocation();
   //******** items > items per page ******** //
@@ -120,7 +120,9 @@ export const UserProvider = ({ children }) => {
     }
     return [];
   });
+  //****************************************************** //
   //******** tokenFgtP > state for reset password ******** //
+  //****************************************************** //
   const [tokenFgtP, setTokenFgtP] = useState(
     sessionStorage.getItem("tokenFgtP") || null
   );
@@ -139,7 +141,7 @@ export const UserProvider = ({ children }) => {
     }
   }, [location.pathname]);
   //****************************************** //
-  //******** Listen connection ******** //
+  //******** Listen connection *************** //
   //****************************************** //
   // useEffect(() => {
   //   window.addEventListener("offline", (event) => {
@@ -231,9 +233,9 @@ export const UserProvider = ({ children }) => {
   //****************************************** //
   //********** listen event resize *********** //
   //****************************************** //
-  useEffect(() => {
-    return addRemoveListener("resize", setDimensions, setDimWindows);
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   return addRemoveListener("resize", setDimensions, setDimWindows);
+  // }, [location.pathname]);
 
   useEffect(() => {
     return addRemoveListener("load", setDimensions, setDimWindows);

@@ -903,16 +903,18 @@
 .boxForm {
   width: 100%;
   display: flex;
-  padding: 10px 0 50px 0;
+  height: calc(var(--fixHeight));
+}
+.boxForm .wrapper {
+  height: 100%;
 }
 .boxForm .wrapper form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 8px;
   width: 100%;
-  padding-top: 90px;
+  height: calc(var(--fixHeight) - 100px);
 }
 .boxForm .wrapper form .boxPicTop {
   width: 100%;
@@ -920,7 +922,6 @@
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  margin-bottom: 10px;
   background-color: #ededed;
 }
 .boxForm .wrapper form .boxPicTop .boxPicBottomEmpty {
@@ -1017,8 +1018,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: auto;
-  gap: 15px;
+  flex: 1;
+  padding-top: 20px;
 }
 .boxForm .wrapper form .boxInputFormPublish .productPriceAndQuantity,
 .boxForm .wrapper form .boxInputFormPublish .brandAndSize,
@@ -1055,24 +1056,11 @@
   }
 }
 @media all and (min-width: 1200px) {
-  .boxForm {
-    padding: 0 !important;
-  }
-  .boxForm .wrapper form {
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
   .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics {
     width: 24.6305418719%;
   }
   .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics img {
     height: 220px;
-  }
-}
-@media all and (min-width: 1400px) {
-  .boxForm {
-    padding: 0;
-    height: 100vh;
   }
 }
 .boxLogin {

@@ -2,16 +2,15 @@
 .boxForm {
   width: 100%;
   display: flex;
-  padding: 10px 0 50px 0;
+  height: calc(var(--fixHeight));
 
   .wrapper {
+    height: 100%;
 
     & form {
       @include flexColCenter;
-      gap: 8px;
       width: 100%;
-      padding-top: 90px;
-
+      height: calc(var(--fixHeight) - 100px);
       // #pictures {
       //   display: none;
       // }
@@ -19,8 +18,8 @@
       .boxPicTop {
         width: 100%;
         @include flexColStart;
-        margin-bottom: 10px;
         background-color: #ededed;
+
 
         .boxPicBottomEmpty {
           padding: 110px;
@@ -101,13 +100,20 @@
       }
 
       .boxInputFormPublish {
+        // width: 100%;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: space-between;
+        // align-items: center;
+        // height: auto;
+        // gap: 15px;
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        height: auto;
-        gap: 15px;
+        flex: 1;
+        padding-top: 20px;
 
         .productPriceAndQuantity,
         .brandAndSize,
@@ -154,12 +160,9 @@
 
 @media all and (min-width: 1200px) {
   .boxForm {
-    padding: 0 !important;
 
     .wrapper {
       & form {
-        padding-top: 50px;
-        padding-bottom: 50px;
 
         .boxPicTop {
           .boxPicBottom {
@@ -178,9 +181,4 @@
   }
 }
 
-@media all and (min-width: 1400px) {
-  .boxForm {
-    padding: 0;
-    height: 100vh;
-  }
-}
+@media all and (min-width: 1400px) {}

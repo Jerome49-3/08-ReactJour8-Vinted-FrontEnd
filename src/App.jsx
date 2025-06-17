@@ -125,6 +125,8 @@ function App() {
   //********** State quantity for publish, offerId and payment ***********/
   let [quantity, setQuantity] = useState(0);
   console.log("quantity in app:", quantity);
+  //**********************************************************************/
+  //**********************************************************************/
   return (
     <Router>
       <UserProvider>

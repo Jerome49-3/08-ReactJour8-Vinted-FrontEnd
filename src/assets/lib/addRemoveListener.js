@@ -1,7 +1,7 @@
 const addRemoveListener = (listener, stateListener, funcListener) => {
   // console.log("listener on removeListenerGen:", listener);
   // console.log("typeof listener on removeListenerGen:", typeof listener);
-  window.addEventListener(listener, (e) => {
+  window.addEventListener(listener, () => {
     // console.log("listen listenerEvent on removeListenerGen:", e);
     stateListener(funcListener);
   });
