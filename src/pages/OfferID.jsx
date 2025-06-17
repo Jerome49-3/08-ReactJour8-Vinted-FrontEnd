@@ -99,9 +99,18 @@ const OfferID = ({
 
   useEffect(() => {
     const setImgsLength = () => {
-      const imgsLength = data?.product_pictures.length - 1;
-      // console.log('imgsLength in useEffect in /offer/:id:', imgsLength);
-      if (data?.product_pictures.length > 2) {
+      let imgsLength;
+      console.log("imgsLength in useEffect in /offer/:id:", imgsLength);
+      if (data?.product_pictures?.length === 0) {
+        imgsLength = 1;
+        console.log("imgsLength in useEffect in /offer/:id:", imgsLength);
+        setImgsNbr(
+          document.documentElement.style.setProperty("--imgsLength", imgsLength)
+        );
+      }
+      if (data?.product_pictures?.length > 2) {
+        imgsLength = data?.product_pictures?.length;
+        console.log("imgsLength in useEffect in /offer/:id:", imgsLength);
         setImgsNbr(
           document.documentElement.style.setProperty("--imgsLength", imgsLength)
         );

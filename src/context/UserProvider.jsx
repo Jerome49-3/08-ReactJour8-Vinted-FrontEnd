@@ -233,12 +233,12 @@ export const UserProvider = ({ children }) => {
   //****************************************** //
   //********** listen event resize *********** //
   //****************************************** //
-  // useEffect(() => {
-  //   return addRemoveListener("resize", setDimensions, setDimWindows);
-  // }, [location.pathname]);
+  useEffect(() => {
+    return addRemoveListener("resize", () => setDimensions(setDimWindows));
+  }, [location.pathname]);
 
   useEffect(() => {
-    return addRemoveListener("load", setDimensions, setDimWindows);
+    return addRemoveListener("load", () => setDimensions(setDimWindows));
   }, [location.pathname]);
 
   //****************************************** //
