@@ -7,6 +7,10 @@ import CookieConsent from "react-cookie-consent";
 //stream
 import io from "socket.io-client";
 const socket = io(`${import.meta.env.VITE_REACT_APP_URL_CORS_IO}`);
+// console.log(
+//   "`${import.meta.env.VITE_REACT_APP_URL_CORS_IO}`",
+//   `${import.meta.env.VITE_REACT_APP_URL_CORS_IO}`
+// );
 
 //components
 import Hero from "../components/Hero";
@@ -30,6 +34,7 @@ const Home = ({
   faChevronCircleRight,
   countDoc,
   setCountDoc,
+  setDimDiv,
 }) => {
   // console.log("priceMin in Home:", priceMin);
   // console.log("priceMax in Home:", priceMax);
@@ -50,7 +55,6 @@ const Home = ({
     setNbrCards,
     dimWindows,
   } = useUser();
-  // console.log("nbrCards in /Home:", nbrCards);
   // console.log("data in /Home:", data);
   // console.log("data.length in /Home:", data?.length);
   // console.log("dimWindows in /Home:", dimWindows);
@@ -69,6 +73,9 @@ const Home = ({
   }, [search, priceMin, priceMax, axios, page]);
 
   useEffect(() => {
+    socket.on("connect", () => {
+      console.log("socket connected:", socket.id);
+    });
     socket.on("offerUpdated", (change) => {
       console.log("change:", change);
       fetchDataOfferHome(
@@ -82,6 +89,9 @@ const Home = ({
         setIsLoading,
         setErrorMessage
       );
+    });
+    socket.on("disconnect", () => {
+      console.log(socket.id);
     });
     return () => socket.off("offerUpdated");
   }, []);
@@ -103,21 +113,17 @@ const Home = ({
     </>
   ) : data?.length > 0 && countDoc !== 0 ? (
     <div className="boxHome">
-      <Hero />
+      <Hero isLoading={isLoading} setDimDiv={setDimDiv} />
       <div className="wrapper">
-        {dimWindows.width > 592 && (
+        {dimWindows.width > 592 && page > 1 && (
           <div className="boxContainerBtnChevron">
-            {page > 1 ? (
-              <Button
-                icon={faChevronCircleLeft}
-                classButton="btnChevronLeft"
-                handleClick={() => {
-                  setPage(page - 1);
-                }}
-              />
-            ) : (
-              <div className="btnChevronLeftOff"></div>
-            )}
+            <Button
+              icon={faChevronCircleLeft}
+              classButton="btnChevronLeft"
+              handleClick={() => {
+                setPage(page - 1);
+              }}
+            />
           </div>
         )}
         <OfferCard
@@ -130,9 +136,10 @@ const Home = ({
           faChevronCircleRight={faChevronCircleRight}
           page={page}
         />
-        {dimWindows.width > 592 && (
-          <div className="boxContainerBtnChevron">
-            {data?.length >= items && items < data?.length ? (
+        {dimWindows.width > 592 &&
+          data?.length >= items &&
+          items < data?.length && (
+            <div className="boxContainerBtnChevron">
               <Button
                 icon={faChevronCircleRight}
                 classButton="btnChevronRight"
@@ -140,11 +147,8 @@ const Home = ({
                   setPage(page + 1);
                 }}
               />
-            ) : (
-              data?.length < items && <div className="btnChevronLeftOff"></div>
-            )}
-          </div>
-        )}
+            </div>
+          )}
 
         <CookieConsent
           location="bottom"

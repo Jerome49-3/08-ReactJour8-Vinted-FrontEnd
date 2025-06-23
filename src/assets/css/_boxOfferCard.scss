@@ -1,37 +1,32 @@
 /* ARTICLE */
 .boxOfferCard {
   @include flexColCenter;
-  // flex-wrap: wrap;
   width: 100%;
+  padding: 5px 0 5px 0;
   gap: 10px;
-  padding: 0 5px 0 5px;
 
-  // & a:first-child {
-  //   margin-left: 5px;
-  // }
+  & a:first-child {
+    margin-left: 5px;
+  }
 
   & a {
-    width: 100%;
+    height: 280px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: #f1f1f1;
+    box-shadow: 0px 0px 1.5px $black, 0.15px 0.15px 1px $black;
+    position: relative;
+    font-size: 1.15rem;
+    border-radius: 5px;
+    transition: all 0.5s;
 
-    & article {
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      width: 100%;
-      gap: 5px;
-      min-height: 350px;
-      background-color: #f1f1f1;
-      box-shadow: 0px 0px 1.5px $black, 0.15px 0.15px 1px $black;
-      position: relative;
-      font-size: 1.15rem;
-      border-radius: 5px;
-      transition: all 0.5s;
-
-      &:hover {
-        box-shadow: 0px 0px 5px $black, 0.15px 0.15px 1px $black;
-      }
+    &:hover {
+      box-shadow: 0px 0px 5px $black, 0.15px 0.15px 1px $black;
     }
+
 
     .boxImgArticle {
       width: 100%;
@@ -42,18 +37,14 @@
       box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
       -moz-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
       -webkit-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
-      height: calc(100%);
-      max-height: 300px;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
-
-      // border: 2px solid blue;
+      height: calc(100% - 50px);
 
       .imgArticle {
         display: block;
         width: 100%;
         height: 100%;
-        max-height: 300px;
         -o-object-fit: cover;
         object-fit: cover;
         border-top-left-radius: 5px;
@@ -73,32 +64,12 @@
 
       .imgsArticle {
         width: calc(100% / var(--imgsLength));
-        height: 100%;
-      }
-    }
-
-    .boxUser {
-      @include flexStart;
-      gap: 10px;
-      width: 100%;
-      height: 50px;
-      padding: 5px 10px 5px 10px;
-
-      & h5 {
-        font-weight: 700;
-        font-size: 20px;
-        text-shadow: 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black, 1px 1px 1px $black, 0px 0px 5px $black;
-      }
-
-      .imgAvatar {
-        height: 30px;
-        width: 30px;
       }
     }
 
     .boxTrashHearth {
       position: absolute;
-      top: 80%;
+      top: 75%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 100%;
@@ -125,10 +96,10 @@
         @include flexCenter;
         font-size: 1.25rem;
 
-        // .svg-inline--fa {
-        //   -webkit-filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
-        //   filter: drop-shadow(0.25px 0.25px 1px $black) drop-shadow(0.5px 0.5px 1px $black);
-        // }
+        .svg-inline--fa {
+          -webkit-filter: drop-shadow(0.25px 0.25px 1px $black);
+          filter: drop-shadow(0.25px 0.25px 1px $black);
+        }
       }
 
       .btnTrash {
@@ -146,11 +117,10 @@
     }
 
     .footerArticle {
-      padding: 5px 10px 5px 10px;
-      gap: 5px;
       width: 100%;
-      height: 50px;
       @include flexBetween;
+      height: 50px;
+      padding: 0 5px 0 5px;
 
       .boxNameMarque,
       .price {
@@ -187,10 +157,7 @@
 
     & a {
       width: calc(100% / 2.1);
-
-      & article {
-        width: 95%;
-      }
+      width: 95%;
     }
   }
 }
@@ -200,15 +167,15 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0;
+    gap: 22px;
 
     & a {
       width: calc(100% / 2.1) !important;
+      height: 280px;
+      max-height: 280px;
 
-
-      & article {
-        width: 100%;
-
+      .boxTrashHearth {
+        top: 80%;
       }
     }
   }
@@ -226,8 +193,8 @@
 @media all and (min-width : 1200px) {
   .boxOfferCard {
     @include flexStart;
-    gap: 22px;
-    height: 48vh;
+    align-items: flex-start;
+    // gap: 22px;
     width: calc(100% - 60px);
     overflow-x: hidden;
     overflow-y: hidden;
@@ -238,24 +205,19 @@
       @include flexStart;
       min-width: calc(100% / 5.5) !important;
       max-width: calc(100% / 5.5) !important;
-      height: 100%;
 
-      & article {
-        min-height: fit-content !important;
-        height: calc(80%);
-
-        .boxTrashHearth {
-          top: 75% !important;
-        }
+      .boxTrashHearth {
+        top: 75% !important;
       }
+
     }
   }
 }
 
 
 @media all and (min-width : 1400px) {
-  .boxOfferCard {
-    gap: 21px;
-    height: 48vh;
-  }
+  // .boxOfferCard {
+  //   gap: 21px;
+  //   height: 100%;
+  // }
 }

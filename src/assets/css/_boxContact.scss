@@ -2,69 +2,79 @@
   @include flexColCenter;
   width: 50%;
   gap: 10px;
-  height: 100%;
+  height: calc(100% - var(--divHeight) - 100px);
 
-  .boxMenuSelect {
-    padding: 5px 0 5px 0;
-    width: 100%;
-    position: relative;
-    display: inline-block;
+  & form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    gap: 10px;
 
-    .boxSubject {
-      @include flexBetween;
+    .boxMenuSelect {
+      padding: 5px 0 5px 0;
       width: 100%;
+      position: relative;
+      display: inline-block;
 
-      & select {
-        outline: none;
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
+      .boxSubject {
+        @include flexBetween;
         width: 100%;
-        background-color: transparent;
-        border: none;
-        @include textShadow;
-        color: $white;
-        padding: 2px 0px 2px 5px;
-        -webkit-filter: none;
-        filter: none;
 
-        &::-ms-expand {
-          display: none;
-        }
-
-        & option {
-          border-radius: none;
-          background-color: $vertVinted;
-        }
-
-        &:focus {
-          padding: 2px 0px 2px 5px;
+        & select {
+          outline: none;
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
           width: 100%;
-          -webkit-animation: appearBlur 3s ease-in-out 1 normal forwards;
-          animation: appearBlur 3s ease-in-out 1 normal forwards;
+          background-color: transparent;
+          border: none;
+          @include textShadow;
+          color: $white;
+          padding: 2px 0px 2px 5px;
+          -webkit-filter: none;
+          filter: none;
+
+          &::-ms-expand {
+            display: none;
+          }
+
+          & option {
+            border-radius: none;
+            background-color: $vertVinted;
+          }
+
+          &:focus {
+            padding: 2px 0px 2px 5px;
+            width: 100%;
+            -webkit-animation: appearBlur 3s ease-in-out 1 normal forwards;
+            animation: appearBlur 3s ease-in-out 1 normal forwards;
+          }
         }
-      }
 
-      .wrapperSelect {
-        overflow: hidden;
-        position: relative;
-        width: 200px;
-        background-color: $vertVinted;
-        border-radius: 5px;
-        padding: 2px 0px 2px 5px;
-      }
+        .wrapperSelect {
+          overflow: hidden;
+          position: relative;
+          width: 200px;
+          background-color: $vertVinted;
+          border-radius: 5px;
+          padding: 2px 0px 2px 5px;
+        }
 
-      .wrapperSelect:after {
-        content: "▼";
-        font-size: 0.8rem;
-        pointer-events: none;
-        position: absolute;
-        right: 0.2rem;
-        top: 0.3rem;
-        z-index: 1;
-        border-radius: 5px;
-        @include textShadow;
+        .wrapperSelect:after {
+          content: "▼";
+          font-size: 0.8rem;
+          pointer-events: none;
+          position: absolute;
+          right: 0.2rem;
+          top: 0.3rem;
+          z-index: 1;
+          border-radius: 5px;
+          @include textShadow;
+        }
       }
     }
   }
+
 }

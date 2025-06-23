@@ -115,7 +115,11 @@ section {
 body {
   line-height: 1;
 }
-
+div#root > main.mainLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 ol,
 ul {
   list-style: none;
@@ -175,110 +179,28 @@ table {
   .dark .boxPsswd,
   .dark .boxModalContentSignUp,
   .dark .classInputCode,
-  .dark .boxForm .wrapper form .boxPicTop .boxPicBottomEmpty {
+  .dark .boxForm .wrapper form .boxPicTop .boxPicBottomEmpty,
+  .dark > .boxOfferId > .wrapper > .top > .right,
+  .dark > .boxPicTop,
+  .dark > .boxForm > .wrapper > .boxPicTop > .boxPicBottom,
+  .dark
+    .boxOfferIdUpdateAndDelete
+    .wrapper
+    .right
+    .boxOfferIdUpdateInput
+    .classLabelInput
+    input {
     background-color: var(--backDarkLink) !important;
     color: var(--lightMode);
   }
-  /* .dark .boxOffer .wrapper article .right,
-  .dark .boxOffer .wrapper article .left {
-    background-color: var(--darkModeHeader);
-  } */
-  /* .dark .boxUsers a,
-  .dark * input:not(input[type="submit"]),
-  .dark .boxSearch,
-  .dark .boxPsswd,
-  .dark .boxPsswd .boxIcons svg,
-  .dark textarea,
-  .dark * form * input:not(input[type="submit"]),
-  .dark .boxModalContent .boxFormSignUp label input:not(input[type="submit"]),
-  .dark .boxLogin .wrapper form label input:not(input[type="submit"]) {
-    background-color: var(--backDarkLink) !important;
-    color: var(--lightMode) !important;
-  } */
-  /* .dark .boxDashboard .top .left .boxDetails .boxLastUsers .boxUsers a {
-    background-color: var(--backDarkLastUsersBoxUser) !important;
-  } */
-  /* .dark header * button {
-    color: var(--vertVintaidBtn);
-  } */
-  /* .dark header nav ul li button,
-  .dark header nav ul li a,
-  .light header button,
-  .dark header .buttonSignIn button p,
-  .dark * a:link p {
-    color: var(--headerLibackgd);
-  } */
-  /* .dark header .linkPublish,
-  .dark .labelContent {
-    color: var(--lightMode);
-  } */
-  /* .dark .boxShoppingCart .shoppingCart,
-  .dark .boxShoppingCart .shoppingCart .top,
-  .dark .boxShoppingCart .shoppingCart .bottom,
-  .dark .boxModalContent,
-  .dark .boxShoppingCart .shoppingCart .bottom > * > span {
-    background-color: #28282b;
-    color: var(--lightMode);
-  } */
-
-  /* .dark button p {
-    color: var(--lightMode);
-  } */
-
-  /* LIGHT MODE */
-  /* .light {
-    background-color: var(--lightMode);
-    color: var(--black);
-
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      box-shadow: 0px 0px 2.5px var(--headerLibackgd),
-        0.5px 0.5px 2.5px var(--headerLibackgd);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #888;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-    /* Footer Header*/
-  /* footer,
-  header {
-    background-color: var(--backgHeader);
-  } */
-  /* .light #root {
-    background-color: var(--lightMode);
+  .dark
+    .boxOfferIdUpdateAndDelete
+    .wrapper
+    .right
+    .boxOfferIdUpdateInput
+    .classLabelInput {
+    background-color: transparent !important;
   }
-  .light .boxPicTop {
-    border: 2px solid var(--vertVintLight);
-  }
-  .light * a {
-    text-shadow: 0px 0px 3px #000000, 0.25px 0.25px 1px #000000,
-      0.5px 0.5px 1px #000000, 1px 1px 1px #000000;
-  }
-  .light .boxPicTop,
-  .light .boxForm textarea,
-  .light .boxForm .wrapper form label input:not(input[type="submit"]),
-  .light .topHeader .containerBoxSearch .boxSearch,
-  .light .topHeader .containerBoxSearch .boxSearch .classLabelInput input,
-  .light .boxForm .wrapper form label textarea {
-    background-color: var(--backLightInput) !important;
-  } */
-  /* .light .boxLogin .wrapper form label {
-      background-color: white;
-    } */
-  /* .light .boxLastUsers .boxUsers a {
-      background-color: var(--backgHeader);
-    }
-    .light .boxForm textarea,
-    .light .boxForm input:not([type="submit"]),
-    .light .topHeader .containerBoxSearch input,
-    .light .boxFormSignUp * input:not([type="submit"]) {
-      color: var(--black);
-    } */
 }
 
 /* input[type="file"] */
@@ -297,8 +219,27 @@ a p {
   color: #2db0ba;
 }
 /* div#root && main.mainLayout */
-div#root,
-main.mainLayout {
-  height: 100vh;
+div#root {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @media all and (min-width: 768px) {
+    height: var(--fixHeight);
+  }
+  @media all and (max-width: 768px) {
+    .boxMyOffers,
+    .boxFavorites,
+    .boxContact {
+      padding: 90px 0 60px 0;
+    }
+  }
 }
+.mainLayout {
+  /* height: calc(var(--fixHeight) - 80px); */
+  width: var(--fixWidth);
+}
+/* .mainLayoutNoheight {
+  height: fit-content !important;
+} */

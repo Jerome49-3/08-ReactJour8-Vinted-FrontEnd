@@ -57,49 +57,51 @@ const Contact = () => {
   };
 
   return (
-    <form onSubmit={handleData} className="boxContact">
-      <div className="boxMenuSelect">
-        <div className="boxSubject">
-          <h3>Subject:</h3>
-          <SelectOptions
-            values={["compte", "transactions", "offres", "other", "subject"]}
-            selected="subject"
-            selectName="catégories"
-            OptionValue={optionValue}
-            setOptionValue={setOptionValue}
-          />
+    <div className="boxContact">
+      <form onSubmit={handleData}>
+        <div className="boxMenuSelect">
+          <div className="boxSubject">
+            <h3>Subject:</h3>
+            <SelectOptions
+              values={["compte", "transactions", "offres", "other", "subject"]}
+              selected="subject"
+              selectName="catégories"
+              OptionValue={optionValue}
+              setOptionValue={setOptionValue}
+            />
+          </div>
         </div>
-      </div>
-      {optionValue === "transactions" && (
-        <Input
-          value={numberCommand || ""}
-          id="numberCommand"
-          type="numberCommand"
-          placeholder="number of command"
-          setState={setNumberCommand}
+        {optionValue === "transactions" && (
+          <Input
+            value={numberCommand || ""}
+            id="numberCommand"
+            type="numberCommand"
+            placeholder="number of command"
+            setState={setNumberCommand}
+          />
+        )}
+        {optionValue === "offres" && (
+          <Input
+            value={numberOffer || ""}
+            id="numberOffer"
+            type="numberOffer"
+            placeholder="number of offer"
+            setState={setNumberOffer}
+          />
+        )}
+        <TextArea
+          name="messageContact"
+          value={messageContact || ""}
+          type="text"
+          placeholder="message"
+          setState={setMessageContact}
+          classLabel="labelTxtContact"
         />
-      )}
-      {optionValue === "offres" && (
-        <Input
-          value={numberOffer || ""}
-          id="numberOffer"
-          type="numberOffer"
-          placeholder="number of offer"
-          setState={setNumberOffer}
-        />
-      )}
-      <TextArea
-        name="messageContact"
-        value={messageContact || ""}
-        type="text"
-        placeholder="message"
-        setState={setMessageContact}
-        classLabel="labelTxtContact"
-      />
-      <LoadedInputSubmit isSended={isSended} setIsSended={setIsSended} />
-      {errorMessage && <p className="red">{errorMessage}</p>}
-      {infoUser && <p className="green">{infoUser}</p>}
-    </form>
+        <LoadedInputSubmit isSended={isSended} setIsSended={setIsSended} />
+        {errorMessage && <p className="red">{errorMessage}</p>}
+        {infoUser && <p className="green">{infoUser}</p>}
+      </form>
+    </div>
   );
 };
 

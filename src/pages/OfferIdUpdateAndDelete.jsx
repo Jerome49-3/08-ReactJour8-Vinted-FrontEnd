@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useNavigate, useParams } from "react-router-dom";
 import { useUser } from "../assets/lib/userFunc";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 //components
 // import Image from "../components/Image";
 import Loading from "../components/Loading";
@@ -14,10 +14,6 @@ import InputArrayObject from "../components/InputArrayObject";
 import InputArrayPictures from "../components/InputArrayPictures";
 // import InputFileAvatar from "../components/InputFileAvatar";
 import Trash from "../components/Trash";
-
-//lib
-import listenDimDiv from "../assets/lib/listenDimDiv";
-import addRemoveListener from "../assets/lib/addRemoveListener";
 
 const OfferIdUpdateAndDelete = ({ faTrash }) => {
   const { id } = useParams();
@@ -36,9 +32,7 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
   // console.log("productDetails in OfferIdUpdateAndDelete:", productDetails);
   const [imgsNbr, setImgsNbr] = useState(null);
   const [imgSupp, setImgSupp] = useState([]);
-  const [dimDiv, setDimDiv] = useState({});
   // console.log("imgSupp in OfferIdUpdateAndDelete:", imgSupp);
-  const refDiv = useRef(0);
   const {
     setIsSended,
     isSended,
@@ -144,13 +138,6 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
       }, 3000);
     }
   };
-  // useEffect(() => {
-  //   if (isLoading !== true) {
-  //     return addRemoveListener("load", () => {
-  //       listenDimDiv(refDiv, setDimDiv);
-  //     });
-  //   }
-  // }, [isLoading]);
 
   const handleSuppOffers = async (e, data) => {
     // console.log("data?._id in OfferIdUpdateAndDelete:", data?._id);
@@ -184,7 +171,7 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
       onSubmit={handleUpdateOffer}
     >
       <div className="wrapper">
-        <div className="left" ref={refDiv}>
+        <div className="left">
           <InputArrayPictures
             labelTxt="Choose your new picture"
             pictures={pictures}

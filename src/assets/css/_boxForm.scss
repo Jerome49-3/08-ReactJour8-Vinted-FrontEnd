@@ -2,161 +2,188 @@
 .boxForm {
   width: 100%;
   display: flex;
-  height: calc(var(--fixHeight));
+  justify-content: center;
+  align-items: center;
+  height: var(--fixHeight);
 
   .wrapper {
-    height: 100%;
+    @include flexColCenter;
+    height: calc(100% - 140px);
+    margin-top: auto;
+    margin-bottom: auto;
 
     & form {
       @include flexColCenter;
       width: 100%;
-      height: calc(var(--fixHeight) - 100px);
-      // #pictures {
-      //   display: none;
-      // }
+      height: 100%;
+      margin-top: 20px;
+    }
 
-      .boxPicTop {
+    // #pictures {
+    //   display: none;
+    // }
+
+    .boxPicTop {
+      width: 100%;
+      @include flexColStart;
+      background-color: #ededed;
+      margin-top: 5px;
+
+
+      .boxPicBottomEmpty {
+        padding: 110px;
+      }
+
+      .boxPicBottom,
+      .boxPicBottomEmpty {
+        @include flexStart;
         width: 100%;
-        @include flexColStart;
-        background-color: #ededed;
+        border: 2px dashed $vertVinted;
+        gap: 5px;
+        flex-wrap: wrap;
+        position: relative;
 
+        #labelPic {
+          @include flexCenter;
+          width: -webkit-fit-content;
+          width: -moz-fit-content;
+          width: fit-content;
+          color: $vertVinted;
+          font-size: 1.5rem;
+          font-weight: 800;
+          border: 2px solid $vertVinted;
+          background-color: $white;
+          padding: 5px 10px 5px 10px;
+          border-radius: 5px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 5;
+          box-shadow: 0px 0px 2px $black, 1px 1px 2px $black;
+          transition: all 1s ease-in-out;
 
-        .boxPicBottomEmpty {
-          padding: 110px;
+          &:active {
+            box-shadow: inset 0px 0px 2px $black, inset 0px 0px 5px $black;
+          }
         }
+      }
 
-        .boxPicBottom,
-        .boxPicBottomEmpty {
-          @include flexStart;
+      .boxPicBottom {
+        padding: 2px;
+
+        .viewPics {
           width: 100%;
-          border: 2px dashed $vertVinted;
-          gap: 5px;
-          flex-wrap: wrap;
           position: relative;
 
-          #labelPic {
-            @include flexCenter;
-            width: -webkit-fit-content;
-            width: -moz-fit-content;
-            width: fit-content;
+          & img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            display: block;
+            object-position: top;
+          }
+
+          .suppFiles {
+            @include btn;
+            width: 20px;
+            height: 20px;
             color: $vertVinted;
-            font-size: 1.5rem;
-            font-weight: 800;
-            border: 2px solid $vertVinted;
             background-color: $white;
-            padding: 5px 10px 5px 10px;
+            border: 2px solid $vertVinted;
+            @include flexCenter;
             border-radius: 5px;
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 8%;
+            left: 90%;
             transform: translate(-50%, -50%);
-            z-index: 500;
-            box-shadow: 0px 0px 2px $black, 1px 1px 2px $black;
-            transition: all 1s ease-in-out;
 
-            &:active {
-              box-shadow: inset 0px 0px 2px $black, inset 0px 0px 5px $black;
-            }
-          }
-        }
-
-        .boxPicBottom {
-          padding: 2px;
-
-          .viewPics {
-            width: 100%;
-            position: relative;
-
-            & img {
-              width: 100%;
-              height: 100%;
-              -o-object-fit: cover;
-              object-fit: cover;
-              display: block;
-              object-position: top;
-            }
-
-            .suppFiles {
-              @include btn;
-              width: 20px;
-              height: 20px;
-              color: $vertVinted;
+            &:hover {
               background-color: $white;
-              border: 2px solid $vertVinted;
-              @include flexCenter;
-              border-radius: 5px;
-              position: absolute;
-              top: 8%;
-              left: 90%;
-              transform: translate(-50%, -50%);
-
-              &:hover {
-                background-color: $white;
-                color: red;
-              }
+              color: red;
             }
           }
         }
       }
+    }
 
-      .boxInputFormPublish {
-        // width: 100%;
-        // display: flex;
-        // flex-direction: column;
-        // justify-content: space-between;
-        // align-items: center;
-        // height: auto;
-        // gap: 15px;
+    .boxInputFormPublish {
+      gap: 10px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      flex: 1;
+      padding: 10px 0 0 0;
+
+      .productPriceAndQuantity,
+      .brandAndSize,
+      .conditionAndColor {
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        flex: 1;
-        padding-top: 20px;
+        @include flexBetween;
+        gap: 10px;
 
-        .productPriceAndQuantity,
-        .brandAndSize,
-        .conditionAndColor {
-          width: 100%;
-          @include flexBetween;
-          gap: 10px;
+        .classLabelInput {
+          width: calc(50% - 5px);
+        }
+      }
 
-          .classLabelInput {
-            width: calc(50% - 5px);
+      .labelTxtContact {
+        margin-top: 2.5px;
+        margin-bottom: 2.5px;
+      }
+
+      .classLabelInput,
+      .labelTxtContact {
+        min-height: 30px;
+      }
+    }
+
+    .classLabelInputSubmit {
+      width: 100%;
+    }
+
+    .boxLoaded {
+      width: 100%;
+    }
+  }
+}
+
+@media all and (min-width: 768px) {
+  .boxForm {
+    height: calc(var(--fixHeight) - 100px);
+    padding: 0;
+
+    .wrapper {
+      height: 100%;
+
+      & form {
+        height: 100%;
+        gap: 2.5px;
+        margin-top: 0;
+
+        .boxPicTop {
+          margin-top: 10px;
+        }
+
+        .boxInputFormPublish {
+          padding: 10px 0 15px 0;
+
+          .classLabelInput,
+          .labelTxtContact,
+          .labelTxtContact textarea {
+            min-height: 15px;
+            height: 15px !important;
           }
         }
-
-        .labelTxtContact {
-          margin-top: 2.5px;
-          margin-bottom: 2.5px;
-        }
-
-        .classLabelInput,
-        .labelTxtContact {
-          min-height: 30px;
-        }
-      }
-
-      .classLabelInputSubmit {
-        width: 100%;
-      }
-
-      .boxLoaded {
-        width: 100%;
       }
     }
   }
 }
 
-@media all and (min-width: 768px) {}
-
-@media all and (min-width: 992px) {
-  .boxPicBottom {
-    padding: 2px 0px 2px 2px;
-  }
-
-}
+// @media all and (min-width: 992px) {}
 
 @media all and (min-width: 1200px) {
   .boxForm {
@@ -181,4 +208,36 @@
   }
 }
 
-@media all and (min-width: 1400px) {}
+@media all and (min-width: 1400px) {
+  .boxForm {
+
+    .wrapper {
+      & form {
+
+        .boxPicTop {
+          .boxPicBottom {
+
+            .viewPics {
+              width: calc(100%/4.06);
+
+              & img {
+                height: 220px;
+              }
+            }
+          }
+        }
+
+        .boxInputFormPublish {
+
+          .classLabelInput,
+          .labelTxtContact,
+          .labelTxtContact textarea {
+            min-height: 30px;
+            height: 30px !important;
+          }
+        }
+      }
+    }
+  }
+
+}

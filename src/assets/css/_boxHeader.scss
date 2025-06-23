@@ -6,10 +6,10 @@ header {
   background-color: var(--backgHeader);
   position: fixed;
   top: 0;
-  z-index: 600;
+  z-index: 10;
+  height: 120px;
 
   .wrapper {
-    @include flexCenter;
 
     .topHeader {
       @include flexColCenter;
@@ -185,6 +185,10 @@ header {
   }
 }
 
+.headerBigScreen {
+  height: 90px !important;
+}
+
 .boxUser:active .imgAvatar {
   width: 20px;
   height: 20px;
@@ -216,10 +220,15 @@ header {
 @media all and (min-width : 576px) {}
 
 @media all and (min-width: 768px) {
-  nav {
-    ul {
-      display: flex;
-      flex-direction: row !important;
+  header {
+    max-height: 50px;
+    height: 100%;
+
+    nav {
+      ul {
+        display: flex;
+        flex-direction: row !important;
+      }
     }
   }
 }
@@ -228,8 +237,6 @@ header {
 
 @media all and (min-width : 1200px) {
   header {
-    height: 40px;
-
     .wrapper {
       .topHeader {
         flex-direction: row;

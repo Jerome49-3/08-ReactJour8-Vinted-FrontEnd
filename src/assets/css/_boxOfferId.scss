@@ -1,23 +1,16 @@
 .boxOfferId {
   width: 100%;
-  height: 100vh;
-  padding-top: 15px;
+  padding: 90px 0 60px 0;
+  // height: calc(var(--fixHeight) - (80px + 50px));
 
   .wrapper {
     @include flexColCenter;
-    height: 100vh;
-
-    // .top,
-    // .right {
-    //   height: 100%;
-    // }
 
     .top {
       @include flexColCenter;
       // border: 1px solid purple;
       gap: 10px;
       width: 100%;
-      height: 82vh;
 
       * {
         margin: 0;
@@ -129,7 +122,6 @@
         gap: 10px;
         background-color: var(--backLightInput);
         @include flexColBetween;
-        height: 50%;
 
         .title {
           width: 100%;
@@ -191,20 +183,26 @@
 
           .down {
             width: 100%;
-            @include flexColStart;
+            @include flexCenter;
             gap: 10px;
 
+            .boxUser,
+            .boxLinks {
+              width: 50%;
+            }
 
             .boxUser {
-              width: 100%;
               @include flexStart;
               gap: 20px;
             }
 
             .boxLinks {
-              width: 100%;
               @include flexStart;
               gap: 10px;
+
+              & a {
+                padding: 5px;
+              }
 
               & a,
               .btnTrash {
@@ -229,7 +227,30 @@
 // BREAKPOINTS
 // @media all and (min-width : 576px) {}
 
-// @media all and (min-width : 768px) {}
+@media all and (min-width : 768px) {
+  .boxOfferId {
+    height: calc(var(--fixHeight) - 80px);
+
+    .wrapper {
+      height: 100%;
+      padding: 10px 0 10px 0;
+
+      .top {
+        height: 82vh;
+        padding: 10px 0 10px 0;
+
+        .down {
+          flex-direction: column !important;
+
+          .boxUser,
+          .boxLinks {
+            width: 100% !important;
+          }
+        }
+      }
+    }
+  }
+}
 
 @media all and (min-width : 992px) {
   .boxOffer {

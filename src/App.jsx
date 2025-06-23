@@ -51,13 +51,15 @@ import Cookies from "js-cookie";
 import SignUp from "./components/SignUp";
 import ImgsModal from "./components/ImgsModal";
 import Aside from "./components/Aside";
-import AppLayout from "./Layout/AppLayout";
+// import AppLayout from "./Layout/AppLayout";
 import ErrorPage from "./errorPage/ErrorPage";
 import Profile from "./components/Profile";
 import DashboardUsers from "./components/DashboardUsers";
 import DashboardMessages from "./components/DashboardMessages";
 import DashboardOffers from "./components/DashboardOffers";
 import DashboardSales from "./components/DashboardSales";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 //Layout
 import PrivateLayout from "./Layout/PrivateLayout";
 
@@ -125,98 +127,243 @@ function App() {
   //********** State quantity for publish, offerId and payment ***********/
   let [quantity, setQuantity] = useState(0);
   console.log("quantity in app:", quantity);
+  //********** State dimensions div Hero ***********/
+  const [dimDiv, setDimDiv] = useState({});
   //**********************************************************************/
   //**********************************************************************/
   return (
     <Router>
       <UserProvider>
+        <Header
+          showSignUp={showSignUp}
+          setShowSignUp={setShowSignUp}
+          search={search}
+          setSearch={setSearch}
+          showToggleNav={showToggleNav}
+          setShowToggleNav={setShowToggleNav}
+          faFilter={faFilter}
+          showFilter={showFilter}
+          setShowFilter={setShowFilter}
+        />
         <Routes>
           <Route
             path="/*"
             element={
-              <AppLayout
-                showSignUp={showSignUp}
-                setShowSignUp={setShowSignUp}
+              // <AppLayout
+              //   showSignUp={showSignUp}
+              //   setShowSignUp={setShowSignUp}
+              //   search={search}
+              //   setSearch={setSearch}
+              //   showToggleNav={showToggleNav}
+              //   setShowToggleNav={setShowToggleNav}
+              //   faFilter={faFilter}
+              //   showFilter={showFilter}
+              //   setShowFilter={setShowFilter}
+              // />
+              <Home
                 search={search}
-                setSearch={setSearch}
+                faHeart={faHeart}
+                farHeart={farHeart}
                 showToggleNav={showToggleNav}
                 setShowToggleNav={setShowToggleNav}
-                faFilter={faFilter}
+                priceMin={priceMin}
+                priceMax={priceMax}
                 showFilter={showFilter}
                 setShowFilter={setShowFilter}
+                page={page}
+                setPage={setPage}
+                faChevronCircleLeft={faChevronCircleLeft}
+                faChevronCircleRight={faChevronCircleRight}
+                countDoc={countDoc}
+                setCountDoc={setCountDoc}
               />
             }
-          >
-            <Route path="*" errorElement={<ErrorPage />} />
+          />
+          {/* <Route path="*" errorElement={<ErrorPage />} /> */}
+          <Route
+            path="login"
+            element={
+              <Login
+                type={type}
+                setType={setType}
+                faEye={faEye}
+                faEyeSlash={faEyeSlash}
+              />
+            }
+          />
+          <Route
+            path="confirmEmail"
+            element={
+              <ConfirmEmail
+                emailSended={emailSended}
+                setEmailIsConfirmed={setEmailIsConfirmed}
+                setEmailSended={setEmailSended}
+              />
+            }
+          />
+          <Route
+            path="resendEmailPsswd"
+            element={<ResetPsswd setEmailSended={setEmailSended} />}
+          />
+          <Route
+            path="forgotPassword"
+            element={
+              <ForgotPsswd
+                emailIsConfirmed={emailIsConfirmed}
+                type={type}
+                setType={setType}
+                faEye={faEye}
+                faEyeSlash={faEyeSlash}
+                type2={type2}
+                setType2={setType2}
+              />
+            }
+          />
+          <Route
+            index
+            element={
+              <Home
+                search={search}
+                faHeart={faHeart}
+                farHeart={farHeart}
+                showToggleNav={showToggleNav}
+                setShowToggleNav={setShowToggleNav}
+                priceMin={priceMin}
+                priceMax={priceMax}
+                showFilter={showFilter}
+                setShowFilter={setShowFilter}
+                page={page}
+                setPage={setPage}
+                faChevronCircleLeft={faChevronCircleLeft}
+                faChevronCircleRight={faChevronCircleRight}
+                countDoc={countDoc}
+                setCountDoc={setCountDoc}
+                setDimDiv={setDimDiv}
+              />
+            }
+          />
+          <Route
+            path="offers/:id"
+            element={
+              <OfferID
+                setDataShoppingCart={setDataShoppingCart}
+                showImgsModal={showImgsModal}
+                setShowImgsModal={setShowImgsModal}
+                setSrcImgsModal={setSrcImgsModal}
+                faTrash={faTrash}
+                price={price}
+                setPrice={setPrice}
+                quantity={quantity}
+                setQuantity={setQuantity}
+              />
+            }
+          />
+          <Route element={<PrivateLayout />}>
+            <Route path="contact" element={<Contact />} />
             <Route
-              path="login"
+              path="dashboard/*"
               element={
-                <Login
-                  type={type}
-                  setType={setType}
-                  faEye={faEye}
-                  faEyeSlash={faEyeSlash}
-                />
-              }
-            />
-            <Route
-              path="confirmEmail"
-              element={
-                <ConfirmEmail
-                  emailSended={emailSended}
-                  setEmailIsConfirmed={setEmailIsConfirmed}
-                  setEmailSended={setEmailSended}
-                />
-              }
-            />
-            <Route
-              path="resendEmailPsswd"
-              element={<ResetPsswd setEmailSended={setEmailSended} />}
-            />
-            <Route
-              path="forgotPassword"
-              element={
-                <ForgotPsswd
-                  emailIsConfirmed={emailIsConfirmed}
-                  type={type}
-                  setType={setType}
-                  faEye={faEye}
-                  faEyeSlash={faEyeSlash}
-                  type2={type2}
-                  setType2={setType2}
-                />
-              }
-            />
-            <Route
-              index
-              element={
-                <Home
+                <Dashboard
+                  faNewspaper={faNewspaper}
+                  faXmark={faXmark}
+                  faUserTie={faUserTie}
+                  faUser={faUser}
                   search={search}
+                  searchUsers={searchUsers}
+                  numberCommand={numberCommand}
+                  setNumberCommand={setNumberCommand}
+                  searchTransactions={searchTransactions}
+                  setSearchTransactions={setSearchTransactions}
+                  setSearchUsers={setSearchUsers}
+                />
+              }
+            >
+              <Route
+                path="dashUsers/"
+                element={
+                  <DashboardUsers
+                    faNewspaper={faNewspaper}
+                    faXmark={faXmark}
+                    faUserTie={faUserTie}
+                    faUser={faUser}
+                    searchUsers={searchUsers}
+                  />
+                }
+              />
+              <Route path="dashMessages/" element={<DashboardMessages />} />
+              <Route path="dashOffers/" element={<DashboardOffers />} />
+              <Route
+                path="dashSales/"
+                element={
+                  <DashboardSales
+                    numberCommand={numberCommand}
+                    setNumberCommand={setNumberCommand}
+                    searchTransactions={searchTransactions}
+                    setSearchTransactions={setSearchTransactions}
+                  />
+                }
+              />
+            </Route>
+            <Route path="chat" element={<Chat />} />
+            <Route path="profile/:id" element={<Profile faTrash={faTrash} />} />
+            <Route
+              path="messagesContactId/:id"
+              element={<MessagesContactId />}
+            />
+            <Route
+              path="payment"
+              element={
+                <Payment
+                  dataShoppingCart={dataShoppingCart}
+                  setDataShoppingCart={setDataShoppingCart}
+                />
+              }
+            />
+            <Route
+              path="favorites"
+              element={<Favorites faHeart={faHeart} farHeart={farHeart} />}
+            />
+            <Route
+              path="userId/:id"
+              element={
+                <UserId
+                  faUserTie={faUserTie}
+                  faNewspaper={faNewspaper}
+                  faXmark={faXmark}
+                  faUser={faUser}
+                  faTrash={faTrash}
+                />
+              }
+            />
+            <Route path="transactions/:id" element={<Transactions />} />
+            <Route
+              path="myOffers"
+              element={
+                <MyOffers
                   faHeart={faHeart}
                   farHeart={farHeart}
-                  showToggleNav={showToggleNav}
-                  setShowToggleNav={setShowToggleNav}
-                  priceMin={priceMin}
-                  priceMax={priceMax}
-                  showFilter={showFilter}
-                  setShowFilter={setShowFilter}
-                  page={page}
-                  setPage={setPage}
-                  faChevronCircleLeft={faChevronCircleLeft}
-                  faChevronCircleRight={faChevronCircleRight}
-                  countDoc={countDoc}
-                  setCountDoc={setCountDoc}
+                  showNoOffer={showNoOffer}
+                  setShowNoOffer={setShowNoOffer}
+                  faTrash={faTrash}
                 />
               }
             />
             <Route
-              path="offers/:id"
+              path="my-purchases"
               element={
-                <OfferID
-                  setDataShoppingCart={setDataShoppingCart}
-                  showImgsModal={showImgsModal}
-                  setShowImgsModal={setShowImgsModal}
-                  setSrcImgsModal={setSrcImgsModal}
+                <MyPurchases
+                  faHeart={faHeart}
+                  farHeart={farHeart}
+                  // showNoOffer={showNoOffer}
+                  // setShowNoOffer={setShowNoOffer}
+                />
+              }
+            />
+            <Route
+              path="publish"
+              element={
+                <Publish
+                  faRotateRight={faRotateRight}
                   faTrash={faTrash}
                   price={price}
                   setPrice={setPrice}
@@ -225,128 +372,10 @@ function App() {
                 />
               }
             />
-            <Route element={<PrivateLayout />}>
-              <Route path="contact" element={<Contact />} />
-              <Route
-                path="dashboard/*"
-                element={
-                  <Dashboard
-                    faNewspaper={faNewspaper}
-                    faXmark={faXmark}
-                    faUserTie={faUserTie}
-                    faUser={faUser}
-                    search={search}
-                    searchUsers={searchUsers}
-                    numberCommand={numberCommand}
-                    setNumberCommand={setNumberCommand}
-                    searchTransactions={searchTransactions}
-                    setSearchTransactions={setSearchTransactions}
-                    setSearchUsers={setSearchUsers}
-                  />
-                }
-              >
-                <Route
-                  path="dashUsers/"
-                  element={
-                    <DashboardUsers
-                      faNewspaper={faNewspaper}
-                      faXmark={faXmark}
-                      faUserTie={faUserTie}
-                      faUser={faUser}
-                      searchUsers={searchUsers}
-                    />
-                  }
-                />
-                <Route path="dashMessages/" element={<DashboardMessages />} />
-                <Route path="dashOffers/" element={<DashboardOffers />} />
-                <Route
-                  path="dashSales/"
-                  element={
-                    <DashboardSales
-                      numberCommand={numberCommand}
-                      setNumberCommand={setNumberCommand}
-                      searchTransactions={searchTransactions}
-                      setSearchTransactions={setSearchTransactions}
-                    />
-                  }
-                />
-              </Route>
-              <Route path="chat" element={<Chat />} />
-              <Route
-                path="profile/:id"
-                element={<Profile faTrash={faTrash} />}
-              />
-              <Route
-                path="messagesContactId/:id"
-                element={<MessagesContactId />}
-              />
-              <Route
-                path="payment"
-                element={
-                  <Payment
-                    dataShoppingCart={dataShoppingCart}
-                    setDataShoppingCart={setDataShoppingCart}
-                  />
-                }
-              />
-              <Route
-                path="favorites"
-                element={<Favorites faHeart={faHeart} farHeart={farHeart} />}
-              />
-              <Route
-                path="userId/:id"
-                element={
-                  <UserId
-                    faUserTie={faUserTie}
-                    faNewspaper={faNewspaper}
-                    faXmark={faXmark}
-                    faUser={faUser}
-                    faTrash={faTrash}
-                  />
-                }
-              />
-              <Route path="transactions/:id" element={<Transactions />} />
-              <Route
-                path="myOffers"
-                element={
-                  <MyOffers
-                    faHeart={faHeart}
-                    farHeart={farHeart}
-                    showNoOffer={showNoOffer}
-                    setShowNoOffer={setShowNoOffer}
-                    faTrash={faTrash}
-                  />
-                }
-              />
-              <Route
-                path="my-purchases"
-                element={
-                  <MyPurchases
-                    faHeart={faHeart}
-                    farHeart={farHeart}
-                    // showNoOffer={showNoOffer}
-                    // setShowNoOffer={setShowNoOffer}
-                  />
-                }
-              />
-              <Route
-                path="publish"
-                element={
-                  <Publish
-                    faRotateRight={faRotateRight}
-                    faTrash={faTrash}
-                    price={price}
-                    setPrice={setPrice}
-                    quantity={quantity}
-                    setQuantity={setQuantity}
-                  />
-                }
-              />
-              <Route
-                path="offerUpdate/:id"
-                element={<OfferIdUpdateAndDelete faTrash={faTrash} />}
-              />
-            </Route>
+            <Route
+              path="offerUpdate/:id"
+              element={<OfferIdUpdateAndDelete faTrash={faTrash} />}
+            />
           </Route>
         </Routes>
         {showToggleNav && (
@@ -381,6 +410,7 @@ function App() {
             srcImgsModal={srcImgsModal}
           />
         )}
+        <Footer />
       </UserProvider>
     </Router>
   );

@@ -159,7 +159,7 @@
   overflow: hidden;
 }
 :root .wrapper {
-  max-width: 350px;
+  max-width: 300px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -198,6 +198,16 @@
 :root .wrapper .green {
   color: #007882;
 }
+@media all and (min-width: 376px) {
+  :root .wrapper {
+    max-width: 350px;
+  }
+}
+@media all and (min-width: 476px) {
+  :root .wrapper {
+    max-width: 450px;
+  }
+}
 @media all and (min-width: 576px) {
   :root .wrapper {
     max-width: 476px;
@@ -221,16 +231,6 @@
 @media all and (min-width: 1400px) {
   :root .wrapper {
     max-width: 1200px;
-  }
-}
-@media all and (min-width: 1200px) {
-  :root .wrapper:not(.boxHome > .wrapper, .boxForm > .wrapper, .boxFormSignUp > .wrapper, header > .wrapper, .boxLogin > .wrapper),
-  :root .boxNoPurchases,
-  :root .boxDashboard,
-  :root .boxShoppingCart,
-  :root .wrapperNoOffer {
-    height: 100vh;
-    padding: 50px 0 50px 0;
   }
 }
 
@@ -903,10 +903,18 @@
 .boxForm {
   width: 100%;
   display: flex;
-  height: calc(var(--fixHeight));
+  justify-content: center;
+  align-items: center;
+  height: var(--fixHeight);
 }
 .boxForm .wrapper {
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100% - 140px);
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .boxForm .wrapper form {
   display: flex;
@@ -914,21 +922,23 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: calc(var(--fixHeight) - 100px);
+  height: 100%;
+  margin-top: 20px;
 }
-.boxForm .wrapper form .boxPicTop {
+.boxForm .wrapper .boxPicTop {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   background-color: #ededed;
+  margin-top: 5px;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottomEmpty {
+.boxForm .wrapper .boxPicTop .boxPicBottomEmpty {
   padding: 110px;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottom,
-.boxForm .wrapper form .boxPicTop .boxPicBottomEmpty {
+.boxForm .wrapper .boxPicTop .boxPicBottom,
+.boxForm .wrapper .boxPicTop .boxPicBottomEmpty {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -938,8 +948,8 @@
   flex-wrap: wrap;
   position: relative;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottom #labelPic,
-.boxForm .wrapper form .boxPicTop .boxPicBottomEmpty #labelPic {
+.boxForm .wrapper .boxPicTop .boxPicBottom #labelPic,
+.boxForm .wrapper .boxPicTop .boxPicBottomEmpty #labelPic {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -956,22 +966,22 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 500;
+  z-index: 5;
   box-shadow: 0px 0px 2px #000000, 1px 1px 2px #000000;
   transition: all 1s ease-in-out;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottom #labelPic:active,
-.boxForm .wrapper form .boxPicTop .boxPicBottomEmpty #labelPic:active {
+.boxForm .wrapper .boxPicTop .boxPicBottom #labelPic:active,
+.boxForm .wrapper .boxPicTop .boxPicBottomEmpty #labelPic:active {
   box-shadow: inset 0px 0px 2px #000000, inset 0px 0px 5px #000000;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottom {
+.boxForm .wrapper .boxPicTop .boxPicBottom {
   padding: 2px;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics {
+.boxForm .wrapper .boxPicTop .boxPicBottom .viewPics {
   width: 100%;
   position: relative;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics img {
+.boxForm .wrapper .boxPicTop .boxPicBottom .viewPics img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -980,7 +990,7 @@
   -o-object-position: top;
      object-position: top;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics .suppFiles {
+.boxForm .wrapper .boxPicTop .boxPicBottom .viewPics .suppFiles {
   color: #ffffff;
   background-color: #007882;
   display: flex;
@@ -1002,57 +1012,79 @@
   left: 90%;
   transform: translate(-50%, -50%);
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics .suppFiles p {
+.boxForm .wrapper .boxPicTop .boxPicBottom .viewPics .suppFiles p {
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics .suppFiles:hover, .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics .suppFiles:focus {
+.boxForm .wrapper .boxPicTop .boxPicBottom .viewPics .suppFiles:hover, .boxForm .wrapper .boxPicTop .boxPicBottom .viewPics .suppFiles:focus {
   background-color: #33c6d0;
 }
-.boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics .suppFiles:hover {
+.boxForm .wrapper .boxPicTop .boxPicBottom .viewPics .suppFiles:hover {
   background-color: #ffffff;
   color: red;
 }
-.boxForm .wrapper form .boxInputFormPublish {
+.boxForm .wrapper .boxInputFormPublish {
+  gap: 10px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   flex: 1;
-  padding-top: 20px;
+  padding: 10px 0 0 0;
 }
-.boxForm .wrapper form .boxInputFormPublish .productPriceAndQuantity,
-.boxForm .wrapper form .boxInputFormPublish .brandAndSize,
-.boxForm .wrapper form .boxInputFormPublish .conditionAndColor {
+.boxForm .wrapper .boxInputFormPublish .productPriceAndQuantity,
+.boxForm .wrapper .boxInputFormPublish .brandAndSize,
+.boxForm .wrapper .boxInputFormPublish .conditionAndColor {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
-.boxForm .wrapper form .boxInputFormPublish .productPriceAndQuantity .classLabelInput,
-.boxForm .wrapper form .boxInputFormPublish .brandAndSize .classLabelInput,
-.boxForm .wrapper form .boxInputFormPublish .conditionAndColor .classLabelInput {
+.boxForm .wrapper .boxInputFormPublish .productPriceAndQuantity .classLabelInput,
+.boxForm .wrapper .boxInputFormPublish .brandAndSize .classLabelInput,
+.boxForm .wrapper .boxInputFormPublish .conditionAndColor .classLabelInput {
   width: calc(50% - 5px);
 }
-.boxForm .wrapper form .boxInputFormPublish .labelTxtContact {
+.boxForm .wrapper .boxInputFormPublish .labelTxtContact {
   margin-top: 2.5px;
   margin-bottom: 2.5px;
 }
-.boxForm .wrapper form .boxInputFormPublish .classLabelInput,
-.boxForm .wrapper form .boxInputFormPublish .labelTxtContact {
+.boxForm .wrapper .boxInputFormPublish .classLabelInput,
+.boxForm .wrapper .boxInputFormPublish .labelTxtContact {
   min-height: 30px;
 }
-.boxForm .wrapper form .classLabelInputSubmit {
+.boxForm .wrapper .classLabelInputSubmit {
   width: 100%;
 }
-.boxForm .wrapper form .boxLoaded {
+.boxForm .wrapper .boxLoaded {
   width: 100%;
 }
 
-@media all and (min-width: 992px) {
-  .boxPicBottom {
-    padding: 2px 0px 2px 2px;
+@media all and (min-width: 768px) {
+  .boxForm {
+    height: calc(var(--fixHeight) - 100px);
+    padding: 0;
+  }
+  .boxForm .wrapper {
+    height: 100%;
+  }
+  .boxForm .wrapper form {
+    height: 100%;
+    gap: 2.5px;
+    margin-top: 0;
+  }
+  .boxForm .wrapper form .boxPicTop {
+    margin-top: 10px;
+  }
+  .boxForm .wrapper form .boxInputFormPublish {
+    padding: 10px 0 15px 0;
+  }
+  .boxForm .wrapper form .boxInputFormPublish .classLabelInput,
+  .boxForm .wrapper form .boxInputFormPublish .labelTxtContact,
+  .boxForm .wrapper form .boxInputFormPublish .labelTxtContact textarea {
+    min-height: 15px;
+    height: 15px !important;
   }
 }
 @media all and (min-width: 1200px) {
@@ -1061,6 +1093,20 @@
   }
   .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics img {
     height: 220px;
+  }
+}
+@media all and (min-width: 1400px) {
+  .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics {
+    width: 24.6305418719%;
+  }
+  .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics img {
+    height: 220px;
+  }
+  .boxForm .wrapper form .boxInputFormPublish .classLabelInput,
+  .boxForm .wrapper form .boxInputFormPublish .labelTxtContact,
+  .boxForm .wrapper form .boxInputFormPublish .labelTxtContact textarea {
+    min-height: 30px;
+    height: 30px !important;
   }
 }
 .boxLogin {
@@ -1234,12 +1280,8 @@ header {
   background-color: var(--backgHeader);
   position: fixed;
   top: 0;
-  z-index: 600;
-}
-header .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 10;
+  height: 120px;
 }
 header .wrapper .topHeader {
   display: flex;
@@ -1437,6 +1479,10 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
 }
 
+.headerBigScreen {
+  height: 90px !important;
+}
+
 .boxUser:active .imgAvatar {
   width: 20px;
   height: 20px;
@@ -1465,15 +1511,16 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 
 @media all and (min-width: 768px) {
-  nav ul {
+  header {
+    max-height: 50px;
+    height: 100%;
+  }
+  header nav ul {
     display: flex;
     flex-direction: row !important;
   }
 }
 @media all and (min-width: 1200px) {
-  header {
-    height: 40px;
-  }
   header .wrapper .topHeader {
     flex-direction: row;
     width: 100%;
@@ -1560,7 +1607,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  padding: 80px 0 50px 0;
+  padding: 120px 0 60px 0;
 }
 .boxHome .wrapper {
   display: flex;
@@ -1577,8 +1624,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   height: 80%;
 }
 .boxHome .wrapper .boxContainerBtnChevron .btnChevronLeftOff {
-  width: 100px;
-  height: 30px;
+  display: none;
 }
 .boxHome .wrapper .boxContainerBtnChevron .btnChevronLeft,
 .boxHome .wrapper .boxContainerBtnChevron .btnChevronRight {
@@ -1603,11 +1649,13 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 @media all and (min-width: 768px) {
   .boxHome {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    padding: 0 !important;
+    height: calc(var(--fixHeight) - 100px);
   }
   .boxHome .wrapper {
     flex-direction: row !important;
-    height: calc(100% - 40px);
+    height: calc(100% - var(--divHeight));
   }
   .boxHome .wrapper .boxContainerBtnChevron,
   .boxHome .wrapper .btnChevronLeftOff {
@@ -1637,10 +1685,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   }
 }
 @media all and (min-width: 1200px) {
-  .boxHome {
-    padding: 40px 0 0 0;
-    height: 100%;
-  }
   .boxHome .wrapper {
     flex-direction: row !important;
     height: calc(100% - 40px);
@@ -1719,15 +1763,13 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 
 .boxOfferId {
   width: 100%;
-  height: 100vh;
-  padding-top: 15px;
+  padding: 90px 0 60px 0;
 }
 .boxOfferId .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 }
 .boxOfferId .wrapper .top {
   display: flex;
@@ -1736,7 +1778,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  height: 82vh;
 }
 .boxOfferId .wrapper .top * {
   margin: 0;
@@ -1849,7 +1890,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   flex-direction: column;
   height: 100%;
-  height: 50%;
 }
 .boxOfferId .wrapper .top .right .title {
   width: 100%;
@@ -1920,23 +1960,27 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
+.boxOfferId .wrapper .top .right .rightBottom .down .boxUser,
+.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks {
+  width: 50%;
+}
 .boxOfferId .wrapper .top .right .rightBottom .down .boxUser {
-  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
 }
 .boxOfferId .wrapper .top .right .rightBottom .down .boxLinks {
-  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
+}
+.boxOfferId .wrapper .top .right .rightBottom .down .boxLinks a {
+  padding: 5px;
 }
 .boxOfferId .wrapper .top .right .rightBottom .down .boxLinks a,
 .boxOfferId .wrapper .top .right .rightBottom .down .boxLinks .btnTrash {
@@ -1963,6 +2007,26 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   height: 30%;
 }
 
+@media all and (min-width: 768px) {
+  .boxOfferId {
+    height: calc(var(--fixHeight) - 80px);
+  }
+  .boxOfferId .wrapper {
+    height: 100%;
+    padding: 10px 0 10px 0;
+  }
+  .boxOfferId .wrapper .top {
+    height: 82vh;
+    padding: 10px 0 10px 0;
+  }
+  .boxOfferId .wrapper .top .down {
+    flex-direction: column !important;
+  }
+  .boxOfferId .wrapper .top .down .boxUser,
+  .boxOfferId .wrapper .top .down .boxLinks {
+    width: 100% !important;
+  }
+}
 @media all and (min-width: 992px) {
   .boxOffer {
     padding: 0;
@@ -2048,20 +2112,19 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   flex-direction: column;
   width: 100%;
+  padding: 5px 0 5px 0;
   gap: 10px;
-  padding: 0 5px 0 5px;
+}
+.boxOfferCard a:first-child {
+  margin-left: 5px;
 }
 .boxOfferCard a {
-  width: 100%;
+  height: 280px;
   display: flex;
-}
-.boxOfferCard a article {
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
-  gap: 5px;
-  min-height: 350px;
   background-color: #f1f1f1;
   box-shadow: 0px 0px 1.5px #000000, 0.15px 0.15px 1px #000000;
   position: relative;
@@ -2069,7 +2132,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   border-radius: 5px;
   transition: all 0.5s;
 }
-.boxOfferCard a article:hover {
+.boxOfferCard a:hover {
   box-shadow: 0px 0px 5px #000000, 0.15px 0.15px 1px #000000;
 }
 .boxOfferCard a .boxImgArticle {
@@ -2081,16 +2144,14 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
   -webkit-box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.7);
-  height: 100%;
-  max-height: 300px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  height: calc(100% - 50px);
 }
 .boxOfferCard a .boxImgArticle .imgArticle {
   display: block;
   width: 100%;
   height: 100%;
-  max-height: 300px;
   -o-object-fit: cover;
   object-fit: cover;
   border-top-left-radius: 5px;
@@ -2108,29 +2169,10 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 .boxOfferCard a .boxImgArticle .imgsArticle {
   width: calc(100% / var(--imgsLength));
-  height: 100%;
-}
-.boxOfferCard a .boxUser {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  height: 50px;
-  padding: 5px 10px 5px 10px;
-}
-.boxOfferCard a .boxUser h5 {
-  font-weight: 700;
-  font-size: 20px;
-  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000, 1px 1px 1px #000000, 0px 0px 5px #000000;
-}
-.boxOfferCard a .boxUser .imgAvatar {
-  height: 30px;
-  width: 30px;
 }
 .boxOfferCard a .boxTrashHearth {
   position: absolute;
-  top: 80%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -2159,6 +2201,10 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   font-size: 1.25rem;
 }
+.boxOfferCard a .boxTrashHearth .btnTrash .svg-inline--fa,
+.boxOfferCard a .boxTrashHearth .boxHearth .svg-inline--fa {
+  filter: drop-shadow(0.25px 0.25px 1px #000000);
+}
 .boxOfferCard a .boxTrashHearth .btnTrash {
   color: #ffffff;
   background-color: #007882;
@@ -2182,13 +2228,12 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   background-color: transparent;
 }
 .boxOfferCard a .footerArticle {
-  padding: 5px 10px 5px 10px;
-  gap: 5px;
   width: 100%;
-  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
+  padding: 0 5px 0 5px;
 }
 .boxOfferCard a .footerArticle .boxNameMarque,
 .boxOfferCard a .footerArticle .price {
@@ -2228,8 +2273,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   }
   .boxOfferCard a {
     width: 47.619047619%;
-  }
-  .boxOfferCard a article {
     width: 95%;
   }
 }
@@ -2238,13 +2281,15 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0;
+    gap: 22px;
   }
   .boxOfferCard a {
     width: 47.619047619% !important;
+    height: 280px;
+    max-height: 280px;
   }
-  .boxOfferCard a article {
-    width: 100%;
+  .boxOfferCard a .boxTrashHearth {
+    top: 80%;
   }
 }
 @media all and (min-width: 992px) {
@@ -2257,8 +2302,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 22px;
-    height: 48vh;
+    align-items: flex-start;
     width: calc(100% - 60px);
     overflow-x: hidden;
     overflow-y: hidden;
@@ -2271,26 +2315,13 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     align-items: center;
     min-width: 18.1818181818% !important;
     max-width: 18.1818181818% !important;
-    height: 100%;
   }
-  .boxOfferCard a article {
-    min-height: -moz-fit-content !important;
-    min-height: fit-content !important;
-    height: 80%;
-  }
-  .boxOfferCard a article .boxTrashHearth {
+  .boxOfferCard a .boxTrashHearth {
     top: 75% !important;
-  }
-}
-@media all and (min-width: 1400px) {
-  .boxOfferCard {
-    gap: 21px;
-    height: 48vh;
   }
 }
 .boxFavorites {
   padding: 90px 0 50px 0;
-  height: 100vh;
 }
 .boxFavorites .wrapper {
   display: flex;
@@ -2308,13 +2339,19 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   width: 100%;
 }
 
-@media all and (min-width: 1200px) {
+@media all and (min-width: 768px) {
   .boxFavorites {
     padding: 0;
+    width: 100%;
+    height: calc(var(--fixHeight) - 100px);
   }
   .boxFavorites .wrapper {
     flex-direction: row;
     align-items: center;
+  }
+  .boxFavorites .wrapper .boxOfferCard {
+    width: 100%;
+    height: 100%;
   }
 }
 .boxShoppingCart {
@@ -2951,20 +2988,25 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  padding: 90px 0 50px 0;
+  height: var(--fixHeight);
 }
 .boxUserId .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  padding: 100px 0 30px 0;
 }
 .boxUserId .wrapper .bottom {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.boxUserId .wrapper .left,
+.boxUserId .wrapper .right {
+  height: 50%;
 }
 .boxUserId .wrapper .left {
   display: flex;
@@ -2973,7 +3015,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   position: relative;
   width: 100%;
-  height: 50vh;
 }
 .boxUserId .wrapper .left img {
   width: 100%;
@@ -2999,9 +3040,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  height: 50vh;
   width: 100%;
-  gap: 2.57rem;
+  gap: 2.25rem;
 }
 .boxUserId .wrapper .right .boxEmailIsConfirmed {
   display: flex;
@@ -3418,21 +3458,29 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   width: 50%;
   gap: 10px;
-  height: 100%;
+  height: calc(100% - var(--divHeight) - 100px);
 }
-.boxContact .boxMenuSelect {
+.boxContact form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  gap: 10px;
+}
+.boxContact form .boxMenuSelect {
   padding: 5px 0 5px 0;
   width: 100%;
   position: relative;
   display: inline-block;
 }
-.boxContact .boxMenuSelect .boxSubject {
+.boxContact form .boxMenuSelect .boxSubject {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.boxContact .boxMenuSelect .boxSubject select {
+.boxContact form .boxMenuSelect .boxSubject select {
   outline: none;
   appearance: none;
   -webkit-appearance: none;
@@ -3445,19 +3493,19 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   padding: 2px 0px 2px 5px;
   filter: none;
 }
-.boxContact .boxMenuSelect .boxSubject select::-ms-expand {
+.boxContact form .boxMenuSelect .boxSubject select::-ms-expand {
   display: none;
 }
-.boxContact .boxMenuSelect .boxSubject select option {
+.boxContact form .boxMenuSelect .boxSubject select option {
   border-radius: none;
   background-color: #007882;
 }
-.boxContact .boxMenuSelect .boxSubject select:focus {
+.boxContact form .boxMenuSelect .boxSubject select:focus {
   padding: 2px 0px 2px 5px;
   width: 100%;
   animation: appearBlur 3s ease-in-out 1 normal forwards;
 }
-.boxContact .boxMenuSelect .boxSubject .wrapperSelect {
+.boxContact form .boxMenuSelect .boxSubject .wrapperSelect {
   overflow: hidden;
   position: relative;
   width: 200px;
@@ -3465,7 +3513,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   border-radius: 5px;
   padding: 2px 0px 2px 5px;
 }
-.boxContact .boxMenuSelect .boxSubject .wrapperSelect:after {
+.boxContact form .boxMenuSelect .boxSubject .wrapperSelect:after {
   content: "▼";
   font-size: 0.8rem;
   pointer-events: none;
@@ -3780,9 +3828,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   }
 }
 .boxMyOffers {
-  padding: 90px 0 50px 0;
   position: relative;
-  height: 100vh;
+  width: 100%;
 }
 .boxMyOffers .wrapper {
   display: flex;
@@ -3801,6 +3848,14 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   transform: translate(-50%, -50%);
 }
 
+@media all and (min-width: 768px) {
+  .boxMyOffers .wrapper {
+    height: calc(var(--fixHeight) - 100px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
 @media all and (min-width: 1200px) {
   .boxMyOffers {
     padding: 0;
@@ -3887,6 +3942,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   height: 100%;
   padding-top: 90px;
+  width: 100%;
 }
 .boxOfferIdUpdateAndDelete .wrapper {
   display: flex;
@@ -3906,7 +3962,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-wrap: wrap;
   gap: 1px;
   position: relative;
-  height: var(--divHeight);
+  height: 100%;
 }
 .boxOfferIdUpdateAndDelete .wrapper .left .boxPictures {
   width: 100%;
@@ -4022,24 +4078,22 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   width: 48.5%;
 }
 
-@media all and (min-width: 1200px) {
+@media all and (min-width: 768px) {
   .boxOfferIdUpdateAndDelete {
-    height: -moz-fit-content;
-    height: fit-content;
+    height: 100%;
     padding-top: 0 !important;
   }
   .boxOfferIdUpdateAndDelete .wrapper {
     flex-direction: row;
+    padding: 10px 0 10px 0;
   }
   .boxOfferIdUpdateAndDelete .wrapper .left .boxPictures {
-    max-height: 82vh;
+    max-height: 100%;
   }
   .boxOfferIdUpdateAndDelete .wrapper .left,
   .boxOfferIdUpdateAndDelete .wrapper .right {
     width: 50%;
-  }
-  .boxOfferIdUpdateAndDelete .wrapper .right {
-    height: var(--divHeight);
+    height: 100%;
   }
   .boxOfferIdUpdateAndDelete .wrapper .right .boxOfferIdUpdateInput {
     padding: 5px 2.5px 0px 2.5px;
@@ -4047,10 +4101,10 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 footer {
   width: 100%;
-  height: 40px;
-  position: -webkit-sticky;
+  height: 60px;
   position: fixed;
   bottom: 0;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -71,8 +71,8 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                   : ""
               }
             >
-              <article>
-                {/* {location.pathname !== "/" && (
+              {/* <article> */}
+              {/* {location.pathname !== "/" && (
                   <div className="boxUser">
                     <Image
                       src={
@@ -90,53 +90,11 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                     </h5>
                   </div>
                 )} */}
-                {location.pathname === "/myOffers" &&
-                article?.offer_solded === true ? (
-                  <div className="boxImgArticle">
-                    {article?.offer?.product_image || article?.product_image ? (
-                      <>
-                        <Image
-                          src={
-                            article?.offer?.product_image?.secure_url ||
-                            article?.product_image?.secure_url
-                          }
-                          classImg="imgArticle"
-                        />
-                        <Image
-                          src={bannerSold}
-                          classImg={`${classImgArticle} ${classBannerSold}`}
-                        />
-                      </>
-                    ) : article?.offer?.product_pictures ||
-                      article?.product_pictures ? (
-                      (
-                        article?.offer?.product_pictures ||
-                        article?.product_pictures
-                      )?.map((images, index) => {
-                        console.log("images:", images);
-
-                        return (
-                          index === 0 && (
-                            <React.Fragment key={index}>
-                              <Image
-                                src={images?.secure_url}
-                                classImg="imgArticle"
-                              />
-                              <Image
-                                src={bannerSold}
-                                classImg={`${classImgArticle} ${classBannerSold}`}
-                              />
-                            </React.Fragment>
-                          )
-                        );
-                      })
-                    ) : (
-                      <Image src={noImg} alt="no image" />
-                    )}
-                  </div>
-                ) : (
-                  <div className="boxImgArticle">
-                    {article?.offer?.product_image || article?.product_image ? (
+              {location.pathname === "/myOffers" &&
+              article?.offer_solded === true ? (
+                <div className="boxImgArticle">
+                  {article?.offer?.product_image || article?.product_image ? (
+                    <>
                       <Image
                         src={
                           article?.offer?.product_image?.secure_url ||
@@ -144,59 +102,101 @@ const OfferCard = ({ faHeart, farHeart, errorMessage, faTrash }) => {
                         }
                         classImg="imgArticle"
                       />
-                    ) : article?.offer?.product_pictures ||
-                      article?.product_pictures ? (
-                      (
-                        article?.offer?.product_pictures ||
-                        article?.product_pictures
-                      ).map((images, index) => {
-                        return (
-                          index === 0 && (
-                            <React.Fragment key={index}>
-                              <Image
-                                src={images?.secure_url}
-                                classImg="imgArticle"
-                              />
-                            </React.Fragment>
-                          )
-                        );
-                      })
-                    ) : (
-                      <Image src={noImg} alt="no image" />
-                    )}
-                  </div>
-                )}
-                <div className="boxTrashHearth">
-                  <Trash
-                    faTrash={faTrash}
-                    handleClick={(e) => {
-                      // console.log("offerId in handleClick:", offerId);
-                      e.preventDefault();
-                      fetchDeleteOffer(offerId);
-                    }}
-                  />
-                  <Hearths
-                    article={article}
-                    faHeart={faHeart}
-                    farHeart={farHeart}
-                  />
+                      <Image
+                        src={bannerSold}
+                        classImg={`${classImgArticle} ${classBannerSold}`}
+                      />
+                    </>
+                  ) : article?.offer?.product_pictures ||
+                    article?.product_pictures ? (
+                    (
+                      article?.offer?.product_pictures ||
+                      article?.product_pictures
+                    )?.map((images, index) => {
+                      console.log("images:", images);
+
+                      return (
+                        index === 0 && (
+                          <React.Fragment key={index}>
+                            <Image
+                              src={images?.secure_url}
+                              classImg="imgArticle"
+                            />
+                            <Image
+                              src={bannerSold}
+                              classImg={`${classImgArticle} ${classBannerSold}`}
+                            />
+                          </React.Fragment>
+                        )
+                      );
+                    })
+                  ) : (
+                    <Image src={noImg} alt="no image" />
+                  )}
                 </div>
-                <div className="footerArticle">
-                  <div className="boxNameMarque">
-                    <div>{article?.product_name}</div>
-                    {(article?.offer?.product_details[0]?.MARQUE ||
-                      article?.product_details[0]?.MARQUE) && (
-                      <div>
-                        {article?.offer?.product_details[0]?.MARQUE ||
-                          article?.product_details[0]?.MARQUE}
-                      </div>
-                    )}
-                  </div>
-                  <div className="price">
-                    {(article?.product_price).toFixed(2)} €
-                  </div>
+              ) : (
+                <div className="boxImgArticle">
+                  {article?.offer?.product_image || article?.product_image ? (
+                    <Image
+                      src={
+                        article?.offer?.product_image?.secure_url ||
+                        article?.product_image?.secure_url
+                      }
+                      classImg="imgArticle"
+                    />
+                  ) : article?.offer?.product_pictures ||
+                    article?.product_pictures ? (
+                    (
+                      article?.offer?.product_pictures ||
+                      article?.product_pictures
+                    ).map((images, index) => {
+                      return (
+                        index === 0 && (
+                          <React.Fragment key={index}>
+                            <Image
+                              src={images?.secure_url}
+                              classImg="imgArticle"
+                            />
+                          </React.Fragment>
+                        )
+                      );
+                    })
+                  ) : (
+                    <Image src={noImg} alt="no image" />
+                  )}
                 </div>
-              </article>
+              )}
+              <div className="boxTrashHearth">
+                <Trash
+                  faTrash={faTrash}
+                  handleClick={(e) => {
+                    // console.log("offerId in handleClick:", offerId);
+                    e.preventDefault();
+                    fetchDeleteOffer(offerId);
+                  }}
+                />
+                <Hearths
+                  article={article}
+                  faHeart={faHeart}
+                  farHeart={farHeart}
+                />
+              </div>
+              <div className="footerArticle">
+                <div className="boxNameMarque">
+                  <div>{article?.product_name}</div>
+                  {(article?.offer?.product_details[0]?.MARQUE ||
+                    article?.product_details[0]?.MARQUE) && (
+                    <div>
+                      {article?.offer?.product_details[0]?.MARQUE ||
+                        article?.product_details[0]?.MARQUE}
+                    </div>
+                  )}
+                </div>
+                <div className="price">
+                  {(article?.product_price).toFixed(2)} €
+                </div>
+              </div>
+              {/* </article> */}
               {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
             </Link>
           </React.Fragment>

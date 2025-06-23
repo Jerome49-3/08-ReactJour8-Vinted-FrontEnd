@@ -2,6 +2,7 @@
   @include flexCenter;
   height: 100%;
   padding-top: 90px;
+  width: 100%;
 
   .wrapper {
     @include flexColCenter;
@@ -18,7 +19,7 @@
       // border: 2px solid red;
       gap: 1px;
       position: relative;
-      height: var(--divHeight);
+      height: 100%;
 
       .boxPictures {
         width: 100%;
@@ -125,33 +126,25 @@
 // BREAKPOINTS
 // @media all and (min-width : 576px) {}
 
-// @media all and (min-width : 768px) {}
-
-// @media all and (min-width : 992px) {}
-
-@media all and (min-width : 1200px) {
+@media all and (min-width : 768px) {
   .boxOfferIdUpdateAndDelete {
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
+    height: 100%;
     padding-top: 0 !important;
 
     .wrapper {
       flex-direction: row;
+      padding: 10px 0 10px 0;
 
       .left {
         .boxPictures {
-          max-height: 82vh;
+          max-height: calc(100%);
         }
       }
 
       .left,
       .right {
         width: calc(100%/2);
-      }
-
-      .right {
-        height: var(--divHeight);
+        height: 100%;
       }
 
       .right {
@@ -162,5 +155,9 @@
     }
   }
 }
+
+// @media all and (min-width : 992px) {}
+
+// @media all and (min-width : 1200px) {}
 
 // @media all and (min-width : 1400px) {}
