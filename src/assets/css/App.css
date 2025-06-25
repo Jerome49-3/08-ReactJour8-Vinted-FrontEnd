@@ -1310,6 +1310,7 @@ header .wrapper .topHeader .boxLogoTheme a .logoTxt {
   font-size: 28px;
   font-style: italic;
   color: #007882;
+  word-spacing: 0.5rem;
 }
 header .wrapper .topHeader .boxLogoTheme a .logo {
   height: 20px !important;
