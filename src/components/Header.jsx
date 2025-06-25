@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeButton from "./ThemeButton";
 import { useUser } from "../assets/lib/userFunc";
@@ -22,7 +22,8 @@ const Header = ({
   // console.log("showSignUp in header:", showSignUp);
   // console.log("search in header:", search);
   // console.log("showToggleNav in header:", showToggleNav);
-  const { token, user, imgBoxUser, showSearch, dimWindows } = useUser();
+  const { token, user, imgBoxUser, showSearch, dimWindows, location } =
+    useUser();
   // console.log("token in header:", token);
   // console.log("user: in header:", user);
   // console.log("imgBoxUser in header:", imgBoxUser);
@@ -30,7 +31,6 @@ const Header = ({
   const filterIcons = "filterIcons";
   const btnFilter = "btnFilter";
   const width = dimWindows.width;
-  const location = useLocation();
 
   const handleFilter = () => {
     setShowFilter(!showFilter);

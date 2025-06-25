@@ -230,7 +230,7 @@ const Profile = ({ faTrash }) => {
           <div className="right">
             <div className="boxUsername">
               <Input
-                label="username:"
+                labelTxt="username:"
                 type="text"
                 id="username"
                 placeholder={data?.account?.username}
@@ -240,7 +240,7 @@ const Profile = ({ faTrash }) => {
             </div>
             <div className="boxEmail">
               <Input
-                label="email:"
+                labelTxt="email:"
                 type="email"
                 id="email"
                 placeholder={data?.email}
@@ -251,7 +251,7 @@ const Profile = ({ faTrash }) => {
             <div className="boxNewsletter">
               {data?.newsletter === true ? (
                 <Input
-                  label="newsletter:"
+                  labelTxt="newsletter:"
                   type="text"
                   placeholder="true"
                   id="newsletter"
@@ -261,7 +261,7 @@ const Profile = ({ faTrash }) => {
                 />
               ) : (
                 <Input
-                  label="newsletter:"
+                  labelTxt="newsletter:"
                   type="text"
                   id="newsletter"
                   placeholder="false"
@@ -272,6 +272,7 @@ const Profile = ({ faTrash }) => {
               )}
             </div>
             <div className="boxDate">Date de création: {data?.date}</div>
+            <InfoUserErrorMessage />
             <div className="boxSubmitTrash">
               <LoadedInputSubmit
                 setIsSended={setIsSended}
@@ -292,7 +293,6 @@ const Profile = ({ faTrash }) => {
               />
             </div>
           </div>
-          <InfoUserErrorMessage />
         </div>
       </form>
     </>

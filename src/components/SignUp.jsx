@@ -71,7 +71,7 @@ const SignUp = ({
         "error in handleSubmit on /signup:",
         error.response.data.message
       );
-      setErrorMessage(error.response.data.message);
+      setErrorMessage(error?.response?.data?.message || error);
     }
   };
 

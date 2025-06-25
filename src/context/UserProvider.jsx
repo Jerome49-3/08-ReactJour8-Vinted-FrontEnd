@@ -20,6 +20,7 @@ import axiosRetry from "axios-retry";
 import saveToken from "../assets/lib/saveToken";
 import setDimensions from "../assets/lib/setDimensions";
 import addRemoveListener from "../assets/lib/addRemoveListener";
+import fetchVerifyToken from "../assets/fetchDataLib/auth/GET/fetchVerifyToken";
 
 //******** context ******** //
 export const UserContext = createContext();
@@ -164,61 +165,22 @@ export const UserProvider = ({ children }) => {
             {}
           );
           // console.log("response in /user/verifyToken:", response);
-          // console.log(
-          //   "typeof response in /user/verifyToken:",
-          //   typeof response.status
-          // );
           if (
             response.status ===
               Number(import.meta.env.VITE_REACT_APP_RESPONSEVALID) &&
             response.data.message ===
               import.meta.env.VITE_REACT_APP_RESPONSEDATAVALID
           ) {
-            // console.log(
-            //   "import.meta.env.RESPONSEVALID in /user/verifyToken:",
-            //   import.meta.env.VITE_REACT_APP_RESPONSEVALID
-            // );
-            // console.log(
-            //   "import.meta.env.RESPONSEDATAVALID in /user/verifyToken:",
-            //   import.meta.env.VITE_REACT_APP_RESPONSEDATAVALID
-            // );
+            console.log(
+              "import.meta.env.RESPONSEVALID in /user/verifyToken:",
+              import.meta.env.VITE_REACT_APP_RESPONSEVALID
+            );
+            console.log(
+              "import.meta.env.RESPONSEDATAVALID in /user/verifyToken:",
+              import.meta.env.VITE_REACT_APP_RESPONSEDATAVALID
+            );
             // console.log("token in /verifyToken:", token);
             saveToken(token, setUser, setIsAdmin, setImgBoxUser);
-          } else {
-            const getToken = async () => {
-              try {
-                const response = await axios.get(
-                  `${import.meta.env.VITE_REACT_APP_URL}/user/refreshToken`
-                );
-                // console.log("response in /user/refreshToken:", response);
-                if (response?.data?.token) {
-                  setToken(response?.data?.token);
-                  saveToken(
-                    response?.data?.token,
-                    setUser,
-                    setIsAdmin,
-                    setImgBoxUser
-                  );
-                  setIsLoading(false);
-                }
-              } catch (error) {
-                // console.log("error in /refreshToken:", error);
-
-                // console.log(error?.response?.data?.message || error?.message);
-                // console.log(
-                //   "error?.response?.status:",
-                //   error?.response?.status
-                // );
-                // console.log(
-                //   "typeof error?.response?.status:",
-                //   typeof error?.response?.status
-                // );
-                if (error?.response?.status === 401) {
-                  navigate("/");
-                }
-              }
-            };
-            getToken();
           }
         } catch (error) {
           console.log("error:", error.response);
@@ -226,7 +188,7 @@ export const UserProvider = ({ children }) => {
       };
       verifyToken();
     } else {
-      navigate("/");
+      navigate("/login");
     }
   }, [token, axios]);
 
@@ -260,8 +222,34 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   //****************************************** //
-  //************ axios.interceptors ********** //
+  //***************** logout ***************** //
   //****************************************** //
+  const logout = async () => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_URL}/user/logout`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      // console.log("response in logout", response);
+      if (response) {
+        setToken(null);
+        setUser(null);
+        setIsAdmin(false);
+        setImgBoxUser(null);
+        sessionStorage.clear();
+        Cookies.remove("accessTokenV");
+        Cookies.remove("refreshTokenV");
+      }
+    } catch (error) {
+      console.log("Error in logout:", error || "error in logout");
+    }
+  };
+  //************************************************** //
+  //************ axios.interceptors.request ********** //
+  //************************************************** //
   useLayoutEffect(() => {
     if (
       location.pathname !== "/confirmEmail" ||
@@ -293,34 +281,61 @@ export const UserProvider = ({ children }) => {
         axios.interceptors.request.eject(configRequestGlobal);
       };
     }
-  }, [token, tokenFgtP, axios, location.pathname]);
+  }, [token, tokenFgtP, location.pathname]);
 
-  //****************************************** //
-  //***************** logout ***************** //
-  //****************************************** //
-  const logout = async () => {
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_REACT_APP_URL}/user/logout`,
-        {},
-        {
-          withCredentials: true,
-        }
+  //*************************************************** //
+  //************ axios.interceptors.response ********** //
+  //*************************************************** //
+
+  axios.interceptors.response.use(
+    function (response) {
+      return response;
+    },
+    async function (error) {
+      console.log("error.config:", error.config);
+      const originalRequest = error.config;
+      console.log("originalRequest:", originalRequest);
+
+      console.log(
+        "error.response in axios.interceptors.response:",
+        error.response
       );
-      // console.log("response in logout", response);
-      if (response) {
-        setToken(null);
-        setUser(null);
-        setIsAdmin(false);
-        setImgBoxUser(null);
-        sessionStorage.clear();
-        Cookies.remove("accessTokenV");
-        Cookies.remove("refreshTokenV");
+
+      if (error?.response?.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+        console.log("originalRequest._retry:", originalRequest._retry);
+        try {
+          const newRefreshToken = await fetchVerifyToken(
+            axios,
+            setToken,
+            saveToken,
+            setUser,
+            setIsAdmin,
+            setImgBoxUser,
+            setIsLoading,
+            navigate,
+            error
+          );
+          error.config.headers["Authorization"] = `Bearer ${newRefreshToken}`;
+          console.log(
+            "error.config.headers.Authorization:",
+            error.config.headers["Authorization"]
+          );
+          return axios(originalRequest);
+        } catch (errorRefresh) {
+          console.error("refreshToken failed:", errorRefresh);
+          logout();
+          return Promise.reject(errorRefresh);
+        }
+      } else {
+        return Promise.reject(error);
       }
-    } catch (error) {
-      console.log("Error in logout:", error || "error in logout");
     }
-  };
+  );
+
+  //*************************************************** //
+  //**************** return provider ****************** //
+  //*************************************************** //
 
   return (
     <UserContext.Provider

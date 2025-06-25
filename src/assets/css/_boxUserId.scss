@@ -1,6 +1,6 @@
 .boxUserId {
   @include flexColCenter;
-  gap: 20px;
+  // gap: 20px;
   width: 100%;
   height: var(--fixHeight);
 
@@ -155,16 +155,14 @@
 // BREAKPOINTS
 // @media all and (min-width : 576px) {}
 
-// @media all and (min-width : 768px) {}
-
-// @media all and (min-width : 992px) {}
-
-@media all and (min-width : 1200px) {
+@media all and (min-width : 768px) {
   .boxUserId {
     padding: 0;
 
     .wrapper {
       flex-direction: row;
+      padding: 0;
+      height: calc(var(--fixHeight) - 100px);
 
       .left {
         padding-right: 10px;
@@ -182,5 +180,9 @@
     }
   }
 }
+
+// @media all and (min-width : 992px) {}
+
+@media all and (min-width : 1200px) {}
 
 // @media all and (min-width : 1400px) {}

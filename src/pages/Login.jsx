@@ -63,7 +63,7 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
         }
       } catch (error) {
         console.log("error in try/catch after response in /login:", error);
-        setErrorMessage(error?.response?.data?.message);
+        setErrorMessage(error?.response?.data?.message || error);
       }
     } catch (error) {
       console.log("error in handleSubmit on Login:", error);

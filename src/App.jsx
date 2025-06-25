@@ -44,7 +44,7 @@ library.add(
   faChevronCircleLeft,
   faChevronCircleRight
 );
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
 //components

@@ -225,9 +225,7 @@ div#root {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @media all and (min-width: 768px) {
-    height: var(--fixHeight);
-  }
+
   @media all and (max-width: 768px) {
     .boxMyOffers,
     .boxFavorites,
@@ -236,10 +234,6 @@ div#root {
     }
   }
 }
-.mainLayout {
-  /* height: calc(var(--fixHeight) - 80px); */
-  width: var(--fixWidth);
+.rootHeight {
+  height: var(--fixHeight);
 }
-/* .mainLayoutNoheight {
-  height: fit-content !important;
-} */

@@ -1,14 +1,14 @@
 .boxDashboard {
-  @include flexColTopStart;
+  @include flexColStart;
   width: 100%;
-  height: 100vh;
-  padding: 90px 0 50px 0;
+  height: calc(var(--fixHeight));
+  padding: 50px 0 20px 0;
 
   .wrapper {
     @include flexColTopStart;
     gap: 10px;
     width: 100%;
-    height: 100vh;
+    height: calc(100% - 100px);
     padding: 0px !important;
 
     .leftPannel {
@@ -53,12 +53,10 @@
 // BREAKPOINTS
 // @media all and (min-width : 576px) {}
 
-// @media all and (min-width : 768px) {}
-
-// @media all and (min-width : 992px) {}
-
-@media all and (min-width : 1200px) {
+@media all and (min-width : 768px) {
   .boxDashboard {
+    padding: 10px 0 20px 0;
+
     .wrapper {
       flex-direction: row !important;
 
@@ -81,6 +79,10 @@
     }
   }
 }
+
+// @media all and (min-width : 992px) {}
+
+// @media all and (min-width : 1200px) {}
 
 // @media all and (min-width : 1400px) {}
 //   .top,

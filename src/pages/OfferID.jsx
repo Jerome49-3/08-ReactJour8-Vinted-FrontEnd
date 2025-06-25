@@ -21,6 +21,7 @@ import Trash from "../components/Trash";
 
 //lib
 import fetchDeleteOffer from "../assets/fetchDataLib/DELETE/fetchDeleteOffer";
+import calcLocPath from "../assets/lib/calcLocPath";
 // import classRotation from "../assets/lib/classRotation";
 
 const OfferID = ({
@@ -33,8 +34,16 @@ const OfferID = ({
   quantity,
   setQuantity,
 }) => {
-  const { axios, user, infoUser, setInfoUser, showHero, data, setData } =
-    useUser();
+  const {
+    axios,
+    user,
+    infoUser,
+    setInfoUser,
+    showHero,
+    data,
+    setData,
+    location,
+  } = useUser();
   // console.log("infoUser on OfferID:", infoUser);
   // console.log("user on OfferID:", user);
   // console.log('showHero in Offer:', showHero, '\n', 'token in Offer:', token);
@@ -49,6 +58,7 @@ const OfferID = ({
   const [isLoading, setIsLoading] = useState(true);
   // const rotation = classRotation(data);
   const navigate = useNavigate();
+  const pathUseLocation = location.pathname;
 
   useEffect(() => {
     // console.log("id inside useEffect in /offers/${id}:", id);
@@ -118,6 +128,7 @@ const OfferID = ({
     };
     if (isLoading === false && data?.product_pictures) {
       setImgsLength();
+      calcLocPath(pathUseLocation);
     }
   }, [isLoading, imgsNbr]);
 

@@ -11,7 +11,7 @@ import addRemoveListener from "../assets/lib/addRemoveListener";
 
 const Hero = ({ isLoading, setDimDiv }) => {
   const { darkMode } = useContext(ThemeContext);
-  console.log("darkMode in Hero:", darkMode);
+  // console.log("darkMode in Hero:", darkMode);
 
   const refDiv = useRef(0);
 

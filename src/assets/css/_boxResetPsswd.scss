@@ -1,4 +1,6 @@
 .boxResetPsswd {
+  width: 100%;
+
   .wrapper {
     height: 100vh;
     @include flexColCenter;
@@ -37,14 +39,14 @@
 // BREAKPOINTS
 // @media all and (min-width : 576px) {}
 
-// @media all and (min-width : 768px) {}
+@media all and (min-width : 768px) {
+  .formResetPsswd {
+    width: 30% !important;
+  }
+}
 
 // @media all and (min-width : 992px) {}
 
-@media all and (min-width : 1200px) {
-  .formResetPsswd {
-    width: 50% !important;
-  }
-}
+// @media all and (min-width : 1200px) {}
 
 // @media all and (min-width : 1400px) {}
