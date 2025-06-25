@@ -153,11 +153,10 @@
 
 @media all and (min-width: 768px) {
   .boxForm {
-    height: calc(var(--fixHeight) - 100px);
     padding: 0;
 
     .wrapper {
-      height: 100%;
+      height: calc(100% - 100px);
 
       & form {
         height: 100%;

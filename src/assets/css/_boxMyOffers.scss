@@ -1,6 +1,7 @@
 .boxMyOffers {
   position: relative;
   width: 100%;
+  @include flexCenter;
 
   .wrapper {
     @include flexColCenter;
@@ -21,9 +22,15 @@
 
 @media all and (min-width : 768px) {
   .boxMyOffers {
+    height: var(--fixHeight);
+
     .wrapper {
-      height: calc(var(--fixHeight) - 100px);
+      height: calc(100% - 100px);
       @include flexStart;
+
+      .boxOfferCard {
+        height: 100%;
+      }
     }
   }
 }

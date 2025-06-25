@@ -21,7 +21,7 @@ import Trash from "../components/Trash";
 
 //lib
 import fetchDeleteOffer from "../assets/fetchDataLib/DELETE/fetchDeleteOffer";
-import calcLocPath from "../assets/lib/calcLocPath";
+// import calcLocPath from "../assets/lib/calcLocPath";
 // import classRotation from "../assets/lib/classRotation";
 
 const OfferID = ({
@@ -128,7 +128,7 @@ const OfferID = ({
     };
     if (isLoading === false && data?.product_pictures) {
       setImgsLength();
-      calcLocPath(pathUseLocation);
+      // calcLocPath(pathUseLocation);
     }
   }, [isLoading, imgsNbr]);
 

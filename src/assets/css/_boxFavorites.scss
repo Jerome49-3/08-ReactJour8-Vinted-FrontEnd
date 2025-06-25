@@ -1,6 +1,6 @@
 .boxFavorites {
   padding: 90px 0 50px 0;
-
+  @include flexCenter;
 
   .wrapper {
     @include flexColTopStart;
@@ -21,11 +21,12 @@
   .boxFavorites {
     padding: 0;
     width: 100%;
-    height: calc(var(--fixHeight) - 100px);
+    height: var(--fixHeight);
 
     .wrapper {
       flex-direction: row;
       align-items: center;
+      height: calc(var(--fixHeight) - 100px);
 
       .boxOfferCard {
         width: 100%;

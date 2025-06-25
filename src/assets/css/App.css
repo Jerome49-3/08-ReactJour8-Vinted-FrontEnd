@@ -1063,11 +1063,10 @@
 
 @media all and (min-width: 768px) {
   .boxForm {
-    height: calc(var(--fixHeight) - 100px);
     padding: 0;
   }
   .boxForm .wrapper {
-    height: 100%;
+    height: calc(100% - 100px);
   }
   .boxForm .wrapper form {
     height: 100%;
@@ -2016,16 +2015,19 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 
 @media all and (min-width: 768px) {
   .boxOfferId {
-    padding: 50px 0 50px 0;
-    height: calc(var(--fixHeight) - 100px);
+    padding: 0;
+    height: var(--fixHeight);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .boxOfferId .wrapper {
-    height: 100%;
-    padding: 10px 0 10px 0;
+    height: calc(100% - 100px);
   }
   .boxOfferId .wrapper .top {
-    height: 82vh;
-    padding: 10px 0 10px 0;
+    height: 100%;
+    padding: 10px 0 20px 0;
+    flex-direction: row !important;
   }
   .boxOfferId .wrapper .top .down {
     flex-direction: column !important;
@@ -2329,6 +2331,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 .boxFavorites {
   padding: 90px 0 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .boxFavorites .wrapper {
   display: flex;
@@ -2350,11 +2355,12 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .boxFavorites {
     padding: 0;
     width: 100%;
-    height: calc(var(--fixHeight) - 100px);
+    height: var(--fixHeight);
   }
   .boxFavorites .wrapper {
     flex-direction: row;
     align-items: center;
+    height: calc(var(--fixHeight) - 100px);
   }
   .boxFavorites .wrapper .boxOfferCard {
     width: 100%;
@@ -3051,7 +3057,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
-  gap: 2.25rem;
+  gap: 1.75rem;
 }
 .boxUserId .wrapper .right .boxEmailIsConfirmed {
   display: flex;
@@ -3179,8 +3185,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   }
   .boxUserId .wrapper {
     flex-direction: row;
-    padding: 0;
-    height: calc(var(--fixHeight) - 100px);
+    padding: 0 0 10px 0;
+    height: calc(100% - 100px);
   }
   .boxUserId .wrapper .left {
     padding-right: 10px;
@@ -3842,6 +3848,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 .boxMyOffers {
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .boxMyOffers .wrapper {
   display: flex;
@@ -3861,11 +3870,17 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 
 @media all and (min-width: 768px) {
+  .boxMyOffers {
+    height: var(--fixHeight);
+  }
   .boxMyOffers .wrapper {
-    height: calc(var(--fixHeight) - 100px);
+    height: calc(100% - 100px);
     display: flex;
     justify-content: flex-start;
     align-items: center;
+  }
+  .boxMyOffers .wrapper .boxOfferCard {
+    height: 100%;
   }
 }
 @media all and (min-width: 1200px) {

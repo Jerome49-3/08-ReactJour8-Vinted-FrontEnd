@@ -294,16 +294,17 @@ export const UserProvider = ({ children }) => {
     async function (error) {
       console.log("error.config:", error.config);
       const originalRequest = error.config;
+      originalRequest._retry = false;
       console.log("originalRequest:", originalRequest);
 
       console.log(
         "error.response in axios.interceptors.response:",
         error.response
       );
-
+      console.log("originalRequest._retry before if:", originalRequest._retry);
       if (error?.response?.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
-        console.log("originalRequest._retry:", originalRequest._retry);
+        console.log("originalRequest._retry after if:", originalRequest._retry);
         try {
           const newRefreshToken = await fetchVerifyToken(
             axios,
