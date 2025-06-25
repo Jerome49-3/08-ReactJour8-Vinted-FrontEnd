@@ -1307,7 +1307,6 @@ header .wrapper .topHeader .boxLogoTheme a {
   height: 30px;
 }
 header .wrapper .topHeader .boxLogoTheme a .logoTxt {
-  font-weight: 900 !important;
   font-size: 28px;
   font-style: italic;
   color: #007882;
