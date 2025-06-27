@@ -29,6 +29,10 @@
       cursor: pointer;
     }
 
+    //************************* ****//
+    //******* HIDE OR SHOW *********//
+    //************************* ****//
+
     .hide {
       display: none;
     }
@@ -38,10 +42,30 @@
       color: $vertVinted;
     }
 
+    //************************* ****//
+    //***** boxInfoErrorMessage ****//
+    //************************* ****//
+
+    .boxInfoErrorMessage {
+      height: 20px;
+      @include flexCenter;
+
+      .red {
+        color: red;
+        font-size: 12px;
+        word-spacing: 0.5rem;
+        @include textShadow;
+      }
+
+      .black {
+        color: black;
+      }
+    }
+
     * .red {
       color: red;
       font-size: 12px;
-      font-weight: 500;
+      word-spacing: 0.5rem;
       @include textShadow;
     }
 
@@ -61,6 +85,10 @@
       color: $vertVinted;
     }
   }
+
+  //*************************** ****//
+  //***** MEDIA QUERIES WRAPPER ****//
+  //*************************** ****//
 
   @media all and (min-width : 376px) {
     .wrapper {

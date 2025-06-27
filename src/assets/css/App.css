@@ -179,10 +179,25 @@
   display: flex !important;
   color: #007882;
 }
+:root .wrapper .boxInfoErrorMessage {
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+:root .wrapper .boxInfoErrorMessage .red {
+  color: red;
+  font-size: 12px;
+  word-spacing: 0.5rem;
+  text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
+}
+:root .wrapper .boxInfoErrorMessage .black {
+  color: black;
+}
 :root .wrapper * .red {
   color: red;
   font-size: 12px;
-  font-weight: 500;
+  word-spacing: 0.5rem;
   text-shadow: 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
 }
 :root .wrapper .redInput {
@@ -234,113 +249,6 @@
   }
 }
 
-#boxErrorPage {
-  font-family: "Slugs Racer", sans-serif;
-  color: gainsboro;
-  -webkit-text-stroke: purple 0.8pt;
-  font-size: 36px;
-  background-color: #1e1e1e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-.oops {
-  animation: bounce-in-top 1.1s ease-out both;
-  background: linear-gradient(90deg, rgb(128, 0, 128) 10%, rgb(253, 29, 29) 60%, rgb(253, 255, 105) 95%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  z-index: 1;
-}
-
-.oops2 {
-  position: absolute;
-  top: 28%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-text-stroke: 0;
-}
-
-.oops2,
-.sorry {
-  text-shadow: 1px 1px 1px #000, 1px 1px 1px #000, 1px 1px 1px #000, 1px 1px 3px #000, 1.5px 1.5px 1px rgb(31, 31, 31), 1.5px 1.5px 1px rgb(31, 31, 31), 1.5px 1.5px 1px rgb(31, 31, 31), 1.5px 1.5px 1px rgb(31, 31, 31), 2px 2px 1px rgb(80, 80, 80), 2px 2px 1px rgb(80, 80, 80), 2px 2px 1px rgb(80, 80, 80), 2px 2px 1px rgb(80, 80, 80), 3px 3px 1px rgb(120, 120, 120), 3px 3px 1px rgb(120, 120, 120), 3px 3px 1px rgb(120, 120, 120), 3px 3px 1px rgb(120, 120, 120), 4px 4px 1px rgb(200, 200, 200), 4px 4px 1px rgb(200, 200, 200), 4px 4px 1px rgb(200, 200, 200), 4px 4px 1px rgb(200, 200, 200), 5px 5px 2px rgb(128, 0, 128), 5px 5px 2px rgb(128, 0, 128), 5px 5px 2px rgb(128, 0, 128), 5px 5px 50px rgb(128, 0, 128);
-}
-
-.sorry {
-  animation: swing-in-top-bck 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s both;
-}
-
-.codeerror {
-  text-shadow: none;
-  font-family: "Zebulon", sans-serif;
-  background: rgb(133, 132, 132);
-  background: linear-gradient(0deg, rgb(31, 31, 31) 20%, rgb(255, 255, 255) 50%, rgb(31, 31, 31) 80%);
-  text-transform: uppercase;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 0;
-  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1.5s both;
-}
-@keyframes bounce-in-top {
-  0% {
-    transform: translateY(-500px);
-    animation-timing-function: ease-in;
-    opacity: 0;
-  }
-  38% {
-    transform: translateY(0);
-    animation-timing-function: ease-out;
-    opacity: 1;
-  }
-  55% {
-    transform: translateY(-65px);
-    animation-timing-function: ease-in;
-  }
-  72% {
-    transform: translateY(0);
-    animation-timing-function: ease-out;
-  }
-  81% {
-    transform: translateY(-28px);
-    animation-timing-function: ease-in;
-  }
-  90% {
-    transform: translateY(0);
-    animation-timing-function: ease-out;
-  }
-  95% {
-    transform: translateY(-8px);
-    animation-timing-function: ease-in;
-  }
-  100% {
-    transform: translateY(0);
-    animation-timing-function: ease-out;
-  }
-}
-@keyframes swing-in-top-bck {
-  0% {
-    transform: rotateX(70deg);
-    transform-origin: top;
-    opacity: 0;
-  }
-  100% {
-    transform: rotateX(0deg);
-    transform-origin: top;
-    opacity: 1;
-  }
-}
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 .boxTheme {
   height: 30px;
   width: 30px;
@@ -590,11 +498,6 @@
   border-left: 2px solid transparent;
   border-bottom: 2px solid #000000;
   animation: rotate 0.8s ease-in-out infinite both;
-}
-
-/* ERROR MESSAGE */
-.red {
-  color: red;
 }
 
 .boxTitleClose {

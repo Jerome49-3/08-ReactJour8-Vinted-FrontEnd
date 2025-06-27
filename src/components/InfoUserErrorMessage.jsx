@@ -40,11 +40,13 @@ const InfoUserErrorMessage = () => {
     }
   }, [location.pathname, errorMessage, infoUser]);
 
-  return (
+  return errorMessage || infoUser ? (
     <div className="boxInfoErrorMessage">
       {infoUser && <p className={`${black} ${infoUserCenter}`}>{infoUser}</p>}
       {errorMessage && <p className="red">{errorMessage}</p>}
     </div>
+  ) : (
+    <div className="boxInfoErrorMessage"></div>
   );
 };
 
