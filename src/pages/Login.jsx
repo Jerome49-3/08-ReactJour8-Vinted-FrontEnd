@@ -67,7 +67,7 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
       }
     } catch (error) {
       console.log("error in handleSubmit on Login:", error);
-      const errRespDataMssg = error?.response?.data?.message;
+      const errRespDataMssg = error?.response?.data?.message || error;
       console.log("errRespDataMssg in handleSubmit on Login:", errRespDataMssg);
       const messageNotConfirmEmail = import.meta.env
         .VITE_REACT_APP_MSSG_NOT_CONFIRMEMAIL;
@@ -89,7 +89,6 @@ const Login = ({ faEye, faEyeSlash, type, setType }) => {
   return isLoading ? (
     <Loading />
   ) : (
-    // <div className={`${boxForm} ${boxLogin}`}>
     <div className="boxLogin">
       <div className="wrapper">
         <form onSubmit={handleSubmit}>

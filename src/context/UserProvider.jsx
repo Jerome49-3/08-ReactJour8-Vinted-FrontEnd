@@ -64,7 +64,7 @@ export const UserProvider = ({ children }) => {
   //******** avatarOffer > state for set picture's offer before update ******** //
   const [avatarOffer, setAvatarOffer] = useState(null);
   //******** connexion online or offline ******** //
-  const [connexionNet, setConnexionNet] = useState({});
+  // const [connexionNet, setConnexionNet] = useState({});
   //******** imgBoxUser > state for set picture's user in header ******** //
   const [imgBoxUser, setImgBoxUser] = useState(() => {
     const imgSessStorage = sessionStorage.getItem("vintaidImgBoxUser");
@@ -152,6 +152,8 @@ export const UserProvider = ({ children }) => {
   //     window.removeEventListener("resize", setDimensions(setDimWindows));
   // }, []);
 
+  //******** State for originalRetry ******** //
+  const [originRetry, setOriginRetry] = useState(false);
   //****************************************** //
   //******** token verify and refresh ******** //
   //****************************************** //
@@ -181,6 +183,7 @@ export const UserProvider = ({ children }) => {
             );
             // console.log("token in /verifyToken:", token);
             saveToken(token, setUser, setIsAdmin, setImgBoxUser);
+            setOriginRetry(false);
           }
         } catch (error) {
           console.log("error:", error.response);
@@ -294,7 +297,6 @@ export const UserProvider = ({ children }) => {
     async function (error) {
       console.log("error.config:", error.config);
       const originalRequest = error.config;
-      originalRequest._retry = false;
       console.log("originalRequest:", originalRequest);
 
       console.log(
@@ -303,7 +305,8 @@ export const UserProvider = ({ children }) => {
       );
       console.log("originalRequest._retry before if:", originalRequest._retry);
       if (error?.response?.status === 401 && !originalRequest._retry) {
-        originalRequest._retry = true;
+        setOriginRetry(true);
+        originalRequest._retry = originRetry;
         console.log("originalRequest._retry after if:", originalRequest._retry);
         try {
           const newRefreshToken = await fetchVerifyToken(
@@ -314,8 +317,11 @@ export const UserProvider = ({ children }) => {
             setIsAdmin,
             setImgBoxUser,
             setIsLoading,
-            navigate,
-            error
+            navigate
+          );
+          console.log(
+            "newRefreshToken in axios.interceptor.response:",
+            newRefreshToken
           );
           error.config.headers["Authorization"] = `Bearer ${newRefreshToken}`;
           console.log(

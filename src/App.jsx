@@ -188,6 +188,7 @@ function App() {
                 setType={setType}
                 faEye={faEye}
                 faEyeSlash={faEyeSlash}
+                showSignUp={showSignUp}
               />
             }
           />

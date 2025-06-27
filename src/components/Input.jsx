@@ -33,13 +33,14 @@ const Input = ({
     } else if (e.target.type === "password") {
       const pwd = validatePassword(e.target.value);
       // console.log("pwd on input:", pwd);
-      if (pwd.errors && pwd.isValid === false) {
+      if (pwd.errors && pwd.isValid === true) {
         const pwdNotValid = pwd.errors.join(" - ");
         // console.log("pwdNotValid:", pwdNotValid);
         setInfoUser(pwdNotValid);
       } else {
         setInfoUser("");
       }
+
       setState(e.target.value);
     } else if (e.target.type === "email") {
       setState(e.target.value.toLowerCase());
