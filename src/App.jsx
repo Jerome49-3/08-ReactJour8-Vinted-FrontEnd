@@ -44,7 +44,7 @@ library.add(
   faChevronCircleLeft,
   faChevronCircleRight
 );
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Cookies from "js-cookie";
 
 //components
@@ -149,17 +149,6 @@ function App() {
           <Route
             path="/*"
             element={
-              // <AppLayout
-              //   showSignUp={showSignUp}
-              //   setShowSignUp={setShowSignUp}
-              //   search={search}
-              //   setSearch={setSearch}
-              //   showToggleNav={showToggleNav}
-              //   setShowToggleNav={setShowToggleNav}
-              //   faFilter={faFilter}
-              //   showFilter={showFilter}
-              //   setShowFilter={setShowFilter}
-              // />
               <Home
                 search={search}
                 faHeart={faHeart}

@@ -105,7 +105,7 @@ const Hearths = ({ faHeart, farHeart, article }) => {
           className={isFavorite === true ? "hide" : "show"}
           ref={(el) => (heartsRefs.current[`${article._id}-heartEmpty`] = el)}
         />
-        <div>{article?.isFavorite}</div>
+        {/* <div>{article?.isFavorite}</div> */}
       </button>
     </React.Fragment>
   );

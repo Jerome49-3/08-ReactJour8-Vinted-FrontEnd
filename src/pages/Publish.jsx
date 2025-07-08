@@ -10,7 +10,7 @@ import Button from "../components/Button";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
 import InfoUserErrorMessage from "../components/InfoUserErrorMessage";
 
-const Publish = ({ faTrash, price, setPrice, quantity, setQuantity }) => {
+const Publish = ({ faTrash, price, setPrice, quantity }) => {
   // console.log(
   //   "price in Publish:",
   //   price,
@@ -19,7 +19,15 @@ const Publish = ({ faTrash, price, setPrice, quantity, setQuantity }) => {
   //   quantity
   // );
   const viewFile = useRef(null);
-  const { token, axios, isSended, setIsSended, setErrorMessage } = useUser();
+  const {
+    token,
+    axios,
+    isSended,
+    setIsSended,
+    setErrorMessage,
+    errorMessage,
+    infoUser,
+  } = useUser();
   // console.log("token in in /publish:", token);
   const [pictures, setPictures] = useState([]);
   // console.log("pictures in in /publish:", pictures);
@@ -71,7 +79,6 @@ const Publish = ({ faTrash, price, setPrice, quantity, setQuantity }) => {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("price", price);
-    formData.append("quantity", quantity);
     formData.append("brand", brand);
     formData.append("size", size);
     formData.append("condition", condition);
@@ -232,28 +239,17 @@ const Publish = ({ faTrash, price, setPrice, quantity, setQuantity }) => {
               setState={setDescription}
               required={true}
             />
-            <div className="productPriceAndQuantity">
-              <Input
-                value={price || ""}
-                id="price"
-                type="number"
-                placeholder="Price"
-                setState={setPrice}
-                required={true}
-                min="0"
-                max="100000"
-              />
-              <Input
-                value={quantity || ""}
-                id="quantity"
-                type="number"
-                placeholder="Quantity"
-                setState={setQuantity}
-                required={true}
-                min="1"
-                max="100"
-              />
-            </div>
+
+            <Input
+              value={price || ""}
+              id="price"
+              type="number"
+              placeholder="Price"
+              setState={setPrice}
+              required={true}
+              min="0"
+              max="100000"
+            />
             <div className="brandAndSize">
               <Input
                 value={brand || ""}
@@ -300,7 +296,7 @@ const Publish = ({ faTrash, price, setPrice, quantity, setQuantity }) => {
               value="Post your offer"
             />
           </div>
-          <InfoUserErrorMessage />
+          {(errorMessage || infoUser) && <InfoUserErrorMessage />}
         </form>
       </div>
     </div>

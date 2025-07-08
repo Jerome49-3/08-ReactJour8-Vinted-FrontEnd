@@ -18,14 +18,16 @@
       border-radius: 5px;
       padding: 0px 5px 0px 5px;
 
+
       .boxTitleLinksDashboard:hover a p {
-        color: $backgVinted;
+        color: $vertVintedHover;
       }
 
       .boxTitleLinksDashboard {
         width: 100%;
         padding-bottom: 10px;
         border-bottom: 2px solid $vertVinted;
+
 
         .boxTitleSearch,
         .containerBoxSearch {
@@ -36,8 +38,8 @@
           & p {
             letter-spacing: 2.5px;
             font-weight: 800;
-            color: $backgHeaderFooter;
-            font-size: 16px;
+            color: $vertVinted;
+            font-size: 1.5rem;
           }
         }
       }

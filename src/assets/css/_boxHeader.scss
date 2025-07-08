@@ -4,8 +4,8 @@ header {
   @include flexCenter;
   @include boxShadow;
   background-color: var(--backgHeader);
-  position: fixed;
-  top: 0;
+  // position: fixed;
+  // top: 0;
   z-index: 10;
   height: 120px;
 

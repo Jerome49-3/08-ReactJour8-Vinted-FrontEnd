@@ -1,8 +1,9 @@
 footer {
   width: 100%;
+  min-height: 60px;
   height: 60px;
-  position: fixed;
-  bottom: 0;
+  // position: fixed;
+  // bottom: 0;
   z-index: 10;
   @include flexCenter;
   background-color: $backgHeaderFooter;

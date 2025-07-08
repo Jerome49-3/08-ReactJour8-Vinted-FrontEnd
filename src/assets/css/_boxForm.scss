@@ -4,19 +4,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: var(--fixHeight);
 
   .wrapper {
     @include flexColCenter;
-    height: calc(100% - 140px);
-    margin-top: auto;
-    margin-bottom: auto;
 
     & form {
       @include flexColCenter;
       width: 100%;
       height: 100%;
-      margin-top: 20px;
     }
 
     // #pictures {
@@ -116,7 +111,7 @@
       justify-content: space-between;
       align-items: center;
       flex: 1;
-      padding: 10px 0 0 0;
+      padding: 10px 0 10px 0;
 
       .productPriceAndQuantity,
       .brandAndSize,
@@ -154,9 +149,10 @@
 @media all and (min-width: 768px) {
   .boxForm {
     padding: 0;
+    height: 100%;
 
     .wrapper {
-      height: calc(100% - 100px);
+      height: 100%;
 
       & form {
         height: 100%;
@@ -168,7 +164,6 @@
         }
 
         .boxInputFormPublish {
-          padding: 10px 0 15px 0;
 
           .classLabelInput,
           .labelTxtContact,

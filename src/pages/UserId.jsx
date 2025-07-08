@@ -56,7 +56,7 @@ const UserId = ({ faTrash }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_URL}/users/${id}`
+          `${import.meta.env.VITE_REACT_APP_URL}/userId/${id}`
         );
         // console.log("response in /user/${id} (GET):", response);
         if (response?.data?.token) {
@@ -101,7 +101,7 @@ const UserId = ({ faTrash }) => {
     formData.append("newsletter", newsletter);
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_REACT_APP_URL_USERID}${id}`,
+        `${import.meta.env.VITE_REACT_APP_URL}/userId/${id}`,
         formData,
         {
           headers: {
@@ -113,7 +113,7 @@ const UserId = ({ faTrash }) => {
       );
       if (response) {
         console.log(
-          "response.data in handleUpdateData in /users/${id}:",
+          "response.data in handleUpdateData in /userId/${id}:",
           response.data
         );
         setTimeout(() => {

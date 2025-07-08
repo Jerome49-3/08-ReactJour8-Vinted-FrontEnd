@@ -1,18 +1,18 @@
 .boxUserId {
-  @include flexColCenter;
+  @include flexCenter;
   // gap: 20px;
   width: 100%;
-  height: var(--fixHeight);
 
 
   .wrapper {
-    @include flexColCenter;
+    @include flexCenter;
     height: 100%;
-    padding: 100px 0 30px 0;
+    padding: 10px 0 10px 0;
 
     .bottom {
       width: 100%;
-      @include flexCenter;
+      @include flexColCenter;
+      height: 100%;
     }
 
     .left,
@@ -49,8 +49,8 @@
 
     .right {
       @include flexColTopStart;
+      justify-content: space-between;
       width: 100%;
-      gap: 1.75rem;
 
       .boxEmailIsConfirmed {
         @include flexBetween;
@@ -86,8 +86,13 @@
       .boxNewsletter,
       .boxDate,
       .boxId {
+        @include flexStart;
+        gap: 5px;
+
         & label {
           @include flexColStart;
+          height: fit-content;
+          background-color: transparent !important;
         }
       }
 
@@ -160,9 +165,9 @@
     padding: 0;
 
     .wrapper {
+      @include flexColCenter;
       flex-direction: row;
-      padding: 0 0 10px 0;
-      height: calc(100% - 100px);
+      height: 100%;
 
       .left {
         padding-right: 10px;
@@ -171,6 +176,17 @@
       .right {
         padding-left: 10px;
         justify-content: space-between !important;
+
+        .boxUsername,
+        .boxEmail,
+        .boxIsAdmin,
+        .boxNewsletter {
+          .classLabelInput {
+            & input {
+              min-height: 30px;
+            }
+          }
+        }
       }
 
       .left,

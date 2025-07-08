@@ -14,7 +14,7 @@ const MyOffers = ({
   setShowNoOffer,
   faTrash,
 }) => {
-  const { axios, data, setData } = useUser();
+  const { axios, data, setData, errorMessage, infoUser } = useUser();
   // console.log("data on /mySales:", data);
   const [isLoading, setIsLoading] = useState(null);
 
@@ -60,7 +60,7 @@ const MyOffers = ({
               faTrash={faTrash}
               setData={setData}
             />
-            <InfoUserErrorMessage />
+            {(errorMessage || infoUser) && <InfoUserErrorMessage />}
           </Fragment>
         ) : (
           showNoOffer && (
