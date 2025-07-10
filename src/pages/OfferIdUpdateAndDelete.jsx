@@ -41,6 +41,7 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
     isLoading,
     setInfoUser,
     infoUser,
+    errorMessage,
     setErrorMessage,
     setAvatarOffer,
     avatarOffer,
@@ -245,7 +246,7 @@ const OfferIdUpdateAndDelete = ({ faTrash }) => {
             </div>
           </div>
         </div>
-        <InfoUserErrorMessage />
+        {(errorMessage || infoUser) && <InfoUserErrorMessage />}
       </div>
     </form>
   );

@@ -93,6 +93,9 @@ const Home = ({
     socket.on("disconnect", () => {
       console.log(socket.id);
     });
+    socket.on("error", (error) => {
+      console.log("%cerror on socket in Home page:", "color: red", error);
+    });
     return () => socket.off("offerUpdated");
   }, []);
 

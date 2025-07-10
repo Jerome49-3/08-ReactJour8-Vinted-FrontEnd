@@ -2820,7 +2820,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   width: 100%;
   height: calc(var(--fixHeight));
-  padding: 50px 0 20px 0;
 }
 .boxDashboard .wrapper {
   display: flex;
@@ -2829,8 +2828,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  height: calc(100% - 100px);
-  padding: 0px !important;
+  height: 100%;
+  padding: 20px 0 20px 0;
 }
 .boxDashboard .wrapper .leftPannel {
   width: 100%;
@@ -2858,7 +2857,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   letter-spacing: 2.5px;
   font-weight: 800;
   color: #007882;
-  font-size: 1.5rem;
+  font-size: 16px;
 }
 .boxDashboard .wrapper .rightOutlet {
   width: 100%;
@@ -2892,6 +2891,11 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .boxDashboard .wrapper .rightOutlet {
     width: 70%;
     height: 100%;
+  }
+}
+@media all and (min-width: 1200px) {
+  .boxTitleLinksDashboard a p {
+    font-size: 1.5rem !important;
   }
 }
 .boxUserId {
@@ -3919,8 +3923,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  padding: 100px 0 20px 0;
   width: 100%;
 }
 .boxOfferIdUpdateAndDelete .wrapper {
@@ -3929,6 +3931,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   flex-direction: column;
   gap: 5px;
+  padding: 10px 0 10px 0;
 }
 .boxOfferIdUpdateAndDelete .wrapper .left,
 .boxOfferIdUpdateAndDelete .wrapper .right {
@@ -3940,18 +3943,18 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   flex-wrap: wrap;
   gap: 1px;
-  position: relative;
   height: 100%;
 }
-.boxOfferIdUpdateAndDelete .wrapper .left .boxPictures {
+.boxOfferIdUpdateAndDelete .wrapper .left .boxArrayPictures {
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
   height: calc(100% / (var(--imgsLength)));
+  position: relative;
 }
-.boxOfferIdUpdateAndDelete .wrapper .left .boxPictures label {
+.boxOfferIdUpdateAndDelete .wrapper .left .boxArrayPictures label {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -3962,7 +3965,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   border-radius: 5px;
   padding: 10px;
 }
-.boxOfferIdUpdateAndDelete .wrapper .left .boxPictures img {
+.boxOfferIdUpdateAndDelete .wrapper .left .boxArrayPictures img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -3982,6 +3985,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   flex-direction: column;
   width: 100%;
   overflow-y: auto;
+  padding-top: 5px;
 }
 .boxOfferIdUpdateAndDelete .wrapper .right .boxOfferIdUpdateInput {
   width: 100%;
@@ -3991,7 +3995,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
   flex-direction: column;
   height: 100%;
-  padding: 5px 5px 50px 5px;
 }
 .boxOfferIdUpdateAndDelete .wrapper .right .boxOfferIdUpdateInput .productPriceAndQuantity {
   display: flex;
@@ -4066,7 +4069,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     flex-direction: row;
     padding: 10px 0 10px 0;
   }
-  .boxOfferIdUpdateAndDelete .wrapper .left .boxPictures {
+  .boxOfferIdUpdateAndDelete .wrapper .left .boxArrayPictures {
     max-height: 100%;
   }
   .boxOfferIdUpdateAndDelete .wrapper .left,

@@ -1,12 +1,11 @@
 .boxOfferIdUpdateAndDelete {
   @include flexCenter;
-  height: 100%;
-  padding: 100px 0 20px 0;
   width: 100%;
 
   .wrapper {
     @include flexColCenter;
     gap: 5px;
+    padding: 10px 0 10px 0;
 
     .left,
     .right {
@@ -18,13 +17,13 @@
       flex-wrap: wrap;
       // border: 2px solid red;
       gap: 1px;
-      position: relative;
       height: 100%;
 
-      .boxPictures {
+      .boxArrayPictures {
         width: 100%;
         @include flexColTopStart;
         height: calc(100% / (var(--imgsLength)));
+        position: relative;
 
         & label {
           position: absolute;
@@ -59,12 +58,12 @@
       @include flexColCenter;
       width: 100%;
       overflow-y: auto;
+      padding-top: 5px;
 
       .boxOfferIdUpdateInput {
         width: 100%;
         gap: 10px;
         @include flexColBetween;
-        padding: 5px 5px 50px 5px;
 
         .productPriceAndQuantity {
           @include flexBetween;
@@ -136,7 +135,7 @@
       padding: 10px 0 10px 0;
 
       .left {
-        .boxPictures {
+        .boxArrayPictures {
           max-height: calc(100%);
         }
       }

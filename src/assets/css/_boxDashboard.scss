@@ -2,14 +2,14 @@
   @include flexColStart;
   width: 100%;
   height: calc(var(--fixHeight));
-  padding: 50px 0 20px 0;
+
 
   .wrapper {
     @include flexColTopStart;
     gap: 10px;
     width: 100%;
-    height: calc(100% - 100px);
-    padding: 0px !important;
+    height: 100%;
+    padding: 20px 0 20px 0;
 
     .leftPannel {
       width: 100%;
@@ -39,7 +39,7 @@
             letter-spacing: 2.5px;
             font-weight: 800;
             color: $vertVinted;
-            font-size: 1.5rem;
+            font-size: 16px;
           }
         }
       }
@@ -84,7 +84,12 @@
 
 // @media all and (min-width : 992px) {}
 
-// @media all and (min-width : 1200px) {}
+@media all and (min-width : 1200px) {
+  .boxTitleLinksDashboard a p {
+    font-size: 1.5rem !important;
+  }
+
+}
 
 // @media all and (min-width : 1400px) {}
 //   .top,

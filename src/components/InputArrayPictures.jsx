@@ -52,7 +52,7 @@ const InputArrayPictures = ({
         // console.log("pic in OfferIdUpdateAndDelete:", pic);
         // console.log("index in OfferIdUpdateAndDelete:", index);
         return (
-          <div className="boxPictures" key={index}>
+          <div className="boxArrayPictures" key={index}>
             <Image
               alt="avatarOffer"
               src={avatarOffer[index]?.secure_url || avatarOffer[index]}
