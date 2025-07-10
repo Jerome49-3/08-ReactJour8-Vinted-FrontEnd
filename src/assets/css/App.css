@@ -826,7 +826,6 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
 }
 .boxForm .wrapper .boxPicTop {
   width: 100%;
@@ -847,7 +846,7 @@
   align-items: center;
   width: 100%;
   border: 2px dashed #007882;
-  gap: 5px;
+  gap: 8px;
   flex-wrap: wrap;
   position: relative;
 }
@@ -883,6 +882,7 @@
 .boxForm .wrapper .boxPicTop .boxPicBottom .viewPics {
   width: 100%;
   position: relative;
+  width: 48%;
 }
 .boxForm .wrapper .boxPicTop .boxPicBottom .viewPics img {
   width: 100%;
@@ -964,7 +964,7 @@
   width: 100%;
 }
 
-@media all and (max-width: 768px) {
+@media all and (min-width: 576px) {
   .viewPics {
     width: 32% !important;
   }
@@ -1661,7 +1661,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 
 .boxOfferId {
   width: 100%;
-  padding: 90px 0 60px 0;
   height: var(--fixHeight);
 }
 .boxOfferId .wrapper {
