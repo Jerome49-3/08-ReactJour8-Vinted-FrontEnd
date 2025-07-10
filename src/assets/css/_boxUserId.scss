@@ -118,6 +118,27 @@
         }
       }
 
+      .boxAdminNews {
+        @include flexBetween;
+        width: 100%;
+
+        .boxCheckbox {
+          @include flexCenter;
+          width: 100%;
+
+          .labelCheckbox {
+            @include flexCenter;
+            width: 100%;
+
+            & p,
+            & input#Admin,
+            & input#Newsletter {
+              width: fit-content;
+            }
+          }
+        }
+      }
+
       .classLabelInputSubmit {
         width: 50%;
       }
@@ -169,6 +190,10 @@
       flex-direction: row;
       height: 100%;
 
+      .bottom {
+        flex-direction: row !important;
+      }
+
       .left {
         padding-right: 10px;
       }
@@ -185,13 +210,28 @@
             & input {
               min-height: 30px;
             }
+
           }
         }
+
+        .boxIsAdmin,
+        .boxNewsletter {
+          .boxCheckbox {
+            .labelCheckbox {
+              flex-direction: row !important;
+
+              & input {
+                width: fit-content;
+              }
+            }
+          }
+        }
+
       }
 
       .left,
       .right {
-        height: 82vh;
+        height: 100%;
       }
     }
   }

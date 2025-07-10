@@ -5,7 +5,7 @@ const saveToken = (token, setUser, setIsAdmin, setImgBoxUser) => {
   // console.log("token in saveToken:", token);
   Cookies.set("accessTokenV", token);
   const newDecryptedUser = decryptUser(token);
-  // console.log("newDecryptedUser in saveToken:", newDecryptedUser);
+  console.log("newDecryptedUser in saveToken:", newDecryptedUser);
   if (newDecryptedUser) {
     setUser(newDecryptedUser);
     if (typeof newDecryptedUser?.account?.avatar === "string") {

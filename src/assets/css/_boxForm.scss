@@ -146,6 +146,12 @@
   }
 }
 
+@media all and (max-width: 768px) {
+  .viewPics {
+    width: 32% !important;
+  }
+}
+
 @media all and (min-width: 768px) {
   .boxForm {
     padding: 0;

@@ -130,6 +130,7 @@ function App() {
   //********** State dimensions div Hero ***********/
   const [dimDiv, setDimDiv] = useState({});
   //**********************************************************************/
+  const [checked, setChecked] = useState(false);
   //**********************************************************************/
   return (
     <Router>
@@ -322,6 +323,8 @@ function App() {
                   faXmark={faXmark}
                   faUser={faUser}
                   faTrash={faTrash}
+                  checked={checked}
+                  setChecked={setChecked}
                 />
               }
             />

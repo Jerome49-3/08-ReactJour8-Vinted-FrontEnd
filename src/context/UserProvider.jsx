@@ -127,7 +127,7 @@ export const UserProvider = ({ children }) => {
   const [tokenFgtP, setTokenFgtP] = useState(
     sessionStorage.getItem("tokenFgtP") || null
   );
-  // console.log("tokenFgtP in userProvider:", tokenFgtP);
+  console.log("tokenFgtP in userProvider:", tokenFgtP);
 
   //****************************************** //
   //******* set showSearch && showHero ******* //
@@ -159,7 +159,7 @@ export const UserProvider = ({ children }) => {
   //****************************************** //
   useEffect(() => {
     if (token) {
-      console.log("token in useEffect on UserProvider:", token);
+      // console.log("token in useEffect on UserProvider:", token);
       const verifyToken = async () => {
         try {
           const response = await axios.post(
@@ -173,14 +173,14 @@ export const UserProvider = ({ children }) => {
             response.data.message ===
               import.meta.env.VITE_REACT_APP_RESPONSEDATAVALID
           ) {
-            console.log(
-              "import.meta.env.RESPONSEVALID in /user/verifyToken:",
-              import.meta.env.VITE_REACT_APP_RESPONSEVALID
-            );
-            console.log(
-              "import.meta.env.RESPONSEDATAVALID in /user/verifyToken:",
-              import.meta.env.VITE_REACT_APP_RESPONSEDATAVALID
-            );
+            // console.log(
+            //   "import.meta.env.RESPONSEVALID in /user/verifyToken:",
+            //   import.meta.env.VITE_REACT_APP_RESPONSEVALID
+            // );
+            // console.log(
+            //   "import.meta.env.RESPONSEDATAVALID in /user/verifyToken:",
+            //   import.meta.env.VITE_REACT_APP_RESPONSEDATAVALID
+            // );
             // console.log("token in /verifyToken:", token);
             saveToken(token, setUser, setIsAdmin, setImgBoxUser);
             setOriginRetry(false);
@@ -270,13 +270,13 @@ export const UserProvider = ({ children }) => {
             config.method === "post" || config.method === "put"
               ? "multipart/form-data"
               : "application/json";
-          console.group("log axios.interceptor:");
-          console.log("config in userProvider:", config);
-          console.log(
-            "config.headersContent-Type in userProvider:",
-            config.headers["Content-Type"]
-          );
-          console.groupEnd();
+          // console.group("log axios.interceptor:");
+          // console.log("config in userProvider:", config);
+          // console.log(
+          //   "config.headersContent-Type in userProvider:",
+          //   config.headers["Content-Type"]
+          // );
+          // console.groupEnd();
           return config;
         },
         (error) => {
@@ -298,19 +298,19 @@ export const UserProvider = ({ children }) => {
       return response;
     },
     async function (error) {
-      console.log("error.config:", error.config);
+      // console.log("error.config:", error.config);
       const originalRequest = error.config;
-      console.log("originalRequest:", originalRequest);
+      // console.log("originalRequest:", originalRequest);
 
-      console.log(
-        "error.response in axios.interceptors.response:",
-        error.response
-      );
-      console.log("originalRequest._retry before if:", originalRequest._retry);
+      // console.log(
+      //   "error.response in axios.interceptors.response:",
+      //   error.response
+      // );
+      // console.log("originalRequest._retry before if:", originalRequest._retry);
       if (error?.response?.status === 401 && !originalRequest._retry) {
         setOriginRetry(true);
         originalRequest._retry = originRetry;
-        console.log("originalRequest._retry after if:", originalRequest._retry);
+        // console.log("originalRequest._retry after if:", originalRequest._retry);
         try {
           const newRefreshToken = await fetchVerifyToken(
             axios,
@@ -322,15 +322,15 @@ export const UserProvider = ({ children }) => {
             setIsLoading,
             navigate
           );
-          console.log(
-            "newRefreshToken in axios.interceptor.response:",
-            newRefreshToken
-          );
-          error.config.headers["Authorization"] = `Bearer ${newRefreshToken}`;
-          console.log(
-            "error.config.headers.Authorization:",
-            error.config.headers["Authorization"]
-          );
+          // console.log(
+          //   "newRefreshToken in axios.interceptor.response:",
+          //   newRefreshToken
+          // );
+          // error.config.headers["Authorization"] = `Bearer ${newRefreshToken}`;
+          // console.log(
+          //   "error.config.headers.Authorization:",
+          //   error.config.headers["Authorization"]
+          // );
           return axios(originalRequest);
         } catch (errorRefresh) {
           console.error("refreshToken failed:", errorRefresh);

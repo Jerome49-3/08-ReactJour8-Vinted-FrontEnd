@@ -964,6 +964,11 @@
   width: 100%;
 }
 
+@media all and (max-width: 768px) {
+  .viewPics {
+    width: 32% !important;
+  }
+}
 @media all and (min-width: 768px) {
   .boxForm {
     padding: 0;
@@ -1181,8 +1186,6 @@ header {
   align-items: center;
   box-shadow: 0px 0px 1px #000000, 0.25px 0.25px 1px #000000, 0.5px 0.5px 1px #000000;
   background-color: var(--backgHeader);
-  z-index: 10;
-  height: 120px;
 }
 header .wrapper .topHeader {
   display: flex;
@@ -1412,10 +1415,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 
 @media all and (min-width: 768px) {
-  header {
-    max-height: 50px;
-    height: 100%;
-  }
   header nav ul {
     display: flex;
     flex-direction: row !important;
@@ -1551,7 +1550,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     display: flex;
     justify-content: flex-start;
     padding: 0 !important;
-    height: calc(var(--fixHeight) - 100px);
   }
   .boxHome .wrapper {
     flex-direction: row !important;
@@ -3049,6 +3047,28 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 .boxUserId .wrapper .right .boxId label input {
   width: 100% !important;
 }
+.boxUserId .wrapper .right .boxAdminNews {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.boxUserId .wrapper .right .boxAdminNews .boxCheckbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.boxUserId .wrapper .right .boxAdminNews .boxCheckbox .labelCheckbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.boxUserId .wrapper .right .boxAdminNews .boxCheckbox .labelCheckbox p, .boxUserId .wrapper .right .boxAdminNews .boxCheckbox .labelCheckbox input#Admin, .boxUserId .wrapper .right .boxAdminNews .boxCheckbox .labelCheckbox input#Newsletter {
+  width: -moz-fit-content;
+  width: fit-content;
+}
 .boxUserId .wrapper .right .classLabelInputSubmit {
   width: 50%;
 }
@@ -3102,6 +3122,9 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
     flex-direction: row;
     height: 100%;
   }
+  .boxUserId .wrapper .bottom {
+    flex-direction: row !important;
+  }
   .boxUserId .wrapper .left {
     padding-right: 10px;
   }
@@ -3115,9 +3138,18 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   .boxUserId .wrapper .right .boxNewsletter .classLabelInput input {
     min-height: 30px;
   }
+  .boxUserId .wrapper .right .boxIsAdmin .boxCheckbox .labelCheckbox,
+  .boxUserId .wrapper .right .boxNewsletter .boxCheckbox .labelCheckbox {
+    flex-direction: row !important;
+  }
+  .boxUserId .wrapper .right .boxIsAdmin .boxCheckbox .labelCheckbox input,
+  .boxUserId .wrapper .right .boxNewsletter .boxCheckbox .labelCheckbox input {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
   .boxUserId .wrapper .left,
   .boxUserId .wrapper .right {
-    height: 82vh;
+    height: 100%;
   }
 }
 .boxPriceMinMax {

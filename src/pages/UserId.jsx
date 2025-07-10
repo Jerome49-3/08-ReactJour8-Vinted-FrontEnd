@@ -2,7 +2,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import saveToken from "../assets/lib/saveToken";
+import saveToken from "../assets/lib/saveToken";
 import { useUser } from "../assets/lib/userFunc";
 import decryptUser from "../assets/lib/decryptUser";
 
@@ -13,10 +13,17 @@ import Button from "../components/Button";
 import InputFileAvatar from "../components/InputFileAvatar";
 import Loading from "../components/Loading";
 import Trash from "../components/Trash";
+import Links from "../components/Links";
 
 //images
 // import updateIcon from "../assets/images/updateIcon.png";
 import LoadedInputSubmit from "../components/LoadedInputSubmit";
+
+//libFetch
+import handleDeleteUserId from "../assets/fetchDataLib/DELETE/fetchDeleteUserId";
+import handleSendMailCode from "../assets/fetchDataLib/POST/handleSendMailCode";
+import InputCheckBox from "../components/InputCheckBox";
+import handleUpdateData from "../assets/fetchDataLib/PUT/handleUpdateData";
 
 const UserId = ({ faTrash }) => {
   const { id } = useParams();
@@ -24,7 +31,6 @@ const UserId = ({ faTrash }) => {
   // const { state } = useLocation();
   // console.log("state: in /users/${userId}:", state);
   // const { token } = state;
-  // console.log("token /users/${userId}:", token);
   const [pictures, setPictures] = useState(null);
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
@@ -48,10 +54,23 @@ const UserId = ({ faTrash }) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const { token, isAdmin, avatar, setAvatar, setIsSended, isSended } =
-    useUser();
+  const {
+    token,
+    isAdmin,
+    avatar,
+    setAvatar,
+    setIsSended,
+    isSended,
+    setUser,
+    setIsAdmin,
+    setImgBoxUser,
+    imgBoxUser,
+    tokenFgtP,
+    setTokenFgtP,
+  } = useUser();
   // console.log("token /users/${userId}:", token);
   // console.log("user /users/${userId}:", user);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -65,11 +84,33 @@ const UserId = ({ faTrash }) => {
             // console.log("newToken in /users/${id} (GET):", newToken);
             if (newToken) {
               const userUpdated = await decryptUser(newToken);
-              // console.log("userUpdated in /users/${id} (GET):", userUpdated);
+              const actualUser = await decryptUser(token);
               if (userUpdated) {
+                console.log("userUpdated in /users/${id} (GET):", userUpdated);
+                console.log("actualUser in /users/${id} (GET):", actualUser);
+                console.log(
+                  "userUpdated?._id === actualUser?._id in /users/${id} (GET):",
+                  userUpdated?._id === actualUser?._id
+                );
                 setData(userUpdated);
-                setDataAdmin(userUpdated?.isAdmin.toString());
-                setDataNews(userUpdated?.newsletter.toString());
+                setDataAdmin(userUpdated?.isAdmin);
+                setDataNews(userUpdated?.newsletter);
+                if (userUpdated?._id === actualUser?._id) {
+                  console.log(
+                    "userUpdated._id in /users/${id} (GET):",
+                    userUpdated._id
+                  );
+                  console.log(
+                    "actualUser?._id in /users/${id} (GET):",
+                    actualUser?._id
+                  );
+                  saveToken(
+                    response?.data?.token,
+                    setUser,
+                    setIsAdmin,
+                    setImgBoxUser
+                  );
+                }
               }
               setAvatar(
                 userUpdated?.account?.avatar?.secure_url ||
@@ -88,113 +129,34 @@ const UserId = ({ faTrash }) => {
       }
     };
     fetchData();
-  }, [id]);
+  }, [id, imgBoxUser]);
 
-  const handleUpdateData = async (e) => {
-    setIsLoading(true);
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("pictures", pictures);
-    formData.append("username", username);
-    formData.append("email", email);
-    formData.append("isAdmin", newAdmin);
-    formData.append("newsletter", newsletter);
-    try {
-      const response = await axios.put(
-        `${import.meta.env.VITE_REACT_APP_URL}/userId/${id}`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "content-type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
-      if (response) {
-        console.log(
-          "response.data in handleUpdateData in /userId/${id}:",
-          response.data
-        );
-        setTimeout(() => {
-          alert(response?.data?.message);
-          setIsLoading(false);
-          navigate(`/`);
-        }, 1000);
-      }
-    } catch (error) {
-      console.log(error);
-      setErrorMessage(error.message);
-    }
-  };
-  const handleDeleteData = async (e) => {
-    setIsLoading(true);
-    e.preventDefault();
-    if (confirm("Do yout want delete this user and their  offers ?")) {
-      try {
-        const response = await axios.delete(
-          `${import.meta.env.VITE_REACT_APP_URL_USERID}${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "content-type": "multipart/form-data",
-            },
-            withCredentials: true,
-          }
-        );
-        if (response) {
-          console.log(
-            "response in handleDeleteData on /users/${id}:",
-            response
-          );
-          console.log(
-            "response.data in handleDeleteData on /users/${id}:",
-            response.data
-          );
-          setIsLoading(false);
-          alert(response.data.message);
-          navigate(`/dashboard`);
-        }
-      } catch (error) {
-        console.log("error:", error?.response);
-        setErrorMessage(error?.response?.data?.message);
-      }
-    } else {
-      navigate(`/dashboard`);
-    }
-  };
-
-  const handleSendMailCode = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        `http://localhost:3000/sendMail/sendCode/${id}`,
-        {},
-        {
-          headers: {
-            Authorization: "Bearer token",
-            "content-type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
-      if (response.data) {
-        console.log("response.data:", response.data);
-        alert(response.data.message);
-        navigate(`/dashboard`);
-      }
-    } catch (error) {
-      console.log(error.message);
-      setErrorMessage(error.message);
-    }
-  };
+  useEffect(() => {}, []);
 
   return isLoading ? (
     <Loading />
   ) : (
     <div className="boxUserId">
       <div className="wrapper">
-        <form className="bottom" onSubmit={handleUpdateData}>
+        <form
+          className="bottom"
+          onSubmit={(e) =>
+            handleUpdateData(
+              e,
+              setIsLoading,
+              pictures,
+              username,
+              email,
+              newAdmin,
+              newsletter,
+              axios,
+              id,
+              token,
+              setTokenFgtP,
+              setErrorMessage
+            )
+          }
+        >
           <div className="left">
             <Image src={avatar} alt="avatar" />
             <InputFileAvatar
@@ -225,29 +187,25 @@ const UserId = ({ faTrash }) => {
                 setState={setEmail}
               />
             </div>
-            <div className="boxIsAdmin">
-              {isAdmin === true && (
-                <Input
-                  labelTxt="Admin:"
-                  id="admin"
-                  type="text"
-                  placeholder={dataAdmin}
-                  value={newAdmin || ""}
-                  classInput="isAdmin"
-                  setState={setNewAdmin}
+            <div className="boxAdminNews">
+              <div className="boxIsAdmin">
+                {isAdmin === true && (
+                  <InputCheckBox
+                    idCheckbox="Admin"
+                    nameCheckbox="Abonnez-vous"
+                    state={dataAdmin || false}
+                    setState={setNewAdmin}
+                  />
+                )}
+              </div>
+              <div className="boxNewsletter">
+                <InputCheckBox
+                  idCheckbox="Newsletter"
+                  nameCheckbox="Abonnez-vous"
+                  state={dataNews || false}
+                  setState={setNewsletter}
                 />
-              )}
-            </div>
-            <div className="boxNewsletter">
-              <Input
-                labelTxt="newsletter:"
-                type="text"
-                placeholder={dataNews}
-                id="newsletter"
-                value={dataNews || ""}
-                classInput="newsletter"
-                setState={setNewsletter}
-              />
+              </div>
             </div>
             <div className="boxEmailIsConfirmed">
               <div className="infosEmailIsConfirmed">
@@ -255,7 +213,7 @@ const UserId = ({ faTrash }) => {
                 <div>{data?.emailIsConfirmed.toString()}</div>
               </div>
 
-              {/* <Links
+              <Links
                 path="/sendEmail"
                 classLink="linkSendMail"
                 state={{
@@ -266,11 +224,19 @@ const UserId = ({ faTrash }) => {
                   },
                 }}
                 linkText="Renvoyer le code"
-              /> */}
+              />
               {data?.emailIsConfirmed.toString() === "false" && (
                 <>
                   <Button
-                    handleClick={handleSendMailCode}
+                    handleClick={(e) =>
+                      handleSendMailCode(
+                        e,
+                        axios,
+                        tokenFgtP,
+                        navigate,
+                        setErrorMessage
+                      )
+                    }
                     buttonText="Renvoyer le code"
                     classButton="btnSendMailCode"
                   />
@@ -288,7 +254,21 @@ const UserId = ({ faTrash }) => {
                 setIsSended={setIsSended}
                 value="Update"
               />
-              <Trash id={id} faTrash={faTrash} handleClick={handleDeleteData} />
+              <Trash
+                id={id}
+                faTrash={faTrash}
+                handleClick={(e) => {
+                  handleDeleteUserId(
+                    e,
+                    setIsLoading,
+                    axios,
+                    id,
+                    token,
+                    navigate,
+                    setErrorMessage
+                  );
+                }}
+              />
             </div>
           </div>
         </form>

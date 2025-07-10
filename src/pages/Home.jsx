@@ -115,7 +115,7 @@ const Home = ({
     <div className="boxHome">
       <Hero isLoading={isLoading} setDimDiv={setDimDiv} />
       <div className="wrapper">
-        {dimWindows.width > 592 && page > 1 && (
+        {dimWindows.width > 1201 && page > 1 && (
           <div className="boxContainerBtnChevron">
             <Button
               icon={faChevronCircleLeft}
@@ -136,7 +136,7 @@ const Home = ({
           faChevronCircleRight={faChevronCircleRight}
           page={page}
         />
-        {dimWindows.width > 592 &&
+        {dimWindows.width > 1201 &&
           data?.length >= items &&
           items < data?.length && (
             <div className="boxContainerBtnChevron">
