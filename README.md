@@ -1,8 +1,16 @@
-# React + Vite
+Hi 👋, I'm jerome Bobin
+A passionate student developer from France
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔭 I’m currently working on job research
 
-Currently, two official plugins are available:
+🌱 I’m currently learning js, express, mongoDB
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👯 i'm finish the Reacteur: https://www.lereacteur.io/
+
+💬 Ask me about js, react, express, mongoDB, sveltekit, pocketbase, css, sass
+
+📫 How to reach me jeromebobin49.3@gmail.com
+
+📄 Know about my experiences https://www.linkedin.com/in/j%C3%A9r%C3%B4me-b-455714164/
+
+⚡ Fun fact I only think I'm funny after I've had my coffee ^_^
