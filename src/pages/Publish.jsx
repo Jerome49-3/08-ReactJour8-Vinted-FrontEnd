@@ -44,9 +44,12 @@ const Publish = ({ faTrash, price, setPrice, quantity }) => {
   const [color, setColor] = useState("");
   const [city, setCity] = useState("");
   const navigate = useNavigate();
+
   useEffect(() => {
     setErrorMessage("");
   }, []);
+
+  const dropImgRef = useRef();
 
   const handleSubmit = async (e) => {
     // console.log(
@@ -157,6 +160,7 @@ const Publish = ({ faTrash, price, setPrice, quantity }) => {
               className={
                 pictures.length > 0 ? "boxPicBottom" : "boxPicBottomEmpty"
               }
+              ref={dropImgRef}
             >
               {pictures.length === 0 ? (
                 <label htmlFor="pictures" id="labelPic">

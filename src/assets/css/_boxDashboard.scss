@@ -1,7 +1,6 @@
 .boxDashboard {
   @include flexColStart;
   width: 100%;
-  height: calc(var(--fixHeight));
 
 
   .wrapper {

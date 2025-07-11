@@ -40,7 +40,7 @@ const Header = ({
   return (
     <header
       className={
-        width < 768 && location.pathname !== "/" ? "headerBigScreen" : ""
+        width < 768 && location.pathname !== "/" ? "smallHeader" : "bigHeader"
       }
     >
       <div className="wrapper">

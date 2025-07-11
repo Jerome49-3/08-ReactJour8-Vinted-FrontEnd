@@ -3,7 +3,8 @@
 
   .imgBanner {
     max-width: 100%;
-    max-height: 300px;
+    height: 230px;
+    max-height: 230px;
     -o-object-fit: cover;
     object-fit: cover;
     -o-object-position: center 28%;
@@ -40,7 +41,8 @@
   .boxImgs {
 
     .imgBanner {
-      max-height: 150px;
+      min-height: 250px;
+      max-height: 250px;
     }
 
     .imgBannerBottom {

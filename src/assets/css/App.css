@@ -887,8 +887,8 @@
 .boxForm .wrapper .boxPicTop .boxPicBottom .viewPics img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
+  -o-object-fit: fill;
+  object-fit: fill;
   display: block;
   -o-object-position: top;
      object-position: top;
@@ -972,10 +972,6 @@
 @media all and (min-width: 768px) {
   .boxForm {
     padding: 0;
-    height: 100%;
-  }
-  .boxForm .wrapper {
-    height: 100%;
   }
   .boxForm .wrapper form {
     height: 100%;
@@ -1001,6 +997,9 @@
   }
 }
 @media all and (min-width: 1400px) {
+  .boxForm .wrapper form .boxPicTop .boxPicBottom {
+    gap: 22px;
+  }
   .boxForm .wrapper form .boxPicTop .boxPicBottom .viewPics {
     width: 24.6305418719%;
   }
@@ -1383,8 +1382,14 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: center;
 }
 
-.headerBigScreen {
+.smallHeader {
+  min-height: 90px !important;
   height: 90px !important;
+}
+
+.bigHeader {
+  min-height: 120px;
+  height: 120px;
 }
 
 .boxUser:active .imgAvatar {
@@ -1421,6 +1426,10 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   }
 }
 @media all and (min-width: 1200px) {
+  header {
+    min-height: 60px !important;
+    height: 60px !important;
+  }
   header .wrapper .topHeader {
     flex-direction: row;
     width: 100%;
@@ -1461,7 +1470,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 .boxImgs .imgBanner {
   max-width: 100%;
-  max-height: 300px;
+  height: 230px;
+  max-height: 230px;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: center 28%;
@@ -1486,7 +1496,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 @media all and (min-width: 1200px) {
   .boxImgs .imgBanner {
-    max-height: 150px;
+    min-height: 250px;
+    max-height: 250px;
   }
   .boxImgs .imgBannerBottom {
     top: 80%;
@@ -1661,21 +1672,20 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 
 .boxOfferId {
   width: 100%;
-  height: var(--fixHeight);
 }
 .boxOfferId .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100%;
+  padding: 10px 0 10px 0;
 }
 .boxOfferId .wrapper .top {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   width: 100%;
   height: calc(100% - 20px);
 }
@@ -1755,7 +1765,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100% / (var(--imgsLength)));
+  height: calc(100% / ((var(--imgsLength)) - 1));
   width: 100%;
   max-height: 100%;
 }
@@ -1911,17 +1921,16 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 @media all and (min-width: 768px) {
   .boxOfferId {
     padding: 0;
-    height: var(--fixHeight);
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .boxOfferId .wrapper {
-    height: calc(100% - 100px);
+    height: 100%;
   }
   .boxOfferId .wrapper .top {
+    gap: 10px;
     height: 100%;
-    padding: 10px 0 20px 0;
     flex-direction: row !important;
   }
   .boxOfferId .wrapper .top .down {
@@ -2818,7 +2827,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
-  height: calc(var(--fixHeight));
 }
 .boxDashboard .wrapper {
   display: flex;
@@ -2907,6 +2915,7 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100%;
   padding: 10px 0 10px 0;
 }
@@ -3781,7 +3790,8 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 
 .boxMyPurchases {
-  padding: 90px 0 50px 0;
+  flex: 1 0 auto;
+  display: flex;
 }
 .boxMyPurchases .wrapper {
   height: 100%;
@@ -3825,9 +3835,6 @@ header .wrapper .topHeader nav ul .boxUser .boxAvatar {
 }
 
 @media all and (min-width: 768px) {
-  .boxMyOffers {
-    height: calc(var(--fixHeight) - 100px);
-  }
   .boxMyOffers .wrapper {
     height: calc(100% - 100px);
     display: flex;
@@ -4084,7 +4091,7 @@ footer {
   width: 100%;
   min-height: 60px;
   height: 60px;
-  z-index: 10;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;

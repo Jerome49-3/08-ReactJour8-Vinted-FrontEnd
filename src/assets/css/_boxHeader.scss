@@ -181,8 +181,14 @@ header {
   }
 }
 
-.headerBigScreen {
+.smallHeader {
+  min-height: 90px !important;
   height: 90px !important;
+}
+
+.bigHeader {
+  min-height: 120px;
+  height: 120px;
 }
 
 .boxUser:active .imgAvatar {
@@ -230,6 +236,9 @@ header {
 
 @media all and (min-width : 1200px) {
   header {
+    min-height: 60px !important;
+    height: 60px !important;
+
     .wrapper {
       .topHeader {
         flex-direction: row;

@@ -219,14 +219,31 @@ a p {
   color: #2db0ba;
 }
 /* div#root && main.mainLayout */
-div#root {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
+html,
+body,
+#root {
+  height: 100%;
 }
-.rootHeight {
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.sectionContent {
+  display: flex;
+  flex: 1 0 auto;
+  overflow-y: auto;
+  position: relative;
+}
+/* .rootHeight {
   height: var(--fixHeight);
+} */
+@media all and (min-width: 768px) {
+  .boxHome,
+  .boxOfferId,
+  .boxDashboard,
+  .boxMyOffers {
+    height: calc(var(--fixHeight) - 120px);
+  }
 }

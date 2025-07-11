@@ -4,7 +4,8 @@ footer {
   height: 60px;
   // position: fixed;
   // bottom: 0;
-  z-index: 10;
+  flex-shrink: 0;
+  // z-index: 10;
   @include flexCenter;
   background-color: $backgHeaderFooter;
   box-shadow: 0px 0px 1px $black, 0.25px 0.25px 1px $black, 0.5px 0.5px 1px $black;
